@@ -1,0 +1,6 @@
+(require 'highlight-parentheses)
+(setq hl-paren-colors '("gold" "IndianRed" "cyan" "green" "orange" "magenta"))
+(defun hpm-on ()
+ (highlight-parentheses-mode t))
+(add-hook 'ess-mode-hook 'hpm-on)
+(add-hook 'inferior-ess-mode-hook 'hpm-on)

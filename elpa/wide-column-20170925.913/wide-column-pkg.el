@@ -1,0 +1,1 @@
+(define-package "wide-column" "20170925.913" "Calls functions dependant on column position." 'nil :commit "ce9ef4675485a7bea381077866368ef875226b10" :keywords '("minor mode" "cursor colour" "column width"))

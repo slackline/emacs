@@ -1,0 +1,2036 @@
+((("--agents" .
+   [1 0 0 0 0 0 0 0])
+  ("mtcars" .
+   [0 0 0 1 0 0])
+  ("spread" .
+   [1 0 0 0 0 0])
+  ("model3" .
+   [2 0 0 0 0 0])
+  ("model2" .
+   [1 0 0 0 0 0])
+  ("model1" .
+   [1 0 0 0 0 0])
+  ("run-python" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("python-shell-switch-to-shell" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("kbd" .
+   [1 0 0])
+  ("global-set-key" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("interval" .
+   [5 0 0 0 0 0 0 0])
+  ("strings_as_factors" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("map_df" .
+   [1 0 0 0 0 0])
+  ("map" .
+   [1 0 0])
+  ("filename" .
+   [2 0 0 0 0 0 0 0])
+  ("fread" .
+   [2 0 0 0 0])
+  ("uploads$df" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("guides" .
+   [1 0 0 0 0 0])
+  ("ifconfig" .
+   [2 0 0 0 0 0 0 0])
+  ("numeric_vars" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("numeric" .
+   [2 0 0 0 0 0 0])
+  ("high_tax2" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tax2" .
+   [1 0 0 0])
+  ("high_tax1" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tax1" .
+   [1 0 0 0])
+  ("318000" .
+   [1 0 0 0 0 0])
+  ("ELD15" .
+   [1 0 0 0 0])
+  ("BR23" .
+   [2 0 0 0])
+  ("eortc_qlq_c30" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Quality" .
+   [1 0 0 0 0 0 0])
+  ("C30" .
+   [2 0 0])
+  ("EORTC" .
+   [2 0 0 0 0])
+  ("height_cm" .
+   [0 0 0 0 0 0 1 0 0])
+  ("weight_kg" .
+   [1 0 0 0 0 0 0 0 0])
+  ("age_exact" .
+   [1 0 0 0 0 0 0 0 0])
+  ("bmi" .
+   [1 0 0])
+  ("ctru::plot_summary" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("continuous" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("code" .
+   [1 0 0 0])
+  ("directly" .
+   [1 0 0 0 0 0 0 0])
+  ("returned" .
+   [1 0 0 0 0 0 0 0])
+  ("Corrected" .
+   [0 0 0 0 0 0 0 0 1])
+  ("thats" .
+   [1 0 0 0 0])
+  ("cor" .
+   [1 0 0])
+  ("now" .
+   [1 0 0])
+  ("plotting" .
+   [1 0 0 0 0 0 0 0])
+  ("plots" .
+   [1 0 0 0 0])
+  ("Event" .
+   [1 0 0 0 0])
+  ("ylab" .
+   [3 0 0 0])
+  ("xlab" .
+   [3 0 0 0])
+  ("ncol" .
+   [1 0 0 0])
+  ("facet_wrap" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("coord_flip" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("geom_bar" .
+   [1 0 0 0 0 0 0 0])
+  ("fill" .
+   [2 0 0 0])
+  ("event" .
+   [1 0 0 0 0])
+  ("df_factor" .
+   [1 0 0 0 0 0 0 0 0])
+  ("test" .
+   [3 0 0 0])
+  ("quo_group" .
+   [1 0 0 0 0 0 0 0 0])
+  ("quo" .
+   [14 0 0])
+  ("event_name" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("enquo" .
+   [5 0 0 1 0])
+  ("client" .
+   [1 0 0 0 0 0])
+  ("server.service" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("openvpn-server" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("start" .
+   [1 0 0 0 0])
+  ("restart" .
+   [1 0 0 0 0 0 0])
+  ("exit" .
+   [1 0 0 0])
+  ("echo" .
+   [1 0 0 0])
+  ("/etc/rc.local" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("control" .
+   [1 0 0 0 0 0 0])
+  ("version" .
+   [1 0 0 0 0 0 0])
+  ("touch" .
+   [5 0 0 0 0])
+  ("mkdir" .
+   [5 0 0 0 0])
+  ("args" .
+   [2 0 0 0])
+  ("predicted" .
+   [1 0 0 0 0 0 0 0 0])
+  ("tidied" .
+   [1 0 0 0 0 0])
+  ("one" .
+   [1 0 0])
+  ("into" .
+   [1 0 0 0])
+  ("existing$wells.heart.rate$fitted" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("existing$simplified.neoplasm$fitted" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("existing$simplified.neoplasm" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("existing$perc.o2" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("existing$wells.neoplasm$fitted" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("existing$wells.neoplasm" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("wells.surgery" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("1.5" .
+   [1 0 0])
+  ("results$ci" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("results$c" .
+   [1 0 0 0 0 0 0 0 0])
+  ("ci" .
+   [1 0])
+  ("results$ci.specifi" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ci.sensitivity" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("results$summary.stats" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$test" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("alpha" .
+   [2 0 0 0 0])
+  ("counts" .
+   [1 0 0 0 0 0])
+  ("temperature" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("bp.diastolic" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("bp.systolic" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("dplyr::select_" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("to.table" .
+   [1 0 0 0 0 0 0 0])
+  ("component" .
+   [2 0 0 0 0 0 0 0 0])
+  ("n_percent" .
+   [1 0 0 0 0 0 0 0 0])
+  ("n.diagnosed.dvt" .
+   [1 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("n.adjusted" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("ceiling" .
+   [1 0 0 0 0 0 0])
+  ("p2" .
+   [2 0])
+  ("p1" .
+   [2 0])
+  ("ES.h" .
+   [1 0 0 0])
+  ("cohens.d" .
+   [1 0 0 0 0 0 0 0])
+  ("results$threshold" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$threshool" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic$thromboprophylaxis$table" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("case_when" .
+   [2 0 0 0 0 0 0 0 0])
+  ("trimester" .
+   [1 0 0 0 0 0 0 0 0])
+  ("relevel" .
+   [2 0 0 0 0 0 0])
+  ("medical.other.dvt.pe" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("perc.dvt.pe" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("t9" .
+   [1 0])
+  ("master$biomarker_raw$Sample.name" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("master$biomarker_raw" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic$age$auc$AUC" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic$age$predicted" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic$age$roc" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("R" .
+   [1])
+  ("../R" .
+   [0 0 0 1])
+  ("primary.dm" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("third.st" .
+   [1 0 0 0 0 0 0 0])
+  ("second" .
+   [1 0 0 0 0 0])
+  ("first.st" .
+   [1 0 0 0 0 0 0 0])
+  ("Primary" .
+   [1 0 0 0 0 0 0])
+  ("NA" .
+   [2 0])
+  ("DVT" .
+   [3 0 0])
+  ("Diagnosed" .
+   [2 0 0 0 0 0 0 0 0])
+  ("were" .
+   [1 0 0 0])
+  ("NB" .
+   [1 0])
+  ("three" .
+   [1 0 0 0 0])
+  ("from" .
+   [1 0 0 0])
+  ("classification" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Up" .
+   [2 0])
+  ("Follow" .
+   [1 0 0 0 0 0])
+  ("PE" .
+   [3 0])
+  ("Suspected" .
+   [2 0 0 0 0 0 0 0 0])
+  ("Recruited" .
+   [1 0 0 0 0 0 0 0 0])
+  ("Non" .
+   [1 0 0])
+  ("UKOSS" .
+   [1 0 0 0 0])
+  ("Treatment" .
+   [2 0 0 0 0 0 0 0 0])
+  ("Imaging" .
+   [1 0 0 0 0 0 0])
+  ("using" .
+   [1 0 0 0 0])
+  ("rio::export" .
+   [1 0 0 0 0 1 0 0 0 0 0])
+  ("rio" .
+   [2 0 0])
+  ("tx" .
+   [3 0])
+  ("stata" .
+   [3 0 0 0 0])
+  ("treatment" .
+   [1 0 0 0 0 0 0 0 0])
+  ("par" .
+   [1 0 0])
+  ("dplyr" .
+   [24 0 0 0 0])
+  ("data/model2_cluster1.dta" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("import" .
+   [1 0 0 0 0 0])
+  ("admissions" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("emergency" .
+   [1 0 0 0 0 0 0 0 0])
+  ("standard" .
+   [1 0 0 0 0 0 0 0])
+  ("heatmap.standard" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("case.fatality.ratio.myocardial.infarction" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$total.3" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$total.2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$fee.1" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("results$transfer" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("results$total.1" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("tumble" .
+   [1 0 0 0 0 0])
+  ("transfer" .
+   [1 0 0 0 0 0 0 0])
+  ("balance" .
+   [7 0 0 0 0 1 0])
+  ("lambda.min" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("lambda.1se" .
+   [1 0 0 0 0 0 0 0 0 1])
+  ("cv.lasso$lambda.1se" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lasso" .
+   [1 0 0 0 0])
+  ("pe" .
+   [1 0])
+  ("Obtain" .
+   [1 0 0 0 0 0])
+  ("coef" .
+   [2 0 0 0])
+  ("predict.glmnet" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("predict" .
+   [6 0 0 0 0 0 0])
+  ("renderPlot" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("input$history" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("input$presenting" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("covars" .
+   [2 0 0 0 0 0])
+  ("is.null" .
+   [2 0 0 0 0 0 0])
+  ("input$demog" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("model" .
+   [1 0 0 0 0])
+  ("glance" .
+   [3 0 0 0 0 0])
+  ("partitioned" .
+   [1 0 0 0 0 0 0 0 0 1 0])
+  ("broom" .
+   [1 0 0 0 0])
+  ("smoking" .
+   [1 0 0 0 0 0 0])
+  ("eq5d$group" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("5L" .
+   [1 0])
+  ("5D" .
+   [1 0])
+  ("EQ5D" .
+   [2 0 0 0])
+  ("ggtitle" .
+   [3 0 0 0 0 0 0])
+  ("likert" .
+   [1 0 0 0 0 0])
+  ("ordered" .
+   [0 0 0 0 0 0 1])
+  ("factor" .
+   [5 0 0 0 0 0])
+  ("master$eq5d$mobility" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("merged.csv" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("Re" .
+   [1 0])
+  ("Solution" .
+   [1 0 0 0 0 0 0 0])
+  ("write.csv2" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("write.table" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("Now" .
+   [1 0 0])
+  ("it" .
+   [1 0])
+  ("check" .
+   [5 0 0 0 0])
+  ("final" .
+   [3 0 0 0 1])
+  ("show" .
+   [1 0 0 0])
+  ("dob" .
+   [1 0 0])
+  ("esoph" .
+   [0 0 1 0 0])
+  ("Excel" .
+   [1 0 0 0 0])
+  ("investigations" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Pregnancy" .
+   [1 0 0 0 0 0 0 0 0])
+  ("Merge" .
+   [2 0 0 0 0])
+  ("sheetName" .
+   [1 0 0 0 0 0 0 0 0])
+  ("read.xlsx" .
+   [0 0 0 0 0 0 0 1 0])
+  ("xlsx::Fill" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("BPM" .
+   [1 0 0])
+  ("Rate" .
+   [1 0 0 0])
+  ("Heart" .
+   [2 0 0 0 0])
+  ("master$presenting.features" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("matser$pres" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("BMI" .
+   [2 0 0])
+  ("kable" .
+   [4 0 0 0 0])
+  ("***" .
+   [2 0 0])
+  ("count" .
+   [6 0 0 0 0])
+  ("route" .
+   [1 0 0 0 0])
+  ("confint" .
+   [0 0 0 0 0 0 2])
+  ("-e" .
+   [1 0])
+  ("0.896" .
+   [1 0 0 0 0])
+  ("calls" .
+   [1 0 0 0 0])
+  ("red" .
+   [1 0 0])
+  ("fraction" .
+   [1 0 0 0 0 0 0 0])
+  ("conveyed" .
+   [1 0 0 0 0 0 0 0])
+  ("avoidable.emergency.admissions.any$model2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("avoidable.emergency.admissions.any$model3a" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("avoidable.emergency.admissions.any$model3b" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model7" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model6" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model1.panelar.hartlepool" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model5" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model4" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model3b" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model3a" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$model2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("all.emergency.admissions.all$" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("avoidable.emergency.admissions.any$model1.panelar.hartlepool$residuals" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.any$model6.panelar.hartlepool" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.any$model1.panelar.hemel$residuals" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("mode.of.arrival.any$model1.panelar.hemel.r2" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("mode.of.arrival.any" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("~/work/closed/knitr/data/results.RData" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0])
+  ("~/work/closed/knitr/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0])
+  ("~/work/closed/" .
+   [0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  ("geom_point" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("missing" .
+   [1 0 0 0 0 0 0])
+  ("~/work/closed/knitr/data/spurious_cleaned.RData" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("~/work/" .
+   [0 0 0 0 3 1 0])
+  ("ctru.org" .
+   [1 0 0 0 0 0 0 0])
+  ("GetHeadlines" .
+   [1 0 0 0 0 0 0 0 0 0 1 0])
+  ("GetClockTable" .
+   [0 0 0 0 0 0 0 1 0 1 0 0 0])
+  ("hubble.RData" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])
+  ("hubble" .
+   [1 0 0 0 0 0])
+  ("2.16" .
+   [1 0 0 0])
+  ("28.11" .
+   [1 0 0 0 0])
+  ("69.73" .
+   [1 0 0 0 0])
+  ("10.27" .
+   [1 0 0 0 0])
+  ("19.46" .
+   [1 0 0 0 0])
+  ("70.27" .
+   [1 0 0 0 0])
+  ("tab.previous" .
+   [0 0 0 0 0 0 0 0 1 1 0 0])
+  ("116" .
+   [1 0 0])
+  ("tab.grade" .
+   [1 0 0 0 0 0 0 1 0])
+  ("tab.bmi" .
+   [2 0 0 0 0 0 0])
+  ("tab.age" .
+   [2 0 0 0 0 0 0])
+  ("as.data.frame" .
+   [7 0 0 0 0 0 0 1 1 0 0 0 0])
+  ("102" .
+   [1 0 0])
+  ("tab.gender" .
+   [1 0 0 0 0 0 6 5 0 0])
+  ("salic.odds" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("cryo.odds" .
+   [1 0 0 0 0 0 0 0 0])
+  ("salic.risk" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("cryo.risk" .
+   [1 0 0 0 0 0 0 0 0])
+  ("128" .
+   [2 0 0])
+  ("110" .
+   [2 0 0])
+  ("abs" .
+   [2 0 0])
+  ("salic" .
+   [3 0 0 0 0])
+  ("cryo" .
+   [2 0 0 0])
+  ("Cryotherpay" .
+   [0 0 0 0 1 0 0 0 0 0 0])
+  ("1.96" .
+   [1 0 0 0])
+  ("Proportion" .
+   [2 0 0 0 0 0 0 0 0 1])
+  ("prop" .
+   [1 0 0 0])
+  ("se" .
+   [2 0])
+  ("143" .
+   [2 0 0])
+  ("Section" .
+   [1 0 0 0 0 0 0])
+  ("CIDFont" .
+   [0 0 1 0 0 0 0])
+  ("mean" .
+   [6 0 0 0])
+  ("sqrt" .
+   [2 0 0 0])
+  ("sd" .
+   [2 0])
+  ("quantile" .
+   [3 0 0 0 0 1 0 0])
+  ("summary" .
+   [5 0 0 0 0 0 0])
+  ("sort" .
+   [2 0 0 0])
+  ("arrange" .
+   [5 0 0 0 0 0 0])
+  ("order" .
+   [4 0 0 0 0])
+  ("zero" .
+   [1 0 0 0])
+  ("compromise" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("understanding" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("empathy" .
+   [1 0 0 0 0 0 0])
+  ("might" .
+   [1 0 0 0 0])
+  ("regardless" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("attend" .
+   [1 0 0 0 0 0])
+  ("needs" .
+   [1 0 0 0 0])
+  ("ill" .
+   [1 0 0])
+  ("wife" .
+   [2 0 0 0])
+  ("agency" .
+   [1 0 0 0 0 0])
+  ("cut" .
+   [1 0 0])
+  ("world" .
+   [1 0 0 0 0])
+  ("services?" .
+   [1 0 0 0 0 0 0 0 0])
+  ("should" .
+   [1 0 0 0 0 0])
+  ("there" .
+   [2 0 0 0 0])
+  ("purposefully" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("believe" .
+   [1 0 0 0 0 0 0])
+  ("them" .
+   [2 0 0 0])
+  ("hey" .
+   [1 0 0])
+  ("service" .
+   [2 0 0 0 0 0 0])
+  ("want" .
+   [1 0 0 0])
+  ("providing" .
+   [2 0 0 0 0 0 0 0 0])
+  ("though" .
+   [1 0 0 0 0 0])
+  ("rather" .
+   [1 0 0 0 0 0])
+  ("increase" .
+   [1 0 0 0 0 0 0 0])
+  ("really" .
+   [2 0 0 0 0 0])
+  ("conditions" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("make" .
+   [2 0 0 0])
+  ("this" .
+   [3 0 0 0])
+  ("forthcoming" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("remuneration" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("too" .
+   [2 0 0])
+  ("achieve" .
+   [3 0 0 0 0 0 0])
+  ("need" .
+   [6 0 0 0])
+  ("healthcare" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("are" .
+   [2 0 0])
+  ("can" .
+   [2 0 0])
+  ("those" .
+   [3 0 0 0 0])
+  ("publicly" .
+   [1 0 0 0 0 0 0 0])
+  ("don" .
+   [1 0 0])
+  ("then" .
+   [4 0 0 0])
+  ("two" .
+   [2 0 0])
+  ("which" .
+   [2 0 0 0 0])
+  ("our" .
+   [2 0 0])
+  ("care" .
+   [2 0 0 0])
+  ("bend" .
+   [1 0 0 0])
+  ("others" .
+   [1 0 0 0 0 0])
+  ("about" .
+   [2 0 0 0 0])
+  ("work" .
+   [1 0 0 0])
+  ("take" .
+   [4 0 0 0])
+  ("have" .
+   [2 0 0 0])
+  ("didn" .
+   [1 0 0 0])
+  ("could" .
+   [1 0 0 0 0])
+  ("when" .
+   [4 0 0 0])
+  ("would" .
+   [4 0 0 0 0])
+  ("Yet" .
+   [1 0 0])
+  ("comment" .
+   [2 0 0 0 0 0 0])
+  ("like" .
+   [7 0 0 0])
+  ("seem" .
+   [5 0 0 0])
+  ("provide" .
+   [3 0 0 0 0 0 0])
+  ("convenience" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("rely" .
+   [1 0 0 0])
+  ("option" .
+   [1 0 0 0 0 0])
+  ("over" .
+   [1 0 0 0])
+  ("funding" .
+   [3 0 0 0 0 0 0])
+  ("any" .
+   [2 0 0])
+  ("without" .
+   [1 0 0 0 0 0 0])
+  ("push" .
+   [1 0 0 0])
+  ("many" .
+   [1 0 0 0])
+  ("untenable" .
+   [1 0 0 0 0 0 0 0 0])
+  ("being" .
+   [1 0 0 0 0])
+  ("already" .
+   [2 0 0 0 0 0 0])
+  ("agencies" .
+   [3 0 0 0 0 0 0 0])
+  ("reduce" .
+   [1 0 0 0 0 0])
+  ("working" .
+   [2 0 0 0 0 0 0])
+  ("put" .
+   [2 0 0])
+  ("what" .
+   [4 0 0 0])
+  ("but" .
+   [2 0 0])
+  ("You" .
+   [4 0 0])
+  ("The" .
+   [3 0 0])
+  ("require" .
+   [2 0 0 0 0 0 0])
+  ("do" .
+   [7 0])
+  ("fact" .
+   [4 0 0 0])
+  ("these" .
+   [2 0 0 0 0])
+  ("both" .
+   [1 0 0 0])
+  ("jobs" .
+   [2 0 0 0])
+  ("their" .
+   [4 0 0 0 0])
+  ("other" .
+   [1 0 0 0 0])
+  ("or" .
+   [3 0])
+  ("pay" .
+   [3 0 0])
+  ("they" .
+   [5 0 0 0])
+  ("who" .
+   [6 0 0])
+  ("people" .
+   [6 0 0 0 0 0])
+  ("ignoring" .
+   [3 0 0 0 0 0 0 0])
+  ("services" .
+   [3 0 0 0 0 0 0 0])
+  ("will" .
+   [5 0 0 0])
+  ("real" .
+   [1 0 0 0])
+  ("you" .
+   [19 0 0])
+  ("your" .
+   [7 0 0 0])
+  ("rest" .
+   [1 0 0 0])
+  ("day" .
+   [4 0 0])
+  ("seven" .
+   [4 0 0 0 0])
+  ("Pete" .
+   [2 0 0 0])
+  ("issue" .
+   [2 0 0 0 0])
+  ("further" .
+   [1 0 0 0 0 0 0])
+  ("increased" .
+   [1 0 0 0 0 0 0 0 0])
+  ("last" .
+   [1 0 0 0])
+  ("position" .
+   [2 0 0 0 0 0 0 0])
+  ("up" .
+   [4 0])
+  ("because" .
+   [9 0 0 0 0 0 0])
+  ("NHS" .
+   [4 0 0])
+  ("why" .
+   [2 0 0])
+  ("point" .
+   [1 0 0 0 0])
+  ("under" .
+   [1 0 0 0 0])
+  ("funded" .
+   [2 0 0 0 0 0])
+  ("currently" .
+   [1 0 0 0 0 0 0 0 0])
+  ("ignore" .
+   [1 0 0 0 0 0])
+  ("all" .
+   [5 0 0])
+  ("the" .
+   [42 0 1])
+  ("with" .
+   [11 0 0 0])
+  ("is" .
+   [17 0])
+  ("This" .
+   [4 0 0 0])
+  ("for" .
+   [23 0 0])
+  ("that" .
+   [9 0 0 0])
+  ("not" .
+   [8 0 0])
+  ("4549" .
+   [1 0 0 0])
+  ("4541" .
+   [1 0 0 0])
+  ("august.2014" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("august.2013" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("negbin.prescriptions.2013.2014$texreg" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("logistic.prescriptions.2013.2014$texreg" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("poly-noweb" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("scripts/functions.R" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("screen" .
+   [1 0 0 1 0 0])
+  ("scan" .
+   [0 0 0 1])
+  ("steroid.x" .
+   [1 0 0 0 0 0 0 0 0])
+  ("sub5.Rnw" .
+   [0 0 0 0 0 0 0 1])
+  ("data/R/master.RData" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("scripts/setup.R" .
+   [0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  ("master$pregnancy" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("forms" .
+   [1 0 0 0 0])
+  ("install" .
+   [34 0 0 0 0 0 0])
+  ("build" .
+   [43 0 0 0 1])
+  ("runApp" .
+   [0 0 0 0 2 1])
+  ("tufte" .
+   [1 0 0 0 0])
+  ("theme" .
+   [10 0 0 0 0])
+  ("results$all" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("function" .
+   [3 0 0 1 0 0 0 0])
+  ("apply_theme" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("lubridate::ymd" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lubridate::ms" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("as_data_frame" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("as" .
+   [5 0])
+  ("prescriptions" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("is.na" .
+   [3 0 0 0 0])
+  ("table.symptom.haemorrhoids$df.scores$var.out" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("var.out" .
+   [2 0 0 0 0 0 0])
+  ("mutate" .
+   [36 0 0 0 0 1])
+  (".data" .
+   [1 0 0 0 0])
+  ("new" .
+   [1 0 0])
+  ("proportion$n.scheduled" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("proportion$n.visits.2012" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("proportion$n.unscheduled" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("proportion$n.relevant" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("save" .
+   [3 0 0 0])
+  ("exp" .
+   [7 0 0])
+  ("negbin.unscheduled.year" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("qq" .
+   [1 0])
+  ("n.rbl" .
+   [1 0 0 0 0])
+  ("100" .
+   [11 0 0])
+  ("rbl" .
+   [2 0 0])
+  ("README.DATAFRAMES$master" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("README.DATAFRAMES" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("README" .
+   [3 0 0 0 0 0])
+  ("names.master" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("names.symptom.vaizey" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("cd" .
+   [29 0])
+  ("pwd" .
+   [25 0 0])
+  ("document" .
+   [8 0 0 1 1 1 0 2])
+  ("options" .
+   [0 0 0 0 0 0 1])
+  ("negbin.relevant.2014" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("negbin.unscheduled" .
+   [0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("adverse.event$ae.name" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("gsub" .
+   [17 0 0 0])
+  ("allocation.sum" .
+   [0 0 0 0 0 1 0 1 0 0 0 0 0 0])
+  ("getwd" .
+   [3 0 0 0 0])
+  ("dev.off" .
+   [2 0 0 0 0 0 0])
+  ("logistic.prescriptions.2013.2014" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("negbin.prescriptions.2013.2014" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("sum$html" .
+   [1 0 0 0 0 0 0 0])
+  ("sum$df" .
+   [1 0 0 0 0 0])
+  ("data.frame" .
+   [5 0 0 0 0 0 0 0 0 0])
+  ("ultrasound$variable" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("week" .
+   [1 0 0 0])
+  ("196" .
+   [1 0 2])
+  ("seq" .
+   [2 0 0])
+  ("breaks" .
+   [1 0 0 0 0 0])
+  ("scale_x_continuous" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  (".plot" .
+   [2 0 0 0 0])
+  ("plot.height$bp.sports.redpoint" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("plot.height$hist" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("plot.height" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("clean" .
+   [1 0 0 0 0])
+  ("plot.height$bp.sports.onsight" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$hist" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("results" .
+   [38 0 0 0 0 0 0])
+  ("else" .
+   [11 0 0 0])
+  ("hist" .
+   [2 0 0 0])
+  ("FALSE" .
+   [17 0 0 0 0])
+  ("by.gender" .
+   [1 0 0 0 0 0 0 0 0])
+  ("traceback" .
+   [10 0 0 0 0 0 0 1 1])
+  ("print" .
+   [96 0 0 0 0])
+  ("aes_string" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("aes" .
+   [2 0 0])
+  ("rm" .
+   [18 0])
+  ("rbind" .
+   [10 0 0 0 0])
+  ("prescriptions.august2012" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("sum" .
+   [3 0 0])
+  ("summarise" .
+   [5 0 0 0 0 0 0 0 0])
+  ("allocation" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("patid" .
+   [1 0 0 0 0])
+  ("pracid" .
+   [1 0 0 0 0 0])
+  ("group_by" .
+   [11 0 0 0 0 0 0 0])
+  ("as.Date" .
+   [3 0 0 0 0 0 0])
+  ("eventdate" .
+   [1 0 0 0 0 0 0 0 0])
+  ("preventative.steroid" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("steroid.preventative" .
+   [0 0 0 0 2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("pleasant." .
+   [0 0 0 0 0 1 0 0 0])
+  ("pleasant.regression" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
+  ("proportion" .
+   [2 0 0 0 0 2 1 0 0 0])
+  ("alias" .
+   [2 0 0 0 0])
+  ("as.character" .
+   [2 0 0 0 0 1 0 0 0 0 0 0])
+  ("is.character" .
+   [0 0 0 0 0 0 0 1 0 0 0 0])
+  ("levels" .
+   [7 0 0 0 0 0])
+  ("t$km.pp" .
+   [1 0 0 0 0 0 0])
+  ("t$km.itt" .
+   [2 0 0 0 0 0 0 0])
+  ("pleasant.coxph" .
+   [0 0 0 0 0 2 0 0 0 0 0 1 0 0])
+  ("pleasant.aft" .
+   [0 0 0 0 0 1 0 0 0 0 0 0])
+  ("results$k" .
+   [3 0 0 0 0 0 0 0 0])
+  ("results$tm.pp" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$tm.itt" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ggsurv" .
+   [3 0 0 0 0 0])
+  ("ggplot" .
+   [4 0 0 1 0 0])
+  ("survfit" .
+   [3 0 0 0 0 0 1])
+  ("t$itt" .
+   [1 0 0 0 0])
+  ("library" .
+   [32 0 0 1 0 0 1])
+  ("source" .
+   [48 0 0 0 0 0])
+  ("load" .
+   [34 0 0 0])
+  ("November" .
+   [1 0 0 0 0 0 0 0])
+  ("some" .
+   [3 0 0 0])
+  ("and" .
+   [31 0 0])
+  ("in" .
+   [22 0])
+  ("1700" .
+   [1 0 0 0])
+  ("340" .
+   [2 0 0])
+  ("subset" .
+   [11 0 0 1 0 0])
+  ("to.plot" .
+   [4 0 0 0 0 0 0])
+  ("outcome" .
+   [6 0 0 0 0 0 0])
+  ("if" .
+   [31 0])
+  ("dim" .
+   [50 0 1])
+  ("merge" .
+   [8 0 0 0 0])
+  ("typeof" .
+   [14 0 0 0 0 0])
+  ("within" .
+   [3 0 0 0 0 0])
+  ("vfa" .
+   [3 0 0])
+  ("head" .
+   [51 0 0 0])
+  ("offset" .
+   [2 0 0 1 0 0])
+  ("names" .
+   [101 0 0 0 0])
+  ("table" .
+   [65 0 0 0 0])
+  ("as.numeric" .
+   [6 0 1 0 2 0 0 0 0 0])
+  (".medical.history$menopause" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("return" .
+   [14 0 0 2 0 0])
+  ("texreg" .
+   [0 0 0 0 1 0])
+  ("TRUE" .
+   [16 0 0 0])
+  ("trio_plot" .
+   [1 0 0 0 0 0 1 0 0])
+  ("master$variable" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("r.total.bmd" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("rug" .
+   [0 0 1])
+  ("dxa" .
+   [1 0 0])
+  ("prescriptions.2012.2013" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("data" .
+   [18 0 0 0])
+  ("list" .
+   [11 0 0 0])
+  ("read.csv" .
+   [5 0 0 0 0 0 0 0])
+  ("caption" .
+   [6 0 0 0 0 0 0])
+  ("knit2pdf" .
+   [16 0 0 0 0 3 3 3])
+  ("knit2wp" .
+   [0 0 0 0 1 0 0])
+  ("ls" .
+   [29 0])
+  ("respiratory" .
+   [0 0 0 0 0 0 0 0 1 0 0])
+  ("remove" .
+   [1 0 0 0 0 0])
+  ("sessionInfo" .
+   [0 0 0 2 5 0 0 0 0 0 0])
+  ("detach" .
+   [2 0 0 0 0 0])
+  ("devtools::create" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("max" .
+   [3 0 0])
+  ("itt" .
+   [1 0 0])
+  ("unscheduled$allocation.coef" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("allocation.coef" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("label" .
+   [6 0 0 0 1])
+  ("rownames" .
+   [3 0 0 0 0 0 0 0])
+  ("NULL" .
+   [3 0 0 0])
+  ("Bind" .
+   [3 0 0 0])
+  ("every" .
+   [1 0 0 0 0])
+  ("everything" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("to" .
+   [1 0])
+  ("together" .
+   [1 0 0 0 0 0 0 0])
+  ("allocation.summary" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0])
+  ("paste0" .
+   [9 0 0 0 0 0])
+  ("summary.digits" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("unscheduled$pp" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("files" .
+   [1 0 0 0 0])
+  ("set-register" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("cons" .
+   [1 0 0 0])
+  ("file" .
+   [4 0 0 0])
+  ("age.include" .
+   [4 0 0 0 0 0 0 0 0 0 0])
+  ("n.pracid.month.sub5" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pleasant.subset" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unique" .
+   [11 0 0 0 0 0])
+  ("save.image" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("knit" .
+   [3 0 0 0])
+  ("../steroid/" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("../steroid/hta/" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("setwd" .
+   [1 0 0 0 0])
+  ("nrow" .
+   [14 0 0 0])
+  ("109768" .
+   [2 0 0 0 0 0])
+  ("106629" .
+   [1 0 0 0 0 1])
+  ("filter" .
+   [32 0 0 0 0 0])
+  ("neoplasm.inclusions" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 2 0 0 0 0])
+  ("grep" .
+   [2 0 0 0])
+  ("neoplasm.exclusions" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("neoplasm" .
+   [1 0 0 0 0 0 0 0])
+  ("write.csv" .
+   [6 0 0 0 0 0 0 0 0])
+  ("origin" .
+   [1 0 0 0 0 0])
+  ("align" .
+   [2 0 0 0 0])
+  ("addtorow" .
+   [1 0 0 0 0 0 0 2])
+  ("addtorow$pos" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("xtable" .
+   [1 0 0 0 0 0])
+  ("serious" .
+   [1 0 0 0 0 0 0])
+  ("results$serious" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("stats" .
+   [1 0 0 0 0])
+  ("p.exact" .
+   [1 0 0 0 0 0 0])
+  ("formatC" .
+   [3 0 0 0 0 0 0])
+  ("format" .
+   [4 0 0 0 1 0])
+  ("digits" .
+   [11 0 0 0 0 0])
+  ("xtable.opts$digits" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("value" .
+   [2 0 0 0 0])
+  ("work.org$X..PROJ......work." .
+   [0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("grepl" .
+   [1 0 0 0 0])
+  ("head_list" .
+   [0 0 0 0 1 0 0 0 0])
+  ("====" .
+   [22 0 0 0])
+  ("=====" .
+   [8 0 0 0 0])
+  ("===" .
+   [8 0 0])
+  ("df" .
+   [32 0])
+  ("min" .
+   [3 0 0])
+  ("dplyr::select" .
+   [18 0 0 0 0 3 0 1 0 0 0 1 0])
+  ("system" .
+   [8 0 0 0 0 0])
+  ("negbin.prescriptions.2013" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("negbin.prescriptions.2014" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("scheduled.sep2013" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pracid.exclude$exclude.september.2013" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("data$period" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("write" .
+   [1 0 0 0 0])
+  ("write_dta" .
+   [1 0 0 0 0 0 0 0 0])
+  ("df.name" .
+   [1 0 0 0 0 0 0])
+  ("diff" .
+   [3 0 0 0])
+  ("nmisc_example" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("cm" .
+   [1 0])
+  ("cams" .
+   [2 0 0 0])
+  ("size" .
+   [1 0 0 0])
+  ("@description" .
+   [0 0 0 0 0 1 0 0 0 0 0 0])
+  ("regress" .
+   [3 0 0 0 0 0 0])
+  ("predictors" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("cluster" .
+   [3 0 0 0 0 0 0])
+  ("latex" .
+   [2 0 0 0 0])
+  ("html" .
+   [3 0 0 0])
+  ("ascii" .
+   [2 0 0 0 0])
+  ("..." .
+   [4 0 0])
+  (".formula" .
+   [1 0 0 1 0 0 0 0])
+  ("results$itt" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("results$pp" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("display.mode" .
+   [2 0 0 0 0 0 0 0 0 0 0 0])
+  ("cams.df" .
+   [1 0 0 0 0 0 0])
+  ("closure.date" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("dplyr::filter" .
+   [12 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("group" .
+   [7 0 0 0 1])
+  ("730" .
+   [2 0 0])
+  ("yearmonth" .
+   [1 0 0 0 0 0 0 0 0])
+  ("poly-markdown+r-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$forest" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("facet.outcome" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("plot" .
+   [23 0 0 0])
+  ("plot." .
+   [1 0 0 0 0])
+  ("by" .
+   [6 0])
+  ("str" .
+   [3 0 0])
+  ("lag" .
+   [1 0 0])
+  ("df$Start" .
+   [1 0 0 0 0 0 0 0])
+  ("orgR" .
+   [1 0 0 0])
+  ("work.org" .
+   [1 0 0 0 0 0 0 0])
+  ("work.org$headings" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("get0" .
+   [0 0 0 1])
+  ("map.clock.heading" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.ambulance$model7.panelar$residuals" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.ambulance$model3a.panelar.hartlepool$residuals" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model1.panelar.hartlepool$residuals" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model3a" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model3b" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model7" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model6" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model5" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mode.of.arrival.other$model4" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model1.panelar.hartlepool$residuals" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model3a" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model4" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model3b" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model5" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("unnecessary.attendance$model6" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ed.attendances.admitted.fraction.admitted$model6.panelar.hartlepool" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("../lib/" .
+   [0 0 0 0 0 0 3])
+  ("../lib/data-raw/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("../R/" .
+   [0 0 0 1 0])
+  ("select" .
+   [4 0 0 0 0 0])
+  ("random" .
+   [1 0 0 0 0 0])
+  ("0.075" .
+   [1 0 0 0 0])
+  ("0.051" .
+   [1 0 0 0 0])
+  ("0.067" .
+   [1 0 0 0 0])
+  ("tsglm" .
+   [1 0 0 0 0])
+  ("tscount::tsglm" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("ungroup" .
+   [8 0 0 0 1 0 0])
+  ("timeseries" .
+   [0 0 0 0 0 1 0 2 0 0])
+  ("regressors" .
+   [1 0 0 0 0 2 0 0 0 0])
+  ("is.vector" .
+   [0 0 0 0 0 0 2 1 0])
+  ("as.vector" .
+   [1 0 0 0 0 0 0 0 0])
+  ("class" .
+   [3 0 0 0 0])
+  ("matrix" .
+   [1 0 0 0 0 0])
+  ("regex" .
+   [0 0 0 0 1])
+  ("regressors.bishop" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("mobility" .
+   [1 0 0 0 0 0 0 0])
+  ("master$eq5d" .
+   [4 0 0 0 0 0 0 0 0 0 0])
+  ("ifelse" .
+   [6 0 0 0 0 0])
+  ("masetr$eq5d" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("eq5d_score" .
+   [0 0 1 0 0 0 0 0 0 0])
+  ("scored" .
+   [0 0 0 1 0 0])
+  ("master" .
+   [2 0 0 0 0 0])
+  ("mobility.repsonse" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("master$thrombotic.events" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("master$thrombotic.events$screening" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("master$thrombotic.events$thromb.event" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("lib/data-raw/" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("lib/data/dipep.RData" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("length" .
+   [4 0 0 0 0 0])
+  ("rmarkdown_format" .
+   [0 0 0 0 2 1 0 0 1 0 0 0 0 0 0 0])
+  ("render" .
+   [8 0 0 0 0 0])
+  ("dipep_summarise" .
+   [0 0 0 0 0 3 0 0 0 0 0 0 0 0 0])
+  ("dipep.Rmd" .
+   [2 0 0 0 0 0 0 0 0])
+  ("raw" .
+   [3 0 0])
+  ("master$pregnancy.long.haul" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("fields" .
+   [1 0 0 0 0 0])
+  ("fields_dipep" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("event.date" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("master$screening.non.recruited" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("rmarkdown::run" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("printcp" .
+   [2 0 0 0 0 0 0])
+  ("covar" .
+   [2 0 0 0 0])
+  ("surgery" .
+   [1 0 0 0 0 0 0])
+  ("dipep" .
+   [11 0 0 1 0])
+  ("width" .
+   [1 0 0 0 0])
+  ("h2" .
+   [1 0])
+  ("Logistic" .
+   [1 0 0 0 0 0 0 0])
+  ("Regression" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("lambda.lasso$co" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lambda.lasso$coe" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lambda.lasso$coef" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lasso.continuous" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("widedata" .
+   [0 0 0 0 0 1 0 0])
+  ("pred.obs" .
+   [2 0 0 0 0 0 0 0])
+  ("paste" .
+   [1 0 0 0 0])
+  ("lazyeval" .
+   [1 0 0 0 0 0 0 0])
+  ("lazyeval::interp" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("lazyeval::as_call" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("term" .
+   [3 0 0 0])
+  ("varicose" .
+   [1 0 0 0 0 0 0 0])
+  ("dipep_glm" .
+   [1 0 0 0 0 0 0 0 0])
+  ("thrombosis" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("Thrombosis" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("logistic.thrombosis" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic.thrombosis$tidied" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic.thrombosis$glance" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic" .
+   [1 0 0 0 0 0 1 0])
+  ("ToDo" .
+   [2 0 0 0])
+  ("frame" .
+   [2 0 0 0 0])
+  ("gs_title" .
+   [1 0 0 0 0 0 0 0])
+  ("gs_read" .
+   [1 0 0 0 0 0 0])
+  ("site_generator" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("new.pc" .
+   [2 0 0 0 0 0])
+  ("cheapest" .
+   [1 0 0 0 0 0 0 0])
+  ("eval" .
+   [1 0 0 0])
+  ("match.call" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("ar" .
+   [1 0])
+  ("results$tp" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("results$table" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("../lib/inst/" .
+   [0 0 0 0 0 0 0 0 0 1 0 0])
+  ("../lib/inst/shiny/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("../lib/inst/shiny/dipep/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("../lib/inst/shiny/dipep/ui.R" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("ambulance" .
+   [1 0 0 0 0 0 0 0 0])
+  ("is.numeric" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("as.integer" .
+   [0 0 0 0 0 1 0 0 0 0])
+  ("is.integer" .
+   [2 0 0 0 0 0 0 1 0 0])
+  ("df8" .
+   [4 0 0])
+  ("panelAR" .
+   [1 0 0 0 0 0 0])
+  ("lsoa" .
+   [1 0 0 0])
+  ("binary.diff" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("diff.time.to.ed" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("probs" .
+   [1 0 0 0 0])
+  ("0.5" .
+   [2 0 0])
+  ("relative.month" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("png" .
+   [1 0 0])
+  ("summary.df" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("lsoa.pooled" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("variables" .
+   [2 0 0 0 0 0 0 0 0])
+  ("results$lasso" .
+   [4 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("glmnet" .
+   [1 0 0 0 0 0])
+  ("results$lasso.cv" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$lasso_cv" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("cv.glmnet" .
+   [1 0 0 0 0 0 0 0 0])
+  ("results$lasso_predict" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("cbind" .
+   [3 0 0 0 0])
+  ("screening" .
+   [1 0 0 0 0 0 0 0 0])
+  ("melt" .
+   [2 0 0 0])
+  ("broom::tidy" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("results$tidy" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("threshold" .
+   [2 0 0 0 0 0 0 0 0])
+  ("0.25" .
+   [1 0 0 0])
+  ("Combine" .
+   [1 0 0 0 0 0 0])
+  ("tabulate" .
+   [1 0 0 0 0 0 0 0])
+  ("dipep_roc" .
+   [1 0 0 0 0 0 0 0 0])
+  ("dipep.html" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("NPPB" .
+   [1 0 0 0])
+  ("exclude.dvt" .
+   [3 0 0 0 0 0 0 0 0 0 0])
+  ("Risk" .
+   [3 0 0 0])
+  ("each" .
+   [1 0 0 0])
+  ("0.05" .
+   [4 0 0 0])
+  ("0.4" .
+   [1 0 0])
+  ("nsim" .
+   [2 0 0 0])
+  ("1000" .
+   [2 0 0 0])
+  ("p.crit" .
+   [1 0 0 0 0 0])
+  ("sim.p" .
+   [1 0 0 0 0])
+  ("0.01" .
+   [1 0 0 0])
+  ("0.1" .
+   [1 0 0])
+  ("simulations" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("dvt" .
+   [1 0 0])
+  ("dvt.cat" .
+   [7 0 0 0 0 0 0])
+  ("Predictor" .
+   [2 0 0 0 0 0 0 0 0])
+  ("Clinical" .
+   [1 0 0 0 0 0 0 0])
+  ("n.suspected.pe" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("n.diagnosed.pe" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("digits.percent" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("percent" .
+   [1 0 0 0 0 0 0])
+  ("gather" .
+   [5 0 0 0 0 0])
+  ("key" .
+   [1 0 0])
+  ("components" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("t$M" .
+   [1 0 0])
+  ("as.factor" .
+   [2 0 0 0 0 0 0 0 0])
+  ("name" .
+   [1 0 0 0])
+  ("thresholds" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("results$df" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("left_join" .
+   [1 0 0 0 0 0 0 0 0])
+  ("testing" .
+   [1 0 0 0 0 0 0])
+  ("all.equal" .
+   [1 0 0 0 0 0 0 0 0])
+  ("biomarker.all$roc.d.dimer$summary.stats" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0])
+  ("../knitr/" .
+   [0 0 0 0 0 0 0 1 0])
+  ("logisti$roc.phy" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("logistic$roc.physiology" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("logistic$roc.physiology$summary.stats" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("inst" .
+   [1 0 0 0])
+  ("summary.stats" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("cesarean" .
+   [1 0 0 0 0 0 0 0])
+  ("Cesarean" .
+   [1 0 0 0 0 0 0 0])
+  ("physiology.exclude" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Family" .
+   [1 0 0 0 0 0])
+  ("History" .
+   [3 0 0 0 0 0 0])
+  ("Varicose" .
+   [1 0 0 0 0 0 0 0])
+  ("Veins" .
+   [1 0 0 0 0])
+  ("IV" .
+   [1 0])
+  ("Drug" .
+   [1 0 0 0])
+  ("Known" .
+   [1 0 0 0 0])
+  ("Thrombophilia" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Surgery" .
+   [1 0 0 0 0 0 0])
+  ("Immobility" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("Medical" .
+   [1 0 0 0 0 0 0])
+  ("Problems" .
+   [1 0 0 0 0 0 0 0])
+  ("Injury" .
+   [1 0 0 0 0 0])
+  ("dipep.raw" .
+   [3 0 0 0 0 0 0 0 0])
+  ("git" .
+   [3 0 0])
+  ("/DESCRIPTION" .
+   [0 0 0 0 1 0 0 0 0 0 0 0])
+  ("add" .
+   [1 0 0])
+  ("/README.md" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("elif" .
+   [3 0 0 0])
+  ("systemctl" .
+   [3 0 0 0 0 0 0 0 0])
+  ("results$bitcoin.we" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$bitcoin_weight" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("bitcoin" .
+   [2 0 0 0 0 0 0])
+  ("results$moeru" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$monero" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("monero" .
+   [1 0 0 0 0 0])
+  ("results$gbp" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("results$gbp_weight" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("price" .
+   [1 0 0 0 0])
+  ("tibble" .
+   [2 0 0 0 0 0])
+  ("weight" .
+   [1 0 0 0 0 0])
+  ("geom_line" .
+   [3 0 0 0 0 0 0 0 0])
+  ("theme_bw" .
+   [3 0 0 0 0 0 0 1])
+  ("master$lookups" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("master$lookups_fields" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("master$lookups_fields$identifier" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("~/work/age-gap/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("~/work/age-gap/lib/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("~/work/age-gap/lib/data-raw/" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("import.R" .
+   [1 0 0 0 0 0 0 0])
+  ("test$fs_scale" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("test$weight_kg" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("test$continuous" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("age_gap" .
+   [1 0 0 0 0 0 0])
+  ("results$df_factor" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("ess-site" .
+   [1 0 0 0 0 0 0 0])
+  ("test$boxplot" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$histogram_gird" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$histogram_facet" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("to_select" .
+   [1 0 0 0 0 0 0 0 0])
+  ("results$boxplot_facet" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("results$boxplot_grid" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("wd" .
+   [1 0])
+  ("../rmarkdown/" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("cohort_plot_chemotherapy" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Eligible" .
+   [0 0 0 0 0 2 0 0])
+  ("eligible_students" .
+   [1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("geom_histogram" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("eligible_students$figure_type" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dcast" .
+   [1 0 0 0 0])
+  ("scale" .
+   [2 0 0 0 0])
+  ("scale_x_log10" .
+   [1 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("quo_interval" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("quo_speed" .
+   [3 0 0 0 0 0 0 0 0])
+  ("summarise_each" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("summarise_all" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("summarise_at" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("quo_accuracy" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("quo_bearing" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("quo_x" .
+   [1 0 0 0 0])
+  ("quo_y" .
+   [1 0 0 0 0])
+  ("quo_z" .
+   [1 0 0 0 0])
+  ("speed" .
+   [3 0 0 0 0])
+  ("quos" .
+   [1 0 0 0])
+  ("ggplotly" .
+   [3 0 0 0 0 0 0 0])
+  ("accelrometer" .
+   [0 0 0 0 0 1 0 0 0 0 0 0])
+  ("to_plot" .
+   [2 0 0 0 0 0 0])
+  ("gps" .
+   [1 0 0])
+  ("title" .
+   [1 0 0 0 0])
+  ("facet_grid" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("results$gps" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("api" .
+   [1 0 0])
+  ("build_vignettes" .
+   [5 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("input" .
+   [8 0 0 0 0])
+  ("file1" .
+   [2 0 0 0 0])
+  ("header" .
+   [1 0 0 0 0 0])
+  ("quote" .
+   [1 0 0 0 0])
+  ("radioButtons" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("guess" .
+   [15 0 0 0 0])
+  ("correct" .
+   [1 0 0 0 0 0 0])
+  ("high" .
+   [19 0 0 0])
+  ("low" .
+   [12 0 0])
+  ("number" .
+   [28 0 0 0 0 0])
+  ("answers" .
+   [1 0 0 0 0 0 0])
+  ("break" .
+   [2 0 0 0 0])
+  ("round" .
+   [4 0 0 0 0])
+  ("int" .
+   [6 0 0])
+  ("guessed" .
+   [2 0 0 0 0 0 0])
+  ("str1" .
+   [7 0 0 0])
+  ("upper" .
+   [1 0 0 0 0])
+  ("str2" .
+   [5 0 0 0])
+  ("index" .
+   [1 0 0 0 0])
+  ("find" .
+   [1 0 0 0])
+  ("base" .
+   [6 0 0 0])
+  ("while" .
+   [4 0 0 0 0])
+  ("recurPower" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("def" .
+   [1 0 0])
+  ("month" .
+   [3 0 0 0 0])
+  ("12" .
+   [7 0])
+  ("annualInterestRate" .
+   [2 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1])
+  ("monthlyPaymentRate" .
+   [1 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0])
+  ("monthlyUnpaidBalance" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("minimumMonthlyPayment" .
+   [0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 0 0 0])
+  ("months" .
+   [2 0 0 0 0 0])
+  ("interest" .
+   [3 0 0 0 0 0 0 0])
+  ("unpaidBalance" .
+   [0 0 1 1 0 1 0 0 0 0 0 0 0])
+  ("monthlyInterestRate" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("outstanding" .
+   [2 0 0 0 1 0 0 0 0 0 0])
+  ("secretWord" .
+   [3 0 0 0 0 0 0 1 0 0])
+  ("letters" .
+   [12 0 0 0 0 0 0])
+  ("secretLetters" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lettersGuessed" .
+   [12 0 0 0 0 0 0 0 0 3 0 0 0 0])
+  ("sorted" .
+   [2 0 0 0 0 0])
+  ("set" .
+   [1 0 0])
+  ("len" .
+   [2 0 0])
+  ("guesses" .
+   [3 0 0 0 0 0 0])
+  ("getAvailableLetters" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("current_guess" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("alphabet" .
+   [11 0 0 0 0 0 0 0])
+  ("range" .
+   [1 0 0 0 0])
+  ("split" .
+   [2 0 0 0 0])
+  ("pop" .
+   [2 0 0])
+  ("height" .
+   [0 0 0 0 0 1])
+  ("HOSTNAME" .
+   [1 0 0 0 0 0 0 0])
+  ("ssh" .
+   [2 0 0])
+  ("~/.ssh/id_rsa" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])))

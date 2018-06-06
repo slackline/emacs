@@ -1,0 +1,29 @@
+;; -*- emacs-lisp -*- <17/02/08 08:40:42 /home/neil/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["ssh" nil "kimura.no-ip.info" nil nil]
+  ("locale" "LC_ALL=en_US.utf8")
+  ("uname" "Linux 3.14.39-gentoo")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/opt/bin"))
+  ("remote-shell" "/bin/sh")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("~" "/home/neil"))
+ (["ssh" nil "kimura" nil nil]
+  ("locale" "LC_ALL=C")
+  ("uname" "Linux 3.14.57-gentoo")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin" "/opt/bin"))
+  ("remote-shell" "/bin/sh")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("~" "/home/neil")
+  ("file-exists" "test -e"))
+ (["ssh" "sa_cm1nds" "mcru-clused-hpc" nil nil]
+  nil))

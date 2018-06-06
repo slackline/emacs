@@ -1,0 +1,106 @@
+;; init.el --- Emacs configuration
+
+;; INSTALL PACKAGES
+;; --------------------------------------
+
+(require 'package)
+
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPackages
+  '(autopair
+    auto-package-update
+    ;;colour-parentheses
+    better-defaults
+    ein
+    elpy
+    flycheck
+    material-theme
+    ;;org-mode
+    py-autopep8
+    wide-column
+    yaml-mode))
+
+(mapc #'(lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
+      myPackages)
+
+;; Automatically update packages (via auto-package-update)
+(require 'auto-package-update)
+
+;; BASIC CUSTOMIZATION
+;; --------------------------------------
+
+(setq inhibit-startup-message t) ;; hide the startup message
+(load-theme 'material t) ;; load material theme
+(global-linum-mode t) ;; enable line numbers globally
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; Delete trailing white space when saving
+(global-set-key [(control c) r] 'revert-buffer) ;; revert-buffer key binding
+(put 'upcase-region 'disabled nil) ;; Uppercase region
+(put 'downcase-region 'disabled nil) ;; Lowercase region
+
+;; Add local lisp for miscellaneous things
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+
+;;; Reload a buffer from disk
+;;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without confirmation."
+    (interactive)
+    (revert-buffer t t))
+
+;; PACKAGE SPECIFIC CONFIGURATION
+;; --------------------------------------
+;; Splitting settings into individual files as this has become monolithic and unnavigable
+;; Path where settings files are kept
+(add-to-list 'load-path "~/.emacs.d/settings")
+
+;;; Autopair
+;(require 'autopair-settings)
+(load "~/.emacs.d/settings/autopair-settings.el")
+
+;;; Colour parenthesis
+;(require 'colour-parentesis-settings)
+;(load "~/.emacs.d/settings/colour-parenthesis-settings.el")
+
+;;; Colour theme
+;(require 'color-theme-settings)
+;(load "~/.emacs.d/settings/color-theme-settings.el")
+
+;;; ESS
+;(require 'ess-settings)
+(load "~/.emacs.d/settings/ess-settings.el")
+
+;;; Highlight Parenthesis
+;(require 'highlight-parentheses-settings)
+(load "~/.emacs.d/settings/highlight-parentheses-settings.el")
+
+;;; Magit
+;(require 'magit-settings)
+;(load "~/.emacs.d/settings/magit-settings.el")
+
+;;; Org-mode
+;(require 'org-mode-settings)
+(load "~/.emacs.d/settings/org-mode-settings.el")
+
+;;; Polymode
+;(require 'polymode-settings)
+(load "~/.emacs.d/settings/polymode-settings.el")
+
+;;; Python
+;(require 'python-settings)
+(load "~/.emacs.d/settings/python-settings.el")
+
+;;; Split the window and start an R session
+(split-window-horizontally)
+;; (other-window 1)
+;; (split-window-vertically)
+;; (R)
+(other-window 1)
+(term "/bin/bash")
