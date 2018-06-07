@@ -22,6 +22,7 @@
     ess
     ess-smart-underscore
     flycheck
+    highlight-parentheses
     material-theme
     ;;org-mode
     py-autopep8
