@@ -19,6 +19,8 @@
     better-defaults
     ein
     elpy
+    ess
+    ess-smarter-underscore
     flycheck
     material-theme
     ;;org-mode
