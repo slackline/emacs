@@ -20,7 +20,7 @@
     ein
     elpy
     ess
-    ess-smarter-underscore
+    ess-smart-underscore
     flycheck
     material-theme
     ;;org-mode
