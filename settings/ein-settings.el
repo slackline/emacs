@@ -2,5 +2,5 @@
 ;; (define-key ein:notebook-mode-map "\C-c\C-d"
 ;;               'ein:worksheet-delete-cell)
 ;;; Turn off white-space deletion (causes warning messages https://goo.gl/X75omY)
-(add-hook 'ein:notebook-multilang-mode-hook
-	  #'(lambda () (spacemacs/toggle-whitespace-cleanup-off)))
+;;(add-hook 'ein:notebook-multilang-mode-hook
+;;	  #'(lambda () (spacemacs/toggle-whitespace-cleanup-off)))
