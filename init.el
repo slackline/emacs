@@ -76,6 +76,10 @@
 ;(require 'color-theme-settings)
 ;(load "~/.emacs.d/settings/color-theme-settings.el")
 
+;;; EIN
+;(require 'ein-settings)
+(load "~/.emacs.d/settings/ein-settings.el")
+
 ;;; ESS
 ;(require 'ess-settings)
 (load "~/.emacs.d/settings/ess-settings.el")
