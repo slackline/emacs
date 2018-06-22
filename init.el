@@ -26,6 +26,7 @@
     material-theme
     ;;org-mode
     py-autopep8
+    pylint
     wide-column
     yaml-mode))
 
