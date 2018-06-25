@@ -105,6 +105,10 @@
 ;(require 'python-settings)
 (load "~/.emacs.d/settings/python-settings.el")
 
+;;; pylint
+;(require 'pylint-settings)
+(load "~/.emacs.d/settings/pylint-settings.el")
+
 ;;; Split the window and start an R session
 (split-window-horizontally)
 ;; (other-window 1)
