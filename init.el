@@ -107,7 +107,7 @@
 
 ;;; pylint
 ;(require 'pylint-settings)
-(load "~/.emacs.d/settings/pylint-settings.el")
+;(load "~/.emacs.d/settings/pylint-settings.el")
 
 ;;; Split the window and start an R session
 (split-window-horizontally)
