@@ -4,7 +4,7 @@
 (elpy-enable)
 ;; Set ipython as the default interpreter
 (setq python-shell-interpreter "ipython"
-            python-shell-interpreter-args "-i --simple-prompt")
+      python-shell-interpreter-args "-i --simple-prompt")
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
