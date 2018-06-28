@@ -26,8 +26,7 @@
     material-theme
     ;;org-mode
     py-autopep8
-    ;;pyenv-mode
-    ;;pyenv-mode-auto
+    pyvenv
     pylint
     wide-column
     yaml-mode))
