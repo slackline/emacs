@@ -110,6 +110,10 @@
 ;(require 'pylint-settings)
 ;(load "~/.emacs.d/settings/pylint-settings.el")
 
+;;; Vimish-fold
+;(require 'vimish-fold-settings)
+(load "~/.emacs.d/settings/vimish-fold-settings.el")
+
 ;;; Split the window and start an R session
 (split-window-horizontally)
 ;; (other-window 1)
