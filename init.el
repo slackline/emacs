@@ -112,7 +112,7 @@
 
 ;;; Vimish-fold
 ;(require 'vimish-fold-settings)
-(load "~/.emacs.d/settings/vimish-fold-settings.el")
+;(load "~/.emacs.d/settings/vimish-fold-settings.el")
 
 ;;; Split the window and start an R session
 (split-window-horizontally)
