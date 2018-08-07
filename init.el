@@ -26,7 +26,6 @@
     material-theme
     ;;org-mode
     py-autopep8
-    pyenv-mode
     pyvenv
     pylint
     wide-column
