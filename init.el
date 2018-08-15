@@ -14,6 +14,7 @@
 
 (defvar myPackages
   '(alert
+    apiwrap
     autopair
     auto-package-update
     ;;colour-parentheses
