@@ -25,6 +25,7 @@
     flycheck
     highlight-parentheses
     magit
+    magithub
     material-theme
     ;;org-mode
     py-autopep8
