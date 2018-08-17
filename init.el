@@ -24,6 +24,9 @@
     ess
     ess-smart-underscore
     flycheck
+    flycheck-json
+    flycheck-yaml
+    gitlab
     highlight-parentheses
     magit
     magithub
