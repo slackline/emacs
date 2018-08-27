@@ -25,6 +25,7 @@
     ess-smart-underscore
     flycheck
     ;;flycheck-json
+    ;;flycheck-pycheck
     ;;flycheck-yaml
     gitlab
     highlight-parentheses
