@@ -33,6 +33,7 @@
     magithub
     material-theme
     ;;org-mode
+    polymode
     py-autopep8
     pyvenv
     pylint
@@ -128,7 +129,7 @@
 ;; (split-window-vertically)
 ;; (R)
 (other-window 1)
-(term "/bin/bash")
+(term "/bin/zsh")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
