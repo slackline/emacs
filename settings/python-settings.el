@@ -10,6 +10,9 @@
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; Keymaps to navigate to the errors (under flymake)
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
 ;; Try to add pylint rules https://emacs.stackexchange.com/a/41048/10100
 (add-hook 'python-mode-hook
 	  (lambda ()
