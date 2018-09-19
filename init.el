@@ -36,6 +36,7 @@
     polymode
     ;; poly-R
     ;; poly-markdown
+    projectile
     py-autopep8
     pyvenv
     pylint
