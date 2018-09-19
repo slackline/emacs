@@ -71,6 +71,9 @@
     (interactive)
     (revert-buffer t t))
 
+;; Set the frames title to be that of the currently visited buffer
+(setq frame-title-format "%b")
+
 ;; PACKAGE SPECIFIC CONFIGURATION
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
