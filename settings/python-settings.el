@@ -3,6 +3,7 @@
 
 (elpy-enable)
 ;; Set ipython as the default interpreter
+(setq elpy-rpc-python-command "python3")
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
