@@ -37,6 +37,7 @@
     ;; poly-R
     ;; poly-markdown
     projectile
+    projectile-git-autofetch
     py-autopep8
     pyvenv
     pylint
@@ -143,7 +144,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project ess-smart-underscore eink-theme ein darktooth-theme company better-defaults autopair auto-package-update))))
+    (projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project ess-smart-underscore eink-theme ein darktooth-theme company better-defaults autopair auto-package-update))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
