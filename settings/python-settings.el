@@ -17,7 +17,7 @@
 ;; Try to add pylint rules https://emacs.stackexchange.com/a/41048/10100
 (add-hook 'python-mode-hook
 	  (lambda ()
-	    (setq flycheck-python-pylint-executable "~/.local/bin/pylint")
+	    (setq flycheck-python-pylint-executable "~/pyvenv/default/bin/pylint")
 	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
 (require 'py-autopep8)
