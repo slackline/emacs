@@ -1,1 +1,3 @@
+;; MAGIT CONFIGURATION
+;; --------------------------------------
 (require 'magit)
