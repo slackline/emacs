@@ -21,7 +21,7 @@
     better-defaults
     ein
     elpy
-    ess
+    ;;ess
     ;;ess-smart-underscore
     flycheck
     ;;flycheck-json
