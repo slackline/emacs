@@ -15,6 +15,7 @@
 (setq ess-arg-function-offset 4)
 (setq ess-else-offset 4)
 (setq ess-eval-visibly-p nil)
+(setq ess-ask-for-ess-directory nil)
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html
 (defun my-ess-post-run-hook ()
