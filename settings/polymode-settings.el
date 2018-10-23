@@ -1,4 +1,4 @@
-5F5F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load Polymode https://github.com/vspinu/polymode                   ;;;
 (defun rmd-mode ()
   "ESS Markdown mode for rmd files"
