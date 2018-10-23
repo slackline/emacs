@@ -1,4 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+5F5F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load Polymode https://github.com/vspinu/polymode                   ;;;
 (defun rmd-mode ()
   "ESS Markdown mode for rmd files"
@@ -43,3 +43,31 @@ Restore match data previously stored in PROPERTY."
 ;;;
 ;;; http://johnstantongeddes.org/open%20science/2014/03/26/Rmd-polymode.html
 ;;; http://simon.bonners.ca/bonner-lab/wpblog/?p=142
+
+;;; Python Polymode (Markdown + Python)
+;;;
+;;; https://stackoverflow.com/questions/52489905/emacs-polymode-for-markdown-and-python
+;;; https://emacs.stackexchange.com/questions/20437/polymode-with-python-and-latex-mode/
+;; (require 'polymode-classes)
+
+;; (defcustom pm-host/markdown
+;;   (pm-host-chunkmode :name "markdown"
+;;                      :mode 'markdown-mode)
+;;   "markdown host chunkmode"
+;;   :group 'poly-hostmodes
+;;   :type 'object)
+
+;; (defcustom  pm-inner/python
+;;   (pm-inner-chunkmode :name "pweave-code"
+;;                       :head-matcher "^[ \t]*<<\\(.*\\)>>="
+;;                       :tail-matcher "^[ \t]*@.*$"
+;;                       :mode 'python-mode)
+;;   "noweb static python3 inner chunkmode."
+;;   :group 'poly-innermodes
+;;   :type 'object)
+
+;; (define-polymode poly-pweave-mode
+;;   :hostmode 'pm-host/markdown
+;;   :innermode 'pm-inner/python)
+
+;; (add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
