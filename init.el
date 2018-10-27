@@ -30,7 +30,7 @@
     gitlab
     highlight-parentheses
     magit
-    magithub
+    ;;magithub
     material-theme
     ;;org-mode
     polymode
