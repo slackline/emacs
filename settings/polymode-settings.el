@@ -43,31 +43,30 @@ Restore match data previously stored in PROPERTY."
 ;;;
 ;;; http://johnstantongeddes.org/open%20science/2014/03/26/Rmd-polymode.html
 ;;; http://simon.bonners.ca/bonner-lab/wpblog/?p=142
-
+;;;
 ;;; Python Polymode (Markdown + Python)
 ;;;
 ;;; https://stackoverflow.com/questions/52489905/emacs-polymode-for-markdown-and-python
 ;;; https://emacs.stackexchange.com/questions/20437/polymode-with-python-and-latex-mode/
-;; (require 'polymode-classes)
+;;;
+;;; Further discussion and working solutin at...
+;;;
+;;; https://github.com/polymode/polymode/issues/180
 
-;; (defcustom pm-host/markdown
-;;   (pm-host-chunkmode :name "markdown"
-;;                      :mode 'markdown-mode)
-;;   "markdown host chunkmode"
-;;   :group 'poly-hostmodes
-;;   :type 'object)
 
-;; (defcustom  pm-inner/python
-;;   (pm-inner-chunkmode :name "pweave-code"
-;;                       :head-matcher "^[ \t]*<<\\(.*\\)>>="
-;;                       :tail-matcher "^[ \t]*@.*$"
-;;                       :mode 'python-mode)
-;;   "noweb static python3 inner chunkmode."
-;;   :group 'poly-innermodes
-;;   :type 'object)
+;; define pwn polymode
+(require 'poly-noweb)
+(require 'poly-markdown)
 
-;; (define-polymode poly-pweave-mode
-;;   :hostmode 'pm-host/markdown
-;;   :innermode 'pm-inner/python)
+(defcustom pm-inner/noweb-python
+  (clone pm-inner/noweb
+         :name "noweb-python"
+         :mode 'python-mode)
+  "Noweb for Python"
+  :group 'poly-innermodes
+  :type 'object)
 
-;; (add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
+(define-polymode poly-pweave-mode poly-markdown-mode
+  :innermodes '(pm-inner/noweb-python :inherit))
+
+(add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
