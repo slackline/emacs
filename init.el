@@ -42,6 +42,8 @@
     pyvenv
     pylint
     pytest
+    python-mode
+    python-pytest
     wide-column
     yaml-mode))
 
