@@ -2,6 +2,8 @@
 ;; --------------------------------------
 
 (elpy-enable)
+(pyvenv-activate "/home/neil/pyvenv/default")
+
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
 (setq python-shell-interpreter "ipython"
