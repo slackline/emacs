@@ -66,6 +66,14 @@ Restore match data previously stored in PROPERTY."
   :group 'poly-innermodes
   :type 'object)
 
+;; (defcustom pm-inner/latex-python
+;;   (clone pm-inner/noweb
+;;          :name "latex-python"
+;;          :mode 'python-mode)
+;;   "Noweb for Python"
+;;   :group 'poly-innermodes
+;;   :type 'object)
+
 (define-polymode poly-pweave-mode poly-markdown-mode
   :innermodes '(pm-inner/noweb-python :inherit))
 
