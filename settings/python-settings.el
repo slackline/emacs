@@ -1,6 +1,7 @@
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
+;; elpy configuration
 (elpy-enable)
 (pyvenv-activate "/home/neil/pyvenv/default")
 
