@@ -3,7 +3,7 @@
 
 ;; elpy configuration
 (elpy-enable)
-(pyvenv-activate "/home/neil/pyvenv/default")
+(pyvenv-activate "/home/neil/.virtualenvs/default")
 
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
@@ -20,7 +20,7 @@
 ;; Try to add pylint rules https://emacs.stackexchange.com/a/41048/10100
 (add-hook 'python-mode-hook
 	  (lambda ()
-	    (setq flycheck-python-pylint-executable "~/pyvenv/default/bin/pylint")
+	    (setq flycheck-python-pylint-executable "~/.virtualenvs/default/bin/pylint")
 	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
 (require 'py-autopep8)
