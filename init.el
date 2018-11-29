@@ -59,13 +59,24 @@
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 
-(setq inhibit-startup-message t) ;; hide the startup message
-(load-theme 'material t) ;; load material theme
-(global-linum-mode t) ;; enable line numbers globally
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; Delete trailing white space when saving
-(global-set-key [(control c) r] 'revert-buffer) ;; revert-buffer key binding
-(put 'upcase-region 'disabled nil) ;; Uppercase region
-(put 'downcase-region 'disabled nil) ;; Lowercase region
+;; hide the startup message
+(setq inhibit-startup-message t)
+;; load material theme
+(load-theme 'material t)
+;; enable line numbers globally
+(global-linum-mode t)
+;; Delete trailing white space when saving in all modes except ein
+;; https://emacs.stackexchange.com/a/40773/10100
+(add-hook 'before-save-hook
+	  (lambda ()
+	    (unless (eq major-mode 'ein:notebook-multilang-mode)
+	      ('delete-trailing-whitespace))))
+;; revert-buffer key binding
+(global-set-key [(control c) r] 'revert-buffer)
+;; Uppercase region
+(put 'upcase-region 'disabled nil) 
+;; Lowercase region
+(put 'downcase-region 'disabled nil) 
 
 ;; Add local lisp for miscellaneous things
 (add-to-list 'load-path "~/.emacs.d/lisp/")
@@ -148,7 +159,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update))))
+    (mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
+ '(pyvenv-activate "~/share/anaconda3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
