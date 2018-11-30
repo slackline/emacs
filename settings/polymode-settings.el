@@ -49,7 +49,7 @@ Restore match data previously stored in PROPERTY."
 ;;; https://stackoverflow.com/questions/52489905/emacs-polymode-for-markdown-and-python
 ;;; https://emacs.stackexchange.com/questions/20437/polymode-with-python-and-latex-mode/
 ;;;
-;;; Further discussion and working solutin at...
+;;; Further discussion and working solution at...
 ;;;
 ;;; https://github.com/polymode/polymode/issues/180
 
