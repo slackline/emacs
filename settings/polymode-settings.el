@@ -54,10 +54,11 @@ Restore match data previously stored in PROPERTY."
 ;;; https://github.com/polymode/polymode/issues/180
 
 
-;; define pwn polymode
+;; define pweave polymodes
 (require 'poly-noweb)
 (require 'poly-markdown)
 
+;; Python/Markdown
 (defcustom pm-inner/noweb-python
   (clone pm-inner/noweb
          :name "noweb-python"
@@ -66,15 +67,33 @@ Restore match data previously stored in PROPERTY."
   :group 'poly-innermodes
   :type 'object)
 
-;; (defcustom pm-inner/latex-python
-;;   (clone pm-inner/noweb
-;;          :name "latex-python"
-;;          :mode 'python-mode)
-;;   "Noweb for Python"
-;;   :group 'poly-innermodes
-;;   :type 'object)
-
 (define-polymode poly-pweave-mode poly-markdown-mode
   :innermodes '(pm-inner/noweb-python :inherit))
 
 (add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
+
+
+;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
+(require 'polymode)
+(defcustom pm-inner/python
+  (clone pm-inner/noweb
+	 :name "python"
+	 :mode 'python-mode
+	 :head-matcher  "\\\\begin{pycode}"
+	 :tail-matcher  "\\\\end{pycode}")
+  "Python inline code."
+  :group 'innermodes
+  :type 'object)
+
+;; (defcustom pm-poly/latex-python
+;;   (pm-polymode-one :name "latex-python"
+;; 		   :hostmode 'pm-host/latex
+;; 		   :innermode 'pm-inner/python)
+;;   "latex-python typical polymode."
+;;   :group 'polymodes
+;;   :type 'object)
+
+(define-polymode poly-latex+python-mode
+  :hostmode 'pm-host/latex
+  :innermodes '(pm-inner/python))
+(add-to-list 'auto-mode-alist '("\\.texw$" . poly-latex+python-mode))
