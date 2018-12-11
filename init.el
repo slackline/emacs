@@ -19,6 +19,7 @@
     auto-package-update
     ;;colour-parentheses
     better-defaults
+    blacken
     ein
     elpy
     ess
@@ -159,7 +160,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
+    (blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
  '(pyvenv-activate "~/share/anaconda3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
