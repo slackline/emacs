@@ -2,7 +2,7 @@
 
 ;; INSTALL PACKAGES
 ;; --------------------------------------
-
+(setq debug-on-error t)
 (require 'package)
 
 (add-to-list 'package-archives
@@ -75,9 +75,9 @@
 ;; revert-buffer key binding
 (global-set-key [(control c) r] 'revert-buffer)
 ;; Uppercase region
-(put 'upcase-region 'disabled nil) 
+(put 'upcase-region 'disabled nil)
 ;; Lowercase region
-(put 'downcase-region 'disabled nil) 
+(put 'downcase-region 'disabled nil)
 
 ;; Add local lisp for miscellaneous things
 (add-to-list 'load-path "~/.emacs.d/lisp/")
@@ -161,7 +161,7 @@
  '(package-selected-packages
    (quote
     (blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
- '(pyvenv-activate "~/share/anaconda3"))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
