@@ -23,8 +23,12 @@
 	    (setq flycheck-python-pylint-executable "~/.virtualenvs/dskit/bin/pylint")
 	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(require 'py-yapf)
+(add-hook 'python-mode-hook 'py-yapf-enable-on-save)
+;; (require 'blacken)
+;; (add-hook 'python-mode-hook 'blacken-mode)
 
 ;; pytest
 (require 'pytest)
