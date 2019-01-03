@@ -1,5 +1,5 @@
-;;; ESS
-(require 'ess)
+5F;;; ESS
+(r5Fequire 'ess)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
 (define-key global-map [f1] 'Control-X-prefix)
@@ -30,4 +30,4 @@
 (auto-complete-mode)
 (setq ess-use-auto-complete t)
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
-(require 'ess-smart-underscore)
+;; (require 'ess-smart-underscore)
