@@ -1,5 +1,5 @@
 ;;; ESS
-(r5Fequire 'ess)
+(require 'ess)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
 (define-key global-map [f1] 'Control-X-prefix)
