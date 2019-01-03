@@ -1,4 +1,4 @@
-5F;;; ESS
+;;; ESS
 (r5Fequire 'ess)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
