@@ -10,6 +10,9 @@
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
+;; Jedi hook for Python mode
+(add-hook 'python-mode-hook 'jedi:setup)
+
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
