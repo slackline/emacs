@@ -30,4 +30,4 @@
 (auto-complete-mode)
 (setq ess-use-auto-complete t)
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
-;; (require 'ess-smart-underscore)
+(require 'ess-smart-underscore)
