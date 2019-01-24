@@ -41,6 +41,8 @@
     polymode
     ;; poly-R
     ;; poly-markdown
+    poly-R
+    poly-noweb
     projectile
     projectile-git-autofetch
     py-autopep8
