@@ -14,7 +14,7 @@
 
 (defvar myPackages
   '(alert
-    apiwrap
+    ;; apiwrap
     autopair
     auto-package-update
     ;;colour-parentheses
@@ -31,7 +31,7 @@
     gitlab
     highlight-parentheses
     jedi
-    latex-extra
+    ;; latex-extra
     latex-preview-pane
     magit
     ;;magithub
