@@ -38,6 +38,7 @@
     material-theme
     mmm-mode
     ;;org-mode
+    org-parser
     polymode
     ;; poly-R
     ;; poly-markdown
