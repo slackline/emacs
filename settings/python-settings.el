@@ -3,7 +3,7 @@
 
 ;; elpy configuration
 (elpy-enable)
-(pyvenv-activate "~/.virtualenvs/dskit")
+(pyvenv-activate "~/.virtualenvs/dskit2019")
 
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
