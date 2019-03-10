@@ -1,8 +1,9 @@
+ac-comphist.dat
 *conflicted*
 *~
 elpa/
 el-get/
- .last-package-update-day
+.last-package-update-day
 .python-environments/
 *.bak
 transient/
