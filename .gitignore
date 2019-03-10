@@ -2,3 +2,7 @@
 *~
 elpa/
 el-get/
+ .last-package-update-day
+.python-environments/
+*.bak
+transient/
