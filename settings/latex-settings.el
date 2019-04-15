@@ -2,7 +2,7 @@
 (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
 
 ;; Preview Pane (https://github.com/jsinglet/latex-preview-pane)
-(latex-preview-pane-enable)
+;;(latex-preview-pane-enable)
 
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/
