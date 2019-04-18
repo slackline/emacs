@@ -7,3 +7,4 @@ el-get/
 .python-environments/
 *.bak
 transient/
+session.*
