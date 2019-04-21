@@ -39,6 +39,7 @@
     mmm-mode
     ;;org-mode
     org-parser
+    pass
     polymode
     ;; poly-R
     ;; poly-markdown
