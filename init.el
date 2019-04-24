@@ -72,7 +72,7 @@
 ;; hide the startup message
 (setq inhibit-startup-message t)
 ;; load material theme
-(load-theme 'material t)
+(load-theme 'darktooth t)
 ;; enable line numbers globally
 (global-linum-mode t)
 ;; Delete trailing white space when saving in all modes except ein
