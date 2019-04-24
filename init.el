@@ -18,6 +18,7 @@
     autopair
     auto-package-update
     ;;colour-parentheses
+    darktooth-theme
     better-defaults
     blacken
     ein
