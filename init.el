@@ -73,7 +73,8 @@
 ;; hide the startup message
 (setq inhibit-startup-message t)
 ;; load material theme
-(load-theme 'darktooth t)
+;; (load-theme 'darktooth t)
+(load-theme 'dracula t)
 ;; enable line numbers globally
 (global-linum-mode t)
 ;; Delete trailing white space when saving in all modes except ein
@@ -172,17 +173,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default bold shadow italic underline bold bold-italic bold])
- '(custom-enabled-themes (quote (darktooth)))
- '(custom-safe-themes
-   (quote
-    ("88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default)))
- '(fci-rule-color "#37474f")
- '(hl-sexp-background-color "#1c1f26")
  '(package-selected-packages
    (quote
-    (jedi latex-preview-pane py-yapf blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
+    (dracula-theme jedi latex-preview-pane py-yapf blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
