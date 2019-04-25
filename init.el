@@ -19,6 +19,7 @@
     auto-package-update
     ;;colour-parentheses
     darktooth-theme
+    dracula-theme
     better-defaults
     blacken
     ein
