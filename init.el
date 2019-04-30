@@ -39,6 +39,7 @@
     ;;magithub
     material-theme
     mmm-mode
+    nova-theme
     ;;org-mode
     org-parser
     pass
