@@ -167,7 +167,7 @@
 ;; (split-window-vertically)
 ;; (R)
 (other-window 1)
-;(term "/bin/zsh")
+(term "/bin/zsh")
 
 
 (setq custom-file "~/.emacs.d/custom.el")
