@@ -1,6 +1,6 @@
 ;; init.el --- Emacs configuration
 
-;; INSTALL PACKAGES
+;; LOAD PACKAGES
 ;; --------------------------------------
 ;; (setq debug-on-error t)
 (require 'package)
@@ -60,6 +60,7 @@
     wide-column
     yaml-mode))
 
+;; Make sure all of the above packages are installed
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
 	    (package-install package)))
