@@ -12,59 +12,8 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar myPackages
-  '(alert
-    ;; apiwrap
-    autopair
-    auto-package-update
-    ;;colour-parentheses
-    darktooth-theme
-    dracula-theme
-    better-defaults
-    blacken
-    ein
-    elpy
-    ess
-    ess-smart-underscore
-    flycheck
-    ;;flycheck-json
-    ;;flycheck-pycheck
-    ;;flycheck-yaml
-    gitlab
-    highlight-parentheses
-    ivy-mpdel
-    jedi
-    ;; latex-extra
-    latex-preview-pane
-    magit
-    ;;magithub
-    material-theme
-    mmm-mode
-    nova-theme
-    ;;org-mode
-    org-parser
-    pass
-    polymode
-    ;; poly-markdown
-    poly-R
-    poly-noweb
-    projectile
-    projectile-git-autofetch
-    py-autopep8
-    py-yapf
-    pyvenv
-    pylint
-    pytest
-    python-mode
-    python-pytest
-    wide-column
-    yaml-mode))
-
-;; Make sure all of the above packages are installed
-(mapc #'(lambda (package)
-	  (unless (package-installed-p package)
-	    (package-install package)))
-      myPackages)
+;; Load and install mypackages
+(load "~/.emacs.d/settings/mypackages.el")
 
 ;; Automatically update packages (via auto-package-update)
 (require 'auto-package-update)
