@@ -32,6 +32,7 @@
     ;;flycheck-yaml
     gitlab
     highlight-parentheses
+    ivy-model
     jedi
     ;; latex-extra
     latex-preview-pane
@@ -140,6 +141,10 @@
 ;;; Magit
 ;(require 'magit-settings)
 (load "~/.emacs.d/settings/magit-settings.el")
+
+;;; MPDel
+;(require 'mpdel-settings)
+(load "~/.emacs.d/settings/mpdel-settings.el")
 
 ;;; Org-mode
 ;(require 'org-mode-settings)
