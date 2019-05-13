@@ -32,7 +32,7 @@
     ;;flycheck-yaml
     gitlab
     highlight-parentheses
-    ivy-model
+    ivy-mpdel
     jedi
     ;; latex-extra
     latex-preview-pane
