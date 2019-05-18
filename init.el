@@ -104,6 +104,10 @@
 ;(require 'polymode-settings)
 (load "~/.emacs.d/settings/polymode-settings.el")
 
+;;; Powerline
+;(require 'powerline-settings)
+(load "~/.emacs.d/settings/powerline-settings.el")
+
 ;;; Python
 ;(require 'python-settings)
 (load "~/.emacs.d/settings/python-settings.el")
