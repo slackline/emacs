@@ -14,6 +14,10 @@
 ;;  'org-babel-load-languages
 ;;  '((R . t)))
 
+;; Cliplink setup
+;; From : https://github.com/rexim/org-cliplink
+(global-set-key (kbd "C-x p i") 'org-cliplink)
+
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/
 ;;        http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/
