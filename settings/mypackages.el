@@ -33,9 +33,10 @@
     org-parser
     pass
     polymode
-    ;; poly-markdown
-    poly-R
+    poly-markdown
     poly-noweb
+    poly-org
+    poly-R
     projectile
     projectile-git-autofetch
     py-autopep8
