@@ -30,6 +30,7 @@
     mmm-mode
     nova-theme
     ;;org-mode
+    org-cliplink
     org-parser
     pass
     polymode
