@@ -116,6 +116,10 @@
 ;(require 'pylint-settings)
 ;(load "~/.emacs.d/settings/pylint-settings.el")
 
+;;; Rainbow delimiters
+;(require 'rainbow-delimiters-settings)
+(load "~/.emacs.d/settings/rainbow-delimiters-settings.el")
+
 ;;; Vimish-fold
 ;(require 'vimish-fold-settings)
 ;(load "~/.emacs.d/settings/vimish-fold-settings.el")
