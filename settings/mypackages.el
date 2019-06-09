@@ -48,6 +48,7 @@
     pytest
     python-mode
     python-pytest
+    rainbow-delimiters
     wide-column
     yaml-mode))
 
