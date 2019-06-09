@@ -25,7 +25,7 @@
 ;;; Auto-complete and ESS http://goo.gl/utAi2Z
 (require 'auto-complete)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 (ac-config-default)
 (auto-complete-mode)
 (setq ess-use-auto-complete t)
