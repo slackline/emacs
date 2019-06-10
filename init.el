@@ -120,6 +120,10 @@
 ;(require 'rainbow-delimiters-settings)
 (load "~/.emacs.d/settings/rainbow-delimiters-settings.el")
 
+;;; Themes
+;(require "~/.emacs.d/settings/theme-settings.el")
+(load "~/.emacs.d/settings/theme-settings.el")
+
 ;;; Vimish-fold
 ;(require 'vimish-fold-settings)
 ;(load "~/.emacs.d/settings/vimish-fold-settings.el")
