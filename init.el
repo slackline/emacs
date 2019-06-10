@@ -23,9 +23,7 @@
 
 ;; hide the startup message
 (setq inhibit-startup-message t)
-;; load material theme
-;; (load-theme 'darktooth t)
-(load-theme 'dracula t)
+
 ;; enable line numbers globally
 (global-linum-mode t)
 ;; Delete trailing white space when saving in all modes except ein
@@ -64,13 +62,6 @@
 ;(require 'autopair-settings)
 (load "~/.emacs.d/settings/autopair-settings.el")
 
-;;; Colour parenthesis
-;(require 'colour-parentesis-settings)
-;(load "~/.emacs.d/settings/colour-parenthesis-settings.el")
-
-;;; Colour theme
-;(require 'color-theme-settings)
-;(load "~/.emacs.d/settings/color-theme-settings.el")
 
 ;;; EIN
 ;(require 'ein-settings)
