@@ -115,9 +115,12 @@
 ;(require "~/.emacs.d/settings/theme-settings.el")
 (load "~/.emacs.d/settings/theme-settings.el")
 
-;;; Vimish-fold
-;(require 'vimish-fold-settings)
-;(load "~/.emacs.d/settings/vimish-fold-settings.el")
+
+;;; tramp settings
+;(require "~/.emacs.d/settings/tramp-settings.el")
+(load "~/.emacs.d/settings/tramp-settings.el")
+
+
 
 ;;; Split the window and start an R session
 (split-window-horizontally)
