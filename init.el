@@ -138,3 +138,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+
+;; Set default major mode for *scratch*
+(setq initial-major-mode 'python-mode)
