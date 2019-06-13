@@ -83,6 +83,10 @@
 ;(require 'magit-settings)
 (load "~/.emacs.d/settings/magit-settings.el")
 
+;;; Markdown
+;(require 'markdown-settings)
+(load "~/.emacs.d/settings/markdown-settings.el")
+
 ;;; MPDel
 ;(require 'mpdel-settings)
 (load "~/.emacs.d/settings/mpdel-settings.el")
