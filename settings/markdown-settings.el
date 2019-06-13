@@ -5,4 +5,4 @@
 
 (add-to-list 'auto-mode-alist
 	     '("\\.md\\'" . auto-fill-mode))
-
+(setq-default fill-column 120)
