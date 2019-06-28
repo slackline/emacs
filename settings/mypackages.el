@@ -22,7 +22,6 @@
     highlight-parentheses
     ivy-mpdel
     jedi
-    kaolin-themes
     ;; latex-extra
     latex-preview-pane
     magit
