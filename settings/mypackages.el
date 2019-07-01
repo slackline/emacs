@@ -32,6 +32,7 @@
     ;;org-mode
     org-cliplink
     org-parser
+    package-utils
     pass
     polymode
     poly-markdown
