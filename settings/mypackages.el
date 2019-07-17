@@ -20,6 +20,7 @@
     ;;flycheck-yaml
     gitlab
     highlight-parentheses
+    inf-mongo
     ivy-mpdel
     jedi
     ;; latex-extra
