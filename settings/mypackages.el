@@ -23,6 +23,7 @@
     inf-mongo
     ivy-mpdel
     jedi
+    json-mode
     ;; latex-extra
     latex-preview-pane
     magit
