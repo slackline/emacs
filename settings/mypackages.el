@@ -4,6 +4,7 @@
   '(alert
     ;; apiwrap
     autopair
+    auto-compile
     auto-package-update
     ;;colour-parentheses
     darktooth-theme
