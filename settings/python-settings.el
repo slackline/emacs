@@ -10,7 +10,9 @@
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
-;; Jedi hook for Python mode
+;; pyvenv and Jedi setup/hooks for Python mode
+(setq venv-location (expand-file-name "~/.virtualenvs"))
+(setq python-environment-directory venv-location)
 (add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use flycheck not flymake with elpy
