@@ -129,6 +129,10 @@
 ;(require "~/.emacs.d/settings/tramp-settings.el")
 (load "~/.emacs.d/settings/tramp-settings.el")
 
+;;; libvterm settings https://github.com/akermu/emacs-libvterm
+;(require "~/.emacs.d/settings/libvterm-settings.el")
+;(load "~/.emacs.d/settings/libvterm-settings.el")
+
 
 
 ;;; Split the window and start an R session
