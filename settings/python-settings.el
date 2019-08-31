@@ -3,7 +3,7 @@
 
 ;; elpy configuration
 (elpy-enable)
-(pyvenv-activate "~/.virtualenvs/dskit2019")
+(pyvenv-activate "~/.virtualenvs/default")
 
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
@@ -13,7 +13,7 @@
 ;; pyvenv and Jedi setup/hooks for Python mode
 (setq venv-location (expand-file-name "~/.virtualenvs"))
 (setq python-environment-directory venv-location)
-(add-hook 'python-mode-hook 'jedi:setup)
+;;(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
