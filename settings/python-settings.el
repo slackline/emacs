@@ -3,6 +3,7 @@
 
 ;; elpy configuration
 (elpy-enable)
+(setq elpy-rpc-backend "jedi")  
 (pyvenv-activate "~/.virtualenvs/default")
 
 ;; Set ipython as the default interpreter
