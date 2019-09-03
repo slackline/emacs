@@ -3,7 +3,7 @@
 ;;
 ;; I've tried out lots, one day I might settle on one.
 
-(load-theme 'darktooth t)
+;; (load-theme 'darktooth t)
 ;; (load-theme 'dracula t)
 
 ;; (load-theme 'nova t)
@@ -19,6 +19,6 @@
 ;; (load-theme 'kaolin-temple t)       ;; dark brown background with syntax highlighting based on orange and cyan shades.
 ;; (load-theme 'kaolin-galaxy t)       ;; bright theme based on one of the Sebastian Andaur arts.
 ;; (load-theme 'kaolin-ocean t)        ;; dark blue variant.
-;; (load-theme 'kaolin-valley-dark t)  ;; colorful Kaolin theme with brown background.
+(load-theme 'kaolin-valley-dark t)  ;; colorful Kaolin theme with brown background.
 ;; (load-theme 'kaolin-valley-light t) ;; light version of kaolin-valley-dark theme.
 ;; (load-theme 'kaolin-mono-dark t)    ;; almost monochrome dark green Kaolin theme.
