@@ -16,6 +16,8 @@
 (setq ess-else-offset 4)
 (setq ess-eval-visibly-p nil)
 (setq ess-ask-for-ess-directory nil)
+;;; Free Emacs when it takes a long time to execute commands
+(setq ess-eval-visibly 'nowait)
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html
 (defun my-ess-post-run-hook ()
@@ -31,3 +33,4 @@
 (setq ess-use-auto-complete t)
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
 (require 'ess-smart-underscore)
+
