@@ -3,9 +3,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ein:polymode t)
  '(package-selected-packages
    (quote
-    (auto-compile kaolin-themes latex-extra json-mode rainbow-delimiters org-cliplink powerline ivy-mpdel nova-theme dracula-theme jedi latex-preview-pane py-yapf blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown poly-org elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update pass password-store-otp password-store org-parser ht f)))
+    (gnu-elpa-keyring-update yapfify ample-zen-theme auto-compile kaolin-themes latex-extra json-mode rainbow-delimiters org-cliplink powerline ivy-mpdel nova-theme dracula-theme jedi latex-preview-pane py-yapf blacken gitlab mmm-mode python-pytest python-mode pytest ess-smart-underscore magit projectile-git-autofetch projectile poly-R poly-markdown poly-org elpy yasnippet yaml-mode wide-column vimish-fold pyvenv pylint py-autopep8 polymode package-utils package+ org-time-budgets material-theme julia-mode highlight-parentheses highlight-indentation flycheck find-file-in-project eink-theme ein darktooth-theme company better-defaults autopair auto-package-update pass password-store-otp password-store org-parser ht f)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

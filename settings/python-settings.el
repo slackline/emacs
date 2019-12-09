@@ -35,7 +35,7 @@
 ;; (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
 ;; (require 'blacken)
 ;; (add-hook 'python-mode-hook 'blacken-mode)
-(add-hook 'python-mode-hook 'yapf-mode)
+;; (add-hook 'python-mode-hook 'yapf-mode)
 
 ;; pytest
 (require 'pytest)
