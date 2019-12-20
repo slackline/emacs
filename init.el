@@ -70,6 +70,9 @@
 ;(require 'autopair-settings)
 (load "~/.emacs.d/settings/autopair-settings.el")
 
+;;; Flyspell
+;(require 'flyspell-settings)
+(load "~/.emacs.d/settings/flyspell-settings.el")
 
 ;;; EIN
 ;(require 'ein-settings)
