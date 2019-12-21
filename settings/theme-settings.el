@@ -16,8 +16,6 @@
 
 ;; (load-theme 'ample-zen t)
 
-;; Modus Vivendi
-(load-theme 'modus-vivendi t)
 
 ;; Kaolin
 
@@ -31,3 +29,27 @@
 
 ;; (load-theme 'kaolin-valley-light t) ;; light version of kaolin-valley-dark theme.
 ;; (load-theme 'kaolin-mono-dark t)    ;; almost monochrome dark green Kaolin theme.
+
+
+;; Modus Vivendi
+(load-theme 'modus-vivendi t)
+
+; Choose to render some code constructs in slanted text (italics).  The
+;; default, shown below, is to not use italics, unless it is absolutely
+;; necessary.
+(setq modus-vivendi-theme-slanted-constructs nil)
+
+;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
+;; default is to use whatever font the user has selected, typically a
+;; monospaced typeface.
+;; (setq modus-vivendi-theme-proportional-fonts nil)
+
+;; Whether headings should be scaled or have the same height as body
+;; text.  The default is to keep everything the same as the base size.
+;; (setq modus-vivendi-theme-scale-headings nil)
+
+;; Font scale that should apply to headings.  These are the default values.
+;; (setq modus-vivendi-theme-scale-1 1.05)
+;; (setq modus-vivendi-theme-scale-2 1.1)
+;; (setq modus-vivendi-theme-scale-3 1.15)
+;; (setq modus-vivendi-theme-scale-4 1.2)
