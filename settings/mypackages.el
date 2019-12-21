@@ -36,6 +36,7 @@
     ;;org-mode
     org-cliplink
     org-parser
+    org-present
     package-utils
     pass
     polymode
