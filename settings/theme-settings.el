@@ -32,9 +32,8 @@
 
 
 ;; Modus Vivendi
-(load-theme 'modus-vivendi t)
-
-; Choose to render some code constructs in slanted text (italics).  The
+;;
+;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
 (setq modus-vivendi-theme-slanted-constructs nil)
@@ -53,3 +52,5 @@
 ;; (setq modus-vivendi-theme-scale-2 1.1)
 ;; (setq modus-vivendi-theme-scale-3 1.15)
 ;; (setq modus-vivendi-theme-scale-4 1.2)
+(load-theme 'modus-vivendi t)
+
