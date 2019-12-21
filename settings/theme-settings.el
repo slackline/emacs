@@ -12,9 +12,12 @@
 
 ;; (load-theme 'kaolin-dark t)         ;; a dark jade variant inspired by Sierra.vim.
 ;; (load-theme 'kaolin-eclipse t)      ;; a dark purple variant.
-(load-theme 'kaolin-valley-dark t)  ;; colorful Kaolin theme with brown background.
+;; (load-theme 'kaolin-valley-dark t)  ;; colorful Kaolin theme with brown background.
 
 ;; (load-theme 'ample-zen t)
+
+;; Modus Vivendi
+(load-theme 'modus-vivendi t)
 
 ;; Kaolin
 

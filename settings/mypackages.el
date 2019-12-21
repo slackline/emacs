@@ -31,6 +31,7 @@
     ;;magithub
     material-theme
     mmm-mode
+    modus-vivendi
     nova-theme
     ;;org-mode
     org-cliplink
