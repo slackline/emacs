@@ -15,6 +15,7 @@
     elpy
     ess
     ess-smart-underscore
+    forge
     flycheck
     ;;flycheck-json
     ;;flycheck-pycheck
