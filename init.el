@@ -36,10 +36,11 @@
 
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
-(add-hook 'before-save-hook
-	  (lambda ()
-	    (unless (eq major-mode 'ein:notebook-multilang-mode)
-	      ('delete-trailing-whitespace))))
+;; (add-hook 'before-save-hook
+;; 	  (lambda ()
+;; 	    (unless (eq major-mode 'ein:notebook-multilang-mode)
+;; 	      ('delete-trailing-whitespace))))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; revert-buffer key binding
 (global-set-key [(control c) r] 'revert-buffer)
 ;; Uppercase region
