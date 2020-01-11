@@ -26,6 +26,7 @@
     ivy-mpdel
     jedi
     json-mode
+    keychain-environment
     latex-extra
     latex-preview-pane
     magit
