@@ -49,6 +49,7 @@
     projectile-git-autofetch
     py-autopep8
     py-yapf
+    pygen
     pyvenv
     pylint
     pytest
