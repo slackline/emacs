@@ -87,6 +87,10 @@
 ;(require 'highlight-parentheses-settings)
 (load "~/.emacs.d/settings/highlight-parentheses-settings.el")
 
+;;; Keychain Environment
+;(require 'keychain-envinronment-settings)
+(load "~/.emacs.d/settings/keychain-envinronment-settings.el")
+
 ;;; Latex
 ;(require 'latex-settings)
 (load "~/.emacs.d/settings/latex-settings.el")
