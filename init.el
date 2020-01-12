@@ -7,6 +7,8 @@
 
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("org" . "https://orgmode.org/elpa/") t)
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -65,7 +67,7 @@
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
 ;; Path where settings files are kept
-;(add-to-list 'load-path "~/.emacs.d/settings")
+(add-to-list 'load-path "~/.emacs.d/settings")
 
 ;;; Autopair
 ;(require 'autopair-settings)
