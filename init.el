@@ -91,7 +91,7 @@
 
 ;;; Keychain Environment
 ;(require 'keychain-envinronment-settings)
-(load "~/.emacs.d/settings/keychain-envinronment-settings.el")
+(load "~/.emacs.d/settings/keychain-environment-settings.el")
 
 ;;; Latex
 ;(require 'latex-settings)
