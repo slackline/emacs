@@ -37,6 +37,7 @@
     nova-theme
     ;;org-mode
     org-cliplink
+    org-kanban
     org-parser
     org-present
     package-utils
