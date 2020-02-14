@@ -93,6 +93,10 @@
 ;(require 'keychain-envinronment-settings)
 (load "~/.emacs.d/settings/keychain-environment-settings.el")
 
+;;; JS2 Environment
+;(require 'js2-settings)
+(load "~/.emacs.d/settings/js2-settings.el")
+
 ;;; Latex
 ;(require 'latex-settings)
 (load "~/.emacs.d/settings/latex-settings.el")

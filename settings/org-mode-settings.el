@@ -28,7 +28,19 @@
        (reftex-parse-all))
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   )
+
+;; Hook - Reftex
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+;; Hook - Insert created date when adding a header
+;; From - https://stackoverflow.com/a/37478674
+;; (require 'org-expiry)
+;; (add-hook 'org-after-todo-state-change-hook
+;;           (lambda ()
+;;             (when (string= org-state "TODO")
+;;               (save-excursion
+;;                 (org-back-to-heading)
+;;                 (org-expiry-insert-created)))))
 
 ;; org-present
 (autoload 'org-present "org-present" nil t)
