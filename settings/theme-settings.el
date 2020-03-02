@@ -8,6 +8,7 @@
 ;; (load-theme 'nova t)
 ;; (load-theme 'material t)
 ;; (load-theme 'ample-zen t)
+(load-theme 'abyss t)
 
 ;; Humanoid
 ;; (load-theme 'humanoid-dark t)
@@ -50,4 +51,4 @@
 ;; (setq modus-vivendi-theme-scale-2 1.1)
 ;; (setq modus-vivendi-theme-scale-3 1.15)
 ;; (setq modus-vivendi-theme-scale-4 1.2)
-(load-theme 'modus-vivendi t)
+;; (load-theme 'modus-vivendi t)
