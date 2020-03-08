@@ -8,7 +8,7 @@
 ;; (load-theme 'nova t)
 ;; (load-theme 'material t)
 ;; (load-theme 'ample-zen t)
-(load-theme 'abyss t)
+(load-theme #'abyss t)
 
 ;; Humanoid
 ;; (load-theme 'humanoid-dark t)
