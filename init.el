@@ -33,7 +33,8 @@
 
 ;; enable line numbers globally
 (global-linum-mode t)
-;; Set the line length globally
+;; Set the line length globally (https://emacs.stackexchange.com/a/30222)
+(add-hook 'text-mode-hook 'auto-fill-mode)
 (setq-default fill-column 120)
 
 ;; Delete trailing white space when saving in all modes except ein
