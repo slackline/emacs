@@ -1,6 +1,7 @@
 ;; MAGIT CONFIGURATION
 ;; --------------------------------------
 (require 'magit)
+(require 'magit-todos)
 
 ;; Key bindings
 (global-set-key (kbd "C-x g") 'magit-status)

@@ -78,6 +78,10 @@
 ;(require 'flyspell-settings)
 (load "~/.emacs.d/settings/flyspell-settings.el")
 
+;;; EBIB
+;(require 'ebib-settings)
+(load "~/.emacs.d/settings/ebib-settings.el")
+
 ;;; EIN
 ;(require 'ein-settings)
 (load "~/.emacs.d/settings/ein-settings.el")
@@ -101,6 +105,10 @@
 ;;; Latex
 ;(require 'latex-settings)
 (load "~/.emacs.d/settings/latex-settings.el")
+
+;;; Literate Calc Mode
+;(require 'latex-settings)
+(load "~/.emacs.d/settings/literate-calc-settings.el")
 
 ;;; Magit
 ;(require 'magit-settings)
