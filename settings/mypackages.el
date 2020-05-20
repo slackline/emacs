@@ -29,7 +29,9 @@
     keychain-environment
     latex-extra
     latex-preview-pane
+    literate-calc-mode
     magit
+    magit-todos
     ;;magithub
     material-theme
     mmm-mode
