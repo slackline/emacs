@@ -5,7 +5,7 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 (global-font-lock-mode 1)
-(setq org-directory        "~/Dropbox/org/")
+(setq org-directory        "~/work/org/")
 (setq org-startup-indented 1)
 ;; Enable org-mode agenda/emacs diary integration
 (setq org-agenda-include-diary t)
