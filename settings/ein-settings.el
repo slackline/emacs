@@ -5,3 +5,7 @@
 ;;; Actual solution (https://emacs.stackexchange.com/a/40773/10100) added to init.el
 ;;(add-hook 'ein:notebook-multilang-mode-hook
 ;;	  (lambda () (emacs/toggle-whitespace-cleanup-off)))
+(custom-set-variables
+ '(ein:output-area-inlined-images t)
+ '(ein:polymode t)
+ )
