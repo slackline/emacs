@@ -10,6 +10,7 @@
 (add-to-list 'package-archives
 	     '("org" . "https://orgmode.org/elpa/") t)
 
+(package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -18,6 +19,7 @@
 
 ;; Automatically update packages (via auto-package-update)
 (setq load-prefer-newer t)
+(package-initialize)
 (require 'auto-compile)
 (auto-compile-on-load-mode)
 (auto-compile-on-save-mode)
