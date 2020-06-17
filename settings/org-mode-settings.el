@@ -14,6 +14,9 @@
 ;;  'org-babel-load-languages
 ;;  '((R . t)))
 
+;; Set time on changing TODO stats
+(setq org-log-done 'time)
+
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink
 (global-set-key (kbd "C-x p i") 'org-cliplink)
