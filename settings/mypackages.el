@@ -61,6 +61,7 @@
     python-mode
     python-pytest
     rainbow-delimiters
+    use-package
     wide-column
     yaml-mode))
 
