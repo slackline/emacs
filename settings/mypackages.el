@@ -42,6 +42,7 @@
     org-kanban
     org-parser
     org-present
+    org-roam
     package-utils
     pass
     polymode
