@@ -4,7 +4,7 @@
 ;; --------------------------------------
 ;; (setq debug-on-error t)
 (require 'package)
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
