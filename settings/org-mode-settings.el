@@ -17,6 +17,11 @@
 ;; Set time on changing TODO stats
 (setq org-log-done 'time)
 
+;; Define conversion
+(defmath uconvert (v u)
+  "Convert value V to compatible unit U."
+  (math-convert-units v u))
+
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink
 (global-set-key (kbd "C-x p i") 'org-cliplink)
@@ -62,6 +67,13 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))))
+
+;; org-babel
+;;
+;; Set up evaluation languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((R . t)
+			     (python . t)))
 
 ;; org-roam
 (use-package org-roam
