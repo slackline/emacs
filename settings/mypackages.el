@@ -1,14 +1,20 @@
 ;; MYPACKAGES CONFIGURATION
 ;; --------------------------------------
 (defvar myPackages
-  '(alert
-    ;; apiwrap
+  '(;; apiwrap
+    ;; colour-parentheses
+    ;; darktooth-theme
+    ;; dracula-theme
+    ;; flycheck-json
+    ;; flycheck-pycheck
+    ;; flycheck-yaml
+    ;; magithub
+    ;; nova-theme
+    ;; org-mode
+    alert
     autopair
     auto-compile
     auto-package-update
-    ;;colour-parentheses
-    darktooth-theme
-    dracula-theme
     better-defaults
     blacken
     ein
@@ -17,9 +23,6 @@
     ess-smart-underscore
     forge
     flycheck
-    ;;flycheck-json
-    ;;flycheck-pycheck
-    ;;flycheck-yaml
     gitlab
     highlight-parentheses
     inf-mongo
@@ -32,12 +35,10 @@
     literate-calc-mode
     magit
     magit-todos
-    ;;magithub
     material-theme
     mmm-mode
     modus-vivendi-theme
-    nova-theme
-    ;;org-mode
+    org-babel
     org-cliplink
     org-kanban
     org-parser
