@@ -9,10 +9,6 @@
 (setq org-startup-indented 1)
 ;; Enable org-mode agenda/emacs diary integration
 (setq org-agenda-include-diary t)
-;; Enable org-mode babel R (see http://orgmode.org/worg/org-contrib/babel/languages/ob-doc-R.html)
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((R . t)))
 
 ;; Set time on changing TODO stats
 (setq org-log-done 'time)
@@ -74,6 +70,17 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((R . t)
 			     (python . t)))
+(define-skeleton org-skeleton
+  "Header info for a emacs-org file."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Neil Shephard\n"
+  "#+email: nshephard@gmail.com\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes \n"
+  "-----"
+ )
+(global-set-key [C-S-f4] 'org-skeleton)
 
 ;; org-roam
 (use-package org-roam
