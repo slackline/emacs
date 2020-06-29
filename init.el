@@ -161,9 +161,9 @@
 
 
 ;;; Split the window and start an R session
-(split-window-horizontally)
+;; (split-window-horizontally)
 ;; (other-window 1)
-;; (split-window-vertically)
+(split-window-vertically)
 ;; (R)
 (other-window 1)
 (term "/bin/zsh")
