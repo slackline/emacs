@@ -70,8 +70,11 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((R . t)
 			     (python . t)))
+;; Set defaults...
 ;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
 (setq org-startup-with-inline-images t)
+;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
+(setq org-confirm-babel-evaluate nil)
 
 ;; Header skeleton
 (define-skeleton org-skeleton
@@ -81,7 +84,7 @@
   "#+AUTHOR: Neil Shephard\n"
   "#+email: nshephard@gmail.com\n"
   "#+INFOJS_OPT: \n"
-  "#+BABEL: :session *org-R* :cache yes :results output graphics :exports both :tangle yes \n"
+  "#+BABEL: :session *org-R* :cache yes :exports both :results output graphics :tangle yes :width 1024 :height 768 \n"
   "-----"
  )
 (global-set-key [C-S-f4] 'org-skeleton)
@@ -91,14 +94,14 @@
              '((:AUTHOR . "Neil Shephard")
 	       (:email . "nshephard@gmail.com"))
 	      )
-(add-to-list 'org-babel-default-header-args:R
-             '((:session . "*org-R*")
-	       (:width . 1024) (:height . 768)
-	       (:cache . "yes")
-	       (:results . "output graphics")
-	       (:exports . "both")
-	       (:tangle . "yes")
-	      ))
+;; (add-to-list 'org-babel-default-header-args:R
+;;              '((:session . "*org-R*")
+;; 	       (:width . 1024) (:height . 768)
+;; 	       (:cache . "yes")
+;; 	       (:results . "output graphics")
+;; 	       (:exports . "both")
+;; 	       (:tangle . "yes")
+;; 	      ))
 (add-to-list 'org-babel-default-inline-header-args
              '(:colnames . "nil"))
 
