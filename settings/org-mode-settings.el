@@ -70,6 +70,9 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((R . t)
 			     (python . t)))
+;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
+(setq org-startup-with-inline-images t)
+
 ;; Header skeleton
 (define-skeleton org-skeleton
   "Header info for a emacs-org file."
