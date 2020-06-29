@@ -70,6 +70,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((R . t)
 			     (python . t)))
+;; Header skeleton
 (define-skeleton org-skeleton
   "Header info for a emacs-org file."
   "Title: "
@@ -77,10 +78,26 @@
   "#+AUTHOR: Neil Shephard\n"
   "#+email: nshephard@gmail.com\n"
   "#+INFOJS_OPT: \n"
-  "#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes \n"
+  "#+BABEL: :session *org-R* :cache yes :results output graphics :exports both :tangle yes \n"
   "-----"
  )
 (global-set-key [C-S-f4] 'org-skeleton)
+
+;; Default header arguments
+(add-to-list 'org-babel-default-header-args
+             '((:AUTHOR . "Neil Shephard")
+	       (:email . "nshephard@gmail.com"))
+	      )
+(add-to-list 'org-babel-default-header-args:R
+             '((:session . "*org-R*")
+	       (:width . 1024) (:height . 768)
+	       (:cache . "yes")
+	       (:results . "output graphics")
+	       (:exports . "both")
+	       (:tangle . "yes")
+	      ))
+(add-to-list 'org-babel-default-inline-header-args
+             '(:colnames . "nil"))
 
 ;; org-roam
 (use-package org-roam
