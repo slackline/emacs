@@ -48,7 +48,6 @@
 
 ;; org-present
 (autoload 'org-present "org-present" nil t)
-
 (eval-after-load "org-present"
   '(progn
      (add-hook 'org-present-mode-hook
@@ -82,20 +81,27 @@
   "Title: "
   "#+TITLE:" str " \n"
   "#+AUTHOR: Neil Shephard\n"
-  "#+email: nshephard@gmail.com\n"
+  "#+EMAIL: nshephard@gmail.com\n"
+  "#+PROPERTY: header-args:R  :session *org-R*\n"
+  "#+PROPERTY: header-args:R  :cache yes\n"
+  "#+PROPERTY: header-args:R  :results graphics\n"
+  "#+PROPERTY: header-args:R  :width 1024\n"
+  "#+PROPERTY: header-args:R  :height 768\n"
+  "#+PROPERTY: header-args:R  :tangle yes\n"
   "#+INFOJS_OPT: \n"
-  "#+BABEL: :session *org-R* :cache yes :exports both :results output graphics :tangle yes :width 1024 :height 768 \n"
+  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
  )
 (global-set-key [C-S-f4] 'org-skeleton)
 
 ;; Default header arguments
 (add-to-list 'org-babel-default-header-args
-             '((:AUTHOR . "Neil Shephard")
-	       (:email . "nshephard@gmail.com"))
-	      )
-;; (add-to-list 'org-babel-default-header-args:R
-;;              '((:session . "*org-R*")
+             '(:AUTHOR . "Neil Shephard")
+	     '(:EMAIL . "nshephard@gmail.com")
+	     )
+(add-to-list 'org-babel-default-header-args:R
+             '(:session . "*org-R*")
+	     )
 ;; 	       (:width . 1024) (:height . 768)
 ;; 	       (:cache . "yes")
 ;; 	       (:results . "output graphics")
