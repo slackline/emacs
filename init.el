@@ -4,6 +4,7 @@
 ;; --------------------------------------
 ;; (setq debug-on-error t)
 (require 'package)
+(package-initialize)
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
@@ -18,7 +19,6 @@
 
 ;; Automatically update packages (via auto-package-update)
 (setq load-prefer-newer t)
-(package-initialize)
 (require 'auto-compile)
 (auto-compile-on-load-mode)
 (auto-compile-on-save-mode)
