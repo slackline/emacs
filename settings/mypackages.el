@@ -10,7 +10,9 @@
     ;; flycheck-yaml
     ;; magithub
     ;; nova-theme
+    ;; org-babel
     ;; org-mode
+    ;; org-roam
     alert
     autopair
     auto-compile
@@ -38,12 +40,10 @@
     material-theme
     mmm-mode
     modus-vivendi-theme
-    org-babel
     org-cliplink
     org-kanban
     org-parser
     org-present
-    org-roam
     package-utils
     pass
     polymode
