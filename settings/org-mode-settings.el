@@ -75,7 +75,7 @@
 ;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
 (setq org-confirm-babel-evaluate nil)
 ;; Use the default virtualenvironment
-(setq org-babel-python-command "~/.virtualenvs/default/bin/python")
+(setq org-babel-python-command "~/.virtualenvs/default/bin/ipython")
 
 ;; Header skeleton
 (define-skeleton org-skeleton
