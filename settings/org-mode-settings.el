@@ -72,6 +72,8 @@
 ;; Set defaults...
 ;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
 (setq org-startup-with-inline-images t)
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(add-hook 'org-mode-hook 'org-display-inline-images)
 ;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
 (setq org-confirm-babel-evaluate nil)
 ;; Use the default virtualenvironment
