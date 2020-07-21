@@ -79,6 +79,17 @@
 ;; Use the default virtualenvironment
 (setq org-babel-python-command "~/.virtualenvs/default/bin/python")
 
+;; Default LaTeX formatting (https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output)
+(setq org-format-latex-options
+      '(:foreground default
+	:background "rgb 1 1 1"
+        :scale 1.5
+        :html-foreground "Black"
+	:html-background "Transparent"
+        :html-scale 1.0
+        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+
+
 ;; Header skeleton
 (define-skeleton org-skeleton
   "Header info for a emacs-org file."
