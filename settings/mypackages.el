@@ -64,7 +64,8 @@
     rainbow-delimiters
     use-package
     wide-column
-    yaml-mode))
+    yaml-mode
+    ytdl))
 
 ;; Make sure all of the above packages are installed
 (mapc #'(lambda (package)
