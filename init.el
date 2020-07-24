@@ -154,6 +154,10 @@
 ;(require "~/.emacs.d/settings/tramp-settings.el")
 (load "~/.emacs.d/settings/tramp-settings.el")
 
+;;; ytdl settings
+;(require "~/.emacs.d/settings/ytdl-settings.el")
+(load "~/.emacs.d/settings/ytdl-settings.el")
+
 ;;; libvterm settings https://github.com/akermu/emacs-libvterm
 ;(require "~/.emacs.d/settings/libvterm-settings.el")
 ;(load "~/.emacs.d/settings/libvterm-settings.el")
