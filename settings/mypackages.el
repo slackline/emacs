@@ -26,6 +26,7 @@
     forge
     flycheck
     gitlab
+    highlight-indent-guides
     highlight-parentheses
     inf-mongo
     ivy-mpdel
@@ -44,6 +45,7 @@
     org-kanban
     org-parser
     org-present
+    org-ref
     package-utils
     pass
     polymode
