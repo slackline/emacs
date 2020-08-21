@@ -63,6 +63,20 @@
                  (org-present-show-cursor)
                  (org-present-read-write)))))
 
+;; org-capture (https://orgmode.org/manual/Capture.html#Capture)
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/work/org/todo.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")))
+
+;; org-ref (https://github.com/jkitchin/org-ref)
+(require 'org-ref)
+(setq reftex-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib"))
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/work/org/ref-notes.org"
+      org-ref-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib")
+      org-ref-pdf-directory "~/work/ref/")
+
 ;; org-babel
 ;;
 ;; Set up evaluation languages
