@@ -5,7 +5,6 @@
 ;; (setq debug-on-error t)
 (require 'package)
 (package-initialize)
-(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
@@ -15,7 +14,7 @@
   (package-refresh-contents))
 
 ;; Load and install mypackages
-(load "~/.emacs.d/settings/mypackages.el")
+(load "~/.config/emacs/settings/mypackages.el")
 
 ;; Automatically update packages (via auto-package-update)
 (setq load-prefer-newer t)
@@ -51,7 +50,7 @@
 (put 'downcase-region 'disabled nil)
 
 ;; Add local lisp for miscellaneous things
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+(add-to-list 'load-path "~/.config/emacs/lisp/")
 
 ;;; Reload a buffer from disk
 ;;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
@@ -67,100 +66,100 @@
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
 ;; Path where settings files are kept
-(add-to-list 'load-path "~/.emacs.d/settings")
+(add-to-list 'load-path "~/.config/emacs/settings")
 
 ;;; Autopair
 ;(require 'autopair-settings)
-(load "~/.emacs.d/settings/autopair-settings.el")
+(load "~/.config/emacs/settings/autopair-settings.el")
 
 ;;; Flyspell
 ;(require 'flyspell-settings)
-(load "~/.emacs.d/settings/flyspell-settings.el")
+(load "~/.config/emacs/settings/flyspell-settings.el")
 
 ;;; EBIB
 ;(require 'ebib-settings)
-(load "~/.emacs.d/settings/ebib-settings.el")
+(load "~/.config/emacs/settings/ebib-settings.el")
 
 ;;; EIN
 ;(require 'ein-settings)
-(load "~/.emacs.d/settings/ein-settings.el")
+(load "~/.config/emacs/settings/ein-settings.el")
 
 ;;; ESS
 ;(require 'ess-settings)
-(load "~/.emacs.d/settings/ess-settings.el")
+(load "~/.config/emacs/settings/ess-settings.el")
 
 ;;; Highlight Parenthesis
 ;(require 'highlight-parentheses-settings)
-(load "~/.emacs.d/settings/highlight-parentheses-settings.el")
+(load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 
 ;;; Keychain Environment
 ;(require 'keychain-envinronment-settings)
-(load "~/.emacs.d/settings/keychain-environment-settings.el")
+(load "~/.config/emacs/settings/keychain-environment-settings.el")
 
 ;;; JS2 Environment
 ;(require 'js2-settings)
-(load "~/.emacs.d/settings/js2-settings.el")
+(load "~/.config/emacs/settings/js2-settings.el")
 
 ;;; Latex
 ;(require 'latex-settings)
-(load "~/.emacs.d/settings/latex-settings.el")
+(load "~/.config/emacs/settings/latex-settings.el")
 
 ;;; Literate Calc Mode
 ;(require 'latex-settings)
-(load "~/.emacs.d/settings/literate-calc-settings.el")
+(load "~/.config/emacs/settings/literate-calc-settings.el")
 
 ;;; Magit
 ;(require 'magit-settings)
-(load "~/.emacs.d/settings/magit-settings.el")
+(load "~/.config/emacs/settings/magit-settings.el")
 
 ;;; Markdown
 ;(require 'markdown-settings)
-(load "~/.emacs.d/settings/markdown-settings.el")
+(load "~/.config/emacs/settings/markdown-settings.el")
 
 ;;; MPDel
 ;(require 'mpdel-settings)
-(load "~/.emacs.d/settings/mpdel-settings.el")
+(load "~/.config/emacs/settings/mpdel-settings.el")
 
 ;;; Org-mode
 ;(require 'org-mode-settings)
-(load "~/.emacs.d/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/org-mode-settings.el")
 
 ;;; Polymode
 ;(require 'polymode-settings)
-(load "~/.emacs.d/settings/polymode-settings.el")
+(load "~/.config/emacs/settings/polymode-settings.el")
 
 ;;; Powerline
 ;(require 'powerline-settings)
-(load "~/.emacs.d/settings/powerline-settings.el")
+(load "~/.config/emacs/settings/powerline-settings.el")
 
 ;;; Python
 ;(require 'python-settings)
-(load "~/.emacs.d/settings/python-settings.el")
+(load "~/.config/emacs/settings/python-settings.el")
 
 ;;; pylint
 ;(require 'pylint-settings)
-;(load "~/.emacs.d/settings/pylint-settings.el")
+;(load "~/.config/emacs/settings/pylint-settings.el")
 
 ;;; Rainbow delimiters
 ;(require 'rainbow-delimiters-settings)
-(load "~/.emacs.d/settings/rainbow-delimiters-settings.el")
+(load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 
 ;;; Themes
-;(require "~/.emacs.d/settings/theme-settings.el")
-(load "~/.emacs.d/settings/theme-settings.el")
+;(require "~/.config/emacs/settings/theme-settings.el")
+(load "~/.config/emacs/settings/theme-settings.el")
 
 
 ;;; tramp settings
-;(require "~/.emacs.d/settings/tramp-settings.el")
-(load "~/.emacs.d/settings/tramp-settings.el")
+;(require "~/.config/emacs/settings/tramp-settings.el")
+(load "~/.config/emacs/settings/tramp-settings.el")
 
 ;;; ytdl settings
-;(require "~/.emacs.d/settings/ytdl-settings.el")
-(load "~/.emacs.d/settings/ytdl-settings.el")
+;(require "~/.config/emacs/settings/ytdl-settings.el")
+(load "~/.config/emacs/settings/ytdl-settings.el")
 
 ;;; libvterm settings https://github.com/akermu/emacs-libvterm
-;(require "~/.emacs.d/settings/libvterm-settings.el")
-;(load "~/.emacs.d/settings/libvterm-settings.el")
+;(require "~/.config/emacs/settings/libvterm-settings.el")
+;(load "~/.config/emacs/settings/libvterm-settings.el")
 
 
 
@@ -173,7 +172,7 @@
 (term "/bin/zsh")
 
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
 
 
