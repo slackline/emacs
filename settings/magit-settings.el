@@ -10,7 +10,7 @@
 ;; Repositories
 (setq magit-repository-directories
       `(("~/dotfiles" . 1)
-	("~/dotfiles/emacs/.emacs.d" . 1)
+	("~/.config/emacs/" . 1)
 	("~/dotfiles/oh-my-zsh/.oh-my-zsh" . 1)
 	("~/thefloow/code/DS" . 2)))
 
