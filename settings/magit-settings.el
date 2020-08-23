@@ -13,3 +13,6 @@
 	("~/dotfiles/emacs/.emacs.d" . 1)
 	("~/dotfiles/oh-my-zsh/.oh-my-zsh" . 1)
 	("~/thefloow/code/DS" . 2)))
+
+;; Automatically refresh buffers
+(add-hook 'after-save-hook 'magit-after-save-refresh-status t)
