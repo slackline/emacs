@@ -33,7 +33,7 @@
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   )
 
-;; Hook - Reftex
+;; Hook - Reftex (i.e. runs the above!)
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 ;; Hook - Insert created date when adding a header
@@ -67,7 +67,9 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/work/org/todo.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")))
+         "* TODO %?\n  %i\n  %a"))
+      '(("t-run" "Table" table-line (file+headline "~/work/org/training.org" "running-log")
+	 "| %t | $^{PROMPT} | $^{PROMPT} | $^{PROMPT} | | |" :prepend t)))
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
 (require 'org-ref)
