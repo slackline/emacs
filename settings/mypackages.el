@@ -19,6 +19,7 @@
     auto-package-update
     better-defaults
     blacken
+    conda
     ein
     elpy
     ess
