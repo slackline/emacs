@@ -67,9 +67,9 @@
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/work/org/todo.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")))
-      ;; '(("t-run" "Table" table-line (file+headline "~/work/org/training.org" "running-log")
-      ;; 	 "| %t | $^{PROMPT} | $^{PROMPT} | $^{PROMPT} | | |" :prepend t)))
+         "* TODO %?\n  %i\n  %a")
+        ("r" "Logging Runs" table-line (file+olp "~/work/org/training.org" "Workouts" "Running")
+	 "| %t | %? | | | | |" :prepend t)))
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
 (require 'org-ref)
