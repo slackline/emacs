@@ -63,9 +63,95 @@
                  (org-present-show-cursor)
                  (org-present-read-write)))))
 
+
+;; org-ref (https://github.com/jkitchin/org-ref)
+(require 'org-ref)
+(setq reftex-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib"))
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/work/org/ref-notes.org"
+      org-ref-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib")
+      org-ref-pdf-directory "~/work/ref/")
+
+;; org-babel
+;;
+;; Set up evaluation languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((R . t)
+			     (python . t)))
+;; Set defaults...
+;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
+(setq org-startup-with-inline-images t)
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(add-hook 'org-mode-hook 'org-display-inline-images)
+;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
+(setq org-confirm-babel-evaluate nil)
+;; Use the default virtualenvironment
+(setq org-babel-python-command "~/.virtualenvs/default/bin/python")
+
+;; Default LaTeX formatting (https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output)
+(setq org-format-latex-options
+      '(:foreground default
+	:background "rgb 1 1 1"
+        :scale 1.5
+        :html-foreground "Black"
+	:html-background "Transparent"
+        :html-scale 1.0
+        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+
+
+;; Header skeleton
+(define-skeleton org-skeleton
+  "Header info for a emacs-org file."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Neil Shephard\n"
+  "#+EMAIL: nshephard@gmail.com\n"
+  "#+PROPERTY: header-args:R  :session *org-R*\n"
+  "#+PROPERTY: header-args:R  :cache yes\n"
+  "#+PROPERTY: header-args:R  :results graphics\n"
+  "#+PROPERTY: header-args:R  :width 1024\n"
+  "#+PROPERTY: header-args:R  :height 768\n"
+  "#+PROPERTY: header-args:R  :tangle yes\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
+  "-----"
+ )
+(global-set-key [C-S-f4] 'org-skeleton)
+
+;; Default header arguments
+(add-to-list 'org-babel-default-header-args
+             '(:AUTHOR . "Neil Shephard")
+	     '(:EMAIL . "nshephard@gmail.com")
+	     )
+(add-to-list 'org-babel-default-header-args:R
+             '(:session . "*org-R*")
+	     )
+;; 	       (:width . 1024) (:height . 768)
+;; 	       (:cache . "yes")
+;; 	       (:results . "output graphics")
+;; 	       (:exports . "both")
+;; 	       (:tangle . "yes")
+;; 	      ))
+(add-to-list 'org-babel-default-inline-header-args
+             '(:colnames . "nil"))
+
+;; org-roam
+;; (use-package org-roam
+;;       :ensure t
+;;       :hook
+;;       (after-init . org-roam-mode)
+;;       :custom
+;;       (org-roam-directory "~/work/org")
+;;       :bind (:map org-roam-mode-map
+;;               (("C-c n l" . org-roam)
+;;                ("C-c n f" . org-roam-find-file)
+;;                ("C-c n g" . org-roam-graph-show))
+;;               :map org-mode-map
+;;               (("C-c n i" . org-roam-insert))
+;;               (("C-c n I" . org-roam-insert-immediate))))
+
 ;; org-capture (https://orgmode.org/manual/Capture.html#Capture)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
-
 (setq org-capture-templates
       '(("t" "Stuff ToDo in my Life")
 	("th" "House Tasks" entry (file+olp "~/work/org/todo.org" "House")
@@ -166,89 +252,3 @@
          "+ %?\n")
 	("ob" "Books" item (file+olp "~/work/org/cooking.org" "Books")
          "+ %?\n")))
-
-;; org-ref (https://github.com/jkitchin/org-ref)
-(require 'org-ref)
-(setq reftex-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib"))
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "~/work/org/ref-notes.org"
-      org-ref-default-bibliography '("~/dotfiles/ref/citeulike_export_20180712.bib")
-      org-ref-pdf-directory "~/work/ref/")
-
-;; org-babel
-;;
-;; Set up evaluation languages
-(org-babel-do-load-languages
- 'org-babel-load-languages '((R . t)
-			     (python . t)))
-;; Set defaults...
-;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
-(setq org-startup-with-inline-images t)
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-(add-hook 'org-mode-hook 'org-display-inline-images)
-;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
-(setq org-confirm-babel-evaluate nil)
-;; Use the default virtualenvironment
-(setq org-babel-python-command "~/.virtualenvs/default/bin/python")
-
-;; Default LaTeX formatting (https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output)
-(setq org-format-latex-options
-      '(:foreground default
-	:background "rgb 1 1 1"
-        :scale 1.5
-        :html-foreground "Black"
-	:html-background "Transparent"
-        :html-scale 1.0
-        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
-
-
-;; Header skeleton
-(define-skeleton org-skeleton
-  "Header info for a emacs-org file."
-  "Title: "
-  "#+TITLE:" str " \n"
-  "#+AUTHOR: Neil Shephard\n"
-  "#+EMAIL: nshephard@gmail.com\n"
-  "#+PROPERTY: header-args:R  :session *org-R*\n"
-  "#+PROPERTY: header-args:R  :cache yes\n"
-  "#+PROPERTY: header-args:R  :results graphics\n"
-  "#+PROPERTY: header-args:R  :width 1024\n"
-  "#+PROPERTY: header-args:R  :height 768\n"
-  "#+PROPERTY: header-args:R  :tangle yes\n"
-  "#+INFOJS_OPT: \n"
-  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
-  "-----"
- )
-(global-set-key [C-S-f4] 'org-skeleton)
-
-;; Default header arguments
-(add-to-list 'org-babel-default-header-args
-             '(:AUTHOR . "Neil Shephard")
-	     '(:EMAIL . "nshephard@gmail.com")
-	     )
-(add-to-list 'org-babel-default-header-args:R
-             '(:session . "*org-R*")
-	     )
-;; 	       (:width . 1024) (:height . 768)
-;; 	       (:cache . "yes")
-;; 	       (:results . "output graphics")
-;; 	       (:exports . "both")
-;; 	       (:tangle . "yes")
-;; 	      ))
-(add-to-list 'org-babel-default-inline-header-args
-             '(:colnames . "nil"))
-
-;; org-roam
-;; (use-package org-roam
-;;       :ensure t
-;;       :hook
-;;       (after-init . org-roam-mode)
-;;       :custom
-;;       (org-roam-directory "~/work/org")
-;;       :bind (:map org-roam-mode-map
-;;               (("C-c n l" . org-roam)
-;;                ("C-c n f" . org-roam-find-file)
-;;                ("C-c n g" . org-roam-graph-show))
-;;               :map org-mode-map
-;;               (("C-c n i" . org-roam-insert))
-;;               (("C-c n I" . org-roam-insert-immediate))))
