@@ -1,19 +1,7 @@
 ;; MYPACKAGES CONFIGURATION
 ;; --------------------------------------
 (defvar myPackages
-  '(;; apiwrap
-    ;; colour-parentheses
-    ;; darktooth-theme
-    ;; dracula-theme
-    ;; flycheck-json
-    ;; flycheck-pycheck
-    ;; flycheck-yaml
-    ;; magithub
-    ;; nova-theme
-    ;; org-babel
-    ;; org-mode
-    ;; org-roam
-    alert
+  '(alert
     autopair
     auto-compile
     auto-package-update
