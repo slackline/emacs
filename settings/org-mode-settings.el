@@ -153,8 +153,7 @@
 ;; org-capture (https://orgmode.org/manual/Capture.html#Capture)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
-      ;; ToDo
-      '(("t" "Stuff ToDo in my Life")
+      '(("t" "Stuff ToDo in my Life") ;; TODO
 	("th" "House Tasks" entry (file+olp "~/work/org/todo.org" "House")
          "* TODO %?\n")
 	("tg" "Gardening" entry (file+olp "~/work/org/todo.org" "Garden")
@@ -167,8 +166,7 @@
          "* TODO %?\n")
 	("ts" "Stuff to Sell" entry (file+olp "~/work/org/todo.org" "Stuff To Sell")
          "* TODO %?\n")
-	;; Computing
-	("c" "Computing")
+	("c" "Computing") ;; Computing
 	("ce" "Emacs" entry (file+olp "~/work/org/computing.org" "Emacs")
          "* TODO %?\n")
 	("cl" "Laptop" entry (file+olp "~/work/org/computing.org" "Laptop")
@@ -185,7 +183,7 @@
          "* TODO %?\n")
 	("ca" "Android" entry (file+olp "~/work/org/computing.org" "Android")
          "* TODO %?\n")
-	("cp" "Programming")
+	("cp" "Programming") ;; Programming
 	("cpb" "" entry (file+olp "~/work/org/computing.org" "Programming" "Bash")
          "* TODO %?\n")
 	("cpe" "MongoDB" entry (file+olp "~/work/org/computing.org" "Programming" "MongoDB")
@@ -200,8 +198,7 @@
          "* TODO %?\n")
 	("cv" "VPS" entry (file+olp "~/work/org/computing.org" "VPS")
          "* TODO %?\n")
-	;; Workouts
-	("e" "Exercise Workouts")
+	("e" "Exercise Workouts") ;; Workouts
         ("er" "Logging a run" table-line (file+olp "~/work/org/training.org" "Workouts" "Running")
 	 "| %t | %? | | | | |" :prepend t)
 	("ec" "Logging a cycle" table-line (file+olp "~/work/org/training.org" "Workouts" "Cycling")
@@ -210,7 +207,7 @@
 	 "| %t | %? | | | | |" :prepend t)
 	("em" "Logging metrics" table-line (file+olp "~/work/org/training.org" "Workouts" "Metrics")
 	 "| %t | %? | | | |" :prepend t)
-	("es" "Training Resources")
+	("es" "Training Resources") ;; Training Resources
 	("esr" "Running" entry (file+olp "~/work/org/training.org" "Resources" "Running")
          "* TODO %?\n")
 	("ess" "Calisthenics" entry (file+olp "~/work/org/training.org" "Resources" "Calisthenics")
@@ -222,12 +219,12 @@
          "+  %?\n")
 	("escs" "Shauna Coxy" item (file+olp "~/work/org/training.org" "Resources" "Climbing" "Shauna Coxy")
          "+  %?\n")
-	("w" "Work")
+	("w" "Work") ;; Work
 	("wp" "Work Projects" table-line (file+olp "~/work/org/thefloow.org" "Project")
 	 "** TODO %t %?\n")
 	("ww" "ToDo Tasks" table-line (file+olp "~/work/org/thefloow.org" "ToDo Tasks")
 	 "** TODO %t %?\n")
-	("o" "Cooking")
+	("o" "Cooking") ;; Cooking
 	("ov" "Vegetarian" item (file+olp "~/work/org/cooking.org" "Vegetarian")
          "+ %?\n")
 	("ow" "Web sites" item (file+olp "~/work/org/cooking.org" "Web Sites")
@@ -255,12 +252,12 @@
          "+ %?\n")
 	("ob" "Books" item (file+olp "~/work/org/cooking.org" "Books")
          "+ %?\n")
-	("v" "Coronavirus")
+	("v" "Coronavirus") ;; Coronavirus
 	("vi" "Information")
 	("viu" "Useful Resources")
 	("vil" "Link" item (file+olp "~/work/org/coronavirus.org" "Information" "Useful Resources")
          "+ %t %?\n")
-	("vis" "Science")
+	("vis" "Science") ;; Science
 	("vism" "Mechanism" item (file+olp "~/work/org/coronavirus.org" "Information" "Science" "Mechanism")
          "+ %t %?\n")
 	("visp" "Physical Distancing / Face Masks" item (file+olp "~/work/org/coronavirus.org" "Information" "Science" "Physical Distancing / Face Masks")
@@ -277,17 +274,17 @@
          "+ %t %?\n")
 	("visv" "Evolutionary Genetics" item (file+olp "~/work/org/coronavirus.org" "Information" "Science" "Evolutionary Genetics")
          "+ %t %?\n")
-	("vid" "Data")
+	("vid" "Data") ;; Data
 	("viu" "Information" item (file+olp "~/work/org/coronavirus.org" "Information")
          "+ %t %?\n")
-	("va" "Activities for Isla")
+	("va" "Activities for Isla") ;; Isla
 	("vae" "Educational" item (file+olp "~/work/org/coronavirus.org" "Activities for Isla" "Educational")
          "+ %t %?\n")
 	("vax" "Exercise" item (file+olp "~/work/org/coronavirus.org" "Activities for Isla" "Exercise")
          "+ %t %?\n")
 	("vaf" "Fun" item (file+olp "~/work/org/coronavirus.org" "Activities for Isla" "Fun")
          "+ %t %?\n")
-	("vh" "Humour")
+	("vh" "Humour") ;; Humour
 	("vhg" "Graphics" item (file+olp "~/work/org/coronavirus.org" "Humour" "Graphics")
          "+ %t %?\n")
 	("vhx" "XKCD" item (file+olp "~/work/org/coronavirus.org" "Humour" "XKCD")
