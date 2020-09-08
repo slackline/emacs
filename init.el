@@ -72,6 +72,10 @@
 ;(require 'autopair-settings)
 (load "~/.config/emacs/settings/autopair-settings.el")
 
+;;; Conda
+;(require 'conda-settings)
+(load "~/.config/emacs/settings/conda-settings.el")
+
 ;;; Flyspell
 ;(require 'flyspell-settings)
 (load "~/.config/emacs/settings/flyspell-settings.el")
