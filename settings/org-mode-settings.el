@@ -274,8 +274,13 @@
          "+ %t %?\n")
 	("visv" "Evolutionary Genetics" item (file+olp "~/work/org/coronavirus.org" "Information" "Science" "Evolutionary Genetics")
          "+ %t %?\n")
-	("vid" "Data") ;; Data
-	("viu" "Information" item (file+olp "~/work/org/coronavirus.org" "Information")
+	("vid" "Data" item (file+olp "~/work/org/coronavirus.org" "Information" "Data")
+         "+ %t %?\n")
+	("vitc" "Cycling" item (file+olp "~/work/org/coronavirus.org" "Information" "Traffic" "Cycling")
+         "+ %t %?\n")
+	("vitr" "Roads" item (file+olp "~/work/org/coronavirus.org" "Information" "Traffic" "Roads")
+         "+ %t %?\n")
+	("viw" "Work" item (file+olp "~/work/org/coronavirus.org" "Information" "Work")
          "+ %t %?\n")
 	("va" "Activities for Isla") ;; Isla
 	("vae" "Educational" item (file+olp "~/work/org/coronavirus.org" "Activities for Isla" "Educational")
