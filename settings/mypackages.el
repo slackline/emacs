@@ -27,7 +27,7 @@
     literate-calc-mode
     magit
     magit-todos
-    material-theme
+    ;; material-theme
     mmm-mode
     modus-vivendi-theme
     org-cliplink
@@ -42,6 +42,7 @@
     poly-noweb
     poly-org
     poly-R
+    powerline
     projectile
     projectile-git-autofetch
     py-autopep8
