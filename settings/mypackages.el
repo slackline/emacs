@@ -35,6 +35,7 @@
     org-parser
     org-present
     org-ref
+    org-sidebar
     package-utils
     pass
     polymode
