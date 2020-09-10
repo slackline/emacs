@@ -27,7 +27,6 @@
     literate-calc-mode
     magit
     magit-todos
-    ;; material-theme
     mmm-mode
     modus-vivendi-theme
     org-cliplink
@@ -36,6 +35,7 @@
     org-present
     org-ref
     org-sidebar
+    org-trello
     package-utils
     pass
     polymode
