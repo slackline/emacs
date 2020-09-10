@@ -306,4 +306,4 @@
 	("vhg" "Graphics" item (file+olp "~/work/org/coronavirus.org" "Humour" "Graphics")
          "+ %t %?\n" :prepend t)
 	("vhx" "XKCD" item (file+olp "~/work/org/coronavirus.org" "Humour" "XKCD")
-         "+ %t %?\n" :prepend t)))
+         "+ %t %?\n" :prepend t))))
