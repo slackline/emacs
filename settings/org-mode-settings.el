@@ -18,6 +18,10 @@
   "Convert value V to compatible unit U."
   (math-convert-units v u))
 
+;; org-trello for thefloow.org
+(require 'org-trello)
+(custom-set-variables '(org-trello-files '("~/work/org/thefloow.org")))
+
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink
 (global-set-key (kbd "C-x p i") 'org-cliplink)
