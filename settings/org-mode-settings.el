@@ -204,11 +204,11 @@
          "* TODO %?\n" :prepend t)
 	("e" "Exercise Workouts") ;; Workouts
         ("er" "Logging a run" table-line (file+olp "~/work/org/training.org" "Workouts" "Running")
-	 "| %t | %? | | km | min + s | |" :prepend t)
+	 "| %t | %? | km | min + s | | |" :prepend t)
 	("ec" "Logging a cycle" table-line (file+olp "~/work/org/training.org" "Workouts" "Cycling")
-	 "| %t | %? | | km | min + s | |" :prepend t)
+	 "| %t | %? | km | min + s | | |" :prepend t)
 	("eh" "Logging a hike" table-line (file+olp "~/work/org/training.org" "Workouts" "Hiking")
-	 "| %t | %? | | km | min + s | |" :prepend t)
+	 "| %t | %? | km | min + s | | |" :prepend t)
 	("em" "Logging metrics" table-line (file+olp "~/work/org/training.org" "Workouts" "Metrics")
 	 "| %t | %? | | | |" :prepend t)
 	("es" "Training Resources") ;; Training Resources
