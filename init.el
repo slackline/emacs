@@ -128,6 +128,10 @@
 ;(require 'org-mode-settings)
 (load "~/.config/emacs/settings/org-mode-settings.el")
 
+;;; Org-capture
+;(require 'org-capture-settings)
+(load "~/.config/emacs/settings/org-capture-settings.el")
+
 ;;; Polymode
 ;(require 'polymode-settings)
 (load "~/.config/emacs/settings/polymode-settings.el")
