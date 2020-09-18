@@ -41,8 +41,6 @@
 ;; 	  (lambda ()
 ;; 	    (unless (eq major-mode 'ein:notebook-multilang-mode)
 ;; 	      ('delete-trailing-whitespace))))
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; revert-buffer key binding
 (global-set-key [(control c) r] 'revert-buffer)
 ;; Uppercase region
 (put 'upcase-region 'disabled nil)
@@ -52,8 +50,10 @@
 ;; Add local lisp for miscellaneous things
 (add-to-list 'load-path "~/.config/emacs/lisp/")
 
-;;; Reload a buffer from disk
-;;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+;; revert-buffer key binding
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; Reload a buffer from disk
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
     "Revert buffer without confirmation."
     (interactive)
