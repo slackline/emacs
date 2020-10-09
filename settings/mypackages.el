@@ -15,6 +15,7 @@
     forge
     flycheck
     gitlab
+    helm-org
     highlight-indent-guides
     highlight-parentheses
     inf-mongo
