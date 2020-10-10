@@ -7,9 +7,9 @@
   (setq load-path
     (append '("~/.emacs.d/lisp/polymode/"  "~/.emacs.d/lisp/polymode/modes")
         load-path))
-  (require 'poly-R)
-  (require 'poly-noweb)
-  (require 'poly-markdown)
+  (use-package poly-R)
+  (use-package poly-noweb)
+  (use-package poly-markdown)
   (poly-markdown+r-mode))
 
 ;;; Register file types
@@ -56,8 +56,8 @@ Restore match data previously stored in PROPERTY."
 
 
 ;; define pweave polymodes
-(require 'poly-noweb)
-(require 'poly-markdown)
+(use-package poly-noweb)
+(use-package poly-markdown)
 
 ;; Python/Markdown
 (defcustom pm-inner/noweb-python
@@ -75,7 +75,7 @@ Restore match data previously stored in PROPERTY."
 
 
 ;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
-(require 'polymode)
+(use-package polymode)
 (defcustom pm-inner/python
   (clone pm-inner/noweb
 	 :name "python"

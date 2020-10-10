@@ -19,8 +19,8 @@
   (math-convert-units v u))
 
 ;; org-trello for thefloow.org
-(require 'org-trello)
-(custom-set-variables '(org-trello-files '("~/org/thefloow.org")))
+;; (require 'org-trello)
+;; (custom-set-variables '(org-trello-files '("~/org/thefloow.org")))
 
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink

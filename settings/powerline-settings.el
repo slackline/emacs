@@ -1,5 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Load Powerline https://github.com/milkypostman/powerline           ;;;
+;; POLYMODE CONFIGURATION
+;; --------------------------------------
+;; https://github.com/milkypostman/powerline
 (require 'powerline)
 (powerline-default-theme)
-

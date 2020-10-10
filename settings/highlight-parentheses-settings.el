@@ -1,4 +1,5 @@
-(require 'highlight-parentheses)
+(use-package highlight-parentheses
+  :defer 1)
 (setq hl-paren-colors '("gold" "IndianRed" "cyan" "green" "orange" "magenta"))
 (defun hpm-on ()
  (highlight-parentheses-mode t))

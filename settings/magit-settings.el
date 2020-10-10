@@ -1,7 +1,8 @@
 ;; MAGIT CONFIGURATION
 ;; --------------------------------------
-(require 'magit)
-(require 'magit-todos)
+(use-package magit
+  :defer 0.5)
+;; (require 'magit-todos)
 
 ;; Key bindings
 (global-set-key (kbd "C-x g") 'magit-status)

@@ -3,7 +3,7 @@
 
 ;; elpy configuration
 (elpy-enable)
-(setq elpy-rpc-backend "jedi")  
+(setq elpy-rpc-backend "jedi")
 (pyvenv-activate "~/.virtualenvs/default")
 
 ;; Set ipython as the default interpreter
@@ -29,7 +29,8 @@
 	    (setq flycheck-python-pylint-executable "~/.virtualenvs/default/bin/pylint")
 	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
-(require 'py-autopep8)
+(use-package py-autopep8
+  :defer 3)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 ;; (require 'py-yapf)
 ;; (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
@@ -38,4 +39,5 @@
 ;; (add-hook 'python-mode-hook 'yapf-mode)
 
 ;; pytest
-(require 'pytest)
+(use-package pytest:
+  :defer 3)
