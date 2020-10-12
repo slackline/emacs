@@ -4,7 +4,16 @@
 ;; elpy configuration
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
-(pyvenv-activate "~/.virtualenvs/default")
+(setq virtualenv-byhost
+      '(("kimura" . "~/.virtualenvs/python3_9")
+	("ovh" . "~/.virtualenvs/default")
+	("alarmpi" . "~/.virtualenvs/default")
+	("alarmpi-4b" . "~/.virtualenvs/default")
+	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/")))
+;; (pyvenv-activate "~/.virtualenvs/default")
+(pyvenv-activate
+ (cdr
+  (assoc system-name virtualenv-byhost)))
 
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
