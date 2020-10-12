@@ -4,24 +4,29 @@
 ;; elpy configuration
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
+
+
+;;; Virtual Environment Setuip
+;; Define location of virtual environments by host and set venv-location
 (setq virtualenv-byhost
       '(("kimura" . "~/.virtualenvs/python3_9")
 	("ovh" . "~/.virtualenvs/default")
 	("alarmpi" . "~/.virtualenvs/default")
 	("alarmpi-4b" . "~/.virtualenvs/default")
 	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/")))
-;; (pyvenv-activate "~/.virtualenvs/default")
-(pyvenv-activate
- (cdr
-  (assoc system-name virtualenv-byhost)))
+(setq venv-location
+      (cdr
+       (assoc system-name virtualenv-byhost)))
+
+;; Activate virtual environment based on location (set above)
+(pyvenv-activate venv-location)
 
 ;; Set ipython as the default interpreter
 (setq elpy-rpc-python-command "python3")
 (setq python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt")
 
-;; pyvenv and Jedi setup/hooks for Python mode
-(setq venv-location (expand-file-name "~/.virtualenvs"))
+;;; pyvenv and Jedi setup/hooks for Python mode
 (setq python-environment-directory venv-location)
 ;;(add-hook 'python-mode-hook 'jedi:setup)
 
