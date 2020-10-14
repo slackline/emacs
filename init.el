@@ -32,6 +32,10 @@
 (auto-compile-on-save-mode)
 (require 'auto-package-update)
 
+;; SETUP use-package
+(eval-when-compile
+  (require 'use-package))
+
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 
