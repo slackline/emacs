@@ -54,7 +54,7 @@
 ;; 	  (lambda ()
 ;; 	    (unless (eq major-mode 'ein:notebook-multilang-mode)
 ;; 	      ('delete-trailing-whitespace))))
-(global-set-key [(control c) r] 'revert-buffer)
+;;(global-set-key [(control c) r] 'revert-buffer)
 ;; Uppercase region
 (put 'upcase-region 'disabled nil)
 ;; Lowercase region
@@ -80,6 +80,10 @@
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
 ;; Path where settings files are kept
 (add-to-list 'load-path "~/.config/emacs/settings")
+
+;;; Keybindings
+;(require 'key-bindings)
+(load "~/.config/emacs/settings/key-bindings.el")
 
 ;;; Autopair
 ;(require 'autopair-settings)

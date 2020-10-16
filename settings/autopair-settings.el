@@ -1,4 +1,6 @@
-;;; Autopair.el for automatic parentheses and quote matching
+;; AUTOPAIR CONFIGURATION
+;; --------------------------------------
+;; Autopair.el for automatic parentheses and quote matching
 (use-package autopair
   :defer 1
   :init

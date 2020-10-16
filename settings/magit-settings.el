@@ -4,9 +4,6 @@
   :defer 0.5)
 ;; (require 'magit-todos)
 
-;; Key bindings
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c P") 'magit-push-current-to-upstream)
 
 ;; Repositories
 (setq magit-repository-directories

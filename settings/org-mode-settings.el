@@ -1,9 +1,5 @@
 ;;; Org-mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
 (global-font-lock-mode 1)
 (setq org-directory        "~/org/")
 (setq org-startup-indented 1)
@@ -22,9 +18,6 @@
 ;; (require 'org-trello)
 ;; (custom-set-variables '(org-trello-files '("~/org/thefloow.org")))
 
-;; Cliplink setup
-;; From : https://github.com/rexim/org-cliplink
-(global-set-key (kbd "C-x p i") 'org-cliplink)
 
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/

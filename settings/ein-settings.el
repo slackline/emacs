@@ -1,3 +1,5 @@
+;; EIN CONFIGURATION
+;; --------------------------------------
 ;;; Delete the current cell (WARNING! : No Undo)
 ;; (define-key ein:notebook-mode-map "\C-c\C-d"
 ;;               'ein:worksheet-delete-cell)
@@ -7,5 +9,4 @@
 ;;	  (lambda () (emacs/toggle-whitespace-cleanup-off)))
 (custom-set-variables
  '(ein:output-area-inlined-images t)
- '(ein:polymode t)
- )
+ '(ein:polymode t))
