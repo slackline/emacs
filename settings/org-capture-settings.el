@@ -48,13 +48,13 @@
 	("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
          "* TODO %?\n" :prepend t)
 	("e" "Exercise Workouts") ;; Workouts
-        ("er" "Logging a run" table-line (file+olp "~/org/training/training.org" "Workouts" "Running" "Log")
+        ("er" "Logging a run" table-line (file+olp "~/org/training/training.org" "Running" "Log")
 	 "| %t | %? | km | min + s | | |" :prepend t)
-	("ec" "Logging a cycle" table-line (file+olp "~/org/training/training.org" "Workouts" "Cycling" "Log")
+	("ec" "Logging a cycle" table-line (file+olp "~/org/training/training.org" "Cycling" "Log")
 	 "| %t | %? | km | min + s | | |" :prepend t)
-	("eh" "Logging a hike" table-line (file+olp "~/org/training/training.org" "Workouts" "Hiking" "Log")
+	("eh" "Logging a hike" table-line (file+olp "~/org/training/training.org" "Hiking" "Log")
 	 "| %t | %? | km | min + s | | |" :prepend t)
-	("em" "Logging metrics" table-line (file+olp "~/org/training/training.org" "Workouts" "Metrics" "Log")
+	("em" "Logging metrics" table-line (file+olp "~/org/training/training.org" "Metrics" "Log")
 	 "| %t | %? | | | |" :prepend t)
 	("es" "Training Resources") ;; Training Resources
 	("esr" "Running" entry (file+olp "~/org/training/training.org" "Resources" "Running")
