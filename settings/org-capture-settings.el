@@ -156,3 +156,5 @@
          "+ %t %?\n" :prepend t)
 	("ig" "Gardening" item (file+olp "~/org/isla.org" "Gardening")
          "+ %t %?\n" :prepend t)
+	("b" "Bibliography" item (file+olp "~/org/references.bib")
+         "%?\n" :prepend t)
