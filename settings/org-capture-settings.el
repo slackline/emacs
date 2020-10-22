@@ -15,7 +15,8 @@
          "* TODO %?\n" :prepend t)
 	("ts" "Stuff to Sell" entry (file+olp "~/org/todo.org" "Stuff To Sell")
          "* TODO %?\n" :prepend t)
-	("c" "Computing") ;; Computing
+	;; Computing
+	("c" "Computing")
 	("ce" "Emacs" entry (file+olp "~/org/computing.org" "Emacs")
          "* TODO %?\n" :prepend t)
 	("cl" "Laptop" entry (file+olp "~/org/computing.org" "Laptop")
@@ -47,7 +48,8 @@
          "* TODO %?\n" :prepend t)
 	("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
          "* TODO %?\n" :prepend t)
-	("e" "Exercise Workouts") ;; Workouts
+	;; Workouts
+	("e" "Exercise Workouts")
         ("er" "Logging a run" table-line (file+olp "~/org/training/training.org" "Running" "Log")
 	 "| %t | %? | km | min + s | | |" :prepend t)
 	("ec" "Logging a cycle" table-line (file+olp "~/org/training/training.org" "Cycling" "Log")
@@ -147,7 +149,8 @@
          "+ %t %?\n" :prepend t)
 	("vhx" "XKCD" item (file+olp "~/org/coronavirus.org" "Humour" "XKCD")
          "+ %t %?\n" :prepend t)
-	("i" "Activities for Isla") ;; Isla
+	;; Isla
+	("i" "Activities for Isla")
 	("ie" "Educational" item (file+olp "~/org/isla.org" "Educational")
          "+ %t %?\n" :prepend t)
 	("ix" "Exercise" item (file+olp "~/org/isla.org" "Exercise")
