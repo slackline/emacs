@@ -15,6 +15,10 @@
          "* TODO %?\n" :prepend t)
 	("ts" "Stuff to Sell" entry (file+olp "~/org/todo.org" "Stuff To Sell")
          "* TODO %?\n" :prepend t)
+	;; Agenda
+	("a" "Agenda")
+	("an" "New Event" entry (file+olp "~/org/agenda.org" "Upcoming")
+         "** TODO %t %?\n" :prepend t)
 	;; Computing
 	("c" "Computing")
 	("ce" "Emacs" entry (file+olp "~/org/computing.org" "Emacs")
@@ -48,6 +52,18 @@
          "* TODO %?\n" :prepend t)
 	("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
          "* TODO %?\n" :prepend t)
+	;; DMT
+	("d" "DMT")
+	("db" "Books" (file+olp "~/org/dmt.org" "Books")
+	 "+ %?\n" :prepend t)
+	("dr" "Research" (file+olp "~/org/dmt.org" "Research")
+	 "+ %?\n" :prepend t)
+	("dr" "Interviews" (file+olp "~/org/dmt.org" "Interviews")
+	 "+ %?\n" :prepend t)
+	("dr" "Blogs" (file+olp "~/org/dmt.org" "Blogs")
+	 "+ %?\n" :prepend t)
+	("dr" "Terrence McKenna" (file+olp "~/org/dmt.org" "Terrence McKenna")
+	 "+ %?\n" :prepend t)
 	;; Workouts
 	("e" "Exercise Workouts")
         ("er" "Logging a run" table-line (file+olp "~/org/training/training.org" "Running" "Log")
