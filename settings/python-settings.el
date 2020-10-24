@@ -10,6 +10,7 @@
 ;; Define location of virtual environments by host and set venv-location
 (setq virtualenv-byhost
       '(("kimura" . "~/.virtualenvs/python3_9")
+	("fisher" . "~/.virtualenvs/default")
 	("ovh" . "~/.virtualenvs/default")
 	("alarmpi" . "~/.virtualenvs/default")
 	("alarmpi-4b" . "~/.virtualenvs/default")
