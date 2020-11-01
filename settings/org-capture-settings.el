@@ -166,7 +166,7 @@
          "+ %t %?\n" :prepend t)
 	("vcb" "BMJ" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BMJ")
          "+ %t %?\n" :prepend t)
-	("vcb" "BioRxiv" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BioRxiv")
+	("vcb" "BioRxiv/MedRxiv" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BioRxiv/MedRxiv")
          "+ %t %?\n" :prepend t)
 	("vcd" "David Spiegelhalter" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "David Spiegelhalter")
          "+ %t %?\n" :prepend t)

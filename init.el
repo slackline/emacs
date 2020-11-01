@@ -89,6 +89,10 @@
 ;(require 'autopair-settings)
 (load "~/.config/emacs/settings/autopair-settings.el")
 
+;;; Centaur Tabs
+;(require 'centaur-tabs-settings)
+(load "~/.config/emacs/settings/centaur-tabs-settings.el")
+
 ;;; Conda
 ;(require 'conda-settings)
 (load "~/.config/emacs/settings/conda-settings.el")
