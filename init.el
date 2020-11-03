@@ -121,13 +121,14 @@
 ;(require 'highlight-parentheses-settings)
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 
+;;; JS Environment
+;(require 'js-settings)
+(load "~/.config/emacs/settings/js-settings.el")
+
 ;;; Keychain Environment
 ;(require 'keychain-envinronment-settings)
 (load "~/.config/emacs/settings/keychain-environment-settings.el")
 
-;;; JS2 Environment
-;(require 'js2-settings)
-(load "~/.config/emacs/settings/js2-settings.el")
 
 ;;; Latex
 ;(require 'latex-settings)
