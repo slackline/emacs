@@ -7,6 +7,7 @@
     auto-package-update
     better-defaults
     blacken
+    centaur-tabs
     conda
     ein
     elpy
@@ -66,4 +67,3 @@
 	  (unless (package-installed-p package)
 	    (package-install package)))
       myPackages)
-
