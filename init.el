@@ -187,13 +187,14 @@
 ;(require "~/.config/emacs/settings/tramp-settings.el")
 (load "~/.config/emacs/settings/tramp-settings.el")
 
+;;; vterm settings
+;(require "~/.config/emacs/settings/vterm-settings.el")
+(load "~/.config/emacs/settings/vterm-settings.el")
+
 ;;; ytdl settings
 ;(require "~/.config/emacs/settings/ytdl-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
-;;; libvterm settings https://github.com/akermu/emacs-libvterm
-;(require "~/.config/emacs/settings/libvterm-settings.el")
-;(load "~/.config/emacs/settings/libvterm-settings.el")
 
 
 

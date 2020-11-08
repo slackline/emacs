@@ -171,6 +171,9 @@
          "* TODO %?\n" :prepend t)
 	;; Coronavirus
 	("v" "Coronavirus")
+	("vc" "Air Quality/Circulation")
+	("va" "Air Quality" item (file+olp "~/org/coronavirus.org" "Air Quality")
+         "+ %t %?\n" :prepend t)
 	("vc" "Collections/Streams")
 	("vca" "The Atlantic" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Atlantic")
          "+ %t %?\n" :prepend t)
