@@ -58,6 +58,7 @@
     python-pytest
     rainbow-delimiters
     use-package
+    vterm
     wide-column
     yaml-mode
     ytdl))
