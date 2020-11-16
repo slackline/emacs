@@ -60,6 +60,7 @@
     use-package
     vterm
     wide-column
+    with-shell-interpreter
     yaml-mode
     ytdl))
 
