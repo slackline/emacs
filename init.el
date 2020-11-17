@@ -178,6 +178,10 @@
 ;(require 'rainbow-delimiters-settings)
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 
+;;; Shell Interpreter
+;(require 'shell-interpreter-settings)
+(load "~/.config/emacs/settings/shell-interpreter-settings.el")
+
 ;;; Themes
 ;(require "~/.config/emacs/settings/theme-settings.el")
 (load "~/.config/emacs/settings/theme-settings.el")
