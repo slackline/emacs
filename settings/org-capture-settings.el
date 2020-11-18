@@ -208,6 +208,8 @@
          "+ %t %?\n" :prepend t)
 	("vg" "Independant SAGE" item (file+olp "~/org/coronavirus.org" "Independant SAGE")
          "+ %t %?\n" :prepend t)
+	("vl" "Long Term Outcomes" item (file+olp "~/org/coronavirus.org" "Long Term Outcomes")
+         "+ %t %?\n" :prepend t)
 	("vh" "Mechanism" item (file+olp "~/org/coronavirus.org" "Mechanism")
          "+ %t %?\n" :prepend t)
 	("vm" "Miscellaneous" item (file+olp "~/org/coronavirus.org" "Miscellaneous")
@@ -233,10 +235,10 @@
          "+ %t %?\n")
 	("vw" "Work" item (file+olp "~/org/coronavirus.org" "Work")
          "+ %t %?\n")
-	("vh" "Humour") ;; Humour
-	("vhg" "Graphics" item (file+olp "~/org/coronavirus.org" "Humour" "Graphics")
+	("vu" "Humour") ;; Humour
+	("vug" "Graphics" item (file+olp "~/org/coronavirus.org" "Humour" "Graphics")
          "+ %t %?\n" :prepend t)
-	("vhx" "XKCD" item (file+olp "~/org/coronavirus.org" "Humour" "XKCD")
+	("vux" "XKCD" item (file+olp "~/org/coronavirus.org" "Humour" "XKCD")
          "+ %t %?\n" :prepend t)
 	("vz" "Non-Science")
 	("vzs" "Sheffield" item (file+olp "~/org/coronavirus.org" "Non-Science" "Sheffield")
