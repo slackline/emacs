@@ -32,7 +32,6 @@
     mmm-mode
     modus-vivendi-theme
     org-cliplink
-    org-kanban
     org-parser
     org-present
     org-ref
