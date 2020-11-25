@@ -36,7 +36,6 @@
     org-present
     org-ref
     org-sidebar
-    org-trello
     package-utils
     pass
     polymode
