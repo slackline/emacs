@@ -14,21 +14,24 @@
 	("ovh" . "~/.virtualenvs/default")
 	("alarmpi" . "~/.virtualenvs/default")
 	("alarmpi-4b" . "~/.virtualenvs/default")
-	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/")))
-(setq venv-location
-      (cdr
-       (assoc system-name virtualenv-byhost)))
+	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+      venv-location (cdr
+		     (assoc system-name virtualenv-byhost))
+      elpy-rpc-python-command "python3"
+      python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt"
+      python-environment-directory venv-location)
 
 ;; Activate virtual environment based on location (set above)
 (pyvenv-activate venv-location)
 
 ;; Set ipython as the default interpreter
-(setq elpy-rpc-python-command "python3")
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
+;; (setq elpy-rpc-python-command "python3")
+;; (setq python-shell-interpreter "ipython"
+;;       python-shell-interpreter-args "-i --simple-prompt")
 
 ;;; pyvenv and Jedi setup/hooks for Python mode
-(setq python-environment-directory venv-location)
+;; (setq python-environment-directory venv-location)
 ;;(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use flycheck not flymake with elpy
@@ -36,10 +39,16 @@
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 ;; Add flycheck-mypy to ensure static typing
-(require 'flycheck-mypy)
-(add-hook 'python-mode-hook 'flycheck-mode)
-(add-to-list 'flycheck-disabled-checkers 'python-flake8)
-(add-to-list 'flycheck-disabled-checkers 'python-pylint)
+(use-package flycheck-mypy
+  :defer 3
+  :hook (python-mode-hook 'flycheck-mode)
+  :init
+    (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+    (add-to-list 'flycheck-disabled-checkers 'python-pylint))
+;; (require 'flycheck-mypy)
+;; (add-hook 'python-mode-hook 'flycheck-mode)
+;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
+;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 ;; Keymaps to navigate to the errors (under flymake)
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
@@ -50,11 +59,13 @@
 	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
 (use-package py-autopep8
-  :defer 3)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-;; (require 'py-yapf)
+  :defer 3
+  :hook (elpy-mode-hook 'py-autopep8-enable-on-save))
+;; (use-package py-yapf
+;;   :defer 3)
 ;; (add-hook 'python-mode-hook 'py-yapf-enable-on-save)
-;; (require 'blacken)
+;; (use-package blacken
+;;   :defer 3)
 ;; (add-hook 'python-mode-hook 'blacken-mode)
 ;; (add-hook 'python-mode-hook 'yapf-mode)
 

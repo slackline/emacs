@@ -1,23 +1,27 @@
 ;;; Org-mode
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-font-lock-mode 1)
-(setq org-directory        "~/org/")
-(setq org-startup-indented 1)
-;; Enable org-mode agenda/emacs diary integration
-(setq org-agenda-include-diary t)
-
-;; Set time on changing TODO stats
-(setq org-log-done 'time)
+(setq org-directory        "~/org/"
+      org-startup-indented 1
+      org-agenda-include-diary t
+      org-log-done 'time
+      org-export-backends '(beamer html latex md odt)
+      org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
+      org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
+      org-babel-python-command "~/.virtualenvs/default/bin/python"
+      org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
+          '(:foreground default
+	    :background "rgb 1 1 1"
+            :scale 1.5
+            :html-foreground "Black"
+	    :html-background "Transparent"
+            :html-scale 1.0
+            :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 ;; Define conversion
 (defmath uconvert (v u)
   "Convert value V to compatible unit U."
   (math-convert-units v u))
-
-;; org-trello for thefloow.org
-;; (require 'org-trello)
-;; (custom-set-variables '(org-trello-files '("~/org/thefloow.org")))
-
 
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/
@@ -29,8 +33,6 @@
        (reftex-parse-all))
   (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
   )
-
-;; Hook - Reftex (i.e. runs the above!)
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
 ;; Hook - Insert created date when adding a header
@@ -62,11 +64,15 @@
 
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
-(require 'org-ref)
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "~/org/ref-notes.org"
-      org-ref-default-bibliography '("~/org/references.bib")
-      org-ref-pdf-directory "~/work/ref/")
+(require 'org-ref
+  :init
+  (setq org-ref-bibliography-notes "~/org/ref-notes.org"
+	org-ref-default-bibliography '("~/org/references.bib")
+	org-ref-pdf-directory "~/work/ref/"
+	bibtex-completion-bibliography "~/org/references.bib"
+	bibtex-completion-library-path "~/work/ref/"
+	bibtex-completion-notes-path "~/org/helm-bibtex-notes"
+	org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f")))
 
 ;; org-babel
 ;;
@@ -74,28 +80,12 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((R . t)
 			     (python . t)))
-;; Set defaults...
-;; In-line images by default (https://emacs.stackexchange.com/a/21267/10100)
-(setq org-startup-with-inline-images t)
+;; Hooks for in-line images (https://emacs.stackexchange.com/a/21267/10100)
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
 (add-hook 'org-mode-hook 'org-display-inline-images)
-;; Turn off code evaluation confirmation (https://emacs.stackexchange.com/a/3570/10100)
-(setq org-confirm-babel-evaluate nil)
-;; Use the default virtualenvironment
-(setq org-babel-python-command "~/.virtualenvs/default/bin/python")
-
-;; Default LaTeX formatting (https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output)
-(setq org-format-latex-options
-      '(:foreground default
-	:background "rgb 1 1 1"
-        :scale 1.5
-        :html-foreground "Black"
-	:html-background "Transparent"
-        :html-scale 1.0
-        :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 
-;; Header skeleton
+;; Skeleton
 (define-skeleton org-skeleton
   "Header info for a emacs-org file."
   "Title: "
