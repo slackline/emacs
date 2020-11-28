@@ -1,6 +1,7 @@
 ;; POLYMODE CONFIGURATION
 ;; --------------------------------------
 ;; Load Polymode https://github.com/vspinu/polymode
+(use-package polymode)
 (defun rmd-mode ()
   "ESS Markdown mode for rmd files"
   (interactive)
@@ -58,7 +59,6 @@ Restore match data previously stored in PROPERTY."
 ;; define pweave polymodes
 (use-package poly-noweb)
 (use-package poly-markdown)
-
 ;; Python/Markdown
 (defcustom pm-inner/noweb-python
   (clone pm-inner/noweb
@@ -75,7 +75,6 @@ Restore match data previously stored in PROPERTY."
 
 
 ;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
-(use-package polymode)
 (defcustom pm-inner/python
   (clone pm-inner/noweb
 	 :name "python"

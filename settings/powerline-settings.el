@@ -1,5 +1,7 @@
 ;; POLYMODE CONFIGURATION
 ;; --------------------------------------
 ;; https://github.com/milkypostman/powerline
-(require 'powerline)
-(powerline-default-theme)
+(use-package powerline
+  :defer 1
+  :init
+    (powerline-default-theme))

@@ -1,4 +1,5 @@
-;;; ESS
+;; ESS CONFIGURATION
+;; --------------------------------------
 (use-package ess
   :defer 1
   :init
@@ -30,7 +31,7 @@
   (local-set-key "\C-cw" 'ess-execute-screen-options))
 (add-hook 'ess-post-run-hook 'my-ess-post-run-hook)
 ;;; Auto-complete and ESS http://goo.gl/utAi2Z
-(require 'auto-complete)
-(require 'auto-complete-config)
+(use-package auto-complete)
+(use-package auto-complete-config)
 (ac-config-default)
 (auto-complete-mode)

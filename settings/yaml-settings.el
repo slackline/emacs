@@ -1,2 +1,6 @@
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+;; YAML CONFIGURATION
+;; --------------------------------------
+(use-package yaml-mode
+  :defer 4
+  :init
+    (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode)))
