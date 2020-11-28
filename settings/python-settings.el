@@ -1,6 +1,5 @@
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
-
 ;; elpy configuration
 (elpy-enable)
 (setq elpy-rpc-backend "jedi")
@@ -25,14 +24,8 @@
 ;; Activate virtual environment based on location (set above)
 (pyvenv-activate venv-location)
 
-;; Set ipython as the default interpreter
-;; (setq elpy-rpc-python-command "python3")
-;; (setq python-shell-interpreter "ipython"
-;;       python-shell-interpreter-args "-i --simple-prompt")
-
 ;;; pyvenv and Jedi setup/hooks for Python mode
-;; (setq python-environment-directory venv-location)
-;;(add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
