@@ -45,18 +45,15 @@
   :init
     (add-to-list 'flycheck-disabled-checkers 'python-flake8)
     (add-to-list 'flycheck-disabled-checkers 'python-pylint))
-;; (require 'flycheck-mypy)
-;; (add-hook 'python-mode-hook 'flycheck-mode)
-;; (add-to-list 'flycheck-disabled-checkers 'python-flake8)
-;; (add-to-list 'flycheck-disabled-checkers 'python-pylint)
 ;; Keymaps to navigate to the errors (under flymake)
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cn" 'flymake-goto-next-error)))
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-cp" 'flymake-goto-prev-error)))
+
 ;; Try to add pylint rules https://emacs.stackexchange.com/a/41048/10100
 (add-hook 'python-mode-hook
 	  (lambda ()
 	    (setq flycheck-python-pylint-executable "~/.virtualenvs/default/bin/pylint")
-	    (setq flycheck-pylintrc "~/.emacs.d/settings/.pylintrc")))
+	    (setq flycheck-pylintrc "~/.config/emacs/settings/.pylintrc")))
 ;; enable autopep8 formatting on save
 (use-package py-autopep8
   :defer 3
