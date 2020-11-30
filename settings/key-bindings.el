@@ -16,3 +16,6 @@
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink
 (global-set-key (kbd "C-x p i") 'org-cliplink)
+
+;; Keychain
+(global-set-key (kbd "C-c k") 'keychain-refresh-environment)
