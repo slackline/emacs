@@ -64,7 +64,7 @@
 
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
-(require 'org-ref
+(use-package org-ref
   :init
   (setq org-ref-bibliography-notes "~/org/ref-notes.org"
 	org-ref-default-bibliography '("~/org/references.bib")
