@@ -28,9 +28,9 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 
 ;; use flycheck not flymake with elpy
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 ;; Add flycheck-mypy to ensure static typing
 (use-package flycheck-mypy
   :defer 3

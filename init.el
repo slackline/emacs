@@ -82,121 +82,93 @@
 (add-to-list 'load-path "~/.config/emacs/settings")
 
 ;;; Keybindings
-;(require 'key-bindings)
 (load "~/.config/emacs/settings/key-bindings.el")
 
 ;;; Autopair
-;(require 'autopair-settings)
 (load "~/.config/emacs/settings/autopair-settings.el")
 
 ;;; Centaur Tabs
-;(require 'centaur-tabs-settings)
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 
 ;;; Conda
-;(require 'conda-settings)
 (load "~/.config/emacs/settings/conda-settings.el")
 
 ;;; Flyspell
-;(require 'flyspell-settings)
 (load "~/.config/emacs/settings/flyspell-settings.el")
 
 ;;; EBIB
-;(require 'ebib-settings)
 (load "~/.config/emacs/settings/ebib-settings.el")
 
 ;;; EIN
-;(require 'ein-settings)
 (load "~/.config/emacs/settings/ein-settings.el")
 
 ;;; ESS
-;(require 'ess-settings)
 (load "~/.config/emacs/settings/ess-settings.el")
 
 ;;; Highlight Indents
-;(require 'highlight-indent-guides-settings)
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 
 ;;; Highlight Parenthesis
-;(require 'highlight-parentheses-settings)
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 
+;;; Highlight Parenthesis
+(load "~/.config/emacs/settings/jedi-settings.el")
+
 ;;; JS Environment
-;(require 'js-settings)
 (load "~/.config/emacs/settings/js-settings.el")
 
 ;;; Keychain Environment
-;(require 'keychain-envinronment-settings)
 (load "~/.config/emacs/settings/keychain-environment-settings.el")
 
-
 ;;; Latex
-;(require 'latex-settings)
 (load "~/.config/emacs/settings/latex-settings.el")
 
 ;;; Literate Calc Mode
-;(require 'latex-settings)
 (load "~/.config/emacs/settings/literate-calc-settings.el")
 
 ;;; Magit
-;(require 'magit-settings)
 (load "~/.config/emacs/settings/magit-settings.el")
 
 ;;; Markdown
-;(require 'markdown-settings)
 (load "~/.config/emacs/settings/markdown-settings.el")
 
 ;;; MPDel
-;(require 'mpdel-settings)
 (load "~/.config/emacs/settings/mpdel-settings.el")
 
 ;;; Org-mode
-;(require 'org-mode-settings)
 (load "~/.config/emacs/settings/org-mode-settings.el")
 
 ;;; Org-capture
-;(require 'org-capture-settings)
 (load "~/.config/emacs/settings/org-capture-settings.el")
 
 ;;; Polymode
-;(require 'polymode-settings)
 (load "~/.config/emacs/settings/polymode-settings.el")
 
 ;;; Powerline
-;(require 'powerline-settings)
 (load "~/.config/emacs/settings/powerline-settings.el")
 
 ;;; Python
-;(require 'python-settings)
 (load "~/.config/emacs/settings/python-settings.el")
 
 ;;; pylint
-;(require 'pylint-settings)
 ;(load "~/.config/emacs/settings/pylint-settings.el")
 
 ;;; Rainbow delimiters
-;(require 'rainbow-delimiters-settings)
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 
 ;;; Shell Interpreter
-;(require 'shell-interpreter-settings)
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
 ;;; Themes
-;(require "~/.config/emacs/settings/theme-settings.el")
 (load "~/.config/emacs/settings/theme-settings.el")
 
-
 ;;; tramp settings
-;(require "~/.config/emacs/settings/tramp-settings.el")
 (load "~/.config/emacs/settings/tramp-settings.el")
 
 ;;; vterm settings
-;(require "~/.config/emacs/settings/vterm-settings.el")
 (load "~/.config/emacs/settings/vterm-settings.el")
 
 ;;; ytdl settings
-;(require "~/.config/emacs/settings/ytdl-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
 
@@ -216,4 +188,4 @@
 
 
 ;; Set default major mode for *scratch*
-(setq initial-major-mode 'python-mode)
+;; (setq initial-major-mode 'python-mode)

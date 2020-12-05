@@ -8,6 +8,7 @@
     better-defaults
     blacken
     centaur-tabs
+    company-jedi
     conda
     ein
     elpy
@@ -21,7 +22,7 @@
     highlight-parentheses
     inf-mongo
     ivy-mpdel
-    jedi
+    ;; jedi
     json-mode
     keychain-environment
     latex-extra
