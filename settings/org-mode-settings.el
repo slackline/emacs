@@ -2,6 +2,8 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-font-lock-mode 1)
 (setq org-directory        "~/org/"
+      org-agenda-files '("~/org/daily_tasks.org")
+      org-roam-directory "~/org"
       org-startup-indented 1
       org-agenda-include-diary t
       org-log-done 'time
