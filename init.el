@@ -41,6 +41,8 @@
 
 ;; hide the startup message
 (setq inhibit-startup-message t)
+;; Remove toolbar, never use it
+(tool-bar-mode -1)
 
 ;; enable line numbers globally
 (global-linum-mode t)
