@@ -10,6 +10,7 @@
   (setq ess-eval-visibly-p nil)
   (setq ess-ask-for-ess-directory nil)
   (setq ess-eval-visibly 'nowait)
+  (setq ess-r--no-company-meta t) ;; https://github.com/emacs-ess/ESS/issues/1062
   (setq ess-use-auto-complete t))
 
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
