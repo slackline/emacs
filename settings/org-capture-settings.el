@@ -46,7 +46,7 @@
 	("C" "Cats")
 	("Cd" "Domestication" entry (file+olp "~/org/cats.org" "Domestication")
 	 "+ %t %?\n" :prepend t)
-	("Cg" "Genetics" entry (file+olp "~/org/cats.org" "Genetucs")
+	("Cg" "Genetics" entry (file+olp "~/org/cats.org" "Genetics")
 	 "+ %t %?\n" :prepend t)
 	;; Drugs
 	("d" "Psychedeleics")
