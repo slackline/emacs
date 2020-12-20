@@ -83,6 +83,9 @@
 ;; Path where settings files are kept
 (add-to-list 'load-path "~/.config/emacs/settings")
 
+;;; Shell Interpreter (has to be called early so that commands are available for hooks)
+(load "~/.config/emacs/settings/shell-interpreter-settings.el")
+
 ;;; Keybindings
 (load "~/.config/emacs/settings/key-bindings.el")
 
@@ -157,9 +160,6 @@
 
 ;;; Rainbow delimiters
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
-
-;;; Shell Interpreter
-(load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
 ;;; Themes
 (load "~/.config/emacs/settings/theme-settings.el")

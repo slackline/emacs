@@ -20,4 +20,4 @@
    :interpreter "bash"
    :form
    (message "rsync org html output to OVH")
-   (message (shell-command-to-string "rsync ~/org/*.html ~/org/export ~/org/training ovh:~/www/. --exclude='*.org'"))))
+   (message (shell-command-to-string "rsync -av ~/org/*.html ~/org/export ~/org/training ovh:~/www/. --exclude='*.org'"))))

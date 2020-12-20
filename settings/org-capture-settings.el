@@ -43,10 +43,10 @@
 	("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
          "* TODO %t %?\n" :prepend t)
 	;; Computing
-	("C" "Cats")
-	("Cd" "Domestication" entry (file+olp "~/org/cats.org" "Domestication")
+	("z" "Cats")
+	("zd" "Domestication" entry (file+olp "~/org/cats.org" "Domestication")
 	 "+ %t %?\n" :prepend t)
-	("Cg" "Genetics" entry (file+olp "~/org/cats.org" "Genetics")
+	("zg" "Genetics" entry (file+olp "~/org/cats.org" "Genetics")
 	 "+ %t %?\n" :prepend t)
 	;; Drugs
 	("d" "Psychedeleics")

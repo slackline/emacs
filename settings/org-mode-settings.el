@@ -84,6 +84,7 @@
 			     (python . t)))
 ;; Hooks for in-line images (https://emacs.stackexchange.com/a/21267/10100)
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+(add-hook 'org-babel-after-execute-hook 'rsync_html)
 (add-hook 'org-mode-hook 'org-display-inline-images)
 
 
