@@ -13,7 +13,7 @@
 ;; ------------------------------------------------------------------------
 ;; COMMANDS
 ;; rsync html versions of org files
-(defun rsync_html ()
+(defun rsync-html ()
   (interactive)
   (with-shell-interpreter
    :path "~/org"
