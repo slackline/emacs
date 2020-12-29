@@ -3,6 +3,8 @@
 
 ;; Misc
 (global-set-key [(control c) r] 'revert-buffer)
+(global-set-key (kbd "C-c e") 'eval-region)
+(global-set-key (kbd "C-c E") 'eval-buffer)
 
 ;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -19,3 +21,6 @@
 
 ;; Keychain
 (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
+
+;; Custom commands
+(global-set-key (kbd "C-c r") 'rsync-html)
