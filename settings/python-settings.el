@@ -1,7 +1,10 @@
-;; PYTHON CONFIGURATION
-;; --------------------------------------
-;; elpy configuration
-(elpy-enable)
+;;; PYTHON CONFIGURATION
+;;; --------------------------------------
+;;; elpy configuration
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
 (setq elpy-rpc-backend "jedi")
 
 

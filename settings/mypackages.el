@@ -1,5 +1,5 @@
-;; MYPACKAGES CONFIGURATION
-;; --------------------------------------
+;;; MYPACKAGES CONFIGURATION
+;;; --------------------------------------
 (defvar myPackages
   '(alert
     autopair
@@ -9,8 +9,10 @@
     blacken
     centaur-tabs
     company-jedi
+    company-prescient
     conda
     ein
+    elfeed-org
     elpy
     ess
     ess-smart-underscore
@@ -45,6 +47,7 @@
     poly-org
     poly-R
     powerline
+    prescient
     projectile
     projectile-git-autofetch
     py-autopep8

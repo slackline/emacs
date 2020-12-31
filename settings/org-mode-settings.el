@@ -83,18 +83,19 @@
  'org-babel-load-languages '((R . t)
 			     (python . t)))
 ;; Hooks for in-line images (https://emacs.stackexchange.com/a/21267/10100)
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
-(add-hook 'org-babel-after-execute-hook 'rsync_html)
 (add-hook 'org-mode-hook 'org-display-inline-images)
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+;;; Hook to rsync html output to OVH on export
+(add-hook 'org-html-export-to-html 'rsync-html)
 
 
-;; Skeleton
-(define-skeleton org-skeleton
-  "Header info for a emacs-org file."
+;; Skeletons
+(define-skeleton org-R-skeleton
+  "Header info for a org file with R."
   "Title: "
   "#+TITLE:" str " \n"
   "#+AUTHOR: Neil Shephard\n"
-  "#+EMAIL: nshephard@gmail.com\n"
+  "#+EMAIL: nshephard@protonmail.com\n"
   "#+PROPERTY: header-args:R  :session *org-R*\n"
   "#+PROPERTY: header-args:R  :cache yes\n"
   "#+PROPERTY: header-args:R  :results graphics\n"
@@ -105,7 +106,25 @@
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
  )
-(global-set-key [C-S-f4] 'org-skeleton)
+(global-set-key [C-S-f4] 'org-R-skeleton)
+
+(define-skeleton org-python-skeleton
+  "Header info for a org file with Python."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Neil Shephard\n"
+  "#+EMAIL: nshephard@gmail.com\n"
+  "#+PROPERTY: header-args:python  :session *org-python*\n"
+  "#+PROPERTY: header-args:python  :cache yes\n"
+  "#+PROPERTY: header-args:python  :results graphics\n"
+  "#+PROPERTY: header-args:python  :width 1024\n"
+  "#+PROPERTY: header-args:python  :height 768\n"
+  "#+PROPERTY: header-args:python  :tangle yes\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
+  "-----"
+ )
+(global-set-key [C-S-f5] 'org-python-skeleton)
 
 ;; Default header arguments
 (add-to-list 'org-babel-default-header-args
