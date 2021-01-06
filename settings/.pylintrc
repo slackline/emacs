@@ -132,7 +132,11 @@ disable=apply-builtin,
         xrange-builtin,
         xreadlines-attribute,
         zip-builtin-not-iterating,
-        no-member
+        no-member,
+        duplicate-code,
+        cyclic-import,
+        logging-format-interpolation,
+        logging-fstring-interpolation
 
 
 # Enable the message, report, category or checker with the given id(s). You can
@@ -301,11 +305,12 @@ function-naming-style=snake_case
 good-names=i,
            j,
            k,
-    	   x,
+           x,
            y,
+           z,
            ex,
-	       ax,
-    	   df,
+           ax,
+           df,
            Run,
            _,
            n,
@@ -530,7 +535,7 @@ max-branches=12
 max-locals=25
 
 # Maximum number of parents for a class (see R0901).
-max-parents=7
+max-parents=15
 
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
