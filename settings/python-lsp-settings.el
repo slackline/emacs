@@ -1,9 +1,9 @@
 ;;; PYTHON LSP CONFIGURATION
 ;;; --------------------------------------
 ;;; https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535
+
 ;; Provides workspaces with file browsing (tree file viewer)
 ;; and project management when coupled with `projectile`.
-
 (use-package treemacs
   :ensure t
   :defer t
@@ -15,17 +15,15 @@
 ;; Provide LSP-mode for python, it requires a language server.
 ;; I use `lsp-pyright`. Know that you have to `M-x lsp-restart-workspace`
 ;; if you change the virtual environment in an open python buffer.
-
 (use-package lsp-mode
-:ensure t
-:defer t
-:commands (lsp lsp-deferred)
-:init (setq lsp-keymap-prefix "C-c l")
-:hook (python-mode . lsp-deferred))
+  :ensure t
+  :defer t
+  :commands (lsp lsp-deferred)
+  :init (setq lsp-keymap-prefix "C-c l")
+  :hook (python-mode . lsp-deferred))
 
 ;; Provides completion, with the proper backend
 ;; it will provide Python completion.
-
 (use-package company
   :ensure t
   :defer t
@@ -43,8 +41,19 @@
   :ensure t
   :defer t
   :config
-  (setq lsp-ui-sideline-enable nil
-	    lsp-ui-doc-delay 2)
+  (setq lsp-ui-doc-delay 2
+	lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'top
+        lsp-ui-doc-include-signature t
+        lsp-ui-sideline-enable nil
+        lsp-ui-flycheck-enable t
+        lsp-ui-flycheck-list-position 'right
+        lsp-ui-flycheck-live-reporting t
+        lsp-ui-peek-enable t
+        lsp-ui-peek-list-width 60
+        lsp-ui-peek-peek-height 25
+	lsp-ui-sideline-enable nil)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
 	      ("C-c i" . lsp-ui-imenu)))
