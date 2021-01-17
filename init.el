@@ -153,7 +153,8 @@
 (load "~/.config/emacs/settings/powerline-settings.el")
 
 ;;; Python
-(load "~/.config/emacs/settings/python-settings.el")
+;;(load "~/.config/emacs/settings/python-settings.el")
+(load "~/.config/emacs/settings/python-lsp-settings.el")
 
 ;;; pylint
 ;(load "~/.config/emacs/settings/pylint-settings.el")

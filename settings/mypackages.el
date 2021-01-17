@@ -11,6 +11,7 @@
     company-jedi
     company-prescient
     conda
+    dap-mode
     ein
     elfeed-org
     elpy
@@ -20,6 +21,7 @@
     flycheck
     gitlab
     helm-org
+    hide-mode-line
     highlight-indent-guides
     highlight-parentheses
     inf-mongo
@@ -30,6 +32,8 @@
     latex-extra
     latex-preview-pane
     literate-calc-mode
+    lsp-pyright
+    lsp-ui
     magit
     magit-todos
     mmm-mode
@@ -59,11 +63,13 @@
     python-mode
     python-pytest
     rainbow-delimiters
+    treemacs
     use-package
     vterm
     wide-column
     with-shell-interpreter
     yaml-mode
+    yapfify
     ytdl))
 
 ;; Make sure all of the above packages are installed
