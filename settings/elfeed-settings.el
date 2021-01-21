@@ -12,7 +12,7 @@
   (elfeed-org)
   (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elfeed feed reader                                                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; shortcut functions
@@ -32,10 +32,10 @@
   (interactive)
   (bookmark-maybe-load-default-file)
   (bookmark-jump "elfeed-computing"))
-(defun nds:elfeed-show-general ()
+(defun nds:elfeed-show-reading ()
   (interactive)
   (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-general"))
+  (bookmark-jump "elfeed-reading"))
 (defun nds:elfeed-show-jobs ()
   (interactive)
   (bookmark-maybe-load-default-file)
@@ -70,7 +70,7 @@
               ("A" . nds:elfeed-show-all)
               ("c" . nds:elfeed-show-climbing)
               ("C" . nds:elfeed-show-computing)
-              ("G" . nds:elfeed-show-general)
+              ("R" . nds:elfeed-show-reading)
               ("H" . nds:elfeed-show-humor)
               ("J" . nds:elfeed-show-jobs)
               ("S" . nds:elfeed-show-statistics)
