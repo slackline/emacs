@@ -12,6 +12,46 @@
 	  treemacs-width 24)
   :bind ("C-c t" . treemacs))
 
+;;; Virtual Environment Setuip
+;; Define location of virtual environments by host and set venv-location
+(setq venv-byhost
+      '(("kimura" . "~/.virtualenvs/")
+	("fisher" . "~/.virtualenvs/")
+	("ovh" . "~/.virtualenvs/")
+	("alarmpi" . "~/.virtualenvs/")
+	("alarmpi-4b" . "~/.virtualenvs/")
+	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+      venv-location (cdr
+		     (assoc system-name venv-byhost))
+      default-venv-byhost
+      '(("kimura" . "~/.virtualenvs/python3_9")
+	("fisher" . "~/.virtualenvs/default")
+	("ovh" . "~/.virtualenvs/default")
+	("alarmpi" . "~/.virtualenvs/default")
+	("alarmpi-4b" . "~/.virtualenvs/default")
+	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+      default-venv (cdr
+		     (assoc system-name default-venv-byhost))
+      elpy-rpc-python-command "python3"
+      python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt"
+      python-environment-directory venv-location)
+
+;; Activate virtual environment based on location (set above)
+;; (pyvenv-activate venv-location)
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  (pyvenv-mode t)
+  ;; (pyvenv-activate default-venv) ;; Causes : env-diff (("SHLVL" . "1")) ???
+  (setq pyvenv-post-activate-hooks
+        (list (lambda ()
+               (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
+  (setq pyvenv-post-deactivate-hooks
+        (list (lambda ()
+		(setq python-shell-interpreter "python3")))))
+
 ;; Provide LSP-mode for python, it requires a language server.
 ;; I use `lsp-pyright`. Know that you have to `M-x lsp-restart-workspace`
 ;; if you change the virtual environment in an open python buffer.

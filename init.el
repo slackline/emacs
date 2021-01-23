@@ -107,6 +107,9 @@
 ;;; EIN
 (load "~/.config/emacs/settings/ein-settings.el")
 
+;;; EIN
+(load "~/.config/emacs/settings/elfeed-settings.el")
+
 ;;; ESS
 (load "~/.config/emacs/settings/ess-settings.el")
 

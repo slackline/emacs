@@ -8,6 +8,7 @@
     better-defaults
     blacken
     centaur-tabs
+    challenger-deep-theme
     company-jedi
     company-prescient
     conda
