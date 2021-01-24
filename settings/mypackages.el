@@ -10,6 +10,7 @@
     centaur-tabs
     challenger-deep-theme
     company-jedi
+    company-lsp
     company-prescient
     conda
     dap-mode
