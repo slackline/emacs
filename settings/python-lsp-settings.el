@@ -25,7 +25,7 @@
 		     (assoc system-name venv-byhost))
       default-venv-byhost
       '(("kimura" . "~/.virtualenvs/python3_9")
-	("fisher" . "~/.virtualenvs/default")
+	("fisher" . "~/.virtualenvs/python3_9")
 	("ovh" . "~/.virtualenvs/default")
 	("alarmpi" . "~/.virtualenvs/default")
 	("alarmpi-4b" . "~/.virtualenvs/default")

@@ -10,15 +10,24 @@
 
 ;;; Virtual Environment Setuip
 ;; Define location of virtual environments by host and set venv-location
-(setq virtualenv-byhost
+(setq venv-byhost
+      '(("kimura" . "~/.virtualenvs/")
+	("fisher" . "~/.virtualenvs/")
+	("ovh" . "~/.virtualenvs/")
+	("alarmpi" . "~/.virtualenvs/")
+	("alarmpi-4b" . "~/.virtualenvs/")
+	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+      venv-location (cdr
+		     (assoc system-name venv-byhost))
+      default-venv-byhost
       '(("kimura" . "~/.virtualenvs/python3_9")
-	("fisher" . "~/.virtualenvs/default")
+	("fisher" . "~/.virtualenvs/python3_9")
 	("ovh" . "~/.virtualenvs/default")
 	("alarmpi" . "~/.virtualenvs/default")
 	("alarmpi-4b" . "~/.virtualenvs/default")
 	("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
-      venv-location (cdr
-		     (assoc system-name virtualenv-byhost))
+      default-venv (cdr
+		     (assoc system-name default-venv-byhost))
       elpy-rpc-python-command "python3"
       python-shell-interpreter "ipython"
       python-shell-interpreter-args "-i --simple-prompt"
