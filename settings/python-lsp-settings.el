@@ -34,6 +34,7 @@
 		     (assoc system-name default-venv-byhost))
       elpy-rpc-python-command "python3"
       python-shell-interpreter "ipython"
+;;      python-shell-interpreter-args "-i --simple-prompt -c 'import pandas as pd' -c 'import pandas as pd' -c 'from pathlib import Path'"
       python-shell-interpreter-args "-i --simple-prompt"
       python-environment-directory venv-location)
 
@@ -43,14 +44,8 @@
   :ensure t
   :defer t
   :config
-  (pyvenv-mode t)
-  ;; (pyvenv-activate default-venv) ;; Causes : env-diff (("SHLVL" . "1")) ???
-  (setq pyvenv-post-activate-hooks
-        (list (lambda ()
-               (setq python-shell-interpreter (concat pyvenv-virtual-env "bin/python3")))))
-  (setq pyvenv-post-deactivate-hooks
-        (list (lambda ()
-		(setq python-shell-interpreter "python3")))))
+  (pyvenv-mode t))
+
 
 ;; Provide LSP-mode for python, it requires a language server.
 ;; I use `lsp-pyright`. Know that you have to `M-x lsp-restart-workspace`
