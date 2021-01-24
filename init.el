@@ -134,6 +134,9 @@
 ;;; Literate Calc Mode
 (load "~/.config/emacs/settings/literate-calc-settings.el")
 
+;;; LSP Mode
+(load "~/.config/emacs/settings/lsp-settings.el")
+
 ;;; Magit
 (load "~/.config/emacs/settings/magit-settings.el")
 
@@ -156,8 +159,8 @@
 (load "~/.config/emacs/settings/powerline-settings.el")
 
 ;;; Python
-;;(load "~/.config/emacs/settings/python-settings.el")
-(load "~/.config/emacs/settings/python-lsp-settings.el")
+(load "~/.config/emacs/settings/python-settings.el")
+;; (load "~/.config/emacs/settings/python-lsp-settings.el")
 
 ;;; pylint
 ;(load "~/.config/emacs/settings/pylint-settings.el")
