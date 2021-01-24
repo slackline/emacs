@@ -33,8 +33,8 @@
       default-venv (cdr
 		     (assoc system-name default-venv-byhost))
       elpy-rpc-python-command "python3"
-      python-shell-interpreter "ipython"
-;;      python-shell-interpreter-args "-i --simple-prompt -c 'import pandas as pd' -c 'import pandas as pd' -c 'from pathlib import Path'"
+      ;; python-shell-interpreter "ipython"
+      ;;      python-shell-interpreter-args "-i --simple-prompt -c 'import pandas as pd' -c 'import pandas as pd' -c 'from pathlib import Path'"
       python-shell-interpreter-args "-i --simple-prompt"
       python-environment-directory venv-location)
 
