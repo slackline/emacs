@@ -1,4 +1,4 @@
-;;; PYTHON CONFIGURATION
+;;; PYTHON ELPY CONFIGURATION
 ;;; --------------------------------------
 ;;; elpy configuration
 (use-package elpy

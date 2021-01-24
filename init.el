@@ -1,7 +1,6 @@
-;; init.el --- Emacs configuration
-
-;; LOAD PACKAGES
-;; --------------------------------------
+;;; init.el --- Emacs configuration
+;;; LOAD PACKAGES
+;;; --------------------------------------
 ;; (setq debug-on-error t)
 (require 'package)
 (package-initialize)

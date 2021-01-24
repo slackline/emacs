@@ -1,3 +1,5 @@
+;;; PYTHON CONFIGURATION
+;;; --------------------------------------
 ;; Built-in Python utilities
 (use-package python
   :ensure t
@@ -58,6 +60,17 @@
   (add-hook 'pyvenv-post-activate-hooks (lambda ()
 					  (pyvenv-restart-python)))
   :hook (python-mode . pyvenv-mode))
+
+;; Formatting - these are older options culled from elpy, work out what I want to use
+;; (use-package py-autopep8
+;;   :defer 3
+;;   :hook (python-mode . py-autopep8-enable-on-save))
+;; (use-package py-yapf
+;;   :defer 3
+;;   :hook (python-mode . py-yapf-enable-on-save)
+;; (use-package blacken
+;;   :defer 3
+;;   :hook (python-mode . blacken-mode)
 
 ;; Format the python buffer following YAPF rules
 ;; There's also blacken if you like it better.
