@@ -124,7 +124,7 @@
 	("fub" "Breads" item (file+olp "~/org/food_drink.org" "Indian" "Breads")
          "+ %?\n" :prepend t)
 	("fi" "Italian")
-	("fip" "Pasta" item (file+olp "~/org/food_drink.org" "Italian" "Pasta")
+	("fip" "Pasta" item (file+olp "~/org/food_drink.org" "Italian" "Pasta Dishes")
          "+ %?\n" :prepend t)
 	("fiz" "Pizza" item (file+olp "~/org/food_drink.org" "Italian" "Pizza")
          "+ %?\n" :prepend t)
