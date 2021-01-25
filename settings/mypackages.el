@@ -7,6 +7,7 @@
     auto-package-update
     better-defaults
     blacken
+    bug-hunter
     centaur-tabs
     challenger-deep-theme
     company-jedi
