@@ -22,7 +22,7 @@
     ess-smart-underscore
     forge
     flycheck
-    flycheck-shellcheck
+    ;; flycheck-shellcheck
     gitlab
     helm-org
     hide-mode-line
