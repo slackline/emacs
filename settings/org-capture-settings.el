@@ -97,6 +97,8 @@
          "+  %?\n" :prepend t)
 	("etcfl" "Fingerboarding" item (file+olp "~/org/training/training.org" "Resources" "Climbing" "Fingerboarding" "Lattice")
          "+  %?\n" :prepend t)
+	("etch" "Hoopers Beta" item (file+olp "~/org/training/training.org" "Resources" "Climbing" "Hoopers Beta")
+          "+  %?\n" :prepend t)
 	("etcm" "Miscellaneous" item (file+olp "~/org/training/training.org" "Resources" "Climbing" "Miscellaneous")
           "+  %?\n" :prepend t)
 	("etcs" "Shauna Coxy" item (file+olp "~/org/training/training.org" "Resources" "Climbing" "Shauna Coxy")

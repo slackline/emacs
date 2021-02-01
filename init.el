@@ -176,6 +176,9 @@
 ;;; vterm settings
 (load "~/.config/emacs/settings/vterm-settings.el")
 
+;;; weblorg settings
+;; (load "~/.config/emacs/settings/weblorg-settings.el")
+
 ;;; ytdl settings
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
