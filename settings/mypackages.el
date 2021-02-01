@@ -70,6 +70,7 @@
     treemacs
     use-package
     vterm
+    weblorg
     wide-column
     with-shell-interpreter
     yaml-mode
