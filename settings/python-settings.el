@@ -34,7 +34,7 @@
   :defer t
   :config
   ;; Setting work on to easily switch between environments
-  (setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+  (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
   ;; Display virtual envs in the menu bar
   (setq pyvenv-menu t
 	venv-byhost
