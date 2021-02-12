@@ -5,6 +5,9 @@
 
 (add-to-list 'tramp-default-method-alist '("" "neil" "ssh"))
 
+;; Set prompt so it doesn't hang
+(setq shell-prompt-pattern '"^[^#$%>\n]*~?[#$%>] *")
+
 ;; Set default usernames for different hosts and a global default.
 (add-to-list 'tramp-default-user-alist
              '("ssh" ".*ovh'" "arch"))
