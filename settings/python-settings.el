@@ -1,24 +1,5 @@
 ;;; PYTHON CONFIGURATION
 ;;; --------------------------------------
-;; Built-in Python utilities
-(use-package python
-  :ensure t
-  :config
-  ;; Remove guess indent python message
-  (setq python-indent-guess-indent-offset-verbose nil)
-  ;; Use IPython when available or fall back to regular Python
-  (cond
-   ((executable-find "ipython")
-    (progn
-      (setq python-shell-buffer-name "IPython")
-      (setq python-shell-interpreter "ipython")
-      (setq python-shell-interpreter-args "-i --simple-prompt")))
-   ((executable-find "python3")
-    (setq python-shell-interpreter "python3"))
-   ((executable-find "python2")
-    (setq python-shell-interpreter "python2"))
-   (t
-    (setq python-shell-interpreter "python"))))
 
 ;; Hide the modeline for inferior python processes
 (use-package inferior-python-mode
@@ -60,6 +41,30 @@
   (add-hook 'pyvenv-post-activate-hooks (lambda ()
 					  (pyvenv-restart-python)))
   :hook (python-mode . pyvenv-mode))
+
+;; Built-in Python utilities
+(use-package python
+  :ensure t
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil
+	python-shell-interpreter "ipython"
+	python-shell-interpreter-args "-i --simple-prompt"
+	python-environment-directory venv-location))
+  ;; Use IPython when available or fall back to regular Python
+  ;; (cond
+  ;;  ((executable-find "ipython")
+  ;;   (progn
+  ;;     (setq python-shell-buffer-name "IPython")
+  ;;     (setq python-shell-interpreter "ipython")
+  ;;     (setq python-shell-interpreter-args "-i --simple-prompt")))
+  ;;  ((executable-find "python3")
+  ;;   (setq python-shell-interpreter "python3"))
+  ;;  ((executable-find "python2")
+  ;;   (setq python-shell-interpreter "python2"))
+  ;;  (t
+  ;;   (setq python-shell-interpreter "python"))))
+
 
 ;; Formatting - these are older options culled from elpy, work out what I want to use
 ;; (use-package py-autopep8
