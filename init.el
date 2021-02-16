@@ -85,102 +85,49 @@
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
-;;; Keybindings
+;;; Keybindings and editor settings
 (load "~/.config/emacs/settings/key-bindings.el")
-
-;;; Autopair
 (load "~/.config/emacs/settings/autopair-settings.el")
-
-;;; Centaur Tabs
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
-
-;;; Conda
-(load "~/.config/emacs/settings/conda-settings.el")
-
-;;; Flyspell
-(load "~/.config/emacs/settings/flyspell-settings.el")
-
-;;; EBIB
-(load "~/.config/emacs/settings/ebib-settings.el")
-
-;;; EIN
-(load "~/.config/emacs/settings/ein-settings.el")
-
-;;; EIN
-(load "~/.config/emacs/settings/elfeed-settings.el")
-
-;;; ESS
-(load "~/.config/emacs/settings/ess-settings.el")
-
-;;; Highlight Indents
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
-
-;;; Highlight Parenthesis
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
-
-;;; Highlight Parenthesis
-(load "~/.config/emacs/settings/jedi-settings.el")
-
-;;; JS Environment
-(load "~/.config/emacs/settings/js-settings.el")
-
-;;; Keychain Environment
-(load "~/.config/emacs/settings/keychain-environment-settings.el")
-
-;;; Latex
-(load "~/.config/emacs/settings/latex-settings.el")
-
-;;; Literate Calc Mode
-(load "~/.config/emacs/settings/literate-calc-settings.el")
-
-;;; LSP Mode
-(load "~/.config/emacs/settings/lsp-settings.el")
-
-;;; Magit
-(load "~/.config/emacs/settings/magit-settings.el")
-
-;;; Markdown
-(load "~/.config/emacs/settings/markdown-settings.el")
-
-;;; MPDel
-(load "~/.config/emacs/settings/mpdel-settings.el")
-
-;;; Org-mode
-(load "~/.config/emacs/settings/org-mode-settings.el")
-
-;;; Org-capture
-(load "~/.config/emacs/settings/org-capture-settings.el")
-
-;;; Polymode
-(load "~/.config/emacs/settings/polymode-settings.el")
-
-;;; Powerline
-(load "~/.config/emacs/settings/powerline-settings.el")
-
-;;; Python
-(load "~/.config/emacs/settings/python-settings.el")
-;; (load "~/.config/emacs/settings/python-lsp-settings.el")
-
-;;; pylint
-;(load "~/.config/emacs/settings/pylint-settings.el")
-
-;;; Rainbow delimiters
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 
-;;; Themes
-(load "~/.config/emacs/settings/theme-settings.el")
+;;; Python
+(load "~/.config/emacs/settings/conda-settings.el")
+(load "~/.config/emacs/settings/ein-settings.el")
+(load "~/.config/emacs/settings/python-settings.el")
+;(load "~/.config/emacs/settings/pylint-settings.el")
 
-;;; tramp settings
+;;; IDE / LSP
+(load "~/.config/emacs/settings/ess-settings.el")
+(load "~/.config/emacs/settings/flyspell-settings.el")
+(load "~/.config/emacs/settings/jedi-settings.el")
+(load "~/.config/emacs/settings/js-settings.el")
+(load "~/.config/emacs/settings/latex-settings.el")
+(load "~/.config/emacs/settings/lsp-settings.el")
+(load "~/.config/emacs/settings/magit-settings.el")
+(load "~/.config/emacs/settings/markdown-settings.el")
+(load "~/.config/emacs/settings/polymode-settings.el")
+
+;;; Org / Bib
+(load "~/.config/emacs/settings/ebib-settings.el")
+(load "~/.config/emacs/settings/org-capture-settings.el")
+(load "~/.config/emacs/settings/org-mode-settings.el")
+
+;;; Misc
+(load "~/.config/emacs/settings/elfeed-settings.el")
+(load "~/.config/emacs/settings/keychain-environment-settings.el")
+(load "~/.config/emacs/settings/literate-calc-settings.el")
+(load "~/.config/emacs/settings/mpdel-settings.el")
 (load "~/.config/emacs/settings/tramp-settings.el")
-
-;;; vterm settings
 (load "~/.config/emacs/settings/vterm-settings.el")
-
-;;; weblorg settings
-;; (load "~/.config/emacs/settings/weblorg-settings.el")
-
-;;; ytdl settings
+(load "~/.config/emacs/settings/weblorg-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
+
+;;; Themes
+(load "~/.config/emacs/settings/powerline-settings.el")
+(load "~/.config/emacs/settings/theme-settings.el")
 
 
 
