@@ -122,7 +122,7 @@
 (load "~/.config/emacs/settings/mpdel-settings.el")
 (load "~/.config/emacs/settings/tramp-settings.el")
 (load "~/.config/emacs/settings/vterm-settings.el")
-(load "~/.config/emacs/settings/weblorg-settings.el")
+;; (load "~/.config/emacs/settings/weblorg-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
 ;;; Themes
