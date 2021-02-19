@@ -112,8 +112,8 @@
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
-(load "~/.config/emacs/settings/org-capture-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/org-capture-settings.el")
 
 ;;; Misc
 (load "~/.config/emacs/settings/elfeed-settings.el")
