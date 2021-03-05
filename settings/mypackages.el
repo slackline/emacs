@@ -17,6 +17,7 @@
     dap-mode
     ein
     elfeed-org
+    elfeed-web
     elpy
     ess
     ess-smart-underscore

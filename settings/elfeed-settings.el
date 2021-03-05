@@ -49,20 +49,29 @@
   (bookmark-maybe-load-default-file)
   (bookmark-jump "elfeed-daily"))
 ;; functions to support syncing .elfeed between machines
-;; makes sure elfeed reads index from disk before launching
 (defun nds:elfeed-load-db-and-open ()
   "Wrapper to load the elfeed db from disk before opening"
   (interactive)
   (elfeed-db-load)
   (elfeed)
-  (elfeed-search-update--force))
+  (elfeed-search-update--force)
+  (elfeed-update))
 
-;;write to disk when quiting
 (defun nds:elfeed-save-db-and-bury ()
   "Wrapper to save the elfeed db to disk before burying buffer"
   (interactive)
   (elfeed-db-save)
   (quit-window))
+
+(defun nds:elfeed-updater ()
+  "Wrapper to load the elfeed db from disk before opening"
+  (interactive)
+  (elfeed-db-save)
+  (quit-window)
+  (elfeed-db-load)
+  (elfeed)
+  (elfeed-search-update--force)
+  (elfeed-update))
 
 (use-package elfeed
   :ensure t
@@ -76,3 +85,11 @@
               ("S" . nds:elfeed-show-statistics)
               ("D" . nds:elfeed-show-daily)
               ("q" . nds:elfeed-save-db-and-bury)))
+
+
+;; Use elfeed-web to periodically update
+(use-package elfeed-web
+  :ensure t)
+(run-with-timer 0 (* 30 60) 'nds:elfeed-updater)
+(setq httpd-port 8461)
+(elfeed-web-start)
