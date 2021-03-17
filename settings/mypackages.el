@@ -4,6 +4,7 @@
   '(alert
     autopair
     auto-compile
+    auto-complete
     auto-package-update
     better-defaults
     blacken
