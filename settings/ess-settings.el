@@ -34,5 +34,3 @@
 ;;; Auto-complete and ESS http://goo.gl/utAi2Z
 (use-package auto-complete)
 (use-package auto-complete-config)
-(ac-config-default)
-(auto-complete-mode)
