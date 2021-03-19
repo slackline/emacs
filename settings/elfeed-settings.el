@@ -90,6 +90,8 @@
 ;; Use elfeed-web to periodically update
 (use-package elfeed-web
   :ensure t)
-(run-with-timer 0 (* 30 60) 'nds:elfeed-updater)
+;; run-with-timer takes an argument in seconds
+;; (* 30 60) therefore returns 30 minutes in seconds
+(run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
 (setq httpd-port 8461)
 (elfeed-web-start)
