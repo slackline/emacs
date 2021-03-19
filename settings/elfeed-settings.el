@@ -92,6 +92,8 @@
   :ensure t)
 ;; run-with-timer takes an argument in seconds
 ;; (* 30 60) therefore returns 30 minutes in seconds
-(run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
+;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
+;; Alternatively we run at 07:00 each day
+(run-at-time "07:00" nil 'nds:elfeed-updater)
 (setq httpd-port 8461)
 (elfeed-web-start)
