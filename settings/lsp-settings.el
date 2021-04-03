@@ -24,6 +24,7 @@
 	      lsp-bash-highlight-parsing-errors t)
   :hook ((python-mode . lsp-deferred)
 	 (bash-mode . lsp-deferred)
+	 (sh-mode . lsp-deferred)
 	 (R-mode . lsp-deferred)))
 
 ;; Provides completion, with the proper backend
@@ -71,16 +72,52 @@
   (dap-auto-configure-mode))
 
 
-;; Hide the modeline for inferior python processes
-(use-package inferior-python-mode
-  :ensure nil
-  :hook (inferior-python-mode . hide-mode-line-mode))
-
 ;; Required to hide the modeline
 (use-package hide-mode-line
   :ensure t
   :defer t)
 
+;; Hide the modeline for inferior python processes
+(use-package inferior-python-mode
+  :ensure nil
+  :hook (inferior-python-mode . hide-mode-line-mode))
+
+
+;; Required to easily switch virtual envs
+;; via the menu bar or with `pyvenv-workon`
+;; Setting the `WORKON_HOME` environment variable points
+;; at where the envs are located. I use miniconda.
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Setting work on to easily switch between environments
+  (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t
+	venv-byhost
+	'(("kimura" . "~/.virtualenvs/")
+	  ("fisher" . "~/.virtualenvs/")
+	  ("ovh" . "~/.virtualenvs/")
+	  ("alarmpi" . "~/.virtualenvs/")
+	  ("alarmpi-4b" . "~/.virtualenvs/")
+	  ("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+	venv-location (cdr
+		       (assoc system-name venv-byhost))
+	default-venv-byhost
+	'(("kimura" . "~/.virtualenvs/python3_9")
+	  ("fisher" . "~/.virtualenvs/python3_9")
+	  ("ovh" . "~/.virtualenvs/default")
+	  ("alarmpi" . "~/.virtualenvs/default")
+	  ("alarmpi-4b" . "~/.virtualenvs/default")
+	  ("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+	default-venv (cdr
+		      (assoc system-name default-venv-byhost))
+	python-environment-directory venv-location)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+					  (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode))
 
 ;; Language server for Python
 ;; Read the docs for the different variables set in the config.
