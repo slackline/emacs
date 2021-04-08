@@ -1,17 +1,29 @@
 ;; ESS CONFIGURATION
 ;; --------------------------------------
 (use-package ess
+  :ensure t
   :defer 1
+;  :mode ("\\.R\\" , ess-rmode)
   :init
-  (setq comint-input-ring-size 1000)
-  (setq ess-indent-level 4)
-  (setq ess-arg-function-offset 4)
-  (setq ess-else-offset 4)
-  (setq ess-eval-visibly-p nil)
-  (setq ess-ask-for-ess-directory nil)
-  (setq ess-eval-visibly 'nowait)
-  (setq ess-r--no-company-meta t) ;; https://github.com/emacs-ess/ESS/issues/1062
-  (setq ess-use-auto-complete t))
+  (setq comint-input-ring-size 1000
+        ess-indent-level 4
+        ess-arg-function-offset 4
+        ess-else-offset 4
+        ess-eval-visibly-p nil
+        ess-ask-for-ess-directory nil
+        ess-eval-visibly 'nowait
+        ess-r--no-company-meta t ;; https://github.com/emacs-ess/ESS/issues/1062
+        ess-use-auto-complete t))
+
+  ;; (setq comint-input-ring-size 1000)
+  ;; (setq ess-indent-level 4)
+  ;; (setq ess-arg-function-offset 4)
+  ;; (setq ess-else-offset 4)
+  ;; (setq ess-eval-visibly-p nil)
+  ;; (setq ess-ask-for-ess-directory nil)
+  ;; (setq ess-eval-visibly 'nowait)
+  ;; (setq ess-r--no-company-meta t) ;; https://github.com/emacs-ess/ESS/issues/1062
+  ;; (setq ess-use-auto-complete t)
 
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
 (use-package ess-smart-underscore)
@@ -33,6 +45,6 @@
 (add-hook 'ess-post-run-hook 'my-ess-post-run-hook)
 ;;; Auto-complete and ESS http://goo.gl/utAi2Z
 (use-package auto-complete)
-(use-package auto-complete-config)
-(ac-config-default)
+;; (use-package auto-complete-config)
+;; (ac-config-default)
 (auto-complete-mode)

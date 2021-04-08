@@ -11,7 +11,7 @@
     bug-hunter
     centaur-tabs
     challenger-deep-theme
-    company-jedi
+    ;; company-jedi
     ;; company-lsp
     company-prescient
     conda
@@ -19,7 +19,6 @@
     ein
     elfeed-org
     elfeed-web
-    elpy
     ess
     ess-smart-underscore
     forge
@@ -38,6 +37,8 @@
     latex-extra
     latex-preview-pane
     literate-calc-mode
+    lsp-jedi
+    lsp-latex
     lsp-pyright
     lsp-ui
     magit
@@ -62,7 +63,6 @@
     projectile-git-autofetch
     py-autopep8
     py-yapf
-    pygen
     pyvenv
     pylint
     pytest

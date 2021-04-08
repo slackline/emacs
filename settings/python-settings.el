@@ -12,7 +12,7 @@
 ;; at where the envs are located. I use miniconda.
 (use-package pyvenv
   :ensure t
-  :defer t
+;;  :defer t
   :config
   ;; Setting work on to easily switch between environments
   (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
@@ -44,13 +44,15 @@
 
 ;; Built-in Python utilities
 (use-package python
+  :after (pyvenv)
   :ensure t
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil
 	python-shell-interpreter "ipython"
 	python-shell-interpreter-args "-i --simple-prompt"
-	python-environment-directory venv-location))
+	;; python-environment-directory venv-location)
+	python-environment-directory venv-location)
   ;; Use IPython when available or fall back to regular Python
   ;; (cond
   ;;  ((executable-find "ipython")
@@ -63,7 +65,8 @@
   ;;  ((executable-find "python2")
   ;;   (setq python-shell-interpreter "python2"))
   ;;  (t
-  ;;   (setq python-shell-interpreter "python"))))
+  ;;   (setq python-shell-interpreter "python")))
+  )
 
 
 ;; Formatting - these are older options culled from elpy, work out what I want to use
