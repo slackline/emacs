@@ -12,6 +12,9 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; Add local lisp for miscellaneous things
+; (add-to-list 'load-path "~/.config/emacs/lisp/")
+
 ;; Load and install mypackages
 (load "~/.config/emacs/settings/mypackages.el")
 
@@ -35,19 +38,42 @@
 (eval-when-compile
   (require 'use-package))
 (setq use-package-always-ensure t)
-;; BASIC CUSTOMIZATION
+;; BASIC CUSTOMISATION
 ;; --------------------------------------
-
-;; hide the startup message
-(setq inhibit-startup-message t)
-;; Remove toolbar, never use it
-(tool-bar-mode -1)
-
-;; enable line numbers globally
-(global-linum-mode t)
-;; Set the line length globally (https://emacs.stackexchange.com/a/30222)
-(add-hook 'text-mode-hook 'auto-fill-mode)
-(setq-default fill-column 120)
+(use-package emacs
+  :init
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (menu-bar-mode 1)
+  (global-linum-mode t)
+  (global-hl-line-mode 1)
+  :config
+  ;; Add local lisp for miscellaneous things
+  (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+  (setq inhibit-startup-message t)  ; hide the startup message
+  (setq-default fill-column 120)    ; Reset line-wrap
+  (setq-default cursor-type 'bar)   ; Line-style cursor similar to other text editors
+  (setq inhibit-startup-screen t)   ; Disable startup screen
+  (setq initial-scratch-message "") ; Make *scratch* buffer blank
+  (setq-default frame-title-format '("%b"))     ; Make window title the buffer name
+  (setq confirm-kill-processes nil)		; Stop confirming the killing of processes
+  (setq ring-bell-function 'ignore)             ; Disable bell sound
+  :bind (("C-c R" . revert-buffer)
+	 ("C-c e" . eval-region)
+	 ("C-c E" . eval-buffer)
+	 ("C-x g" . magit-status)
+	 ("C-c P" . magit-push-current-to-upstream)
+	 ("\C-cl" . org-store-link)
+	 ("\C-cc" . org-capture)
+	 ("\C-ca" . org-agenda)
+	 ("\C-cb" . org-iswitchb)
+	 ("C-x p i" . org-org-cliplink) ; From : https://github.com/rexim/org-cliplink
+	 ("C-c k" . keychain-refresh-environment)
+	 ("C-c r" . rsync-html))
+  :hook
+  (text-mode-hook . auto-fill-mode)
+  (before-save-hook . delete-trailing-whitespace)
+  )
 
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
@@ -61,11 +87,7 @@
 ;; Lowercase region
 (put 'downcase-region 'disabled nil)
 
-;; Add local lisp for miscellaneous things
-(add-to-list 'load-path "~/.config/emacs/lisp/")
 
-;; revert-buffer key binding
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; Reload a buffer from disk
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
@@ -74,7 +96,7 @@
     (revert-buffer t t))
 
 ;; Set the frames title to be that of the currently visited buffer
-(setq frame-title-format "%b")
+;; (setq frame-title-format "%b")
 
 ;; PACKAGE SPECIFIC CONFIGURATION
 ;; --------------------------------------
@@ -85,13 +107,16 @@
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
-;;; Keybindings and editor settings
-(load "~/.config/emacs/settings/key-bindings.el")
+;;; General editor settings
 (load "~/.config/emacs/settings/autopair-settings.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
+
+;;; Themes
+(load "~/.config/emacs/settings/powerline-settings.el")
+(load "~/.config/emacs/settings/theme-settings.el")
 
 ;;; Python
 (load "~/.config/emacs/settings/conda-settings.el")
@@ -125,9 +150,6 @@
 ;; (load "~/.config/emacs/settings/weblorg-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
-;;; Themes
-(load "~/.config/emacs/settings/powerline-settings.el")
-(load "~/.config/emacs/settings/theme-settings.el")
 
 
 

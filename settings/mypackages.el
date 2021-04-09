@@ -40,6 +40,7 @@
     lsp-jedi
     lsp-latex
     lsp-pyright
+    lsp-treemacs
     lsp-ui
     magit
     magit-todos

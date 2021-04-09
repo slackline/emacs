@@ -43,6 +43,7 @@
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
 ;; The `imenu` lets me browse definitions quickly.
+;; https://github.com/emacs-lsp/lsp-ui
 (use-package lsp-ui
   :ensure t
   :defer t
@@ -59,10 +60,19 @@
         lsp-ui-peek-enable t
         lsp-ui-peek-list-width 60
         lsp-ui-peek-peek-height 25
-	lsp-ui-sideline-enable nil)
+	lsp-ui-sideline-enable t
+	lsp-ui-sideline-show-hover t
+	lsp-ui-sideline-delay 3)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
 	      ("C-c i" . lsp-ui-imenu)))
+
+;; LSP Treemacs
+(use-package lsp-treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-treemacs-sync-mode 1))
 
 ;; Integration with the debug server
 (use-package dap-mode
@@ -82,18 +92,24 @@
 ;; Language servers
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-;;   (setq lsp-pyright-disable-language-service nil
-;; 	lsp-pyright-disable-organize-imports nil
-;; 	lsp-pyright-auto-import-completions t
-;; 	lsp-pyright-use-library-code-for-types t
-;; 	lsp-pyright-venv-path "~/miniconda3/envs")
-;;   :hook ((python-mode . (lambda ()
-;;                           (require 'lsp-pyright) (lsp-deferred)))))
+(use-package lsp-pyright
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-pyright-disable-language-service nil
+	lsp-pyright-disable-organize-imports nil
+	lsp-pyright-auto-import-completions t
+	lsp-pyright-use-library-code-for-types t
+	;; lsp-pyright-typeshed-paths
+	;; lsp-pyright-diagnostic-mode
+	lsp-pyright-typechecking-mode "basic"
+	lsp-pyright-log-level 1
+	;; lsp-pyright-auto-search-paths
+	;; lsp-pyright-extra-paths
+	lsp-pyright-venv-path "~/miniconda3/envs")
+  :hook ((python-mode . (lambda ()
+                          (require 'lsp-pyright) (lsp-deferred)))))
 
 ;; Python - Jedi
 ;; https://github.com/fredcamps/lsp-jedi
