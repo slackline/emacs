@@ -21,6 +21,8 @@
     Other buffer group by `centaur-tabs-get-group-name' with project name."
   (list
    (cond
+    ((string-equal "*" "*vterm*")
+     "Terminal")
     ((or (string-equal "*" (substring (buffer-name) 0 1))
 	 (memq major-mode '(magit-process-mode
 			    magit-status-mode

@@ -1,5 +1,4 @@
 ;;; Org-Roam
-
 (use-package org-roam
       :ensure t
       :custom

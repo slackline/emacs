@@ -25,6 +25,9 @@
   "Convert value V to compatible unit U."
   (math-convert-units v u))
 
+;; org-cliplink (why doesn't this work with binding in init.el?)
+(global-set-key (kbd "C-x p i") 'org-cliplink)
+
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/
 ;;        http://www.mfasold.net/blog/2009/02/using-emacs-org-mode-to-draft-papers/
@@ -161,18 +164,3 @@
                            "/*]]>*/-->\n"
                            "</style>\n")))))
 (add-hook 'org-export-before-processing-hook 'org-inline-css-hook)
-
-;; org-roam
-;; (use-package org-roam
-;;       :ensure t
-;;       :hook
-;;       (after-init . org-roam-mode)
-;;       :custom
-;;       (org-roam-directory "~/org")
-;;       :bind (:map org-roam-mode-map
-;;               (("C-c n l" . org-roam)
-;;                ("C-c n f" . org-roam-find-file)
-;;                ("C-c n g" . org-roam-graph-show))
-;;               :map org-mode-map
-;;               (("C-c n i" . org-roam-insert))
-;;               (("C-c n I" . org-roam-insert-immediate))))
