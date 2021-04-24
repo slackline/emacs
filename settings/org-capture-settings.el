@@ -83,7 +83,7 @@
 	("ec" "Logging a cycle" table-line (file+olp "~/org/training/training.org" "Cycling" "Log")
 	 "| %t | %? | km | min + s | | |" :prepend t)
 	("eh" "Logging a hike" table-line (file+olp "~/org/training/training.org" "Hiking" "Log")
-	 "| %t | %? | km | min + s | | |" :prepend t)
+	 "| %t | %? | km | m | min + s| |" :prepend t)
 	("em" "Weight & Waist/Hip" table-line (file+olp "~/org/training/training.org" "Metrics" "Weight/Waist Hip Ratio" "Log")
 	 "| %U | %? | | | |" :prepend t)
 	("eb" "Blood" table-line (file+olp "~/org/training/training.org" "Metrics" "Blood" "Log")
