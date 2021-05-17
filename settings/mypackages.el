@@ -20,6 +20,7 @@
     elfeed-org
     elfeed-web
     ess
+    ess-smart-equals
     ess-smart-underscore
     forge
     flycheck
