@@ -38,6 +38,7 @@
 (eval-when-compile
   (require 'use-package))
 (setq use-package-always-ensure t)
+
 ;; BASIC CUSTOMISATION
 ;; --------------------------------------
 (use-package emacs
@@ -51,7 +52,8 @@
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
   (setq inhibit-startup-message t)  ; hide the startup message
-  (setq-default fill-column 120)    ; Reset line-wrap
+  (setq-default fill-column 120)    ; Reset line-length
+  (setq global-visual-line-mode t)  ; Visual line wrap
   (setq-default cursor-type 'bar)   ; Line-style cursor similar to other text editors
   (setq inhibit-startup-screen t)   ; Disable startup screen
   (setq initial-scratch-message "") ; Make *scratch* buffer blank
@@ -71,9 +73,14 @@
 	 ("C-c k" . keychain-refresh-environment)
 	 ("C-c r" . rsync-html))
   :hook
-  (text-mode-hook . auto-fill-mode)
-  (before-save-hook . delete-trailing-whitespace)
-  )
+  ((latex-mode
+    markdown-mode
+    org-mode
+    prog-mode
+    text-mode) . auto-fill-mode)
+  (auto-fill-function . do-auto-fill)
+  (before-save . delete-trailing-whitespace)
+)
 
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
