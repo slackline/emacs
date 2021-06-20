@@ -13,7 +13,9 @@
         ess-ask-for-ess-directory nil
         ess-eval-visibly 'nowait
         ess-r--no-company-meta t ;; https://github.com/emacs-ess/ESS/issues/1062
-        ess-use-auto-complete t))
+        ess-use-auto-complete t)
+  :bind (:map ess-r-mode-map ("C-|" . " |>") ;; https://emacs.stackexchange.com/a/65148
+	 :map inferior-ess-r-mode-map ("C-|" . " |> ")))
 
   ;; (setq comint-input-ring-size 1000)
   ;; (setq ess-indent-level 4)
@@ -26,17 +28,32 @@
   ;; (setq ess-use-auto-complete t)
 
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
-(use-package ess-smart-underscore)
+;; (use-package ess-smart-underscore)
+;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
+;; Restore functionality with...
+(define-key ess-r-mode-map "_" #'ess-insert-assign)
+(define-key inferior-ess-r-mode-map "_" #'ess-insert-assign)
+
+;;; Pipe operator https://emacs.stackexchange.com/a/8055
+(defun then_R_operator ()
+  "R - |> operator or 'then' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "|> ")
+  (reindent-then-newline-and-indent))
+(define-key ess-mode-map (kbd "C-%") 'then_R_operator)
+(define-key inferior-ess-mode-map (kbd "C-%") 'then_R_operator)
+
 
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
 (define-key global-map [f1] 'Control-X-prefix)
-	 (define-key global-map [f2] 'save-buffer)
-	 (define-key global-map [f3] 'find-file)
-	 (define-key global-map [f5] 'switch-to-buffer)
-	 (define-key global-map [f6] 'other-window)
-	 (define-key global-map [f8] 'kill-buffer)
-	 (define-key global-map [f9] 'ess-load-file)
+(define-key global-map [f2] 'save-buffer)
+(define-key global-map [f3] 'find-file)
+(define-key global-map [f5] 'switch-to-buffer)
+(define-key global-map [f6] 'other-window)
+(define-key global-map [f8] 'kill-buffer)
+(define-key global-map [f9] 'ess-load-file)
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html
 (defun my-ess-post-run-hook ()
