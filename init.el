@@ -4,10 +4,23 @@
 ;; (setq debug-on-error t)
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives
-	     '("org" . "https://orgmode.org/elpa/") t)
+;; (add-to-list 'package-archives
+;; 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; ;;	     '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;; 	     '("org" . "https://orgmode.org/elpa/") t)
+
+;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
+(setq package-archives
+      '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
+	("MELPA Stable" . "https://stable.melpa.org/packages/")
+	("MELPA"	. "https://melpa.org/packages/")
+	("org"		. "https://orgmode.org/elpa/"))
+      package-archive-priorities
+      '(("MELPA Stable" . 10)
+	("GNU ELPA"	. 5)
+	("org"          . 5)
+	("MELPA"	. 0)))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
