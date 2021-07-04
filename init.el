@@ -145,17 +145,6 @@
 (load "~/.config/emacs/settings/python-settings.el")
 ;(load "~/.config/emacs/settings/pylint-settings.el")
 
-;;; IDE / LSP
-(load "~/.config/emacs/settings/ess-settings.el")
-(load "~/.config/emacs/settings/flyspell-settings.el")
-(load "~/.config/emacs/settings/jedi-settings.el")
-(load "~/.config/emacs/settings/js-settings.el")
-(load "~/.config/emacs/settings/latex-settings.el")
-(load "~/.config/emacs/settings/lsp-settings.el")
-(load "~/.config/emacs/settings/magit-settings.el")
-(load "~/.config/emacs/settings/markdown-settings.el")
-(load "~/.config/emacs/settings/polymode-settings.el")
-
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
@@ -171,6 +160,16 @@
 ;; (load "~/.config/emacs/settings/weblorg-settings.el")
 (load "~/.config/emacs/settings/ytdl-settings.el")
 
+;;; IDE / LSP
+(load "~/.config/emacs/settings/flyspell-settings.el")
+(load "~/.config/emacs/settings/jedi-settings.el")
+(load "~/.config/emacs/settings/js-settings.el")
+(load "~/.config/emacs/settings/latex-settings.el")
+(load "~/.config/emacs/settings/lsp-settings.el")
+(load "~/.config/emacs/settings/magit-settings.el")
+(load "~/.config/emacs/settings/markdown-settings.el")
+(load "~/.config/emacs/settings/polymode-settings.el")
+(load "~/.config/emacs/settings/ess-settings.el")
 
 
 
