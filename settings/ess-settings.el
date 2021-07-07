@@ -21,14 +21,16 @@
   :ensure ess
   :defer 1
   :bind (:map ess-r-mode-map ("C-|" . " |>")) ;; https://emacs.stackexchange.com/a/65148
-        (:map inferior-ess-r-mode-map ("C-|" . " |> "))
 	(:map ess-r-mode-map ("_" . ess-insert-assign)) ;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
-        (:map inferior-ess-r-mode-map ("_" . ess-insert-assign)))
+	;; (:map inferior-ess-r-mode-map ("C-|" . " |> "))
+        ;; (:map inferior-ess-r-mode-map ("_" . ess-insert-assign))
+        )
 
 ;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
+;; See also https://github.com/emacs-ess/ESS/issues/809
 ;; Restore functionality with...
-(define-key ess-mode-map "_" #'ess-insert-assign)
-(define-key inferior-ess-r-mode-map "_" #'ess-insert-assign)
+;(define-key ess-mode-map "_" 'ess-insert-assign)
+;(define-key inferior-ess-r-mode-map "_" 'ess-insert-assign)
 
 ;;; Pipe operator https://emacs.stackexchange.com/a/8055
 ;; (defun then_R_operator ()
