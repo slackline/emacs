@@ -86,3 +86,10 @@
   :ensure t
   :defer t
   :hook (python-mode . yapf-mode))
+
+(use-package numpydoc
+  :ensure t
+  :defer t
+  :after python
+  :config
+  (setq numpydoc-prompt-for-input t))
