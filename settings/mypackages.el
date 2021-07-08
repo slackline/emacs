@@ -47,6 +47,7 @@
     magit-todos
     mmm-mode
     modus-vivendi-theme
+    numpydoc
     org-cliplink
     org-parser
     org-present
