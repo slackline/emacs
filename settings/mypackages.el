@@ -51,6 +51,8 @@
     org-cliplink
     org-parser
     org-present
+    org-roam
+    org-roam-bibtex
     org-ref
     org-sidebar
     package-utils
