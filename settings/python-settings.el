@@ -92,4 +92,6 @@
   :defer t
   :after python
   :config
-  (setq numpydoc-prompt-for-input t))
+  (setq numpydoc-prompt-for-input t)
+  :bind (:map python-mode-map
+	      ("C-c C-n" . numpydoc-generate)))
