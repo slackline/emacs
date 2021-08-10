@@ -9,3 +9,5 @@
 ;; Preview Pane (https://github.com/jsinglet/latex-preview-pane)
 ;;(latex-preview-pane-enable)
 
+;; Run pdflatex (https://superuser.com/a/142468)
+(setq latex-run-command "pdflatex")
