@@ -31,12 +31,27 @@
 ;;      (load-theme 'kaolin-mono-dark t))   ;; almost monochrome dark green Kaolin theme.
 
 
-;; Modus Vivendi
+;; Modus Themes (Vivendi) https://protesilaos.com/modus-themes/
 ;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
-(setq modus-vivendi-theme-slanted-constructs nil)
+(use-package modus-themes
+    :ensure                         ; omit this to use the built-in themes
+    :init
+    ;; Add all your customizations prior to loading the themes
+    (setq modus-themes-italic-constructs t
+          modus-themes-bold-constructs nil
+	  modus-themes-paren-match '(underline)
+          modus-themes-region '(bg-only no-extend)
+	  modus-themes-org-block '(tinted-background))
+
+    ;; Load the theme files before enabling a theme (else you get an error).
+    (modus-themes-load-themes)
+    :config
+    ;; Load the theme of your choice:
+    (modus-themes-load-vivendi) ;; OR (modus-themes-load-operandi)
+    :bind ("<f5>" . modus-themes-toggle))
 
 ;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
 ;; default is to use whatever font the user has selected, typically a
