@@ -90,7 +90,7 @@
 (use-package numpydoc
   :ensure t
   :defer t
-  :after LSP
+  :after lsp
   :config
   (setq numpydoc-prompt-for-input t)
   :bind (:map python-mode-map
