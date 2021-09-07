@@ -97,3 +97,19 @@
 (run-at-time "07:00" nil 'nds:elfeed-updater)
 (setq httpd-port 8461)
 (elfeed-web-start)
+
+;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
+(defun nds:elfeed-db-remove-entry (id)
+  "Removes the entry for ID"
+  (avl-tree-delete elfeed-db-index id)
+  (remhash id elfeed-db-entries))
+
+(defun nds:elfeed-search-remove-selected ()
+  "Remove selected entries from database"
+  (interactive)
+  (let* ((entries (elfeed-search-selected))
+	 (count (length entries)))
+    (when (y-or-n-p (format "Delete %d entires?" count))
+      (cl-loop for entry in entries
+	       do (nds:elfeed-db-remove-entry (elfeed-entry-id entry)))))
+  (elfeed-search-update--force))
