@@ -55,6 +55,8 @@
     org-roam-bibtex
     org-ref
     org-sidebar
+    ox-reveal
+    ox-tufte
     package-utils
     pass
     polymode
