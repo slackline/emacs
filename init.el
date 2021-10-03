@@ -108,6 +108,11 @@
 ;; Lowercase region
 (put 'downcase-region 'disabled nil)
 
+;; Hook to make scripts executable on saving
+;; https://emacsredux.com/blog/2021/09/29/make-script-files-executable-automatically/
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
 
 ;; Reload a buffer from disk
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
