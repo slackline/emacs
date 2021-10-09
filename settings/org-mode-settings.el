@@ -67,6 +67,13 @@
                  (org-present-show-cursor)
                  (org-present-read-write)))))
 
+;; Org-reveal
+(use-package ox-reveal
+  :ensure t
+;;  :defer t
+  :config
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
+	org-reveal-mathjax t))
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
 (use-package org-ref
