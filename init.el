@@ -134,6 +134,7 @@
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
 ;;; General editor settings
+(load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/autopair-settings.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
