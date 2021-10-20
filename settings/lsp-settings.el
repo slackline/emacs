@@ -120,6 +120,18 @@
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi)))
 
+;; Python - Sourcery
+;; https://github.com/sourcery-ai/sourcery/wiki/Emacs
+(lsp-register-client
+ (make-lsp-client :new-connection (lsp-stdio-connection '("sourcery" "lsp"))
+                  :initialization-options '((token . "user_ajagq3NtzYEZHCChHXS1bXvaFFZpOb3f8AC666z0J_cCknj8OLZsDR31tK0")
+                                            (extension_version . "emacs-lsp")
+                                            (editor_version . "emacs"))
+                  :activation-fn (lsp-activate-on "python")
+                  :server-id 'sourcery
+                  :add-on? t
+                  :priority 2))
+
 ;; Bash
 
 ;; R
