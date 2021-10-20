@@ -7,6 +7,7 @@
       org-startup-indented 1
       org-agenda-include-diary t
       org-log-done 'time
+      org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
       org-export-backends '(beamer html latex md odt)
       org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
       org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
