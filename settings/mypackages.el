@@ -40,6 +40,7 @@
     literate-calc-mode
     lsp-jedi
     lsp-latex
+    lsp-ltex
     lsp-pyright
     lsp-treemacs
     lsp-ui

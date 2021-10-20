@@ -131,6 +131,13 @@
                   :server-id 'sourcery
                   :add-on? t
                   :priority 2))
+;; LTex
+;; https://github.com/emacs-languagetool/lsp-ltex / https://valentjn.github.io/ltex/
+(use-package lsp-ltex
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-ltex)
+                       (lsp))))  ; or lsp-deferred
 
 ;; Bash
 
