@@ -2,7 +2,7 @@
 ;;; --------------------------------------
 (defvar myPackages
   '(alert
-    autopair
+    ;; autopair
     auto-compile
     auto-complete
     auto-package-update
@@ -26,6 +26,7 @@
     flycheck
     ;; flycheck-shellcheck
     gitlab
+    git-modes
     helm-org
     hide-mode-line
     highlight-indent-guides

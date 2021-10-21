@@ -42,11 +42,11 @@
                      gcs-done)))
 
 ;; Automatically update packages (via auto-package-update)
-(setq load-prefer-newer t)
-(require 'auto-compile)
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
-(require 'auto-package-update)
+;; (setq load-prefer-newer t)
+;; (require 'auto-compile)
+;; (auto-compile-on-load-mode)
+;; (auto-compile-on-save-mode)
+;; (require 'auto-package-update)
 
 ;; SETUP use-package
 (eval-when-compile
@@ -135,12 +135,12 @@
 
 ;;; General editor settings
 (load "~/.config/emacs/settings/auto-package-update.el")
-(load "~/.config/emacs/settings/autopair-settings.el")
+;; (load "~/.config/emacs/settings/autopair-settings.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
-
+(load "~/.config/emacs/settings/smartparens-settings.el")
 ;;; Themes
 (load "~/.config/emacs/settings/powerline-settings.el")
 (load "~/.config/emacs/settings/theme-settings.el")
