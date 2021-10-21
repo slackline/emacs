@@ -13,13 +13,13 @@
 ;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
+	("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
 	("MELPA Stable" . "https://stable.melpa.org/packages/")
-	("MELPA"	. "https://melpa.org/packages/")
-	("org"		. "https://orgmode.org/elpa/"))
+	("MELPA"	. "https://melpa.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
 	("GNU ELPA"	. 5)
-	("org"          . 5)
+	("NonGNU ELPA"	. 5)
 	("MELPA"	. 0)
 	))
 
