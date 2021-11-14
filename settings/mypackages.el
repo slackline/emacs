@@ -40,6 +40,7 @@
     latex-preview-pane
     literate-calc-mode
     lsp-jedi
+    lsp-julia
     lsp-latex
     lsp-ltex
     lsp-pyright
@@ -55,6 +56,7 @@
     org-present
     org-roam
     org-roam-bibtex
+    org-roam-ui
     org-ref
     org-sidebar
     ox-reveal
