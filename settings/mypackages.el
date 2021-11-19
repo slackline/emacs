@@ -34,6 +34,7 @@
     inf-mongo
     ivy-mpdel
     ;; jedi
+    jenkinsfile-mode
     json-mode
     keychain-environment
     latex-extra
