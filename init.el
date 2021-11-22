@@ -13,14 +13,13 @@
 ;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
+	("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
 	("MELPA Stable" . "https://stable.melpa.org/packages/")
-	("MELPA"	. "https://melpa.org/packages/")
-	;("org"		. "https://orgmode.org/elpa/")
-	)
+	("MELPA"	. "https://melpa.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
 	("GNU ELPA"	. 5)
-	("org"          . 5)
+	("NonGNU ELPA"	. 5)
 	("MELPA"	. 0)
 	))
 
@@ -43,11 +42,11 @@
                      gcs-done)))
 
 ;; Automatically update packages (via auto-package-update)
-(setq load-prefer-newer t)
-(require 'auto-compile)
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
-(require 'auto-package-update)
+;; (setq load-prefer-newer t)
+;; (require 'auto-compile)
+;; (auto-compile-on-load-mode)
+;; (auto-compile-on-save-mode)
+;; (require 'auto-package-update)
 
 ;; SETUP use-package
 (eval-when-compile
@@ -109,6 +108,11 @@
 ;; Lowercase region
 (put 'downcase-region 'disabled nil)
 
+;; Hook to make scripts executable on saving
+;; https://emacsredux.com/blog/2021/09/29/make-script-files-executable-automatically/
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
 
 ;; Reload a buffer from disk
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
@@ -130,15 +134,12 @@
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
 ;;; General editor settings
-(load "~/.config/emacs/settings/autopair-settings.el")
+(load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
-
-;;; Themes
-(load "~/.config/emacs/settings/powerline-settings.el")
-(load "~/.config/emacs/settings/theme-settings.el")
+(load "~/.config/emacs/settings/smartparens-settings.el")
 
 ;;; Python
 (load "~/.config/emacs/settings/conda-settings.el")
@@ -150,6 +151,7 @@
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
 (load "~/.config/emacs/settings/org-capture-settings.el")
+(load "~/.config/emacs/settings/org-roam-settings.el")
 
 ;;; Misc
 (load "~/.config/emacs/settings/elfeed-settings.el")
@@ -173,6 +175,9 @@
 (load "~/.config/emacs/settings/ess-settings.el")
 
 
+;;; Themes
+(load "~/.config/emacs/settings/powerline-settings.el")
+(load "~/.config/emacs/settings/theme-settings.el")
 
 
 ;;; Split the window and start an R session

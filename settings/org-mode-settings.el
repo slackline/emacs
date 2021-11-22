@@ -7,6 +7,7 @@
       org-startup-indented 1
       org-agenda-include-diary t
       org-log-done 'time
+      org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
       org-export-backends '(beamer html latex md odt)
       org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
       org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
@@ -67,6 +68,13 @@
                  (org-present-show-cursor)
                  (org-present-read-write)))))
 
+;; Org-reveal
+(use-package ox-reveal
+  :ensure t
+;;  :defer t
+  :config
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
+	org-reveal-mathjax t))
 
 ;; org-ref (https://github.com/jkitchin/org-ref)
 (use-package org-ref
@@ -169,3 +177,14 @@
                            "/*]]>*/-->\n"
                            "</style>\n")))))
 (add-hook 'org-export-before-processing-hook 'org-inline-css-hook)
+
+;; org-roam-ui https://github.com/org-roam/org-roam-ui
+(use-package websocket
+  :after org-roam)
+
+(use-package org-roam-ui
+  :after org-roam-bibtex-mode:config
+  (setq org-roam-ui-sync-theme t
+	org-roam-ui-follow t
+	org-roam-ui-update-on-save t
+	org-roam-ui-open-on-start t))
