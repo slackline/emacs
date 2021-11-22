@@ -9,6 +9,12 @@
   (setq org-roam-v2-ack t)
   :custom
   (org-roam-directory "~/org/roam")
+  (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)))
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n l" . org-roam-buffer-toggle)
