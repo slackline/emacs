@@ -13,6 +13,7 @@
     challenger-deep-theme
     ;; company-jedi
     ;; company-lsp
+    code-review
     company-prescient
     conda
     dap-mode
