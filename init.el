@@ -140,9 +140,6 @@
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 (load "~/.config/emacs/settings/smartparens-settings.el")
-;;; Themes
-(load "~/.config/emacs/settings/powerline-settings.el")
-(load "~/.config/emacs/settings/theme-settings.el")
 
 ;;; Python
 (load "~/.config/emacs/settings/conda-settings.el")
@@ -154,6 +151,7 @@
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
 (load "~/.config/emacs/settings/org-capture-settings.el")
+(load "~/.config/emacs/settings/org-roam-settings.el")
 
 ;;; Misc
 (load "~/.config/emacs/settings/elfeed-settings.el")
@@ -177,6 +175,9 @@
 (load "~/.config/emacs/settings/ess-settings.el")
 
 
+;;; Themes
+(load "~/.config/emacs/settings/powerline-settings.el")
+(load "~/.config/emacs/settings/theme-settings.el")
 
 
 ;;; Split the window and start an R session
