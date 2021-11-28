@@ -139,6 +139,12 @@
                        (require 'lsp-ltex)
                        (lsp))))  ; or lsp-deferred
 
+;; Julia
+;; https://github.com/non-Jedi/lsp-julia
+(use-package lsp-julia
+  :ensure t
+  :config
+  (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
 ;; Bash
 
 ;; R

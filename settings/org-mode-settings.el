@@ -177,14 +177,3 @@
                            "/*]]>*/-->\n"
                            "</style>\n")))))
 (add-hook 'org-export-before-processing-hook 'org-inline-css-hook)
-
-;; org-roam-ui https://github.com/org-roam/org-roam-ui
-(use-package websocket
-  :after org-roam)
-
-(use-package org-roam-ui
-  :after org-roam-bibtex-mode:config
-  (setq org-roam-ui-sync-theme t
-	org-roam-ui-follow t
-	org-roam-ui-update-on-save t
-	org-roam-ui-open-on-start t))

@@ -8,5 +8,5 @@
 	("~/.config/emacs/" . 1)
 	("~/org/" . 1))))
 
-;; Automatically refresh buffers
+;; Automatically refresh buffer
 (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
