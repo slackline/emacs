@@ -74,11 +74,14 @@
   (setq-default frame-title-format '("%b"))     ; Make window title the buffer name
   (setq confirm-kill-processes nil)		; Stop confirming the killing of processes
   (setq ring-bell-function 'ignore)             ; Disable bell sound
-  :bind (("C-c R" . revert-buffer)
+  :bind (("C-c U" . revert-buffer)
 	 ("C-c e" . eval-region)
 	 ("C-c E" . eval-buffer)
+	 ;; Magit /code review
 	 ("C-x g" . magit-status)
 	 ("C-c P" . magit-push-current-to-upstream)
+	 ("C-c R" . code-review-forge-pr-at-point)
+	 ;; Org
 	 ("\C-cl" . org-store-link)
 	 ("\C-cc" . org-capture)
 	 ("\C-ca" . org-agenda)

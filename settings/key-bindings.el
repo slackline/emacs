@@ -2,25 +2,25 @@
 ;; --------------------------------------
 
 ;; Misc
-(global-set-key [(control c) r] 'revert-buffer)
-(global-set-key (kbd "C-c e") 'eval-region)
-(global-set-key (kbd "C-c E") 'eval-buffer)
+;; (global-set-key [(control c) r] 'revert-buffer)
+;; (global-set-key (kbd "C-c e") 'eval-region)
+;; (global-set-key (kbd "C-c E") 'eval-buffer)
 
 ;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c P") 'magit-push-current-to-upstream)
+;; (global-set-key (kbd "C-x g") 'magit-status)
+;; (global-set-key (kbd "C-c P") 'magit-push-current-to-upstream)
 
 ;; Org-mode
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
+;; (global-set-key "\C-cl" 'org-store-link)
+;; (global-set-key "\C-cc" 'org-capture)
+;; (global-set-key "\C-ca" 'org-agenda)
+;; (global-set-key "\C-cb" 'org-iswitchb)
 ;; Cliplink setup
 ;; From : https://github.com/rexim/org-cliplink
-(global-set-key (kbd "C-x p i") 'org-cliplink)
+;; (global-set-key (kbd "C-x p i") 'org-cliplink)
 
 ;; Keychain
-(global-set-key (kbd "C-c k") 'keychain-refresh-environment)
+;; (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
 
 ;; Custom commands
-(global-set-key (kbd "C-c r") 'rsync-html)
+;; (global-set-key (kbd "C-c r") 'rsync-html)
