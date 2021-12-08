@@ -153,6 +153,7 @@
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/org-babel-settings.el")
 (load "~/.config/emacs/settings/org-capture-settings.el")
 (load "~/.config/emacs/settings/org-roam-settings.el")
 
