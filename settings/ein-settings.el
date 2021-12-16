@@ -9,4 +9,5 @@
 ;;	  (lambda () (emacs/toggle-whitespace-cleanup-off)))
 (custom-set-variables
  '(ein:output-area-inlined-images t)
- '(ein:polymode t))
+ '(ein:polymode t)
+ '(ein:query-timeout 100000))
