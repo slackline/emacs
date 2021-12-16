@@ -29,6 +29,12 @@
 ;; Add local lisp for miscellaneous things
 ; (add-to-list 'load-path "~/.config/emacs/lisp/")
 
+;; Modify exec-path
+(setq exec-path (append '("~/bin"
+                          "~/.local/bin"
+                          "~/.cargo/bin/")
+                        exec-path))
+
 ;; Load and install mypackages
 (load "~/.config/emacs/settings/mypackages.el")
 
@@ -41,12 +47,6 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
-;; Automatically update packages (via auto-package-update)
-;; (setq load-prefer-newer t)
-;; (require 'auto-compile)
-;; (auto-compile-on-load-mode)
-;; (auto-compile-on-save-mode)
-;; (require 'auto-package-update)
 
 ;; SETUP use-package
 (eval-when-compile
@@ -137,7 +137,7 @@
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
 
 ;;; General editor settings
-(load "~/.config/emacs/settings/auto-package-update.el")
+;; (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
@@ -153,6 +153,7 @@
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/org-babel-settings.el")
 (load "~/.config/emacs/settings/org-capture-settings.el")
 (load "~/.config/emacs/settings/org-roam-settings.el")
 
