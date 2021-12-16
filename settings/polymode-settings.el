@@ -57,8 +57,8 @@ Restore match data previously stored in PROPERTY."
 
 
 ;; define pweave polymodes
-(use-package poly-noweb)
 (use-package poly-markdown)
+(use-package poly-noweb)
 ;; Python/Markdown
 (defcustom pm-inner/noweb-python
   (clone pm-inner/noweb
@@ -73,17 +73,21 @@ Restore match data previously stored in PROPERTY."
 
 (add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
 
+;; Poly-org mode
+(use-package poly-org
+  :ensure t
+  :defer t)
 
 ;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
-(defcustom pm-inner/python
-  (clone pm-inner/noweb
-	 :name "python"
-	 :mode 'python-mode
-	 :head-matcher  "\\\\begin{pycode}"
-	 :tail-matcher  "\\\\end{pycode}")
-  "Python inline code."
-  :group 'innermodes
-  :type 'object)
+;; (defcustom pm-inner/python
+;;   (clone pm-inner/noweb
+;; 	 :name "python"
+;; 	 :mode 'python-mode
+;; 	 :head-matcher  "\\\\begin{pycode}"
+;; 	 :tail-matcher  "\\\\end{pycode}")
+;;   "Python inline code."
+;;   :group 'innermodes
+;;   :type 'object)
 
 ;; (defcustom pm-poly/latex-python
 ;;   (pm-polymode-one :name "latex-python"
@@ -93,7 +97,7 @@ Restore match data previously stored in PROPERTY."
 ;;   :group 'polymodes
 ;;   :type 'object)
 
-(define-polymode poly-latex+python-mode
-  :hostmode 'pm-host/latex
-  :innermodes '(pm-inner/python))
-(add-to-list 'auto-mode-alist '("\\.texw$" . poly-latex+python-mode))
+;; (define-polymode poly-latex+python-mode
+;;   :hostmode 'pm-host/latex
+;;   :innermodes '(pm-inner/python))
+;; (add-to-list 'auto-mode-alist '("\\.texw$" . poly-latex+python-mode))

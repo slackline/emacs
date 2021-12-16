@@ -1,9 +1,20 @@
 ;;; ORG-BABEL CONFIGURATION
 ;;; --------------------------------------
 ;;
-;; Skeletons
+;; org-babel
+;;
+;; Set up evaluation languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages '((R . t)
+			     (python . t)))
+;; Hooks for in-line images (https://emacs.stackexchange.com/a/21267/10100)
+(add-hook 'org-mode-hook 'org-display-inline-images)
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images)
+;;; Hook to rsync html output to OVH on export
+(add-hook 'org-html-export-to-html 'rsync-html)
 
-;; Org R Skeleton
+
+;; Skeletons
 (define-skeleton org-R-skeleton
   "Header info for a org file with R."
   "Title: "
@@ -86,13 +97,13 @@
 ;;            ))
 (add-to-list 'org-babel-default-inline-header-args
             '(:colnames . "nil"))
-; Insert code blocks (https://emacs.stackexchange.com/a/12847)
+;; Insert code blocks (https://emacs.stackexchange.com/a/12847)
 (add-to-list 'org-structure-template-alist
              '("r" "#+NAME: ?\n#+BEGIN_SRC R :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
 (add-to-list 'org-structure-template-alist
              '("p" "#+NAME: ?\n#+BEGIN_SRC Python :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
 
-; Embed CSS (https://stackoverflow.com/a/37132338)
+;; Embed CSS (https://stackoverflow.com/a/37132338)
 (defun org-inline-css-hook (exporter)
   "Insert custom inline css"
   (when (eq exporter 'html)

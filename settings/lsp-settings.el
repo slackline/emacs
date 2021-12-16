@@ -22,11 +22,11 @@
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
 	      lsp-bash-highlight-parsing-errors t)
-  :hook ((python-mode . lsp-deferred)
-	 (bash-mode . lsp-deferred)
-	 (org-mode . lsp-deferred)
-	 (sh-mode . lsp-deferred)
-	 (R-mode . lsp-deferred)))
+  :hook ((python-mode . lsp)
+	 (bash-mode . lsp)
+	 (org-mode . lsp)
+	 (sh-mode . lsp)
+	 (R-mode . lsp)))
 
 ;; Provides completion, with the proper backend
 ;; it will provide Python completion.
@@ -138,13 +138,19 @@
   :hook (text-mode . (lambda ()
                        (require 'lsp-ltex)
                        (lsp))))  ; or lsp-deferred
-
+(use-package lsp-latex
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-latex)
+                       (lsp))))
 ;; Julia
 ;; https://github.com/non-Jedi/lsp-julia
 (use-package lsp-julia
   :ensure t
   :config
   (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
+
 ;; Bash
+;; https://github.com/bash-lsp/bash-language-server
 
 ;; R
