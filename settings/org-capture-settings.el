@@ -7,7 +7,9 @@
 (setq org-capture-templates
       '(	;; Agenda
 	("a" "Agenda")
-	("an" "New Event" entry (file+olp "~/org/agenda.org" "Upcoming")
+	("au" "Urgent" entry (file+olp "~/org/agenda.org" "Urgent")
+         "** TODO %t %?\n" :prepend t)
+	("an" "Not so Urgent" entry (file+olp "~/org/agenda.org" "Not so Urgent")
          "** TODO %t %?\n" :prepend t)
 	;; Bibliography
 	;; ("b" "Bibliography" item (file+olp "~/org/references.bib")
