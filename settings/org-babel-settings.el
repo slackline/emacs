@@ -21,7 +21,7 @@
   "#+TITLE:" str " \n"
   "#+AUTHOR: Neil Shephard\n"
   "#+EMAIL: nshephard@protonmail.com\n"
-  "#+PROPERTY: header-args:R  :session *org-R*\n"
+  "#+PROPERTY: header-args:R  :session *" str "*\n"
   "#+PROPERTY: header-args:R  :cache yes\n"
   "#+PROPERTY: header-args:R  :results graphics\n"
   "#+PROPERTY: header-args:R  :width 1024\n"
@@ -56,39 +56,33 @@
 (define-skeleton org-reveal-skeleton
   "Header info for a org reveal file."
   "#    -*- mode: org -*-\n"
-  "#+OPTIONS: reveal_center:t reveal_progress:t reveal_history:t reveal_control:t \n"
-  "#+OPTIONS: reveal_mathjax:t reveal_rolling_links:t reveal_keyboard:t reveal_overview:t num:nil \n"
-  "#+OPTIONS: reveal_width:1200 reveal_height:800 \n"
-  "#+OPTIONS: toc:1 timestamp: nil \n"
-  ":REVEAL_PROPERTIES: \n"
-  "#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js \n"
-  "#+REVEAL_REVEAL_JS_VERSION: 4 \n"
-  "#+REVEAL_MARGIN: 0.2 \n"
-  "#+REVEAL_MIN_SCALE: 0.5 \n"
-  "#+REVEAL_MAX_SCALE: 2.5 \n"
-  "#+REVEAL_TRANS: fade \n"
-  "#+REVEAL_THEME: moon \n"
-  "#+REVEAL_HLEVEL: 1 \n"
-  "#+REVEAL_EXTRA_CSS: ./presentation.css \n"
-  "#+REVEAL_INIT_OPTIONS: timestamp:nil toc:1 num:nil \n"
+  "#+OPTIONS: timestamp:nil toc:1 reveal_mathjax:t num:nil reveal_width:1200 reveal_height:800\n"
+  ":REVEAL_PROPERTIES:\n"
+  "#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js\n"
+  "#+REVEAL_REVEAL_JS_VERSION: 4\n"
+  "#+REVEAL_THEME: moon\n"
+  "#+REVEAL_MIN_SCALE: 0.2\n"
+  "#+REVEAL_MAX_SCALE: 2.5\n"
+  "#+REVEAL_INIT_OPTIONS: slideNumber:true\n"
+  "#+REVEAL_HLEVEL: 1"
   ":END: \n"
   "----- \n"
   "Title: \n"
-  "#+TITLE:" str " \n"
-  "#+AUTHOR: Neil Shephard\n"
-  "#+EMAIL: nshephard@gmail.com\n"
+  "#+TITLE: " str " \n"
+  "#+AUTHOR: " str " \n"
+  "#+EMAIL: " str "\n"
 )
 (global-set-key [C-S-f6] 'org-reveal-skeleton)
 
-;; Default header arguments
-(add-to-list 'org-babel-default-header-args
-            '((:AUTHOR . "Neil Shephard")
-              (:EMAIL . "nshephard@gmail.com"))
-	    )
-(add-to-list 'org-babel-default-header-args:R
-            '((:session . "*org-R*")
-              (:cache . "yes"))
-            )
+;; Default header arguments (found these tend to mess things up so not using for now)
+;; (add-to-list 'org-babel-default-header-args
+;;             '((:AUTHOR . "Neil Shephard")
+;;               (:EMAIL . "nshephard@gmail.com"))
+;; 	    )
+;; (add-to-list 'org-babel-default-header-args:R
+;;             '((:session . "*org-R*")
+;;               (:cache . "yes"))
+;;             )
 ;;             (:width . 1024) (:height . 768)
 ;;             (:cache . "yes")
 ;;             (:results . "output graphics")
@@ -98,10 +92,10 @@
 (add-to-list 'org-babel-default-inline-header-args
             '(:colnames . "nil"))
 ;; Insert code blocks (https://emacs.stackexchange.com/a/12847)
-(add-to-list 'org-structure-template-alist
-             '("r" "#+NAME: ?\n#+BEGIN_SRC R :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
-(add-to-list 'org-structure-template-alist
-             '("p" "#+NAME: ?\n#+BEGIN_SRC Python :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
+;; (add-to-list 'org-structure-template-alist
+;;              '("r" . "#+NAME: ?\n src R :session ** :eval yes :exports none :results output silent\n\n"))
+;; (add-to-list 'org-structure-template-alist
+;;              '("p" "#+NAME: ?\n src Python :session ** :eval yes :exports none :results output silent\n\n"))
 
 ;; Embed CSS (https://stackoverflow.com/a/37132338)
 (defun org-inline-css-hook (exporter)
