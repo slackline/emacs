@@ -54,6 +54,7 @@
     modus-themes
     numpydoc
     org-cliplink
+    org-notifications
     org-parser
     org-present
     org-roam
@@ -61,6 +62,7 @@
     org-roam-ui
     org-ref
     org-sidebar
+    ox-hugo
     ox-reveal
     ox-tufte
     package-utils
