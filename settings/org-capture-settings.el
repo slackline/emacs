@@ -5,12 +5,12 @@
 (require 'org-protocol)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
-      '(	;; Agenda
+      '(;; Agenda
 	("a" "Agenda")
-	("au" "Urgent" entry (file+olp "~/org/agenda.org" "Urgent")
-         "** TODO %t %?\n" :prepend t)
+	("au" "Things to get Done" entry (file+olp "~/org/agenda.org" "Things to get Done")
+         "** TODO %U %?\n" :prepend t)
 	("an" "Not so Urgent" entry (file+olp "~/org/agenda.org" "Not so Urgent")
-         "** TODO %t %?\n" :prepend t)
+         "** TODO %U %?\n" :prepend t)
 	;; Bibliography
 	;; ("b" "Bibliography" item (file+olp "~/org/references.bib")
         ;;  "%?\n" :prepend t)
