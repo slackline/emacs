@@ -92,6 +92,8 @@
 	 "| %U | %? | km | m | min + s| |" :prepend t)
 	("em" "Weight & Waist/Hip" table-line (file+olp "~/org/training/training.org" "Metrics" "Weight/Waist Hip Ratio" "Log")
 	 "| %U | %? | | | |" :prepend t)
+	("es" "Steps" table-line (file+olp "~/org/training/training.org" "Metrics" "Daily Steps" "Log")
+	 "| %U | %? |" :prepend t)
 	("eb" "Blood" table-line (file+olp "~/org/training/training.org" "Metrics" "Blood" "Log")
 	 "| %U | %? | | | | | |" :prepend t)
 	("et" "Training Resources") ;; Training Resources
