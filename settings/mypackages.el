@@ -16,6 +16,7 @@
     code-review
     company-prescient
     conda
+    crontab-mode
     dap-mode
     ein
     elfeed-org
