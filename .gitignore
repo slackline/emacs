@@ -9,3 +9,5 @@ el-get/
 transient/
 session.*
 \#*
+*.sqlite
+*.tar.*
