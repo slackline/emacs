@@ -93,9 +93,9 @@
 	("em" "Weight & Waist/Hip" table-line (file+olp "~/org/training/training.org" "Metrics" "Weight/Waist Hip Ratio" "Log")
 	 "| %U | %? | | | |" :prepend t)
 	("es" "Steps" table-line (file+olp "~/org/training/training.org" "Metrics" "Daily Steps" "Log")
-	 "| %U | %? |" :prepend t)
+	 "| %t | %? |" :prepend t)
 	("eb" "Blood" table-line (file+olp "~/org/training/training.org" "Metrics" "Blood" "Log")
-	 "| %t | %? | | | | | |" :prepend t)
+	 "| %U | %? | | | | | |" :prepend t)
 	("et" "Training Resources") ;; Training Resources
 	("etc" "Training Resources (Climbing)")
 	("etcf" "Fingerboarding")

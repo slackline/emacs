@@ -89,14 +89,16 @@
 
 ;; Use elfeed-web to periodically update
 (use-package elfeed-web
-  :ensure t)
+  :ensure t
+  :config
+  (setq httpd-port 8461))
 ;; run-with-timer takes an argument in seconds
 ;; (* 30 60) therefore returns 30 minutes in seconds
 ;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
 ;; Alternatively we run at 07:00 each day
 (run-at-time "07:00" nil 'nds:elfeed-updater)
-(setq httpd-port 8461)
-(elfeed-web-start)
+;; (setq httpd-port 8461)
+;; (elfeed-web-start)
 
 ;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
 (defun nds:elfeed-db-remove-entry (id)
