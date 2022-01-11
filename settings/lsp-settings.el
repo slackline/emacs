@@ -19,11 +19,16 @@
 (use-package lsp-mode
   :ensure t
   :defer t
+  :config
+  (setq lsp-idle-delay 0.5
+	lsp-enable-symbol-highlighting t)
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
 	      lsp-bash-highlight-parsing-errors t)
   :hook ((python-mode . lsp)
 	 (bash-mode . lsp)
+	 (latex-mode . lsp)
+	 (markdown-mode . lsp)
 	 (org-mode . lsp)
 	 (sh-mode . lsp)
 	 (R-mode . lsp)))
@@ -50,9 +55,11 @@
   :config
   (setq lsp-ui-doc-delay 2
 	lsp-ui-doc-enable t
+	lsp-ui-doc-header nil
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-position 'top
         lsp-ui-doc-include-signature t
+	lsp-ui-doc-use-childframe t
         lsp-ui-sideline-enable nil
         lsp-ui-flycheck-enable t
         lsp-ui-flycheck-list-position 'right
@@ -120,6 +127,9 @@
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi)))
 
+;; Python pyls
+;; https://www.mattduck.com/lsp-python-getting-started.html
+
 ;; Python - Sourcery
 ;; https://github.com/sourcery-ai/sourcery/wiki/Emacs
 (lsp-register-client
@@ -150,7 +160,11 @@
   :config
   (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
 
+;; Markdown
+;; https://emacs-lsp.github.io/lsp-mode/page/lsp-markdown/
+
 ;; Bash
 ;; https://github.com/bash-lsp/bash-language-server
 
 ;; R
+;; https://emacs-lsp.github.io/lsp-mode/page/lsp-r/
