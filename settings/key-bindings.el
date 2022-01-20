@@ -24,3 +24,17 @@
 
 ;; Custom commands
 ;; (global-set-key (kbd "C-c r") 'rsync-html)
+
+;;; Some generally useful key-bindings (mostly ESS specific) from
+;;; http://stats.blogoverflow.com/page/2/
+(define-key global-map [f1] 'Control-X-prefix)
+(define-key global-map [f2] 'save-buffer)
+(define-key global-map [f3] 'find-file)
+(define-key global-map [f5] 'switch-to-buffer)
+(define-key global-map [f6] 'other-window)
+(define-key global-map [f8] 'kill-buffer)
+(define-key global-map [f9] 'ess-load-file)
+
+;; EIN commands
+(local-set-key [f12] 'ein:worksheet-delete-cell)
+(local-set-key [f5] 'ein:notebook-reconnect-kernel)

@@ -11,7 +11,3 @@
  '(ein:output-area-inlined-images t)
  '(ein:polymode t)
  '(ein:query-timeout 100000))
-
-;; EIN commands
-(global-set-key [f12] 'ein:worksheet-delete-cell)
-(local-set-key [f5] 'ein:notebook-reconnect-kernel)

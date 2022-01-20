@@ -43,15 +43,6 @@
 ;; (define-key inferior-ess-mode-map (kbd "C-c |") 'then_R_operator)
 
 
-;;; Some generally useful key-bindings (mostly ESS specific) from
-;;; http://stats.blogoverflow.com/page/2/
-(define-key global-map [f1] 'Control-X-prefix)
-(define-key global-map [f2] 'save-buffer)
-(define-key global-map [f3] 'find-file)
-(define-key global-map [f5] 'switch-to-buffer)
-(define-key global-map [f6] 'other-window)
-(define-key global-map [f8] 'kill-buffer)
-(define-key global-map [f9] 'ess-load-file)
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html
 (defun my-ess-post-run-hook ()
