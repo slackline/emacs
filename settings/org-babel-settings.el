@@ -14,7 +14,7 @@
 (add-hook 'org-html-export-to-html 'rsync-html)
 
 
-;; Skeletons
+;; R Skeleton
 (define-skeleton org-R-skeleton
   "Header info for a org file with R."
   "Title: "
@@ -31,7 +31,7 @@
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
 )
-(global-set-key [C-S-f4] 'org-R-skeleton)
+(global-set-key [C-f4] 'org-R-skeleton)
 
 ;; Org Python Skeleton
 (define-skeleton org-python-skeleton
@@ -50,7 +50,7 @@
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
 )
-(global-set-key [C-S-f5] 'org-python-skeleton)
+(global-set-key [C-f5] 'org-python-skeleton)
 
 ;; Org Reveal Skeleton
 (define-skeleton org-reveal-skeleton
@@ -72,7 +72,7 @@
   "#+AUTHOR: " str " \n"
   "#+EMAIL: " str "\n"
 )
-(global-set-key [C-S-f6] 'org-reveal-skeleton)
+(global-set-key [C-f6] 'org-reveal-skeleton)
 
 ;; Default header arguments (found these tend to mess things up so not using for now)
 ;; (add-to-list 'org-babel-default-header-args

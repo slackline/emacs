@@ -49,6 +49,12 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
+;; Hide compilation buffer https://emacs.stackexchange.com/a/110
+(add-hook 'compilation-finish-functions
+          (lambda (buf strg)
+            (let ((win  (get-buffer-window buf 'visible)))
+              (when win (delete-window win)))))
+
 
 ;; SETUP use-package
 (eval-when-compile
