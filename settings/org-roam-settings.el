@@ -2,7 +2,7 @@
 ;;;
 ;;; https://www.orgroam.com/manual.html
 ;;;
-;;; https://systemcrafters.cc/build-a-second-brain-in-emacs/getting-started-with-org-roam/
+;;; For more notes see C-c n f org
 (use-package org-roam
   :ensure t
   :init
@@ -15,17 +15,18 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n")
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: %?")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %<%Y-%m-%d>\n"))))
+                            "#+title: %{title}\n#+date: %U\n"))))
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n a" . org-roam-alias-add)
 	 ("C-c n c" . org-roam-capture)
+	 ("C-c n d" . org-roam-dailies-capture-today)
 	 ("C-c n f" . org-roam-node-find)
 	 ("C-c n i" . org-roam-node-insert)
          ("C-c n g" . org-roam-graph-show)
