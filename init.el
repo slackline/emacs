@@ -82,6 +82,10 @@
   (setq-default frame-title-format '("%b"))     ; Make window title the buffer name
   (setq confirm-kill-processes nil)		; Stop confirming the killing of processes
   (setq ring-bell-function 'ignore)             ; Disable bell sound
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
   :bind (("C-c U" . revert-buffer)
 	 ("C-c e" . eval-region)
 	 ("C-c E" . eval-buffer)
