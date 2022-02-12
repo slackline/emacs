@@ -56,9 +56,17 @@
 
 
 ;; SETUP use-package
-(eval-when-compile
-  (require 'use-package))
-(setq use-package-always-ensure t)
+;; (eval-when-compile
+;;   (require 'use-package))
+;; (setq use-package-always-ensure t)
+;; Try and alternative method which installs use-package if not already present
+;;   https://ianyepan.github.io/posts/setting-up-use-package/
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
 
 ;; BASIC CUSTOMISATION
 ;; --------------------------------------
