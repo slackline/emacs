@@ -86,3 +86,62 @@
 	bibtex-completion-library-path "~/work/ref/"
 	bibtex-completion-notes-path "~/org/helm-bibtex-notes"
 	org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f")))
+
+;; Skeletons
+(define-skeleton org-R-skeleton
+  "Header info for a org file with R."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Neil Shephard\n"
+  "#+EMAIL: nshephard@protonmail.com\n"
+  "#+PROPERTY: header-args:R  :session *org-R*\n"
+  "#+PROPERTY: header-args:R  :cache yes\n"
+  "#+PROPERTY: header-args:R  :results graphics\n"
+  "#+PROPERTY: header-args:R  :width 1024\n"
+  "#+PROPERTY: header-args:R  :height 768\n"
+  "#+PROPERTY: header-args:R  :tangle yes\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
+  "-----"
+ )
+(global-set-key [C-S-f4] 'org-R-skeleton)
+
+(define-skeleton org-python-skeleton
+  "Header info for a org file with Python."
+  "Title: "
+  "#+TITLE:" str " \n"
+  "#+AUTHOR: Neil Shephard\n"
+  "#+EMAIL: nshephard@gmail.com\n"
+  "#+PROPERTY: header-args:python  :session *org-python*\n"
+  "#+PROPERTY: header-args:python  :cache yes\n"
+  "#+PROPERTY: header-args:python  :results graphics\n"
+  "#+PROPERTY: header-args:python  :width 1024\n"
+  "#+PROPERTY: header-args:python  :height 768\n"
+  "#+PROPERTY: header-args:python  :tangle yes\n"
+  "#+INFOJS_OPT: \n"
+  "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
+  "-----"
+ )
+(global-set-key [C-S-f5] 'org-python-skeleton)
+
+;; Default header arguments
+(add-to-list 'org-babel-default-header-args
+             '(:AUTHOR . "Neil Shephard")
+	     '(:EMAIL . "nshephard@gmail.com")
+	     )
+(add-to-list 'org-babel-default-header-args:R
+             '(:session . "*org-R*")
+	     )
+;; 	       (:width . 1024) (:height . 768)
+;; 	       (:cache . "yes")
+;; 	       (:results . "output graphics")
+;; 	       (:exports . "both")
+;; 	       (:tangle . "yes")
+;; 	      ))
+(add-to-list 'org-babel-default-inline-header-args
+             '(:colnames . "nil"))
+;; Insert code blocks (https://emacs.stackexchange.com/a/12847)
+(add-to-list 'org-structure-template-alist
+             '("r" "#+NAME: ?\n#+BEGIN_SRC R :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
+(add-to-list 'org-structure-template-alist
+             '("p" "#+NAME: ?\n#+BEGIN_SRC Python :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
