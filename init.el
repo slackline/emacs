@@ -13,15 +13,14 @@
 ;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
-	("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
-	("MELPA Stable" . "https://stable.melpa.org/packages/")
-	("MELPA"	. "https://melpa.org/packages/"))
+	    ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
+	    ("MELPA Stable" . "https://stable.melpa.org/packages/")
+	    ("MELPA"	. "https://melpa.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
-	("GNU ELPA"	. 5)
-	("NonGNU ELPA"	. 5)
-	("MELPA"	. 0)
-	))
+	    ("GNU ELPA"	. 5)
+	    ("NonGNU ELPA"	. 5)
+	    ("MELPA"	. 0)))
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -73,15 +72,15 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq inhibit-startup-message t)  ; hide the startup message
-  (setq-default fill-column 120)    ; Reset line-length
-  (setq global-visual-line-mode t)  ; Visual line wrap
-  (setq-default cursor-type 'bar)   ; Line-style cursor similar to other text editors
-  (setq inhibit-startup-screen t)   ; Disable startup screen
-  (setq initial-scratch-message "") ; Make *scratch* buffer blank
-  (setq-default frame-title-format '("%b"))     ; Make window title the buffer name
-  (setq confirm-kill-processes nil)		; Stop confirming the killing of processes
-  (setq ring-bell-function 'ignore)             ; Disable bell sound
+  (setq inhibit-startup-message t)    ; hide the startup message
+  (setq-default fill-column 120)      ; Reset line-length
+  (setq global-visual-line-mode t)    ; Visual line wrap
+  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+  (setq inhibit-startup-screen t)     ; Disable startup screen
+  (setq initial-scratch-message "")   ; Make *scratch* buffer blank
+  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+  (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
+  (setq ring-bell-function 'ignore)   ; Disable bell sound
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq-default sh-basic-offset 2)

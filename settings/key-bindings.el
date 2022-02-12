@@ -12,7 +12,8 @@
 ;; guide-key
 ;;
 ;; Most things commented out here reside under init.el > (use-package emacs :bind (...))
-
+(use-package which-key
+  :config (which-key-mode))
 ;; Misc
 ;; (global-set-key (kbd "C-c U") 'revert-buffer)
 ;; (global-set-key (kbd "C-c e") 'eval-region)
