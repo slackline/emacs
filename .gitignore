@@ -11,3 +11,4 @@ session.*
 \#*
 *.sqlite
 *.tar.*
+tramp
