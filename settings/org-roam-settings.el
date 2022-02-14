@@ -15,24 +15,27 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+date: %U\n#+filetags: %?")
+      :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: %?")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+title: %{title}\n#+date: %U\n"))))
+                            "#+TITLE: %{title}\n#+date: %U\n"))))
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n a" . org-roam-alias-add)
-	 ("C-c n c" . org-roam-capture)
-	 ("C-c n d" . org-roam-dailies-capture-today)
-	 ("C-c n f" . org-roam-node-find)
-	 ("C-c n i" . org-roam-node-insert)
+	     ("C-c n c" . org-roam-capture)
+	     ("C-c n d" . org-roam-dailies-capture-today)
+	     ("C-c n f" . org-roam-node-find)
+	     ("C-c n i" . org-roam-node-insert)
          ("C-c n g" . org-roam-graph-show)
-	 ("C-c n l" . org-roam-buffer-toggle)
-	 ("C-c n o" . org-id-get-create)
-	 ("C-c n t" . org-tag-add))
+	     ("C-c n l" . org-roam-buffer-toggle)
+	     ("C-c n o" . org-id-get-create)
+;;	     ("C-c n s" . org-roam-db-sync)
+	     ("C-c n t" . org-tag-add)
+;;         ("C-c n u s" . org-roam-ui-open)
+         )
   :config
   (org-roam-setup))
 
@@ -41,8 +44,9 @@
   :after org-roam)
 
 (use-package org-roam-ui
-  :after org-roam-bibtex-mode:config
+  :after org-roam-bibtex-mode
+  :init
   (setq org-roam-ui-sync-theme t
-	org-roam-ui-follow t
-	org-roam-ui-update-on-save t
-	org-roam-ui-open-on-start t))
+	    org-roam-ui-follow t
+	    org-roam-ui-update-on-save t
+	    org-roam-ui-open-on-start t))

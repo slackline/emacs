@@ -129,9 +129,9 @@
              '(:AUTHOR . "Neil Shephard")
 	     '(:EMAIL . "nshephard@gmail.com")
 	     )
-(add-to-list 'org-babel-default-header-args:R
-             '(:session . "*org-R*")
-	     )
+;; (add-to-list 'org-babel-default-header-args:R
+;;              '(:session . "*org-R*")
+;; 	     )
 ;; 	       (:width . 1024) (:height . 768)
 ;; 	       (:cache . "yes")
 ;; 	       (:results . "output graphics")
