@@ -18,6 +18,7 @@
     conda
     crontab-mode
     dap-mode
+    dockerfile-mode
     ein
     elfeed-org
     elfeed-web
@@ -29,6 +30,7 @@
     ;; flycheck-shellcheck
     gitlab
     git-modes
+    groovy-mode
     helm-org
     hide-mode-line
     highlight-indent-guides

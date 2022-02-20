@@ -26,12 +26,16 @@
   :init (setq lsp-keymap-prefix "C-c l"
 	      lsp-bash-highlight-parsing-errors t)
   :hook ((python-mode . lsp)
-	 (bash-mode . lsp)
-	 (latex-mode . lsp)
-	 (markdown-mode . lsp)
-	 (org-mode . lsp)
-	 (sh-mode . lsp)
-	 (R-mode . lsp)))
+	     (bash-mode . lsp)
+	     (dockerfile-mode . lsp)
+	     (groovy-mode . lsp)
+	     (html-mode . lsp)
+	     (latex-mode . lsp)
+	     (markdown-mode . lsp)
+	     (org-mode . lsp)
+	     (R-mode . lsp)
+	     (sh-mode . lsp)
+         (terraform-mode . lsp)))
 
 ;; Provides completion, with the proper backend
 ;; it will provide Python completion.
@@ -53,13 +57,13 @@
   :ensure t
   :defer t
   :config
-  (setq lsp-ui-doc-delay 2
-	lsp-ui-doc-enable t
-	lsp-ui-doc-header nil
+  (setq lsp-ui-doc-delay 1
+	    lsp-ui-doc-enable t
+	    lsp-ui-doc-header nil
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-position 'top
         lsp-ui-doc-include-signature t
-	lsp-ui-doc-use-childframe t
+	    lsp-ui-doc-use-childframe t
         lsp-ui-sideline-enable nil
         lsp-ui-flycheck-enable t
         lsp-ui-flycheck-list-position 'right
@@ -67,12 +71,12 @@
         lsp-ui-peek-enable t
         lsp-ui-peek-list-width 60
         lsp-ui-peek-peek-height 25
-	lsp-ui-sideline-enable t
-	lsp-ui-sideline-show-hover t
-	lsp-ui-sideline-delay 3)
+	    lsp-ui-sideline-enable t
+	    lsp-ui-sideline-show-hover t
+	    lsp-ui-sideline-delay 3)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
-	      ("C-c i" . lsp-ui-imenu)))
+	          ("C-c i" . lsp-ui-imenu)))
 
 ;; LSP Treemacs
 (use-package lsp-treemacs
