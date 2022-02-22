@@ -92,6 +92,7 @@
     use-package
     vterm
     weblorg
+    which-key
     wide-column
     with-shell-interpreter
     yaml-mode
