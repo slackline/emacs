@@ -77,22 +77,28 @@
   (menu-bar-mode 1)
   (global-linum-mode t)
   (global-hl-line-mode 1)
+  (savehist-mode 1)
+  (recentf-mode 1)
+  (global-auto-revert-mode 1)
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
   (setq inhibit-startup-message t)    ; hide the startup message
-  (setq-default fill-column 120)      ; Reset line-length
   (setq global-visual-line-mode t)    ; Visual line wrap
-  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
   (setq inhibit-startup-screen t)     ; Disable startup screen
   (setq initial-scratch-message "")   ; Make *scratch* buffer blank
-  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
   (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
   (setq ring-bell-function 'ignore)   ; Disable bell sound
+  (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+  (setq use-dialog-box nil)           ; No dialog pop-ups
+  (setq history-length 100)           ; Mini-buffer history
+  (setq-default fill-column 120)      ; Reset line-length
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq-default sh-basic-offset 2)
   (setq-default sh-indentation 2)
+  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
   :bind (("C-c U" . revert-buffer)
 	 ("C-c e" . eval-region)
 	 ("C-c E" . eval-buffer)
