@@ -15,7 +15,7 @@
   (org-roam-capture-templates
    '(("d" "default" plain
       "%?"
-      :if-new (file+head "${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: %?")
+      :if-new (file+head "main/${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: ${tags}")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
       '(("d" "default" entry
@@ -32,9 +32,9 @@
          ("C-c n g" . org-roam-graph-show)
 	     ("C-c n l" . org-roam-buffer-toggle)
 	     ("C-c n o" . org-id-get-create)
-;;	     ("C-c n s" . org-roam-db-sync)
+	     ("C-c n s" . org-roam-db-sync)
 	     ("C-c n t" . org-tag-add)
-;;         ("C-c n u s" . org-roam-ui-open)
+         ("C-c n u s" . org-roam-ui-open)
          )
   :config
   (org-roam-setup))

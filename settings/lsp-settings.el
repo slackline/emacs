@@ -31,7 +31,7 @@
 	     (groovy-mode . lsp)
 	     (html-mode . lsp)
 	     (latex-mode . lsp)
-	     (markdown-mode . lsp)
+	     ;;(markdown-mode . lsp)
 	     (org-mode . lsp)
 	     (R-mode . lsp)
 	     (sh-mode . lsp)

@@ -1,7 +1,7 @@
 ;; ESS CONFIGURATION
 ;; --------------------------------------
 ;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
-(use-package ess-smart-underscore)
+;; (use-package ess-smart-underscore)
 
 (use-package ess
   :ensure t
@@ -13,6 +13,7 @@
         ess-else-offset 4
         ess-eval-visibly-p nil
         ess-ask-for-ess-directory nil
+        ess-togggle-underscore nil
         ess-eval-visibly 'nowait
         ess-r--no-company-meta t ;; https://github.com/emacs-ess/ESS/issues/1062
         ess-use-auto-complete t))
@@ -21,7 +22,7 @@
   :ensure ess
   :defer 1
   :bind (:map ess-r-mode-map ("C-|" . " |>")) ;; https://emacs.stackexchange.com/a/65148
-	(:map ess-r-mode-map ("_" . ess-insert-assign)) ;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
+  (:map ess-r-mode-map (";" . ess-insert-assign)) ;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
 	;; (:map inferior-ess-r-mode-map ("C-|" . " |> "))
         ;; (:map inferior-ess-r-mode-map ("_" . ess-insert-assign))
         )

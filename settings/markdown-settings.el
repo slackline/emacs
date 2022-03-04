@@ -5,7 +5,7 @@
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :hook (markdown-mode .auto-fill-mode)
-  :init (setq markdown-command "multimarkdown"))
+  :init (setq markdown-command "pandoc"))
 
 
 ;; Enable auto-fill-mode for Markdown files (https://emacs.stackexchange.com/a/46980/10100)
