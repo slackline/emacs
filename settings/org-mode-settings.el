@@ -141,7 +141,8 @@
 (add-to-list 'org-babel-default-inline-header-args
              '(:colnames . "nil"))
 ;; Insert code blocks (https://emacs.stackexchange.com/a/12847)
-(add-to-list 'org-structure-template-alist
-             '("r" "#+NAME: ?\n#+BEGIN_SRC R :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
-(add-to-list 'org-structure-template-alist
-             '("p" "#+NAME: ?\n#+BEGIN_SRC Python :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
+;; OBSOLETE as of Org 9.2 see https://emacs.stackexchange.com/a/46992/10100
+;; (add-to-list 'org-structure-template-alist
+;;              '("r" "#+NAME: ?\n#+BEGIN_SRC R :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
+;; (add-to-list 'org-structure-template-alist
+;;              '("p" "#+NAME: ?\n#+BEGIN_SRC Python :session ** :eval yes :exports none :results output silent\n\n#+END_SRC"))
