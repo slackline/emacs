@@ -31,7 +31,7 @@
 	     (groovy-mode . lsp)
 	     (html-mode . lsp)
 	     (latex-mode . lsp)
-	     ;;(markdown-mode . lsp)
+	     ;; (markdown-mode . lsp)
 	     (org-mode . lsp)
 	     (R-mode . lsp)
 	     (sh-mode . lsp)
@@ -63,7 +63,7 @@
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-position 'top
         lsp-ui-doc-include-signature t
-	    lsp-ui-doc-use-childframe t
+        lsp-ui-doc-use-childframe t
         lsp-ui-sideline-enable nil
         lsp-ui-flycheck-enable t
         lsp-ui-flycheck-list-position 'right
@@ -71,9 +71,9 @@
         lsp-ui-peek-enable t
         lsp-ui-peek-list-width 60
         lsp-ui-peek-peek-height 25
-	    lsp-ui-sideline-enable t
-	    lsp-ui-sideline-show-hover t
-	    lsp-ui-sideline-delay 3)
+        lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-hover t
+        lsp-ui-sideline-delay 3)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
 	          ("C-c i" . lsp-ui-imenu)))
@@ -123,7 +123,8 @@
                           (require 'lsp-pyright) (lsp-deferred)))))
 
 ;; Python - Jedi
-;; https://github.com/fredcamps/lsp-jedi
+;; LSP Module : https://github.com/fredcamps/lsp-jedi
+;; Server     : https://github.com/pappasam/jedi-language-server
 (use-package lsp-jedi
   :ensure t
   :config
@@ -146,7 +147,8 @@
                   :add-on? t
                   :priority 2))
 ;; LTex
-;; https://github.com/emacs-languagetool/lsp-ltex / https://valentjn.github.io/ltex/
+;; LSP Module : https://github.com/emacs-languagetool/lsp-ltex
+;; Server     : https://valentjn.github.io/ltex/
 (use-package lsp-ltex
   :ensure t
   :hook (text-mode . (lambda ()
@@ -158,14 +160,16 @@
                        (require 'lsp-latex)
                        (lsp))))
 ;; Julia
-;; https://github.com/non-Jedi/lsp-julia
+;; LSP Module : https://github.com/non-Jedi/lsp-julia
+;; Server     :
 (use-package lsp-julia
   :ensure t
   :config
   (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
 
 ;; Markdown
-;; https://emacs-lsp.github.io/lsp-mode/page/lsp-markdown/
+;; LSP Module : https://emacs-lsp.github.io/lsp-mode/page/lsp-markdown/
+;; Server     : https://github.com/remarkjs/remark-language-server
 
 ;; Bash
 ;; https://github.com/bash-lsp/bash-language-server
