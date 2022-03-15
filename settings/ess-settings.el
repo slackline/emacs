@@ -16,15 +16,35 @@
         ess-togggle-underscore nil
         ess-eval-visibly 'nowait
         ess-r--no-company-meta t ;; https://github.com/emacs-ess/ESS/issues/1062
-        ess-use-auto-complete t))
+        ess-use-auto-complete t)
+  :mode (("/R/.*\\.q\\'"       . R-mode)
+         ("\\.[rR]\\'"         . R-mode)
+         ("\\.[rR]profile\\'"  . R-mode)
+         ("NAMESPACE\\'"       . R-mode)
+         ("CITATION\\'"        . R-mode)
+         ("\\.[Rr]out"         . R-transcript-mode)
+         ("\\.Rd\\'"           . Rd-mode))
+  :interpreter (("R" . R-mode)
+                ("R" . R-transcript-mode)
+                ("R" . Rd-mode))
+  :config
+;;  (setq ess-r-backend 'lsp)
+  )
 
-(use-package ess-r-mode ;; https://github.com/emacs-ess/ESS/issues/809
+;; Various links on how to set things up
+;;
+;; General
+;; https://github.com/emacs-ess/ESS/issues/809
+;; https://github.com/emacs-lsp/lsp-mode/issues/1383#issue-560006302
+;;
+;; Pipes
+;; https://emacs.stackexchange.com/a/65148
+;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
+(use-package ess-r-mode
   :ensure ess
   :defer 1
-  :bind (:map ess-r-mode-map ("C-|" . " |>")) ;; https://emacs.stackexchange.com/a/65148
-  (:map ess-r-mode-map (";" . ess-insert-assign)) ;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
-	;; (:map inferior-ess-r-mode-map ("C-|" . " |> "))
-        ;; (:map inferior-ess-r-mode-map ("_" . ess-insert-assign))
+  :bind (:map ess-r-mode-map ("C-|" . " |>\n"))
+  (:map ess-r-mode-map (";" . ess-insert-assign))
         )
 
 ;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)

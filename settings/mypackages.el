@@ -7,6 +7,7 @@
     auto-complete
     auto-package-update
     better-defaults
+    bind-key
     blacken
     bug-hunter
     centaur-tabs
@@ -65,6 +66,7 @@
     org-roam-ui
     org-ref
     org-sidebar
+    osm
     ox-hugo
     ox-reveal
     ox-tufte

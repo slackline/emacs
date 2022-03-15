@@ -21,7 +21,7 @@
       '(("d" "default" entry
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
-                            "#+TITLE: %{title}\n#+date: %U\n"))))
+                            "#+TITLE: %{title}\n#+DATE: %U\n"))))
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n a" . org-roam-alias-add)

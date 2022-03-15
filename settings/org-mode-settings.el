@@ -104,7 +104,7 @@
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
  )
-(global-set-key [C-S-f4] 'org-R-skeleton)
+(global-set-key [C-f4] 'org-R-skeleton)
 
 (define-skeleton org-python-skeleton
   "Header info for a org file with Python."
@@ -122,7 +122,7 @@
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
  )
-(global-set-key [C-S-f5] 'org-python-skeleton)
+(global-set-key [C-f5] 'org-python-skeleton)
 
 ;; Default header arguments
 (add-to-list 'org-babel-default-header-args

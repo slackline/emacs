@@ -9,7 +9,7 @@
   :defer t
   :config
   (setq treemacs-no-png-images t
-	  treemacs-width 24)
+	   treemacs-width 24)
   :bind ("C-c t" . treemacs))
 
 
@@ -21,10 +21,10 @@
   :defer t
   :config
   (setq lsp-idle-delay 0.5
-	lsp-enable-symbol-highlighting t)
+	    lsp-enable-symbol-highlighting t)
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
-	      lsp-bash-highlight-parsing-errors t)
+	          lsp-bash-highlight-parsing-errors t)
   :hook ((python-mode . lsp)
 	     (bash-mode . lsp)
 	     (dockerfile-mode . lsp)
@@ -34,6 +34,7 @@
 	     ;; (markdown-mode . lsp)
 	     (org-mode . lsp)
 	     (R-mode . lsp)
+	     (ess-r-mode . lsp)
 	     (sh-mode . lsp)
          (terraform-mode . lsp)))
 
@@ -176,3 +177,5 @@
 
 ;; R
 ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-r/
+;; (use-package lsp-r
+;;   :ensure t)
