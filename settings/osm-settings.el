@@ -13,6 +13,7 @@
   ;; Load Org link support
   (with-eval-after-load 'org
     (require 'osm-ol))
-  :config
-  ;;(setq osm-home (53.35611 -1.46326 15))
+  :custom
+  (osm-server 'default)
+  (osm-home '(53.35611 -1.46326 15))
   )
