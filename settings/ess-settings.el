@@ -43,8 +43,11 @@
 (use-package ess-r-mode
   :ensure ess
   :defer 1
-  :bind (:map ess-r-mode-map ("C-|" . " |>\n"))
+  :bind
+  (:map ess-r-mode-map ("C-|" . " |>\n"))
   (:map ess-r-mode-map (";" . ess-insert-assign))
+  (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
+  (:map inferior-ess-r-mode-map (";" . ess-insert-assign))
         )
 
 ;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
@@ -75,3 +78,6 @@
 ;; (use-package auto-complete-config)
 ;; (ac-config-default)
 (auto-complete-mode)
+
+;;; Plots in Emacs buffers
+;;; https://emacs.stackexchange.com/questions/2292/ess-plot-directly-to-an-emacs-buffer
