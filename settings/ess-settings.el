@@ -7,16 +7,6 @@
   :ensure t
   :defer 1
   :init
-  (setq comint-input-ring-size 1000
-        ess-indent-level 4
-        ess-arg-function-offset 4
-        ess-else-offset 4
-        ess-eval-visibly-p nil
-        ess-ask-for-ess-directory nil
-        ess-togggle-underscore nil
-        ess-eval-visibly 'nowait
-        ess-r--no-company-meta t ;; https://github.com/emacs-ess/ESS/issues/1062
-        ess-use-auto-complete t)
   :mode (("/R/.*\\.q\\'"       . R-mode)
          ("\\.[rR]\\'"         . R-mode)
          ("\\.[rR]profile\\'"  . R-mode)
@@ -28,7 +18,16 @@
                 ("R" . R-transcript-mode)
                 ("R" . Rd-mode))
   :config
-;;  (setq ess-r-backend 'lsp)
+  (setq ess-r-backend 'lsp)
+  (setq comint-input-ring-size 1000)
+  (setq ess-indent-offset 2)
+  (setq ess-eval-visibly-p nil)
+  (setq ess-ask-for-ess-directory nil)
+  (setq ess-togggle-underscore nil)
+  (setq ess-eval-visibly 'nowait)
+  :hook
+  (ess-mode . company-mode)
+  (inferior-ess-mode . company-mode)
   )
 
 ;; Various links on how to set things up
@@ -47,8 +46,7 @@
   (:map ess-r-mode-map ("C-|" . " |>\n"))
   (:map ess-r-mode-map (";" . ess-insert-assign))
   (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
-  (:map inferior-ess-r-mode-map (";" . ess-insert-assign))
-        )
+  (:map inferior-ess-r-mode-map (";" . ess-insert-assign)))
 
 ;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
 ;; See also https://github.com/emacs-ess/ESS/issues/809
