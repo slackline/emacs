@@ -69,23 +69,23 @@
   )
 
 
-;; Formatting - these are older options culled from elpy, work out what I want to use
+;; Linting - Lots of options, currently going with blacken
 ;; (use-package py-autopep8
 ;;   :defer 3
 ;;   :hook (python-mode . py-autopep8-enable-on-save))
 ;; (use-package py-yapf
 ;;   :defer 3
-;;   :hook (python-mode . py-yapf-enable-on-save)
-;; (use-package blacken
-;;   :defer 3
-;;   :hook (python-mode . blacken-mode)
-
-;; Format the python buffer following YAPF rules
-;; There's also blacken if you like it better.
-(use-package yapfify
+;;   :hook (python-mode . py-yapf-enable-on-save))
+(use-package blacken
   :ensure t
-  :defer t
-  :hook (python-mode . yapf-mode))
+  :defer 3
+  :config
+  (setq blacken-line-length 120)
+  :hook (python-mode . blacken-mode))
+;; (use-package yapfify
+;;   :ensure t
+;;   :defer t
+;;   :hook (python-mode . yapf-mode))
 
 (use-package numpydoc
   :ensure t
