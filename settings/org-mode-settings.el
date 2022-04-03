@@ -13,13 +13,25 @@
       org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
       org-babel-python-command "~/.virtualenvs/default/bin/python"
       org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
-          '(:foreground default
+      '(:foreground default
 	    :background "rgb 1 1 1"
             :scale 1.5
             :html-foreground "Black"
 	    :html-background "Transparent"
             :html-scale 1.0
             :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+
+;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )
+        ))
+(setq org-todo-keyword-faces
+      '(("TODO" . (:foreground "GoldenRod" :weight bold))
+        ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
+        ("BLOCKED" . (:foreground "Red" :weight bold))
+        ("DONE" . (:foreground "LimeGreen" :weight bold))
+        ("WONT-DO" . (:foreground "LimeGreen" :weight bold))
+        ))
 
 ;; Define conversion
 (defmath uconvert (v u)
