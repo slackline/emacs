@@ -1,8 +1,19 @@
 ;; ESS CONFIGURATION
 ;; --------------------------------------
-;;; Smart underscore  https://www.emacswiki.org/emacs/ess-smart-underscore.el
-;; (use-package ess-smart-underscore)
+;; No longer using smartunderscore
+;; Useful pages to read on configuration of ESS and sometimes LSP mode
 
+;; ESS
+;; https://weikaichen.gitee.io/notes/emacs-ess-r/
+;;
+;; + lsp-mode
+;; https://github.com/emacs-ess/ESS/issues/809
+;; https://github.com/emacs-lsp/lsp-mode/issues/1383#issue-560006302
+;;
+;; Pipes and assignment customisation
+;;
+;; https://emacs.stackexchange.com/a/65148
+;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
 (use-package ess
   :ensure t
   :defer 1
@@ -30,15 +41,6 @@
   (inferior-ess-mode . company-mode)
   )
 
-;; Various links on how to set things up
-;;
-;; General
-;; https://github.com/emacs-ess/ESS/issues/809
-;; https://github.com/emacs-lsp/lsp-mode/issues/1383#issue-560006302
-;;
-;; Pipes
-;; https://emacs.stackexchange.com/a/65148
-;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
 (use-package ess-r-mode
   :ensure ess
   :defer 1

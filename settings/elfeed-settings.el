@@ -2,6 +2,9 @@
 ;;; --------------------------------------
 ;;;
 ;;; http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+;;;
+;;; https://github.com/SqrtMinusOne/elfeed-summary/
+
 
 (global-set-key (kbd "C-x w") 'elfeed)
 

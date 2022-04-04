@@ -22,6 +22,7 @@
          "* %?"
          :target (file+head "%<%Y-%m-%d>.org"
                             "#+TITLE: %{title}\n#+DATE: %U\n"))))
+  ;; To add : https://www.reddit.com/r/OrgRoam/comments/tfcwki/org_roam_capture_create_nametitle_of_a_note/
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n a" . org-roam-alias-add)
