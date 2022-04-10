@@ -29,7 +29,7 @@
         ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
         ("BLOCKED" . (:foreground "Red" :weight bold))
         ("DONE" . (:foreground "LimeGreen" :weight bold))
-        ("WONT-DO" . (:foreground "LimeGreen" :weight bold))
+        ("WONT-DO" . (:foreground "DarkViolet" :weight bold))
         ))
 
 ;; Define conversion
