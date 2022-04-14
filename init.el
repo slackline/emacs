@@ -93,6 +93,8 @@
   (setq use-dialog-box nil)           ; No dialog pop-ups
   (setq history-length 100)           ; Mini-buffer history
   (setq-default fill-column 120)      ; Reset line-length
+  (setq undo-limit 320000)            ; Increase the undo history limits
+  (setq undo-strong-limit 640000)
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq-default sh-basic-offset 2)
