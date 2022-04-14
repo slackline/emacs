@@ -3,6 +3,12 @@
 ;;; https://www.orgroam.com/manual.html
 ;;;
 ;;; For more notes see C-c n f org
+;; (use-package sqlite3
+;;   :straight t)
+;; (use-package emacsql-libsqlite3
+;;   :straight t
+;;   :custom
+;;   (org-roam-database-connector 'libsqlite3))
 (use-package org-roam
   :ensure t
   :init

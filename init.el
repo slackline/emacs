@@ -92,8 +92,6 @@
   (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
   (setq use-dialog-box nil)           ; No dialog pop-ups
   (setq history-length 100)           ; Mini-buffer history
-  (setq undo-limit 320000)            ; Increas the undo history limits
-  (setq undo-strong-limit 640000)
   (setq-default fill-column 120)      ; Reset line-length
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
