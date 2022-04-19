@@ -68,6 +68,13 @@
   ;;   (setq python-shell-interpreter "python")))
   )
 
+;;; Python pytest (https://github.com/wbolster/emacs-python-pytest)
+(use-package python-pytest
+  :after (pyvenv)
+  :ensure t
+  :defer 2
+  :config
+)
 
 ;; Linting - Lots of options, currently going with blacken
 ;; (use-package py-autopep8
