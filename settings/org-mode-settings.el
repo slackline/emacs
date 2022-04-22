@@ -32,6 +32,12 @@
         ("WONT-DO" . (:foreground "DarkViolet" :weight bold))
         ))
 
+;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
+(define-key org-mode-map (kbd "`")
+    (lambda ()
+        (interactive)
+        (self-insert-command 1 126)))
+
 ;; Define conversion
 (defmath uconvert (v u)
   "Convert value V to compatible unit U."
