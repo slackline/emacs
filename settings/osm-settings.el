@@ -15,5 +15,5 @@
     (require 'osm-ol))
   :custom
   (osm-server 'default)
-  (osm-home '(53.35611 -1.46326 15))
+  (osm-home '(53.356116 -1.463397 15))
   )
