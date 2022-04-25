@@ -125,6 +125,7 @@
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace)
 )
+(load "~/.config/emacs/settings/auto-package-update.el")
 
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
@@ -181,6 +182,7 @@
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
 (load "~/.config/emacs/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/org-ref-settings.el")
 (load "~/.config/emacs/settings/org-babel-settings.el")
 (load "~/.config/emacs/settings/org-capture-settings.el")
 (load "~/.config/emacs/settings/org-notifications-settings.el")
