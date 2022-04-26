@@ -125,7 +125,7 @@
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace)
 )
-(load "~/.config/emacs/settings/auto-package-update.el")
+;;(load "~/.config/emacs/settings/auto-package-update.el")
 
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
