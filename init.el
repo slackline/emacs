@@ -37,7 +37,7 @@
                         exec-path))
 
 ;; Load and install mypackages
-(load "~/.config/emacs/settings/mypackages.el")
+;; (load "~/.config/emacs/settings/mypackages.el")
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
@@ -125,6 +125,16 @@
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace)
 )
+;; Updating packages automatically
+;; https://github.com/rranelli/auto-package-update.el
+(use-package auto-package-update
+   :ensure t
+   :config
+   (setq auto-package-update-delete-old-versions t
+         auto-package-update-interval 2
+         auto-package-update-hide-results t)
+   (auto-package-update-maybe))
+
 ;;(load "~/.config/emacs/settings/auto-package-update.el")
 
 ;; Delete trailing white space when saving in all modes except ein
@@ -159,7 +169,7 @@
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
 ;; Path where settings files are kept
-(add-to-list 'load-path "~/.config/emacs/settings")
+;; (add-to-list 'load-path "~/.config/emacs/settings")
 
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
