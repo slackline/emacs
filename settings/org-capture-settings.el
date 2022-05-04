@@ -119,7 +119,7 @@
          "* %t %?\n" :prepend t)
 	("etx" "Research" entry (file+olp "~/org/training/training.org" "Resources" "Research")
          "* %t %?\n" :prepend t)
-	("etx" "Apps" entry (file+olp "~/org/training/training.org" "Resources" "Apps")
+	("eta" "Apps" entry (file+olp "~/org/training/training.org" "Resources" "Apps")
          "* %t %?\n" :prepend t)
 	;; Cooking
 	("f" "Food & Drink")
