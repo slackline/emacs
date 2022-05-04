@@ -37,7 +37,7 @@
                         exec-path))
 
 ;; Load and install mypackages
-;; (load "~/.config/emacs/settings/mypackages.el")
+(load "~/.config/emacs/settings/mypackages.el")
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
@@ -207,7 +207,7 @@
 (load "~/.config/emacs/settings/tramp-settings.el")
 (load "~/.config/emacs/settings/vterm-settings.el")
 ;; (load "~/.config/emacs/settings/weblorg-settings.el")
-(load "~/.config/emacs/settings/ytdl-settings.el")
+;; (load "~/.config/emacs/settings/ytdl-settings.el")
 
 ;;; IDE / LSP
 (load "~/.config/emacs/settings/flyspell-settings.el")
