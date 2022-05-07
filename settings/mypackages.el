@@ -20,6 +20,7 @@
     crontab-mode
     dap-mode
     dockerfile-mode
+    easy-hugo
     ein
     elfeed-org
     elfeed-web
@@ -29,6 +30,7 @@
     forge
     flycheck
     ;; flycheck-shellcheck
+    gh-notify
     gitlab
     git-modes
     groovy-mode
