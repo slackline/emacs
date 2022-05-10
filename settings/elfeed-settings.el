@@ -66,15 +66,15 @@
   (elfeed-db-save)
   (quit-window))
 
-(defun nds:elfeed-updater ()
-  "Wrapper to load the elfeed db from disk before opening"
-  (interactive)
-  (elfeed-db-save)
-  (quit-window)
-  (elfeed-db-load)
-  (elfeed)
-  (elfeed-search-update--force)
-  (elfeed-update))
+;; (defun nds:elfeed-updater ()
+;;   "Wrapper to load the elfeed db from disk before opening"
+;;   (interactive)
+;;   (elfeed-db-save)
+;;   (quit-window)
+;;   (elfeed-db-load)
+;;   (elfeed)
+;;   (elfeed-search-update--force)
+;;   (elfeed-update))
 
 (use-package elfeed
   :ensure t
@@ -91,15 +91,15 @@
 
 
 ;; Use elfeed-web to periodically update
-(use-package elfeed-web
-  :ensure t
-  :config
-  (setq httpd-port 8461))
+;; (use-package elfeed-web
+;;   :ensure t
+;;   :config
+;;   (setq httpd-port 8461))
 ;; run-with-timer takes an argument in seconds
 ;; (* 30 60) therefore returns 30 minutes in seconds
 ;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
 ;; Alternatively we run at 07:00 each day
-(run-at-time "07:00" nil 'nds:elfeed-updater)
+;; (run-at-time "07:00" nil 'nds:elfeed-updater)
 ;; (setq httpd-port 8461)
 ;; (elfeed-web-start)
 
