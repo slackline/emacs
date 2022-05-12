@@ -22,7 +22,7 @@
 	  ("fisher" . "~/.virtualenvs/")
 	  ("ovh" . "~/.virtualenvs/")
 	  ("alarmpi" . "~/.virtualenvs/")
-	  ("alarmpi-4b" . "~/.virtualenvs/")
+	  ("alarmpi-4b" . "~/.virtualenvs/"))
 	venv-location (cdr
 		       (assoc system-name venv-byhost))
 	default-venv-byhost
