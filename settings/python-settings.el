@@ -30,7 +30,7 @@
 	  ("fisher" . "~/.virtualenvs/python3_9")
 	  ("ovh" . "~/.virtualenvs/default")
 	  ("alarmpi" . "~/.virtualenvs/default")
-	  ("alarmpi-4b" . "~/.virtualenvs/default")
+	  ("alarmpi-4b" . "~/.virtualenvs/default"))
 	default-venv (cdr
 		      (assoc system-name default-venv-byhost))
 	python-environment-directory venv-location)
