@@ -21,8 +21,8 @@
 ;; https://magit.vc/manual/ghub.html#Getting-Started
 ;; https://magit.vc/manual/forge.html#Getting-Started
 ;; Unnecessary as
-(use-package forge
-  :after magit)
+;; (use-package forge
+;;   :after magit)
 
 ;; Automatically refresh buffer
 ;; (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
