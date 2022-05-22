@@ -83,16 +83,6 @@
   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
 	org-reveal-mathjax t))
 
-;; org-ref (https://github.com/jkitchin/org-ref)
-(use-package org-ref
-  :init
-  (setq org-ref-bibliography-notes "~/org/ref-notes.org"
-	org-ref-default-bibliography '("~/org/references.bib")
-	org-ref-pdf-directory "~/work/ref/"
-	bibtex-completion-bibliography "~/org/references.bib"
-	bibtex-completion-library-path "~/work/ref/"
-	bibtex-completion-notes-path "~/org/helm-bibtex-notes"
-	org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f")))
 
 ;; Skeletons
 (define-skeleton org-R-skeleton

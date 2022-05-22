@@ -12,7 +12,6 @@
 ;; at where the envs are located. I use miniconda.
 (use-package pyvenv
   :ensure t
-;;  :defer t
   :config
   ;; Setting work on to easily switch between environments
   (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
@@ -23,8 +22,7 @@
 	  ("fisher" . "~/.virtualenvs/")
 	  ("ovh" . "~/.virtualenvs/")
 	  ("alarmpi" . "~/.virtualenvs/")
-	  ("alarmpi-4b" . "~/.virtualenvs/")
-	  ("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+	  ("alarmpi-4b" . "~/.virtualenvs/"))
 	venv-location (cdr
 		       (assoc system-name venv-byhost))
 	default-venv-byhost
@@ -32,8 +30,7 @@
 	  ("fisher" . "~/.virtualenvs/python3_9")
 	  ("ovh" . "~/.virtualenvs/default")
 	  ("alarmpi" . "~/.virtualenvs/default")
-	  ("alarmpi-4b" . "~/.virtualenvs/default")
-	  ("583-datascience.samba.sheffield.thefloow.com" . "~/.miniconda3/"))
+	  ("alarmpi-4b" . "~/.virtualenvs/default"))
 	default-venv (cdr
 		      (assoc system-name default-venv-byhost))
 	python-environment-directory venv-location)

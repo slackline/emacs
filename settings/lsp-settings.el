@@ -104,24 +104,24 @@
 ;; Language servers
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
-(use-package lsp-pyright
-  :ensure t
-  :defer t
-  :config
-  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  (setq lsp-pyright-disable-language-service nil
-	lsp-pyright-disable-organize-imports nil
-	lsp-pyright-auto-import-completions t
-	lsp-pyright-use-library-code-for-types t
-	;; lsp-pyright-typeshed-paths
-	;; lsp-pyright-diagnostic-mode
-	lsp-pyright-typechecking-mode "basic"
-	lsp-pyright-log-level 1
-	;; lsp-pyright-auto-search-paths
-	;; lsp-pyright-extra-paths
-	lsp-pyright-venv-path "~/miniconda3/envs")
-  :hook ((python-mode . (lambda ()
-                          (require 'lsp-pyright) (lsp-deferred)))))
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+;;   (setq lsp-pyright-disable-language-service nil
+;; 	lsp-pyright-disable-organize-imports nil
+;; 	lsp-pyright-auto-import-completions t
+;; 	lsp-pyright-use-library-code-for-types t
+;; 	;; lsp-pyright-typeshed-paths
+;; 	;; lsp-pyright-diagnostic-mode
+;; 	lsp-pyright-typechecking-mode "basic"
+;; 	lsp-pyright-log-level 1
+;; 	;; lsp-pyright-auto-search-paths
+;; 	;; lsp-pyright-extra-paths
+;; 	lsp-pyright-venv-path "~/miniconda3/envs")
+;;   :hook ((python-mode . (lambda ()
+;;                           (require 'lsp-pyright) (lsp-deferred)))))
 
 ;; Python - Jedi
 ;; LSP Module : https://github.com/fredcamps/lsp-jedi
@@ -132,21 +132,24 @@
   (with-eval-after-load "lsp-mode"
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi)))
+  ;; :init
+  ;; (setq lsp-jedi-workspace-extra-paths
+  ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/default/lib/site-packages"])))
 
 ;; Python pyls
 ;; https://www.mattduck.com/lsp-python-getting-started.html
 
 ;; Python - Sourcery
 ;; https://github.com/sourcery-ai/sourcery/wiki/Emacs
-(lsp-register-client
- (make-lsp-client :new-connection (lsp-stdio-connection '("sourcery" "lsp"))
-                  :initialization-options '((token . "user_ajagq3NtzYEZHCChHXS1bXvaFFZpOb3f8AC666z0J_cCknj8OLZsDR31tK0")
-                                            (extension_version . "emacs-lsp")
-                                            (editor_version . "emacs"))
-                  :activation-fn (lsp-activate-on "python")
-                  :server-id 'sourcery
-                  :add-on? t
-                  :priority 2))
+;; (lsp-register-client
+;;  (make-lsp-client :new-connection (lsp-stdio-connection '("sourcery" "lsp"))
+;;                   :initialization-options '((token . "user_ajagq3NtzYEZHCChHXS1bXvaFFZpOb3f8AC666z0J_cCknj8OLZsDR31tK0")
+;;                                             (extension_version . "emacs-lsp")
+;;                                             (editor_version . "emacs"))
+;;                   :activation-fn (lsp-activate-on "python")
+;;                   :server-id 'sourcery
+;;                   :add-on? t
+;;                   :priority 2))
 ;; LTex
 ;; LSP Module : https://github.com/emacs-languagetool/lsp-ltex
 ;; Server     : https://valentjn.github.io/ltex/
