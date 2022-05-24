@@ -31,3 +31,7 @@
 (use-package git-modes
   :defer t
   :ensure t)
+
+(use-package gh-notify
+  :defer t
+  :ensure t)
