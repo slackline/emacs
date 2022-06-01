@@ -60,6 +60,7 @@
     modus-themes
     numpydoc
     org-cliplink
+    org-gtd
     org-notifications
     org-parser
     org-present
