@@ -91,6 +91,7 @@
     pytest
     python-mode
     python-pytest
+    quarto-mode
     rainbow-delimiters
     smartparens
     treemacs
