@@ -10,7 +10,8 @@
 ;;   :custom
 ;;   (org-roam-database-connector 'libsqlite3))
 (use-package org-roam
-  :ensure t
+;;  :ensure t
+  :defer 10
   :init
   (setq org-roam-v2-ack t)
   :custom
@@ -43,9 +44,7 @@
 	     ("C-c n s" . org-roam-db-sync)
 	     ("C-c n t" . org-tag-add)
          ("C-c n u s" . org-roam-ui-open)
-         )
-  :config
-  (org-roam-setup))
+         ))
 
 ;; org-roam-ui https://github.com/org-roam/org-roam-ui
 (use-package websocket
