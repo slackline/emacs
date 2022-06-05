@@ -59,6 +59,7 @@
     mmm-mode
     modus-themes
     numpydoc
+    ob-mermaid
     org-cliplink
     org-gtd
     org-notifications
