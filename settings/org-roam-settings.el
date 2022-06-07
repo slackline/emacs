@@ -45,6 +45,8 @@
 	     ("C-c n t" . org-tag-add)
          ("C-c n u s" . org-roam-ui-open)
          ))
+  ;; :config
+  ;; (org-roam-setup))
 
 ;; org-roam-ui https://github.com/org-roam/org-roam-ui
 (use-package websocket
