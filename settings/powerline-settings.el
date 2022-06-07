@@ -1,4 +1,4 @@
-;; POLYMODE CONFIGURATION
+;; Polymode CONFIGURATION
 ;; --------------------------------------
 ;; https://github.com/milkypostman/powerline
 (use-package powerline
