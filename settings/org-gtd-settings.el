@@ -1,17 +1,18 @@
 ;;; Org-gtd
 ;;; https://github.com/Trevoke/org-gtd.el/blob/master/doc/org-gtd.org
 ;;;
+;;; Also includes customiastion for org-agenda
 (use-package org-gtd
   :after org
   ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
   ;;                  :branch "2.0.0" :upgrade t)
   :demand t
   :custom
-  (setq org-gtd-directory "~/org/gtd")
   ;; (org-gtd-directory stag-org-gtd-directory)
   (org-edna-use-inheritance t)
   :config
   (org-edna-mode)
+  (setq org-gtd-directory '"~/org/gtd")
   :bind
   (("C-c d c" . org-gtd-capture)
    ("C-c d e" . org-gtd-engage)
