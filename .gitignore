@@ -18,4 +18,4 @@ el-get/
 transient/
 .cache/
 el-easydraw/
-request/
+request/curl-cookie.jar
