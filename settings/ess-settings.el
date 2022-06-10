@@ -24,6 +24,8 @@
          ("NAMESPACE\\'"       . R-mode)
          ("CITATION\\'"        . R-mode)
          ("\\.[Rr]out"         . R-transcript-mode)
+         ("\\.Rmd\\'"          . Rd-mode)
+         ("\\.qmd\\'"          . poly-quarto-mode)
          ("\\.Rd\\'"           . Rd-mode))
   :interpreter (("R" . R-mode)
                 ("R" . R-transcript-mode)
@@ -81,3 +83,5 @@
 
 ;;; Plots in Emacs buffers
 ;;; https://emacs.stackexchange.com/questions/2292/ess-plot-directly-to-an-emacs-buffer
+
+;; Quarto mode https://github.com/quarto-dev/quarto-emacs
