@@ -173,6 +173,7 @@
 
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter-settings.el")
+(load "~/.config/emacs/settings/misc.el")
 
 ;;; General editor settings
 ;; (load "~/.config/emacs/settings/auto-package-update.el")
