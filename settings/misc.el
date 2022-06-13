@@ -1,7 +1,8 @@
 ;; MISCELLANEOUS CONFIGURATION
 ;; --------------------------------------
 
-;;  Inserting Wikipedia links (http://ergoemacs.org/emacs/elisp_html_word_to_wikipedia_linkify.html)
+;; Inserting Wikipedia links (http://ergoemacs.org/emacs/elisp_html_word_to_wikipedia_linkify.html)
+;; Tweaked to insert an org-link instead though
 (defun wikipedia-linkify ()
   "Make the current word or text selection into a Wikipedia link.
 For Example:
@@ -27,9 +28,9 @@ Version 2015-07-27"
     (setq $linkText
           (replace-regexp-in-string "_" " " (buffer-substring-no-properties $p1 $p2)))
     (delete-region $p1 $p2)
-    (insert (concat "<a href=\"http://en.wikipedia.org/wiki/"
+    (insert (concat "[[http://en.wikipedia.org/wiki/"
                     (replace-regexp-in-string " " "_" $linkText)
-                    "\">" $linkText "</a>"))))
+                    "]][[" $linkText "]]"))))
 
 ;; Create non-existent directory
 ;; https://emacsredux.com/blog/2022/06/12/auto-create-missing-directories/
