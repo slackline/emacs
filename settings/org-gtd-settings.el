@@ -1,5 +1,9 @@
-;;; Org-gtd
-;;; https://github.com/Trevoke/org-gtd.el/blob/master/doc/org-gtd.org
+;;; Org-gtd https://github.com/Trevoke/org-gtd.el/blob/master/doc/org-gtd.org
+;;;
+;;; Useful...
+;;;
+;;; https://blog.jethro.dev/posts/capturing_inbox/
+;;; https://blog.jethro.dev/posts/processing_inbox/
 ;;;
 ;;; Also includes customiastion for org-agenda
 (use-package org-gtd
@@ -21,3 +25,37 @@
    ("C-c d s" . org-gtd-show-stuck-projects)
    :map org-gtd-process-map
    ("C-c d g" . org-gtd-choose)))
+
+
+;;; These are copied from the following
+;;; https://github.com/jethrokuan/.emacs.d/blob/master/init.el
+(defun my/org-agenda-process-inbox-item ()
+  "Process a single item in the org-agenda."
+  (org-with-wide-buffer
+   (org-agenda-set-tags)
+   (org-agenda-priority)
+   (call-interactively 'my/my-org-agenda-set-effort)
+   (org-agenda-refile nil nil t)))
+
+(defvar my/org-current-effor "1.00"
+  "Current effort for agenda item.")
+
+(defun my/org-agenda-set-effort (effort)
+  "Set the effort property for the current headline."
+    (setq jethro/org-current-effort effort)
+  (org-agenda-check-no-diary)
+  (let* ((hdmarker (or (org-get-at-bol 'org-hd-marker)
+                       (org-agenda-error)))
+         (buffer (marker-buffer hdmarker))
+         (pos (marker-position hdmarker))
+         (inhibit-read-only t)
+         newhead)
+    (org-with-remote-undo buffer
+      (with-current-buffer buffer
+        (widen)
+        (goto-char pos)
+        (org-show-context 'agenda)
+        (funcall-interactively 'org-set-effort nil jethro/org-current-effort)
+        (end-of-line 1)
+        (setq newhead (org-get-heading)))
+      (org-agenda-change-all-lines newhead hdmarker))))

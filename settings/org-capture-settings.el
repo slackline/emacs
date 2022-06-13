@@ -2,10 +2,18 @@
 ;;; https://orgmode.org/manual/Capture.html#Capture)
 ;;;
 ;;; Also configured to use org-webcapture Firefox add-on (https://gitlab.com/Titan-C/org-webcapture)
-(require 'org-protocol)
-(setq org-default-notes-file (concat org-directory "/notes.org"))
-(setq org-capture-templates
-      '(;; Agenda
+;; (require 'org-protocol)
+(use-package org-capture
+  :ensure nil
+  :after org-gtd
+  :config
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
+  (setq org-capture-templates
+      '(;; Email
+        ("E" "Email"
+         entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
+         "* TODO [#A] Reply: %a" :immediate-finish t)
+        ;; Agenda
 	    ("a" "Agenda")
 	    ("au" "Things to get Done" entry (file+olp "~/org/agenda.org" "Things to get Done")
          "** TODO %U %?\n" :prepend t)
@@ -313,4 +321,4 @@ Routine")
 	     "** TODO %t %?\n" :prepend t)
 	    ("wt" "ToDo Tasks" entry (file+olp "~/org/thefloow/thefloow-todo.org" "ToDo Tasks")
 	     "** TODO %t %?\n" :prepend t)
-	    ))
+	    )))

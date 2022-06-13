@@ -33,6 +33,8 @@
 
 ;; Modus Themes (Vivendi) https://protesilaos.com/modus-themes/
 ;;
+;; Customisation : https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
+;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.

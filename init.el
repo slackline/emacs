@@ -194,10 +194,10 @@
 (load "~/.config/emacs/settings/org-mode-settings.el")
 (load "~/.config/emacs/settings/org-ref-settings.el")
 (load "~/.config/emacs/settings/org-babel-settings.el")
-(load "~/.config/emacs/settings/org-capture-settings.el")
 (load "~/.config/emacs/settings/org-notifications-settings.el")
 (load "~/.config/emacs/settings/org-roam-settings.el")
 (load "~/.config/emacs/settings/org-gtd-settings.el")
+(load "~/.config/emacs/settings/org-capture-settings.el")
 
 ;;; Misc
 (load "~/.config/emacs/settings/elfeed-settings.el")
