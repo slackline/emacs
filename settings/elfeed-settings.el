@@ -31,18 +31,14 @@
   (interactive)
   (bookmark-maybe-load-default-file)
   (bookmark-jump "elfeed-climbing"))
-(defun nds:elfeed-show-computing ()
+(defun nds:elfeed-show-emacs ()
   (interactive)
   (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-computing"))
+  (bookmark-jump "elfeed-emacs"))
 (defun nds:elfeed-show-reading ()
   (interactive)
   (bookmark-maybe-load-default-file)
   (bookmark-jump "elfeed-reading"))
-(defun nds:elfeed-show-jobs ()
-  (interactive)
-  (bookmark-maybe-load-default-file)
-  (bookmark-jump "elfeed-jobs"))
 (defun nds:elfeed-show-statistics ()
   (interactive)
   (bookmark-maybe-load-default-file)
@@ -76,18 +72,25 @@
 ;;   (elfeed-search-update--force)
 ;;   (elfeed-update))
 
+(use-package simple-httpd
+  :ensure t
+  :config
+  (setq httpd-host "0.0.0.0")
+  (setq httpd-port "8818"))
+
 (use-package elfeed
   :ensure t
   :bind (:map elfeed-search-mode-map
               ("A" . nds:elfeed-show-all)
               ("c" . nds:elfeed-show-climbing)
               ("C" . nds:elfeed-show-computing)
+              ("e" . nds:elfeed-show-emacs)
               ("R" . nds:elfeed-show-reading)
               ("H" . nds:elfeed-show-humor)
-              ("J" . nds:elfeed-show-jobs)
               ("S" . nds:elfeed-show-statistics)
               ("D" . nds:elfeed-show-daily)
-              ("q" . nds:elfeed-save-db-and-bury)))
+              ("q" . nds:elfeed-save-db-and-bury))
+  :config)
 
 
 ;; Use elfeed-web to periodically update
