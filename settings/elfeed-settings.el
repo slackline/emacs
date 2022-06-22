@@ -91,7 +91,7 @@
               ("D" . nds:elfeed-show-daily)
               ("q" . nds:elfeed-save-db-and-bury))
   :config
-  (setq elfeed-web-enabled 't))
+  (setq elfeed-web-enabled t))
 
 
 ;; Use elfeed-web to periodically update
