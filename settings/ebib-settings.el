@@ -3,6 +3,8 @@
 ;;
 ;; Manual : https://joostkremers.github.io/ebib/ebib-manual.html
 
-(global-set-key "\C-ce" 'ebib)
 ;; (define-key 'LaTeX-mode-map "\C-cb" 'ebib-insert-citation)
-(setq ebib-preload-bib-files '("~/work/org/references.bib"))
+(use-package ebib
+  :config
+  (setq ebib-preload-bib-files '("~/org/references.bib", "~/work/org/references.bib"))
+  (global-set-key "\C-ce" 'ebib))
