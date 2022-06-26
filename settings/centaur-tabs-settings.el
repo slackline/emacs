@@ -85,4 +85,4 @@
      ;; (and (string-prefix-p "magit" name)
 	 ;;  (not (file-name-extension name)))
      ;; ))
-  )
+  )))
