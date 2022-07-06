@@ -35,6 +35,7 @@
     git-modes
     groovy-mode
     helm-org
+    helpful
     hide-mode-line
     highlight-indent-guides
     highlight-parentheses
