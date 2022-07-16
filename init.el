@@ -107,6 +107,7 @@
 	 ;; Magit /code review
 	 ("C-x g" . magit-status)
 	 ("C-c P" . magit-push-current-to-upstream)
+	 ("C-c F" . magit-pull)
 	 ("C-c R" . code-review-forge-pr-at-point)
 	 ;; Org
 	 ("\C-cl" . org-store-link)
