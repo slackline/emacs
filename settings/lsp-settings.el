@@ -23,22 +23,22 @@
   (setq lsp-idle-delay 0.5
 	    lsp-enable-symbol-highlighting t)
   ;; (setq lsp-markdown-server-command remark-language-server)
-  (lsp-register-custom-settings
-   ;; pyls enabled/disabled https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-   '(;; Enabled
-     ("pyls.plugins.jedi_completion.enabled" t t)
-     ("pyls.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
-     ("pyls.plugins.jedi_hover.enabled" t t)
-     ("pyls.plugins.jedi_references.enabled" t t)
-     ("pyls.plugins.pyls_black.enabled" t t)
-     ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
-     ;; ("pylsp.plugins.pydocstyle.enabled" t t)
-     ;; ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
-     ("pylsp.plugins.pylint.enabled" t t)
-     ;; Disabled (duplicated by flake8)
-     ("pyls.plugins.pycodestyle.enabled" nil t)
-     ("pyls.plugins.mccabe.enabled" nil t)
-     ("pyls.plugins.pyflakes.enabled" nil t)))
+  ;; (lsp-register-custom-settings
+  ;;  ;; pyls enabled/disabled https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+  ;;  '(;; Enabled
+  ;;    ("pylsp.plugins.jedi_completion.enabled" t t)
+  ;;    ("pylsp.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
+  ;;    ("pylsp.plugins.jedi_hover.enabled" t t)
+  ;;    ("pylsp.plugins.jedi_references.enabled" t t)
+  ;;    ("pylsp.plugins.pyls_black.enabled" t t)
+  ;;    ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
+  ;;    ;; ("pylsp.plugins.pydocstyle.enabled" t t)
+  ;;    ;; ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
+  ;;    ("pylsp.plugins.pylint.enabled" t t)
+  ;;    ;; Disabled (duplicated by flake8)
+  ;;    ("pylsp.plugins.pycodestyle.enabled" nil t)
+  ;;    ("pylsp.plugins.mccabe.enabled" nil t)
+  ;;    ("pylsp.plugins.pyflakes.enabled" nil t)))
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
 	          lsp-bash-highlight-parsing-errors t)
@@ -147,15 +147,15 @@
 ;; Python - Jedi
 ;; LSP Module : https://github.com/fredcamps/lsp-jedi
 ;; Server     : https://github.com/pappasam/jedi-language-server
-;; (use-package lsp-jedi
-;;   :ensure t
-;;   :config
-;;   (with-eval-after-load "lsp-mode"
-;;     (add-to-list 'lsp-disabled-clients 'pyls)
-;;     (add-to-list 'lsp-enabled-clients 'jedi)))
+(use-package lsp-jedi
+  :ensure t
+  :config
+  (with-eval-after-load "lsp-mode"
+    (add-to-list 'lsp-disabled-clients 'pyls)
+    (add-to-list 'lsp-enabled-clients 'jedi)))
   ;; :init
   ;; (setq lsp-jedi-workspace-extra-paths
-  ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/default/lib/site-packages"])))
+  ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/python3_10/lib/site-packages"])))
 
 ;; Python pyls
 ;; https://www.mattduck.com/lsp-python-getting-started.html
