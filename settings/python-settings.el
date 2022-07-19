@@ -20,14 +20,16 @@
 	venv-byhost
 	'(("kimura" . "~/.virtualenvs/")
 	  ("fisher" . "~/.virtualenvs/")
+	  ("haldane" . "~/.virtualenvs/")
 	  ("ovh" . "~/.virtualenvs/")
 	  ("alarmpi" . "~/.virtualenvs/")
 	  ("alarmpi-4b" . "~/.virtualenvs/"))
 	venv-location (cdr
 		       (assoc system-name venv-byhost))
 	default-venv-byhost
-	'(("kimura" . "~/.virtualenvs/python3_9")
+	'(("kimura" . "~/.virtualenvs/python3_10")
 	  ("fisher" . "~/.virtualenvs/python3_9")
+	  ("haldane" . "~/.virtualenvs/default")
 	  ("ovh" . "~/.virtualenvs/default")
 	  ("alarmpi" . "~/.virtualenvs/default")
 	  ("alarmpi-4b" . "~/.virtualenvs/default"))

@@ -6,6 +6,7 @@
   :config
   (centaur-tabs-mode t)
   :init
+  (setq centaur-tabs-enable-key-bindings t)
   (setq centaur-tabs-style "wave")
   (setq centaur-tabs-set-icons t)
   (setq centaur-tabs-set-bar 'under)

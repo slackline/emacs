@@ -1,7 +1,7 @@
 ;;; LSP CONFIGURATION
 ;;; --------------------------------------
 ;;; https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535
-
+;;; https://ianyepan.github.io/posts/emacs-ide/
 ;; Provides workspaces with file browsing (tree file viewer)
 ;; and project management when coupled with `projectile`.
 (use-package treemacs
@@ -22,6 +22,23 @@
   :config
   (setq lsp-idle-delay 0.5
 	    lsp-enable-symbol-highlighting t)
+  ;; (setq lsp-markdown-server-command remark-language-server)
+  ;; (lsp-register-custom-settings
+  ;;  ;; pyls enabled/disabled https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+  ;;  '(;; Enabled
+  ;;    ("pylsp.plugins.jedi_completion.enabled" t t)
+  ;;    ("pylsp.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
+  ;;    ("pylsp.plugins.jedi_hover.enabled" t t)
+  ;;    ("pylsp.plugins.jedi_references.enabled" t t)
+  ;;    ("pylsp.plugins.pyls_black.enabled" t t)
+  ;;    ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
+  ;;    ;; ("pylsp.plugins.pydocstyle.enabled" t t)
+  ;;    ;; ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
+  ;;    ("pylsp.plugins.pylint.enabled" t t)
+  ;;    ;; Disabled (duplicated by flake8)
+  ;;    ("pylsp.plugins.pycodestyle.enabled" nil t)
+  ;;    ("pylsp.plugins.mccabe.enabled" nil t)
+  ;;    ("pylsp.plugins.pyflakes.enabled" nil t)))
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
 	          lsp-bash-highlight-parsing-errors t)
@@ -31,7 +48,8 @@
 	     (groovy-mode . lsp)
 	     (html-mode . lsp)
 	     (latex-mode . lsp)
-	     ;; (markdown-mode . lsp)
+	     (markdown-mode . lsp)
+	     (gfm-mode . lsp)
 	     (org-mode . lsp)
 	     (R-mode . lsp)
 	     (ess-r-mode . lsp)
@@ -58,9 +76,11 @@
   :ensure t
   :defer t
   :config
-  (setq lsp-ui-doc-delay 1
-	    lsp-ui-doc-enable t
+  (setq lsp-ui-doc-enable t
+	    lsp-ui-doc-delay 1
 	    lsp-ui-doc-header nil
+        sp-ui-doc-include-signature t
+        lsp-ui-doc-border (face-foreground 'default)
         lsp-ui-doc-use-childframe t
         lsp-ui-doc-position 'top
         lsp-ui-doc-include-signature t
@@ -73,6 +93,7 @@
         lsp-ui-peek-list-width 60
         lsp-ui-peek-peek-height 25
         lsp-ui-sideline-enable t
+        lsp-ui-sideline-show-code-actions t
         lsp-ui-sideline-show-hover t
         lsp-ui-sideline-delay 3)
   :hook (lsp-mode . lsp-ui-mode)
@@ -134,7 +155,7 @@
     (add-to-list 'lsp-enabled-clients 'jedi)))
   ;; :init
   ;; (setq lsp-jedi-workspace-extra-paths
-  ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/default/lib/site-packages"])))
+  ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/python3_10/lib/site-packages"])))
 
 ;; Python pyls
 ;; https://www.mattduck.com/lsp-python-getting-started.html
