@@ -44,6 +44,7 @@
     ;; jedi
     jenkinsfile-mode
     json-mode
+    julia-vterm
     keychain-environment
     latex-extra
     latex-preview-pane
