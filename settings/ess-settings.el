@@ -43,6 +43,9 @@
   (inferior-ess-mode . company-mode)
   )
 
+(use-package quarto-mode
+  :mode (("\\.Rmd" . poly-quarto-mode)))
+
 (use-package ess-r-mode
   :ensure ess
   :defer 1
