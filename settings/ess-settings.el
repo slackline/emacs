@@ -44,7 +44,8 @@
   )
 
 (use-package quarto-mode
-  :mode (("\\.Rmd" . poly-quarto-mode)))
+  :mode (("\\.Rmd" . poly-quarto-mode))
+  :bind (("C-c q" . quarto-preview)))
 
 (use-package ess-r-mode
   :ensure ess
