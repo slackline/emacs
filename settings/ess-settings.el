@@ -25,7 +25,7 @@
          ("CITATION\\'"        . R-mode)
          ("\\.[Rr]out"         . R-transcript-mode)
          ("\\.Rmd\\'"          . Rd-mode)
-         ("\\.qmd\\'"          . poly-quarto-mode)
+;;         ("\\.qmd\\'"          . poly-quarto-mode)
          ("\\.Rd\\'"           . Rd-mode))
   :interpreter (("R" . R-mode)
                 ("R" . R-transcript-mode)
