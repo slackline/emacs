@@ -25,7 +25,6 @@
          ("CITATION\\'"        . R-mode)
          ("\\.[Rr]out"         . R-transcript-mode)
          ("\\.Rmd\\'"          . Rd-mode)
-;;         ("\\.qmd\\'"          . poly-quarto-mode)
          ("\\.Rd\\'"           . Rd-mode))
   :interpreter (("R" . R-mode)
                 ("R" . R-transcript-mode)
@@ -43,6 +42,8 @@
   (inferior-ess-mode . company-mode)
   )
 
+;; Quarto mode https://github.com/quarto-dev/quarto-emacs
+;; By default associated with .qmd files
 (use-package quarto-mode
   :mode (("\\.Rmd" . poly-quarto-mode))
   :bind (("C-c q" . quarto-preview)))
@@ -56,11 +57,12 @@
   (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
   (:map inferior-ess-r-mode-map (";" . ess-insert-assign)))
 
-;; Now deprecated (see https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
+;; Notes on underscore for assignment
+;; https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
 ;; See also https://github.com/emacs-ess/ESS/issues/809
-;; Restore functionality with...
-;(define-key ess-mode-map "_" 'ess-insert-assign)
-;(define-key inferior-ess-r-mode-map "_" 'ess-insert-assign)
+;; Restore old '_' functionality with...
+;; (define-key ess-mode-map "_" 'ess-insert-assign)
+;; (define-key inferior-ess-r-mode-map "_" 'ess-insert-assign)
 
 ;;; Pipe operator https://emacs.stackexchange.com/a/8055
 ;; (defun then_R_operator ()
@@ -87,5 +89,3 @@
 
 ;;; Plots in Emacs buffers
 ;;; https://emacs.stackexchange.com/questions/2292/ess-plot-directly-to-an-emacs-buffer
-
-;; Quarto mode https://github.com/quarto-dev/quarto-emacs
