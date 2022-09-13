@@ -1,7 +1,7 @@
 ;;; init.el --- Emacs configuration
 ;;; LOAD PACKAGES
 ;;; --------------------------------------
-;; (setq debug-on-error t)
+;; (setq debug-on-error f)
 (require 'package)
 (package-initialize)
 ;; (add-to-list 'package-archives
