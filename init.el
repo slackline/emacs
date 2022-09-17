@@ -189,7 +189,6 @@
 (load "~/.config/emacs/settings/conda-settings.el")
 (load "~/.config/emacs/settings/ein-settings.el")
 (load "~/.config/emacs/settings/python-settings.el")
-;(load "~/.config/emacs/settings/pylint-settings.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib-settings.el")
