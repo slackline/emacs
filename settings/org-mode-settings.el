@@ -3,7 +3,7 @@
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 (global-font-lock-mode 1)
 (setq org-directory        "~/org/"
-      org-agenda-files '("~/org/agenda.org" "~/org/birthdays.org" "~/org/rse/todo.org")
+      org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
       org-startup-indented 1
       org-agenda-include-diary t
       org-log-done 'time
