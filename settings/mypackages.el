@@ -106,6 +106,8 @@
     with-shell-interpreter
     yaml-mode
     yapfify
+    yasnippet
+    yasnippet-snippets
     ytdl))
 
 ;; Make sure all of the above packages are installed
