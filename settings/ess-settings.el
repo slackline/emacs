@@ -48,14 +48,14 @@
   :mode (("\\.Rmd" . poly-quarto-mode))
   :bind (("C-c q" . quarto-preview)))
 
-(use-package ess-r-mode
-  :ensure ess
-  :defer 1
-  :bind
-  (:map ess-r-mode-map ("C-|" . " |>\n"))
-  (:map ess-r-mode-map (";" . ess-insert-assign))
-  (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
-  (:map inferior-ess-r-mode-map (";" . ess-insert-assign)))
+;; (use-package ess-r-mode
+;;   :ensure ess
+;;   :defer 1
+;;   :bind
+;;   (:map ess-r-mode-map ("C-|" . " |>\n"))
+;;   (:map ess-r-mode-map (";" . ess-insert-assign))
+;;   (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
+;;   (:map inferior-ess-r-mode-map (";" . ess-insert-assign)))
 
 ;; Notes on underscore for assignment
 ;; https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
