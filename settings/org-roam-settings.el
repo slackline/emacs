@@ -17,7 +17,7 @@
   :custom
   (org-roam-directory "~/org-roam")
   (org-roam-dailies-directory "daily/")
-  (org-roamd-db-location "~/org-roam/org-roam.db")
+  (org-roam-db-location "~/org-roam/org-roam.db")
   (org-roam-db-autosync-mode)
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
