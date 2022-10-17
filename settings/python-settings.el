@@ -85,8 +85,8 @@
 (use-package blacken
   :ensure t
   :defer 3
-  :config
-  (setq blacken-line-length 120)
+  :custom
+  (blacken-line-length 120)
   :hook (python-mode . blacken-mode))
 ;; (use-package yapfify
 ;;   :ensure t
@@ -97,7 +97,8 @@
   :ensure t
   :defer t
   :after lsp
-  :config
-  (setq numpydoc-prompt-for-input t)
+  :custom
+  (numpydoc-prompt-for-input t)
+  (numpydoc-insert-examples-block nil)
   :bind (:map python-mode-map
 	      ("C-c C-n" . numpydoc-generate)))

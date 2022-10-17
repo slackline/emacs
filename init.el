@@ -125,7 +125,9 @@
     text-mode) . auto-fill-mode)
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace)
+  (prog-mode-hook . highlight-indent-guides-mode)
 )
+
 ;; Updating packages automatically
 ;; https://github.com/rranelli/auto-package-update.el
 (use-package auto-package-update
