@@ -75,14 +75,16 @@
                  (org-present-show-cursor)
                  (org-present-read-write)))))
 
-;; Org-reveal
+;; ox packages
 (use-package ox-reveal
   :ensure t
 ;;  :defer t
   :config
   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
 	org-reveal-mathjax t))
-
+(use-package ox-pandoc
+  :ensure t
+  :defer t)
 
 ;; Skeletons
 (define-skeleton org-R-skeleton
