@@ -11,7 +11,8 @@
     blacken
     bug-hunter
     centaur-tabs
-    challenger-deep-theme
+    ;; challenger-deep-theme
+    citar-org
     ;; company-jedi
     ;; company-lsp
     code-review
@@ -74,6 +75,7 @@
     org-sidebar
     osm
     ox-hugo
+    ox-pandoc
     ox-reveal
     ox-tufte
     package-utils
