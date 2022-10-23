@@ -47,7 +47,7 @@
 ;; (global-set-key (kbd "C-c U") 'revert-buffer)
 ;; (global-set-key (kbd "C-c e") 'eval-region)
 ;; (global-set-key (kbd "C-c E") 'eval-buffer)
-
+;; (global-set-key (kbd "C-c D") 'toggle-debug-on-error)
 ;; Magit
 ;; (global-set-key (kbd "C-x g") 'magit-status)
 ;; (global-set-key (kbd "C-c P") 'magit-push-current-to-upstream)
