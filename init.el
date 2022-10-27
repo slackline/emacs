@@ -13,14 +13,14 @@
 ;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
-	    ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
-	    ("MELPA Stable" . "https://stable.melpa.org/packages/")
-	    ("MELPA"	. "https://melpa.org/packages/"))
+        ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"	. "https://melpa.org/packages/"))
       package-archive-priorities
       '(("MELPA Stable" . 10)
-	    ("GNU ELPA"	. 5)
-	    ("NonGNU ELPA"	. 5)
-	    ("MELPA"	. 0)))
+        ("GNU ELPA"	. 5)
+        ("NonGNU ELPA"	. 5)
+        ("MELPA"	. 0)))
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -28,7 +28,7 @@
   (package-refresh-contents))
 
 ;; Add local lisp for miscellaneous things
-; (add-to-list 'load-path "~/.config/emacs/lisp/")
+					; (add-to-list 'load-path "~/.config/emacs/lisp/")
 
 ;; Modify exec-path
 (setq exec-path (append '("~/bin"
@@ -71,73 +71,73 @@
 ;; BASIC CUSTOMISATION
 ;; --------------------------------------
 (use-package emacs
-  :init
-  (tool-bar-mode -1)
-  (scroll-bar-mode -1)
-  (menu-bar-mode 1)
-  (global-linum-mode t)
-  (global-hl-line-mode 1)
-  (savehist-mode 1)
-  (recentf-mode 1)
-  (global-auto-revert-mode 1)
-  :config
-  ;; Add local lisp for miscellaneous things
-  (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq inhibit-startup-message t)    ; hide the startup message
-  (setq global-visual-line-mode t)    ; Visual line wrap
-  (setq inhibit-startup-screen t)     ; Disable startup screen
-  (setq initial-scratch-message "")   ; Make *scratch* buffer blank
-  (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
-  (setq ring-bell-function 'ignore)   ; Disable bell sound
-  (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-  (setq use-dialog-box nil)           ; No dialog pop-ups
-  (setq history-length 100)           ; Mini-buffer history
-  (setq-default fill-column 120)      ; Reset line-length
-  (setq undo-limit 320000)            ; Increase the undo history limits
-  (setq undo-strong-limit 640000)
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
-  (setq-default sh-basic-offset 2)
-  (setq-default sh-indentation 2)
-  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
-  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-  :bind (("C-c U" . revert-buffer)
-	     ("C-c e" . eval-region)
-	     ("C-c E" . eval-buffer)
-         ("C-c D" . toggle-debug-on-error)
-	     ;; Magit /code review
-	     ("C-x g" . magit-status)
-	     ("C-c P" . magit-push-current-to-upstream)
-	     ("C-c F" . magit-pull)
-	     ("C-c R" . code-review-forge-pr-at-point)
-	     ;; Org
-	     ("\C-cl" . org-store-link)
-	     ("\C-cc" . org-capture)
-	     ("\C-ca" . org-agenda)
-	     ("\C-cb" . org-iswitchb)
-	     ("C-x p i" . org-org-cliplink) ; From : https://github.com/rexim/org-cliplink
-	     ("C-c k" . keychain-refresh-environment)
-	     ("C-c r" . rsync-html))
-  :hook
-  ((latex-mode
-    markdown-mode
-    org-mode
-    prog-mode
-    text-mode) . auto-fill-mode)
-  (auto-fill-function . do-auto-fill)
-  (before-save . delete-trailing-whitespace)
-  (prog-mode-hook . highlight-indent-guides-mode)
-)
+	     :init
+	     (tool-bar-mode -1)
+	     (scroll-bar-mode -1)
+	     (menu-bar-mode 1)
+	     (global-linum-mode t)
+	     (global-hl-line-mode 1)
+	     (savehist-mode 1)
+	     (recentf-mode 1)
+	     (global-auto-revert-mode 1)
+	     :config
+	     ;; Add local lisp for miscellaneous things
+	     (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+	     (setq inhibit-startup-message t)    ; hide the startup message
+	     (setq global-visual-line-mode t)    ; Visual line wrap
+	     (setq inhibit-startup-screen t)     ; Disable startup screen
+	     (setq initial-scratch-message "")   ; Make *scratch* buffer blank
+	     (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
+	     (setq ring-bell-function 'ignore)   ; Disable bell sound
+	     (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+	     (setq use-dialog-box nil)           ; No dialog pop-ups
+	     (setq history-length 100)           ; Mini-buffer history
+	     (setq-default fill-column 120)      ; Reset line-length
+	     (setq undo-limit 320000)            ; Increase the undo history limits
+	     (setq undo-strong-limit 640000)
+	     (setq-default indent-tabs-mode nil)
+	     (setq-default tab-width 4)
+	     (setq-default sh-basic-offset 2)
+	     (setq-default sh-indentation 2)
+	     (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+	     (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+	     :bind (("C-c U" . revert-buffer)
+		    ("C-c e" . eval-region)
+		    ("C-c E" . eval-buffer)
+		    ("C-c D" . toggle-debug-on-error)
+		    ;; Magit /code review
+		    ("C-x g" . magit-status)
+		    ("C-c P" . magit-push-current-to-upstream)
+		    ("C-c F" . magit-pull)
+		    ("C-c R" . code-review-forge-pr-at-point)
+		    ;; Org
+		    ("\C-cl" . org-store-link)
+		    ("\C-cc" . org-capture)
+		    ("\C-ca" . org-agenda)
+		    ("\C-cb" . org-iswitchb)
+		    ("C-x p i" . org-org-cliplink) ; From : https://github.com/rexim/org-cliplink
+		    ("C-c k" . keychain-refresh-environment)
+		    ("C-c r" . rsync-html))
+	     :hook
+	     ((latex-mode
+	       markdown-mode
+	       org-mode
+	       prog-mode
+	       text-mode) . auto-fill-mode)
+	     (auto-fill-function . do-auto-fill)
+	     (before-save . delete-trailing-whitespace)
+	     (prog-mode-hook . highlight-indent-guides-mode)
+	     )
 
 ;; Updating packages automatically
 ;; https://github.com/rranelli/auto-package-update.el
 (use-package auto-package-update
-   :ensure t
-   :config
-   (setq auto-package-update-delete-old-versions t
-         auto-package-update-interval 2
-         auto-package-update-hide-results t)
-   (auto-package-update-maybe))
+	     :ensure t
+	     :config
+	     (setq auto-package-update-delete-old-versions t
+		   auto-package-update-interval 2
+		   auto-package-update-hide-results t)
+	     (auto-package-update-maybe))
 
 ;;(load "~/.config/emacs/settings/auto-package-update.el")
 
@@ -162,9 +162,9 @@
 ;; Reload a buffer from disk
 ;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
 (defun revert-buffer-no-confirm ()
-    "Revert buffer without confirmation."
-    (interactive)
-    (revert-buffer t t))
+  "Revert buffer without confirmation."
+  (interactive)
+  (revert-buffer t t))
 
 ;; Set the frames title to be that of the currently visited buffer
 ;; (setq frame-title-format "%b")
