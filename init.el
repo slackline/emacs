@@ -2,8 +2,8 @@
 ;;; LOAD PACKAGES
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
-(require 'package)
 (package-initialize)
+(require 'package)
 ;; (add-to-list 'package-archives
 ;; 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; ;;	     '("melpa" . "http://melpa.org/packages/") t)
