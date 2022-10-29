@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: Quarto Blog Post
+# key: quarto-blog
+# contributer : nshephard@protonmail.com
+# group : quarto
+# --
+---
+title: "Title"
+author: "nshephard"
+date: "date"
+categories: []
+image:
+---
