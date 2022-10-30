@@ -207,6 +207,7 @@
 (load "~/.config/emacs/settings/elfeed-settings.el")
 (load "~/.config/emacs/settings/keychain-environment-settings.el")
 (load "~/.config/emacs/settings/literate-calc-settings.el")
+(load "~/.config/emacs/settings/mastodon-settings.el")
 (load "~/.config/emacs/settings/mpdel-settings.el")
 (load "~/.config/emacs/settings/osm-settings.el")
 (load "~/.config/emacs/settings/tramp-settings.el")
