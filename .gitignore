@@ -9,6 +9,7 @@ session.*
 *.sqlite
 *.tar.*
 tramp
+url/cookies
 
 # Directories
 .python-environments/
