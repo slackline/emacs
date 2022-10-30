@@ -16,6 +16,7 @@
     ;; company-jedi
     ;; company-lsp
     code-review
+    # company-emoji
     company-prescient
     conda
     crontab-mode
@@ -25,6 +26,7 @@
     ein
     elfeed-org
     elfeed-web
+    emojify
     ess
     ess-smart-equals
     ess-smart-underscore
@@ -59,6 +61,7 @@
     lsp-ui
     magit
     magit-todos
+    mastodon
     mmm-mode
     modus-themes
     numpydoc
