@@ -16,7 +16,7 @@
     ;; company-jedi
     ;; company-lsp
     code-review
-    # company-emoji
+    ;; company-emoji
     company-prescient
     conda
     crontab-mode

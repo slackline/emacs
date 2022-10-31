@@ -2,19 +2,19 @@
 ;; --------------------------------------
 ;; https://github.com/ema2159/centaur-tabs
 (use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  :init
-  (setq centaur-tabs-enable-key-bindings t)
-  (setq centaur-tabs-style "wave")
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-set-bar 'under)
-  (setq x-underline-at-descent-line t)
-  (setq centaur-tabs-cycle-scope 'default)
-  :bind
-  ("C-<tab> p" . centaur-tabs-backward)
-  ("C-<tab> n" . centaur-tabs-forward))
+	     :demand
+	     :config
+	     (centaur-tabs-mode t)
+	     :init
+	     (setq centaur-tabs-enable-key-bindings t)
+	     (setq centaur-tabs-style "wave")
+	     (setq centaur-tabs-set-icons t)
+	     (setq centaur-tabs-set-bar 'under)
+	     (setq x-underline-at-descent-line t)
+	     (setq centaur-tabs-cycle-scope 'default)
+	     :bind
+	     ("C-<tab> p" . centaur-tabs-backward)
+	     ("C-<tab> n" . centaur-tabs-forward))
 
 (defun centaur-tabs-buffer-groups ()
   "`centaur-tabs-buffer-groups' control buffers' group rules.
@@ -26,15 +26,17 @@
    (cond
     ((string-equal "*" "*vterm*")
      "Terminal")
+    ((string-prefix-p "*mastodon" name)
+     "Mastodon")
     ((or (string-equal "*" (substring (buffer-name) 0 1))
 	 (memq major-mode '(magit-process-mode
-			            magit-status-mode
-			            magit-diff-mode
-			            magit-log-mode
-			            magit-file-mode
-			            magit-blob-mode
-			            magit-blame-mode
-			            )))
+			    magit-status-mode
+			    magit-diff-mode
+			    magit-log-mode
+			    magit-file-mode
+			    magit-blob-mode
+			    magit-blame-mode
+			    )))
      "Emacs")
     ((derived-mode-p 'prog-mode)
      "Editing")
@@ -46,15 +48,15 @@
 			help-mode))
      "Help")
     ((memq major-mode '(org-mode
-			            org-agenda-clockreport-mode
-			            org-src-mode
-			            org-agenda-mode
-			            org-beamer-mode
-			            org-indent-mode
-			            org-bullets-mode
-			            org-cdlatex-mode
-			            org-agenda-log-mode
-			            diary-mode))
+			org-agenda-clockreport-mode
+			org-src-mode
+			org-agenda-mode
+			org-beamer-mode
+			org-indent-mode
+			org-bullets-mode
+			org-cdlatex-mode
+			org-agenda-log-mode
+			diary-mode))
      "OrgMode")
     (t
      (centaur-tabs-get-group-name (current-buffer))))))
@@ -84,6 +86,6 @@
 
      ;; Is not magit buffer.
      ;; (and (string-prefix-p "magit" name)
-	 ;;  (not (file-name-extension name)))
+     ;;  (not (file-name-extension name)))
      ;; ))
-  )))
+     )))
