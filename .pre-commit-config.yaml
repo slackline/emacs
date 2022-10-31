@@ -4,13 +4,9 @@ repos:
       hooks:
           - id: trailing-whitespace
             types: [file, text]
-          - id: check-docstring-first
-          - id: check-case-conflict
           - id: end-of-file-fixer
-          - id: requirements-txt-fixer
           - id: mixed-line-ending
             args: [--fix=no]
-          - id: debug-statements
           - id: fix-byte-order-marker
           - id: check-yaml
 
