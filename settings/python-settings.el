@@ -75,7 +75,7 @@
 	     :config
 	     :bind (:map python-mode-map
 			         ("C-c p t" . python-pytest-dispatch)
-                     ("C-c p p" . pylint)))
+                     ("C-c p l" . pylint)))
 
 ;; Linting - Lots of options, currently going with blacken
 ;; (use-package py-autopep8
