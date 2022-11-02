@@ -21,7 +21,8 @@
   :defer t
   :config
   (setq lsp-idle-delay 0.5
-	    lsp-enable-symbol-highlighting t)
+	    lsp-enable-symbol-highlighting t
+        lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
   ;; (setq lsp-markdown-server-command remark-language-server)
   ;; (lsp-register-custom-settings
   ;;  ;; pyls enabled/disabled https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
