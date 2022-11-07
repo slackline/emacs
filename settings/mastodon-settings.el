@@ -4,5 +4,8 @@
 (use-package mastodon
 	     :ensure t
 	     :config
+	     ;; (setq mastodon-instance-url "https://fosstodon.org"
+	     ;;       mastodon-active-user "nshephard")
 	     (setq mastodon-instance-url "https://mastodon.social"
-		   mastodon-active-user "slackline"))
+		   mastodon-active-user "slackline")
+             )
