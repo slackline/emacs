@@ -20,4 +20,4 @@ transient/
 .cache/
 el-easydraw/
 request/curl-cookie.jar
-auto-save-list/
+auto-save-list/*
