@@ -75,7 +75,7 @@
 (use-package simple-httpd
   :ensure t
   :config
-  (setq httpd-host "0.0.0.0")
+  (setq httpd-host "152.228.170.148")
   (setq httpd-port "8818"))
 
 (use-package elfeed
@@ -91,6 +91,12 @@
               ("D" . nds:elfeed-show-daily)
               ("q" . nds:elfeed-save-db-and-bury))
   :config
+  (setq httpd-port 8818)
+  ;; run-with-timer takes an argument in seconds
+  ;; (* 30 60) therefore returns 30 minutes in seconds
+  ;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
+  ;; Alternatively we run at 07:00 each day
+  (run-at-time "07:00" nil 'nds:elfeed-updater)
   (setq elfeed-web-enabled t))
 
 
@@ -98,14 +104,7 @@
 ;; (use-package elfeed-web
 ;;   :ensure t
 ;;   :config
-;;   (setq httpd-port 8461))
-;; run-with-timer takes an argument in seconds
-;; (* 30 60) therefore returns 30 minutes in seconds
-;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
-;; Alternatively we run at 07:00 each day
-;; (run-at-time "07:00" nil 'nds:elfeed-updater)
-;; (setq httpd-port 8461)
-;; (elfeed-web-start)
+;;   (setq httpd-port 8818))
 
 ;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
 (defun nds:elfeed-db-remove-entry (id)
