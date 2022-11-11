@@ -13,8 +13,9 @@
 	     (setq x-underline-at-descent-line t)
 	     (setq centaur-tabs-cycle-scope 'default)
 	     :bind
-	     ("C-<tab> p" . centaur-tabs-backward)
-	     ("C-<tab> n" . centaur-tabs-forward))
+	     ;; ("C-<tab> p" . centaur-tabs-backward)
+	     ;; ("C-<tab> n" . centaur-tabs-forward)
+         )
 
 (defun centaur-tabs-buffer-groups ()
   "`centaur-tabs-buffer-groups' control buffers' group rules.
