@@ -1,20 +1,20 @@
 ;; MAGIT CONFIGURATION
 ;; --------------------------------------
 (use-package magit
-  :defer 0.5
-;;  :requires forge
-  :init
-  (setq magit-repository-directories
-      `(("~/dotfiles" . 1)
-	    ("~/.config/emacs/" . 1)
-	    ("~/org/" . 1)
-	    ("~/work/org-roam/" . 1)
-	    ("~/work/python/tcx2gpx/" . 1)
-	    ("~/work/python/wpweather/" . 1)
-        ))
-   (setq auth-sources '("~/.authinfo.gpg"))
-  :config
-  (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+	     :defer 0.5
+	     ;;  :requires forge
+	     :init
+	     (setq magit-repository-directories
+		   `(("~/dotfiles" . 1)
+		     ("~/.config/emacs/" . 1)
+		     ("~/org/" . 1)
+		     ("~/work/org-roam/" . 1)
+		     ("~/work/python/tcx2gpx/" . 1)
+		     ("~/work/python/wpweather/" . 1)
+		     ))
+	     (setq auth-sources '("~/.authinfo.gpg"))
+	     :config
+	     (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
@@ -29,12 +29,12 @@
 
 ;; Git modes
 (use-package git-modes
-  :defer t
-  :ensure t)
+	     :defer t
+	     :ensure t)
 
 (use-package gh-notify
-  :defer t
-  :ensure t)
+	     :defer t
+	     :ensure t)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -136,10 +136,10 @@
 
 ;; Transient prefix
 (transient-define-prefix ns/magit-aux-commands ()
-  "My personal auxiliary magit commands."
-  ["Auxiliary commands"
-   ("d" "Difftastic Diff (dwim)" ns/magit-diff-with-difftastic)
-   ("s" "Difftastic Show" ns/magit-show-with-difftastic)])
+			 "My personal auxiliary magit commands."
+			 ["Auxiliary commands"
+			  ("d" "Difftastic Diff (dwim)" ns/magit-diff-with-difftastic)
+			  ("s" "Difftastic Show" ns/magit-show-with-difftastic)])
 
 ;; Transient suffix
 (transient-append-suffix 'magit-dispatch "!"

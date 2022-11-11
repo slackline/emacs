@@ -731,7 +731,7 @@ list found by uplisting."
              escaped-p
              ;; ... inside a generic string
              (eq inside-string t)
-             ;; ... inside an unterminated string started by this char 
+             ;; ... inside an unterminated string started by this char
              (autopair--in-unterminated-string-p syntax-triplet)
              ;; ... the position at the end of buffer is inside an
              ;; unterminated string
@@ -1091,7 +1091,7 @@ by this command. Then place point after the first, indented.\n\n"
               (autopair--document-bindings)))
 
 
-
+
 ;; monkey-patching: Compatibility with delete-selection-mode and cua-mode
 ;;
 ;; Ideally one would be able to use functions as the value of the

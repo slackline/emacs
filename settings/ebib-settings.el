@@ -5,6 +5,6 @@
 
 ;; (define-key 'LaTeX-mode-map "\C-cb" 'ebib-insert-citation)
 (use-package ebib
-  :config
-  (setq ebib-preload-bib-files '("~/org/references.bib", "~/work/org/references.bib"))
-  (global-set-key "\C-ce" 'ebib))
+	     :config
+	     (setq ebib-preload-bib-files '("~/org/references.bib", "~/work/org/references.bib"))
+	     (global-set-key "\C-ce" 'ebib))

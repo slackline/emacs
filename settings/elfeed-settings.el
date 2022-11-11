@@ -10,10 +10,10 @@
 
 ;; use an org file to organise feeds
 (use-package elfeed-org
-  :ensure t
-  :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+	     :ensure t
+	     :config
+	     (elfeed-org)
+	     (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elfeed feed reader                                                     ;;
@@ -73,31 +73,31 @@
 ;;   (elfeed-update))
 
 (use-package simple-httpd
-  :ensure t
-  :config
-  (setq httpd-host "152.228.170.148")
-  (setq httpd-port "8818"))
+	     :ensure t
+	     :config
+	     (setq httpd-host "152.228.170.148")
+	     (setq httpd-port "8818"))
 
 (use-package elfeed
-  :ensure t
-  :bind (:map elfeed-search-mode-map
-              ("A" . nds:elfeed-show-all)
-              ("c" . nds:elfeed-show-climbing)
-              ("C" . nds:elfeed-show-computing)
-              ("e" . nds:elfeed-show-emacs)
-              ("R" . nds:elfeed-show-reading)
-              ("H" . nds:elfeed-show-humor)
-              ("S" . nds:elfeed-show-statistics)
-              ("D" . nds:elfeed-show-daily)
-              ("q" . nds:elfeed-save-db-and-bury))
-  :config
-  (setq httpd-port 8818)
-  ;; run-with-timer takes an argument in seconds
-  ;; (* 30 60) therefore returns 30 minutes in seconds
-  ;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
-  ;; Alternatively we run at 07:00 each day
-  (run-at-time "07:00" nil 'nds:elfeed-updater)
-  (setq elfeed-web-enabled t))
+	     :ensure t
+	     :bind (:map elfeed-search-mode-map
+			 ("A" . nds:elfeed-show-all)
+			 ("c" . nds:elfeed-show-climbing)
+			 ("C" . nds:elfeed-show-computing)
+			 ("e" . nds:elfeed-show-emacs)
+			 ("R" . nds:elfeed-show-reading)
+			 ("H" . nds:elfeed-show-humor)
+			 ("S" . nds:elfeed-show-statistics)
+			 ("D" . nds:elfeed-show-daily)
+			 ("q" . nds:elfeed-save-db-and-bury))
+	     :config
+	     (setq httpd-port 8818)
+	     ;; run-with-timer takes an argument in seconds
+	     ;; (* 30 60) therefore returns 30 minutes in seconds
+	     ;; (run-with-timer 0 (* 120 60) 'nds:elfeed-updater)
+	     ;; Alternatively we run at 07:00 each day
+	     (run-at-time "07:00" nil 'nds:elfeed-updater)
+	     (setq elfeed-web-enabled t))
 
 
 ;; Use elfeed-web to periodically update

@@ -72,10 +72,10 @@
 ;; minor mode, so `wide-column-mode' will toggle it on and off.
 ;;
 ;; The code was developed on Gnu Emacs 21. It will work on emacs 20,
-;; although with reduced functionality (no global mode). 
+;; although with reduced functionality (no global mode).
 ;;
 ;; It may work on XEmacs, but I don't have one around to try. You will
-;; certainly need the fsf compatibility packages if you do. 
+;; certainly need the fsf compatibility packages if you do.
 
 ;;; Issues;
 ;;
@@ -94,7 +94,7 @@
 ;; `wide-column-colour-list'
 ;;
 ;; 3) Custom support would be good, and no doubt will be added at some
-;; time. 
+;; time.
 ;;
 ;; 4) It's not going to work if people use lots of different default
 ;; cursor colours. Seems like a daft thing to do to me! Something to
@@ -266,12 +266,12 @@ when your lines get too long."
         (funcall wide-column-affector-function 'off))))
 
 ;; emacs 20 compatibility. I need to remove this later, because it's
-;; code duplication. 
+;; code duplication.
 (if (not (fboundp 'define-minor-mode))
     (progn
       (easy-mmode-define-minor-mode wide-column-mode
                                     "Toggle wide-column mode.
-Running in Emacs 20 compatability mode. My advice is to upgrade 
+Running in Emacs 20 compatability mode. My advice is to upgrade
 your emacs.")
       (add-hook 'wide-column-mode-hook
                 (lambda()
@@ -284,7 +284,7 @@ your emacs.")
 (if (fboundp 'easy-mmode-define-global-mode)
     (progn
       (easy-mmode-define-global-mode global-wide-column-mode wide-column-mode wide-column-turn-on)
-      
+
       (add-hook
        'global-wide-column-mode-hook
        'global-wide-column-hook)))
@@ -331,7 +331,7 @@ normally be called. `wide-column-mode-reset' turns it back on again. "
 ;; but its based on my usual cursor colour. What I would really like
 ;; to do is lighten the colour each time I move further from the
 ;; fill-column. So it would be nice to be able to get from one colour
-;; to the next automatically, without just specifying a list. 
+;; to the next automatically, without just specifying a list.
 (defvar wide-column-colour-list
   '("orange" "yellow" "white"))
 
@@ -343,30 +343,30 @@ normally be called. `wide-column-mode-reset' turns it back on again. "
   "Place to store the default cursor colour.")
 
 (defun wide-column-warning-colour(current-excess-column)
-"Set the cursor colour depending on the column position"
-;; first we need to test for a flag condition, mostly to
-;; reset or store the current cursor colour.
-(cond
- ((or (eq 'reset current-excess-column)
-      (eq 'off current-excess-column))
-  (set-cursor-color wide-column-default-cursor-colour))
- ((eq 'on current-excess-column)
-  nil)
- ;; now we need to actually do the cursor colour change. Change it
- ;; back to default.
- ((>= 0 current-excess-column)
-  (set-cursor-color wide-column-default-cursor-colour))
- ;; change it to something else.
- (t
-  (let* ((max-colour-index
-          (- (length wide-column-colour-list) 1))
-         (suggested-colour-number
-          (/ current-excess-column wide-column-warning-colour-quotient))
-         (actual-colour-number
-          (if (> suggested-colour-number max-colour-index)
-              max-colour-index
-            suggested-colour-number)))
-    (set-cursor-color (nth actual-colour-number wide-column-colour-list))))))
+  "Set the cursor colour depending on the column position"
+  ;; first we need to test for a flag condition, mostly to
+  ;; reset or store the current cursor colour.
+  (cond
+   ((or (eq 'reset current-excess-column)
+	(eq 'off current-excess-column))
+    (set-cursor-color wide-column-default-cursor-colour))
+   ((eq 'on current-excess-column)
+    nil)
+   ;; now we need to actually do the cursor colour change. Change it
+   ;; back to default.
+   ((>= 0 current-excess-column)
+    (set-cursor-color wide-column-default-cursor-colour))
+   ;; change it to something else.
+   (t
+    (let* ((max-colour-index
+            (- (length wide-column-colour-list) 1))
+           (suggested-colour-number
+            (/ current-excess-column wide-column-warning-colour-quotient))
+           (actual-colour-number
+            (if (> suggested-colour-number max-colour-index)
+		max-colour-index
+              suggested-colour-number)))
+      (set-cursor-color (nth actual-colour-number wide-column-colour-list))))))
 
 ;; Some test code
 (defun wide-column-warning-colour-test()
@@ -384,7 +384,7 @@ normally be called. `wide-column-mode-reset' turns it back on again. "
   (interactive)
   (setq wide-column-affector-function
         'wide-column-warning-colour))
-                      ;(default-value wide-column-affector-function)))
+					;(default-value wide-column-affector-function)))
 
 (provide 'wide-column)
 

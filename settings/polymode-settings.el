@@ -6,8 +6,8 @@
   "ESS Markdown mode for rmd files"
   (interactive)
   (setq load-path
-    (append '("~/.emacs.d/lisp/polymode/"  "~/.emacs.d/lisp/polymode/modes")
-        load-path))
+	(append '("~/.emacs.d/lisp/polymode/"  "~/.emacs.d/lisp/polymode/modes")
+		load-path))
   (use-package poly-R)
   (use-package poly-noweb)
   (use-package poly-markdown)
@@ -75,8 +75,8 @@ Restore match data previously stored in PROPERTY."
 
 ;; Poly-org mode
 (use-package poly-org
-  :ensure t
-  :defer t)
+	     :ensure t
+	     :defer t)
 
 ;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
 ;; (defcustom pm-inner/python

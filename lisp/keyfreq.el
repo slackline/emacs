@@ -227,8 +227,8 @@ called, percentage usage and the command."
       ((not func) (lambda (e) (format "%7d  %s\n" (cdr e) (car e))))
       ((equal func t)
        (lambda (e) (format (concat "%7d  %6.2f%%  %- "
-                              (format "%d" max-len)
-                              "s %s\n")
+				   (format "%d" max-len)
+				   "s %s\n")
 			   (cdr e) (/ (* 1e2 (cdr e)) sum) (car e)
                            (ignore-errors (keyfreq-where-is (car e))))))
       ((equal func 'raw) (lambda (e) (format "%d %s\n" (cdr e) (car e))))
@@ -460,47 +460,47 @@ does nothing if the table cannot be saved."
 
   ;; Avoid adding nothing to the file
   (if (> (hash-table-count table) 0)
-    (let (done)
-      ;; Check that the lock file doesn't exist
-      (while (not done)
-	(when (keyfreq-file-is-unlocked)
-	  ;; Lock the file
-	  (keyfreq-file-claim-lock)
+      (let (done)
+	;; Check that the lock file doesn't exist
+	(while (not done)
+	  (when (keyfreq-file-is-unlocked)
+	    ;; Lock the file
+	    (keyfreq-file-claim-lock)
 
-	  ;; Check that we have the lock
-	  (if (eq (keyfreq-file-owner) (emacs-pid))
-	      (unwind-protect
-		  (progn
-		    ;; Load values and merge them with the current keyfreq-table
-		    (keyfreq-table-load table)
+	    ;; Check that we have the lock
+	    (if (eq (keyfreq-file-owner) (emacs-pid))
+		(unwind-protect
+		    (progn
+		      ;; Load values and merge them with the current keyfreq-table
+		      (keyfreq-table-load table)
 
-		    ;; Write the new frequencies
-		    (with-temp-file keyfreq-file
-		      (let ((l (cdr (keyfreq-list table 'no-sort))))
-			(insert "(")
-			(dolist (item l)
-			  (prin1 item (current-buffer))
-			  ;; Easy for git to track if every command is
-			  ;; one line
-			  (insert "\n"))
-			(insert ")"))))
+		      ;; Write the new frequencies
+		      (with-temp-file keyfreq-file
+			(let ((l (cdr (keyfreq-list table 'no-sort))))
+			  (insert "(")
+			  (dolist (item l)
+			    (prin1 item (current-buffer))
+			    ;; Easy for git to track if every command is
+			    ;; one line
+			    (insert "\n"))
+			  (insert ")"))))
 
-		;; Reset the hash table, enable the 'done' flag, and
-		;; release the lock.
-		(clrhash table)
-		(setq done t)
-		(keyfreq-file-release-lock))))
+		  ;; Reset the hash table, enable the 'done' flag, and
+		  ;; release the lock.
+		  (clrhash table)
+		  (setq done t)
+		  (keyfreq-file-release-lock))))
 
-	(if (and (not done) mustsave)
-	    ;; If we must save the file right now, we'll just keep
-	    ;; trying until we can get the lock.  So we can sleep some
-	    ;; milliseconds for the next while-loop cycle.
-	    (sleep-for 0.1)
-	  ;; If we can wait to the next timer's timeout, just enable
-	  ;; the 'done' flag to break the while-loop.
-	  (setq done t))
+	  (if (and (not done) mustsave)
+	      ;; If we must save the file right now, we'll just keep
+	      ;; trying until we can get the lock.  So we can sleep some
+	      ;; milliseconds for the next while-loop cycle.
+	      (sleep-for 0.1)
+	    ;; If we can wait to the next timer's timeout, just enable
+	    ;; the 'done' flag to break the while-loop.
+	    (setq done t))
 
-	))))
+	  ))))
 
 
 (defun keyfreq-table-load (table)
@@ -518,8 +518,8 @@ The table is not reset, so the values are appended to the table."
 	;; Add the values in the table
 	(while (and (listp l) l)
 	  (if (listp (car l))
-          (unless (memq (cdr (caar l)) keyfreq-excluded-commands)
-            (puthash (caar l) (+ (gethash (caar l) table 0) (cdar l)) table)))
+              (unless (memq (cdr (caar l)) keyfreq-excluded-commands)
+		(puthash (caar l) (+ (gethash (caar l) table 0) (cdar l)) table)))
 	  (setq l (cdr l)))
 	)))
 

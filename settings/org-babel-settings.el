@@ -30,7 +30,7 @@
   "#+INFOJS_OPT: \n"
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
-)
+  )
 (global-set-key [C-f4] 'org-R-skeleton)
 
 ;; Org Python Skeleton
@@ -49,7 +49,7 @@
   "#+INFOJS_OPT: \n"
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
-)
+  )
 (global-set-key [C-f5] 'org-python-skeleton)
 
 ;; Org Reveal Skeleton
@@ -71,7 +71,7 @@
   "#+TITLE: " str " \n"
   "#+AUTHOR: " str " \n"
   "#+EMAIL: " str "\n"
-)
+  )
 (global-set-key [C-f6] 'org-reveal-skeleton)
 
 ;; Default header arguments (found these tend to mess things up so not using for now)
@@ -90,7 +90,7 @@
 ;;             (:tangle . "yes")
 ;;            ))
 (add-to-list 'org-babel-default-inline-header-args
-            '(:colnames . "nil"))
+             '(:colnames . "nil"))
 ;; Insert code blocks (https://emacs.stackexchange.com/a/12847)
 ;; (add-to-list 'org-structure-template-alist
 ;;              '("r" . "#+NAME: ?\n src R :session ** :eval yes :exports none :results output silent\n\n"))
@@ -109,11 +109,11 @@
       (setq org-html-head (concat
                            "<style type=\"text/css\">\n"
                            "<!--/*--><![CDATA[/*><!--*/\n"
-                          (with-temp-buffer
-                            (insert-file-contents final)
-                            (buffer-string))
-                          "/*]]>*/-->\n"
-                          "</style>\n")))))
+                           (with-temp-buffer
+                             (insert-file-contents final)
+                             (buffer-string))
+                           "/*]]>*/-->\n"
+                           "</style>\n")))))
 (add-hook 'org-export-before-processing-hook 'org-inline-css-hook)
 
 ;; Functions as default heading arguments

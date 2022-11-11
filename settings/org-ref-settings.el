@@ -4,22 +4,22 @@
 
 ;; org-ref https://github.com/jkitchin/org-ref
 (use-package org-ref
-  :requires
-  org-ref-helm
-  :config
-  (setq bibtex-completion-bibliography '("~/org/references.bib"
-                                         "~/org/rse/references.bib")
-        bibtex-completion-library-path '("~/work/ref/")
-	    bibtex-completion-notes-path "~/org/helm-bibtex-notes"
-        bibtex-completion-display-formats  '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-	                                         (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-	                                         (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	                                         (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	                                         (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
-        org-ref-bibliography-notes "~/org/ref-notes.org"
-	    org-ref-default-bibliography '("~/org/references.bib")
-	    org-ref-pdf-directory "~/work/ref/"
-	    org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f")))
+	     :requires
+	     org-ref-helm
+	     :config
+	     (setq bibtex-completion-bibliography '("~/org/references.bib"
+						    "~/org/rse/references.bib")
+		   bibtex-completion-library-path '("~/work/ref/")
+		   bibtex-completion-notes-path "~/org/helm-bibtex-notes"
+		   bibtex-completion-display-formats  '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+							(inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+							(incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+							(inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+							(t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}"))
+		   org-ref-bibliography-notes "~/org/ref-notes.org"
+		   org-ref-default-bibliography '("~/org/references.bib")
+		   org-ref-pdf-directory "~/work/ref/"
+		   org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f")))
 
 ;; RefTex setup
 ;; From : https://blog.karssen.org/2013/08/22/using-bibtex-from-org-mode/

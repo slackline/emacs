@@ -14,12 +14,12 @@
       org-babel-python-command "~/.virtualenvs/default/bin/python"
       org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
       '(:foreground default
-	    :background "rgb 1 1 1"
-            :scale 1.5
-            :html-foreground "Black"
-	    :html-background "Transparent"
-            :html-scale 1.0
-            :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+		    :background "rgb 1 1 1"
+		    :scale 1.5
+		    :html-foreground "Black"
+		    :html-background "Transparent"
+		    :html-scale 1.0
+		    :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
 (setq org-todo-keywords
@@ -77,14 +77,14 @@
 
 ;; ox packages
 (use-package ox-reveal
-  :ensure t
-;;  :defer t
-  :config
-  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
-	org-reveal-mathjax t))
+	     :ensure t
+	     ;;  :defer t
+	     :config
+	     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
+		   org-reveal-mathjax t))
 (use-package ox-pandoc
-  :ensure t
-  :defer t)
+	     :ensure t
+	     :defer t)
 
 ;; Skeletons
 (define-skeleton org-R-skeleton
@@ -102,7 +102,7 @@
   "#+INFOJS_OPT: \n"
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
- )
+  )
 (global-set-key [C-f4] 'org-R-skeleton)
 
 (define-skeleton org-python-skeleton
@@ -120,7 +120,7 @@
   "#+INFOJS_OPT: \n"
   "#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768 \n"
   "-----"
- )
+  )
 (global-set-key [C-f5] 'org-python-skeleton)
 
 ;; Default header arguments
