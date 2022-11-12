@@ -62,15 +62,15 @@
   (elfeed-db-save)
   (quit-window))
 
-;; (defun nds:elfeed-updater ()
-;;   "Wrapper to load the elfeed db from disk before opening"
-;;   (interactive)
-;;   (elfeed-db-save)
-;;   (quit-window)
-;;   (elfeed-db-load)
-;;   (elfeed)
-;;   (elfeed-search-update--force)
-;;   (elfeed-update))
+(defun nds:elfeed-updater ()
+  "Wrapper to load the elfeed db from disk before opening"
+  (interactive)
+  (elfeed-db-save)
+  (quit-window)
+  (elfeed-db-load)
+  (elfeed)
+  (elfeed-search-update--force)
+  (elfeed-update))
 
 (use-package simple-httpd
 	     :ensure t

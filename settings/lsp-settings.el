@@ -204,3 +204,12 @@
 ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-r/
 ;; (use-package lsp-r
 ;;   :ensure t)
+
+;; Cleanup LSP sessions https://arjenwiersma.nl/posts/2022-11-07-cleaning-up-after-lsp/index.html
+(defun nds/cleanup-lsp ()
+  "Remove all the workspace folders from LSP"
+  (interactive)
+  (let ((folders (lsp-session-folders (lsp-session))))
+    (while folders
+      (lsp-workspace-folders-remove (car folders))
+      (setq folders (cdr folders)))))

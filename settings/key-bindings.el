@@ -92,3 +92,7 @@
 ;; EIN commands
 (local-set-key [f12] 'ein:worksheet-delete-cell)
 (local-set-key [f5] 'ein:notebook-reconnect-kernel)
+
+;; Pass
+(global-set-key (kbd "<f1>") 'password-store-copy)
+(global-set-key (kbd "<f2>") 'keychain-refresh-environment)
