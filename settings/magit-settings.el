@@ -141,7 +141,7 @@
 			  ("d" "Difftastic Diff (dwim)" ns/magit-diff-with-difftastic)
 			  ("s" "Difftastic Show" ns/magit-show-with-difftastic)])
 
-;; Transient suffix
+;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 (transient-append-suffix 'magit-dispatch "!"
   '("#" "My Magit Cmds" ns/magit-aux-commands))
 
