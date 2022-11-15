@@ -221,10 +221,10 @@
 (load "~/.config/emacs/settings/js-settings.el")
 (load "~/.config/emacs/settings/latex-settings.el")
 (load "~/.config/emacs/settings/lsp-settings.el")
-(load "~/.config/emacs/settings/magit-settings.el")
 (load "~/.config/emacs/settings/markdown-settings.el")
 (load "~/.config/emacs/settings/polymode-settings.el")
 (load "~/.config/emacs/settings/ess-settings.el")
+(load "~/.config/emacs/settings/magit-settings.el")
 
 
 ;;; Themes
