@@ -135,7 +135,7 @@
      `("git" "--no-pager" "diff" "--ext-diff" ,@(when arg (list arg))))))
 
 ;; Transient prefix
-(transient-define-prefix ns/magit-aux-commands ()
+(transient-define-prefix nds:magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
 			  ("d" "Difftastic Diff (dwim)" ns/magit-diff-with-difftastic)
@@ -143,6 +143,6 @@
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 (transient-append-suffix 'magit-dispatch "!"
-  '("#" "My Magit Cmds" ns/magit-aux-commands))
+  '("#" "My Magit Cmds" nds:magit-aux-commands))
 
 (define-key magit-status-mode-map (kbd "#") #'ns/magit-aux-commands)
