@@ -95,4 +95,7 @@
 
 ;; Pass
 (global-set-key (kbd "<f1>") 'password-store-copy)
-(global-set-key (kbd "<f2>") 'keychain-refresh-environment)
+(global-set-key (kbd "<f2>") 'eval-buffer)
+(global-set-key (kbd "<f3>") 'eval-region)
+(global-set-key (kbd "<f4>") 'package-list-packages)
+(global-set-key (kbd "<f3>") 'keychain-refresh-environment)
