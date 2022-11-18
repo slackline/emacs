@@ -43,6 +43,17 @@
 	     ;; look at interactive functions.
 	     (global-set-key (kbd "C-h C") #'helpful-command)
 	     )
+
+;; Function Keys
+(global-set-key (kbd "<f1>") 'password-store-copy)
+(global-set-key (kbd "<f2>") 'eval-buffer)
+(global-set-key (kbd "<f3>") 'eval-region)
+(global-set-key (kbd "<f4>") 'package-list-packages)
+(global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+;; EIN commands
+(local-set-key (kbd "<f12>") 'ein:notebook-reconnect-kernel)
+(local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
+
 ;; Misc
 ;; (global-set-key (kbd "C-c U") 'revert-buffer)
 ;; (global-set-key (kbd "C-c e") 'eval-region)
@@ -64,20 +75,6 @@
 ;; Keychain
 ;; (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
 
-;; Custom commands
-;; (global-set-key (kbd "C-c r") 'rsync-html)
-;; (global-set-key (kbd "<f1>") )
-;; (global-set-key (kbd "<f2>") )
-;; (global-set-key (kbd "<f3>") )
-;; (global-set-key (kbd "<f4>") )
-;; (global-set-key (kbd "<f5>") )
-;; (global-set-key (kbd "<f6>") )
-;; (global-set-key (kbd "<f7>") )
-;; (global-set-key (kbd "<f8>") )
-;; (global-set-key (kbd "<f9>") )
-;; (global-set-key (kbd "<f10>") )
-;; (global-set-key (kbd "<f11>") )
-;; (global-set-key (kbd "<f12>") )
 
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
@@ -88,14 +85,3 @@
 ;; (define-key global-map [f6] 'other-window)
 ;; (define-key global-map [f8] 'kill-buffer)
 ;; (define-key global-map [f9] 'ess-load-file)
-
-;; EIN commands
-(local-set-key [f12] 'ein:worksheet-delete-cell)
-(local-set-key [f5] 'ein:notebook-reconnect-kernel)
-
-;; Pass
-(global-set-key (kbd "<f1>") 'password-store-copy)
-(global-set-key (kbd "<f2>") 'eval-buffer)
-(global-set-key (kbd "<f3>") 'eval-region)
-(global-set-key (kbd "<f4>") 'package-list-packages)
-(global-set-key (kbd "<f5>") 'keychain-refresh-environment)
