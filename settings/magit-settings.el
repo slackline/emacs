@@ -39,7 +39,7 @@
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
 ;; Magit with Difftastic
-(defun ns/magit--with-difftastic (buffer command)
+(defun nds:magit--with-difftastic (buffer command)
   "Run COMMAND with GIT_EXTERNAL_DIFF=difft then show result in BUFFER."
   (let ((process-environment
          (cons (concat "GIT_EXTERNAL_DIFF=difft --width="
@@ -88,7 +88,7 @@
                            . ,(min width (frame-width))))))))))))
 
 ;; Magit Show
-(defun ns/magit-show-with-difftastic (rev)
+(defun nds:magit-show-with-difftastic (rev)
   "Show the result of \"git show REV\" with GIT_EXTERNAL_DIFF=difft."
   (interactive
    (list (or
@@ -103,12 +103,12 @@
           (magit-read-branch-or-commit "Revision"))))
   (if (not rev)
       (error "No revision specified")
-    (ns/magit--with-difftastic
+    (nds:magit--with-difftastic
      (get-buffer-create (concat "*git show difftastic " rev "*"))
      (list "git" "--no-pager" "show" "--ext-diff" rev))))
 
 ;; Magit Diff
-(defun ns/magit-diff-with-difftastic (arg)
+(defun nds:magit-diff-with-difftastic (arg)
   "Show the result of \"git diff ARG\" with GIT_EXTERNAL_DIFF=difft."
   (interactive
    (list (or
@@ -130,7 +130,7 @@
   (let ((name (concat "*git diff difftastic"
                       (if arg (concat " " arg) "")
                       "*")))
-    (ns/magit--with-difftastic
+    (nds:magit--with-difftastic
      (get-buffer-create name)
      `("git" "--no-pager" "diff" "--ext-diff" ,@(when arg (list arg))))))
 
@@ -138,11 +138,11 @@
 (transient-define-prefix nds:magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
-			  ("d" "Difftastic Diff (dwim)" ns/magit-diff-with-difftastic)
-			  ("s" "Difftastic Show" ns/magit-show-with-difftastic)])
+			  ("d" "Difftastic Diff (dwim)" nds:magit-diff-with-difftastic)
+			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 (transient-append-suffix 'magit-dispatch "!"
   '("#" "My Magit Cmds" nds:magit-aux-commands))
 
-(define-key magit-status-mode-map (kbd "#") #'ns/magit-aux-commands)
+(define-key magit-status-mode-map (kbd "#") #'nds:magit-aux-commands)
