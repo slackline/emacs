@@ -31,6 +31,7 @@
     ess-smart-equals
     ess-smart-underscore
     forge
+    format-all
     flycheck
     ;; flycheck-shellcheck
     gh-notify

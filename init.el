@@ -17,10 +17,10 @@
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
         ("MELPA"	. "https://melpa.org/packages/"))
       package-archive-priorities
-      '(("MELPA Stable" . 10)
+      '(("MELPA" . 10)
         ("GNU ELPA"	. 5)
         ("NonGNU ELPA"	. 5)
-        ("MELPA"	. 0)))
+        ("MELPA Stable"	. 0)))
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -219,6 +219,7 @@
 (load "~/.config/emacs/settings/flyspell-settings.el")
 (load "~/.config/emacs/settings/jedi-settings.el")
 (load "~/.config/emacs/settings/js-settings.el")
+(load "~/.config/emacs/settings/format-all-settings.el")
 (load "~/.config/emacs/settings/latex-settings.el")
 (load "~/.config/emacs/settings/lsp-settings.el")
 (load "~/.config/emacs/settings/markdown-settings.el")
