@@ -38,13 +38,13 @@
 
 ;; why-this https://codeberg.org/akib/emacs-why-this
 (use-package why-this
-  :defer t
-  :ensure t
-  :init
-;;  (setq global-why-this-mode)
-  :config
-  (set-face-background 'why-this-annotate-heat-map-cold "#203448")
-  (set-face-background 'why-this-annotate-heat-map-warm "#382f27"))
+	     :defer t
+	     :ensure t
+	     :init
+	     ;;  (setq global-why-this-mode)
+	     :config
+	     (set-face-background 'why-this-annotate-heat-map-cold "#203448")
+	     (set-face-background 'why-this-annotate-heat-map-warm "#382f27"))
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
