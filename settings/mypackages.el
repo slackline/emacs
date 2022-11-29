@@ -108,6 +108,7 @@
     vterm
     weblorg
     which-key
+    why-this
     wide-column
     with-shell-interpreter
     yaml-mode
