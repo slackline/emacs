@@ -84,7 +84,6 @@
     ox-tufte
     package-utils
     pass
-    poetry
     polymode
     poly-markdown
     poly-noweb
