@@ -76,7 +76,9 @@
 	     :ensure t
 	     :config
 	     (setq httpd-host "152.228.170.148")
-	     (setq httpd-port "8818"))
+	     (setq httpd-port "8818")
+         :hook (after-init-hook . elfeed-web-start))
+
 
 (use-package elfeed
 	     :ensure t
