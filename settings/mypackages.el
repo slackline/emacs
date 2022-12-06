@@ -81,6 +81,7 @@
     ox-hugo
     ox-pandoc
     ox-reveal
+    ox-spectacle
     ox-tufte
     package-utils
     pass

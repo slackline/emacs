@@ -81,7 +81,10 @@
 	     ;;  :defer t
 	     :config
 	     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
-		   org-reveal-mathjax t))
+		       org-reveal-mathjax t))
+(use-package ox-spectacle
+	     :ensure t
+	     :defer t)
 (use-package ox-pandoc
 	     :ensure t
 	     :defer t)
@@ -89,7 +92,6 @@
 ;; Skeletons
 (define-skeleton org-R-skeleton
   "Header info for a org file with R."
-  "Title: "
   "#+TITLE:" str " \n"
   "#+AUTHOR: Neil Shephard\n"
   "#+EMAIL: nshephard@protonmail.com\n"
@@ -107,7 +109,6 @@
 
 (define-skeleton org-python-skeleton
   "Header info for a org file with Python."
-  "Title: "
   "#+TITLE:" str " \n"
   "#+AUTHOR: Neil Shephard\n"
   "#+EMAIL: nshephard@gmail.com\n"

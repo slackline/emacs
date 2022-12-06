@@ -46,6 +46,15 @@
 	     (set-face-background 'why-this-annotate-heat-map-cold "#203448")
 	     (set-face-background 'why-this-annotate-heat-map-warm "#382f27"))
 
+;; Code-review https://github.com/wandersoncferreira/code-review/
+(use-package code-review
+  :defer t
+  :ensure t
+  :config
+  (setq code-review-fill-column 120)
+  (add-hook 'code-review-mode-hook . #'emojify-mode)
+  (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
+
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
 ;; Magit with Difftastic
