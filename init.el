@@ -129,6 +129,16 @@
 	     (prog-mode-hook . highlight-indent-guides-mode)
 	     )
 
+;; Set httpd-system-name for IP based on system-name, used by simple-httpd config (see settings/elfeed-settings.el)
+;; https://emacs.stackexchange.com/a/41726/10100
+(setq httpd-system-name
+      '(("kimura" . "127.0.0.1")
+        ("vps-bb669593" . "182.228.170.148")
+        ("alarmpi-4b" . "127.0.0.1")
+        ("fisher" . "127.0.0.1")
+        ("haldane" . "127.0.0.1")
+        ("mendel" . "127.0.0.1")))
+
 ;; Updating packages automatically
 ;; https://github.com/rranelli/auto-package-update.el
 (use-package auto-package-update
