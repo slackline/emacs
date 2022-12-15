@@ -23,6 +23,7 @@
     dap-mode
     dockerfile-mode
     easy-hugo
+    eglot
     ein
     elfeed-org
     elfeed-web
