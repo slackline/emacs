@@ -96,8 +96,8 @@
 	     :config
 	     (setq httpd-port 8818)
 	     ;; run-with-timer takes an argument in seconds
-	     ;; (* 30 60) therefore returns 30 minutes in seconds
-	     (run-at-time "07:00" (* 120 60) 'nds:elfeed-updater)
+	     ;; (* 30 60) therefore rerurns 30 minutes in seconds
+	     (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater)
 	     (setq elfeed-web-enabled t))
 
 
