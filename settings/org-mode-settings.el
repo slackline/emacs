@@ -33,6 +33,10 @@
         ("WONT-DO" . (:foreground "DarkViolet" :weight bold))
         ))
 
+(use-package org-analyzer
+  :ensure t
+  :defer 3
+              )
 ;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
 ;; (define-key org-mode-map (kbd "`")
 ;;     (lambda ()

@@ -68,6 +68,7 @@
     modus-themes
     numpydoc
     ob-mermaid
+    org-analyzer
     org-cliplink
     org-gtd
     org-notifications
