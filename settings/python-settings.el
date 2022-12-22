@@ -65,17 +65,17 @@
 	     ;;   (setq python-shell-interpreter "python2"))
 	     ;;  (t
 	     ;;   (setq python-shell-interpreter "python")))
-	     )
+	     :bind (:map python-mode-map
+			 ("C-c p t" . python-pytest-dispatch)
+			 ("C-c p l" . pylint)
+             ("C-c p b" . blacken-buffer)
+             ("C-c p v" . pyvenv-workon)))
 
 ;;; Python pytest (https://github.com/wbolster/emacs-python-pytest)
 (use-package python-pytest
 	     :after (pyvenv)
 	     :ensure t
-	     :defer 2
-	     :config
-	     :bind (:map python-mode-map
-			 ("C-c p t" . python-pytest-dispatch)
-			 ("C-c p l" . pylint)))
+	     :defer 2)
 
 ;; Linting - Lots of options, currently going with blacken
 ;; (use-package py-autopep8
@@ -89,9 +89,8 @@
 	     :defer 3
 	     :custom
 	     (blacken-line-length 120)
-	     :hook (python-mode . blacken-mode)
-	     :bind (:map python-mode-map
-			 ("C-c p b" . blacken-buffer)))
+	     :hook (python-mode . blacken-mode))
+
 ;; (use-package yapfify
 ;;   :ensure t
 ;;   :defer t
