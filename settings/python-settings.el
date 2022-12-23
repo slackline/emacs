@@ -68,6 +68,7 @@
 	     :bind (:map python-mode-map
 			 ("C-c p t" . python-pytest-dispatch)
 			 ("C-c p l" . pylint)
+			 ("C-c p n" . numpydoc-generate)
              ("C-c p b" . blacken-buffer)
              ("C-c p v" . pyvenv-workon)))
 
