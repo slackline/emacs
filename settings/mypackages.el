@@ -27,6 +27,7 @@
     ein
     elfeed-org
     elfeed-web
+    elisp-refs
     emojify
     ess
     ess-smart-equals
@@ -36,6 +37,7 @@
     flycheck
     ;; flycheck-shellcheck
     gh-notify
+    gist
     gitlab
     git-modes
     groovy-mode
@@ -71,6 +73,7 @@
     org-analyzer
     org-cliplink
     org-gtd
+    org-kanban
     org-notifications
     org-parser
     org-present
@@ -83,6 +86,7 @@
     ox-hugo
     ox-pandoc
     ox-reveal
+    ox-rst
     ox-spectacle
     ox-tufte
     package-utils
@@ -106,6 +110,7 @@
     quarto-mode
     rainbow-delimiters
     smartparens
+    ;; transient-dwim
     treemacs
     use-package
     vterm

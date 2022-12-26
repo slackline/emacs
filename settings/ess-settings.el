@@ -1,8 +1,8 @@
 ;; ESS CONFIGURATION
 ;; --------------------------------------
-;; No longer using smartunderscore
+;;
 ;; Useful pages to read on configuration of ESS and sometimes LSP mode
-
+;;
 ;; ESS
 ;; https://weikaichen.gitee.io/notes/emacs-ess-r/
 ;;
@@ -12,8 +12,21 @@
 ;;
 ;; Pipes and assignment customisation
 ;;
+;; https://emacs.stackexchange.com/a/8055
+;; Notes on underscore for assignment
+;;
+;; https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
+;; https://github.com/emacs-ess/ESS/issues/809
+;; https://chainsawriot.com/postmannheim/2022/12/24/aoe24.html
 ;; https://emacs.stackexchange.com/a/65148
 ;; https://github.com/emacs-ess/ESS/issues/809#issuecomment-453538386
+;;
+;; Plots in Emacs buffers
+;; https://emacs.stackexchange.com/questions/2292/ess-plot-directly-to-an-emacs-buffer
+;;
+;; Better still plots in the browser
+;;
+;; https://www.youtube.com/watch?v=uxyhmhRVOfw
 (use-package ess
 	     :ensure t
 	     :defer 1
@@ -37,42 +50,25 @@
 	     (setq ess-ask-for-ess-directory nil)
 	     (setq ess-togggle-underscore nil)
 	     (setq ess-eval-visibly 'nowait)
+             (require 'ess-r-mode)
+             (require 'ess-r-package)
 	     :hook
 	     (ess-mode . company-mode)
 	     (inferior-ess-mode . company-mode)
-	     )
+             :bind
+             (:map ess-r-mode-map
+		   ("_" . 'ess-insert-assign)  ;;
+		   ("C-q" . 'ess-eval-region-or-line-and-step)
+		   ("C-|" . " |>\n")))
+;; :map inferior-ess-r-mode-map
+;; ("_" . 'ess-insert-assign)
+;; ("C-|" . " |>\n")
 
 ;; Quarto mode https://github.com/quarto-dev/quarto-emacs
 ;; By default associated with .qmd files
 (use-package quarto-mode
 	     :mode (("\\.Rmd" . poly-quarto-mode))
 	     :bind (("C-c q" . quarto-preview)))
-
-;; (use-package ess-r-mode
-;;   :ensure ess
-;;   :defer 1
-;;   :bind
-;;   (:map ess-r-mode-map ("C-|" . " |>\n"))
-;;   (:map ess-r-mode-map (";" . ess-insert-assign))
-;;   (:map inferior-ess-r-mode-map ("C-|" . " |>\n"))
-;;   (:map inferior-ess-r-mode-map (";" . ess-insert-assign)))
-
-;; Notes on underscore for assignment
-;; https://emacs.stackexchange.com/questions/48134/ess-smart-underscore-does-not-work-in-emacs25)
-;; See also https://github.com/emacs-ess/ESS/issues/809
-;; Restore old '_' functionality with...
-;; (define-key ess-mode-map "_" 'ess-insert-assign)
-;; (define-key inferior-ess-r-mode-map "_" 'ess-insert-assign)
-
-;;; Pipe operator https://emacs.stackexchange.com/a/8055
-;; (defun then_R_operator ()
-;;   "R - |> operator or 'then' pipe operator"
-;;   (interactive)
-;;   (just-one-space 1)
-;;   (insert "|> ")
-;;   (reindent-then-newline-and-indent))
-;; (define-key ess-mode-map (kbd "C-c |") 'then_R_operator)
-;; (define-key inferior-ess-mode-map (kbd "C-c |") 'then_R_operator)
 
 
 ;;; Set the width of the buffer automatically from
@@ -86,6 +82,3 @@
 ;; (use-package auto-complete-config)
 ;; (ac-config-default)
 (auto-complete-mode)
-
-;;; Plots in Emacs buffers
-;;; https://emacs.stackexchange.com/questions/2292/ess-plot-directly-to-an-emacs-buffer
