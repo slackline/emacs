@@ -1,7 +1,12 @@
-;; Polymode CONFIGURATION
-;; --------------------------------------
-;; https://github.com/milkypostman/powerline
+;;; POWERLINE CONFIGURATION
+;;; =======================
+;;;
+;;; GitHub        : https://github.com/milkypostman/powerline
+;;; Customisation : https://jr0cket.co.uk/2015/01/custom-powerline-theme-for-Emacs-modeline.html
+;;; Custom wave separator
 (use-package powerline
 	     :defer 1
 	     :init
-	     (powerline-default-theme))
+	     (powerline-default-theme)
+             :config
+             (setq powerline-default-separator 'wave))
