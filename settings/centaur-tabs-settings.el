@@ -6,52 +6,55 @@
 	     :config
 	     (centaur-tabs-mode t)
 	     :init
-	     (setq centaur-tabs-enable-key-bindings t)
-	     (setq centaur-tabs-style "wave")
-	     (setq centaur-tabs-set-icons t)
-	     (setq centaur-tabs-set-bar 'under)
-	     (setq x-underline-at-descent-line t)
-	     (setq centaur-tabs-cycle-scope 'default)
+	     (setq centaur-tabs-enable-key-bindings t
+	           centaur-tabs-style "wave"
+	           centaur-tabs-set-icons t
+	           centaur-tabs-set-bar 'under
+	           x-underline-at-descent-line t
+	           centaur-tabs-cycle-scope 'default
+		   centaur-tabs-set-modified-marker t
+		   centaur-tabs-modified-marker "⏺")
 	     :bind
-	     ("C-<previous>" . centaur-tabs-backward)
+	     ("C-<prior>" . centaur-tabs-backward)
 	     ("C-<next>" . centaur-tabs-forward)
-         )
+             )
+
 
 (defun centaur-tabs-buffer-groups ()
   "`centaur-tabs-buffer-groups' control buffers' group rules.
 ;;     Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
 ;;     All buffer name start with * will group to \"Emacs\".
 ;;     Other buffer group by `centaur-tabs-get-group-name' with project name."
-   (list
-    (cond
-;;     ((string-equal "*" "*vterm*")
-;;      "Terminal")
-;;     ((string-prefix-p "*mastodon" name)
-;;      "Mastodon")
+  (list
+   (cond
+    ;;     ((string-equal "*" "*vterm*")
+    ;;      "Terminal")
+    ;;     ((string-prefix-p "*mastodon" name)
+    ;;      "Mastodon")
     ((or (string-equal "*" (substring (buffer-name) 0 1))
 	 (memq major-mode '(magit-process-mode
-			            magit-status-mode
-			            magit-diff-mode
-			            magit-log-mode
-			            magit-file-mode
-			            magit-blob-mode
- 			            magit-blame-mode
-			            )))
+			    magit-status-mode
+			    magit-diff-mode
+			    magit-log-mode
+			    magit-file-mode
+			    magit-blob-mode
+ 			    magit-blame-mode
+			    )))
      "Emacs")
     ;; ((derived-mode-p 'prog-mode) "Editing")
     ;; ((derived-major-mode 'python-mode) "Python")
     ;; ((derived-mode-p 'dired-mode) "Dired")
     ;; ((memq major-mode '(helpful-mode help-mode)) "Help")
     ((memq major-mode '(org-mode
-			            org-agenda-clockreport-mode
-			            org-src-mode
-			            org-agenda-mode
-			            org-beamer-mode
-			            org-indent-mode
-			            org-bullets-mode
-			            org-cdlatex-mode
-			            org-agenda-log-mode
-			            diary-mode))
+			org-agenda-clockreport-mode
+			org-src-mode
+			org-agenda-mode
+			org-beamer-mode
+			org-indent-mode
+			org-bullets-mode
+			org-cdlatex-mode
+			org-agenda-log-mode
+			diary-mode))
      "OrgMode")
     (t
      (centaur-tabs-get-group-name (current-buffer))))))
@@ -74,10 +77,10 @@
      (string-prefix-p " *Mini" name)
      (string-prefix-p "*help" name)
      (string-prefix-p "*straight" name)
-     (string-prefix-p " *temp" name)
+     (string-prefix-p "*temp" name)
      (string-prefix-p "*Help" name)
      (string-prefix-p "*mybuf" name)
      ;; Is not magit buffer.
      (and (string-prefix-p "magit" name)
-      (not (file-name-extension name)))
+	  (not (file-name-extension name)))
      )))
