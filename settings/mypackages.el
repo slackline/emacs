@@ -112,6 +112,7 @@
     smartparens
     ;; transient-dwim
     treemacs
+    ts
     use-package
     vterm
     weblorg
