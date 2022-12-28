@@ -1,7 +1,7 @@
 ;; MAGIT CONFIGURATION
 ;; --------------------------------------
 (use-package magit
-	     :defer 0.5
+	     :ensure t
 	     ;;  :requires forge
 	     :init
 	     (setq magit-repository-directories
@@ -48,12 +48,12 @@
 
 ;; Code-review https://github.com/wandersoncferreira/code-review/
 (use-package code-review
-  :defer t
-  :ensure t
-  :config
-  (setq code-review-fill-column 120)
-  (add-hook 'code-review-mode-hook . #'emojify-mode)
-  (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
+	     :defer t
+	     :ensure t
+	     :config
+	     (setq code-review-fill-column 120)
+	     (add-hook 'code-review-mode-hook . #'emojify-mode)
+	     (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -161,7 +161,7 @@
 			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
-(transient-append-suffix 'magit-dispatch "!"
-  '("#" "My Magit Cmds" nds:magit-aux-commands))
+;; (transient-append-suffix 'magit-dispatch "!"
+;;   '("#" "My Magit Cmds" nds:magit-aux-commands))
 
 (define-key magit-status-mode-map (kbd "#") #'nds:magit-aux-commands)

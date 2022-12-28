@@ -59,10 +59,10 @@
              (:map ess-r-mode-map
 		   ("_" . 'ess-insert-assign)  ;;
 		   ("C-q" . 'ess-eval-region-or-line-and-step)
+		   ("C-|" . " |>\n"))
+             (:map inferior-ess-r-mode-map
+		   ("_" . 'ess-insert-assign)
 		   ("C-|" . " |>\n")))
-;; :map inferior-ess-r-mode-map
-;; ("_" . 'ess-insert-assign)
-;; ("C-|" . " |>\n")
 
 ;; Quarto mode https://github.com/quarto-dev/quarto-emacs
 ;; By default associated with .qmd files
