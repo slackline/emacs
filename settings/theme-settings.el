@@ -47,13 +47,10 @@
 		   modus-themes-paren-match '(underline)
 		   modus-themes-region '(bg-only no-extend)
 		   modus-themes-org-block '(tinted-background))
-
-	     ;; Load the theme files before enabling a theme (else you get an error).
-	     ;; (modus-themes-load-themes)
 	     :config
 	     ;; Load the theme of your choice:
-	     (modus-themes-load-vivendi) ;; OR (modus-themes-load-operandi)
-	     :bind ("<f5>" . modus-themes-toggle))
+             (modus-themes-load-theme 'modus-vivendi)) ;; OR modus-operandi
+:bind ("<f12>" . modus-themes-toggle))
 
 ;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
 ;; default is to use whatever font the user has selected, typically a
