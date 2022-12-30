@@ -9,4 +9,5 @@
 	     :init
 	     (powerline-default-theme)
              :config
-             (setq powerline-default-separator 'wave))
+             (setq powerline-default-separator 'wave)
+             (setq-default mode-line-format (remove 'mode-line-buffer-identification mode-line-format)))

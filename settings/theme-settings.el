@@ -49,7 +49,7 @@
 		   modus-themes-org-block '(tinted-background))
 
 	     ;; Load the theme files before enabling a theme (else you get an error).
-	     (modus-themes-load-themes)
+	     ;; (modus-themes-load-themes)
 	     :config
 	     ;; Load the theme of your choice:
 	     (modus-themes-load-vivendi) ;; OR (modus-themes-load-operandi)

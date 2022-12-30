@@ -21,6 +21,7 @@
     conda
     crontab-mode
     dap-mode
+    display-wttr
     dockerfile-mode
     easy-hugo
     eglot
