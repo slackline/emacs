@@ -7,8 +7,17 @@
 
 (use-package tree-sitter
 	     :ensure t
-	     :init (global-tree-sitter-mode)
-	     :hook (python-mode-hook . tree-sitter-hl-mode)
-             (ess-r-mode . tree-sitter-hl-mode))
+	     :init
+             (global-tree-sitter-mode)
+	     :hook
+             ((python-mode
+               js-mode
+               json-mode
+               python-mode
+               rust-mode
+               terraform-mode
+               yaml-mode) . (tree-sitter-mode t)))
 
-(use-package tree-sitter-langs)
+(use-package tree-sitter-langs
+	     :hook
+	     (tree-sitter-after-on . tree-sitter-hl-mode))
