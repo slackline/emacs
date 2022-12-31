@@ -4,13 +4,8 @@
 ;; (setq debug-on-error f)
 (package-initialize)
 (require 'package)
-;; (add-to-list 'package-archives
-;; 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-;; ;;	     '("melpa" . "http://melpa.org/packages/") t)
-;; (add-to-list 'package-archives
-;; 	     '("org" . "https://orgmode.org/elpa/") t)
 
-;; Alternative method of adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
+;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
         ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
@@ -28,7 +23,7 @@
   (package-refresh-contents))
 
 ;; Add local lisp for miscellaneous things
-					; (add-to-list 'load-path "~/.config/emacs/lisp/")
+;; (add-to-list 'load-path "~/.config/emacs/lisp/")
 
 ;; Modify exec-path
 (setq exec-path (append '("~/bin"
@@ -140,28 +135,15 @@
         ("haldane" . "127.0.0.1")
         ("mendel" . "127.0.0.1")))
 
-;; Updating packages automatically
-;; https://github.com/rranelli/auto-package-update.el
-(use-package auto-package-update
-	     :ensure t
-	     :config
-	     (setq auto-package-update-delete-old-versions t
-		   auto-package-update-interval 2
-		   auto-package-update-hide-results t)
-	     (auto-package-update-maybe))
-
-;;(load "~/.config/emacs/settings/auto-package-update.el")
-
 ;; Delete trailing white space when saving in all modes except ein
 ;; https://emacs.stackexchange.com/a/40773/10100
-;; (add-hook 'before-save-hook
-;; 	  (lambda ()
-;; 	    (unless (eq major-mode 'ein:notebook-multilang-mode)
-;; 	      ('delete-trailing-whitespace))))
+(add-hook 'before-save-hook
+	  (lambda ()
+	    (unless (eq major-mode 'ein:notebook-multilang-mode)
+	      ('delete-trailing-whitespace))))
 ;;(global-set-key [(control c) r] 'revert-buffer)
-;; Uppercase region
+;; Uppercase/Lowercae region
 (put 'upcase-region 'disabled nil)
-;; Lowercase region
 (put 'downcase-region 'disabled nil)
 
 ;; Hook to make scripts executable on saving
@@ -191,7 +173,7 @@
 (load "~/.config/emacs/settings/misc.el")
 
 ;;; General editor settings
-;; (load "~/.config/emacs/settings/auto-package-update.el")
+(load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
 (load "~/.config/emacs/settings/key-bindings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")

@@ -1,43 +1,55 @@
-;; POLYMODE CONFIGURATION
-;; --------------------------------------
-;; Load Polymode https://github.com/vspinu/polymode
+;;; POLYMODE CONFIGURATION
+;;; --------------------------------------
+;;;
+;;; GitHub : https://github.com/polymode/polymode
+;;; Documentation : https://polymode.github.io/
+;;; poly-markdown : https://github.com/polymode/poly-markdown
+;;; poly-markdown : https://github.com/polymode/poly-noweb
+;;; poly-markdown : https://github.com/polymode/poly-org
+;;; poly-markdown : https://github.com/polymode/poly-R
+;;; poly-markdown : https://github.com/polymode/poly-rst
 (use-package polymode)
-(defun rmd-mode ()
-  "ESS Markdown mode for rmd files"
-  (interactive)
-  (setq load-path
-	(append '("~/.emacs.d/lisp/polymode/"  "~/.emacs.d/lisp/polymode/modes")
-		load-path))
-  (use-package poly-R)
-  (use-package poly-noweb)
-  (use-package poly-markdown)
-  (poly-markdown+r-mode))
+(use-package poly-markdown
+  :ensure t
+  :defer t)
+(use-package poly-noweb
+  :ensure t
+  :defer t)
+(use-package poly-org
+	     :ensure t
+	     :defer t)
+(use-package poly-R
+	     :ensure t
+	     :defer t)
+(use-package poly-rst
+	     :ensure t
+	     :defer t)
 
 ;;; Register file types
 ;;; MARKDOWN
 ;;;(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
 
 ;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;; (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 ;;; Hopefully work around the freezes from https://goo.gl/l6mtG5
-(defun markdown-match-propertized-text (property last)
-  "Match text with PROPERTY from point to LAST.
-Restore match data previously stored in PROPERTY."
-  (let ((saved (get-text-property (point) property))
-        pos)
-    (unless saved
-      (setq pos (next-single-char-property-change (point) property nil last))
-      (setq saved (get-text-property pos property)))
-    (when saved
-      (set-match-data saved)
-      ;; Step at least one character beyond point. Otherwise
-      ;; `font-lock-fontify-keywords-region' infloops.
-      (goto-char (min (1+ (max (match-end 0) (point)))
-                      (point-max)))
-      saved)))
+;; (defun markdown-match-propertized-text (property last)
+;;   "Match text with PROPERTY from point to LAST.
+;; Restore match data previously stored in PROPERTY."
+;;   (let ((saved (get-text-property (point) property))
+;;         pos)
+;;     (unless saved
+;;       (setq pos (next-single-char-property-change (point) property nil last))
+;;       (setq saved (get-text-property pos property)))
+;;     (when saved
+;;       (set-match-data saved)
+;;       ;; Step at least one character beyond point. Otherwise
+;;       ;; `font-lock-fontify-keywords-region' infloops.
+;;       (goto-char (min (1+ (max (match-end 0) (point)))
+;;                       (point-max)))
+;;       saved)))
 ;;; This hasn't worked, I still get lock-ups, but perhaps a little less frequently.
 ;;; Found another thread at https://stat.ethz.ch/pipermail/ess-help/2016-January/010886.html
 ;;;
@@ -56,27 +68,21 @@ Restore match data previously stored in PROPERTY."
 ;;; https://github.com/polymode/polymode/issues/180
 
 
-;; define pweave polymodes
-(use-package poly-markdown)
-(use-package poly-noweb)
+
 ;; Python/Markdown
-(defcustom pm-inner/noweb-python
-  (clone pm-inner/noweb
-         :name "noweb-python"
-         :mode 'python-mode)
-  "Noweb for Python"
-  :group 'poly-innermodes
-  :type 'object)
+;; (defcustom pm-inner/noweb-python
+;;   (clone pm-inner/noweb
+;;          :name "noweb-python"
+;;          :mode 'python-mode)
+;;   "Noweb for Python"
+;;   :group 'poly-innermodes
+;;   :type 'object)
 
-(define-polymode poly-pweave-mode poly-markdown-mode
-  :innermodes '(pm-inner/noweb-python :inherit))
+;; (define-polymode poly-pweave-mode poly-markdown-mode
+;;   :innermodes '(pm-inner/noweb-python :inherit))
 
-(add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
+;; (add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
 
-;; Poly-org mode
-(use-package poly-org
-	     :ensure t
-	     :defer t)
 
 ;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
 ;; (defcustom pm-inner/python

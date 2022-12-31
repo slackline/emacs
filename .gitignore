@@ -21,3 +21,9 @@ transient/
 el-easydraw/
 request/curl-cookie.jar
 auto-save-list/
+request/
+url/
+
+# Private files
+mastodon.plstore
+org-roam.db
