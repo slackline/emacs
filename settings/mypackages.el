@@ -115,7 +115,6 @@
     treemacs
     tree-sitter
     ts
-    typing
     use-package
     vterm
     weblorg
