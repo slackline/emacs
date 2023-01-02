@@ -27,10 +27,9 @@
 ;;     Other buffer group by `centaur-tabs-get-group-name' with project name."
   (list
    (cond
-    ;;     ((string-equal "*" "*vterm*")
-    ;;      "Terminal")
-    ;;     ((string-prefix-p "*mastodon" name)
-    ;;      "Mastodon")
+    ;;; Attempts to group mastodon buffers, not working 2023-01-02
+    ;; ((string-equal "*mastodon" (substring (buffer-name) 0 8))
+    ;;  "Mastodon")
     ((or (string-equal "*" (substring (buffer-name) 0 1))
 	 (memq major-mode '(magit-process-mode
 			    magit-status-mode
@@ -38,13 +37,26 @@
 			    magit-log-mode
 			    magit-file-mode
 			    magit-blob-mode
- 			    magit-blame-mode
-			    )))
+ 			    magit-blame-mode)))
      "Emacs")
     ;; ((derived-mode-p 'prog-mode) "Editing")
-    ;; ((derived-major-mode 'python-mode) "Python")
+    ;; ((memq major-mode '(python-mode)) "Python")
+    ;;; Following attempts to split magit buffers out to their own group, not working 2023-01-02
+    ;; ((string-equal "*" (substring (buffer-name) 0 1))
+    ;;  "Emacs")
+    ;; ((string-equal "magit" (substring (buffer-name) 0 4)) "Magit")
+    ;; ((memq major-mode '(magit-process-mode
+    ;; 		            magit-status-mode
+    ;; 		            magit-diff-mode
+    ;; 		            magit-log-mode
+    ;; 		            magit-file-mode
+    ;; 		            magit-blob-mode
+    ;; 		            magit-blame-mode))
+    ;;  "Magit")
     ;; ((derived-mode-p 'dired-mode) "Dired")
-    ;; ((memq major-mode '(helpful-mode help-mode)) "Help")
+    ((memq major-mode '(helpful-mode
+                        help-mode))
+     "Help")
     ((memq major-mode '(org-mode
 			org-agenda-clockreport-mode
 			org-src-mode
