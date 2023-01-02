@@ -77,8 +77,7 @@
 	     :config
 	     (setq httpd-host (cdr
                                (assoc (nth 0 (split-string (system-name) "\\.")) httpd-system-name)))
-	     (setq httpd-port "8818")
-             :hook (after-init-hook . elfeed-web-start))
+	     (setq httpd-port "8818"))
 
 
 (use-package elfeed
@@ -98,7 +97,9 @@
 	     ;; run-with-timer takes an argument in seconds
 	     ;; (* 30 60) therefore rerurns 30 minutes in seconds
 	     (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater)
-	     (setq elfeed-web-enabled t))
+	     (setq elfeed-web-enabled t)
+             :hook
+             (after-init-hook . elfeed-web-start))
 
 
 ;; Use elfeed-web to periodically update
