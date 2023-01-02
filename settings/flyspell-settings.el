@@ -10,5 +10,5 @@
                 js-mode-hook
                 R-mode-hook))
   (add-hook mode
-            '(lambda ()
-               (flyspell-prog-mode))))
+            #'(lambda ()
+		(flyspell-prog-mode))))

@@ -10,7 +10,7 @@
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
 (use-package modus-themes
-	     :ensure                         ; omit this to use the built-in themes
+	     :ensure t                         ; omit this to use the built-in themes
 	     :init
 	     ;; Add all your customizations prior to loading the themes
 	     (setq modus-themes-italic-constructs t
@@ -21,7 +21,7 @@
 	     :config
 	     ;; Load the theme of your choice:
              (modus-themes-load-theme 'modus-vivendi) ;; OR modus-operandi
-         :bind ("<f12>" . modus-themes-toggle))
+             :bind ("<f12>" . modus-themes-toggle))
 
 ;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
 ;; default is to use whatever font the user has selected, typically a
