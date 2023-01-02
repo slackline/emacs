@@ -4,7 +4,8 @@
 ;; I've tried out lots, one day I might settle on one.
 ;; Modus Themes (Vivendi) https://protesilaos.com/modus-themes/
 ;;
-;; Customisation : https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
+;; Customisation : https://protesilaos.com/codelog/2023-01-01-modus-themes-4-0-0/
+;; Old versions  : https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
 ;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
@@ -20,8 +21,9 @@
 		   modus-themes-org-block '(tinted-background))
 	     :config
 	     ;; Load the theme of your choice:
-             (modus-themes-load-theme 'modus-vivendi) ;; OR modus-operandi
-             :bind ("<f12>" . modus-themes-toggle))
+             (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
+             :bind
+             ("<f12>" . modus-themes-toggle))
 
 ;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
 ;; default is to use whatever font the user has selected, typically a
