@@ -128,7 +128,7 @@
 ;; https://emacs.stackexchange.com/a/41726/10100
 (setq httpd-system-name
       '(("kimura" . "127.0.0.1")
-        ("vps-bb669593" . "182.228.170.148")
+        ("vps-bb669593" . "152.228.170.148")
         ("alarmpi-4b" . "127.0.0.1")
         ("fisher" . "127.0.0.1")
         ("Neils-MBP.lan" . "127.0.0.1")
