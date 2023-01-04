@@ -99,7 +99,7 @@
 	     (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater)
 	     (setq elfeed-web-enabled t)
              :hook
-             (after-init-hook . elfeed-web-start))
+             (nds:elfeed-updater . elfeed-web-start))
 
 
 ;; Use elfeed-web to periodically update
