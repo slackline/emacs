@@ -2,7 +2,6 @@
 ;; --------------------------------------
 (use-package magit
 	     :ensure t
-	     ;;  :requires forge
 	     :init
 	     (setq magit-repository-directories
 		   `(("~/dotfiles" . 1)
@@ -14,7 +13,8 @@
 		     ))
 	     (setq auth-sources '("~/.authinfo.gpg"))
 	     :config
-	     (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
+	     (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+         (global-set-key (kbd "C-h f") #'helpful-callable))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
@@ -54,6 +54,19 @@
 	     (setq code-review-fill-column 120)
 	     (add-hook 'code-review-mode-hook . #'emojify-mode)
 	     (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
+
+;; Orgit / Orgit-forge
+;;
+;; GitHub : https://github.com/magit/orgit
+;;          https://github.com/magit/orgit-forge
+;;
+;; References :
+;;
+;; https://www.reddit.com/r/emacs/comments/lsr161/wishlist_has_anyone_built_an_orgmode_git_log/
+(use-package orgit
+  :after magit)
+(use-package orgit-forge
+  :after magit)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -158,7 +171,9 @@
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
 			  ("d" "Difftastic Diff (dwim)" nds:magit-diff-with-difftastic)
-			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)])
+			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)
+              ("o" "Orgit Link" orgit-store-link)
+              ])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 ;; (transient-append-suffix 'magit-dispatch "!"
