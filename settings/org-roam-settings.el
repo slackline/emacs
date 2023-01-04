@@ -10,7 +10,7 @@
 ;;   :custom
 ;;   (org-roam-database-connector 'libsqlite3))
 (use-package org-roam
-	     ;;  :ensure t
+	     :ensure t
 	     :defer 10
 	     :init
 	     (setq org-roam-v2-ack t)
@@ -21,20 +21,17 @@
 	     (org-roam-db-autosync-mode)
 	     (org-roam-completion-everywhere t)
 	     (org-roam-capture-templates
-	      '(("d" "default" plain
-		 "%?"
-		 :if-new (file+head "main/${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: ${tags}")
+	      '(("d" "default" plain "%?"
+		 :if-new (file+head "main/${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: ${tags}\n")
 		 :unnarrowed t)))
 	     (org-roam-dailies-capture-templates
-	      '(("d" "default" entry
-		 "* %?"
-		 :target (file+head "%<%Y-%m-%d>.org"
-				    "#+TITLE: %{title}\n#+DATE: %U\n"))))
+	      '(("d" "default" entry "* %?"
+		 :target (file+head "%<%Y-%m-%d>.org" "#+TITLE: %{title}\n#+DATE: %U\n"))))
 	     ;; To add : https://www.reddit.com/r/OrgRoam/comments/tfcwki/org_roam_capture_create_nametitle_of_a_note/
 	     :hook
 	     (after-init . org-roam-mode)
 	     :bind (("C-c n a" . org-roam-alias-add)
-		    ("C-c n c" . org-roam-capture)
+	            ("C-c n c" . org-roam-capture)
 		    ("C-c n d" . org-roam-dailies-capture-today)
 		    ("C-c n f" . org-roam-node-find)
 		    ("C-c n i" . org-roam-node-insert)
@@ -47,6 +44,13 @@
 		    ))
 ;; :config
 ;; (org-roam-setup))
+
+;; org-roam-timestamps
+;;
+;; GitHub : https://github.com/tefkah/org-roam-timestamps
+(use-package org-roam-timestamps
+	     :after org-roam
+	     :config (org-roam-timestamps-mode))
 
 ;; org-roam-ui https://github.com/org-roam/org-roam-ui
 (use-package websocket

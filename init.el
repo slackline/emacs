@@ -97,8 +97,6 @@
 	     (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
 	     (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
 	     :bind (("C-c U" . revert-buffer)
-		    ("C-c e" . eval-region)
-		    ("C-c E" . eval-buffer)
 		    ("C-c D" . toggle-debug-on-error)
 		    ;; Magit /code review
 		    ("C-x g" . magit-status)
@@ -112,7 +110,7 @@
 		    ("\C-cb" . org-iswitchb)
 		    ("C-x p i" . org-org-cliplink) ; From : https://github.com/rexim/org-cliplink
 		    ("C-c k" . keychain-refresh-environment)
-		    ("C-c r" . rsync-html))
+		    ("C-c u" . rsync-html))
 	     :hook
 	     ((latex-mode
 	       markdown-mode

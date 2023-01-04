@@ -81,6 +81,7 @@
     org-roam
     org-roam-bibtex
     org-roam-ui
+    org-roam-timestamps
     org-ref
     org-sidebar
     osm

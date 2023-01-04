@@ -19,7 +19,7 @@
 ;; https://github.com/Wilfred/helpful
 ;;
 (use-package helpful
-	     :config
+
 	     ;; Note that the built-in `describe-function' includes both functions
 	     ;; and macros. `helpful-function' is functions only, so we provide
 	     ;; `helpful-callable' as a drop-in replacement.
@@ -52,7 +52,7 @@
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (global-set-key (kbd "<XF86Home>") 'osm-home)
 ;; EIN commands
-(local-set-key (kbd "<f12>") 'ein:notebook-reconnect-kernel)
+(local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
 
 ;; Misc
