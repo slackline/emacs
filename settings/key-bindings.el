@@ -50,7 +50,7 @@
 (global-set-key (kbd "<f3>") 'eval-region)
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
-(global-set-key (kbd "<XF86Home>") 'osm-home)
+(global-set-key (kbd "<XF86HomePage>") 'osm-home)
 ;; EIN commands
 (local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
