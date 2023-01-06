@@ -17,6 +17,7 @@
 	     :config
 	     (org-edna-mode)
 	     (setq org-gtd-directory '"~/org/gtd")
+         (setq org-gtd-update-ack "2.1.0")
 	     :bind
 	     (("C-c d c" . org-gtd-capture)
 	      ("C-c d e" . org-gtd-engage)
