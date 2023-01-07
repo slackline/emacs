@@ -15,10 +15,8 @@
 	     :init
 	     ;; Add all your customizations prior to loading the themes
 	     (setq modus-themes-italic-constructs t
-		   modus-themes-bold-constructs nil
-		   modus-themes-paren-match '(underline)
-		   modus-themes-region '(bg-only no-extend)
-		   modus-themes-org-block '(tinted-background))
+		       modus-themes-bold-constructs t
+		       modus-themes-org-blocks '(tinted-background))
 	     :config
 	     ;; Load the theme of your choice:
              (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
