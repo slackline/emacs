@@ -23,22 +23,8 @@
              :bind
              ("<f12>" . modus-themes-toggle))
 
-;; Use proportionately-spaced fonts (variable-pitch) for headings.  The
-;; default is to use whatever font the user has selected, typically a
-;; monospaced typeface.
-;; (setq modus-vivendi-theme-proportional-fonts nil)
 
-;; Whether headings should be scaled or have the same height as body
-;; text.  The default is to keep everything the same as the base size.
-;; (setq modus-vivendi-theme-scale-headings nil)
-
-;; Font scale that should apply to headings.  These are the default values.
-;; (setq modus-vivendi-theme-scale-1 1.05)
-;; (setq modus-vivendi-theme-scale-2 1.1)
-;; (setq modus-vivendi-theme-scale-3 1.15)
-;; (setq modus-vivendi-theme-scale-4 1.2)
-;; (load-theme 'modus-vivendi t)
-
+;; Other themes I've tried
 
 ;; (load-theme 'darktooth t)
 ;; (load-theme 'dracula t)
@@ -46,10 +32,7 @@
 ;; (load-theme 'material t)
 ;; (load-theme 'ample-zen t)
 ;; (load-theme #'abyss t)
-
-;; Humanoid
 ;; (load-theme 'humanoid-dark t)
-;; (load-theme 'humanoid-light t)
 
 ;; Kaolin
 ;; (use-package kaolin-themes
