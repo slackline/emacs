@@ -1,5 +1,5 @@
 ;; KEY BINDINGS
-;; --------------------------------------
+;; ------------
 ;; List keybindings for (see https://emacs.stackexchange.com/q/732)...
 ;;
 ;; Buffer C-h b
@@ -41,8 +41,7 @@
 	     ;; By default, C-h C is bound to describe `describe-coding-system'. I
 	     ;; don't find this very useful, but it's frequently useful to only
 	     ;; look at interactive functions.
-	     (global-set-key (kbd "C-h C") #'helpful-command)
-	     )
+	     (global-set-key (kbd "C-h C") #'helpful-command))
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)
@@ -75,6 +74,7 @@
 
 ;; Keychain
 ;; (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
+(global-set-key (kbd "C-c r") 'rsync-html)
 
 
 ;;; Some generally useful key-bindings (mostly ESS specific) from

@@ -1,25 +1,38 @@
 ;;; ORG-MODE CONFIGURATION
 ;;; --------------------------------------
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-font-lock-mode 1)
-(setq org-directory        "~/org/"
-      org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
-      org-startup-indented 1
-      org-agenda-include-diary t
-      org-log-done 'time
-      org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
-      org-export-backends '(beamer html latex md odt)
-      org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
-      org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
-      org-babel-python-command "~/.virtualenvs/default/bin/python"
-      org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
-      '(:foreground default
-		    :background "rgb 1 1 1"
-		    :scale 1.5
-		    :html-foreground "Black"
-		    :html-background "Transparent"
-		    :html-scale 1.0
-		    :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+(use-package org
+	     :ensure t
+	     :init
+	     :bind
+	     (("C-x p i" . 'org-cliplink))
+	     :config
+	     (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+	     (global-font-lock-mode 1)
+	     (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+								      (python . t)
+								      (shell . t)
+								      (R . t)
+								      (latex .t)))
+	     (setq org-directory        "~/org/"
+		   org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
+		   ;; org-tags-alist '()
+		   org-startup-indented 1
+		   org-agenda-include-diary t
+		   org-log-done 'time
+		   org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
+		   org-export-backends '(beamer html latex md odt)
+		   org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
+		   org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
+		   org-babel-python-command "~/.virtualenvs/default/bin/python"
+		   org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
+		   '(:foreground default
+				 :background "rgb 1 1 1"
+				 :scale 1.5
+				 :html-foreground "Black"
+				 :html-background "Transparent"
+				 :html-scale 1.0
+				 :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))))
+
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
 (setq org-todo-keywords
@@ -34,9 +47,9 @@
         ))
 
 (use-package org-analyzer
-  :ensure t
-  :defer 3
-              )
+	     :ensure t
+	     :defer 3
+             )
 ;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
 ;; (define-key org-mode-map (kbd "`")
 ;;     (lambda ()
@@ -54,13 +67,13 @@
 
 ;; Hook - Insert created date when adding a header
 ;; From - https://stackoverflow.com/a/37478674
-;; (require 'org-expiry)
-;; (add-hook 'org-after-todo-state-change-hook
-;;           (lambda ()
-;;             (when (string= org-state "TODO")
-;;               (save-excursion
-;;                 (org-back-to-heading)
-;;                 (org-expiry-insert-created)))))
+(require 'org-expiry)
+(add-hook 'org-after-todo-state-change-hook
+          (lambda ()
+            (when (string= org-state "TODO")
+              (save-excursion
+                (org-back-to-heading)
+                (org-expiry-insert-created)))))
 
 ;; org-present
 (autoload 'org-present "org-present" nil t)
@@ -85,7 +98,7 @@
 	     ;;  :defer t
 	     :config
 	     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
-		       org-reveal-mathjax t))
+		   org-reveal-mathjax t))
 (use-package ox-spectacle
 	     :ensure t
 	     :defer t)

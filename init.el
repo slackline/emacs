@@ -44,10 +44,7 @@
                      gcs-done)))
 
 ;; Hide compilation buffer https://emacs.stackexchange.com/a/110
-(add-hook 'compilation-finish-functions
-          (lambda (buf strg)
-            (let ((win  (get-buffer-window buf 'visible)))
-              (when win (delete-window win)))))
+(add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
 
 
 ;; SETUP use-package
