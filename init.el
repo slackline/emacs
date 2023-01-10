@@ -87,6 +87,7 @@
 	     (setq-default fill-column 120)      ; Reset line-length
 	     (setq undo-limit 320000)            ; Increase the undo history limits
 	     (setq undo-strong-limit 640000)
+         (setq mode-line-compact t)
 	     (setq-default indent-tabs-mode nil)
 	     (setq-default tab-width 4)
 	     (setq-default sh-basic-offset 2)
