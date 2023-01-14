@@ -21,7 +21,7 @@
 	     :ensure t
 	     :defer t
 	     :config
-	     ()
+	     (define-key global-map (kbd "C-c E") (make-sparse-keymap))
 	     :hook
 	     ((bash-mode . eglot-ensure)
 	      (ess-r-mode . eglot-ensure)
@@ -33,11 +33,11 @@
 	      (rust-mode . eglot-ensure)
 	      (sh-mode . eglot-ensure))
              :bind
-             (("C-c l c" . eglot-reconnect)
-              ("C-c l d" . flymake-show-buffer-diagnostics)
-              ("C-c l f f" . eglot-format)
-              ("C-c l f b" . eglot-format-buffer)
-              ("C-c l l" . eglot)
-              ("C-c l r n" . eglot-rename)
-              ("C-c l s" . eglot-shutdown))
+             (("C-c E c" . eglot-reconnect)
+              ("C-c E d" . flymake-show-buffer-diagnostics)
+              ("C-c E f f" . eglot-format)
+              ("C-c E f b" . eglot-format-buffer)
+              ("C-c E l" . eglot)
+              ("C-c E r n" . eglot-rename)
+              ("C-c E s" . eglot-shutdown))
              )
