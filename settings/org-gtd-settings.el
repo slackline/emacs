@@ -17,7 +17,7 @@
 	     (org-edna-use-inheritance t)
              (org-gtd-update-ack "2.1.0")
 	     :config
-	     (org-edna-load)
+	     (org-edna-mode)
 	     :bind
 	     (("C-c d c" . org-gtd-capture)
 	      ("C-c d e" . org-gtd-engage)
@@ -25,7 +25,7 @@
 	      ("C-c d n" . org-gtd-show-all-next)
 	      ("C-c d s" . org-gtd-show-stuck-projects)
 	      :map org-gtd-process-map
-	      ("C-c d g" . org-gtd-choose)))
+	      ("C-c c" . org-gtd-choose)))
 
 
 ;;; These are copied from the following

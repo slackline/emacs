@@ -10,16 +10,7 @@
 	     (setq org-default-notes-file (concat org-directory "/notes.org"))
 	     (setq org-capture-templates
 		   '(
-                     ;; ;; GTD
-                     ;; ("I" "Inbox"
-                     ;;  entry (file ,(org-gtd--path org-gtd-inbox-file-basename))
-                     ;;  "* %?\n%U\n\n  %i"
-                     ;;  :kill-buffer t)
-                     ;; ("L" "Todo with link"
-                     ;;  entry (file ,(org-gtd--path org-gtd-inbox-file-basename))
-                     ;;  "* %?\n%U\n\n  %i\n  %a"
-                     ;;  :kill-buffer t)
-                     ;; Email
+		     ;; Email
 		     ("E" "Email"
 		      entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
 		      "* TODO [#A] Reply: %a" :immediate-finish t)
