@@ -13,11 +13,11 @@
 	     :demand t
 	     :custom
 	     ;; (org-gtd-directory stag-org-gtd-directory)
+             (org-gtd-directory '"~/org/gtd")
 	     (org-edna-use-inheritance t)
+             (org-gtd-update-ack "2.1.0")
 	     :config
-	     (org-edna-mode)
-	     (setq org-gtd-directory '"~/org/gtd")
-         (setq org-gtd-update-ack "2.1.0")
+	     (org-edna-load)
 	     :bind
 	     (("C-c d c" . org-gtd-capture)
 	      ("C-c d e" . org-gtd-engage)
@@ -43,7 +43,7 @@
 
 (defun my/org-agenda-set-effort (effort)
   "Set the effort property for the current headline."
-  (setq jethro/org-current-effort effort)
+  (setq my/org-current-effort effort)
   (org-agenda-check-no-diary)
   (let* ((hdmarker (or (org-get-at-bol 'org-hd-marker)
                        (org-agenda-error)))

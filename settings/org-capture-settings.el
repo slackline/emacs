@@ -9,7 +9,17 @@
 	     :config
 	     (setq org-default-notes-file (concat org-directory "/notes.org"))
 	     (setq org-capture-templates
-		   '(;; Email
+		   '(
+                     ;; ;; GTD
+                     ;; ("I" "Inbox"
+                     ;;  entry (file ,(org-gtd--path org-gtd-inbox-file-basename))
+                     ;;  "* %?\n%U\n\n  %i"
+                     ;;  :kill-buffer t)
+                     ;; ("L" "Todo with link"
+                     ;;  entry (file ,(org-gtd--path org-gtd-inbox-file-basename))
+                     ;;  "* %?\n%U\n\n  %i\n  %a"
+                     ;;  :kill-buffer t)
+                     ;; Email
 		     ("E" "Email"
 		      entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
 		      "* TODO [#A] Reply: %a" :immediate-finish t)
@@ -190,14 +200,14 @@ Routine")
 		     ("fb" "Books" item (file+olp "~/org/food_drink.org" "Books")
 		      "+ %?\n" :prepend t)
 		     ;; Isla
-		     ("I" "Activities for Isla")
-		     ("Ie" "Educational" item (file+olp "~/org/isla.org" "Educational")
+		     ("i" "Activities for Isla")
+		     ("ie" "Educational" item (file+olp "~/org/isla.org" "Educational")
 		      "+ %t %?\n" :prepend t)
-		     ("Ix" "Exercise" item (file+olp "~/org/isla.org" "Exercise")
+		     ("ix" "Exercise" item (file+olp "~/org/isla.org" "Exercise")
 		      "+ %t %?\n" :prepend t)
-		     ("If" "Fun" item (file+olp "~/org/isla.org" "Fun")
+		     ("if" "Fun" item (file+olp "~/org/isla.org" "Fun")
 		      "+ %t %?\n" :prepend t)
-		     ("Ig" "Gardening" item (file+olp "~/org/isla.org" "Gardening")
+		     ("ig" "Gardening" item (file+olp "~/org/isla.org" "Gardening")
 		      "+ %t %?\n" :prepend t)
 		     ;; Paula
 		     ("p" "Paula")

@@ -18,6 +18,8 @@
 		   ;; org-tags-alist '()
 		   org-startup-indented 1
 		   org-agenda-include-diary t
+		   org-agenda-skip-deadline-if-done t
+		   org-agenda-skip-scheduled-if-done t
 		   org-log-done 'time
 		   org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
 		   org-export-backends '(beamer html latex md odt)
