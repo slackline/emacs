@@ -110,6 +110,7 @@
     python-mode
     python-pytest
     quarto-mode
+    r-autoyas
     rainbow-delimiters
     smartparens
     ;; transient-dwim

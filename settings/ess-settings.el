@@ -82,3 +82,9 @@
 ;; (use-package auto-complete-config)
 ;; (ac-config-default)
 (auto-complete-mode)
+
+(use-package r-autoyas
+	     :ensure t
+	     :defer 3
+	     :hook
+	     (ess-mode . r-autoyas-ess-activate))
