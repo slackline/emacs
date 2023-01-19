@@ -6,6 +6,8 @@
 ;;; Tree-Sitter : https://tree-sitter.github.io/tree-sitter/
 ;;;
 ;;; https://wwwtech.de/articles/2022/dec/emacs-29-install-tree-sitter-parser-modules-with-a-minor-mode
+;;; https://archive.casouri.cc/note/2023/tree-sitter-starter-guide/index.html
+;;; https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html
 (use-package tree-sitter
 	     :ensure t
 	     :init
