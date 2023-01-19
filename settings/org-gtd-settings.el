@@ -13,9 +13,9 @@
 	     :demand t
 	     :custom
 	     ;; (org-gtd-directory stag-org-gtd-directory)
-             (org-gtd-directory '"~/org/gtd")
+         (org-gtd-directory '"~/org/gtd")
 	     (org-edna-use-inheritance t)
-             (org-gtd-update-ack "2.1.0")
+         (setq org-gtd-update-ack "2.1.0")
 	     :config
 	     (org-edna-mode)
 	     :bind
