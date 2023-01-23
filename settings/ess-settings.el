@@ -30,6 +30,8 @@
 (use-package ess
 	     :ensure t
 	     :defer 1
+         :requires ess-r-mode
+                   ess-r-package         
 	     :init
 	     :mode (("/R/.*\\.q\\'"       . R-mode)
 		    ("\\.[rR]\\'"         . R-mode)
@@ -50,8 +52,8 @@
 	     (setq ess-ask-for-ess-directory nil)
 	     (setq ess-togggle-underscore nil)
 	     (setq ess-eval-visibly 'nowait)
-             (require 'ess-r-mode)
-             (require 'ess-r-package)
+             ;; (require ess-r-mode)
+             ;; (require ess-r-package)
 	     :hook
 	     (ess-mode . company-mode)
 	     (inferior-ess-mode . company-mode)

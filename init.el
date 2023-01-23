@@ -194,7 +194,6 @@
 (load "~/.config/emacs/settings/org-capture-settings.el")
 
 ;;; Misc
-(load "~/.config/emacs/settings/elfeed-settings.el")
 (load "~/.config/emacs/settings/keychain-environment-settings.el")
 (load "~/.config/emacs/settings/literate-calc-settings.el")
 (load "~/.config/emacs/settings/mastodon-settings.el")
@@ -236,6 +235,8 @@
 (setq custom-file "~/.config/emacs/custom.el")
 (load custom-file)
 
+;; Start elfeed last
+(load "~/.config/emacs/settings/elfeed-settings.el")
 
 ;; Set default major mode for *scratch*
 ;; (setq initial-major-mode 'python-mode)
