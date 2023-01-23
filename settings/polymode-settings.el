@@ -4,10 +4,10 @@
 ;;; GitHub : https://github.com/polymode/polymode
 ;;; Documentation : https://polymode.github.io/
 ;;; poly-markdown : https://github.com/polymode/poly-markdown
-;;; poly-markdown : https://github.com/polymode/poly-noweb
-;;; poly-markdown : https://github.com/polymode/poly-org
-;;; poly-markdown : https://github.com/polymode/poly-R
-;;; poly-markdown : https://github.com/polymode/poly-rst
+;;; poly-noweb : https://github.com/polymode/poly-noweb
+;;; poly-org : https://github.com/polymode/poly-org
+;;; poly-R : https://github.com/polymode/poly-R
+;;; poly-rst : https://github.com/polymode/poly-rst
 (use-package polymode)
 (use-package poly-markdown
   :ensure t

@@ -1,6 +1,7 @@
 (use-package highlight-parentheses
-	     :defer 1)
-(setq hl-paren-colors '("gold" "IndianRed" "cyan" "green" "orange" "magenta"))
+  :defer 1
+  :config
+  (setq hl-paren-colors '("gold" "IndianRed" "cyan" "green" "orange" "magenta")))
 (defun hpm-on ()
   (highlight-parentheses-mode t))
 (add-hook 'ess-mode-hook 'hpm-on)
