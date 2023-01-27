@@ -106,9 +106,17 @@
 		    ("\C-cc" . org-capture)
 		    ("\C-ca" . org-agenda)
 		    ("\C-cb" . org-iswitchb)
-		    ("C-x p i" . org-org-cliplink) ; From : https://github.com/rexim/org-cliplink
+		    ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
+                    ;; Function keys
+                    ("<f1>" . password-store-copy)
+                    ("<f2>" . eval-buffer)
+                    ("<f3>" . eval-region)
+                    ("<f4>" . package-list-packages)
+                    ("<f5>" . keychain-refresh-environment)
+                    ;; My custom keys
 		    ("C-c k" . keychain-refresh-environment)
-		    ("C-c u" . rsync-html))
+		    ("C-c u" . rsync-html)
+                    ("C-c C-r" . revert-buffer-no-confirm))
 	     :hook
 	     ((latex-mode
 	       markdown-mode
@@ -116,7 +124,7 @@
 	       prog-mode
 	       text-mode) . auto-fill-mode)
 	     (auto-fill-function . do-auto-fill)
-	     (before-save . delete-trailing-whitespace)
+	     (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
 	     (prog-mode-hook . highlight-indent-guides-mode)
 	     )
 
@@ -131,14 +139,7 @@
         ("haldane" . "127.0.0.1")
         ("mendel" . "127.0.0.1")))
 
-;; Delete trailing white space when saving in all modes except ein
-;; https://emacs.stackexchange.com/a/40773/10100
-(add-hook 'before-save-hook
-	  (lambda ()
-	    (unless (eq major-mode 'ein:notebook-multilang-mode)
-	      ('delete-trailing-whitespace))))
-;;(global-set-key [(control c) r] 'revert-buffer)
-;; Uppercase/Lowercae region
+;; Uppercase/Lowercase region
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
@@ -149,7 +150,7 @@
 
 
 ;; Reload a buffer from disk
-;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+;; Source: http://www.emacswiki.org/emacs/misc-cmds.el
 (defun revert-buffer-no-confirm ()
   "Revert buffer without confirmation."
   (interactive)
@@ -171,7 +172,6 @@
 ;;; General editor settings
 (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs-settings.el")
-(load "~/.config/emacs/settings/key-bindings.el")
 (load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
@@ -222,6 +222,8 @@
 (load "~/.config/emacs/settings/powerline-settings.el")
 (load "~/.config/emacs/settings/theme-settings.el")
 
+;;; Keybindings (last so that all functions are defined)
+(load "~/.config/emacs/settings/key-bindings.el")
 
 ;;; Split the window and start an R session
 ;; (split-window-horizontally)

@@ -43,39 +43,17 @@
 	     ;; look at interactive functions.
 	     (global-set-key (kbd "C-h C") #'helpful-command))
 
+
 ;; Function Keys
-(global-set-key (kbd "<f1>") 'password-store-copy)
-(global-set-key (kbd "<f2>") 'eval-buffer)
-(global-set-key (kbd "<f3>") 'eval-region)
-(global-set-key (kbd "<f4>") 'package-list-packages)
-(global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+;; (global-set-key (kbd "<f1>") 'password-store-copy)
+;; (global-set-key (kbd "<f2>") 'eval-buffer)
+;; (global-set-key (kbd "<f3>") 'eval-region)
+;; (global-set-key (kbd "<f4>") 'package-list-packages)
+;; (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (if system-name "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 ;; EIN commands
 (local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
-
-;; Misc
-;; (global-set-key (kbd "C-c U") 'revert-buffer)
-;; (global-set-key (kbd "C-c e") 'eval-region)
-;; (global-set-key (kbd "C-c E") 'eval-buffer)
-;; (global-set-key (kbd "C-c D") 'toggle-debug-on-error)
-;; Magit
-;; (global-set-key (kbd "C-x g") 'magit-status)
-;; (global-set-key (kbd "C-c P") 'magit-push-current-to-upstream)
-
-;; Org-mode
-;; (global-set-key "\C-cl" 'org-store-link)
-;; (global-set-key "\C-cc" 'org-capture)
-;; (global-set-key "\C-ca" 'org-agenda)
-;; (global-set-key "\C-cb" 'org-iswitchb)
-;; Cliplink setup
-;; From : https://github.com/rexim/org-cliplink
-;; (global-set-key (kbd "C-x p i") 'org-cliplink)
-
-;; Keychain
-;; (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
-(global-set-key (kbd "C-c r") 'rsync-html)
-
 
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
