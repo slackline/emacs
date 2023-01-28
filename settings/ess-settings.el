@@ -30,8 +30,8 @@
 (use-package ess
 	     :ensure t
 	     :defer 1
-         :requires ess-r-mode
-                   ess-r-package         
+             :requires ess-r-mode
+             ess-r-package
 	     :init
 	     :mode (("/R/.*\\.q\\'"       . R-mode)
 		    ("\\.[rR]\\'"         . R-mode)
@@ -52,6 +52,7 @@
 	     (setq ess-ask-for-ess-directory nil)
 	     (setq ess-togggle-underscore nil)
 	     (setq ess-eval-visibly 'nowait)
+             ;; (setq ess-use-tracebug t)
              ;; (require ess-r-mode)
              ;; (require ess-r-package)
 	     :hook
@@ -85,8 +86,10 @@
 ;; (ac-config-default)
 (auto-complete-mode)
 
-(use-package r-autoyas
-	     :ensure t
-	     :defer 3
-	     :hook
-	     (ess-mode . r-autoyas-ess-activate))
+;;; https://github.com/mattfidler/r-autoyas.el
+;; Disabled 2023-01-28 was causing errors (see https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276597)
+;; (use-package r-autoyas
+;; 	     :ensure t
+;; 	     :defer 3
+;; 	     :hook
+;; 	     (ess-mode . r-autoyas-ess-activate))
