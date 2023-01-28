@@ -45,16 +45,20 @@
 
 
 ;; Function Keys
-;; (global-set-key (kbd "<f1>") 'password-store-copy)
-;; (global-set-key (kbd "<f2>") 'eval-buffer)
-;; (global-set-key (kbd "<f3>") 'eval-region)
-;; (global-set-key (kbd "<f4>") 'package-list-packages)
-;; (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+(global-set-key (kbd "<f1>") 'password-store-copy)
+(global-set-key (kbd "<f2>") 'eval-buffer)
+(global-set-key (kbd "<f3>") 'eval-region)
+(global-set-key (kbd "<f4>") 'package-list-packages)
+(global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (if system-name "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 ;; EIN commands
 (local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
 
+;; My custom keys
+(global-set-key (kbd "C-c k") 'keychain-refresh-environment)
+(global-set-key (kbd "C-c u") 'rsync-html)
+(global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
 ;; (define-key global-map [f1] 'Control-X-prefix)

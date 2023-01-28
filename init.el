@@ -96,27 +96,17 @@
 	     (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
 	     :bind (("C-c U" . revert-buffer)
 		    ("C-c D" . toggle-debug-on-error)
-		    ;; Magit /code review
-		    ("C-x g" . magit-status)
-		    ("C-c P" . magit-push-current-to-upstream)
-		    ("C-c F" . magit-pull)
-		    ("C-c R" . code-review-forge-pr-at-point)
 		    ;; Org
 		    ("\C-cl" . org-store-link)
 		    ("\C-cc" . org-capture)
 		    ("\C-ca" . org-agenda)
 		    ("\C-cb" . org-iswitchb)
 		    ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
-                    ;; Function keys
-                    ("<f1>" . password-store-copy)
-                    ("<f2>" . eval-buffer)
-                    ("<f3>" . eval-region)
-                    ("<f4>" . package-list-packages)
-                    ("<f5>" . keychain-refresh-environment)
-                    ;; My custom keys
-		    ("C-c k" . keychain-refresh-environment)
-		    ("C-c u" . rsync-html)
-                    ("C-c C-r" . revert-buffer-no-confirm))
+		    ;; Magit /code review
+		    ("C-x g" . magit-status)
+		    ("C-c P" . magit-push-current-to-upstream)
+		    ("C-c F" . magit-pull)
+		    ("C-c R" . code-review-forge-pr-at-point))
 	     :hook
 	     ((latex-mode
 	       markdown-mode
