@@ -86,6 +86,7 @@
 	     (setq history-length 100)           ; Mini-buffer history
 	     (setq-default fill-column 120)      ; Reset line-length
 	     (setq undo-limit 320000)            ; Increase the undo history limits
+             (setq vc-follow-symlinks t)         ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
 	     (setq undo-strong-limit 640000)
              (setq mode-line-compact t)
 	     (setq-default indent-tabs-mode nil)
