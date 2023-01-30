@@ -14,7 +14,7 @@
 	     (setq auth-sources '("~/.authinfo.gpg"))
 	     :config
 	     (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
-         (global-set-key (kbd "C-h f") #'helpful-callable))
+             (global-set-key (kbd "C-h f") #'helpful-callable))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
@@ -36,7 +36,7 @@
 	     :defer t
 	     :ensure t)
 
-;; why-this https://codeberg.org/akib/emacs-why-this
+;; https://codeberg.org/akib/emacs-why-this
 (use-package why-this
 	     :defer t
 	     :ensure t
@@ -45,6 +45,15 @@
 	     :config
 	     (set-face-background 'why-this-annotate-heat-map-cold "#203448")
 	     (set-face-background 'why-this-annotate-heat-map-warm "#382f27"))
+
+;; https://github.com/sshaw/git-link
+(use-package git-link
+	     :defer t
+	     :ensure t
+	     :config
+	     (global-set-key (kbd "C-c g l") 'git-link)
+	     (global-set-key (kbd "C-c g c") 'git-link-commit)
+	     (global-set-key (kbd "C-c g h") 'git-link-homepage))
 
 ;; Code-review https://github.com/wandersoncferreira/code-review/
 (use-package code-review
@@ -64,9 +73,9 @@
 ;;
 ;; https://www.reddit.com/r/emacs/comments/lsr161/wishlist_has_anyone_built_an_orgmode_git_log/
 (use-package orgit
-  :after magit)
+	     :after magit)
 (use-package orgit-forge
-  :after magit)
+	     :after magit)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -172,8 +181,8 @@
 			 ["Auxiliary commands"
 			  ("d" "Difftastic Diff (dwim)" nds:magit-diff-with-difftastic)
 			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)
-              ("o" "Orgit Link" orgit-store-link)
-              ])
+			  ("o" "Orgit Link" orgit-store-link)
+			  ])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 ;; (transient-append-suffix 'magit-dispatch "!"

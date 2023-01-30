@@ -16,3 +16,10 @@
 (use-package tree-sitter-langs
 	     :hook
 	     (tree-sitter-after-on . tree-sitter-hl-mode))
+
+;; For Emacs 29.0
+;; https://github.com/renzmann/treesit-auto
+;; (use-package treesit-auto
+;;   :ensure t
+;;   :config
+;;   (treesit-auto-apply-remap))

@@ -69,8 +69,8 @@
 			 ("C-c p t" . python-pytest-dispatch)
 			 ("C-c p l" . pylint)
 			 ("C-c p n" . numpydoc-generate)
-             ("C-c p b" . blacken-buffer)
-             ("C-c p v" . pyvenv-workon)))
+			 ("C-c p b" . blacken-buffer)
+			 ("C-c p v" . pyvenv-workon)))
 
 ;;; Python pytest (https://github.com/wbolster/emacs-python-pytest)
 (use-package python-pytest
@@ -92,6 +92,10 @@
 	     (blacken-line-length 120)
 	     :hook (python-mode . blacken-mode))
 
+(use-package flymake-ruff
+	     :ensure t
+	     :defer 3)
+
 ;; (use-package yapfify
 ;;   :ensure t
 ;;   :defer t
@@ -108,7 +112,7 @@
 			 ("C-c p n" . numpydoc-generate)))
 
 ;; Poetry https://github.com/cybniv/poetry.el
-(use-package poetry
-	     :ensure t
-	     :defer t
-	     :after lsp)
+;; (use-package poetry
+;; 	     :ensure t
+;; 	     :defer t
+;; 	     :after lsp)

@@ -3,12 +3,12 @@
 ;;;
 ;;; https://elpa.gnu.org/packages/osm.html#org666a5ba
 (use-package osm
-	     :bind (("C-c m h" . osm-home)
-		    ("C-c m s" . osm-search)
-		    ("C-c m v" . osm-server)
-		    ("C-c m t" . osm-goto)
-		    ("C-c m x" . osm-gpx-show)
-		    ("C-c m j" . osm-bookmark-jump))
+	     :bind (("C-c o h" . osm-home)
+		    ("C-c o s" . osm-search)
+		    ("C-c o v" . osm-server)
+		    ("C-c o t" . osm-goto)
+		    ("C-c o x" . osm-gpx-show)
+		    ("C-c o j" . osm-bookmark-jump))
 	     :init
 	     ;; Load Org link support
 	     (with-eval-after-load 'org
