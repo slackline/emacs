@@ -96,7 +96,7 @@
 	     (setq httpd-port 8818)
 	     ;; run-with-timer takes an argument in seconds
 	     ;; (* 30 60) therefore rerurns 30 minutes in seconds
-	     ((if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater)))
+	     (if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater))
 	      (setq elfeed-web-enabled t)
               :hook
               (nds:elfeed-updater . elfeed-web-start))
