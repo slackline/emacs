@@ -196,7 +196,7 @@
 ;; (load "~/.config/emacs/settings/ytdl-settings.el")
 
 ;;; IDE / LSP
-(load "~/.config/emacs/settings/flyspell-settings.el")
+(load "~/.config/emacs/settings/fly-settings.el")
 (load "~/.config/emacs/settings/jedi-settings.el")
 (load "~/.config/emacs/settings/js-settings.el")
 (load "~/.config/emacs/settings/format-all-settings.el")
