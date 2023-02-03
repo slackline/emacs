@@ -15,14 +15,13 @@
 	     :init
 	     ;; Add all your customizations prior to loading the themes
 	     (setq modus-themes-italic-constructs t
-		       modus-themes-bold-constructs t
-		       modus-themes-org-blocks '(tinted-background))
+		   modus-themes-bold-constructs t
+		   modus-themes-org-blocks '(tinted-background))
 	     :config
-	     ;; Load the theme of your choice:
-             (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
              :bind
              ("<f12>" . modus-themes-toggle))
 
+(modus-themes-select 'modus-vivendi) ;; OR modus-operandi
 
 ;; Other themes I've tried
 
