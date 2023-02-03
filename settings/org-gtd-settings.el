@@ -6,6 +6,7 @@
 ;;; https://blog.jethro.dev/posts/processing_inbox/
 ;;;
 ;;; Also includes customiastion for org-agenda
+(setq org-gtd-update-ack "2.1.0")
 (use-package org-gtd
 	     :after org
 	     ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
@@ -13,9 +14,8 @@
 	     :demand t
 	     :custom
 	     ;; (org-gtd-directory stag-org-gtd-directory)
-         (org-gtd-directory '"~/org/gtd")
+             (org-gtd-directory '"~/org/gtd")
 	     (org-edna-use-inheritance t)
-         (setq org-gtd-update-ack "2.1.0")
 	     :config
 	     (org-edna-mode)
 	     :bind
