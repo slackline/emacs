@@ -116,3 +116,7 @@
 ;; 	     :ensure t
 ;; 	     :defer t
 ;; 	     :after lsp)
+
+(use-package ein
+	     :ensure t
+	     :defer t)
