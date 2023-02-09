@@ -8,6 +8,7 @@
 ;;; https://wwwtech.de/articles/2022/dec/emacs-29-install-tree-sitter-parser-modules-with-a-minor-mode
 ;;; https://archive.casouri.cc/note/2023/tree-sitter-starter-guide/index.html
 ;;; https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html
+;;; https://www.reddit.com/r/emacs/comments/r0i031/comment/hlxwhyu/
 ;;;
 ;;; Extensions
 ;;;
