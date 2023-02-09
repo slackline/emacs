@@ -10,6 +10,8 @@
 ;;; https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html
 ;;; https://www.reddit.com/r/emacs/comments/r0i031/comment/hlxwhyu/
 ;;;
+;;; https://mastodon.social/@spaceotter@mastodon.online/109671596235038019
+;;; https://mastodon.social/@spaceotter@mastodon.online/109774686483526367
 ;;; Extensions
 ;;;
 ;;; https://github.com/erickgnavar/tree-sitter-ispell.el
