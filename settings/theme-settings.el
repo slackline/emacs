@@ -23,6 +23,9 @@
 
 (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
 
+;; Set the font
+(set-face-attribute 'default t :font "Hack")
+
 ;; Other themes I've tried
 
 ;; (load-theme 'darktooth t)
