@@ -10,6 +10,8 @@
 ;; via the menu bar or with `pyvenv-workon`
 ;; Setting the `WORKON_HOME` environment variable points
 ;; at where the envs are located. I use miniconda.
+;;
+;; https://github.com/jorgenschaefer/pyvenv
 (use-package pyvenv
 	     :ensure t
 	     :config
@@ -85,6 +87,7 @@
 ;; (use-package py-yapf
 ;;   :defer 3
 ;;   :hook (python-mode . py-yapf-enable-on-save))
+;; https://github.com/pythonic-emacs/blacken
 (use-package blacken
 	     :ensure t
 	     :defer 3
@@ -101,6 +104,7 @@
 ;;   :defer t
 ;;   :hook (python-mode . yapf-mode))
 
+;; https://github.com/douglasdavis/numpydoc.el
 (use-package numpydoc
 	     :ensure t
 	     :defer t
@@ -117,6 +121,7 @@
 ;; 	     :defer t
 ;; 	     :after lsp)
 
+;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
 	     :ensure t
 	     :defer t)

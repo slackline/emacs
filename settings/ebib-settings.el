@@ -7,4 +7,4 @@
 (use-package ebib
 	     :config
 	     (setq ebib-preload-bib-files '("~/org/references.bib", "~/work/org/references.bib"))
-	     (global-set-key "\C-ce" 'ebib))
+	     (global-set-key "\C-c x" 'ebib))

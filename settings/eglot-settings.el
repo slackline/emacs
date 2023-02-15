@@ -17,11 +17,17 @@
 ;;;
 ;;; Org-mode isn't yet supported but see https://github.com/joaotavora/eglot/issues/523
 
+
 (use-package eglot
 	     :ensure t
 	     :defer t
 	     :config
 	     (define-key global-map (kbd "C-c E") (make-sparse-keymap))
+	     (add-to-list 'eglot-server-programs '(python-mode . ("jedi-language-server")))
+	     :init
+	     (setq lsp-keymap-prefix "C-c l"
+		   lsp-bash-highlight-parsing-errors t
+		   lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
 	     :hook
 	     ((bash-mode . eglot-ensure)
 	      (ess-r-mode . eglot-ensure)
@@ -33,11 +39,11 @@
 	      (rust-mode . eglot-ensure)
 	      (sh-mode . eglot-ensure))
              :bind
-             (("C-c E c" . eglot-reconnect)
-              ("C-c E d" . flymake-show-buffer-diagnostics)
-              ("C-c E f f" . eglot-format)
-              ("C-c E f b" . eglot-format-buffer)
-              ("C-c E l" . eglot)
-              ("C-c E r n" . eglot-rename)
-              ("C-c E s" . eglot-shutdown))
+             (("C-c e l" . eglot)
+              ("C-c e c" . eglot-reconnect)
+	      ("C-c e s" . eglot-shutdown)
+              ("C-c e d" . flymake-show-buffer-diagnostics)
+              ("C-c e f f" . eglot-format)
+              ("C-c e f b" . eglot-format-buffer)
+              ("C-c e r r" . eglot-rename))
              )
