@@ -12,6 +12,7 @@
 ;; guide-key
 ;;
 ;; Most things commented out here reside under init.el > (use-package emacs :bind (...))
+;; https://github.com/justbur/emacs-which-key
 (use-package which-key
 	     :config (which-key-mode))
 
