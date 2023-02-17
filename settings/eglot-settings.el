@@ -47,3 +47,10 @@
               ("C-c e f b" . eglot-format-buffer)
               ("C-c e r r" . eglot-rename))
              )
+
+;; https://github.com/intramurz/flycheck-eglot
+(use-package flycheck-eglot
+  :ensure t
+  :defer t
+  :after (flycheck eglot)
+  :config (global-flycheck-eglot-mode))
