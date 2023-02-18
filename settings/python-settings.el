@@ -61,7 +61,6 @@
 			 ("C-c p n" . numpydoc-generate)
 			 ("C-c p b" . blacken-buffer)
 			 ("C-c p v" . pyvenv-workon)
-			 ("C-c p T c")
 			 ("C-c p T c" . python-skeleton-class)
 			 ("C-c p T d" . python-skeleton-def)
 			 ("C-c p T f" . python-skeleton-for)
@@ -97,9 +96,7 @@
 	     :after lsp
 	     :custom
 	     (numpydoc-prompt-for-input t)
-	     (numpydoc-insert-examples-block nil)
-	     :bind (:map python-mode-map
-			 ("C-c p n" . numpydoc-generate)))
+	     (numpydoc-insert-examples-block nil))
 
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
