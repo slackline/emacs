@@ -26,7 +26,7 @@
 	     (add-to-list 'eglot-server-programs '(python-mode . ("jedi-language-server")))
 	     :init
 	     (setq lsp-keymap-prefix "C-c l"
-		   lsp-bash-highlight-parsing-errors t
+	           lsp-bash-highlight-parsing-errors t
 		   lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
 	     :hook
 	     ((bash-mode . eglot-ensure)
@@ -41,16 +41,15 @@
              :bind
              (("C-c e l" . eglot)
               ("C-c e c" . eglot-reconnect)
-	      ("C-c e s" . eglot-shutdown)
+              ("C-c e s" . eglot-shutdown)
               ("C-c e d" . flymake-show-buffer-diagnostics)
               ("C-c e f f" . eglot-format)
               ("C-c e f b" . eglot-format-buffer)
-              ("C-c e r r" . eglot-rename))
-             )
+              ("C-c e r r" . eglot-rename)))
 
 ;; https://github.com/intramurz/flycheck-eglot
 (use-package flycheck-eglot
-  :ensure t
-  :defer t
-  :after (flycheck eglot)
-  :config (global-flycheck-eglot-mode))
+	     :ensure t
+	     :defer t
+	     :after (flycheck eglot)
+	     :config (global-flycheck-eglot-mode))

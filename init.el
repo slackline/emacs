@@ -2,7 +2,15 @@
 ;;; LOAD PACKAGES
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
+;;
+;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
+;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
+;; of the file.
+(setq load-prefer-newer t)
 (package-initialize)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
 (require 'package)
 
 ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
