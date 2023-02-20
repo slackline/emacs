@@ -75,7 +75,8 @@
 (use-package orgit
 	     :after magit)
 (use-package orgit-forge
-	     :after magit)
+	     :after magit
+	     :bind (:map magit-mode-map ("C-c m o" . orgit-store-link)))
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;

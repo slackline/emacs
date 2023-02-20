@@ -13,12 +13,12 @@
 	     :defer 2)
 
 ;; https://github.com/sp1ff/mpdmacs
-(use-package mpdmacs
-	     :ensure t
-	     :defer 2
-	     :init
-	     (setq mpdmacs-host "192.168.1.21")
-	     (setq mpdmacs-port 6600)
-	     :bind
-	     ("C-c m" . 'mpdmacs-mode-keymap)
-	     :hook (mpdmacs-mode-hook . mpdmacs-mode-keymap))
+;; (use-package mpdmacs
+;; 	     :ensure t
+;; 	     :defer 2
+;; 	     :init
+;; 	     (setq mpdmacs-host "192.168.1.21")
+;; 	     (setq mpdmacs-port 6600)
+;; 	     :bind
+;; 	     ("C-c m" . 'mpdmacs-mode-keymap)
+;; 	     :hook (mpdmacs-mode-hook . mpdmacs-mode-keymap))
