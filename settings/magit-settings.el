@@ -66,17 +66,21 @@
 
 ;; Orgit / Orgit-forge
 ;;
-;; GitHub : https://github.com/magit/orgit
-;;          https://github.com/magit/orgit-forge
-;;
 ;; References :
 ;;
 ;; https://www.reddit.com/r/emacs/comments/lsr161/wishlist_has_anyone_built_an_orgmode_git_log/
+;;
+;; Comments : Sets up keybindings 'C-c f [c|v]' for copying and pasting forge links from magit buffers to org-buffers
+;; https://github.com/magit/orgit
 (use-package orgit
 	     :after magit)
+;; https://github.com/magit/orgit-forge
 (use-package orgit-forge
 	     :after magit
-	     :bind (:map magit-mode-map ("C-c m o" . orgit-store-link)))
+	     :bind (:map magit-mode-map
+			 ("C-c f c" . orgit-store-link))
+             (:map org-mode-map
+		   ("C-c f v" . org-insert-last-stored-link)))
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
