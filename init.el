@@ -55,11 +55,7 @@
 (add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
 
 
-;; SETUP use-package
-;; (eval-when-compile
-;;   (require 'use-package))
-;; (setq use-package-always-ensure t)
-;; Try and alternative method which installs use-package if not already present
+;; SETUP use-package, will install if not already present
 ;;   https://ianyepan.github.io/posts/setting-up-use-package/
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
