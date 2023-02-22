@@ -151,13 +151,15 @@
 		     ("etlr" "Recommended Routine" entry (file+olp "~/org/training/training.org" "Resources" "Calisthenics" "Recommneded
 Routine")
 		      "+ %t %?\n" :prepend t)
-		     ("etls" "Stretching" entry (file+olp "~/org/training/training.org" "Resources" "Calisthenics" "Stretaching")
+		     ("etls" "Stretching" entry (file+olp "~/org/training/training.org" "Resources" "Calisthenics" "Stretching")
 		      "+ %t %?\n" :prepend t)
 		     ("ets" "Swimming" entry (file+olp "~/org/training/training.org" "Resources" "Swimming")
 		      "+ %t %?\n" :prepend t)
 		     ("etx" "Research" entry (file+olp "~/org/training/training.org" "Resources" "Research")
 		      "+ %t %?\n" :prepend t)
 		     ("eta" "Apps" entry (file+olp "~/org/training/training.org" "Resources" "Apps")
+		      "+ %t %?\n" :prepend t)
+		     ("etd" "Apps" entry (file+olp "~/org/training/training.org" "Resources" "Summarising Data")
 		      "+ %t %?\n" :prepend t)
 		     ;; Cooking
 		     ("f" "Food & Drink")

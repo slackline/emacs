@@ -43,6 +43,7 @@
 	     (add-hook 'pyvenv-post-activate-hooks (lambda ()
 						     (pyvenv-restart-python)))
 	     :hook (python-mode . pyvenv-mode)
+             (after-init-hook . (pyvenv-workon default-env))
              )
 
 ;; Built-in Python utilities
