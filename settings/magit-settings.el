@@ -64,6 +64,11 @@
 	     (add-hook 'code-review-mode-hook . #'emojify-mode)
 	     (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
 
+;; https://github.com/LionyxML/magit-stats
+(use-package magit-stats
+	     :defer t
+	     :ensure t)
+
 ;; Orgit / Orgit-forge
 ;;
 ;; References :
