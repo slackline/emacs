@@ -64,6 +64,10 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
+;; Consider switching to elpaca
+;; https://github.com/progfolio/elpaca
+;; https://www.reddit.com/r/emacs/comments/11daqsz/elpaca_the_basics/
+
 ;; BASIC CUSTOMISATION
 ;; --------------------------------------
 (use-package emacs
