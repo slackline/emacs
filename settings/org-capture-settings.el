@@ -117,7 +117,7 @@
 		      "+ %?\n" :prepend t)
 		     ;; Exercise
 		     ("e" "Exercise")
-		     ("er" "Logging a run" table-line (file+olp "~/org/training/log/running.org")
+		     ("er" "Logging a run" table-line (file+olp "~/org/training/log/running_2023.org")
 		      "| %U | %? | km | min + s | | |" :prepend t)
 		     ("ec" "Logging a cycle" table-line (file+olp "~/org/training/log/cycling.org")
 		      "| %U | %? | km | min + s | | |" :prepend t)
