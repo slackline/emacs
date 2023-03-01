@@ -15,6 +15,7 @@
 ;;; Tex/LaTeX https://github.com/astoff/digestif
 ;;; YAML https://github.com/redhat-developer/yaml-language-server
 ;;;
+;;; https://www.adventuresinwhy.com/post/eglot/
 ;;; Org-mode isn't yet supported but see https://github.com/joaotavora/eglot/issues/523
 
 
