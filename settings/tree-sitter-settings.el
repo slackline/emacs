@@ -10,6 +10,7 @@
 ;;; https://archive.casouri.cc/note/2023/tree-sitter-starter-guide/index.html
 ;;; https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html
 ;;; https://www.reddit.com/r/emacs/comments/r0i031/comment/hlxwhyu/
+;;; https://takeonrules.com/2023/03/08/coloring-regular-expression-via-modus-themes-for-treesit-faces/
 ;;; https://www.youtube.com/watch?v=MZPR_SC9LzE
 ;;; https://mastodon.social/@spaceotter@mastodon.online/109671596235038019
 ;;; https://mastodon.social/@spaceotter@mastodon.online/109774686483526367

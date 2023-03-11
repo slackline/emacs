@@ -17,6 +17,7 @@
 ;;;
 ;;; https://www.adventuresinwhy.com/post/eglot/
 ;;; Org-mode isn't yet supported but see https://github.com/joaotavora/eglot/issues/523
+;;; eglot documentation
 
 
 (use-package eglot
@@ -28,7 +29,9 @@
 	     :init
 	     (setq lsp-keymap-prefix "C-c l"
 	           lsp-bash-highlight-parsing-errors t
-		   lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
+	    	   lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"]
+		   eldoc-echo-area-prefer-doc-buffer t  ;; https://www.reddit.com/r/emacs/comments/11mv5ky/comment/jbl0roh/
+		   eldoc-echo-area-use-multiline-p nil)
 	     :hook
 	     ((bash-mode . eglot-ensure)
 	      (ess-r-mode . eglot-ensure)
