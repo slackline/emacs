@@ -177,6 +177,7 @@
 (load "~/.config/emacs/settings/highlight-parentheses-settings.el")
 (load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
 (load "~/.config/emacs/settings/smartparens-settings.el")
+(load "~/.config/emacs/settings/projectile-settings.el")
 (load "~/.config/emacs/settings/tree-sitter-settings.el")
 
 ;;; Python

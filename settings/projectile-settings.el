@@ -1,8 +1,8 @@
-;;; PROJECT CONFIGURATION
-;;; --------------------------------------
-;;; https://elpa.gnu.org/packages/project.html
+;;; PROJECTILE CONFIGURATION
+;;; ------------------------
+;;; https://github.com/bbatsov/projectile/
 (use-package projectile
 	     :ensure t
 	     :defer 3
-	     :config
-	     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+	     :bind
+             ("C-c p p" . projectile-command-map))
