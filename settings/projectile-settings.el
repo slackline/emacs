@@ -5,4 +5,4 @@
 	     :ensure t
 	     :defer 3
 	     :bind
-             ("C-c p p" . projectile-command-map))
+             ("C-c C-p" . projectile-command-map))
