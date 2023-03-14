@@ -123,6 +123,8 @@
 		      "| %U | %? | km | min + s | | |" :prepend t)
 		     ("eh" "Logging a hike" table-line (file+olp "~/org/training/log/hiking.org")
 		      "| %U | %? | km | m | min + s| |" :prepend t)
+		     ("ep" "Logging Pilates" table-line (file+olp "~/org/training/log/pilates.org")
+		      "| %U | %? | |" :prepend t)
 		     ("em" "Weight & Waist/Hip" table-line (file+olp "~/org/training/log/metrics_weight.org")
 		      "| %U | %? | | | |" :prepend t)
 		     ("es" "Steps" table-line (file+olp "~/org/training/log/metrics_steps.org")
