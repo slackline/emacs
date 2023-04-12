@@ -86,6 +86,15 @@
 			 ("C-c f c" . orgit-store-link))
              (:map org-mode-map
 		   ("C-c f v" . org-insert-last-stored-link)))
+;; emacsql-sqlite-module is required by forge, but not always explicitly pulled in
+(use-package emacsql-sqlite-module
+	     :ensure t
+	     :after magit)
+
+;; https://codeberg.org/pidu/git-timemachine
+(use-package git-timemachine
+	     :ensure t
+	     :defer t)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
