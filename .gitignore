@@ -7,6 +7,7 @@ ac-comphist.dat
 session.*
 \#*
 *.sqlite
+*.sql
 *.tar.*
 tramp
 url/cookies
