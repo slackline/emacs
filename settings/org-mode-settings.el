@@ -16,7 +16,8 @@
 	     (setq org-directory        "~/org/"
 		   ;; org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
 		   org-agenda-files '("~/org/agenda.org"
-				      "~/org/gtd/clarity.org"
+ 				      "~/org/gtd/clarity.org"
+ 				      "~/org/gtd/pgfinder.org"
 				      "~/org/gtd/rse.org"
 				      "~/org/gtd/topostats.org")
 		   ;; org-tags-alist '()
