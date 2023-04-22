@@ -3,7 +3,7 @@
 ;;
 ;; I've tried out lots, one day I might settle on one.
 ;; Modus Themes (Vivendi) https://protesilaos.com/modus-themes/
-;;
+;; EF Themes https://protesilaos.com/emacs/ef-themes
 ;; Customisation : https://protesilaos.com/codelog/2023-01-01-modus-themes-4-0-0/
 ;; Old versions  : https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
 ;;
@@ -22,6 +22,14 @@
              ("<f12>" . modus-themes-toggle))
 
 (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
+
+(use-package ef-themes
+	     :ensure t
+	     :init
+	     :config
+	     :bind
+	     ("<f11>" . ef-themes-toggle))
+(ef-themes-select  'ef-bio)
 
 ;; Set the font
 (set-face-attribute 'default t :font "Hack")
