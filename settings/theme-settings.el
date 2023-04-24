@@ -26,10 +26,19 @@
 (use-package ef-themes
 	     :ensure t
 	     :init
+             (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
 	     :config
 	     :bind
-	     ("<f11>" . ef-themes-toggle))
-(ef-themes-select  'ef-bio)
+	     ("<f10>" . ef-themes-select-dark)
+             ("<f11>" . ef-themes-toggle))
+;; (ef-themes-select 'ef-dark)
+;; (ef-themes-select 'ef-duo-dark)
+(ef-themes-select 'ef-bio)
+;; (ef-themes-select 'ef-symbiosis)
+;; (ef-themes-select 'ef-night)
+;; (ef-themes-select 'ef-trio-dark)
+;; (ef-themes-select 'ef-autumn)
+;; (ef-themes-select 'ef-winter)
 
 ;; Set the font
 (set-face-attribute 'default t :font "Hack")
