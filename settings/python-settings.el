@@ -30,7 +30,7 @@
 		   venv-location (cdr
 				  (assoc system-name venv-byhost))
 		   default-venv-byhost
-		   '(("kimura" . "~/.virtualenvs/python3_10")
+		   '(("kimura" . "~/.virtualenvs/default")
 		     ("fisher" . "~/.virtualenvs/python3_9")
 		     ("haldane" . "~/.virtualenvs/default")
 		     ("ovh" . "~/.virtualenvs/default")
