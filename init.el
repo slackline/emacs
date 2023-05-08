@@ -13,6 +13,8 @@
 (auto-compile-on-save-mode)
 (require 'package)
 
+;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
+
 ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
