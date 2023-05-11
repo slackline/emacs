@@ -1,4 +1,4 @@
-;;; init.el --- Emacs configuration
+;;; Commentary: Emacs configuration
 ;;; LOAD PACKAGES
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
