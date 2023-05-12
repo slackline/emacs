@@ -103,10 +103,10 @@
 
 
 ;; Use elfeed-web to periodically update
-;; (use-package elfeed-web
-;;   :ensure t
-;;   :config
-;;   (setq httpd-port 8818))
+(use-package elfeed-web
+  :ensure t
+  :config
+  (setq httpd-port 8818))
 
 ;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
 (defun nds:elfeed-db-remove-entry (id)
