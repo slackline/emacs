@@ -6,6 +6,7 @@
 ;;; https://blog.jethro.dev/posts/processing_inbox/
 ;;;
 ;;; Also includes customiastion for org-agenda
+(setq org-gtd-update-ack "3.0.0")
 (setq org-gtd-update-ack "2.1.0")
 (use-package org-gtd
 	     :after org
@@ -23,9 +24,10 @@
 	      ("C-c d e" . org-gtd-engage)
 	      ("C-c d p" . org-gtd-process-inbox)
 	      ("C-c d n" . org-gtd-show-all-next)
-	      ("C-c d s" . org-gtd-show-stuck-projects)
-	      :map org-gtd-process-map
-	      ("C-c c" . org-gtd-choose)))
+	      ("C-c d s" . org-gtd-show-stuck-projects)))
+;; :map org-gtd-process-map
+;; ("C-c c" . org-gtd-organize)
+;; ))
 
 
 ;;; These are copied from the following
@@ -38,7 +40,7 @@
    (call-interactively 'my/my-org-agenda-set-effort)
    (org-agenda-refile nil nil t)))
 
-(defvar my/org-current-effor "1.00"
+(defvar my/org-current-effort "1.00"
   "Current effort for agenda item.")
 
 (defun my/org-agenda-set-effort (effort)
