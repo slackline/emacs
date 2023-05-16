@@ -88,7 +88,8 @@
 ;; https://github.com/erickgnavar/flymake-ruff
 (use-package flymake-ruff
 	     :ensure t
-	     :defer 3)
+	     :defer 3
+             :hook (python-mode . flymake-ruff-load))
 
 ;; https://github.com/douglasdavis/numpydoc.el
 (use-package numpydoc
