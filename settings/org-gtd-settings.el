@@ -24,10 +24,10 @@
 	      ("C-c d e" . org-gtd-engage)
 	      ("C-c d p" . org-gtd-process-inbox)
 	      ("C-c d n" . org-gtd-show-all-next)
-	      ("C-c d s" . org-gtd-show-stuck-projects)))
-;; :map org-gtd-process-map
-;; ("C-c c" . org-gtd-organize)
-;; ))
+	      ("C-c d s" . org-gtd-show-stuck-projects)
+              :map org-gtd-clarify-map
+              ("C-c c" . org-gtd-organize)
+              ))
 
 
 ;;; These are copied from the following
