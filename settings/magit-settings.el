@@ -35,6 +35,10 @@
 (use-package gh-notify
 	     :defer t
 	     :ensure t)
+(use-package magit-imerge
+	     :defer t
+	     :ensure t
+	     :after magit)
 
 ;; https://codeberg.org/akib/emacs-why-this
 (use-package why-this
