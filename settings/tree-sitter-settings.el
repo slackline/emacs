@@ -14,6 +14,7 @@
 ;;; https://www.youtube.com/watch?v=MZPR_SC9LzE
 ;;; https://mastodon.social/@spaceotter@mastodon.online/109671596235038019
 ;;; https://mastodon.social/@spaceotter@mastodon.online/109774686483526367
+;;; https://www.masteringemacs.org/article/how-to-get-started-tree-sitter
 ;;;
 ;;; Extensions
 ;;;
