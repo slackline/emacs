@@ -40,3 +40,7 @@ Version 2015-07-27"
       (make-directory target-dir t))))
 
 (add-to-list 'find-file-not-found-functions #'er-auto-create-missing-dirs)
+
+;; Info version of Structure and Interpretation of Computer Programs (2nd Edition)
+;; https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/
+(use-package sicp)
