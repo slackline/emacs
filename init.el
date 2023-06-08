@@ -15,6 +15,9 @@
 
 ;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
 
+;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
 (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
@@ -25,9 +28,8 @@
       '(("MELPA" . 10)
         ("GNU ELPA"	. 5)
         ("NonGNU ELPA"	. 5)
-        ("MELPA Stable"	. 0)))
-;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+        ("MELPA Stable"	. 0)
+        ))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
