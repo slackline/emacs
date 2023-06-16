@@ -38,7 +38,9 @@
 				 :html-foreground "Black"
 				 :html-background "Transparent"
 				 :html-scale 1.0
-				 :matchers ("begin" "$1" "$" "$$" "\\(" "\\["))))
+				 :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+             ;; Disable electric-indent-mode in org buffers
+             :hook (org-mode . (lambda () (electric-indent-local-mode 0))))
 
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
