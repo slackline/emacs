@@ -7,6 +7,8 @@
 ;; Customisation : https://protesilaos.com/codelog/2023-01-01-modus-themes-4-0-0/
 ;; Old versions  : https://systemcrafters.net/emacs-from-scratch/the-modus-themes/
 ;;
+;; Look out for https://git.sr.ht/~protesilaos/dired-preview
+;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
