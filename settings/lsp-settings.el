@@ -14,7 +14,8 @@
 
 
 ;; Provide LSP-mode for python, it requires a language server.
-;; I use `lsp-pyright`. Know that you have to `M-x lsp-restart-workspace`
+;; I use jedi-language-server loaded by lsp-jedi below.
+;; Know that you have to `M-x lsp-restart-workspace`
 ;; if you change the virtual environment in an open python buffer.
 (use-package lsp-mode
 	     :ensure t

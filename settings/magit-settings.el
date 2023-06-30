@@ -1,5 +1,6 @@
 ;; MAGIT CONFIGURATION
 ;; --------------------------------------
+;; https://magit.vc/
 (use-package magit
 	     :ensure t
 	     :init
