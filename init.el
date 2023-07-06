@@ -184,6 +184,7 @@
 (load "~/.config/emacs/settings/smartparens-settings.el")
 (load "~/.config/emacs/settings/projectile-settings.el")
 (load "~/.config/emacs/settings/tree-sitter-settings.el")
+(load "~/.config/emacs/settings/dirvish.el")
 
 ;;; Python
 (load "~/.config/emacs/settings/conda-settings.el")
