@@ -18,6 +18,7 @@
 		   org-agenda-files '("~/org/agenda.org"
  				      "~/org/gtd/clarity.org"
  				      "~/org/gtd/cured.org"
+ 				      "~/org/gtd/joss.org"
  				      "~/org/gtd/pgfinder.org"
 				      "~/org/gtd/rse.org"
 				      "~/org/gtd/topostats.org")
