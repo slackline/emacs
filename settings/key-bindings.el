@@ -55,6 +55,9 @@
 ;; EIN commands
 (local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
+(local-set-key (kbd "C-c C-e r") 'ein:worksheet-execute-all-cells)
+(local-set-key (kbd "C-c C-e C-r u") 'ein:worksheet-execute-all-cells-above)
+(local-set-key (kbd "C-c C-e C-r b") 'ein:worksheet-execute-all-cells-above)
 
 ;; My custom keys
 (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
