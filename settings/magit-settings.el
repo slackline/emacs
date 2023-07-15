@@ -56,9 +56,9 @@
 	     :defer t
 	     :ensure t
 	     :config
-	     (global-set-key (kbd "C-c g l") 'git-link)
-	     (global-set-key (kbd "C-c g c") 'git-link-commit)
-	     (global-set-key (kbd "C-c g h") 'git-link-homepage))
+	     (global-set-key (kbd "C-c m g l") 'git-link)
+	     (global-set-key (kbd "C-c m g c") 'git-link-commit)
+	     (global-set-key (kbd "C-c m g h") 'git-link-homepage))
 
 ;; https://github.com/wandersoncferreira/code-review/
 (use-package code-review
