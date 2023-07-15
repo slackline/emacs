@@ -97,16 +97,16 @@
 	     ;; run-with-timer takes an argument in seconds
 	     ;; (* 30 60) therefore rerurns 30 minutes in seconds
 	     (if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater))
-	      (setq elfeed-web-enabled t)
-              :hook
-              (nds:elfeed-updater . elfeed-web-start))
+	     (setq elfeed-web-enabled t)
+             :hook
+             (nds:elfeed-updater . elfeed-web-start))
 
 
 ;; Use elfeed-web to periodically update
 (use-package elfeed-web
-  :ensure t
-  :config
-  (setq httpd-port 8818))
+	     :ensure t
+	     :config
+	     (setq httpd-port 8818))
 
 ;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
 (defun nds:elfeed-db-remove-entry (id)
@@ -118,8 +118,8 @@
   "Remove selected entries from database"
   (interactive)
   (let* ((entries (elfeed-search-selected))
-		 (count (length entries)))
-	(when (y-or-n-p (format "Delete %d entires?" count))
-	  (cl-loop for entry in entries
-			   do (nds:elfeed-db-remove-entry (elfeed-entry-id entry)))))
+	 (count (length entries)))
+    (when (y-or-n-p (format "Delete %d entires?" count))
+      (cl-loop for entry in entries
+	       do (nds:elfeed-db-remove-entry (elfeed-entry-id entry)))))
   (elfeed-search-update--force))

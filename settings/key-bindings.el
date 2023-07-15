@@ -68,7 +68,7 @@
 (global-set-key (kbd "C-c m L") 'magit-log)
 (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
 (global-set-key (kbd "C-c m d") 'nds:magit-show-with-difftastic)
-
+(global-set-key (kbd "C-c m R") 'magit-file-rename)
 ;; Python
 (global-set-key (kbd "C-c p v") 'pyvenv-workon)
 (global-set-key (kbd "C-c p p") 'run-python)

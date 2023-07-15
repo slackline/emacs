@@ -171,29 +171,29 @@
 ;; (add-to-list 'load-path "~/.config/emacs/settings")
 
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
-(load "~/.config/emacs/settings/shell-interpreter-settings.el")
+(load "~/.config/emacs/settings/shell-interpreter.el")
 (load "~/.config/emacs/settings/misc.el")
 
 ;;; General editor settings
 (load "~/.config/emacs/settings/auto-package-update.el")
-(load "~/.config/emacs/settings/pass-settings.el")
-(load "~/.config/emacs/settings/centaur-tabs-settings.el")
-(load "~/.config/emacs/settings/highlight-indent-guides-settings.el")
-(load "~/.config/emacs/settings/highlight-parentheses-settings.el")
-(load "~/.config/emacs/settings/rainbow-delimiters-settings.el")
-(load "~/.config/emacs/settings/smartparens-settings.el")
-(load "~/.config/emacs/settings/projectile-settings.el")
-(load "~/.config/emacs/settings/tree-sitter-settings.el")
+(load "~/.config/emacs/settings/pass.el")
+(load "~/.config/emacs/settings/centaur-tabs.el")
+(load "~/.config/emacs/settings/highlight-indent-guides.el")
+(load "~/.config/emacs/settings/highlight-parentheses.el")
+(load "~/.config/emacs/settings/rainbow-delimiters.el")
+(load "~/.config/emacs/settings/smartparens.el")
+(load "~/.config/emacs/settings/projectile.el")
+(load "~/.config/emacs/settings/tree-sitter.el")
 (load "~/.config/emacs/settings/dirvish.el")
 
 ;;; Python
-(load "~/.config/emacs/settings/conda-settings.el")
-(load "~/.config/emacs/settings/ein-settings.el")
-(load "~/.config/emacs/settings/python-settings.el")
+(load "~/.config/emacs/settings/conda.el")
+(load "~/.config/emacs/settings/ein.el")
+(load "~/.config/emacs/settings/python.el")
 
 ;;; Org / Bib
-(load "~/.config/emacs/settings/ebib-settings.el")
-(load "~/.config/emacs/settings/org-mode-settings.el")
+(load "~/.config/emacs/settings/ebib.el")
+(load "~/.config/emacs/settings/org-mode.el")
 (load "~/.config/emacs/settings/org-ref-settings.el")
 (load "~/.config/emacs/settings/org-babel-settings.el")
 (load "~/.config/emacs/settings/org-notifications-settings.el")
@@ -202,34 +202,34 @@
 (load "~/.config/emacs/settings/org-capture-settings.el")
 
 ;;; Misc
-(load "~/.config/emacs/settings/keychain-environment-settings.el")
-(load "~/.config/emacs/settings/literate-calc-settings.el")
-(load "~/.config/emacs/settings/mastodon-settings.el")
-(load "~/.config/emacs/settings/mpd-settings.el")
-(load "~/.config/emacs/settings/osm-settings.el")
-(load "~/.config/emacs/settings/tramp-settings.el")
-(load "~/.config/emacs/settings/vterm-settings.el")
-;; (load "~/.config/emacs/settings/weblorg-settings.el")
-;; (load "~/.config/emacs/settings/ytdl-settings.el")
+(load "~/.config/emacs/settings/keychain-environment.el")
+(load "~/.config/emacs/settings/literate-calc.el")
+(load "~/.config/emacs/settings/mastodon.el")
+(load "~/.config/emacs/settings/mpd.el")
+(load "~/.config/emacs/settings/osm.el")
+(load "~/.config/emacs/settings/tramp.el")
+(load "~/.config/emacs/settings/vterm.el")
+;; (load "~/.config/emacs/settings/weblorg.el")
+;; (load "~/.config/emacs/settings/ytdl.el")
 
 ;;; IDE / LSP
-(load "~/.config/emacs/settings/fly-settings.el")
-(load "~/.config/emacs/settings/jedi-settings.el")
-(load "~/.config/emacs/settings/js-settings.el")
-(load "~/.config/emacs/settings/format-all-settings.el")
-(load "~/.config/emacs/settings/latex-settings.el")
-(load "~/.config/emacs/settings/yaml-settings.el")
-(load "~/.config/emacs/settings/lsp-settings.el")
-;;(load "~/.config/emacs/settings/eglot-settings.el")
-(load "~/.config/emacs/settings/markdown-settings.el")
-(load "~/.config/emacs/settings/polymode-settings.el")
-(load "~/.config/emacs/settings/ess-settings.el")
-(load "~/.config/emacs/settings/magit-settings.el")
+(load "~/.config/emacs/settings/fly.el")
+(load "~/.config/emacs/settings/jedi.el")
+(load "~/.config/emacs/settings/js.el")
+(load "~/.config/emacs/settings/format-all.el")
+(load "~/.config/emacs/settings/latex.el")
+(load "~/.config/emacs/settings/yaml.el")
+(load "~/.config/emacs/settings/lsp.el")
+;;(load "~/.config/emacs/settings/eglot.el")
+(load "~/.config/emacs/settings/markdown.el")
+(load "~/.config/emacs/settings/polymode.el")
+(load "~/.config/emacs/settings/ess.el")
+(load "~/.config/emacs/settings/magit.el")
 
 
 ;;; Themes
-(load "~/.config/emacs/settings/powerline-settings.el")
-(load "~/.config/emacs/settings/theme-settings.el")
+(load "~/.config/emacs/settings/powerline.el")
+(load "~/.config/emacs/settings/theme.el")
 
 ;;; Keybindings (last so that all functions are defined)
 (load "~/.config/emacs/settings/key-bindings.el")
@@ -247,7 +247,7 @@
 (load custom-file)
 
 ;; Start elfeed last
-(load "~/.config/emacs/settings/elfeed-settings.el")
+(load "~/.config/emacs/settings/elfeed.el")
 
 ;; Set default major mode for *scratch*
 ;; (setq initial-major-mode 'python-mode)
