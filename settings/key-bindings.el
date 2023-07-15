@@ -52,6 +52,7 @@
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
+
 ;; EIN commands
 (global-set-key (kbd "C-c C-e r") 'ein:run)
 (global-set-key (kbd "C-c C-e s") 'ein:stop)
@@ -62,11 +63,19 @@
 (local-set-key (kbd "C-c C-e C-r u") 'ein:worksheet-execute-all-cells-above)
 (local-set-key (kbd "C-c C-e C-r b") 'ein:worksheet-execute-all-cells-above)
 
-;; My custom keys
+;; Magit
+(global-set-key (kbd "C-c m F") 'magit-pull)
+(global-set-key (kbd "C-c m L") 'magit-log)
+(global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
+
+;; Python
+(global-set-key (kbd "C-c p v") 'pyvenv-workon)
+(global-set-key (kbd "C-c p p") 'run-python)
+
+;; Miscellaneous
 (global-set-key (kbd "C-c k") 'keychain-refresh-environment)
 (global-set-key (kbd "C-c u") 'rsync-html)
 (global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
-(global-set-key (kbd "C-c p v") 'pyvenv-workon)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
 ;;; http://stats.blogoverflow.com/page/2/
 ;; (define-key global-map [f1] 'Control-X-prefix)

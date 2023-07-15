@@ -80,7 +80,7 @@
 ;;
 ;; https://www.reddit.com/r/emacs/comments/lsr161/wishlist_has_anyone_built_an_orgmode_git_log/
 ;;
-;; Comments : Sets up keybindings 'C-c f [c|v]' for copying and pasting forge links from magit buffers to org-buffers
+;; Comments : Sets up keybindings 'C-c m [c|v]' for copying and pasting forge links from magit buffers to org-buffers
 ;; https://github.com/magit/orgit
 (use-package orgit
 	     :after magit)
@@ -88,9 +88,9 @@
 (use-package orgit-forge
 	     :after magit
 	     :bind (:map magit-mode-map
-			 ("C-c f c" . orgit-store-link))
+			 ("C-c m c" . orgit-store-link))
              (:map org-mode-map
-		   ("C-c f v" . org-insert-last-stored-link)))
+		   ("C-c m v" . org-insert-last-stored-link)))
 ;; emacsql-sqlite-module is required by forge, but not always explicitly pulled in
 (use-package emacsql-sqlite-module
 	     :ensure t
