@@ -51,6 +51,7 @@
 (global-set-key (kbd "<f3>") 'eval-region)
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+(global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
 ;; EIN commands
