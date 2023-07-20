@@ -59,6 +59,7 @@
 (global-set-key (kbd "C-c e S") 'ein:stop)
 (local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
+(local-set-key (kbd "C-c e n") 'ein:notebook-rename-command)
 (local-set-key (kbd "C-c e r") 'ein:worksheet-execute-all-cells)
 (local-set-key (kbd "C-c e x") 'ein:notebook-reconnect-kernel)
 (local-set-key (kbd "C-c e C-r u") 'ein:worksheet-execute-all-cells-above)
