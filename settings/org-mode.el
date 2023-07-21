@@ -16,11 +16,17 @@
 	     (setq org-directory        "~/org/"
 		   ;; org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
 		   org-agenda-files '("~/org/agenda.org"
+ 				      "~/org/gtd/carpentries.org"
  				      "~/org/gtd/clarity.org"
+ 				      "~/org/gtd/computing.org"
  				      "~/org/gtd/cured.org"
  				      "~/org/gtd/joss.org"
+ 				      "~/org/gtd/osc.org"
  				      "~/org/gtd/pgfinder.org"
 				      "~/org/gtd/rse.org"
+				      "~/org/gtd/rse-competencies.org"
+ 				      "~/org/gtd/tcx2gpx.org"
+				      "~/org/gtd/thyroid.org"
 				      "~/org/gtd/topostats.org")
 		   ;; org-tags-alist '()
 		   org-startup-indented 1
