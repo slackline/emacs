@@ -75,63 +75,65 @@
 ;; BASIC CUSTOMISATION
 ;; --------------------------------------
 (use-package emacs
-	     :init
-	     (tool-bar-mode -1)
-	     (scroll-bar-mode -1)
-	     (menu-bar-mode 1)
-	     (global-linum-mode t)
-	     (global-hl-line-mode 1)
-	     (savehist-mode 1)
-	     (recentf-mode 1)
-	     (global-auto-revert-mode 1)
-	     :config
-	     ;; Add local lisp for miscellaneous things
-	     (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-	     (setq inhibit-startup-message t)    ; hide the startup message
-	     (setq global-visual-line-mode t)    ; Visual line wrap
-	     (setq inhibit-startup-screen t)     ; Disable startup screen
-	     (setq initial-scratch-message "")   ; Make *scratch* buffer blank
-	     (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
-	     (setq ring-bell-function 'ignore)   ; Disable bell sound
-	     (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-	     (setq use-dialog-box nil)           ; No dialog pop-ups
-	     (setq history-length 100)           ; Mini-buffer history
-	     (setq-default fill-column 120)      ; Reset line-length
-	     (setq undo-limit 320000)            ; Increase the undo history limits
-             (setq vc-follow-symlinks t)         ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-	     (setq undo-strong-limit 640000)
-             (setq mode-line-compact t)
-	     (setq-default indent-tabs-mode nil)
-	     (setq-default tab-width 4)
-	     (setq-default sh-basic-offset 2)
-	     (setq-default sh-indentation 2)
-	     (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
-             ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
-             (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
-	     (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-	     :bind (("C-c U" . revert-buffer)
-		    ("C-c D" . toggle-debug-on-error)
-		    ;; Org
-		    ("\C-cl" . org-store-link)
-		    ("\C-cc" . org-capture)
-		    ("\C-ca" . org-agenda)
-		    ("\C-cb" . org-iswitchb)
-		    ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
-		    ;; Magit /code review
-		    ("C-x g" . magit-status)
-		    ("C-c P" . magit-push-current-to-upstream)
-		    ("C-c F" . magit-pull)
-		    ("C-c R" . code-review-forge-pr-at-point))
-	     :hook
-	     ((latex-mode
-	       markdown-mode
-	       org-mode
-	       prog-mode
-	       text-mode) . auto-fill-mode)
-	     (auto-fill-function . do-auto-fill)
-	     (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
-	     (prog-mode-hook . highlight-indent-guides-mode)
-	     )
+  :init
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (menu-bar-mode 1)
+  (global-display-line-numbers-mode 1)
+  (global-hl-line-mode 1)
+  (savehist-mode 1)
+  (recentf-mode 1)
+  (global-auto-revert-mode 1)
+  :config
+  ;; Add local lisp for miscellaneous things
+  (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+  (setq inhibit-startup-message 1)    ; hide the startup message
+  (setq global-visual-line-mode 1)    ; Visual line wrap
+  (setq inhibit-startup-screen 1)     ; Disable startup screen
+  (setq initial-scratch-message "")   ; Make *scratch* buffer blank
+  (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
+  (setq ring-bell-function 'ignore)   ; Disable bell sound
+  (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+  (setq use-dialog-box nil)           ; No dialog pop-ups
+  (setq history-length 100)           ; Mini-buffer history
+  (setq-default fill-column 120)      ; Reset line-length
+  (setq undo-limit 320000)            ; Increase the undo history limits
+  (setq vc-follow-symlinks 1)         ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+  (setq pixel-scroll-precision-mode 1)
+  (setq lisp-indent-offset 2)
+  (setq undo-strong-limit 640000)
+  (setq mode-line-compact t)
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
+  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+  ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+  (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
+  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+  :bind (("C-c U" . revert-buffer)
+	 ("C-c D" . toggle-debug-on-error)
+	 ;; Org
+	 ("\C-cl" . org-store-link)
+	 ("\C-cc" . org-capture)
+	 ("\C-ca" . org-agenda)
+	 ("\C-cb" . org-iswitchb)
+	 ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
+	 ;; Magit /code review
+	 ("C-x g" . magit-status)
+	 ("C-c P" . magit-push-current-to-upstream)
+	 ("C-c F" . magit-pull)
+	 ("C-c R" . code-review-forge-pr-at-point))
+  :hook
+  ((latex-mode
+    markdown-mode
+    org-mode
+    prog-mode
+    text-mode) . auto-fill-mode)
+  (auto-fill-function . do-auto-fill)
+  (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
+  (prog-mode-hook . highlight-indent-guides-mode)
+  )
 
 ;; Set httpd-system-name for IP based on system-name, used by simple-httpd config (see settings/elfeed-settings.el)
 ;; https://emacs.stackexchange.com/a/41726/10100

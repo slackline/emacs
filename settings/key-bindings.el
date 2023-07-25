@@ -12,37 +12,39 @@
 ;; guide-key
 ;;
 ;; Most things commented out here reside under init.el > (use-package emacs :bind (...))
+;;
+;; Simplified Emacs keymap in Emacs 29 (and earlier!) : https://systemcrafters.net/newsletter/sc-news-004.html
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
-	     :config (which-key-mode))
+  :config (which-key-mode))
 
 ;; helpful settings
 ;; https://github.com/Wilfred/helpful
 ;;
 (use-package helpful
-	     :config
-	     ;; Note that the built-in `describe-function' includes both functions
-	     ;; and macros. `helpful-function' is functions only, so we provide
-	     ;; `helpful-callable' as a drop-in replacement.
-	     (global-set-key (kbd "C-h f") #'helpful-callable)
-	     (global-set-key (kbd "C-h v") #'helpful-variable)
-	     (global-set-key (kbd "C-h k") #'helpful-key)
-	     ;; Lookup the current symbol at point. C-c C-d is a common keybinding
-	     ;; for this in lisp modes.
-	     (global-set-key (kbd "C-c C-d") #'helpful-at-point)
+  :config
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  (global-set-key (kbd "C-h f") #'helpful-callable)
+  (global-set-key (kbd "C-h v") #'helpful-variable)
+  (global-set-key (kbd "C-h k") #'helpful-key)
+  ;; Lookup the current symbol at point. C-c C-d is a common keybinding
+  ;; for this in lisp modes.
+  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
 
-	     ;; Look up *F*unctions (excludes macros).
-	     ;;
-	     ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
-	     ;; already links to the manual, if a function is referenced there.
-	     (global-set-key (kbd "C-h F") #'helpful-function)
+  ;; Look up *F*unctions (excludes macros).
+  ;;
+  ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+  ;; already links to the manual, if a function is referenced there.
+  (global-set-key (kbd "C-h F") #'helpful-function)
 
-	     ;; Look up *C*ommands.
-	     ;;
-	     ;; By default, C-h C is bound to describe `describe-coding-system'. I
-	     ;; don't find this very useful, but it's frequently useful to only
-	     ;; look at interactive functions.
-	     (global-set-key (kbd "C-h C") #'helpful-command))
+  ;; Look up *C*ommands.
+  ;;
+  ;; By default, C-h C is bound to describe `describe-coding-system'. I
+  ;; don't find this very useful, but it's frequently useful to only
+  ;; look at interactive functions.
+  (global-set-key (kbd "C-h C") #'helpful-command))
 
 
 ;; Function Keys
@@ -51,6 +53,7 @@
 (global-set-key (kbd "<f3>") 'eval-region)
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+(global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
@@ -59,6 +62,12 @@
 (global-set-key (kbd "C-c e S") 'ein:stop)
 
 ;; Magit
+(global-set-key (kbd "C-c m") (define-keymap :prefix 'my/org-key-map
+                                "F" 'magit-pull-from-upstream
+                                "L" 'magit-log
+                                "P" 'magit-push-current-to-upstream
+                                "d" 'nds:magit-show-with-difftastic
+                                "R" 'magit-file-rename))
 (global-set-key (kbd "C-c m F") 'magit-pull)
 (global-set-key (kbd "C-c m L") 'magit-log)
 (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
