@@ -104,7 +104,18 @@
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
 	     :ensure t
-	     :defer t)
+	     :defer t
+             :config
+             (setq ein:output-area-inlined-images t
+		   ein:polymode t
+		   ein:query-timeout 100000)
+             :bind (:map ein:notebook-mode
+			 ("C-c e n" . ein:notebook-rename-command)
+			 ("C-c e n" . ein:notebook-rename-command)
+			 ("C-c e r" . ein:worksheet-execute-all-cells)
+			 ("C-c e x" . ein:notebook-reconnect-kernel)
+			 ("C-c e C-r u" . ein:worksheet-execute-all-cells-above)
+			 ("C-c e C-r b" . ein:worksheet-execute-all-cells-above)))
 
 ;; https://github.com/paetzke/py-autopep8.el
 ;; (use-package py-autopep8

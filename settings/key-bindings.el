@@ -54,16 +54,9 @@
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
-;; EIN commands
+;; EIN global commands to start and stop Jupyter server
 (global-set-key (kbd "C-c e R") 'ein:run)
 (global-set-key (kbd "C-c e S") 'ein:stop)
-(local-set-key (kbd "<f10>") 'ein:notebook-reconnect-kernel)
-(local-set-key (kbd "<f11>") 'ein:worksheet-delete-cell)
-(local-set-key (kbd "C-c e n") 'ein:notebook-rename-command)
-(local-set-key (kbd "C-c e r") 'ein:worksheet-execute-all-cells)
-(local-set-key (kbd "C-c e x") 'ein:notebook-reconnect-kernel)
-(local-set-key (kbd "C-c e C-r u") 'ein:worksheet-execute-all-cells-above)
-(local-set-key (kbd "C-c e C-r b") 'ein:worksheet-execute-all-cells-above)
 
 ;; Magit
 (global-set-key (kbd "C-c m F") 'magit-pull)
