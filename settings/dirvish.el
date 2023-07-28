@@ -31,3 +31,11 @@
 (use-package all-the-icons
 	     :ensure t
 	     :after dirvish)
+
+(use-package all-the-icons-dired
+	     :ensure t
+	     :defer t)
+
+(use-package all-the-icons-ibuffer
+	     :ensure t
+	     :defer t)
