@@ -25,6 +25,7 @@
  				      "~/org/gtd/pgfinder.org"
 				      "~/org/gtd/rse.org"
 				      "~/org/gtd/rse-competencies.org"
+				      "~/org/grd/sheffieldr.org"
  				      "~/org/gtd/tcx2gpx.org"
 				      "~/org/gtd/thyroid.org"
 				      "~/org/gtd/topostats.org")
