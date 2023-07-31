@@ -190,7 +190,6 @@
 
 ;;; Python
 (load "~/.config/emacs/settings/conda.el")
-(load "~/.config/emacs/settings/ein.el")
 (load "~/.config/emacs/settings/python.el")
 
 ;;; Org / Bib
