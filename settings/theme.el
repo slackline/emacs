@@ -46,26 +46,32 @@
 (set-face-attribute 'default t :font "Hack")
 
 
-
+;; Mood line
+(use-package mood-line
+  :ensure t
+  :config
+  (mood-line-mode)
+  :custom
+  (setq mood-line-glyph-alist mood-line-glyphs-unicode))
 ;; Custom Modeline (https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/)
-(setq-default mode-line-format
-              '("%e"
-                prot-modeline-kbd-macro
-                prot-modeline-narrow
-                prot-modeline-input-method
-                prot-modeline-buffer-status
-                " "
-                prot-modeline-buffer-identification
-                "  "
-                prot-modeline-major-mode
-                prot-modeline-process
-                "  "
-                prot-modeline-vc-branch
-                "  "
-                prot-modeline-flymake
-                "  "
-                prot-modeline-align-right
-                prot-modeline-misc-info))
+;; (setq-default mode-line-format
+;;               '("%e"
+;;                 prot-modeline-kbd-macro
+;;                 prot-modeline-narrow
+;;                 prot-modeline-input-method
+;;                 prot-modeline-buffer-status
+;;                 " "
+;;                 prot-modeline-buffer-identification
+;;                 "  "
+;;                 prot-modeline-major-mode
+;;                 prot-modeline-process
+;;                 "  "
+;;                 prot-modeline-vc-branch
+;;                 "  "
+;;                 prot-modeline-flymake
+;;                 "  "
+;;                 prot-modeline-align-right
+;;                 prot-modeline-misc-info))
 
 
 ;; Other themes I've tried
