@@ -13,26 +13,26 @@
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
 (use-package modus-themes
-	     :ensure t                         ; omit this to use the built-in themes
-	     :init
-	     ;; Add all your customizations prior to loading the themes
-	     (setq modus-themes-italic-constructs t
-		   modus-themes-bold-constructs t
-		   modus-themes-org-blocks '(tinted-background))
-	     :config
-             :bind
-             ("<f12>" . modus-themes-toggle))
+  :ensure t                         ; omit this to use the built-in themes
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+	modus-themes-bold-constructs t
+	modus-themes-org-blocks '(tinted-background))
+  :config
+  :bind
+  ("<f12>" . modus-themes-toggle))
 
 ;; (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
 
 (use-package ef-themes
-	     :ensure t
-	     :init
-             (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
-	     :config
-	     :bind
-	     ("<f10>" . ef-themes-select-dark)
-             ("<f11>" . ef-themes-toggle))
+  :ensure t
+  :init
+  (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
+  :config
+  :bind
+  ("<f10>" . ef-themes-select-dark)
+  ("<f11>" . ef-themes-toggle))
 ;; (ef-themes-select 'ef-dark)
 ;; (ef-themes-select 'ef-duo-dark)
 (ef-themes-select 'ef-bio)
@@ -44,6 +44,29 @@
 
 ;; Set the font
 (set-face-attribute 'default t :font "Hack")
+
+
+
+;; Custom Modeline (https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/)
+(setq-default mode-line-format
+              '("%e"
+                prot-modeline-kbd-macro
+                prot-modeline-narrow
+                prot-modeline-input-method
+                prot-modeline-buffer-status
+                " "
+                prot-modeline-buffer-identification
+                "  "
+                prot-modeline-major-mode
+                prot-modeline-process
+                "  "
+                prot-modeline-vc-branch
+                "  "
+                prot-modeline-flymake
+                "  "
+                prot-modeline-align-right
+                prot-modeline-misc-info))
+
 
 ;; Other themes I've tried
 

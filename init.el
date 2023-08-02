@@ -230,6 +230,7 @@
 
 ;;; Themes
 (load "~/.config/emacs/settings/powerline.el")
+(load "~/.config/emacs/settings/modeline.el")
 (load "~/.config/emacs/settings/theme.el")
 
 ;;; Keybindings (last so that all functions are defined)
