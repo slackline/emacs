@@ -177,7 +177,7 @@
 ;; LSP Module : https://github.com/emacs-languagetool/lsp-ltex
 ;; Server     : https://valentjn.github.io/ltex/
 (use-package lsp-ltex
-  py	     :ensure t
+  :ensure t
   :hook (text-mode . (lambda ()
 		       (require 'lsp-ltex)
 		       (lsp))))  ; or lsp-deferred

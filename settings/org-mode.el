@@ -1,55 +1,55 @@
 ;;; ORG-MODE CONFIGURATION
 ;;; --------------------------------------
 (use-package org
-	     :ensure t
-	     :init
-	     :bind
-	     (("C-x p i" . 'org-cliplink))
-	     :config
-	     (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-	     (global-font-lock-mode 1)
-	     (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-								      (python . t)
-								      (shell . t)
-								      (R . t)
-								      (latex .t)))
-	     (setq org-directory        "~/org/"
-		   ;; org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
-		   org-agenda-files '("~/org/agenda.org"
- 				      "~/org/gtd/carpentries.org"
- 				      "~/org/gtd/clarity.org"
- 				      "~/org/gtd/computing.org"
- 				      "~/org/gtd/cured.org"
- 				      "~/org/gtd/joss.org"
- 				      "~/org/gtd/osc.org"
- 				      "~/org/gtd/pgfinder.org"
-				      "~/org/gtd/rse.org"
-				      "~/org/gtd/rse-competencies.org"
-				      "~/org/grd/sheffieldr.org"
- 				      "~/org/gtd/tcx2gpx.org"
-				      "~/org/gtd/thyroid.org"
-				      "~/org/gtd/topostats.org")
-		   ;; org-tags-alist '()
-		   org-startup-indented 1
-		   org-agenda-include-diary t
-		   org-agenda-skip-deadline-if-done t
-		   org-agenda-skip-scheduled-if-done t
-		   org-log-done 'time
-		   org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
-		   org-export-backends '(beamer html latex md odt)
-		   org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
-		   org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
-		   org-babel-python-command "~/.virtualenvs/default/bin/python"
-		   org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
-		   '(:foreground default
-				 :background "rgb 1 1 1"
-				 :scale 1.5
-				 :html-foreground "Black"
-				 :html-background "Transparent"
-				 :html-scale 1.0
-				 :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
-             ;; Disable electric-indent-mode in org buffers
-             :hook (org-mode . (lambda () (electric-indent-local-mode 0))))
+  :ensure t
+  :init
+  :bind
+  (("C-x p i" . 'org-cliplink))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (global-font-lock-mode 1)
+  (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+							   (python . t)
+							   (shell . t)
+							   (R . t)
+							   (latex .t)))
+  (setq org-directory        "~/org/"
+	;; org-agenda-files '("~/org/agenda.org" "~/org/work/rse/todo.org" "~/org/gtd/org-gtd-tasks.org")
+	org-agenda-files '("~/org/agenda.org"
+ 			   "~/org/gtd/carpentries.org"
+ 			   "~/org/gtd/clarity.org"
+ 			   "~/org/gtd/computing.org"
+ 			   "~/org/gtd/cured.org"
+ 			   "~/org/gtd/joss.org"
+ 			   "~/org/gtd/osc.org"
+ 			   "~/org/gtd/pgfinder.org"
+			   "~/org/gtd/rse.org"
+			   "~/org/gtd/rse-competencies.org"
+			   "~/org/grd/sheffieldr.org"
+ 			   "~/org/gtd/tcx2gpx.org"
+			   "~/org/gtd/thyroid.org"
+			   "~/org/gtd/topostats.org")
+	;; org-tags-alist '()
+	org-startup-indented 1
+	org-agenda-include-diary t
+	org-agenda-skip-deadline-if-done t
+	org-agenda-skip-scheduled-if-done t
+	org-log-done 'time
+	org-image-actual-width nil                                   ;; https://stackoverflow.com/a/38477233/1444043
+	org-export-backends '(beamer html latex md odt)
+	org-startup-with-inline-images t                             ;; https://emacs.stackexchange.com/a/21267/10100
+	org-confirm-babel-evaluate nil                               ;; https://emacs.stackexchange.com/a/3570/10100
+	org-babel-python-command "~/.virtualenvs/default/bin/python"
+	org-format-latex-options ;; https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output
+	'(:foreground default
+		      :background "rgb 1 1 1"
+		      :scale 1.5
+		      :html-foreground "Black"
+		      :html-background "Transparent"
+		      :html-scale 1.0
+		      :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  ;; Disable electric-indent-mode in org buffers
+  :hook (org-mode . (lambda () (electric-indent-local-mode 0))))
 
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
@@ -65,9 +65,9 @@
         ))
 
 (use-package org-analyzer
-	     :ensure t
-	     :defer 3
-             )
+  :ensure t
+  :defer 3
+  )
 ;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
 ;; (define-key org-mode-map (kbd "`")
 ;;     (lambda ()
@@ -112,17 +112,17 @@
 
 ;; ox packages
 (use-package ox-reveal
-	     :ensure t
-	     ;;  :defer t
-	     :config
-	     (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
-		   org-reveal-mathjax t))
+  :ensure t
+  ;;  :defer t
+  :config
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
+	org-reveal-mathjax t))
 (use-package ox-spectacle
-	     :ensure t
-	     :defer t)
+  :ensure t
+  :defer t)
 (use-package ox-pandoc
-	     :ensure t
-	     :defer t)
+  :ensure t
+  :defer t)
 
 ;; Skeletons
 (define-skeleton org-R-skeleton
