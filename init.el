@@ -228,9 +228,10 @@
 (load "~/.config/emacs/settings/magit.el")
 
 
-;;; Themes
+;;; Themes, modeline and buffers
 (load "~/.config/emacs/settings/powerline.el")
 (load "~/.config/emacs/settings/modeline.el")
+(load "~/.config/emacs/settings/popper.el")
 (load "~/.config/emacs/settings/theme.el")
 
 ;;; Keybindings (last so that all functions are defined)
