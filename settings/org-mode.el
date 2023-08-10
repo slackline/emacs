@@ -49,7 +49,9 @@
 		      :html-scale 1.0
 		      :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
   ;; Disable electric-indent-mode in org buffers
-  :hook (org-mode . (lambda () (electric-indent-local-mode 0))))
+  :hook (org-mode . (lambda () (electric-indent-local-mode 0)))
+  (org-mode . (lambda () (org-rainbow-tags-mode 1)))
+  )
 
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
@@ -109,6 +111,12 @@
                  (org-remove-inline-images)
                  (org-present-show-cursor)
                  (org-present-read-write)))))
+
+;; Org rainbow tags
+;; https://github.com/KaratasFurkan/org-rainbow-tags
+(use-package org-rainbow-tags
+  :ensure t
+  :defer t)
 
 ;; ox packages
 (use-package ox-reveal
