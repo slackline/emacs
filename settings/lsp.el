@@ -189,10 +189,10 @@
 ;; Julia
 ;; LSP Module : https://github.com/non-Jedi/lsp-julia
 ;; Server     :
-(use-package lsp-julia
-  :ensure t
-  :config
-  (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
+;; (use-package lsp-julia
+;;   :ensure t
+;;   :config
+;;   (setq lsp-julia-default-environment "~/.julia/environments/v1.5"))
 
 ;; Markdown
 ;; LSP Module : https://emacs-lsp.github.io/lsp-mode/page/lsp-markdown/
