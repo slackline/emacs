@@ -23,6 +23,7 @@
  			   "~/org/gtd/joss.org"
  			   "~/org/gtd/osc.org"
  			   "~/org/gtd/pgfinder.org"
+                           "~/org/gtd/reproducibilitea.org"
 			   "~/org/gtd/rse.org"
 			   "~/org/gtd/rse-competencies.org"
 			   "~/org/grd/sheffieldr.org"
