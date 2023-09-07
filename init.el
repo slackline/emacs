@@ -88,7 +88,7 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq inhibit-startup-message 1)    ; hide the startup message
+  (setq inhibit-startup-message 1)    ; Hide the startup message
   (setq global-visual-line-mode 1)    ; Visual line wrap
   (setq inhibit-startup-screen 1)     ; Disable startup screen
   (setq initial-scratch-message "")   ; Make *scratch* buffer blank
@@ -99,7 +99,9 @@
   (setq history-length 100)           ; Mini-buffer history
   (setq-default fill-column 120)      ; Reset line-length
   (setq undo-limit 320000)            ; Increase the undo history limits
-  (setq vc-follow-symlinks 1)         ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+  (setq vc-follow-symlinks 1)         ; open source of symlink maintain vc
+                                        ; (https://stackoverflow.com/a/30900018/1444043)
+  (setq winner-mode 1)                ; toggling window configuration
   (setq pixel-scroll-precision-mode 1)
   (setq lisp-indent-offset 2)
   (setq undo-strong-limit 640000)
