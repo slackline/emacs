@@ -54,6 +54,7 @@
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
+(global-set-key (kbd "<f7>") 'flyspell-toggle)
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
