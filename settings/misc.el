@@ -43,4 +43,4 @@ Version 2015-07-27"
 
 ;; Info version of Structure and Interpretation of Computer Programs (2nd Edition)
 ;; https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs/
-(use-package sicp)
+;; (use-package sicp)
