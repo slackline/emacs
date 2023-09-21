@@ -124,6 +124,7 @@
   :defer t)
 
 
+
 ;; Language servers
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
