@@ -28,51 +28,58 @@
 ;;
 ;; https://www.youtube.com/watch?v=uxyhmhRVOfw
 (use-package ess
-	     :ensure t
-	     ;; :defer 1
-             ;;     :requires ess-r-mode
-             ;;     ess-r-package
-	     :init
-	     :mode (("/R/.*\\.q\\'"       . R-mode)
-		    ("\\.[rR]\\'"         . R-mode)
-		    ("\\.[rR]profile\\'"  . R-mode)
-		    ("NAMESPACE\\'"       . R-mode)
-		    ("CITATION\\'"        . R-mode)
-		    ("\\.[Rr]out"         . R-transcript-mode)
-		    ("\\.Rmd\\'"          . Rd-mode)
-		    ("\\.Rd\\'"           . Rd-mode))
-	     :interpreter (("R" . R-mode)
-			   ("R" . R-transcript-mode)
-			   ("R" . Rd-mode))
-	     :config
-             (require 'ess-r-mode)
-             (require 'ess-r-package)
-	     (setq ess-r-backend 'lsp)
-	     (setq comint-input-ring-size 1000)
-	     (setq ess-indent-offset 2)
-	     (setq ess-eval-visibly-p nil)
-             (setq ess-startup-directory nil)
-	     (setq ess-ask-for-ess-directory nil)
-	     (setq ess-togggle-underscore nil)
-	     (setq ess-eval-visibly 'nowait)
-             (setq ess-use-tracebug nil)
-	     :hook
-	     (ess-mode . company-mode)
-	     (inferior-ess-mode . company-mode)
-             :bind
-             (:map ess-r-mode-map
-		   ("_" . 'ess-insert-assign)  ;;
-		   ("C-q" . 'ess-eval-region-or-line-and-step)
-		   ("C-|" . " |>\n"))
-             (:map inferior-ess-r-mode-map
-		   ("_" . 'ess-insert-assign)
-		   ("C-|" . " |>\n")))
+  :ensure t
+  ;; :defer 1
+  ;;     :requires ess-r-mode
+  ;;     ess-r-package
+  :init
+  :mode (("/R/.*\\.q\\'"       . R-mode)
+	 ("\\.[rR]\\'"         . R-mode)
+	 ("\\.[rR]profile\\'"  . R-mode)
+	 ("NAMESPACE\\'"       . R-mode)
+	 ("CITATION\\'"        . R-mode)
+	 ("\\.[Rr]out"         . R-transcript-mode)
+	 ("\\.Rmd\\'"          . Rd-mode)
+	 ("\\.Rd\\'"           . Rd-mode))
+  :interpreter (("R" . R-mode)
+		("R" . R-transcript-mode)
+		("R" . Rd-mode))
+  :config
+  (require 'ess-r-mode)
+  (require 'ess-r-package)
+  (setq ess-r-backend 'lsp)
+  (setq comint-input-ring-size 1000)
+  (setq ess-indent-offset 2)
+  (setq ess-eval-visibly-p nil)
+  (setq ess-startup-directory nil)
+  (setq ess-ask-for-ess-directory nil)
+  (setq ess-togggle-underscore nil)
+  (setq ess-eval-visibly 'nowait)
+  (setq ess-use-tracebug nil)
+  :hook
+  (ess-mode . company-mode)
+  (inferior-ess-mode . company-mode)
+  :bind
+  (:map ess-r-mode-map
+	("_" . 'ess-insert-assign)  ;;
+	("C-q" . 'ess-eval-region-or-line-and-step)
+	("C-|" . " |>\n"))
+  (:map inferior-ess-r-mode-map
+	("_" . 'ess-insert-assign)
+	("C-|" . " |>\n")))
+
+;;; https://github.com/ShuguangSun/tree-sitter-ess-r
+(use-package tree-sitter-ess-r
+  :ensure t
+  :after (ess)
+  :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
 
 ;; Quarto mode https://github.com/quarto-dev/quarto-emacs
 ;; By default associated with .qmd files
 (use-package quarto-mode
-	     :mode (("\\.Rmd" . poly-quarto-mode))
-	     :bind (("C-c q" . quarto-preview)))
+  :mode (("\\.Rmd" . poly-quarto-mode))
+  :bind (("C-c q" . quarto-preview)))
+
 
 
 ;;; Set the width of the buffer automatically from

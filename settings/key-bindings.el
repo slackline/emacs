@@ -64,6 +64,7 @@
 
 ;; Magit
 (global-set-key (kbd "C-c m") (define-keymap :prefix 'my/org-key-map
+                                "C" 'magit-clone
                                 "F" 'magit-pull-from-upstream
                                 "L" 'magit-log
                                 "P" 'magit-push-current-to-upstream

@@ -59,6 +59,7 @@
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
+	      ("C-c p y" . pylint-insert-ignore-comment)
 	      ("C-c p n" . numpydoc-generate)
 	      ("C-c p b" . blacken-buffer)
 	      ("C-c p v" . pyvenv-workon)
@@ -75,6 +76,11 @@
   :after (pyvenv)
   :ensure t
   :defer 2)
+
+;; https://github.com/emacsorphanage/pylint
+(use-package pylint
+  :hook (python-mode . pylint-add-menu)
+  (python-mode . add-key-bindings))
 
 ;;; Linting - Lots of options, currently going with blacken
 ;; https://github.com/pythonic-emacs/blacken
