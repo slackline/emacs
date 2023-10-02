@@ -220,18 +220,19 @@
 ;; (load "~/.config/emacs/settings/ytdl.el")
 
 ;;; IDE / LSP
+;; (load "~/.config/emacs/settings/eglot.el")
+(load "~/.config/emacs/settings/ess.el")
 (load "~/.config/emacs/settings/fly.el")
+(load "~/.config/emacs/settings/format-all.el")
 (load "~/.config/emacs/settings/jedi.el")
 (load "~/.config/emacs/settings/js.el")
-(load "~/.config/emacs/settings/format-all.el")
 (load "~/.config/emacs/settings/latex.el")
-(load "~/.config/emacs/settings/yaml.el")
 (load "~/.config/emacs/settings/lsp.el")
-;;(load "~/.config/emacs/settings/eglot.el")
-(load "~/.config/emacs/settings/markdown.el")
-(load "~/.config/emacs/settings/polymode.el")
-(load "~/.config/emacs/settings/ess.el")
 (load "~/.config/emacs/settings/magit.el")
+(load "~/.config/emacs/settings/markdown.el")
+(load "~/.config/emacs/settings/mermaid.el")
+(load "~/.config/emacs/settings/polymode.el")
+(load "~/.config/emacs/settings/yaml.el")
 
 
 ;;; Themes, modeline and buffers
