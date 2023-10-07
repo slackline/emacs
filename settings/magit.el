@@ -2,20 +2,20 @@
 ;; --------------------------------------
 ;; https://magit.vc/
 (use-package magit
-	     :ensure t
-	     :init
-	     (setq magit-repository-directories
-		   `(("~/dotfiles" . 1)
-		     ("~/.config/emacs/" . 1)
-		     ("~/org/" . 1)
-		     ("~/work/org-roam/" . 1)
-		     ("~/work/python/tcx2gpx/" . 1)
-		     ("~/work/python/wpweather/" . 1)
-		     ))
-	     (setq auth-sources '("~/.authinfo.gpg"))
-	     :config
-	     (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
-             (global-set-key (kbd "C-h f") #'helpful-callable))
+  :ensure t
+  :init
+  (setq magit-repository-directories
+	`(("~/dotfiles" . 1)
+	  ("~/.config/emacs/" . 1)
+	  ("~/org/" . 1)
+	  ("~/work/org-roam/" . 1)
+	  ("~/work/python/tcx2gpx/" . 1)
+	  ("~/work/python/wpweather/" . 1)
+	  ))
+  (setq auth-sources '("~/.authinfo.gpg"))
+  :config
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+  (global-set-key (kbd "C-h f") #'helpful-callable))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
@@ -30,49 +30,50 @@
 
 ;; Git modes
 (use-package git-modes
-	     :defer t
-	     :ensure t)
+  :defer t
+  :ensure t)
 
 (use-package gh-notify
-	     :defer t
-	     :ensure t)
+  :defer t
+  :ensure t)
 (use-package magit-imerge
-	     :defer t
-	     :ensure t
-	     :after magit)
+  :defer t
+  :ensure t
+  :after magit)
 
 ;; https://codeberg.org/akib/emacs-why-this
 (use-package why-this
-	     :defer t
-	     :ensure t
-	     :init
-	     ;;  (setq global-why-this-mode)
-	     :config
-	     (set-face-background 'why-this-annotate-heat-map-cold "#203448")
-	     (set-face-background 'why-this-annotate-heat-map-warm "#382f27"))
+  :defer t
+  :ensure t
+  :init
+  ;;  (setq global-why-this-mode)
+  :config
+  (set-face-background 'why-this-annotate-heat-map-cold "#203448")
+  (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
+  (global-set-key (kbd "C-c m w") 'why-this))
 
 ;; https://github.com/sshaw/git-link
 (use-package git-link
-	     :defer t
-	     :ensure t
-	     :config
-	     (global-set-key (kbd "C-c m g l") 'git-link)
-	     (global-set-key (kbd "C-c m g c") 'git-link-commit)
-	     (global-set-key (kbd "C-c m g h") 'git-link-homepage))
+  :defer t
+  :ensure t
+  :config
+  (global-set-key (kbd "C-c m g l") 'git-link)
+  (global-set-key (kbd "C-c m g c") 'git-link-commit)
+  (global-set-key (kbd "C-c m g h") 'git-link-homepage))
 
 ;; https://github.com/wandersoncferreira/code-review/
 (use-package code-review
-	     :defer t
-	     :ensure t
-	     :config
-	     (setq code-review-fill-column 120)
-	     (add-hook 'code-review-mode-hook . #'emojify-mode)
-	     (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
+  :defer t
+  :ensure t
+  :config
+  (setq code-review-fill-column 120)
+  (add-hook 'code-review-mode-hook . #'emojify-mode)
+  (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
 
 ;; https://github.com/LionyxML/magit-stats
 (use-package magit-stats
-	     :defer t
-	     :ensure t)
+  :defer t
+  :ensure t)
 
 ;; Orgit / Orgit-forge
 ;;
@@ -83,23 +84,23 @@
 ;; Comments : Sets up keybindings 'C-c m [c|v]' for copying and pasting forge links from magit buffers to org-buffers
 ;; https://github.com/magit/orgit
 (use-package orgit
-	     :after magit)
+  :after magit)
 ;; https://github.com/magit/orgit-forge
 (use-package orgit-forge
-	     :after magit
-	     :bind (:map magit-mode-map
-			 ("C-c m c" . orgit-store-link))
-             (:map org-mode-map
-		   ("C-c m v" . org-insert-last-stored-link)))
+  :after magit
+  :bind (:map magit-mode-map
+	      ("C-c m c" . orgit-store-link))
+  (:map org-mode-map
+	("C-c m v" . org-insert-last-stored-link)))
 ;; emacsql-sqlite-module is required by forge, but not always explicitly pulled in
 (use-package emacsql-sqlite-module
-	     :ensure t
-	     :after magit)
+  :ensure t
+  :after magit)
 
 ;; https://codeberg.org/pidu/git-timemachine
 (use-package git-timemachine
-	     :ensure t
-	     :defer t)
+  :ensure t
+  :defer t)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -201,12 +202,12 @@
 
 ;; Transient prefix
 (transient-define-prefix nds:magit-aux-commands ()
-			 "My personal auxiliary magit commands."
-			 ["Auxiliary commands"
-			  ("d" "Difftastic Diff (dwim)" nds:magit-diff-with-difftastic)
-			  ("s" "Difftastic Show" nds:magit-show-with-difftastic)
-			  ("o" "Orgit Link" orgit-store-link)
-			  ])
+  "My personal auxiliary magit commands."
+  ["Auxiliary commands"
+   ("d" "Difftastic Diff (dwim)" nds:magit-diff-with-difftastic)
+   ("s" "Difftastic Show" nds:magit-show-with-difftastic)
+   ("o" "Orgit Link" orgit-store-link)
+   ])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 ;; (transient-append-suffix 'magit-dispatch "!"
