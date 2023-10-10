@@ -67,6 +67,7 @@
         ("WONT-DO" . (:foreground "DarkViolet" :weight bold))
         ))
 
+;; https://github.com/rksm/clj-org-analyzer/
 (use-package org-analyzer
   :ensure t
   :defer 3
@@ -118,6 +119,12 @@
 (use-package org-rainbow-tags
   :ensure t
   :defer t)
+
+;; https://github.com/jxq0/org-tidy
+(use-package org-tidy
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook #'org-tidy-mode))
 
 ;; ox packages
 (use-package ox-reveal
