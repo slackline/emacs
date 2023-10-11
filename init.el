@@ -209,6 +209,7 @@
 (load "~/.config/emacs/settings/org-capture.el")
 
 ;;; Misc
+(load "~/.config/emacs/settings/exercism.el")
 (load "~/.config/emacs/settings/keychain-environment.el")
 (load "~/.config/emacs/settings/literate-calc.el")
 (load "~/.config/emacs/settings/mastodon.el")
