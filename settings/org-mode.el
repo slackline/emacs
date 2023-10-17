@@ -121,10 +121,10 @@
   :defer t)
 
 ;; https://github.com/jxq0/org-tidy
-(use-package org-tidy
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook #'org-tidy-mode))
+;; (use-package org-tidy
+;;   :ensure t
+;;   :config
+;;   (add-hook 'org-mode-hook #'org-tidy-mode))
 
 ;; ox packages
 (use-package ox-reveal
