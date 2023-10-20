@@ -43,6 +43,13 @@
   :ensure t
   :after magit)
 
+;; https://github.com/dandavison/magit-delta
+(use-package magit-delta
+  :defer t
+  :ensure t
+  :after magit
+  :hook (magit-mode . magit-delta-mode))
+
 ;; https://codeberg.org/akib/emacs-why-this
 (use-package why-this
   :defer t
