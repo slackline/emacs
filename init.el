@@ -1,4 +1,5 @@
-;;; Commentary: Emacs configuration
+;;; Commentary: --- Emacs configuration
+;;;
 ;;; LOAD PACKAGES
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
@@ -88,9 +89,9 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq inhibit-startup-message 1)    ; Hide the startup message
-  (setq global-visual-line-mode 1)    ; Visual line wrap
-  (setq inhibit-startup-screen 1)     ; Disable startup screen
+  (setq inhibit-startup-message t)    ; Hide the startup message
+  (setq global-visual-line-mode t)    ; Visual line wrap
+  (setq inhibit-startup-screen t)     ; Disable startup screen
   (setq initial-scratch-message "")   ; Make *scratch* buffer blank
   (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
   (setq ring-bell-function 'ignore)   ; Disable bell sound
@@ -99,10 +100,10 @@
   (setq history-length 100)           ; Mini-buffer history
   (setq-default fill-column 120)      ; Reset line-length
   (setq undo-limit 320000)            ; Increase the undo history limits
-  (setq vc-follow-symlinks 1)         ; open source of symlink maintain vc
+  (setq vc-follow-symlinks t)         ; open source of symlink maintain vc
                                         ; (https://stackoverflow.com/a/30900018/1444043)
-  (setq winner-mode 1)                ; toggling window configuration
-  (setq pixel-scroll-precision-mode 1)
+  (setq winner-mode t)                ; toggling window configuration
+  (setq pixel-scroll-precision-mode t)
   (setq lisp-indent-offset 2)
   (setq undo-strong-limit 640000)
   (setq mode-line-compact t)
