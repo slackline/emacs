@@ -116,6 +116,8 @@
   ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
   (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
   (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+  (set-frame-parameter nil 'alpha-background 85)
+  (add-to-list 'default-frame-alist '(alpha-background . 85))
   :bind (("C-c U" . revert-buffer)
 	 ("C-c D" . toggle-debug-on-error)
 	 ;; Org

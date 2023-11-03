@@ -17,7 +17,8 @@
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
   ;; https://www.reddit.com/r/emacs/comments/17af1q5/opening_magit_fullframe_then_restoring_windows_on/
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (setq magit-bury-buffer-function 'magit-restore-window-configuration))
+  (setq magit-bury-buffer-function 'magit-restore-window-configuration)
+  (global-set-key (kbd "C-c m f") 'forge-pull))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
@@ -27,8 +28,6 @@
 ;; (use-package forge
 ;;   :after magit)
 
-;; Automatically refresh buffer
-;; (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
 
 ;; Git modes
 (use-package git-modes
