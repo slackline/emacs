@@ -56,6 +56,7 @@
 	python-shell-interpreter "ipython"
 	python-shell-interpreter-args "-i --simple-prompt"
 	python-environment-directory venv-location)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
