@@ -213,6 +213,7 @@
 (load "~/.config/emacs/settings/org-capture.el")
 
 ;;; Misc
+(load "~/.config/emacs/settings/eat.el")
 (load "~/.config/emacs/settings/exercism.el")
 (load "~/.config/emacs/settings/keychain-environment.el")
 (load "~/.config/emacs/settings/literate-calc.el")
@@ -220,7 +221,7 @@
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
 (load "~/.config/emacs/settings/tramp.el")
-(load "~/.config/emacs/settings/vterm.el")
+;; (load "~/.config/emacs/settings/vterm.el")
 ;; (load "~/.config/emacs/settings/weblorg.el")
 ;; (load "~/.config/emacs/settings/ytdl.el")
 
