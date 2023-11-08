@@ -107,7 +107,7 @@
   (setq lisp-indent-offset 2)
   (setq undo-strong-limit 640000)
   (setq mode-line-compact t)
-  (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
+  ;; (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
   (setq-default sh-basic-offset 2)
