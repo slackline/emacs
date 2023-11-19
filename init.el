@@ -220,6 +220,8 @@
 (load "~/.config/emacs/settings/mastodon.el")
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
+(load "~/.config/emacs/settings/pdf-tools.el")
+(load "~/.config/emacs/settings/scratch.el")
 (load "~/.config/emacs/settings/tramp.el")
 ;; (load "~/.config/emacs/settings/vterm.el")
 ;; (load "~/.config/emacs/settings/weblorg.el")
