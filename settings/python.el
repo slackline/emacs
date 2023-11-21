@@ -63,6 +63,7 @@
 	      ("C-c p y" . pylint-insert-ignore-comment)
 	      ("C-c p n" . numpydoc-generate)
 	      ("C-c p b" . blacken-buffer)
+	      ("C-c p r" . ruff-format-buffer)
 	      ("C-c p v" . pyvenv-workon)
 	      ("C-c p T c" . python-skeleton-class)
 	      ("C-c p T d" . python-skeleton-def)
@@ -91,6 +92,12 @@
   :custom
   (blacken-line-length 120)
   :hook (python-mode . blacken-mode))
+
+;; https://github.com/scop/emacs-ruff-format
+(use-package ruff-format
+  :ensure t
+  :defer 3
+  :hook (python-mode . ruff-format-on-save-mode))
 
 ;; https://github.com/erickgnavar/flymake-ruff
 (use-package flymake-ruff
