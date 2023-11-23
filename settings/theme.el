@@ -47,12 +47,12 @@
 
 
 ;; Mood line
-(use-package mood-line
-  :ensure t
-  :config
-  (mood-line-mode)
-  :custom
-  (setq mood-line-glyph-alist mood-line-glyphs-unicode))
+;; (use-package mood-line
+;;   :ensure t
+;;   :config
+;;   (mood-line-mode)
+;;   :custom
+;;   (setq mood-line-glyph-alist mood-line-glyphs-unicode))
 ;; Custom Modeline (https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/)
 ;; (setq-default mode-line-format
 ;;               '("%e"
