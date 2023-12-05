@@ -46,6 +46,11 @@
   (after-init-hook . (pyvenv-workon default-env))
   )
 
+;;  https://github.com/nryotaro/pyvenv-auto
+;; (use-package pyvenv-auto
+;;   :ensure t
+;;   :defer 3)
+
 ;; Built-in Python utilities
 (use-package python
   :after (pyvenv)
@@ -78,6 +83,12 @@
   :after (pyvenv)
   :ensure t
   :defer 2)
+
+;; https://github.com/ionrock/pytest-el
+;; (use-package pytest
+;;   :after (pyvenv)
+;;   :ensure t
+;;   :defer 3)
 
 ;; https://github.com/emacsorphanage/pylint
 (use-package pylint

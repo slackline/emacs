@@ -222,3 +222,23 @@
 ;;   '("#" "My Magit Cmds" nds:magit-aux-commands))
 
 (define-key magit-status-mode-map (kbd "#") #'nds:magit-aux-commands)
+
+;; Treemacs-magit
+(use-package treemacs-magit
+  :ensure t
+  :defer 3)
+
+;; Gitlab stuff
+
+;; https://github.com/nlamirault/emacs-gitlab
+(use-package gitlab-ci-mode
+  :ensure t
+  :defer 3)
+;; https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
+(use-package gitlab-ci-mode-flycheck
+  :ensure t
+  :defer 3)
+;; https://gitlab.com/joewreschnig/gitlab-ci-mode/
+(use-package gitlab-ci-mode
+  :ensure t
+  :defer 3)
