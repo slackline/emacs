@@ -2,22 +2,23 @@
 ;; --------------------------------------
 ;; https://github.com/ema2159/centaur-tabs
 (use-package centaur-tabs
-	     :demand
-	     :config
-	     (centaur-tabs-mode t)
-	     :init
-	     (setq centaur-tabs-enable-key-bindings t
-	           centaur-tabs-style "wave"
-	           centaur-tabs-set-icons t
-	           centaur-tabs-set-bar 'under
-	           x-underline-at-descent-line t
-	           centaur-tabs-cycle-scope 'default
-		   centaur-tabs-set-modified-marker t
-		   centaur-tabs-modified-marker "⏺")
-	     :bind
-	     ("C-<prior>" . centaur-tabs-backward)
-	     ("C-<next>" . centaur-tabs-forward)
-             )
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  :init
+  (setq centaur-tabs-enable-key-bindings t
+	centaur-tabs-style "wave"
+	centaur-tabs-set-icons t
+	centaur-tabs-set-bar 'under
+	x-underline-at-descent-line t
+	centaur-tabs-cycle-scope 'default
+	centaur-tabs-set-modified-marker t
+	centaur-tabs-modified-marker "⏺")
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>" . centaur-tabs-forward))
+;; ("C-c t C-<right>" . centaur-tabs-move-current-tab-to-right)
+;; ("C-c t C-<left>" . centaur-tabs-move-current-tab-to-left))
 
 
 (defun centaur-tabs-buffer-groups ()
