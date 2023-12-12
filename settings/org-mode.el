@@ -221,3 +221,8 @@
                    path (or desc "")))
      (latex (format "\href{%s}{%s}"
                     path (or desc "video"))))))
+
+;; https://github.com/Artawower/orgnote.el
+(use-package org-note
+  :ensure t
+  :defer 4)
