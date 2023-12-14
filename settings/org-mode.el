@@ -52,6 +52,8 @@
   ;; Disable electric-indent-mode in org buffers
   :hook (org-mode . (lambda () (electric-indent-local-mode 0)))
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
+  :config
+  (with-eval-after-load 'org (global-org-modern-mode))
   )
 
 
@@ -226,3 +228,9 @@
 (use-package org-note
   :ensure t
   :defer 4)
+
+;; https://github.com/minad/org-modern
+(use-package org-modern
+  :ensure t
+  :defer 3
+  :after org-mode)
