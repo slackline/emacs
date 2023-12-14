@@ -225,7 +225,7 @@
                     path (or desc "video"))))))
 
 ;; https://github.com/Artawower/orgnote.el
-(use-package org-note
+(use-package orgnote
   :ensure t
   :defer 4)
 
