@@ -70,9 +70,9 @@
 
 
 ;;; http://github.com/mlf176f2/ess-smart-underscore.el
-(use-package ess-smart-underscore
-  :ensure t
-  :after (ess))
+;; (use-package ess-smart-underscore
+;;   :ensure t
+;;   :after (ess))
 
 ;;; https://github.com/ShuguangSun/tree-sitter-ess-r
 (use-package tree-sitter-ess-r
