@@ -12,4 +12,5 @@
         ("s-p" . projectile-command-map))
   :config
   (setq projectile-project-search-path '("~/org/" "~/org-roam" "~/.config/emacs" ("~/work/git/" . 3)))
-  (setq projectile-enable-caching t))
+  (setq projectile-enable-caching t)
+  (setq projectile-switch-project-action #'projectile-commander))
