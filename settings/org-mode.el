@@ -234,3 +234,12 @@
   :ensure t
   :defer 3
   :after org-mode)
+
+;; https://github.com/alphapapa/org-bookmark-heading
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
+(use-package org-bookmark-heading
+  :ensure t
+  :defer 3
+  :after org-mode)
+
+;; https://github.com/SqrtMinusOne/org-clock-agg
