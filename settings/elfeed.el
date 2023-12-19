@@ -10,10 +10,10 @@
 
 ;; use an org file to organise feeds
 (use-package elfeed-org
-	     :ensure t
-	     :config
-	     (elfeed-org)
-	     (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elfeed feed reader                                                     ;;
@@ -73,40 +73,41 @@
   (elfeed-update))
 
 (use-package simple-httpd
-	     :ensure t
-	     :config
-	     (setq httpd-host (cdr
-                               (assoc (nth 0 (split-string (system-name) "\\.")) httpd-system-name)))
-	     (setq httpd-port "8818"))
+  :ensure t
+  :config
+  (setq httpd-host (cdr
+                    (assoc (nth 0 (split-string (system-name) "\\.")) httpd-system-name)))
+  (setq httpd-port "8818"))
 
 
 (use-package elfeed
-	     :ensure t
-	     :bind (:map elfeed-search-mode-map
-			 ("A" . nds:elfeed-show-all)
-			 ("c" . nds:elfeed-show-climbing)
-			 ("C" . nds:elfeed-show-computing)
-			 ("e" . nds:elfeed-show-emacs)
-			 ("R" . nds:elfeed-show-reading)
-			 ("H" . nds:elfeed-show-humor)
-			 ("S" . nds:elfeed-show-statistics)
-			 ("D" . nds:elfeed-show-daily)
-			 ("q" . nds:elfeed-save-db-and-bury))
-	     :config
-	     (setq httpd-port 8818)
-	     ;; run-with-timer takes an argument in seconds
-	     ;; (* 30 60) therefore rerurns 30 minutes in seconds
-	     (if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'nds:elfeed-updater))
-	     (setq elfeed-web-enabled t)
-             :hook
-             (nds:elfeed-updater . elfeed-web-start))
+  :ensure t
+  :bind (:map elfeed-search-mode-map
+	      ("A" . nds:elfeed-show-all)
+	      ("c" . nds:elfeed-show-climbing)
+	      ("C" . nds:elfeed-show-computing)
+	      ("e" . nds:elfeed-show-emacs)
+	      ("R" . nds:elfeed-show-reading)
+	      ("H" . nds:elfeed-show-humor)
+	      ("S" . nds:elfeed-show-statistics)
+	      ("D" . nds:elfeed-show-daily)
+	      ("q" . nds:elfeed-save-db-and-bury))
+  :config
+  (setq httpd-port 8818)
+  ;; run-with-timer takes an argument in seconds
+  ;; (* 30 60) therefore rerurns 30 minutes in seconds
+  ;; https://emacs.stackexchange.com/questions/6029/is-it-possible-to-execute-a-function-or-command-at-a-specific-time
+  (if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'elfeed-update))
+  (setq elfeed-web-enabled t)
+  :hook
+  (nds:elfeed-updater . elfeed-web-start))
 
 
 ;; Use elfeed-web to periodically update
 (use-package elfeed-web
-	     :ensure t
-	     :config
-	     (setq httpd-port 8818))
+  :ensure t
+  :config
+  (setq httpd-port 8818))
 
 ;; Deleting entries from the database https://github.com/skeeto/elfeed/issues/392
 (defun nds:elfeed-db-remove-entry (id)
