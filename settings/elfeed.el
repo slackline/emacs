@@ -98,7 +98,7 @@
   ;; run-with-timer takes an argument in seconds
   ;; (* 30 60) therefore rerurns 30 minutes in seconds
   ;; https://emacs.stackexchange.com/questions/6029/is-it-possible-to-execute-a-function-or-command-at-a-specific-time
-  (if system-name "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'elfeed-update))
+  (if (system-name) "vps-bb669593" (run-at-time "07:00" (* 12 3600) 'elfeed-update))
   (setq elfeed-web-enabled t)
   :hook
   (nds:elfeed-updater . elfeed-web-start))
