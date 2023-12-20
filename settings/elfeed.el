@@ -71,6 +71,7 @@
   (elfeed)
   (elfeed-search-update--force)
   (elfeed-update))
+(elfeed-db-save)
 
 (use-package simple-httpd
   :ensure t
@@ -103,6 +104,7 @@
   (nds:elfeed-updater . elfeed-web-start))
 
 
+;; https://github.com/fritzgrabo/elfeed-webkit
 ;; Use elfeed-web to periodically update
 (use-package elfeed-web
   :ensure t
