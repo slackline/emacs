@@ -16,7 +16,9 @@
 ;; Simplified Emacs keymap in Emacs 29 (and earlier!) : https://systemcrafters.net/newsletter/sc-news-004.html
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
-  :config (which-key-mode))
+  :config (which-key-mode)
+  :bind
+  (global-set-key (kbd "<f8>") 'which-key-show-major-mode))
 
 ;; helpful settings
 ;; https://github.com/Wilfred/helpful
@@ -55,6 +57,7 @@
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
 (global-set-key (kbd "<f7>") 'flyspell-toggle)
+(global-set-key (kbd "<f8>") 'which-key-show-major-mode)
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
