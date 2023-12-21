@@ -13,18 +13,27 @@ tramp
 url/cookies
 
 # Directories
+.cache/
 .python-environments/
+auto-save-list/
+el-easydraw/
+el-get/
 elpa/
 emojis/
-el-get/
-transient/
-.cache/
-el-easydraw/
-request/curl-cookie.jar
-auto-save-list/
+eply/
+persist/
 request/
+request/curl-cookie.jar
+transient/
 url/
+var/
 
-# Private files
+# Private or repo specific files files
+bookmarks
+custom.el
+history
 mastodon.plstore
 org-roam.db
+projectile-bookmarks.eld
+projectile.cache
+recentf
