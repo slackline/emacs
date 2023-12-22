@@ -89,6 +89,7 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+  (setq use-package-always-defer t)   ; Lazy load all packages
   (setq inhibit-startup-message t)    ; Hide the startup message
   (setq global-visual-line-mode t)    ; Visual line wrap
   (setq inhibit-startup-screen t)     ; Disable startup screen
@@ -103,6 +104,7 @@
   (setq vc-follow-symlinks t)         ; open source of symlink maintain vc
                                         ; (https://stackoverflow.com/a/30900018/1444043)
   (setq winner-mode t)                ; toggling window configuration
+  (setq initial-scratch-message nil)
   (setq pixel-scroll-precision-mode t)
   (setq lisp-indent-offset 2)
   (setq undo-strong-limit 640000)

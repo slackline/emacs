@@ -17,7 +17,6 @@
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
   :config (which-key-mode)
-  :bind
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode))
 
 ;; helpful settings
