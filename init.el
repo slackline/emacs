@@ -208,9 +208,9 @@
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
+(load "~/.config/emacs/settings/org-babel.el")
 (load "~/.config/emacs/settings/org-mode.el")
 (load "~/.config/emacs/settings/org-ref.el")
-(load "~/.config/emacs/settings/org-babel.el")
 (load "~/.config/emacs/settings/org-notifications.el")
 (load "~/.config/emacs/settings/org-roam.el")
 (load "~/.config/emacs/settings/org-gtd.el")

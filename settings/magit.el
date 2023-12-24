@@ -222,7 +222,7 @@
 ;; (transient-append-suffix 'magit-dispatch "!"
 ;;   '("#" "My Magit Cmds" nds:magit-aux-commands))
 
-(define-key magit-status-mode-map (kbd "#") #'nds:magit-aux-commands)
+;; (define-key magit-status-mode-map (kbd "#") #'nds:magit-aux-commands)
 
 ;; Treemacs-magit
 (use-package treemacs-magit
