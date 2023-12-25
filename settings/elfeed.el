@@ -70,8 +70,8 @@
   (elfeed-db-load)
   (elfeed)
   (elfeed-search-update--force)
-  (elfeed-update))
-(elfeed-db-save)
+  (elfeed-update)
+  (elfeed-db-save))
 
 (use-package simple-httpd
   :ensure t
