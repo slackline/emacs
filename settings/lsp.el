@@ -17,9 +17,12 @@
 ;; I use jedi-language-server loaded by lsp-jedi below.
 ;; Know that you have to `M-x lsp-restart-workspace`
 ;; if you change the virtual environment in an open python buffer.
+;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
 (use-package lsp-mode
   :ensure t
   :defer t
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :config
   (setq lsp-idle-delay 0.5
 	lsp-enable-symbol-highlighting t
@@ -27,24 +30,25 @@
   ;; (setq lsp-markdown-server-command remark-language-server)
   ;; (lsp-register-custom-settings
   ;;  ;; pyls enabled/disabled https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-  ;;  '(;; Enabled
-  ;;    ("pylsp.plugins.jedi_completion.enabled" t t)
-  ;;    ("pylsp.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
-  ;;    ("pylsp.plugins.jedi_hover.enabled" t t)
-  ;;    ("pylsp.plugins.jedi_references.enabled" t t)
-  ;;    ("pylsp.plugins.pyls_black.enabled" t t)
-  ;;    ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
-  ;;    ;; ("pylsp.plugins.pydocstyle.enabled" t t)
-  ;;    ;; ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
-  ;;    ("pylsp.plugins.pylint.enabled" t t)
-  ;;    ;; Disabled (duplicated by flake8)
-  ;;    ("pylsp.plugins.pycodestyle.enabled" nil t)
-  ;;    ("pylsp.plugins.mccabe.enabled" nil t)
-  ;;    ("pylsp.plugins.pyflakes.enabled" nil t)))
+  '(;; Enabled
+    ("pylsp.plugins.jedi_completion.enabled" t t)
+    ("pylsp.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
+    ("pylsp.plugins.jedi_hover.enabled" t t)
+    ("pylsp.plugins.jedi_references.enabled" t t)
+    ("pylsp.plugins.pyls_black.enabled" t t)
+    ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
+    ("pylsp.plugins.pydocstyle.enabled" t t)
+    ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
+    ("pylsp.plugins.pylint.enabled" t t)
+    ;; Disabled (duplicated by flake8)
+    ("pylsp.plugins.pycodestyle.enabled" nil t)
+    ("pylsp.plugins.mccabe.enabled" nil t)
+    ("pylsp.plugins.pyflakes.enabled" nil t))
   :commands (lsp lsp-deferred)
   :init (setq lsp-keymap-prefix "C-c l"
 	      lsp-bash-highlight-parsing-errors t)
-  :hook ((python-mode . lsp)
+  :hook ((lsp-mode .lsp-enable-which-key-integration)
+	 (python-mode . lsp)
 	 (bash-mode . lsp)
 	 (dockerfile-mode . lsp)
 	 (groovy-mode . lsp)

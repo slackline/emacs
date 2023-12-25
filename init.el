@@ -249,7 +249,7 @@
 
 ;;; Themes, modeline and buffers
 (load "~/.config/emacs/settings/powerline.el")
-(load "~/.config/emacs/settings/modeline.el")
+;; (load "~/.config/emacs/settings/modeline.el")
 (load "~/.config/emacs/settings/popper.el")
 (load "~/.config/emacs/settings/theme.el")
 
