@@ -6,4 +6,6 @@
   :mode ("\\.md\\'" . gfm-mode)
   :hook (markdown-mode . auto-fill-mode)
   :init (setq markdown-command "pandoc")
-  :config)
+  :config
+  :bind (:map markdown-mode-map
+              ("C-c C-m" . markdown-do)))

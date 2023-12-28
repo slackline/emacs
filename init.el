@@ -194,15 +194,16 @@
 
 ;;; General editor settings
 (load "~/.config/emacs/settings/auto-package-update.el")
-(load "~/.config/emacs/settings/pass.el")
 (load "~/.config/emacs/settings/centaur-tabs.el")
+(load "~/.config/emacs/settings/dirvish.el")
 (load "~/.config/emacs/settings/highlight-indent-guides.el")
 (load "~/.config/emacs/settings/highlight-parentheses.el")
+;; (load "~/.config/emacs/settings/kitty.el")
 (load "~/.config/emacs/settings/rainbow-delimiters.el")
-(load "~/.config/emacs/settings/smartparens.el")
+(load "~/.config/emacs/settings/pass.el")
 (load "~/.config/emacs/settings/projectile.el")
+(load "~/.config/emacs/settings/smartparens.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
-(load "~/.config/emacs/settings/dirvish.el")
 
 ;;; Python
 (load "~/.config/emacs/settings/conda.el")
