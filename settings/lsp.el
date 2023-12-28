@@ -14,10 +14,12 @@
 
 
 ;; Provide LSP-mode for python, it requires a language server.
-;; I use jedi-language-server loaded by lsp-jedi below.
+;; I used to use jedi-language-server loaded by lsp-jedi below but its stopped working on home systems
+;; and so I've switched to pyright
 ;; Know that you have to `M-x lsp-restart-workspace`
 ;; if you change the virtual environment in an open python buffer.
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
+;; https://ianyepan.github.io/posts/emacs-ide/
 (use-package lsp-mode
   :ensure t
   :defer t
@@ -27,6 +29,7 @@
   (setq lsp-idle-delay 0.5
 	lsp-enable-symbol-highlighting t
 	lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
+  lsp-warn-no-matched-clients nil
   ;; pylsp https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
   ;; '(;; Enabled
   ;;   ("pylsp.plugins.jedi_completion.enabled" t t)
@@ -43,7 +46,7 @@
   ;;   ("pylsp.plugins.pycodestyle.enabled" nil t)
   ;;   ("pylsp.plugins.mccabe.enabled" nil t)
   ;;   ("pylsp.plugins.pyflakes.enabled" nil t))
-  :hook (;(lsp-mode . lsp-enable-which-key-integration)
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
 	 (R-mode . lsp)
 	 (bash-mode . lsp)
 	 (dockerfile-mode . lsp)
@@ -67,30 +70,33 @@
 (use-package lsp-ui
   :ensure t
   :defer t
-  :config
-  (setq lsp-ui-doc-enable t
-	lsp-ui-doc-delay 1
-	lsp-ui-doc-header nil
-	sp-ui-doc-include-signature t
-	lsp-ui-doc-border (face-foreground 'default)
-	lsp-ui-doc-use-childframe t
-	lsp-ui-doc-position 'top
-	lsp-ui-doc-include-signature t
-	lsp-ui-doc-use-childframe t
-	lsp-ui-doc-show-with-cursor t
-	lsp-ui-doc-show-with-mouse t
-	lsp-ui-sideline-enable nil
-	lsp-ui-flycheck-enable t
-	lsp-ui-flycheck-list-position 'right
-	lsp-ui-flycheck-live-reporting t
-	lsp-ui-peek-enable t
-	lsp-ui-peek-list-width 60
-	lsp-ui-peek-peek-height 25
-	lsp-ui-sideline-enable t
-	lsp-ui-sideline-show-code-actions t
-	lsp-ui-sideline-show-hover t
-	lsp-ui-sideline-delay 3)
   :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq
+   lsp-ui-doc-border (face-foreground 'default)
+   lsp-ui-doc-delay 1
+   lsp-ui-doc-enable t
+   lsp-ui-doc-include-signature t
+   lsp-ui-doc-header nil
+   lsp-ui-doc-include-signature t
+   lsp-ui-doc-position 'top
+   lsp-ui-doc-show-with-cursor t
+   lsp-ui-doc-show-with-mouse t
+   lsp-ui-doc-use-childframe t
+   lsp-ui-doc-use-childframe t
+   lsp-ui-flycheck-enable t
+   lsp-ui-flycheck-list-position 'right
+   lsp-ui-flycheck-live-reporting t
+   lsp-ui-imenu-enable t
+   lsp-ui-peek-enable t
+   lsp-ui-peek-list-width 60
+   lsp-ui-peek-peek-height 25
+   lsp-ui-sideline-delay 3
+   lsp-ui-sideline-enable nil
+   lsp-ui-sideline-enable t
+   lsp-ui-sideline-ignore-duplicate t
+   lsp-ui-sideline-show-code-actions t
+   lsp-ui-sideline-show-hover t)
   :bind (:map lsp-ui-mode-map
 	      ("C-c i" . lsp-ui-imenu)))
 
@@ -147,7 +153,7 @@
   :config
   (with-eval-after-load "lsp-mode"
     (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi)))
+    (add-to-list 'lsp-enabled-clients 'jedi-language-server)))
 ;; :init
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/python3_10/lib/site-packages"])))

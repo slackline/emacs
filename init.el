@@ -41,7 +41,9 @@
 ;; Modify exec-path
 (setq exec-path (append '("~/bin"
                           "~/.local/bin"
-                          "~/.cargo/bin/")
+                          "~/.cargo/bin/"
+                          "~/.node/bin/"
+                          )
                         exec-path))
 
 ;; Load and install mypackages
