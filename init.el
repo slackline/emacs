@@ -91,21 +91,20 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq use-package-always-defer t)   ; Lazy load all packages
-  (setq inhibit-startup-message t)    ; Hide the startup message
-  (setq global-visual-line-mode t)    ; Visual line wrap
-  (setq inhibit-startup-screen t)     ; Disable startup screen
-  (setq initial-scratch-message "")   ; Make *scratch* buffer blank
-  (setq confirm-kill-processes nil)   ; Stop confirming the killing of processes
-  (setq ring-bell-function 'ignore)   ; Disable bell sound
+  (setq use-package-always-defer t); Lazy load all packages
+  (setq inhibit-startup-message t) ; Hide the startup message
+  (setq global-visual-line-mode t) ; Visual line wrap
+  (setq inhibit-startup-screen t) ; Disable startup screen
+  (setq initial-scratch-message "") ; Make *scratch* buffer blank
+  (setq confirm-kill-processes nil) ; Stop confirming the killing of processes
+  (setq ring-bell-function 'ignore)  ; Disable bell sound
   (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-  (setq use-dialog-box nil)           ; No dialog pop-ups
-  (setq history-length 100)           ; Mini-buffer history
-  (setq-default fill-column 120)      ; Reset line-length
-  (setq undo-limit 320000)            ; Increase the undo history limits
-  (setq vc-follow-symlinks t)         ; open source of symlink maintain vc
-                                        ; (https://stackoverflow.com/a/30900018/1444043)
-  (setq winner-mode t)                ; toggling window configuration
+  (setq use-dialog-box nil) ; No dialog pop-ups
+  (setq history-length 1000) ; Mini-buffer history
+  (setq-default fill-column 120) ; Reset line-length
+  (setq undo-limit 320000) ; Increase the undo history limits
+  (setq vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+  (setq winner-mode t) ; toggling window configuration
   (setq initial-scratch-message nil)
   (setq pixel-scroll-precision-mode t)
   (setq lisp-indent-offset 2)
@@ -132,8 +131,6 @@
 	 ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
 	 ;; Magit /code review
 	 ("C-x g" . magit-status)
-	 ("C-c P" . magit-push-current-to-upstream)
-	 ("C-c F" . magit-pull)
 	 ("C-c R" . code-review-forge-pr-at-point))
   :hook
   ((latex-mode
