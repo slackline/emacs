@@ -2,7 +2,6 @@
 ;;; https://github.com/alexluigit/dirvish
 (use-package dirvish
   :ensure t
-  :defer 3
   :init
   (dirvish-override-dired-mode)
   :config
@@ -33,19 +32,15 @@
   :after dirvish)
 
 (use-package all-the-icons-dired
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package all-the-icons-ibuffer
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync-transient
-  :ensure t
-  :defer t)
+  :ensure t)

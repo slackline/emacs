@@ -2,5 +2,4 @@
 ;; --------------------------------------
 ;; https://codeberg.org/akib/emacs-eat/
 (use-package eat
-  :ensure t
-  :defer 5)
+  :ensure t)

@@ -29,7 +29,6 @@
 ;; https://www.youtube.com/watch?v=uxyhmhRVOfw
 (use-package ess
   :ensure t
-  ;; :defer 1
   ;;     :requires ess-r-mode
   ;;     ess-r-package
   :init
@@ -104,6 +103,5 @@
 ;; Disabled 2023-01-28 was causing errors (see https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276597)
 ;; (use-package r-autoyas
 ;; 	     :ensure t
-;; 	     :defer 3
 ;; 	     :hook
 ;; 	     (ess-mode . r-autoyas-ess-activate))

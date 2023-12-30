@@ -4,7 +4,6 @@
 ;;; https://docs.projectile.mx/
 (use-package projectile
   :ensure t
-  :defer 3
   :init
   (projectile-mode +1)
   :bind

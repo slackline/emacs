@@ -4,21 +4,19 @@
 
 ;; https://gitea.petton.fr/mpdel/mpdel
 (use-package mpdel
-	     :defer 2
-	     :init
-	     (setq libmpdel-hostname "192.168.1.21")
-	     (setq libmpdel-port 6600))
+  :init
+  (setq libmpdel-hostname "192.168.1.21")
+  (setq libmpdel-port 6600))
 ;; (mpdel-mode)
 (use-package ivy-mpdel
-	     :defer 2)
+  :defer 2)
 
 ;; https://github.com/sp1ff/mpdmacs
 ;; (use-package mpdmacs
-;; 	     :ensure t
-;; 	     :defer 2
-;; 	     :init
-;; 	     (setq mpdmacs-host "192.168.1.21")
-;; 	     (setq mpdmacs-port 6600)
-;; 	     :bind
-;; 	     ("C-c m" . 'mpdmacs-mode-keymap)
-;; 	     :hook (mpdmacs-mode-hook . mpdmacs-mode-keymap))
+;; 	 :ensure t
+;; 	 :init
+;; 	 (setq mpdmacs-host "192.168.1.21")
+;; 	 (setq mpdmacs-port 6600)
+;; 	 :bind
+;; 	 ("C-c m" . 'mpdmacs-mode-keymap)
+;; 	 :hook (mpdmacs-mode-hook . mpdmacs-mode-keymap))

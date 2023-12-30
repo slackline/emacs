@@ -71,9 +71,8 @@
 
 ;; https://github.com/rksm/clj-org-analyzer/
 (use-package org-analyzer
-  :ensure t
-  :defer 3
-  )
+  :ensure t )
+
 ;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
 ;; (define-key org-mode-map (kbd "`")
 ;;     (lambda ()
@@ -119,8 +118,7 @@
 ;; Org rainbow tags
 ;; https://github.com/KaratasFurkan/org-rainbow-tags
 (use-package org-rainbow-tags
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; https://github.com/jxq0/org-tidy
 ;; (use-package org-tidy
@@ -131,16 +129,13 @@
 ;; ox packages
 (use-package ox-reveal
   :ensure t
-  ;;  :defer t
   :config
   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
 	org-reveal-mathjax t))
 (use-package ox-spectacle
-  :ensure t
-  :defer t)
+  :ensure t)
 (use-package ox-pandoc
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; Skeletons
 (define-skeleton org-R-skeleton
@@ -226,20 +221,17 @@
 
 ;; https://github.com/Artawower/orgnote.el
 (use-package orgnote
-  :ensure t
-  :defer 4)
+  :ensure t)
 
 ;; https://github.com/minad/org-modern
 (use-package org-modern
   :ensure t
-  :defer 3
   :after org-mode)
 
 ;; https://github.com/alphapapa/org-bookmark-heading
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
 (use-package org-bookmark-heading
   :ensure t
-  :defer 3
   :after org-mode)
 
 ;; https://github.com/SqrtMinusOne/org-clock-agg

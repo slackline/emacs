@@ -194,7 +194,7 @@
 (load "~/.config/emacs/settings/centaur-tabs.el")
 (load "~/.config/emacs/settings/dirvish.el")
 (load "~/.config/emacs/settings/highlight-indent-guides.el")
-(load "~/.config/emacs/settings/highlight-parentheses.el")
+;; (load "~/.config/emacs/settings/highlight-parentheses.el")
 ;; (load "~/.config/emacs/settings/kitty.el")
 (load "~/.config/emacs/settings/rainbow-delimiters.el")
 (load "~/.config/emacs/settings/pass.el")
@@ -216,18 +216,23 @@
 (load "~/.config/emacs/settings/org-gtd.el")
 (load "~/.config/emacs/settings/org-capture.el")
 
-;;; Misc
+;;; Chat
+(load "~/.config/emacs/settings/ement.el")
+(load "~/.config/emacs/settings/mastodon.el")
+
+;;; Terminals
 (load "~/.config/emacs/settings/eat.el")
+(load "~/.config/emacs/settings/vterm.el")
+
+;;; Misc
 (load "~/.config/emacs/settings/exercism.el")
 (load "~/.config/emacs/settings/keychain-environment.el")
 (load "~/.config/emacs/settings/literate-calc.el")
-(load "~/.config/emacs/settings/mastodon.el")
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
 (load "~/.config/emacs/settings/pdf-tools.el")
 (load "~/.config/emacs/settings/scratch.el")
 (load "~/.config/emacs/settings/tramp.el")
-;; (load "~/.config/emacs/settings/vterm.el")
 ;; (load "~/.config/emacs/settings/weblorg.el")
 ;; (load "~/.config/emacs/settings/ytdl.el")
 

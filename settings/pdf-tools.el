@@ -1,4 +1,3 @@
 ;;; https://github.com/vedang/pdf-tools
 (use-package pdf-tools
-  :ensure t
-  :defer 3)
+  :ensure t)

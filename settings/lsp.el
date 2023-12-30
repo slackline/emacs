@@ -6,7 +6,6 @@
 ;; and project management when coupled with `projectile`.
 (use-package treemacs
   :ensure t
-  :defer t
   :config
   (setq treemacs-no-png-images t
 	treemacs-width 24)
@@ -22,7 +21,6 @@
 ;; https://ianyepan.github.io/posts/emacs-ide/
 (use-package lsp-mode
   :ensure t
-  :defer t
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
@@ -69,7 +67,6 @@
 ;; https://github.com/emacs-lsp/lsp-ui
 (use-package lsp-ui
   :ensure t
-  :defer t
   :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq
@@ -103,14 +100,12 @@
 ;; https://github.com/emacs-lsp/lsp-treemacs
 (use-package lsp-treemacs
   :ensure t
-  :defer t
   :config
   (setq lsp-treemacs-sync-mode 1))
 
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
-  :defer t
   :after lsp-mode
   :config
   (dap-auto-configure-mode))
@@ -118,32 +113,30 @@
 
 ;; Required to hide the modeline
 (use-package hide-mode-line
-  :ensure t
-  :defer t)
+  :ensure t)
 
 
 
 ;; Language servers
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
-;; (use-package lsp-pyright
-;;   :ensure t
-;;   :defer t
-;;   :config
-;;   (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-;;   (setq lsp-pyright-disable-language-service nil
-;; 	lsp-pyright-disable-organize-imports nil
-;; 	lsp-pyright-auto-import-completions t
-;; 	lsp-pyright-use-library-code-for-types t
-;; 	;; lsp-pyright-typeshed-paths
-;; 	;; lsp-pyright-diagnostic-mode
-;; 	lsp-pyright-typechecking-mode "basic"
-;; 	lsp-pyright-log-level 1
-;; 	;; lsp-pyright-auto-search-paths
-;; 	;; lsp-pyright-extra-paths
-;; 	lsp-pyright-venv-path "~/miniconda3/envs")
-;;   :hook ((python-mode . (lambda ()
-;;                           (require 'lsp-pyright) (lsp-deferred)))))
+(use-package lsp-pyright
+  :ensure t
+  ;; :config
+  ;; (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  ;; (setq lsp-pyright-disable-language-service nil
+  ;;   lsp-pyright-disable-organize-imports nil
+  ;;   lsp-pyright-auto-import-completions t
+  ;;   lsp-pyright-use-library-code-for-types t
+  ;;   lsp-pyright-typeshed-paths
+  ;;   lsp-pyright-diagnostic-mode
+  ;;   lsp-pyright-typechecking-mode "basic"
+  ;;   lsp-pyright-log-level 1
+  ;;   lsp-pyright-auto-search-paths
+  ;;   lsp-pyright-extra-paths
+  ;;   lsp-pyright-venv-path "~/miniconda3/envs")
+  :hook ((python-mode . (lambda ()
+                          (require 'lsp-pyright) (lsp-deferred)))))
 
 ;; Python - Jedi
 ;; LSP Module : https://github.com/fredcamps/lsp-jedi

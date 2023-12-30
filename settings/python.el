@@ -48,8 +48,7 @@
 
 ;;  https://github.com/nryotaro/pyvenv-auto
 ;; (use-package pyvenv-auto
-;;   :ensure t
-;;   :defer 3)
+;;   :ensure t)
 
 ;; Built-in Python utilities
 (use-package python
@@ -81,14 +80,12 @@
 ;; https://github.com/wbolster/emacs-python-pytest
 (use-package python-pytest
   :after (pyvenv)
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 ;; https://github.com/ionrock/pytest-el
 ;; (use-package pytest
 ;;   :after (pyvenv)
-;;   :ensure t
-;;   :defer 3)
+;;   :ensure t)
 
 ;; https://github.com/emacsorphanage/pylint
 (use-package pylint
@@ -99,7 +96,6 @@
 ;; https://github.com/pythonic-emacs/blacken
 (use-package blacken
   :ensure t
-  :defer 3
   :custom
   (blacken-line-length 120)
   :hook (python-mode . blacken-mode))
@@ -107,19 +103,16 @@
 ;; https://github.com/scop/emacs-ruff-format
 (use-package ruff-format
   :ensure t
-  :defer 3
   :hook (python-mode . ruff-format-on-save-mode))
 
 ;; https://github.com/erickgnavar/flymake-ruff
 (use-package flymake-ruff
   :ensure t
-  :defer 3
   :hook (python-mode . flymake-ruff-load))
 
 ;; https://github.com/douglasdavis/numpydoc.el
 (use-package numpydoc
   :ensure t
-  :defer t
   :after lsp
   :custom
   (numpydoc-prompt-for-input t)
@@ -129,7 +122,6 @@
 ;; https://github.com/millejoh/emacs-ipython-notebook
 (use-package ein
   :ensure t
-  :defer t
   :config
   (setq ein:output-area-inlined-images t
 	ein:polymode t
@@ -146,16 +138,13 @@
 
 ;; https://github.com/paetzke/py-autopep8.el
 ;; (use-package py-autopep8
-;;   :defer 3
 ;;   :hook (python-mode . py-autopep8-enable-on-save))
 
 ;; (use-package yapfify
 ;;   :ensure t
-;;   :defer t
-;;   :hook (python-mode . yapf-mode))
+;; ;;   :hook (python-mode . yapf-mode))
 
 ;; https://github.com/cybniv/poetry.el
 ;; (use-package poetry
 ;; 	     :ensure t
-;; 	     :defer t
-;; 	     :after lsp)
+;; 	   ;; 	     :after lsp)

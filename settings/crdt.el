@@ -1,4 +1,3 @@
 ;;; https://code.librehq.com/qhong/crdt.el
 (use-package crdt
-  :ensure true
-  :defer 3)
+  :ensure true)

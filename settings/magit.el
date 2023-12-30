@@ -32,27 +32,22 @@
 
 ;; Git modes
 (use-package git-modes
-  :defer t
   :ensure t)
 
 (use-package gh-notify
-  :defer t
   :ensure t)
 (use-package magit-imerge
-  :defer t
   :ensure t
   :after magit)
 
 ;; https://github.com/dandavison/magit-delta
 (use-package magit-delta
-  :defer t
   :ensure t
   :after magit
   :hook (magit-mode . magit-delta-mode))
 
 ;; https://codeberg.org/akib/emacs-why-this
 (use-package why-this
-  :defer t
   :ensure t
   :init
   ;;  (setq global-why-this-mode)
@@ -63,16 +58,19 @@
 
 ;; https://github.com/sshaw/git-link
 (use-package git-link
-  :defer t
   :ensure t
   :config
   (global-set-key (kbd "C-c m g l") 'git-link)
   (global-set-key (kbd "C-c m g c") 'git-link-commit)
   (global-set-key (kbd "C-c m g h") 'git-link-homepage))
 
+;; https://github.com/blahgeek/emacs-pr-review
+;; (use-package pr-review
+;;   :ensure t
+;;   :after ghub)
+
 ;; https://github.com/wandersoncferreira/code-review/
 (use-package code-review
-  :defer t
   :ensure t
   :config
   (setq code-review-fill-column 120)
@@ -81,7 +79,6 @@
 
 ;; https://github.com/LionyxML/magit-stats
 (use-package magit-stats
-  :defer t
   :ensure t)
 
 ;; Orgit / Orgit-forge
@@ -108,8 +105,7 @@
 
 ;; https://codeberg.org/pidu/git-timemachine
 (use-package git-timemachine
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;; difftastic configuration (https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html)
 ;;
@@ -226,20 +222,14 @@
 
 ;; Treemacs-magit
 (use-package treemacs-magit
-  :ensure t
-  :defer 3)
+  :ensure t)
 
-;; Gitlab stuff
+;; Gitlab packages
 
-;; https://github.com/nlamirault/emacs-gitlab
-(use-package gitlab-ci-mode
-  :ensure t
-  :defer 3)
-;; https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
-(use-package gitlab-ci-mode-flycheck
-  :ensure t
-  :defer 3)
 ;; https://gitlab.com/joewreschnig/gitlab-ci-mode/
 (use-package gitlab-ci-mode
-  :ensure t
-  :defer 3)
+  :ensure t)
+
+;; https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
+(use-package gitlab-ci-mode-flycheck
+  :ensure t)

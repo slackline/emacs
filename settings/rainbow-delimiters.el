@@ -4,8 +4,6 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (use-package rainbow-mode
-	     :ensure t
-	     :defer 1
-  	     :hook
-	     (prog-mode-hook . rainbow-mode)
-	     )
+  :ensure t
+  :hook
+  (prog-mode-hook . rainbow-mode))
