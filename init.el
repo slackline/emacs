@@ -91,7 +91,6 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-  (setq use-package-always-defer t); Lazy load all packages
   (setq inhibit-startup-message t) ; Hide the startup message
   (setq global-visual-line-mode t) ; Visual line wrap
   (setq inhibit-startup-screen t) ; Disable startup screen
@@ -234,11 +233,12 @@
 ;; (load "~/.config/emacs/settings/eglot.el")
 (load "~/.config/emacs/settings/ess.el")
 (load "~/.config/emacs/settings/fly.el")
-(load "~/.config/emacs/settings/format-all.el")
+;; (load "~/.config/emacs/settings/format-all.el")
 (load "~/.config/emacs/settings/jedi.el")
 (load "~/.config/emacs/settings/js.el")
 (load "~/.config/emacs/settings/latex.el")
 (load "~/.config/emacs/settings/lsp.el")
+;; (load "~/.config/emacs/settings/lsp-sample.el")
 (load "~/.config/emacs/settings/magit.el")
 (load "~/.config/emacs/settings/markdown.el")
 (load "~/.config/emacs/settings/mermaid.el")
@@ -248,7 +248,6 @@
 
 
 ;;; Themes, modeline and buffers
-(load "~/.config/emacs/settings/powerline.el")
 ;; (load "~/.config/emacs/settings/modeline.el")
 (load "~/.config/emacs/settings/popper.el")
 (load "~/.config/emacs/settings/theme.el")

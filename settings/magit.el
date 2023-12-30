@@ -91,6 +91,7 @@
 ;; https://github.com/magit/orgit
 (use-package orgit
   :after magit)
+
 ;; https://github.com/magit/orgit-forge
 (use-package orgit-forge
   :after magit
@@ -98,6 +99,7 @@
 	      ("C-c m c" . orgit-store-link))
   (:map org-mode-map
 	("C-c m v" . org-insert-last-stored-link)))
+
 ;; emacsql-sqlite-module is required by forge, but not always explicitly pulled in
 (use-package emacsql-sqlite-module
   :ensure t

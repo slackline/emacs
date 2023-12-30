@@ -13,9 +13,9 @@
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
 (use-package modus-themes
-  :ensure t                         ; omit this to use the built-in themes
+  :ensure t ;; omit this to use the built-in themes
   :init
-  ;; Add all your customizations prior to loading the themes
+  ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t
 	modus-themes-bold-constructs t
 	modus-themes-org-blocks '(tinted-background))
@@ -49,6 +49,7 @@
 ;; Mood line
 (use-package mood-line
   :ensure t
+  :defer 0.5
   :config
   (mood-line-mode)
   :custom
@@ -85,36 +86,46 @@
 ;;                 prot-modeline-misc-info))
 
 
-;; Highlighting
+;; https://github.com/DarthFennec/highlight-indent-guides
 (use-package highlight-indent-guides
   :ensure t
+  :defer 1
   :config
-  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-method 'bitmap)
   :hook
-  (prog-mode-hook . highlight-indent-guides-mode)
-  )
+  (prog-mode . highlight-indent-guides-mode))
 
 
-;; Delimiters and parentheses
 ;; https://github.com/Fuco1/smartparens
 (use-package smartparens
   :ensure t
+  :defer 1
+  :init
+  (setq smartparens-global-mode t)
   :hook
-  (prog-mode text-mode markdown-mode latex-mode)
+  (prog-mode . smartparens-mode)
+  (text-mode . smartparens-mode)
+  (markdown-mode . smartparens-mode)
+  (latex-mode . smartparents-mode)
   :config
-  (require 'smartparens-config))
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode 1)
+    (show-paren-mode t)))
 
-;; RAINDBOW-DELIMITERS CONFIGURATION
+;; https://github.com/Fanael/rainbow-delimiters
 (use-package rainbow-delimiters
   :ensure t
+  :defer 1
   :init
   :hook
-  (prog-mode-hook . rainbow-delimiters-mode))
+  (prog-mode . rainbow-delimiters-mode))
 
 (use-package rainbow-mode
   :ensure t
+  :defer 1
   :hook
-  (prog-mode-hook . rainbow-mode))
+  (prog-mode . rainbow-mode))
 
 
 ;; Other themes I've tried

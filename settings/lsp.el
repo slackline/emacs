@@ -21,8 +21,9 @@
 ;; https://ianyepan.github.io/posts/emacs-ide/
 (use-package lsp-mode
   :ensure t
+  :defer 1
   :init
-  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-keymap-prefix "C-c L")
   :config
   (setq lsp-idle-delay 0.5
 	lsp-enable-symbol-highlighting t
@@ -58,8 +59,8 @@
 	 (org-mode . lsp)
 	 (python-mode . lsp)
 	 (sh-mode . lsp)
-	 (terraform-mode . lsp))
-  :commands (lsp lsp-deferred))
+	 (terraform-mode . lsp)))
+;;   :commands (lsp))
 
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
@@ -120,33 +121,37 @@
 ;; Language servers
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
-(use-package lsp-pyright
-  :ensure t
-  ;; :config
-  ;; (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  ;; (setq lsp-pyright-disable-language-service nil
-  ;;   lsp-pyright-disable-organize-imports nil
-  ;;   lsp-pyright-auto-import-completions t
-  ;;   lsp-pyright-use-library-code-for-types t
-  ;;   lsp-pyright-typeshed-paths
-  ;;   lsp-pyright-diagnostic-mode
-  ;;   lsp-pyright-typechecking-mode "basic"
-  ;;   lsp-pyright-log-level 1
-  ;;   lsp-pyright-auto-search-paths
-  ;;   lsp-pyright-extra-paths
-  ;;   lsp-pyright-venv-path "~/miniconda3/envs")
-  :hook ((python-mode . (lambda ()
-                          (require 'lsp-pyright) (lsp-deferred)))))
+;; (use-package lsp-pyright
+;;   :ensure t
+;;   ;; :config
+;;   ;; (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+;;   ;; (setq lsp-pyright-disable-language-service nil
+;;   ;;   lsp-pyright-disable-organize-imports nil
+;;   ;;   lsp-pyright-auto-import-completions t
+;;   ;;   lsp-pyright-use-library-code-for-types t
+;;   ;;   lsp-pyright-typeshed-paths
+;;   ;;   lsp-pyright-diagnostic-mode
+;;   ;;   lsp-pyright-typechecking-mode "basic"
+;;   ;;   lsp-pyright-log-level 1
+;;   ;;   lsp-pyright-auto-search-paths
+;;   ;;   lsp-pyright-extra-paths
+;;   ;;   lsp-pyright-venv-path "~/miniconda3/envs")
+;;   :hook ((python-mode . (lambda ()
+;;                           (require 'lsp-pyright) (lsp-deferred)))))
 
 ;; Python - Jedi
 ;; LSP Module : https://github.com/fredcamps/lsp-jedi
 ;; Server     : https://github.com/pappasam/jedi-language-server
 (use-package lsp-jedi
   :ensure t
+  ;; :after lsp-mode
   :config
-  (with-eval-after-load "lsp-mode"
+  (with-eval-after-load "python-mode"
     (add-to-list 'lsp-disabled-clients 'pyls)
     (add-to-list 'lsp-enabled-clients 'jedi-language-server)))
+;; (add-to-list 'lsp-disabled-clients '(python-mode . pyright))
+;; (add-to-list 'lsp-enabled-clients '(python-mode . jedi-language-server)))
+
 ;; :init
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;       (vconcat lsp-jedi-workspace-extra-paths ["/home/neil/.virtualenvs/python3_10/lib/site-packages"])))

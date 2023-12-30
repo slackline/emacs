@@ -2,6 +2,7 @@
 ;;; --------------------------------------
 (use-package org
   :ensure t
+  :defer 0.5
   :init
   :bind
   (("C-x p i" . 'org-cliplink))
@@ -226,6 +227,7 @@
 ;; https://github.com/minad/org-modern
 (use-package org-modern
   :ensure t
+  :defer 0.5
   :after org-mode)
 
 ;; https://github.com/alphapapa/org-bookmark-heading
