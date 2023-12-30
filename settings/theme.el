@@ -53,6 +53,17 @@
   (mood-line-mode)
   :custom
   (setq mood-line-glyph-alist mood-line-glyphs-unicode))
+
+;;; https://github.com/milkypostman/powerline
+;;; Customisation : https://jr0cket.co.uk/2015/01/custom-powerline-theme-for-Emacs-modeline.html
+;;; Custom wave separator
+;; (use-package powerline
+;;   :init
+;;   (powerline-default-theme)
+;;   :config
+;;   (setq powerline-default-separator 'wave)
+;;   (setq-default mode-line-format (remove 'mode-line-buffer-identification mode-line-format)))
+
 ;; Custom Modeline (https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/)
 ;; (setq-default mode-line-format
 ;;               '("%e"
@@ -72,6 +83,38 @@
 ;;                 "  "
 ;;                 prot-modeline-align-right
 ;;                 prot-modeline-misc-info))
+
+
+;; Highlighting
+(use-package highlight-indent-guides
+  :ensure t
+  :config
+  (setq highlight-indent-guides-method 'character)
+  :hook
+  (prog-mode-hook . highlight-indent-guides-mode)
+  )
+
+
+;; Delimiters and parentheses
+;; https://github.com/Fuco1/smartparens
+(use-package smartparens
+  :ensure t
+  :hook
+  (prog-mode text-mode markdown-mode latex-mode)
+  :config
+  (require 'smartparens-config))
+
+;; RAINDBOW-DELIMITERS CONFIGURATION
+(use-package rainbow-delimiters
+  :ensure t
+  :init
+  :hook
+  (prog-mode-hook . rainbow-delimiters-mode))
+
+(use-package rainbow-mode
+  :ensure t
+  :hook
+  (prog-mode-hook . rainbow-mode))
 
 
 ;; Other themes I've tried

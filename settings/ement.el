@@ -4,4 +4,4 @@
 ;;;
 ;;; Doesn't yet support native room encryption, requires reverse proxy via https://github.com/matrix-org/pantalaimon/
 (use-package ement
-  :require t)
+  :ensure t)

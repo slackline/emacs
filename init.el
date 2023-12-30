@@ -193,18 +193,11 @@
 (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs.el")
 (load "~/.config/emacs/settings/dirvish.el")
-(load "~/.config/emacs/settings/highlight-indent-guides.el")
-;; (load "~/.config/emacs/settings/highlight-parentheses.el")
 ;; (load "~/.config/emacs/settings/kitty.el")
-(load "~/.config/emacs/settings/rainbow-delimiters.el")
 (load "~/.config/emacs/settings/pass.el")
 (load "~/.config/emacs/settings/projectile.el")
-(load "~/.config/emacs/settings/smartparens.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
 
-;;; Python
-(load "~/.config/emacs/settings/conda.el")
-(load "~/.config/emacs/settings/python.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
@@ -237,6 +230,7 @@
 ;; (load "~/.config/emacs/settings/ytdl.el")
 
 ;;; IDE / LSP
+;; (load "~/.config/emacs/settings/conda.el")
 ;; (load "~/.config/emacs/settings/eglot.el")
 (load "~/.config/emacs/settings/ess.el")
 (load "~/.config/emacs/settings/fly.el")
@@ -249,6 +243,7 @@
 (load "~/.config/emacs/settings/markdown.el")
 (load "~/.config/emacs/settings/mermaid.el")
 (load "~/.config/emacs/settings/polymode.el")
+(load "~/.config/emacs/settings/python.el")
 (load "~/.config/emacs/settings/yaml.el")
 
 
