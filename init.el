@@ -91,6 +91,7 @@
   :config
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+  (setq custom-file "~/.config/emacs/custom.el")
   (setq inhibit-startup-message t) ; Hide the startup message
   (setq global-visual-line-mode t) ; Visual line wrap
   (setq inhibit-startup-screen t) ; Disable startup screen
@@ -264,7 +265,7 @@
 ;; (term "/bin/zsh")
 
 
-(setq custom-file "~/.config/emacs/custom.el")
+
 (load custom-file)
 
 ;; Start elfeed last

@@ -74,8 +74,10 @@
   :ensure t
   :config
   (setq code-review-fill-column 120)
-  (add-hook 'code-review-mode-hook . #'emojify-mode)
-  (setq code-review-new-buffer-window-strategy #'switch-to-buffer))
+  (setq code-review-new-buffer-window-strategy #'switch-to-buffer)
+  :hook
+  (code-review-mode . emojify-mode)
+  )
 
 ;; https://github.com/LionyxML/magit-stats
 (use-package magit-stats

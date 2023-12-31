@@ -9,17 +9,22 @@
 ;;; poly-R : https://github.com/polymode/poly-R
 ;;; poly-rst : https://github.com/polymode/poly-rst
 (use-package polymode
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 (use-package poly-markdown
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 (use-package poly-noweb
   :ensure t)
 (use-package poly-org
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 (use-package poly-R
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 (use-package poly-rst
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 
 ;;; Register file types
 ;;; MARKDOWN

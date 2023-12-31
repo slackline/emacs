@@ -144,11 +144,12 @@
 ;; Server     : https://github.com/pappasam/jedi-language-server
 (use-package lsp-jedi
   :ensure t
-  ;; :after lsp-mode
+  :after lsp-mode
+  :defer 0.5
   :config
   (with-eval-after-load "python-mode"
-    (add-to-list 'lsp-disabled-clients 'pyls)
-    (add-to-list 'lsp-enabled-clients 'jedi-language-server)))
+    ;; (add-to-list 'lsp-disabled-clients '(pyls pylsp))
+    (add-to-list 'lsp-enabled-clients 'jedi)))
 ;; (add-to-list 'lsp-disabled-clients '(python-mode . pyright))
 ;; (add-to-list 'lsp-enabled-clients '(python-mode . jedi-language-server)))
 
