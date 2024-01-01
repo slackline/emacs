@@ -14,6 +14,7 @@
 ;; https://github.com/jorgenschaefer/pyvenv
 (use-package pyvenv
   :ensure t
+  :defer 1
   :config
   ;; Setting work on to easily switch between environments
   (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
@@ -54,6 +55,7 @@
 (use-package python
   :after (pyvenv)
   :ensure t
+  :defer 1
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil

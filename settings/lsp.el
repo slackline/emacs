@@ -29,22 +29,6 @@
 	lsp-enable-symbol-highlighting t
 	lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
   lsp-warn-no-matched-clients nil
-  ;; pylsp https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-  ;; '(;; Enabled
-  ;;   ("pylsp.plugins.jedi_completion.enabled" t t)
-  ;;   ("pylsp.plugins.jedi_completion.cache_for" '(pandas, numpy, matplotlib))
-  ;;   ("pylsp.plugins.jedi_hover.enabled" t t)
-  ;;   ("pylsp.plugins.jedi_references.enabled" t t)
-  ;;   ("pylsp.plugins.jedi_use_pyenv_environment.enabled" t t)
-  ;;   ("pylsp.plugins.pyls_black.enabled" t t)
-  ;;   ("pylsp.plugins.pycodestyle.maxLineLength" nil 120)
-  ;;   ("pylsp.plugins.pydocstyle.enabled" t t)
-  ;;   ("pylsp.plugins.pydocstyle.convention" nil 'numpy)
-  ;;   ("pylsp.plugins.pylint.enabled" t t)
-  ;;   ;; Disabled (duplicated by flake8)
-  ;;   ("pylsp.plugins.pycodestyle.enabled" nil t)
-  ;;   ("pylsp.plugins.mccabe.enabled" nil t)
-  ;;   ("pylsp.plugins.pyflakes.enabled" nil t))
   :hook ((lsp-mode . lsp-enable-which-key-integration)
 	 (R-mode . lsp)
 	 (bash-mode . lsp)
