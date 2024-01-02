@@ -110,7 +110,8 @@
 ;; https://github.com/erickgnavar/flymake-ruff
 (use-package flymake-ruff
   :ensure t
-  :hook (python-mode . flymake-ruff-load))
+  ;; :hook (python-mode . flymake-ruff-load))
+  :hook (lsp-managed-mode . flymake-ruff-load))
 
 ;; https://github.com/douglasdavis/numpydoc.el
 (use-package numpydoc
