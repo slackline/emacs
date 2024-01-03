@@ -117,9 +117,10 @@
 (use-package numpydoc
   :ensure t
   :after lsp
-  :custom
-  (numpydoc-prompt-for-input t)
-  (numpydoc-insert-examples-block nil))
+  :config
+  (setq numpydoc-prompt-for-input t)
+  (setq numpydoc-insert-examples-block 0)
+  (setq numpydoc-insert-raises-block 0))
 
 
 ;; https://github.com/millejoh/emacs-ipython-notebook

@@ -162,7 +162,9 @@
   :ensure t
   :hook (text-mode . (lambda ()
 		       (require 'lsp-ltex)
-		       (lsp))))  ; or lsp-deferred
+		       (lsp)))  ; or lsp-deferred
+  :init
+  (setq lsp-ltex-version "16.0.0"))
 (use-package lsp-latex
   :ensure t
   :hook (text-mode . (lambda ()
