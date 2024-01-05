@@ -33,7 +33,7 @@
 	 (R-mode . lsp)
 	 (bash-mode . lsp)
 	 (dockerfile-mode . lsp)
-	 (ess-r-mode . lsp)
+	 ;; (ess-r-mode . lsp)
 	 (gfm-mode . lsp)
 	 (groovy-mode . lsp)
 	 (html-mode . lsp)

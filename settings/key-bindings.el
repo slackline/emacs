@@ -16,6 +16,7 @@
 ;; Simplified Emacs keymap in Emacs 29 (and earlier!) : https://systemcrafters.net/newsletter/sc-news-004.html
 ;; https://github.com/justbur/emacs-which-key
 (use-package which-key
+  :defer 0.5
   :config (which-key-mode)
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode))
 
@@ -23,6 +24,7 @@
 ;; https://github.com/Wilfred/helpful
 ;;
 (use-package helpful
+  :defer 0.5
   :config
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
