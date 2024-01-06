@@ -2,14 +2,14 @@ repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0 # Use the ref you want to point at
     hooks:
-      - id: trailing-whitespace
-        types: [file, text]
-      - id: end-of-file-fixer
-      - id: mixed-line-ending
-        args: [--fix=no]
-      - id: fix-byte-order-marker
       - id: check-merge-conflict
       - id: check-yaml
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+        args: [--fix=no]
+      - id: trailing-whitespace
+        types: [file, text]
 
   - repo: https://github.com/eschulte/lisp-format
     rev: 088c8f78ca41204b44f2636275517ac09a2de6a9
