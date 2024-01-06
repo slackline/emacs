@@ -20,3 +20,8 @@ repos:
         language: script
         files: \.(lisp|cl|asd|scm|el)$
         entry: lisp-format -i
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
