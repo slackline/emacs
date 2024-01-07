@@ -72,7 +72,8 @@
 
 ;; https://github.com/rksm/clj-org-analyzer/
 (use-package org-analyzer
-  :ensure t )
+  :ensure t
+  :defer 2)
 
 ;; Swap backtick & tilde https://twitter.com/iLemming/status/1516930099148472321
 ;; (define-key org-mode-map (kbd "`")
@@ -119,7 +120,8 @@
 ;; Org rainbow tags
 ;; https://github.com/KaratasFurkan/org-rainbow-tags
 (use-package org-rainbow-tags
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 
 ;; https://github.com/jxq0/org-tidy
 ;; (use-package org-tidy
@@ -130,13 +132,16 @@
 ;; ox packages
 (use-package ox-reveal
   :ensure t
+  :defer 2
   :config
   (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/"
 	org-reveal-mathjax t))
 (use-package ox-spectacle
-  :ensure t)
+  :ensure t
+  :defer 2)
 (use-package ox-pandoc
-  :ensure t)
+  :ensure t
+  :defer 2)
 
 ;; Skeletons
 (define-skeleton org-R-skeleton

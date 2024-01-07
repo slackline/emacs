@@ -142,6 +142,7 @@
     prog-mode) . hs-minor-mode)
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
+  (before-save . do-auto-fill)
   (prog-mode-hook . highlight-indent-guides-mode)
   )
 
