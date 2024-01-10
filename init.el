@@ -71,6 +71,8 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
+;; Load my custom functions
+;; (load "~/.config/emacs/settings/custom-funcs.el")
 ;; Consider switching to elpaca
 ;; https://github.com/progfolio/elpaca
 ;; https://www.reddit.com/r/emacs/comments/11daqsz/elpaca_the_basics/
@@ -246,6 +248,7 @@
 (load "~/.config/emacs/settings/mermaid.el")
 (load "~/.config/emacs/settings/polymode.el")
 (load "~/.config/emacs/settings/python.el")
+(load "~/.config/emacs/settings/sqlite.el")
 (load "~/.config/emacs/settings/yaml.el")
 
 
