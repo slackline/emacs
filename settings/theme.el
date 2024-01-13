@@ -14,6 +14,7 @@
 ;; necessary.
 (use-package modus-themes
   :ensure t ;; omit this to use the built-in themes
+  :defer 0.5
   :init
   ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t
@@ -27,6 +28,7 @@
 
 (use-package ef-themes
   :ensure t
+  :defer 0.5
   :init
   (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
   :config
