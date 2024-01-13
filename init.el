@@ -112,6 +112,7 @@
   (setq lisp-indent-offset 2)
   (setq undo-strong-limit 640000)
   (setq mode-line-compact t)
+  (setq dired-dwim-target t) ; move file to other pane as default destination
   ;; (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
@@ -259,6 +260,7 @@
 
 ;;; Keybindings (last so that all functions are defined)
 (load "~/.config/emacs/settings/key-bindings.el")
+(load "~/.config/emacs/settings/pulsar.el")
 
 ;;; Split the window and start an R session
 ;; (split-window-horizontally)

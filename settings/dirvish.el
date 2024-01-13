@@ -1,3 +1,9 @@
+;;; Dirvish and Dired settings
+;;;
+;;; https://pragmaticemacs.wordpress.com/category/dired/ - multiple useful articles
+;;;
+;;; https://github.com/Fuco1/dired-hacks - multiple useful packages
+;;;
 ;;; Dirvish Settings
 ;;; https://github.com/alexluigit/dirvish
 (use-package dirvish
@@ -37,6 +43,11 @@
 (use-package all-the-icons-ibuffer
   :ensure t)
 
+(use-package dired-quick-sort
+  :ensure t
+  :config
+  (dired-quick-sort-setup))
+
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync
   :ensure t)
@@ -44,3 +55,20 @@
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync-transient
   :ensure t)
+
+
+;;
+(use-package dired-ranger
+  :ensure t
+  :defer 0.5
+  :bind (:map dired-mode-map
+              ("W" . dired-ranger-copy)
+              ("X" . dired-ranger-move)
+              ("Y" . dired-ranger-paste)))
+
+
+(use-package dired-subtree
+  :config
+  (bind-keys :map dired-mode-map
+             ("i" . dired-subtree-insert)
+             (";" . dired-subtree-remove)))
