@@ -122,7 +122,12 @@
   ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
   (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
   (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-  (set-frame-parameter nil 'alpha-background 85)
+  ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
+  ;; (when (and (fboundp 'native-comp-available-p)
+  ;;         (native-comp-available-p))
+  ;;   (setq native-comp-async-report-warnings-errors nil
+  ;;     native-comp-deferred-compilation t))
+  (set-frame-parameter nil 'alpha-background 85) ; Transparency
   (add-to-list 'default-frame-alist '(alpha-background . 85))
   :bind (("C-c U" . revert-buffer)
 	 ("C-c D" . toggle-debug-on-error)
@@ -147,6 +152,7 @@
   (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
   (before-save . do-auto-fill)
   (prog-mode-hook . highlight-indent-guides-mode)
+  (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
   )
 
 ;; Set httpd-system-name for IP based on system-name, used by simple-httpd config (see settings/elfeed-settings.el)
