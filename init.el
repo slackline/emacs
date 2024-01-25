@@ -129,6 +129,7 @@
   ;;     native-comp-deferred-compilation t))
   (set-frame-parameter nil 'alpha-background 85) ; Transparency
   (add-to-list 'default-frame-alist '(alpha-background . 85))
+  (fset 'epg-wait-for-status 'ignore) ; Temporary GPG fix (https://stackoverflow.com/a/76389612)
   :bind (("C-c U" . revert-buffer)
 	 ("C-c D" . toggle-debug-on-error)
 	 ;; Org
