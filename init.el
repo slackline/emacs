@@ -200,6 +200,7 @@
 (load "~/.config/emacs/settings/misc.el")
 
 ;;; General editor settings
+(load "~/.config/emacs/settings/activities.el")
 (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs.el")
 (load "~/.config/emacs/settings/dirvish.el")
