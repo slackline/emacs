@@ -195,6 +195,8 @@
 ;; Path where settings files are kept
 ;; (add-to-list 'load-path "~/.config/emacs/settings")
 
+;;; Completion framework (vertico/marginalia/orderless)
+
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter.el")
 (load "~/.config/emacs/settings/misc.el")
@@ -208,7 +210,6 @@
 (load "~/.config/emacs/settings/pass.el")
 (load "~/.config/emacs/settings/projectile.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
-
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
