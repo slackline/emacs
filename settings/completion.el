@@ -54,6 +54,12 @@
   ;; package.
   (marginalia-mode))
 
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t ; only need to install it, embark loads it after consult if found
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
 ;; https://github.com/oantolin/embark/
 (use-package embark
   :ensure t
@@ -78,11 +84,6 @@
                  nil
                  (window-parameters (mode-line-format . none)))))
 
-;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :ensure t ; only need to install it, embark loads it after consult if found
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
 
 ;; https://github.com/iyefrat/all-the-icons-completion
 (use-package all-the-icons-completion
