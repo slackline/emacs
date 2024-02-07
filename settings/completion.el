@@ -6,6 +6,7 @@
   :init
   (vertico-mode)
 
+  :config
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
 
@@ -17,6 +18,9 @@
 
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
+
+  ;; TAB completion - completes path selection rather than selecting current point
+  ;; (keymap-set vertico-map "TAB" #'minibuffer-complete)
   )
 
 
@@ -30,9 +34,10 @@
 ;; https://github.com/oantolin/orderless
 (use-package orderless
   :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
+  :config
+  (setq completion-styles '(orderless basic)
+	completion-category-defaults nil
+	completion-category-overrides '((file (styles basic partial-completion)))))
 
 ;; https://github.com/minad/marginalia/
 ;; Enable rich annotations using the Marginalia package

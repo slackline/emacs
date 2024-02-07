@@ -62,6 +62,9 @@
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
+;; Toggle comments
+(global-set-key (kbd "C-c C") 'comment-or-uncomment-region)
+
 ;; EIN global commands to start and stop Jupyter server
 (global-set-key (kbd "C-c e R") 'ein:run)
 (global-set-key (kbd "C-c e S") 'ein:stop)
