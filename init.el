@@ -148,6 +148,7 @@
     text-mode) . auto-fill-mode)
   ((latex-mode
     prog-mode) . hs-minor-mode)
+  (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf))) ;; https://emacs.stackexchange.com/a/110
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
   (before-save . do-auto-fill)

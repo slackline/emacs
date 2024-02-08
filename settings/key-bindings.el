@@ -62,7 +62,7 @@
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
-;; Toggle comments
+;; Toggle comments https://emacsredux.com/blog/2020/06/10/comment-commands-redux/
 (global-set-key (kbd "C-c C") 'comment-or-uncomment-region)
 
 ;; EIN global commands to start and stop Jupyter server
