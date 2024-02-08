@@ -196,6 +196,7 @@
 ;; (add-to-list 'load-path "~/.config/emacs/settings")
 
 ;;; Completion framework (vertico/marginalia/orderless)
+(load "~/.config/emacs/settings/completion.el")
 
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter.el")
