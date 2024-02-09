@@ -152,3 +152,9 @@
 ;; (use-package poetry
 ;; 	     :ensure t
 ;; 	   ;; 	     :after lsp)
+
+;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
+(python-define-auxiliary-skeleton python-print
+				  "Insert a print statement that will show the value of the argument."
+				  "Enter the variable/object name: "
+				  "print(f\"{" str "=}\")")
