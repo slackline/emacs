@@ -63,6 +63,11 @@
 	python-shell-interpreter-args "-i --simple-prompt"
 	python-environment-directory venv-location)
   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
+  ;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
+  (python-skeleton-define print
+			  "Insert a print statement that will show the value of the argument."
+			  "Enter the variable/object name: "
+			  "print(f\"{" str "=}\")")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
@@ -76,6 +81,7 @@
 	      ("C-c p T f" . python-skeleton-for)
 	      ("C-c p T i" . python-skeleton-if)
 	      ("C-c p T m" . python-skeleton-import)
+	      ("C-c p T p" . python-skeleton-print)
 	      ("C-c p T t" . python-skeleton-try)
 	      ("C-c p T w" . python-skeleton-while)))
 
@@ -152,9 +158,3 @@
 ;; (use-package poetry
 ;; 	     :ensure t
 ;; 	   ;; 	     :after lsp)
-
-;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
-(python-define-auxiliary-skeleton python-print
-				  "Insert a print statement that will show the value of the argument."
-				  "Enter the variable/object name: "
-				  "print(f\"{" str "=}\")")
