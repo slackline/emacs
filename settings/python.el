@@ -81,7 +81,7 @@
 	      ("C-c p T f" . python-skeleton-for)
 	      ("C-c p T i" . python-skeleton-if)
 	      ("C-c p T m" . python-skeleton-import)
-	      ("C-c p T p" . python-skeleton-print)
+	      ("C-c P" . python-skeleton-print)
 	      ("C-c p T t" . python-skeleton-try)
 	      ("C-c p T w" . python-skeleton-while)))
 
