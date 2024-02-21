@@ -38,12 +38,14 @@
 	 (groovy-mode . lsp)
 	 (html-mode . lsp)
 	 (julia-mode . lsp)
+	 (js-ts-mode . lsp)
 	 (latex-mode . lsp)
 	 (markdown-mode . lsp)
 	 (org-mode . lsp)
 	 (python-mode . lsp)
 	 (sh-mode . lsp)
-	 (terraform-mode . lsp)))
+	 (terraform-mode . lsp)
+	 (typescript-mode . lsp)))
 ;;   :commands (lsp))
 
 ;; Provides visual help in the buffer
