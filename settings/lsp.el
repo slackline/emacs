@@ -23,7 +23,7 @@
   :ensure t
   :defer 1
   :init
-  (setq lsp-keymap-prefix "s l")
+  (setq lsp-keymap-prefix "s-l")
   :config
   (setq lsp-idle-delay 0.5
 	lsp-enable-symbol-highlighting t
