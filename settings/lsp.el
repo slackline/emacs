@@ -43,6 +43,7 @@
 	 (markdown-mode . lsp)
 	 (org-mode . lsp)
 	 (python-mode . lsp)
+	 (rust-mode . lsp)
 	 (sh-mode . lsp)
 	 (terraform-mode . lsp)
 	 (typescript-mode . lsp)))
