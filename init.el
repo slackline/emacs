@@ -73,7 +73,7 @@
 
 ;; https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
 (use-package gnu-elpa-keyring-update
-  :ensure true)
+  :ensure t)
 
 ;; Load my custom functions
 ;; (load "~/.config/emacs/settings/custom-funcs.el")
