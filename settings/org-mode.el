@@ -242,3 +242,10 @@
   :after org-mode)
 
 ;; https://github.com/SqrtMinusOne/org-clock-agg
+
+
+;; https://one.tonyaldon.com/docs/install-one-el/
+(use-package one
+  :ensure t
+  :defer 2
+  :after org-mode)
