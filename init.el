@@ -71,6 +71,10 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
+;; https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
+(use-package gnu-elpa-keyring-update
+  :ensure true)
+
 ;; Load my custom functions
 ;; (load "~/.config/emacs/settings/custom-funcs.el")
 ;; Consider switching to elpaca
