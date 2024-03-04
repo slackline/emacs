@@ -72,10 +72,11 @@
 ;; Magit
 (global-set-key (kbd "C-c m") (define-keymap :prefix 'my/org-key-map
                                 "C" 'magit-clone
+                                "d" 'nds:magit-show-with-difftastic
                                 "F" 'magit-pull-from-upstream
+                                "f" 'forge-pull
                                 "L" 'magit-log
                                 "P" 'magit-push-current-to-upstream
-                                "d" 'nds:magit-show-with-difftastic
                                 "R" 'magit-file-rename))
 (global-set-key (kbd "C-c m F") 'magit-pull)
 (global-set-key (kbd "C-c m L") 'magit-log)
