@@ -88,7 +88,7 @@
                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                  nil
                  (window-parameters (mode-line-format . none)))))
-
+;; Consider https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt
 
 ;; https://github.com/iyefrat/all-the-icons-completion
 (use-package all-the-icons-completion
