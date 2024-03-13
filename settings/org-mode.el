@@ -249,3 +249,6 @@
   :ensure t
   :defer 2
   :after org-mode)
+
+;; https://github.com/jkitchin/org-ref
+(use-package org-ref)
