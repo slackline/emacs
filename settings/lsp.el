@@ -21,7 +21,7 @@
 ;; https://ianyepan.github.io/posts/emacs-ide/
 (use-package lsp-mode
   :ensure t
-  :defer 1
+					; :defer 1
   :init
   (setq lsp-keymap-prefix "s-l")
   :config
@@ -48,7 +48,6 @@
 	 (terraform-mode . lsp)
 	 (typescript-mode . lsp))
   :commands lsp)
-;;   :commands (lsp))
 
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
