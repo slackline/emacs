@@ -1,4 +1,4 @@
-;;; PYTHON CONFIGURATION
+;; PYTHON CONFIGURATION
 ;;; --------------------------------------
 
 ;; Hide the modeline for inferior python processes
@@ -47,9 +47,14 @@
   (after-init-hook . (pyvenv-workon default-env))
   )
 
+;; https://github.com/robert-zaremba/auto-virtualenvwrapper.el
+;; (use-package auto-virtualenvwrapper
+;;   :hook (python-mode . auto-virtualenvwrapper-activate))
+
 ;;  https://github.com/nryotaro/pyvenv-auto
-;; (use-package pyvenv-auto
-;;   :ensure t)
+(use-package pyvenv-auto
+  :ensure t
+  :hook ((python-mode . pyvenv-auto-run)))
 
 ;; Built-in Python utilities
 (use-package python
