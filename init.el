@@ -136,10 +136,10 @@
   :bind (("C-c U" . revert-buffer)
 	 ("C-c D" . toggle-debug-on-error)
 	 ;; Org
-	 ("\C-cl" . org-store-link)
-	 ("\C-cc" . org-capture)
-	 ("\C-ca" . org-agenda)
-	 ("\C-cb" . org-iswitchb)
+	 ("\C-c l" . org-store-link)
+	 ("\C-c c" . org-capture)
+	 ("\C-c a" . org-agenda)
+	 ("\C-c b" . org-iswitchb)
 	 ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
 	 ;; Magit /code review
 	 ("C-x g" . magit-status)

@@ -47,7 +47,7 @@
 	 (sh-mode . lsp)
 	 (terraform-mode . lsp)
 	 (typescript-mode . lsp))
-  :commands lsp)
+  :commands lsp-mode)
 
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
