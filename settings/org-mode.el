@@ -56,6 +56,8 @@
   ;; Disable electric-indent-mode in org buffers
   :hook (org-mode . (lambda () (electric-indent-local-mode 0)))
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
+  ;; https://hachyderm.io/@al3x/112186172832809202
+  (after-focus-change-function . (org-save-all-org-buffers))
   :config
   (with-eval-after-load 'org (global-org-modern-mode))
   )
