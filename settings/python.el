@@ -100,6 +100,7 @@
 ;;   :after (pyvenv)
 ;;   :ensure t)
 
+
 ;; https://github.com/emacsorphanage/pylint
 (use-package pylint
   :hook (python-mode . pylint-add-menu)
@@ -117,6 +118,13 @@
 (use-package ruff-format
   :ensure t
   :hook (python-mode . ruff-format-on-save-mode))
+
+;; https://github.com/christophermadsen/emacs-lazy-ruff
+(use-package lazy-ruff
+  :ensure t
+  :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
+  :config
+  (lazy-ruff-mode-global-toggle t)) ;; Enable the lazy-ruff minor mode globally
 
 ;; https://github.com/erickgnavar/flymake-ruff
 (use-package flymake-ruff
