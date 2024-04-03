@@ -4,7 +4,7 @@
 (use-package vertico
   :ensure t
   :init
-  (vertico-multiform-mode)
+  (vertico-mode)
   :config
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
