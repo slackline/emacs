@@ -33,7 +33,7 @@
   :init
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
-  (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
+  ;; (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
   (setq embark-indicators
 	'(embark-minimal-indicator  ; default is embark-mixed-indicator
 	  embark-highlight-indicator
