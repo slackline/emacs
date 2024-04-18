@@ -25,7 +25,6 @@
   ("<f12>" . modus-themes-toggle))
 
 ;; (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
-
 (use-package ef-themes
   :ensure t
   :defer 0.5
