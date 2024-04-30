@@ -86,6 +86,8 @@
   :bind (("C-c q" . quarto-preview)))
 
 
+;; https://github.com/sje30/essgd
+(use-package essgd)
 
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html

@@ -111,5 +111,14 @@
   (setq company-selection-wrap-around t)
   (setq company-dabbrev-other-buffers t)
   (setq company-dabbrev-code-other-buffers t)
-  :hook ((text-mode . company-mode)
-	 (prog-mode . company-mode)))
+  :hook
+  (text-mode . company-mode)
+  (prog-mode . company-mode)
+  (org-src-mode . company-mode)
+  ;; https://themagitian.github.io/posts/emacsconfig/
+  :custom
+  (custom-set-faces
+   '(company-tooltip ((t (:background "#3e4452"))))
+   '(company-tooltip-selection ((t (:background "#454c59"))))
+   '(company-tooltip-common ((t (:background "#3e4452"))))
+   '(company-scrollbar-bg ((t (:background "#282c34"))))))
