@@ -102,9 +102,9 @@
 
 
 ;; https://github.com/emacsorphanage/pylint
-(use-package pylint
-  :hook (python-mode . pylint-add-menu)
-  (python-mode . add-key-bindings))
+;; (use-package pylint
+;;   :hook (python-mode . pylint-add-menu)
+;;   (python-mode . add-key-bindings))
 
 ;;; Linting - Lots of options, currently going with blacken
 ;; https://github.com/pythonic-emacs/blacken
