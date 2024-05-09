@@ -74,6 +74,6 @@
              (";" . dired-subtree-remove)))
 
 ;; https://github.com/kickingvegas/casual-dired
-(use-package dired-casual
+(use-package casual-dired
   :ensure t
   :bind (:map dired-mode-map ("C-o" . 'casual-dired-tmenu)))
