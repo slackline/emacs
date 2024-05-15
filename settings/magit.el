@@ -152,3 +152,8 @@
 ;; https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/
 (use-package gitlab-ci-mode-flycheck
   :ensure t)
+
+
+;; https://github.com/liuyinz/git-cliff.el
+(use-package git-cliff
+  :ensure t)
