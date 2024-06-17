@@ -65,6 +65,10 @@
 ;; Toggle comments https://emacsredux.com/blog/2020/06/10/comment-commands-redux/
 (global-set-key (kbd "C-c C") 'comment-or-uncomment-region)
 
+;; ibuffer https://codeberg.org/anonimno/emacs/src/branch/master/config.org#headline-20
+;; C-x C-b until you internalise it!
+(global-set-key [remap list-buffers] 'ibuffer)
+
 ;; EIN global commands to start and stop Jupyter server
 (global-set-key (kbd "C-c e R") 'ein:run)
 (global-set-key (kbd "C-c e S") 'ein:stop)
