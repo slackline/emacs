@@ -1,5 +1,34 @@
 ;;; ORG-MODE CONFIGURATION
 ;;; --------------------------------------
+;; https://github.com/minad/org-modern
+(use-package org-modern
+  :ensure t
+  :defer 0.5
+  :after org-mode
+  :config (setq
+	   ;; Edit settings
+	   org-auto-align-tags nil
+	   org-tags-column 0
+	   org-catch-invisible-edits 'show-and-error
+	   org-special-ctrl-a/e t
+	   org-insert-heading-respect-content t
+
+	   ;; Org styling, hide markup etc.
+	   org-hide-emphasis-markers t
+	   org-pretty-entities t
+	   org-ellipsis "…"
+
+	   ;; Agenda styling
+	   org-agenda-tags-column 0
+	   org-agenda-block-separator ?─
+	   org-agenda-time-grid
+	   '((daily today require-timed)
+	     (800 1000 1200 1400 1600 1800 2000)
+	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+	   org-agenda-current-time-string
+	   "◀── now ─────────────────────────────────────────────────" ))
+
+
 (use-package org
   :ensure t
   :defer 0.5
@@ -235,33 +264,6 @@
 (use-package orgnote
   :ensure t)
 
-;; https://github.com/minad/org-modern
-(use-package org-modern
-  :ensure t
-  :defer 0.5
-  :after org-mode
-  :config (setq
-	   ;; Edit settings
-	   org-auto-align-tags nil
-	   org-tags-column 0
-	   org-catch-invisible-edits 'show-and-error
-	   org-special-ctrl-a/e t
-	   org-insert-heading-respect-content t
-
-	   ;; Org styling, hide markup etc.
-	   org-hide-emphasis-markers t
-	   org-pretty-entities t
-	   org-ellipsis "…"
-
-	   ;; Agenda styling
-	   org-agenda-tags-column 0
-	   org-agenda-block-separator ?─
-	   org-agenda-time-grid
-	   '((daily today require-timed)
-	     (800 1000 1200 1400 1600 1800 2000)
-	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-	   org-agenda-current-time-string
-	   "◀── now ─────────────────────────────────────────────────" ))
 
 ;; https://github.com/alphapapa/org-bookmark-heading
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Bookmarks.html
