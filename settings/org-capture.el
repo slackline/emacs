@@ -353,3 +353,10 @@ Routine")
 	  ("wp" "PGFinder" entry (file+olp "~/org/gtd/pgfinder.org" "PGFinder")
 	   "** TODO %U %?\n %a" :prepend t)
 	  )))
+
+;; Custom org-roam capture templates
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+	 "%?"
+	 :if-new (file+head "${slug}.org" "#+TITLE: ${Title}\n#+FILETAGS: :${Filetags}:\n")
+	 :unnarrowed t)))
