@@ -43,6 +43,14 @@
 ;; (ef-themes-select 'ef-autumn)
 ;; (ef-themes-select 'ef-winter)
 
+;; https://github.com/catppuccin/emacs
+(use-package  catppuccin-theme
+  :ensure t
+  :defer 0.5
+  :config
+  (setq catppuccin-flavor 'mocha) ;; or 'frappe 'latte, 'macchiato, or 'mocha
+  (catppuccin-reload))
+
 ;; Set the font
 (set-face-attribute 'default t :font "Hack")
 

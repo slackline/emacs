@@ -267,7 +267,7 @@
 (load "~/.config/emacs/settings/rust.el")
 (load "~/.config/emacs/settings/sqlite.el")
 (load "~/.config/emacs/settings/yaml.el")
-
+(load "~/.config/emacs/settings/casual-suite.el")
 
 ;;; Themes, modeline and buffers
 ;; (load "~/.config/emacs/settings/modeline.el")
