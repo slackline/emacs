@@ -217,6 +217,7 @@
 (load "~/.config/emacs/settings/pass.el")
 (load "~/.config/emacs/settings/projectile.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
+(load "~/.config/emacs/settings/shackle.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
