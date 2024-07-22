@@ -159,12 +159,12 @@
   (prog-mode-hook . highlight-indent-guides-mode)
   (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
   ;; imenu http://yummymelon.com/devnull/til-imenu.html
-  (markdown-mode-hook . imenu-add-menubar-index)
-  (makefile-mode-hook . imenu-add-menubar-index)
-  (prog-mode-hook . imenu-add-menubar-index)
-  (markdown-mode-hook . (lambda () (setq imenu-auto-rescan t)))
-  (makefile-mode-hook . (lambda () (setq imenu-auto-rescan t)))
-  (prog-mode-hook . (lambda () (setq imenu-auto-rescan t))))
+  ((markdown-mode
+    makefile-mode
+    prog-mode) . imenu-add-menubar-index)
+  ((markdown-mode
+    makefile-mode
+    prog-mode) . (lambda () (setq imenu-auto-rescan t))))
 
 ;; Set httpd-system-name for IP based on system-name, used by simple-httpd config (see settings/elfeed-settings.el)
 ;; https://emacs.stackexchange.com/a/41726/10100
