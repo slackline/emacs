@@ -53,7 +53,7 @@
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
   :defer 0.5
-  :conf
+  :config
   (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
   (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
   (global-set-key (kbd "<home>") 'mwim-beginning-of-line-or-code)
