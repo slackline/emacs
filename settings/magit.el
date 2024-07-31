@@ -31,10 +31,10 @@
 
 ;; Git-commit TreeSitter mode
 ;; https://github.com/danilshvalov/git-commit-ts-mode
-(use-package git-commit-ts-mode
-  :mode "\\COMMIT_EDITMSG\\'"
-  :config
-  (setq git-commit-major-mode 'git-commit-ts-mode))
+;; (use-package git-commit-ts-mode
+;;   :mode "\\COMMIT_EDITMSG\\'"
+;;   :config
+;;   (setq git-commit-major-mode 'git-commit-ts-mode))
 
 ;; Git modes
 (use-package git-modes
