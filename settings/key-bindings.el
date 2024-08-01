@@ -68,6 +68,7 @@
 (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
 (global-set-key (kbd "<f7>") 'flyspell-toggle)
 (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
+(global-set-key (kbd "<f9>") 'emacs-index-search)
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
 (if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
 
