@@ -23,3 +23,18 @@
 ;; https://github.com/kickingvegas/casual-avy
 (use-package casual-avy
   :ensure t)
+
+;; https://github.com/kickingvegas/casual-ibuffer
+(use-package casual-ibuffer
+  :ensure t)
+
+;; https://github.com/kickingvegas/casual-re-builder
+(use-package re-builder
+  :defer t)
+(use-package casual-re-builder
+  :ensure t
+  :bind (:map
+         reb-mode-map ("C-o" . casual-re-builder-tmenu)
+         :map
+         reb-lisp-mode-map ("C-o" . casual-re-builder-tmenu))
+  :after (re-builder))
