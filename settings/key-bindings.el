@@ -49,6 +49,7 @@
   ;; look at interactive functions.
   (global-set-key (kbd "C-h C") #'helpful-command))
 
+;;; Navigation settings
 ;; mwim settings
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
@@ -58,6 +59,11 @@
   (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
   (global-set-key (kbd "<home>") 'mwim-beginning-of-line-or-code)
   (global-set-key (kbd "<end>") 'mwim-end-of-line-or-code))
+
+;; expand region settings
+;; https://github.com/magnars/expand-region.el/
+(use-package expand-region
+  :bind ("C-=" . er/expand-region))
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)
