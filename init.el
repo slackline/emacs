@@ -98,6 +98,7 @@
   ;; Add local lisp for miscellaneous things
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
   (setq custom-file "~/.config/emacs/custom.el")
+  (setq package-install-upgrade-built-in t) ; Upgrade built-in packages
   (setq inhibit-startup-message t) ; Hide the startup message
   (setq global-visual-line-mode t) ; Visual line wrap
   (setq inhibit-startup-screen t) ; Disable startup screen
