@@ -64,6 +64,13 @@
   :custom
   (setq mood-line-glyph-alist mood-line-glyphs-unicode))
 
+;; https://github.com/roman/golden-ratio.el
+(use-package golden-ratio
+  :ensure t
+  :defer 0.5
+  :custom
+  (setq golden-ratio-auto-scale t))
+
 ;;; https://github.com/milkypostman/powerline
 ;;; Customisation : https://jr0cket.co.uk/2015/01/custom-powerline-theme-for-Emacs-modeline.html
 ;;; Custom wave separator
