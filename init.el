@@ -239,7 +239,7 @@
 
 ;;; Chat
 (load "~/.config/emacs/settings/ement.el")
-(load "~/.config/emacs/settings/mastodon.el")
+(load "~/.config/emacs/settings/messaging.el")
 
 ;;; Terminals
 (load "~/.config/emacs/settings/eat.el")
