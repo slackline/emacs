@@ -119,6 +119,7 @@
   (setq undo-strong-limit 640000)
   (setq mode-line-compact t)
   (setq dired-dwim-target t) ; move file to other pane as default destination
+  (setq global-goto-address-mode t)
   ;; (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
@@ -273,6 +274,7 @@
 (load "~/.config/emacs/settings/mermaid.el")
 (load "~/.config/emacs/settings/polymode.el")
 (load "~/.config/emacs/settings/python.el")
+(load "~/.config/emacs/settings/realgud.el")
 (load "~/.config/emacs/settings/rust.el")
 (load "~/.config/emacs/settings/sqlite.el")
 (load "~/.config/emacs/settings/yaml.el")

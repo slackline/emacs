@@ -1,6 +1,5 @@
 ;;; REALGUD SETTINGS
-;;; https://github.com/realgud/realgud/
-
-(use-package realgud
-	     :ensure t
-	     )
+;;; https://github.com/realgud/realgud-ipdb/
+(use-package realgud-ipdb
+  :ensure t
+  )
