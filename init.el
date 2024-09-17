@@ -239,7 +239,6 @@
 (load "~/.config/emacs/settings/org-capture.el")
 
 ;;; Chat
-(load "~/.config/emacs/settings/ement.el")
 (load "~/.config/emacs/settings/messaging.el")
 
 ;;; Terminals
