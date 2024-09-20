@@ -92,11 +92,11 @@
 	   "◀── now ─────────────────────────────────────────────────" ))
 
 ;; https://github.com/isamert/corg.el
-(use-package corg
-  :ensure t
-  :defer 0.5
-  :after org-mode
-  :straight (:host github :repo "isamert/corg.el"))
+;; (use-package corg
+;;   :ensure t
+;;   :defer 0.5
+;;   :after org-mode
+;;   :straight (:host github :repo "isamert/corg.el"))
 
 ;; Set additional keywords (and colours) https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=
 (setq org-todo-keywords
