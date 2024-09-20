@@ -74,10 +74,10 @@
   :after (ess))
 
 ;;; https://github.com/ShuguangSun/tree-sitter-ess-r
-(use-package tree-sitter-ess-r
-  :ensure t
-  :after (ess)
-  :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
+;; (use-package tree-sitter-ess-r
+;;   :ensure t
+;;   :after (ess)
+;;   :hook (ess-r-mode . tree-sitter-ess-r-mode-activate))
 
 ;; Quarto mode https://github.com/quarto-dev/quarto-emacs
 ;; By default associated with .qmd files

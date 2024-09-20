@@ -27,6 +27,7 @@ request/curl-cookie.jar
 transient/
 url/
 var/
+tmp/
 
 # Private or repo specific files files
 bookmarks
