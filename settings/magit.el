@@ -19,6 +19,7 @@
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (setq magit-bury-buffer-function 'magit-restore-window-configuration)
   (setq magit-pull-or-fetch t)
+  (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
   (global-set-key (kbd "C-c m f") 'forge-pull))
 
 ;; FORGE CONFIGURATION
