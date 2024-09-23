@@ -57,7 +57,7 @@
 (use-package why-this
   :ensure t
   :init
-  ;;  (setq global-why-this-mode)
+  (global-why-this-mode)
   :config
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
   (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
