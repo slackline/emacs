@@ -5,6 +5,32 @@
   :demand
   :config
   (centaur-tabs-mode t)
+
+  ;; Via https://themkat.net/2024/01/04/emacs_centaur_tabs.html
+  (defun centaur-tabs-buffer-groups ()
+    "Groups tabs based on which project root they are in if possible"
+    (let ((get-closest-projectile-project
+	   (lambda (path)
+	     (let ((expanded-path (f-long path)))
+	       (-first (lambda (proj)
+			 (s-starts-with? proj
+					 expanded-path))
+		       (-map (lambda (proj)
+			       (f-long proj))
+			     projectile-known-projects))))))
+      (list (cond
+	     ;; Group as part of projectile project if directly part of it
+	     ((condition-case _err
+		  (projectile-project-root)
+		(error nil))
+	      (f-expand (projectile-project-root)))
+	     ;; Try to group as part of projectile project if indirectly part of it (started from the same directory, not yet tracked, or maybe temporary buffer)
+	     (get-closest-projectile-project default-directory)
+	     ((string-equal "*" (substring (buffer-name) 0 1))
+	      "proc-buffers")
+	     ;; ... other groupings ...
+	     (t
+	      "Other")))))
   :init
   (setq centaur-tabs-enable-key-bindings t
 	centaur-tabs-style "wave"
