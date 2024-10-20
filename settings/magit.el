@@ -20,7 +20,17 @@
   (setq magit-bury-buffer-function 'magit-restore-window-configuration)
   (setq magit-pull-or-fetch t)
   (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
-  (global-set-key (kbd "C-c m f") 'forge-pull))
+  (global-set-key (kbd "C-c m C") 'magit-clone)
+  (global-set-key (kbd "C-c m F") 'magit-pull-from-upstream)
+  (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
+  (global-set-key (kbd "C-c m R") 'magit-file-rename)
+  (global-set-key (kbd "C-c m f") 'forge-pull)
+  (global-set-key (kbd "C-c m d d") 'nds:magit-show-with-difftastic)
+  (global-set-key (kbd "C-c m d r") 'magit-diff-range)
+  (global-set-key (kbd "C-c m d s") 'magit-diff-staged)
+  (global-set-key (kbd "C-c m l l") 'magit-log)
+  (global-set-key (kbd "C-c m l f") 'magit-log-buffer-file)
+  (global-set-key (kbd "C-c m l o") 'magit-log-other))
 
 ;; FORGE CONFIGURATION
 ;; --------------------------------------

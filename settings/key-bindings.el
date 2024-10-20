@@ -89,20 +89,22 @@
 (global-set-key (kbd "C-c e R") 'ein:run)
 (global-set-key (kbd "C-c e S") 'ein:stop)
 
-;; Magit
-(global-set-key (kbd "C-c m") (define-keymap :prefix 'my/org-key-map
-                                "C" 'magit-clone
-                                "d" 'nds:magit-show-with-difftastic
-                                "F" 'magit-pull-from-upstream
-                                "f" 'forge-pull
-                                "L" 'magit-log
-                                "P" 'magit-push-current-to-upstream
-                                "R" 'magit-file-rename))
-(global-set-key (kbd "C-c m F") 'magit-pull)
-(global-set-key (kbd "C-c m L") 'magit-log)
-(global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
-(global-set-key (kbd "C-c m d") 'nds:magit-show-with-difftastic)
-(global-set-key (kbd "C-c m R") 'magit-file-rename)
+;; Magit - see magit.el
+;; (global-set-key (kbd "C-c m") (define-keymap :prefix 'my/org-key-map
+;;                                 "C" 'magit-clone
+;;                                 "F" 'magit-pull-from-upstream
+;;                                 "P" 'magit-push-current-to-upstream
+;;                                 "R" 'magit-file-rename)
+;;                                 "d" 'nds:magit-show-with-difftastic
+;;                                 "f" 'forge-pull)
+;; (global-set-key (kbd "C-c m C") 'magit-clone)
+;; (global-set-key (kbd "C-c m F") 'magit-pull-from-upstream)
+;; (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
+;; (global-set-key (kbd "C-c m R") 'magit-file-rename)
+;; (global-set-key (kbd "C-c m d") 'nds:magit-show-with-difftastic)
+;; (global-set-key (kbd "C-c m l l") 'magit-log)
+;; (global-set-key (kbd "C-c m l f") 'magit-log-buffer-file)
+;; (global-set-key (kbd "C-c m l o") 'magit-log-other)
 ;; Python
 (global-set-key (kbd "C-c p v") 'pyvenv-workon)
 (global-set-key (kbd "C-c p p") 'run-python)
