@@ -34,11 +34,11 @@
   :bind
   ("<f10>" . ef-themes-select-dark)
   ("<f11>" . ef-themes-toggle))
-;; (ef-themes-select 'ef-dark)
+(ef-themes-select 'ef-dark)
 ;; (ef-themes-select 'ef-duo-dark)
 ;; (ef-themes-select 'ef-bio)
 ;; (ef-themes-select 'ef-symbiosis)
-(ef-themes-select 'ef-night)
+;; (ef-themes-select 'ef-night)
 ;; (ef-themes-select 'ef-trio-dark)
 ;; (ef-themes-select 'ef-autumn)
 ;; (ef-themes-select 'ef-winter)
