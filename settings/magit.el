@@ -119,11 +119,6 @@
   (:map org-mode-map
 	("C-c m v" . org-insert-last-stored-link)))
 
-;; emacsql-sqlite-module is required by forge, but not always explicitly pulled in
-(use-package emacsql-sqlite-module
-  :ensure t
-  :after magit)
-
 ;; https://codeberg.org/pidu/git-timemachine
 (use-package git-timemachine
   :ensure t)
