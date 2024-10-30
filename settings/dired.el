@@ -72,8 +72,3 @@
   (bind-keys :map dired-mode-map
              ("i" . dired-subtree-insert)
              (";" . dired-subtree-remove)))
-
-;; https://github.com/kickingvegas/casual-dired
-(use-package casual-dired
-  :ensure t
-  :bind (:map dired-mode-map ("C-o" . 'casual-dired-tmenu)))

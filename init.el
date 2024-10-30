@@ -303,5 +303,6 @@
 ;; Start elfeed last
 (load "~/.config/emacs/settings/elfeed.el")
 
+
 ;; Set default major mode for *scratch*
 ;; (setq initial-major-mode 'python-mode)
