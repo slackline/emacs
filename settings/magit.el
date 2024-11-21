@@ -198,13 +198,13 @@
   (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list))
 
 
-;; Install `consult-gh-embark' for embark actions
-(use-package consult-gh-embark
-  :config
-  (consult-gh-embark-mode +1))
+;; ;; Install `consult-gh-embark' for embark actions
+;; (use-package consult-gh-embark
+;;   :config
+;;   (consult-gh-embark-mode +1))
 
-;; Install `consult-gh-forge' for forge actions
-(use-package consult-gh-forge
-  :config
-  (consult-gh-forge-mode +1)
-  (setq consult-gh-forge-timeout-seconds 20))
+;; ;; Install `consult-gh-forge' for forge actions
+;; (use-package consult-gh-forge
+;;   :config
+;;   (consult-gh-forge-mode +1)
+;;   (setq consult-gh-forge-timeout-seconds 20))
