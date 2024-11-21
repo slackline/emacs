@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
 (("/home/neil/work/git/hub/AFM-SPM/TopoStats/")
+  ("/home/neil/work/git/hub/ns-rse/skan/")
   ("/home/neil/.config/emacs/")
   ("/home/neil/org/")
   ("/home/neil/.password-store/")
@@ -16,7 +17,6 @@
   ("/home/neil/work/git/hub/ns-rse/igor2/")
   ("/home/neil/work/git/hub/ns-rse/ns-rse.github.io/")
   ("/home/neil/work/git/hub/ns-rse/ns-rse.github.io/")
-  ("/home/neil/work/git/hub/ns-rse/skan/")
   ("/home/neil/work/git/hub/ns-rse/thyroid-cancer-prediction/")
   ("/home/neil/work/git/hub/ns-rse/why-emacs/")
   ("/home/neil/work/git/lab/nshephard/adventofcode/")
