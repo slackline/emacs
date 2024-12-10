@@ -273,7 +273,7 @@
 (load "~/.config/emacs/settings/mermaid.el")
 (load "~/.config/emacs/settings/polymode.el")
 (load "~/.config/emacs/settings/python.el")
-(load "~/.config/emacs/settings/realgud.el")
+;; (load "~/.config/emacs/settings/realgud.el")
 (load "~/.config/emacs/settings/rust.el")
 (load "~/.config/emacs/settings/sqlite.el")
 (load "~/.config/emacs/settings/yaml.el")
