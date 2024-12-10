@@ -16,7 +16,7 @@
   :init
   (setq org-roam-v2-ack t)
   :custom
-  (org-roam-directory "~/org-roam")
+  (org-roam-directory "~/org-roam/main"/)
   (org-roam-dailies-directory "daily/")
   (org-roam-db-location "~/org-roam/main/org-roam.db")
   (org-roam-db-autosync-mode)
