@@ -173,6 +173,7 @@
 ;; https://emacs.stackexchange.com/a/41726/10100
 (setq httpd-system-name
       '(("kimura" . "127.0.0.1")
+        ("crow" . "127.0.0.1")
         ("vps-bb669593" . "152.228.170.148")
         ("alarmpi-4b" . "127.0.0.1")
         ("fisher" . "127.0.0.1")
@@ -271,6 +272,7 @@
 (load "~/.config/emacs/settings/magit.el")
 (load "~/.config/emacs/settings/markdown.el")
 (load "~/.config/emacs/settings/mermaid.el")
+(load "~/.config/emacs/settings/nix.el")
 (load "~/.config/emacs/settings/polymode.el")
 (load "~/.config/emacs/settings/python.el")
 ;; (load "~/.config/emacs/settings/realgud.el")
