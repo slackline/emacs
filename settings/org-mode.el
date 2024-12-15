@@ -59,8 +59,8 @@
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
   ;; https://hachyderm.io/@al3x/112186172832809202
   (after-focus-change-function . (org-save-all-org-buffers))
-  :config
-  (with-eval-after-load 'org (global-org-modern-mode))
+  ;; :config
+  ;; (with-eval-after-load 'org (global-org-modern-mode))
   )
 
 ;; https://github.com/minad/org-modern
