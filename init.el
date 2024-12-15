@@ -7,9 +7,20 @@
 ;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
 ;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
 ;; of the file.
-(setq load-prefer-newer t)
-(package-initialize)
 (require 'auto-compile)
+(package-initialize)
+(setq load-prefer-newer t)
+(setq native-comp-jit-compilation t)
+;; https://github.com/jamescherti/compile-angel.el
+;; NB - This will fail on fresh installs as you have to first install use-package!
+(use-package compile-angel
+  :ensure t
+  :demand t
+  :custom
+  (compile-angel-verbose nil)
+  :config
+  (compile-angel-on-load-mode)
+  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
 (auto-compile-on-load-mode)
 (auto-compile-on-save-mode)
 (require 'package)
