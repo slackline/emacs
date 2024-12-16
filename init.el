@@ -140,6 +140,7 @@
   ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
   (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
   (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+  (setopt dictionary-server "dict.org")
   ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
   ;; (when (and (fboundp 'native-comp-available-p)
   ;;         (native-comp-available-p))
@@ -147,6 +148,11 @@
   ;;     native-comp-deferred-compilation t))
   (set-frame-parameter nil 'alpha-background 85) ; Transparency
   (add-to-list 'default-frame-alist '(alpha-background . 85))
+  ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+		 (display-buffer-no-window)
+		 (allow-no-window . t)))
   :bind (("C-c U" . revert-buffer)
 	 ("C-c D" . toggle-debug-on-error)
 	 ;; Org
