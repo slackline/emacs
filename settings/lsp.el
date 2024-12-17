@@ -60,13 +60,11 @@
    lsp-ui-doc-border (face-foreground 'default)
    lsp-ui-doc-delay 1
    lsp-ui-doc-enable t
-   lsp-ui-doc-include-signature t
    lsp-ui-doc-header nil
    lsp-ui-doc-include-signature t
    lsp-ui-doc-position 'top
    lsp-ui-doc-show-with-cursor t
    lsp-ui-doc-show-with-mouse t
-   lsp-ui-doc-use-childframe t
    lsp-ui-doc-use-childframe t
    lsp-ui-flycheck-enable t
    lsp-ui-flycheck-list-position 'right
@@ -76,7 +74,6 @@
    lsp-ui-peek-list-width 60
    lsp-ui-peek-peek-height 25
    lsp-ui-sideline-delay 3
-   lsp-ui-sideline-enable nil
    lsp-ui-sideline-enable t
    lsp-ui-sideline-ignore-duplicate t
    lsp-ui-sideline-show-code-actions t
