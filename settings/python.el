@@ -143,21 +143,21 @@
 
 
 ;; https://github.com/millejoh/emacs-ipython-notebook
-(use-package ein
-  :ensure t
-  :config
-  (setq ein:output-area-inlined-images t
-	ein:polymode t
-	ein:query-timeout 100000)
-  :bind (:map ein:notebook-mode
-	      ("C-c e r" . ein:notebook-rename-command)
-	      ("C-c e x" . ein:notebook-restart-session-command)
-	      ("C-c e a" . ein:worksheet-execute-all-cells)
-	      ("C-c e <down>" . ein:worksheet-move-cell-down-km)
-	      ("C-c e <up>" . ein:worksheet-move-cell-up-km)
-	      ("C-c e d" . ein:worksheet-delete-cell)
-	      ("C-c e u" . ein:worksheet-execute-all-cells-above)
-	      ("C-c e b" . ein:worksheet-execute-all-cells-below)))
+;; (use-package ein
+;;   :ensure t
+;;   :config
+;;   (setq ein:output-area-inlined-images t
+;; 	ein:polymode t
+;; 	ein:query-timeout 100000)
+;;   :bind (:map ein:notebook-mode
+;; 	      ("C-c e r" . ein:notebook-rename-command)
+;; 	      ("C-c e x" . ein:notebook-restart-session-command)
+;; 	      ("C-c e a" . ein:worksheet-execute-all-cells)
+;; 	      ("C-c e <down>" . ein:worksheet-move-cell-down-km)
+;; 	      ("C-c e <up>" . ein:worksheet-move-cell-up-km)
+;; 	      ("C-c e d" . ein:worksheet-delete-cell)
+;; 	      ("C-c e u" . ein:worksheet-execute-all-cells-above)
+;; 	      ("C-c e b" . ein:worksheet-execute-all-cells-below)))
 
 ;; https://github.com/paetzke/py-autopep8.el
 ;; (use-package py-autopep8

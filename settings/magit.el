@@ -188,7 +188,7 @@
   (consult-gh-large-file-warning-threshold 2500000)
   (consult-gh-prioritize-local-folder 'suggest)
   :config
-  (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
+  ;; (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
 
   ;; Add a hook to change default organizations when the account is switched
   (add-hook 'consult-gh-auth-post-switch-hook (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))))
