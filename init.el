@@ -13,14 +13,14 @@
 (setq native-comp-jit-compilation t)
 ;; https://github.com/jamescherti/compile-angel.el
 ;; NB - This will fail on fresh installs as you have to first install use-package!
-(use-package compile-angel
-  :ensure t
-  :demand t
-  :custom
-  (compile-angel-verbose nil)
-  :config
-  (compile-angel-on-load-mode)
-  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+;; (use-package compile-angel
+;;   :ensure t
+;;   :demand t
+;;   :custom
+;;   (compile-angel-verbose nil)
+;;   :config
+;;   (compile-angel-on-load-mode)
+;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
 (auto-compile-on-load-mode)
 (auto-compile-on-save-mode)
 (require 'package)
