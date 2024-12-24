@@ -20,4 +20,6 @@
 	       '(nil nil "neil") t)
   (add-to-list 'tramp-default-user-alist
 	       '("ssh" ".*alarmpi-4b" "neil") t)
+  (add-to-list 'tramp-default-user-alist
+	       '("ssh" ".*crow'" "neil") t)
   )
