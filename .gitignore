@@ -38,3 +38,6 @@ org-roam.db
 projectile-bookmarks.eld
 projectile.cache
 recentf
+
+# byte-compiled files
+*.elc
