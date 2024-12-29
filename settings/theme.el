@@ -22,7 +22,7 @@
 	modus-themes-org-blocks '(tinted-background))
   :config
   :bind
-  ("<f12>" . modus-themes-toggle))
+  ("C-c C-t m" . modus-themes-toggle))
 
 ;; (modus-themes-select 'modus-vivendi) ;; OR modus-operandi
 (use-package ef-themes
@@ -32,8 +32,8 @@
   (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
   :config
   :bind
-  ("<f10>" . ef-themes-select-dark)
-  ("<f11>" . ef-themes-toggle))
+  ("C-c C-t d" . ef-themes-select-dark)
+  ("C-c C-t e" . ef-themes-toggle))
 (ef-themes-select 'ef-dark)
 ;; (ef-themes-select 'ef-duo-dark)
 ;; (ef-themes-select 'ef-bio)
