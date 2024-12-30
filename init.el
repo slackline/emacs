@@ -218,6 +218,10 @@
 ;; Set the frames title to be that of the currently visited buffer
 ;; (setq frame-title-format "%b")
 
+;; Portage mode
+(use-package portage-modes
+  :ensure t)
+
 ;; Add global keymaps (see https://emacs.stackexchange.com/a/54792/10100)
 (define-key global-map (kbd "C-c p l") (make-sparse-keymap))
 
