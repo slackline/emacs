@@ -163,7 +163,8 @@
 	 ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
 	 ;; Magit /code review
 	 ("C-x g" . magit-status)
-	 ("C-c R" . code-review-forge-pr-at-point))
+	 ("C-c R" . code-review-forge-pr-at-point)
+	 ("s-SPC" . cycle-spacing))
   :hook
   ((latex-mode
     markdown-mode
