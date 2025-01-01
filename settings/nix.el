@@ -10,4 +10,4 @@
 ;; https://github.com/t4ccer/agenix.el
 (use-package agenix
   :ensure t
-  :mode "\\.age\\")
+  :mode "\\.age\\'")
