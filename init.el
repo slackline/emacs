@@ -326,7 +326,7 @@
 (load custom-file)
 
 ;; Start elfeed last
-(load "~/.config/emacs/settings/elfeed.el")
+;; (load "~/.config/emacs/settings/elfeed.el")
 
 
 ;; Set default major mode for *scratch*
