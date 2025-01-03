@@ -234,6 +234,7 @@
 ;;; Shell Interpreter (has to be called early so that commands are available for hooks)
 (load "~/.config/emacs/settings/shell-interpreter.el")
 (load "~/.config/emacs/settings/misc.el")
+(load "~/.config/emacs/settings/modes.el")
 
 ;;; General editor settings
 ;;(load "~/.config/emacs/settings/activities.el")
