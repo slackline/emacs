@@ -23,6 +23,7 @@
   (setq lsp-keymap-prefix "s-l")
   :config
   (setq lsp-idle-delay 0.5
+	lsp-copilot-enabled 0
 	lsp-enable-symbol-highlighting t
 	lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
   lsp-warn-no-matched-clients nil
