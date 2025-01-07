@@ -23,6 +23,7 @@
  			   "~/org/gtd/computing.org"
  			   "~/org/gtd/cured.org"
  			   "~/org/gtd/emacs.org"
+ 			   "~/org/gtd/isoslam.org"
  			   "~/org/gtd/joss.org"
  			   "~/org/gtd/openfest2024.org"
  			   "~/org/gtd/osc.org"
