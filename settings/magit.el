@@ -172,30 +172,30 @@
 
 
 ;; https://github.com/armindarvish/consult-gh
-(use-package consult-gh
-  :after consult
-  :custom
-  (consult-gh-default-clone-directory "~/projects")
-  (consult-gh-show-preview t)
-  (consult-gh-preview-key "C-o")
-  (consult-gh-repo-action #'consult-gh--repo-browse-files-action)
-  (consult-gh-issue-action #'consult-gh--issue-view-action)
-  (consult-gh-pr-action #'consult-gh--pr-view-action)
-  (consult-gh-code-action #'consult-gh--code-view-action)
-  (consult-gh-file-action #'consult-gh--files-view-action)
-  (consult-gh-notifications-action #'consult-gh--notifications-action)
-  (consult-gh-dashboard-action #'consult-gh--dashboard-action)
-  (consult-gh-large-file-warning-threshold 2500000)
-  (consult-gh-prioritize-local-folder 'suggest)
-  :config
-  ;; (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
+;; (use-package consult-gh
+;;   :after consult
+;;   :custom
+;;   (consult-gh-default-clone-directory "~/projects")
+;;   (consult-gh-show-preview t)
+;;   (consult-gh-preview-key "C-o")
+;;   (consult-gh-repo-action #'consult-gh--repo-browse-files-action)
+;;   (consult-gh-issue-action #'consult-gh--issue-view-action)
+;;   (consult-gh-pr-action #'consult-gh--pr-view-action)
+;;   (consult-gh-code-action #'consult-gh--code-view-action)
+;;   (consult-gh-file-action #'consult-gh--files-view-action)
+;;   (consult-gh-notifications-action #'consult-gh--notifications-action)
+;;   (consult-gh-dashboard-action #'consult-gh--dashboard-action)
+;;   (consult-gh-large-file-warning-threshold 2500000)
+;;   (consult-gh-prioritize-local-folder 'suggest)
+;;   :config
+;;   ;; (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
 
-  ;; Add a hook to change default organizations when the account is switched
-  (add-hook 'consult-gh-auth-post-switch-hook (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))))
+;;   ;; Add a hook to change default organizations when the account is switched
+;;   (add-hook 'consult-gh-auth-post-switch-hook (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))))
 
-  ;; Remember visited orgs and repos across sessions
-  (add-to-list 'savehist-additional-variables 'consult-gh--known-orgs-list)
-  (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list))
+;;   ;; Remember visited orgs and repos across sessions
+;;   (add-to-list 'savehist-additional-variables 'consult-gh--known-orgs-list)
+;;   (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list))
 
 
 ;; ;; Install `consult-gh-embark' for embark actions
