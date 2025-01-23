@@ -422,9 +422,9 @@ activity in the 'launcher' category."
           (lambda ()
             (dolist (spec android-mode-keys)
               (define-key
-                android-mode-map
-                (read-kbd-macro (concat android-mode-key-prefix " " (car spec)))
-                (cdr spec)))))
+               android-mode-map
+               (read-kbd-macro (concat android-mode-key-prefix " " (car spec)))
+               (cdr spec)))))
 
 ;;;###autoload
 (define-minor-mode android-mode

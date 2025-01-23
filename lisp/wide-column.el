@@ -270,7 +270,7 @@ when your lines get too long."
 (if (not (fboundp 'define-minor-mode))
     (progn
       (easy-mmode-define-minor-mode wide-column-mode
-                                    "Toggle wide-column mode.
+        "Toggle wide-column mode.
 Running in Emacs 20 compatability mode. My advice is to upgrade
 your emacs.")
       (add-hook 'wide-column-mode-hook

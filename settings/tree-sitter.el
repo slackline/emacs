@@ -20,13 +20,13 @@
 ;;;
 ;;; https://github.com/erickgnavar/tree-sitter-ispell.el
 (use-package tree-sitter
-	     :ensure t
-	     :init
-             (global-tree-sitter-mode))
+  :ensure t
+  :init
+  (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs
-	     :hook
-	     (tree-sitter-after-on . tree-sitter-hl-mode))
+  :hook
+  (tree-sitter-after-on . tree-sitter-hl-mode))
 
 ;; For Emacs 29.0
 ;; https://github.com/renzmann/treesit-auto

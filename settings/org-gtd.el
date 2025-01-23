@@ -8,25 +8,25 @@
 ;;; Also includes customiastion for org-agenda
 (setq org-gtd-update-ack "3.0.0")
 (use-package org-gtd
-	     :after org
-	     ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
-	     ;;                  :branch "2.0.0" :upgrade t)
-	     :demand t
-	     :custom
-	     ;; (org-gtd-directory stag-org-gtd-directory)
-             (org-gtd-directory '"~/org/gtd")
-	     (org-edna-use-inheritance t)
-	     :config
-	     (org-edna-mode)
-	     :bind
-	     (("C-c d c" . org-gtd-capture)
-	      ("C-c d e" . org-gtd-engage)
-	      ("C-c d p" . org-gtd-process-inbox)
-	      ("C-c d n" . org-gtd-show-all-next)
-	      ("C-c d s" . org-gtd-show-stuck-projects)
-              :map org-gtd-clarify-map
-              ("C-c c" . org-gtd-organize)
-              ))
+  :after org
+  ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
+  ;;                  :branch "2.0.0" :upgrade t)
+  :demand t
+  :custom
+  ;; (org-gtd-directory stag-org-gtd-directory)
+  (org-gtd-directory '"~/org/gtd")
+  (org-edna-use-inheritance t)
+  :config
+  (org-edna-mode)
+  :bind
+  (("C-c d c" . org-gtd-capture)
+   ("C-c d e" . org-gtd-engage)
+   ("C-c d p" . org-gtd-process-inbox)
+   ("C-c d n" . org-gtd-show-all-next)
+   ("C-c d s" . org-gtd-show-stuck-projects)
+   :map org-gtd-clarify-map
+   ("C-c c" . org-gtd-organize)
+   ))
 
 
 ;;; These are copied from the following
