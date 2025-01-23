@@ -171,3 +171,10 @@
 ;; (use-package poetry
 ;; 	     :ensure t
 ;; 	   ;; 	     :after lsp)
+
+;; Custom skeletons (https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons)
+(python-define-auxiliary-skeleton pytest-parametrize
+				  "Insert a @pytest.mark.parametrize() skeleton"
+				  "@pytest.mark.parametrize(\n    (\"\", \"expected\"),\n    [\n        pytest.param(id=\"\"),\n    ]\n)\ndef test() -> None:")
+
+;; python.el end here
