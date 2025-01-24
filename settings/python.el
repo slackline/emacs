@@ -70,9 +70,13 @@
   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
   ;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
   (python-skeleton-define print
-			  "Insert a print statement that will show the value of the argument."
-			  "Enter the variable/object name: "
-			  "print(f\"{" str "=}\")")
+    "Insert a print statement that will show the value of the argument."
+	"Enter the variable/object name: "
+	"print(f\"{" str "=}\")")
+  (python-skeleton-define parameterized-test
+    "Insert a test with @pytest.mark.parametrize() fixture."
+    "Enter the parameters: "
+    "@pytest.mark.parametrize(\n    (" str "),\n[\n        pytest.param(,id=\"\"),\n]\n)\ndefine test_() -> None:")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
@@ -88,6 +92,7 @@
 	      ("C-c p T m" . python-skeleton-import)
 	      ("C-c P" . python-skeleton-print)
 	      ("C-c p T t" . python-skeleton-try)
+	      ("C-c p T T" . python-skeleton-parameterized-test)
 	      ("C-c p T w" . python-skeleton-while)))
 
 ;; https://github.com/wbolster/emacs-python-pytest
@@ -172,9 +177,5 @@
 ;; 	     :ensure t
 ;; 	   ;; 	     :after lsp)
 
-;; Custom skeletons (https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons)
-(python-define-auxiliary-skeleton pytest-parametrize
-				  "Insert a @pytest.mark.parametrize() skeleton"
-				  "@pytest.mark.parametrize(\n    (\"\", \"expected\"),\n    [\n        pytest.param(id=\"\"),\n    ]\n)\ndef test() -> None:")
 
 ;; python.el end here
