@@ -158,6 +158,8 @@
 ;; LTex
 ;; LSP Module : https://github.com/emacs-languagetool/lsp-ltex
 ;; Server     : https://valentjn.github.io/ltex/
+;;     Fork   : https://ltex-plus.github.io/ltex-plus/
+;;              https://fosstodon.org/@jfdm@discuss.systems/113883740363573734
 (use-package lsp-ltex
   :ensure t
   :hook (text-mode . (lambda ()

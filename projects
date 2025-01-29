@@ -1,8 +1,8 @@
 ;;; -*- lisp-data -*-
-(("/home/neil/work/git/hub/AFM-SPM/TopoStats/")
+(("/home/neil/org/")
+  ("/home/neil/work/git/hub/AFM-SPM/TopoStats/")
   ("/home/neil/work/git/hub/ns-rse/skan/")
   ("/home/neil/.config/emacs/")
-  ("/home/neil/org/")
   ("/home/neil/.password-store/")
   ("/home/neil/org-roam/")
   ("/home/neil/work/git/hub/AFM-SPM/jupyterlite-topostats/")
