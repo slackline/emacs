@@ -4,4 +4,7 @@
 ;;
 ;; https://github.com/xenodium/ready-player
 (use-package ready-player
-  :defer 0.5)
+  :ensure t
+  :defer 0.5
+  :config
+  (ready-player-mode +1))

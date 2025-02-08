@@ -305,6 +305,7 @@
 (load "~/.config/emacs/settings/tempel.el")
 (load "~/.config/emacs/settings/yaml.el")
 (load "~/.config/emacs/settings/casual-suite.el")
+(load "~/.config/emacs/settings/ready-player.el")
 
 ;;; Themes, modeline and buffers
 ;; (load "~/.config/emacs/settings/modeline.el")

@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
-(("/home/neil/org/")
+(("/mnt/work/git/hub/ns-rse/ns-rse.github.io/")
+  ("/home/neil/org/")
   ("/home/neil/work/git/hub/AFM-SPM/TopoStats/")
   ("/home/neil/work/git/hub/ns-rse/skan/")
   ("/home/neil/.config/emacs/")
