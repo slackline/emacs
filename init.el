@@ -246,6 +246,7 @@
 (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs.el")
 (load "~/.config/emacs/settings/dired.el")
+(load "~/.config/emacs/settings/encryption.el")
 (load "~/.config/emacs/settings/emacs-everywhere.el")
 ;; (load "~/.config/emacs/settings/kitty.el")
 (load "~/.config/emacs/settings/pass.el")

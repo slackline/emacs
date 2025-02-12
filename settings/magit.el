@@ -36,9 +36,7 @@
 ;; --------------------------------------
 ;; https://magit.vc/manual/ghub.html#Getting-Started
 ;; https://magit.vc/manual/forge.html#Getting-Started
-;; Unnecessary as
-;; (use-package forge
-;;   :after magit)
+;; https://github.com/mobid/gitea-forge
 
 ;; Git-commit TreeSitter mode
 ;; https://github.com/danilshvalov/git-commit-ts-mode

@@ -9,6 +9,8 @@
 ;;
 ;; Look out for https://git.sr.ht/~protesilaos/dired-preview
 ;;
+;; Create themes : https://emacsfodder.github.io/emacs-theme-editor/#
+;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
