@@ -71,8 +71,8 @@
   ;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
   (python-skeleton-define print
     "Insert a print statement that will show the value of the argument."
-	"Enter the variable/object name: "
-	"print(f\"{" str "=}\")")
+    "Enter the variable/object name: "
+	"print(f'\\n{" str "=}\\n')")
   (python-skeleton-define parameterized-test
     "Insert a test with @pytest.mark.parametrize() fixture."
     "Enter the parameters: "
