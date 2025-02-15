@@ -28,6 +28,8 @@
   :hook
   (tree-sitter-after-on . tree-sitter-hl-mode))
 
+;; https://github.com/emacs-tree-sitter/treesit-fold
+(use-package treesit-fold)
 ;; For Emacs 29.0
 ;; https://github.com/renzmann/treesit-auto
 ;; (use-package treesit-auto
