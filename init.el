@@ -304,7 +304,7 @@
 (load "~/.config/emacs/settings/rust.el")
 (load "~/.config/emacs/settings/sqlite.el")
 (load "~/.config/emacs/settings/tempel.el")
-(load "~/.config/emacs/settings/typst.el")
+;; (load "~/.config/emacs/settings/typst.el")
 (load "~/.config/emacs/settings/yaml.el")
 (load "~/.config/emacs/settings/casual-suite.el")
 (load "~/.config/emacs/settings/ready-player.el")

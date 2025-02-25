@@ -22,11 +22,12 @@
   :init
   (setq lsp-keymap-prefix "s-l")
   :config
-  (setq lsp-idle-delay 0.5
-	lsp-copilot-enabled 0
-	lsp-enable-symbol-highlighting t
-	lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
-  lsp-warn-no-matched-clients nil
+  (setq lsp-idle-delay 0.5)
+  (setq lsp-copilot-enabled 0)
+  (setq lsp-copilot-applicable-fn (lambda (&rest _) lsp-copilot-enabled))
+  (setq lsp-enable-symbol-highlighting t)
+  (setq lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
+  (setq lsp-warn-no-matched-clients nil)
   (add-to-list 'lsp-language-id-configuration '(forge-post-mode . "markdown"))
   :hook ((lsp-mode . lsp-enable-which-key-integration)
 	 (R-mode . lsp)
