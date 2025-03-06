@@ -75,6 +75,8 @@
 (use-package git-link
   :ensure t
   :config
+  (require 'git-link-transient)
+  (global-set-key (kbd "C-c m g g") 'git-link-dispatch)
   (global-set-key (kbd "C-c m g l") 'git-link)
   (global-set-key (kbd "C-c m g c") 'git-link-commit)
   (global-set-key (kbd "C-c m g h") 'git-link-homepage))
@@ -138,10 +140,10 @@
 
 ;; Transient prefix
 (transient-define-prefix nds:magit-aux-commands ()
-  "My personal auxiliary magit commands."
-  ["Auxiliary commands"
-   ("o" "Orgit Link" orgit-store-link)
-   ])
+			 "My personal auxiliary magit commands."
+			 ["Auxiliary commands"
+			  ("o" "Orgit Link" orgit-store-link)
+			  ])
 
 ;; Transient suffix https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html
 ;; (transient-append-suffix 'magit-dispatch "!"
