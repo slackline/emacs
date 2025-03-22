@@ -123,6 +123,9 @@
 (use-package git-timemachine
   :ensure t)
 
+;; https://gitlab.com/arvidnl/magit-gitlab
+(use-package magit-gitlab
+  :ensure t)
 
 ;; https://github.com/pkryger/difftastic.el
 (use-package difftastic
