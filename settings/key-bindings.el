@@ -15,10 +15,11 @@
 ;;
 ;; Simplified Emacs keymap in Emacs 29 (and earlier!) : https://systemcrafters.net/newsletter/sc-news-004.html
 ;; https://github.com/justbur/emacs-which-key
-(use-package which-key
-  :defer 0.5
-  :config (which-key-mode)
-  (global-set-key (kbd "<f8>") 'which-key-show-major-mode))
+;; Package is now in Emacs core, not sure any of this is needed
+;; (use-package which-key
+;;   :defer 0.5
+;;   :config (which-key-mode)
+;;   (global-set-key (kbd "<f8>") 'which-key-show-major-mode))
 
 ;; helpful settings
 ;; https://github.com/Wilfred/helpful
