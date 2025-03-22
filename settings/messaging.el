@@ -13,8 +13,8 @@
 ;;; https://github.com/alphapapa/ement.el
 ;;;
 ;;; Doesn't yet support native room encryption, requires reverse proxy via https://github.com/matrix-org/pantalaimon/
-(use-package ement
-  :ensure t)
+;; (use-package ement
+;;   :ensure t)
 
 ;;; https://github.com/isamert/emacs-slack
 ;; (use-package slack
