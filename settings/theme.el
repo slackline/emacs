@@ -56,6 +56,20 @@
 ;; Set the font
 (set-face-attribute 'default t :font "Hack")
 
+;; Code folding https://mastodon.social/@dotemacs@mastodon.xyz/114176758441575809
+(use-package hideshow
+  :hook ((prog-mode . hs-minor-mode))
+  :config
+  (defvar toggle-fold-dont-eol-for-modes '(emacs-lisp-mode lisp-interaction-mode))
+
+  (defun toggle-fold ()
+    "Taken from: https://www.reddit.com/r/emacs/comments/746cd0/comment/dnwi2x1/"
+    (interactive)
+    (save-excursion
+      (unless (member major-mode toggle-fold-dont-eol-for-modes)
+        (end-of-line))
+      (hs-toggle-hiding)))
+  :bind ("C-c f" . toggle-fold))
 
 ;; Mood line
 (use-package mood-line

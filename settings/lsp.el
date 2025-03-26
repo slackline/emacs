@@ -159,15 +159,22 @@
 ;; LTex
 ;; LSP Module : https://github.com/emacs-languagetool/lsp-ltex
 ;; Server     : https://valentjn.github.io/ltex/
+;; (use-package lsp-ltex
+;;   :ensure t
+;;   :hook (text-mode . (lambda ()
+;; 		       (require 'lsp-ltex)
+;; 		       (lsp)))  ; or lsp-deferred
+;;   :init
+;;   (setq lsp-ltex-version "16.0.0"))
 ;;     Fork   : https://ltex-plus.github.io/ltex-plus/
 ;;              https://fosstodon.org/@jfdm@discuss.systems/113883740363573734
-(use-package lsp-ltex
+(use-package lsp-ltex-plus
   :ensure t
   :hook (text-mode . (lambda ()
-		       (require 'lsp-ltex)
+		       (require 'lsp-ltex-plus)
 		       (lsp)))  ; or lsp-deferred
   :init
-  (setq lsp-ltex-version "16.0.0"))
+  (setq lsp-ltex-plus-version "18.4.0"))
 (use-package lsp-latex
   :ensure t
   :hook (text-mode . (lambda ()

@@ -47,6 +47,10 @@
   (after-init-hook . (pyvenv-workon default-env))
   )
 
+;; https://github.com/z80dev/uv-mode
+;; (use-package uv-mode
+;;   :hook (python-mode . uv-mode-auto-activate-hook))
+
 ;; https://github.com/robert-zaremba/auto-virtualenvwrapper.el
 ;; (use-package auto-virtualenvwrapper
 ;;   :hook (python-mode . auto-virtualenvwrapper-activate))
@@ -70,13 +74,13 @@
   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
   ;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
   (python-skeleton-define print
-    "Insert a print statement that will show the value of the argument."
-    "Enter the variable/object name: "
-	"print(f'\\n{" str "=}\\n')")
+			  "Insert a print statement that will show the value of the argument."
+			  "Enter the variable/object name: "
+			  "print(f'\\n{" str "=}\\n')")
   (python-skeleton-define parameterized-test
-    "Insert a test with @pytest.mark.parametrize() fixture."
-    "Enter the parameters: "
-    "@pytest.mark.parametrize(\n    (" str "),\n    [\n        pytest.param(,id=\"\"),\n    ]\n)\ndef test_() -> None:")
+			  "Insert a test with @pytest.mark.parametrize() fixture."
+			  "Enter the parameters: "
+			  "@pytest.mark.parametrize(\n    (" str "),\n    [\n        pytest.param(,id=\"\"),\n    ]\n)\ndef test_() -> None:")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
