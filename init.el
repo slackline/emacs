@@ -35,12 +35,14 @@
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
         ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
         ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA"	. "https://melpa.org/packages/"))
+        ("MELPA"	. "https://melpa.org/packages/")
+        ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
       package-archive-priorities
       '(("MELPA" . 10)
         ("GNU ELPA"	. 5)
         ("NonGNU ELPA"	. 5)
-        ("MELPA Stable"	. 0)
+        ("MELPA Stable"	. 3)
+        ("jcs elpa" . 0)
         ))
 
 (when (not package-archive-contents)
