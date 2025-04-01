@@ -102,7 +102,55 @@
 ;; https://github.com/wbolster/emacs-python-pytest
 (use-package python-pytest
   :after (pyvenv)
-  :ensure t)
+  :ensure t
+  :config
+  (transient-append-suffix
+    'python-pytest-dispatch
+    '(0)
+    ["Regression Tests"
+     ("-r" "Reset regression tests" "--regtest-reset")
+     ("--tee" "Print results" "--regtest-tee")
+     ("--nodiff" "Suppress output" "--regtest-nodiff")
+     ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
+  )
+
+;; TODO - Add these additional transient options
+;; (transient-append-suffix
+;;   'python-pytest-dispatch
+;;   '(0)
+;;   ["Testmon"
+;;     ("--testmon" "Select tests affected by changes" "--testmon")
+;;     ("--testmon-noselect" "Reorder & prioritise tests most likely to fail first" "--testmon-noselect")
+;;     ("--testmon-nocollect" "Deactivate collection and writing of testmon data" "--testmon-nocollect")
+;;     ("--testmon-forceselect" "Select only tests affected bv changes and satisfying pytest selectors"
+;;       "--testmon-forceselect")
+;;     ("--no-testmon" "Turn of testmon" "--no-testmon")
+;;     ])
+;; (transient-append-suffix
+;;   'python-pytest-dispatch
+;;   '(0)
+;;   ["Hypothesis"
+;;     ("--explain" "Enable the explain phase for failing Hypothesis tests" "--hypothesis-explain")
+;;     ])
+;; (transient-append-suffix
+;;   'python-pytest-dispatch
+;;   '(0)
+;;   ["Syrupy"
+;;     ("--snapshot-update" "Update snapshots" "--snapshot-update")
+;;     ("--snapshot-warn-unused" "Do not fail on unused snapshots" "--snapshot-warn-unused")
+;;     ("--snapshot-details" "Include details of unused snapshots in final report" "--snapshot-details")
+;;     ])
+;; (transient-append-suffix
+;;   'python-pytest-dispatch
+;;   '(0)
+;;   ["Matplotlib"
+;;     ("--mpl-summary" "Generate HTML summary on failure" "--mpl-generate-summary html")
+;;     ("--mpl-baseline-relative" "Interpret the baseline directory as relative to the test location"
+;;       "--mpl-baseline-relative")
+;;     ("--mpl-deterministic" "Whether to make the image file metadata deterministic" "--mpl-deterministic")
+;;     ("--mpl-no-deterministic" "Whether to make the image file metadata deterministic" "--mpl-no-deterministic")
+;;     ])
+
 
 ;; https://github.com/ionrock/pytest-el
 ;; (use-package pytest
