@@ -82,9 +82,9 @@
   (global-set-key (kbd "C-c m g h") 'git-link-homepage))
 
 ;; https://github.com/blahgeek/emacs-pr-review
-;; (use-package pr-review
-;;   :ensure t
-;;   :after ghub)
+(use-package pr-review
+  :ensure t
+  :after ghub)
 
 ;; https://github.com/wandersoncferreira/code-review/
 (use-package code-review
