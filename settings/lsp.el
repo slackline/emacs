@@ -29,7 +29,7 @@
   (setq lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
   (setq lsp-warn-no-matched-clients nil)
   (add-to-list 'lsp-language-id-configuration '(forge-post-mode . "markdown"))
-  :hook ((lsp-mode . lsp-enable-which-key-integration)
+  :hook (
 	 (R-mode . lsp)
 	 (bash-mode . lsp)
 	 (dockerfile-mode . lsp)
@@ -49,6 +49,10 @@
 	 (terraform-mode . lsp)
 	 (typescript-mode . lsp))
   :commands lsp)
+
+;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
