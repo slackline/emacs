@@ -5,6 +5,14 @@
 ;; (setq debug-on-error f)
 ;;
 (require 'package)
+;; SETUP use-package, will install if not already present
+;;   https://ianyepan.github.io/posts/setting-up-use-package/
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
 
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -63,7 +71,7 @@
                         exec-path))
 
 ;; Load and install mypackages
-(load "~/.config/emacs/settings/mypackages.el")
+;; (load "~/.config/emacs/settings/mypackages.el")
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
@@ -77,15 +85,6 @@
 ;; Hide compilation buffer https://emacs.stackexchange.com/a/110
 (add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
 
-
-;; SETUP use-package, will install if not already present
-;;   https://ianyepan.github.io/posts/setting-up-use-package/
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
 
 ;; https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
 (use-package gnu-elpa-keyring-update
