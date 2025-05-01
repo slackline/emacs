@@ -4,28 +4,7 @@
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
 ;;
-;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
-;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
-;; of the file.
-(require 'auto-compile)
-(package-initialize)
-(setq load-prefer-newer t)
-(setq native-comp-jit-compilation t)
-;; https://github.com/jamescherti/compile-angel.el
-;; NB - This will fail on fresh installs as you have to first install use-package!
-;; (use-package compile-angel
-;;   :ensure t
-;;   :demand t
-;;   :custom
-;;   (compile-angel-verbose nil)
-;;   :config
-;;   (compile-angel-on-load-mode)
-;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
 (require 'package)
-
-;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
 
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -50,6 +29,30 @@
 
 ;; Add local lisp for miscellaneous things
 ;; (add-to-list 'load-path "~/.config/emacs/lisp/")
+
+;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
+;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
+;; of the file.
+(setq load-prefer-newer t)
+(setq native-comp-jit-compilation t)
+(use-package auto-compile
+  :ensure t)
+;; (require 'auto-compile)
+(package-initialize)
+;; https://github.com/jamescherti/compile-angel.el
+;; NB - This will fail on fresh installs as you have to first install use-package!
+;; (use-package compile-angel
+;;   :ensure t
+;;   :demand t
+;;   :custom
+;;   (compile-angel-verbose nil)
+;;   :config
+;;   (compile-angel-on-load-mode)
+;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
+;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
 
 ;; Modify exec-path
 (setq exec-path (append '("~/bin"
@@ -222,9 +225,10 @@
 ;; (setq frame-title-format "%b")
 
 ;; https://github.com/wbolster/emacs-direnv
-(use-package direnv
-  :config
-  (direnv-mode))
+;; (use-package direnv
+;;   :ensure t
+;;   :config
+;;   (direnv-mode))
 
 ;; Add global keymaps (see https://emacs.stackexchange.com/a/54792/10100)
 (define-key global-map (kbd "C-c p l") (make-sparse-keymap))
