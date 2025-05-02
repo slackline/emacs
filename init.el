@@ -4,28 +4,18 @@
 ;;; --------------------------------------
 ;; (setq debug-on-error f)
 ;;
-;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
-;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
-;; of the file.
-(require 'auto-compile)
+(setq package-enable-at-startup nil)
 (package-initialize)
-(setq load-prefer-newer t)
-(setq native-comp-jit-compilation t)
-;; https://github.com/jamescherti/compile-angel.el
-;; NB - This will fail on fresh installs as you have to first install use-package!
-;; (use-package compile-angel
-;;   :ensure t
-;;   :demand t
-;;   :custom
-;;   (compile-angel-verbose nil)
-;;   :config
-;;   (compile-angel-on-load-mode)
-;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
 (require 'package)
+;; SETUP use-package, will install if not already present
+;;   https://ianyepan.github.io/posts/setting-up-use-package/
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
 
-;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
 
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -51,6 +41,29 @@
 ;; Add local lisp for miscellaneous things
 ;; (add-to-list 'load-path "~/.config/emacs/lisp/")
 
+;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
+;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
+;; of the file.
+(setq load-prefer-newer t)
+(setq native-comp-jit-compilation t)
+(use-package auto-compile
+  :ensure t)
+;; (require 'auto-compile)
+;; https://github.com/jamescherti/compile-angel.el
+;; NB - This will fail on fresh installs as you have to first install use-package!
+;; (use-package compile-angel
+;;   :ensure t
+;;   :demand t
+;;   :custom
+;;   (compile-angel-verbose nil)
+;;   :config
+;;   (compile-angel-on-load-mode)
+;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+(auto-compile-on-load-mode)
+(auto-compile-on-save-mode)
+
+;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
+
 ;; Modify exec-path
 (setq exec-path (append '("~/bin"
                           "~/.local/bin"
@@ -60,7 +73,7 @@
                         exec-path))
 
 ;; Load and install mypackages
-(load "~/.config/emacs/settings/mypackages.el")
+;; (load "~/.config/emacs/settings/mypackages.el")
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
@@ -74,15 +87,6 @@
 ;; Hide compilation buffer https://emacs.stackexchange.com/a/110
 (add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
 
-
-;; SETUP use-package, will install if not already present
-;;   https://ianyepan.github.io/posts/setting-up-use-package/
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
 
 ;; https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
 (use-package gnu-elpa-keyring-update
@@ -109,6 +113,7 @@
   (global-auto-revert-mode 1)
   :config
   ;; Add local lisp for miscellaneous things
+  (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
   (setq custom-file "~/.config/emacs/custom.el")
   (setq package-install-upgrade-built-in t) ; Upgrade built-in packages
@@ -179,7 +184,6 @@
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
   (before-save . do-auto-fill)
-  (prog-mode-hook . highlight-indent-guides-mode)
   (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
   ;; imenu http://yummymelon.com/devnull/til-imenu.html
   ((markdown-mode
@@ -223,6 +227,7 @@
 
 ;; https://github.com/wbolster/emacs-direnv
 (use-package direnv
+  :ensure t
   :config
   (direnv-mode))
 
