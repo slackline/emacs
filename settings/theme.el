@@ -11,6 +11,9 @@
 ;;
 ;; Create themes : https://emacsfodder.github.io/emacs-theme-editor/#
 ;;
+;; Consider using highlight-changes-mode at some point
+;; https://tommorris.org/posts/2025/til-track-changes-in-emacs-with-highlight-changes-mode/
+;;
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
