@@ -184,7 +184,6 @@
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
   (before-save . do-auto-fill)
-  (prog-mode-hook . highlight-indent-guides-mode)
   (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
   ;; imenu http://yummymelon.com/devnull/til-imenu.html
   ((markdown-mode
