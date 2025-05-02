@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: parameterised-test
+# key: pt
+# group: definitions
+# --
+@pytest.mark.parametrize(
+    ("${1:parameters}"),
+    [
+        pytest.param(,id="${2:id}"),
+    ]
+)
+def test_${3:testname}() -> None:
+    """Test for ${3}."""
+    $0

@@ -80,7 +80,8 @@
   (python-skeleton-define parameterized-test
 			  "Insert a test with @pytest.mark.parametrize() fixture."
 			  "Enter the parameters: "
-			  "@pytest.mark.parametrize(\n    (" str "),\n    [\n        pytest.param(,id=\"\"),\n    ]\n)\ndef test_() -> None:")
+			  "@pytest.mark.parametrize(\n    (" str "),\n    [\n        pytest.param(,id=\"\"),\n    ]\n)\ndef test_()
+-> None:")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
