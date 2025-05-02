@@ -111,6 +111,7 @@
   (global-auto-revert-mode 1)
   :config
   ;; Add local lisp for miscellaneous things
+  (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
   (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
   (setq custom-file "~/.config/emacs/custom.el")
   (setq package-install-upgrade-built-in t) ; Upgrade built-in packages
