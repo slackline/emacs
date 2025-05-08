@@ -260,6 +260,8 @@
 (load "~/.config/emacs/settings/projectile.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
 (load "~/.config/emacs/settings/shackle.el")
+(load "~/.config/emacs/settings/casual-suite.el")
+;; (load "~/.config/emacs/settings/ready-player.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
@@ -313,8 +315,7 @@
 (load "~/.config/emacs/settings/tempel.el")
 ;; (load "~/.config/emacs/settings/typst.el")
 (load "~/.config/emacs/settings/yaml.el")
-(load "~/.config/emacs/settings/casual-suite.el")
-(load "~/.config/emacs/settings/ready-player.el")
+(load "~/.config/emacs/settings/yassnipet.el")
 
 ;;; Themes, modeline and buffers
 ;; (load "~/.config/emacs/settings/modeline.el")
