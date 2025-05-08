@@ -315,7 +315,7 @@
 (load "~/.config/emacs/settings/tempel.el")
 ;; (load "~/.config/emacs/settings/typst.el")
 (load "~/.config/emacs/settings/yaml.el")
-(load "~/.config/emacs/settings/yassnipet.el")
+(load "~/.config/emacs/settings/yasnippet.el")
 
 ;;; Themes, modeline and buffers
 ;; (load "~/.config/emacs/settings/modeline.el")
