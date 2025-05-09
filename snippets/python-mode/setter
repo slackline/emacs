@@ -6,23 +6,23 @@
     @property
     def ${1:attribute}(self) -> ${2:type}:
         """
-        Greeter for the ''${1}'' attribute.
+        Greeter for the ``${1}`` attribute.
 
         Returns
         -------
         ${2}
-            Returns the value of ''${1}''.
+            Returns the value of ``${1}``.
         """
         return self._${1}
 
     @${1}.setter
     def ${1}(self, value: ${2}) -> None:
         """
-        Setter for the ''${1}'' attribute.
+        Setter for the ``${1}`` attribute.
 
         Parameters
         ----------
         value : ${2}
-            Value to set for ${1}.
+            Value to set for ``${1}``.
         """
         self._${1} = value
