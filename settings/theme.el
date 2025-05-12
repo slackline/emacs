@@ -61,6 +61,7 @@
 
 ;; Code folding https://mastodon.social/@dotemacs@mastodon.xyz/114176758441575809
 (use-package hideshow
+  :ensure t
   :hook ((prog-mode . hs-minor-mode))
   :config
   (defvar toggle-fold-dont-eol-for-modes '(emacs-lisp-mode lisp-interaction-mode))
@@ -175,7 +176,8 @@
 
 ;; Kaolin
 ;; (use-package kaolin-themes
-;;    :init
+;;   :ensure t
+;;   :init
 ;;      (load-theme 'kaolin-light t)        ;; light variant of the original kaolin-dark.
 ;;      (load-theme 'kaolin-aurora t)       ;; Kaolin meets polar lights.
 ;;      (load-theme 'kaolin-bubblegum t)    ;; Kaolin colorful theme with dark blue background.

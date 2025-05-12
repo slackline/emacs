@@ -50,14 +50,17 @@
 ;;
 ;; GitHub : https://github.com/tefkah/org-roam-timestamps
 (use-package org-roam-timestamps
+  :ensure t
   :after org-roam
   :config (org-roam-timestamps-mode))
 
-;; org-roam-ui https://github.com/org-roam/org-roam-ui
 (use-package websocket
+  :ensure t
   :after org-roam)
 
+;; org-roam-ui https://github.com/org-roam/org-roam-ui
 (use-package org-roam-ui
+  :ensure t
   :after org-roam-bibtex-mode
   :init
   (setq org-roam-ui-sync-theme t
@@ -66,5 +69,6 @@
 	org-roam-ui-open-on-start t))
 
 (use-package citar-org-roam
+  :ensure t
   :after (citar org-roam)
   :config (citar-org-roam-mode))

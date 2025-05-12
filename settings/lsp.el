@@ -18,7 +18,7 @@
 ;; https://github.com/ltex-plus/ltex-ls-plus / https://github.com/valentjn/ltex-ls
 (use-package lsp-mode
   :ensure t
-					; :defer 1
+  ;; :defer 1
   :init
   (setq lsp-keymap-prefix "s-l")
   :config

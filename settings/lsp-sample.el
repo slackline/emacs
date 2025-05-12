@@ -77,7 +77,7 @@
 
 ;; Hide the modeline for inferior python processes
 (use-package inferior-python-mode
-  :ensure nil
+  :ensure t
   :hook (inferior-python-mode . hide-mode-line-mode))
 
 ;; Required to hide the modeline

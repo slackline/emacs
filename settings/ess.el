@@ -87,7 +87,8 @@
 
 
 ;; https://github.com/sje30/essgd
-(use-package essgd)
+(use-package essgd
+  :ensure t)
 
 ;;; Set the width of the buffer automatically from
 ;;; https://stat.ethz.ch/pipermail/ess-help/2009-July/005455.html
@@ -96,7 +97,8 @@
   (local-set-key "\C-cw" 'ess-execute-screen-options))
 (add-hook 'ess-post-run-hook 'my-ess-post-run-hook)
 ;;; Auto-complete and ESS http://goo.gl/utAi2Z
-(use-package auto-complete)
+(use-package auto-complete
+  :ensure t)
 ;; (use-package auto-complete-config)
 ;; (ac-config-default)
 (auto-complete-mode)

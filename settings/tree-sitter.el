@@ -25,11 +25,13 @@
   (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs
+  :ensure t
   :hook
   (tree-sitter-after-on . tree-sitter-hl-mode))
 
 ;; https://github.com/emacs-tree-sitter/treesit-fold
 (use-package treesit-fold
+  :ensure t
   :init
   (global-treesit-fold-mode))
 ;; For Emacs 29.0

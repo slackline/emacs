@@ -4,6 +4,7 @@
 
 ;; org-ref https://github.com/jkitchin/org-ref
 (use-package org-ref
+  :ensure t
   :requires
   org-ref-helm
   :config

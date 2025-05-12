@@ -4,11 +4,13 @@
 
 ;; https://gitea.petton.fr/mpdel/mpdel
 (use-package mpdel
+  :ensure t
   :init
-  (setq libmpdel-hostname "192.168.1.21")
+  (setq libmpdel-hostname "192.168.1.28")
   (setq libmpdel-port 6600))
 ;; (mpdel-mode)
 (use-package ivy-mpdel
+  :ensure t
   :defer 2)
 
 ;; https://github.com/sp1ff/mpdmacs

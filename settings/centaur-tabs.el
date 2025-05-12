@@ -2,6 +2,7 @@
 ;; --------------------------------------
 ;; https://github.com/ema2159/centaur-tabs
 (use-package centaur-tabs
+  :ensure t
   :demand
   :config
   (centaur-tabs-mode t)

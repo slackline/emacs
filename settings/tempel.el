@@ -3,7 +3,7 @@
   ;; Require trigger prefix before template name when completing.
   ;; :custom
   ;; (tempel-trigger-prefix "<")
-
+  :ensure t
   :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
          ("M-*" . tempel-insert))
 
@@ -34,9 +34,11 @@
 
 ;; Optional: Add tempel-collection.
 ;; The package is young and doesn't have comprehensive coverage.
-(use-package tempel-collection)
+(use-package tempel-collection
+  :ensure t)
 
 ;; Optional: Use the Corfu completion UI
 ;; (use-package corfu
+;;   :ensure t
 ;;   :init
 ;;   (global-corfu-mode))

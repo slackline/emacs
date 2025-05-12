@@ -8,6 +8,7 @@
 ;;; Also includes customiastion for org-agenda
 (setq org-gtd-update-ack "3.0.0")
 (use-package org-gtd
+  :ensure t
   :after org
   ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
   ;;                  :branch "2.0.0" :upgrade t)

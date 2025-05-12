@@ -12,6 +12,7 @@
 ;; Suggested key bindings:
 ;;
 ;; (use-package sqlite-mode-extras
+;;   :ensure t
 ;;   :bind (:map
 ;;          sqlite-mode-map
 ;;          ("n" . next-line)

@@ -131,6 +131,7 @@
 
 ;; https://github.com/pkryger/difftastic.el
 (use-package difftastic
+  :ensure t
   :demand t
   :bind (:map magit-blame-read-only-mode-map
               ("D" . difftastic-magit-show)
@@ -178,6 +179,7 @@
 
 ;; https://github.com/armindarvish/consult-gh
 ;; (use-package consult-gh
+;;   :ensure t
 ;;   :after consult
 ;;   :custom
 ;;   (consult-gh-default-clone-directory "~/projects")
@@ -205,11 +207,13 @@
 
 ;; ;; Install `consult-gh-embark' for embark actions
 ;; (use-package consult-gh-embark
+;;   :ensure t
 ;;   :config
 ;;   (consult-gh-embark-mode +1))
 
 ;; ;; Install `consult-gh-forge' for forge actions
 ;; (use-package consult-gh-forge
+;;   :ensure t
 ;;   :config
 ;;   (consult-gh-forge-mode +1)
 ;;   (setq consult-gh-forge-timeout-seconds 20))

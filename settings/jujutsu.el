@@ -9,4 +9,5 @@
   :defer 0.5)
 
 ;; https://git.sr.ht/~puercopop/jujutsushi
-;; (use-package jujutsushi)
+;; (use-package jujutsushi
+;;   :ensure t)

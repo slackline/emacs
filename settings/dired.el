@@ -68,6 +68,7 @@
 
 
 (use-package dired-subtree
+  :ensure t
   :config
   (bind-keys :map dired-mode-map
              ("i" . dired-subtree-insert)

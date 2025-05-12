@@ -49,11 +49,8 @@
 
 ;; https://github.com/z80dev/uv-mode
 ;; (use-package uv-mode
+;;   :ensure t
 ;;   :hook (python-mode . uv-mode-auto-activate-hook))
-
-;; https://github.com/robert-zaremba/auto-virtualenvwrapper.el
-;; (use-package auto-virtualenvwrapper
-;;   :hook (python-mode . auto-virtualenvwrapper-activate))
 
 ;;  https://github.com/nryotaro/pyvenv-auto
 (use-package pyvenv-auto
@@ -219,6 +216,7 @@
 
 ;; https://github.com/paetzke/py-autopep8.el
 ;; (use-package py-autopep8
+;;   :ensure t
 ;;   :hook (python-mode . py-autopep8-enable-on-save))
 
 ;; (use-package yapfify

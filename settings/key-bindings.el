@@ -20,6 +20,7 @@
 ;;
 
 (use-package which-key
+  :ensure t
   :defer 0.5
   :config (which-key-mode)
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
@@ -72,6 +73,7 @@
 ;; https://github.com/Wilfred/helpful
 ;;
 (use-package helpful
+  :ensure t
   :defer 0.5
   :config
   ;; Note that the built-in `describe-function' includes both functions
@@ -101,6 +103,7 @@
 ;; mwim settings
 ;; https://github.com/alezost/mwim.el
 (use-package mwim
+  :ensure t
   :defer 0.5
   :config
   (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
@@ -111,6 +114,7 @@
 ;; expand region settings
 ;; https://github.com/magnars/expand-region.el/
 (use-package expand-region
+  :ensure t
   :bind ("C-=" . er/expand-region))
 
 ;; Function Keys
