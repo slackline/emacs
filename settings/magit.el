@@ -20,6 +20,8 @@
   (setq magit-bury-buffer-function 'magit-restore-window-configuration)
   (setq magit-pull-or-fetch t)
   (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
+  ;; https://mbork.pl/2025-05-12_Coloring_Git_output_in_Magit
+  (setq magit-process-finish-apply-ansi-colors t)
   (global-set-key (kbd "C-c m C") 'magit-clone)
   (global-set-key (kbd "C-c m F") 'magit-pull-from-upstream)
   (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
