@@ -107,6 +107,7 @@
     '(0)
     ["Regression Tests"
      ("-r" "Reset regression tests" "--regtest-reset")
+     ("--su" "Reset Syrupy snapshot" "--snapshot-update")
      ("--tee" "Print results" "--regtest-tee")
      ("--nodiff" "Suppress output" "--regtest-nodiff")
      ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
