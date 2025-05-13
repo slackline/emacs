@@ -6,7 +6,7 @@
     @property
     def ${1:attribute}(self) -> ${2:type}:
         """
-        Greeter for the ``${1}`` attribute.
+        Getter for the ``${1}`` attribute.
 
         Returns
         -------
