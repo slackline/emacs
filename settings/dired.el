@@ -18,6 +18,8 @@
   ;; (setq dirvish-use-mode-line nil)       ; hide mode line
   (setq dirvish-use-header-line 'global)    ; make header line span all panes
 
+  ;; Hide the parent directory
+  (setq dirvish-default-layout '(0 0.4 0.6))
   ;; Height
   ;;; '(25 . 35) means
   ;;;   - height in single window sessions is 25
@@ -56,8 +58,11 @@
 (use-package dired-rsync-transient
   :ensure t)
 
+;; https://codeberg.org/danrobi/dired-multi-copy (not on MELPA yet)
+;; (use-package dired-multi-copy
+;;   :ensure t)
 
-;;
+;; https://github.com/punassuming/ranger.el
 (use-package dired-ranger
   :ensure t
   :defer 0.5
