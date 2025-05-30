@@ -81,10 +81,11 @@
 
 ;; Quarto mode https://github.com/quarto-dev/quarto-emacs
 ;; By default associated with .qmd files
-(use-package quarto-mode
-  :mode (("\\.Rmd" . poly-quarto-mode))
-  :bind (("C-c q" . quarto-preview)))
-
+;; (use-package quarto-mode
+;;   :ensure t
+;;   :mode (("\\.Rmd" . poly-quarto-mode))
+;;   :bind (("C-c q" . quarto-preview)))
+(load "~/.config/emacs/site-lisp/quarto-mode.el")
 
 ;; https://github.com/sje30/essgd
 (use-package essgd
