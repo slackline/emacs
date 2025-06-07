@@ -20,6 +20,10 @@
   (setq magit-bury-buffer-function 'magit-restore-window-configuration)
   (setq magit-pull-or-fetch t)
   (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
+  ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
+  ;; perhaps?
+  (remove-hook 'git-commit-mode #'turn-on-auto-fill)
+  (remove-hook 'forge-post-mode #'turn-on-auto-fill)
   ;; https://mbork.pl/2025-05-12_Coloring_Git_output_in_Magit
   (setq magit-process-finish-apply-ansi-colors t)
   (global-set-key (kbd "C-c m C") 'magit-clone)
@@ -210,6 +214,7 @@
 ;;   :ensure t
 ;;   :config
 ;;   (consult-gh-embark-mode +1))
+
 
 ;; ;; Install `consult-gh-forge' for forge actions
 ;; (use-package consult-gh-forge
