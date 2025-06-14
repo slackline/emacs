@@ -84,6 +84,10 @@
   :custom
   (setq mood-line-glyph-alist mood-line-glyphs-unicode))
 
+;; https://github.com/tarsius/minions
+(use-package minions
+  :ensure t)
+
 ;; https://github.com/roman/golden-ratio.el
 (use-package golden-ratio
   :ensure t
