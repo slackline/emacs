@@ -15,10 +15,6 @@
   (elfeed-org)
   (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
-;;; https://github.com/fasheng/elfeed-protocol
-;;; Can be used to get it working with FreshRSS or similar
-(use-package elfeed-protocol
-  :ensure t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elfeed feed reader                                                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -85,6 +81,8 @@
   (setq httpd-port "8818"))
 
 
+;;
+;; Useful https://pragmaticemacs.wordpress.com/2016/08/17/read-your-rss-feeds-in-emacs-with-elfeed/
 (use-package elfeed
   :ensure t
   :bind (:map elfeed-search-mode-map
@@ -130,3 +128,12 @@
       (cl-loop for entry in entries
 	       do (nds:elfeed-db-remove-entry (elfeed-entry-id entry)))))
   (elfeed-search-update--force))
+
+;; https://github.com/fasheng/elfeed-protocol
+;; Can be used to get it working with FreshRSS or similar, see https://plrj.org/2025/06/14/my-emacs-elfeed-configuration/
+(use-package elfeed-protocol
+  :ensure t)
+
+;; https://github.com/jeetelongname/elfeed-goodies
+(use-package elfeed-goodies
+  :ensure t)
