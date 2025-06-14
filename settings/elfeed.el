@@ -15,6 +15,10 @@
   (elfeed-org)
   (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
+;;; https://github.com/fasheng/elfeed-protocol
+;;; Can be used to get it working with FreshRSS or similar
+(use-package elfeed-protocol
+  :ensure t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; elfeed feed reader                                                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -122,7 +126,7 @@
   (interactive)
   (let* ((entries (elfeed-search-selected))
 	 (count (length entries)))
-    (when (y-or-n-p (format "Delete %d entires?" count))
+    (when (y-or-n-p (format "Delete %d entries?" count))
       (cl-loop for entry in entries
 	       do (nds:elfeed-db-remove-entry (elfeed-entry-id entry)))))
   (elfeed-search-update--force))
