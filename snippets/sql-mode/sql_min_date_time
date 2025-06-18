@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sql-min-date-time
+# key: dt-
+# expand-env: ((yas-indent-line 'fixed))
+# --
+  -- ,CAST( MIN( ${1:date} ) AS DATETIME) AS  ${1}
