@@ -18,10 +18,10 @@
 ;;   - A preview command (C-c C-p) to preview the current document.
 ;;; Code:
 
-(require 'polymode)
-(require 'markdown-mode)
-(require 'ess)        ;; for ess-r-mode
-(require 'python)     ;; for python-mode
+;; (require 'polymode)
+;; (require 'markdown-mode)
+;; (require 'ess)        ;; for ess-r-mode
+;; (require 'python)     ;; for python-mode
 
 ;; --- Disable Tree-sitter and Highlight-Indent-Guides in the Outer Mode ---
 (defun my/poly-markdown-disable-extras ()
@@ -60,82 +60,82 @@ Automatically switches to the appropriate mode for code blocks."
 			       poly-quarto-python-innermode))
 
 ;; --- Command: Send Current Code Block to REPL ---
-(defun quarto-send-code-block-to-repl ()
-  "Send the current Quarto code block to the appropriate REPL.
-This command only works if the point is in a code block (inner region).
-For R, uses ESS; for Python, uses the Python shell."
-  (interactive)
-  (if (not (member major-mode '(ess-r-mode python-mode)))
-      (message "Not in a code block")
-    (let (lang start end code)
-      (save-excursion
-        (when (re-search-backward "^```{\\([^,}]+\\)" nil t)
-          (setq lang (downcase (car (split-string (match-string 1) "[, ]+" t))))
-          (forward-line)
-          (setq start (point))
-          (when (re-search-forward "^```\\s-*$" nil t)
-            (setq end (match-beginning 0))
-            (setq code (buffer-substring-no-properties start end)))))
-      (if (not (and lang code))
-          (message "No valid code block found.")
-        (cond
-         ((string= lang "r")
-          (if (fboundp 'ess-eval-linewise)
-              (ess-eval-linewise code)
-            (message "ESS not available.")))
-         ((string= lang "python")
-          (if (fboundp 'python-shell-send-string)
-              (python-shell-send-string code)
-            (message "Python shell not available.")))
-         (t (message "Unsupported language: %s" lang)))))))
+;; (defun quarto-send-code-block-to-repl ()
+;;   "Send the current Quarto code block to the appropriate REPL.
+;; This command only works if the point is in a code block (inner region).
+;; For R, uses ESS; for Python, uses the Python shell."
+;;   (interactive)
+;;   (if (not (member major-mode '(ess-r-mode python-mode)))
+;;       (message "Not in a code block")
+;;     (let (lang start end code)
+;;       (save-excursion
+;;         (when (re-search-backward "^```{\\([^,}]+\\)" nil t)
+;;           (setq lang (downcase (car (split-string (match-string 1) "[, ]+" t))))
+;;           (forward-line)
+;;           (setq start (point))
+;;           (when (re-search-forward "^```\\s-*$" nil t)
+;;             (setq end (match-beginning 0))
+;;             (setq code (buffer-substring-no-properties start end)))))
+;;       (if (not (and lang code))
+;;           (message "No valid code block found.")
+;;         (cond
+;;          ((string= lang "r")
+;;           (if (fboundp 'ess-eval-linewise)
+;;               (ess-eval-linewise code)
+;;             (message "ESS not available.")))
+;;          ((string= lang "python")
+;;           (if (fboundp 'python-shell-send-string)
+;;               (python-shell-send-string code)
+;;             (message "Python shell not available.")))
+;;          (t (message "Unsupported language: %s" lang)))))))
 
-;; --- Command: Build Quarto Document ---
-(defcustom quarto-build-flags ""
-  "Extra flags to pass to the Quarto build command."
-  :group 'quarto
-  :type 'string)
+;; ;; --- Command: Build Quarto Document ---
+;; (defcustom quarto-build-flags ""
+;;   "Extra flags to pass to the Quarto build command."
+;;   :group 'quarto
+;;   :type 'string)
 
-(defun quarto-build-document ()
-  "Build the current Quarto document using Quarto.
-Runs: `quarto render <current-file> <quarto-build-flags>` asynchronously."
-  (interactive)
-  (let* ((file (buffer-file-name))
-         (cmd (format "quarto render %s %s"
-                      (shell-quote-argument file)
-                      quarto-build-flags)))
-    (message "Executing: %s" cmd)
-    (compilation-start cmd 'compilation-mode)))
+;; (defun quarto-build-document ()
+;;   "Build the current Quarto document using Quarto.
+;; Runs: `quarto render <current-file> <quarto-build-flags>` asynchronously."
+;;   (interactive)
+;;   (let* ((file (buffer-file-name))
+;;          (cmd (format "quarto render %s %s"
+;;                       (shell-quote-argument file)
+;;                       quarto-build-flags)))
+;;     (message "Executing: %s" cmd)
+;;     (compilation-start cmd 'compilation-mode)))
 
-;; --- Command: Preview Quarto Document ---
-(defcustom quarto-preview-flags ""
-  "Extra flags to pass to the Quarto preview command."
-  :group 'quarto
-  :type 'string)
+;; ;; --- Command: Preview Quarto Document ---
+;; (defcustom quarto-preview-flags ""
+;;   "Extra flags to pass to the Quarto preview command."
+;;   :group 'quarto
+;;   :type 'string)
 
-(defun quarto-preview-document ()
-  "Preview the current Quarto document using Quarto.
-Runs: `quarto preview <current-file> <quarto-preview-flags>` asynchronously."
-  (interactive)
-  (let* ((file (buffer-file-name))
-         (cmd (format "quarto preview %s %s"
-                      (shell-quote-argument file)
-                      quarto-preview-flags)))
-    (message "Executing: %s" cmd)
-    (compilation-start cmd 'compilation-mode)))
+;; (defun quarto-preview-document ()
+;;   "Preview the current Quarto document using Quarto.
+;; Runs: `quarto preview <current-file> <quarto-preview-flags>` asynchronously."
+;;   (interactive)
+;;   (let* ((file (buffer-file-name))
+;;          (cmd (format "quarto preview %s %s"
+;;                       (shell-quote-argument file)
+;;                       quarto-preview-flags)))
+;;     (message "Executing: %s" cmd)
+;;     (compilation-start cmd 'compilation-mode)))
 
-;; --- Bind the Commands in poly-quarto-mode ---
-(define-key poly-quarto-mode-map (kbd "C-c C-c") 'quarto-send-code-block-to-repl)
-(define-key poly-quarto-mode-map (kbd "C-c C-b") 'quarto-build-document)
-(define-key poly-quarto-mode-map (kbd "C-c C-p") 'quarto-preview-document)
+;; ;; --- Bind the Commands in poly-quarto-mode ---
+;; (define-key poly-quarto-mode-map (kbd "C-c C-c") 'quarto-send-code-block-to-repl)
+;; (define-key poly-quarto-mode-map (kbd "C-c C-b") 'quarto-build-document)
+;; (define-key poly-quarto-mode-map (kbd "C-c C-p") 'quarto-preview-document)
 
-;; --- Improve Cursor Stability: Disable Electric Indent in Inner Modes ---
-(add-hook 'ess-r-mode-hook
-          (lambda () (setq-local electric-indent-inhibit t)))
-(add-hook 'python-mode-hook
-          (lambda () (setq-local electric-indent-inhibit t)))
+;; ;; --- Improve Cursor Stability: Disable Electric Indent in Inner Modes ---
+;; (add-hook 'ess-r-mode-hook
+;;           (lambda () (setq-local electric-indent-inhibit t)))
+;; (add-hook 'python-mode-hook
+;;           (lambda () (setq-local electric-indent-inhibit t)))
 
-;;;###autoload
-(add-to-list 'auto-mode-alist '("\\.qmd\\'" . poly-quarto-mode))
+;; ;;;###autoload
+;; (add-to-list 'auto-mode-alist '("\\.qmd\\'" . poly-quarto-mode))
 
-(provide 'quarto-mode)
-;;; quarto-mode.el ends here
+;; (provide 'quarto-mode)
+;; ;;; quarto-mode.el ends here

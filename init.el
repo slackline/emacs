@@ -294,6 +294,8 @@
 
 ;;; IDE / LSP
 (load "~/.config/emacs/settings/polymode.el")
+(load "~/.config/emacs/settings/markdown.el")
+(load "~/.config/emacs/settings/python.el")
 ;; (load "~/.config/emacs/settings/conda.el")
 ;; (load "~/.config/emacs/settings/eglot.el")
 (load "~/.config/emacs/settings/ess.el")
@@ -305,10 +307,8 @@
 (load "~/.config/emacs/settings/lsp.el")
 ;; (load "~/.config/emacs/settings/lsp-sample.el")
 (load "~/.config/emacs/settings/magit.el")
-(load "~/.config/emacs/settings/markdown.el")
 (load "~/.config/emacs/settings/mermaid.el")
 (load "~/.config/emacs/settings/nix.el")
-(load "~/.config/emacs/settings/python.el")
 ;; (load "~/.config/emacs/settings/realgud.el")
 (load "~/.config/emacs/settings/rust.el")
 (load "~/.config/emacs/settings/sqlite.el")
