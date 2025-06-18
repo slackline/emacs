@@ -28,6 +28,8 @@ transient/
 url/
 var/
 tmp/
+eln-cache/
+tree-sitter/
 
 # Private or repo specific files files
 bookmarks
