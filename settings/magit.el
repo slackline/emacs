@@ -222,3 +222,10 @@
 ;;   :config
 ;;   (consult-gh-forge-mode +1)
 ;;   (setq consult-gh-forge-timeout-seconds 20))
+
+
+;; Convenience wrappers around ghub
+(use-package glab
+  :ensure t)
+(use-package gtea
+  :ensure t)
