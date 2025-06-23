@@ -95,6 +95,10 @@
   ;; package.
   (marginalia-mode))
 
+;;; https://github.com/casouri/vundo
+(use-package vundo
+  :ensure t)
+
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
   :ensure t ; only need to install it, embark loads it after consult if found
