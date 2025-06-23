@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: org-R-skeleton
+# key: nh
+# --
+#+TITLE: $str
+#+AUTHOR: Neil Shephard
+#+EMAIL: nshephard@protonmail.com
+#+PROPERTY: header-args:R  :session *org-R*
+#+PROPERTY: header-args:R  :cache yes
+#+PROPERTY: header-args:R  :results graphics
+#+PROPERTY: header-args:R  :width 1024
+#+PROPERTY: header-args:R  :height 768
+#+PROPERTY: header-args:R  :tangle yes
+#+INFOJS_OPT:
+#+BABEL:  :session *org-R*  :cache yes  :exports both  :results output graphics  :tangle yes  :width 1024  :height 768
