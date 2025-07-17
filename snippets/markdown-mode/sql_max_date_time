@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: sql-max-date-time
+# key: dt+
+# expand-env: ((yas-indent-line 'fixed))
+# --
+  -- ,CAST( MAX( ${1:date} ) AS DATETIME) AS  ${1}
