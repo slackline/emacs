@@ -96,8 +96,11 @@
   (marginalia-mode))
 
 ;;; https://github.com/casouri/vundo
+;;; https://archive.casouri.cc/note/2021/visual-undo-tree/index.html
 (use-package vundo
-  :ensure t)
+  :ensure t
+  :config
+  (setq vundo-popup-mode t))
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult

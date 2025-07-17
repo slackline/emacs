@@ -174,3 +174,6 @@
 ;; (define-key global-map [f6] 'other-window)
 ;; (define-key global-map [f8] 'kill-buffer)
 ;; (define-key global-map [f9] 'ess-load-file)
+
+;; vundo
+(global-set-key (kbd "C-c v") 'vundo)
