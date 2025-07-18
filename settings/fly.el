@@ -56,6 +56,7 @@
   :hook
   (flycheck-mode-hook . flyover-mode)
   :config
+  (setq flyover-levels '(error warning info))
   (setq flyover-use-theme-colors t)
   (setq flyover-background-lightness 45) ;;  lower values = darker
   (setq flyover-percent-darker 40) ;; Make icon background darker than foreground
@@ -68,4 +69,6 @@
   (setq flyover-wrap-messages t)  ;; Enable wrapping of long error messages across multiple lines
   (setq flyover-max-line-length 80) ;; Maximum length of each line when wrapping messages
   (setq flyover-hide-checker-name t) ;; Hide checker name for a cleaner UI
+  (setq flyover-hide-when-cursor-is-on-same-line t)
   )
+;;; fly.el ends here

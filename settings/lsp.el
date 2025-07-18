@@ -53,6 +53,12 @@
 ;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
+;; harper https://writewithharper.com/docs/integrations/emacs
+;; https://taonaw.com/2025/07/08/harper-quick-light-and-private.html
+;; (with-eval-after-load ':lsp-mode
+;;   add-to-list 'lsp-server-programs
+;;               '(text-mode .("harper-ls" "--stdio")))
+
 
 ;; Provides visual help in the buffer
 ;; For example definitions on hover.
