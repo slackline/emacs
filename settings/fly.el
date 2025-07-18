@@ -48,3 +48,24 @@
 ;;   (add-hook mode
 ;;             #'(lambda ()
 ;; 		(flyspell-prog-mode))))
+
+;; Flyover
+;; https://github.com/konrad1977/flyover
+(use-package flyover
+  :ensure t
+  :hook
+  (flycheck-mode-hook . flyover-mode)
+  :config
+  (setq flyover-use-theme-colors t)
+  (setq flyover-background-lightness 45) ;;  lower values = darker
+  (setq flyover-percent-darker 40) ;; Make icon background darker than foreground
+  (setq flyover-text-tint 'lighter) ;; or 'darker or nil
+  (setq flyover-text-tint-percent 50) ;; Percentage to lighten or darken the text when tinting is enabled.
+  (setq flyover-checkers '(flycheck flymake)) ;; Which checks to use
+  (setq flyover-debug nil) ;; Enable debug messages
+  (setq flyover-debounce-interval 0.2) ;; Time in seconds to wait before checking and displaying errors after a change
+  (setq flyover-line-position-offset 1) ;; Lines below error to display overlay (0 = same)
+  (setq flyover-wrap-messages t)  ;; Enable wrapping of long error messages across multiple lines
+  (setq flyover-max-line-length 80) ;; Maximum length of each line when wrapping messages
+  (setq flyover-hide-checker-name t) ;; Hide checker name for a cleaner UI
+  )
