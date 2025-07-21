@@ -48,9 +48,9 @@
   )
 
 ;; https://github.com/z80dev/uv-mode
-;; (use-package uv-mode
-;;   :ensure t
-;;   :hook (python-mode . uv-mode-auto-activate-hook))
+(use-package uv-mode
+  :ensure t
+  :hook (python-mode . uv-mode-auto-activate-hook))
 
 ;;  https://github.com/nryotaro/pyvenv-auto
 (use-package pyvenv-auto
