@@ -214,6 +214,17 @@
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
+;; Insert rectangle and push lines down (https://emacs.stackexchange.com/a/46352/10100)
+(defun my-insert-rectangle-push-lines ()
+  "Yank a rectangle as if it was an ordinary kill."
+  (interactive "*")
+  (when (and (use-region-p) (delete-selection-mode))
+    (delete-region (region-beginning) (region-end)))
+  (save-restriction
+    (narrow-to-region (point) (mark))
+    (yank-rectangle)))
+
+(global-set-key (kbd "C-x r C-y") #'my-insert-rectangle-push-lines)
 
 ;; Reload a buffer from disk
 ;; Source: http://www.emacswiki.org/emacs/misc-cmds.el
