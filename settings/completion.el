@@ -136,3 +136,8 @@
    '(company-tooltip-selection ((t (:background "#454c59"))))
    '(company-tooltip-common ((t (:background "#3e4452"))))
    '(company-scrollbar-bg ((t (:background "#282c34"))))))
+
+;;; https://github.com/emacsfodder/move-text
+(use-package move-text
+  :ensure t
+  :defer 0.5)
