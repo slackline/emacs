@@ -140,4 +140,6 @@
 ;;; https://github.com/emacsfodder/move-text
 (use-package move-text
   :ensure t
-  :defer 0.5)
+  :defer 0.5
+  :config
+  (move-text-default-bindings))
