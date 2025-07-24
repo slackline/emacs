@@ -3,7 +3,7 @@
 # key: w
 # expand-env: ((yas-indent-line 'fixed))
 # --
-  -- ,CASE
-  --   WHEN ${1:var} IN (${2:list}) THEN ${1}
-  --   ELSE NULL
-  -- END AS ${1}
+  ,CASE
+    WHEN ${1:var} IN (${2:list}) THEN ${1}
+    ELSE NULL
+  END AS ${1}

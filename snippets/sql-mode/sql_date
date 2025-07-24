@@ -3,4 +3,4 @@
 # key: d
 # expand-env: ((yas-indent-line 'fixed))
 # --
-  -- ,CAST( ${1:date} AS DATE) AS  ${1}
+  ,CAST( ${1:date} AS DATE) AS  ${1}
