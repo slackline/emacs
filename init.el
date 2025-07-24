@@ -70,19 +70,19 @@
                           "~/.cargo/bin/"
                           "~/.node/bin/"
                           )
-                        exec-path))
+			exec-path))
 
 ;; Load and install mypackages
 ;; (load "~/.config/emacs/settings/mypackages.el")
 
 ;; Use a hook so the message doesn't get clobbered by other messages.
 (add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Emacs ready in %s with %d garbage collections."
-                     (format "%.2f seconds"
-                             (float-time
-                              (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
+	  (lambda ()
+	    (message "Emacs ready in %s with %d garbage collections."
+		     (format "%.2f seconds"
+			     (float-time
+			      (time-subtract after-init-time before-init-time)))
+		     gcs-done)))
 
 ;; Hide compilation buffer https://emacs.stackexchange.com/a/110
 (add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
@@ -348,6 +348,10 @@
 
 
 (load custom-file)
+
+;; Have some custom regex/re-builder stuff that seems to need everything else loaded first to work so we only include
+;; that here
+(load "~/.config/emacs/settings/regex.el")
 
 ;; Start elfeed last
 ;; (load "~/.config/emacs/settings/elfeed.el")
