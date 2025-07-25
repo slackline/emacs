@@ -273,6 +273,7 @@
 (load "~/.config/emacs/settings/shackle.el")
 (load "~/.config/emacs/settings/casual-suite.el")
 ;; (load "~/.config/emacs/settings/ready-player.el")
+(load "~/.config/emacs/settings/regex.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
@@ -348,10 +349,6 @@
 
 
 (load custom-file)
-
-;; Have some custom regex/re-builder stuff that seems to need everything else loaded first to work so we only include
-;; that here
-(load "~/.config/emacs/settings/regex.el")
 
 ;; Start elfeed last
 ;; (load "~/.config/emacs/settings/elfeed.el")

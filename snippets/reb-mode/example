@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ip-address
+# key: i
+# expand-env: ((yas-indent-line 'fixed))
+# group: definitions
+# --
+[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+

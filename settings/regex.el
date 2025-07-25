@@ -55,6 +55,17 @@
       (setq my/re-builder-positions nil)
       (reb-quit)
       (query-replace-regexp re replacement delimited beg end))))
+
+;; (use-package :re-builder
+;;   :ensure t
+;;   :defer mml2015-always-trust
+;;   :bind
+;;   (:map reb-mode-map ("RET" . #'reb-replace-regexp))
+;;   :map reb-lisp-mode-map ("RET" . #'reb-replace-regexp)
+;;   :config
+;;   (global-set-key (kbd "C-M-%") #'re-builder))
+
+(require 're-builder)
 (define-key reb-mode-map (kbd "RET") #'reb-replace-regexp)
 (define-key reb-lisp-mode-map (kbd "RET") #'reb-replace-regexp)
 (global-set-key (kbd "C-M-%") #'re-builder)
