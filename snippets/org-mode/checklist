@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: checklist
+# key: c
+# expand-env: ((yas-indent-line 'fixed))
+# group: org-mode
+# --
+    - [ ] ${1:list_item}

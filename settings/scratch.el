@@ -13,4 +13,5 @@
   (add-hook 'after-init-hook #'scratch-plus-mode)
   :config
   (setq scratch-plus-save-directory "~/.config/emacs/scratch")
-  (setq scratch-plus-project-subdir ".scratch"))
+  (setq scratch-plus-project-subdir ".scratch")
+  (setq scratch-plus-idle-save 3))
