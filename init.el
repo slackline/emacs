@@ -71,6 +71,13 @@
                           "~/.node/bin/"
                           )
 			exec-path))
+;; https://emacs.stackexchange.com/questions/17866/
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (daemonp) (exec-path-from-shell-initialize))
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AGENT_SOCK"))
 
 ;; Load and install mypackages
 ;; (load "~/.config/emacs/settings/mypackages.el")
