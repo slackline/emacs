@@ -95,6 +95,11 @@
   :custom
   (setq golden-ratio-auto-scale t))
 
+;; https://github.com/j-hotlink/hotdesk
+(use-package hotdesk
+  :ensure t
+  :config
+  (setq hotdesk-mode 1))
 ;;; https://github.com/milkypostman/powerline
 ;;; Customisation : https://jr0cket.co.uk/2015/01/custom-powerline-theme-for-Emacs-modeline.html
 ;;; Custom wave separator
