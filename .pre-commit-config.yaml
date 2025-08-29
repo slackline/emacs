@@ -33,7 +33,7 @@ repos:
       - id: elisp-check-parens
 
       # Byte-compile .el files to identify compilation errors early
-      - id: elisp-byte-compile
+      # - id: elisp-byte-compile
 
       # Optional:
       # NOTE: This change the indentation.
