@@ -9,13 +9,10 @@
 (require 'package)
 ;; SETUP use-package, will install if not already present
 ;;   https://ianyepan.github.io/posts/setting-up-use-package/
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t
-        use-package-expand-minimally t))
-
+(use-package use-package
+  :config
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t))
 
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -46,9 +43,7 @@
 ;; of the file.
 (setq load-prefer-newer t)
 (setq native-comp-jit-compilation t)
-(use-package auto-compile
-  :ensure t)
-;; (require 'auto-compile)
+(use-package auto-compile)
 ;; https://github.com/jamescherti/compile-angel.el
 ;; NB - This will fail on fresh installs as you have to first install use-package!
 ;; (use-package compile-angel
