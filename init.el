@@ -307,6 +307,7 @@
 ;; (load "~/.config/emacs/settings/ytdl.el")
 
 ;;; IDE / LSP
+(load "~/.config/emacs/settings/just-mode.el")
 (load "~/.config/emacs/settings/polymode.el")
 (load "~/.config/emacs/settings/markdown.el")
 (load "~/.config/emacs/settings/python.el")
