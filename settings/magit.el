@@ -51,6 +51,12 @@
 ;;   :config
 ;;   (setq git-commit-major-mode 'git-commit-ts-mode))
 
+;; https://github.com/magit/ssh-agency
+(use-package ssh-agency
+  :ensure t
+  :after magit
+  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+
 ;; Git modes
 (use-package git-modes
   :ensure t)

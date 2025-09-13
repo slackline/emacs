@@ -296,7 +296,6 @@
 
 ;;; Misc
 (load "~/.config/emacs/settings/exercism.el")
-(load "~/.config/emacs/settings/keychain-environment.el")
 (load "~/.config/emacs/settings/literate-calc.el")
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
