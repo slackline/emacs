@@ -1,7 +1,7 @@
 ;;; -*- lisp-data -*-
-(("/home/neil/work/git/hub/socrse/rsecon-code/") ("/home/neil/work/git/hub/sudlab/IsoSLAM/") ("/home/neil/org/")
-  ("/home/neil/.config/emacs/") ("/home/neil/.password-store/") ("/home/neil/org-roam/")
-  ("/home/neil/work/git/hub/AFM-SPM/TopoStats/") ("/home/neil/work/git/hub/AFM-SPM/jupyterlite-topostats/")
+(("/home/neil/work/git/hub/AFM-SPM/TopoStats/") ("/home/neil/work/git/hub/socrse/rsecon-code/")
+  ("/home/neil/work/git/hub/sudlab/IsoSLAM/") ("/home/neil/org/") ("/home/neil/.config/emacs/")
+  ("/home/neil/.password-store/") ("/home/neil/org-roam/") ("/home/neil/work/git/hub/AFM-SPM/jupyterlite-topostats/")
   ("/home/neil/work/git/hub/AFM-SPM/napari-TopoStats/") ("/home/neil/work/git/hub/AFM-SPM/napari-loadafm/")
   ("/home/neil/work/git/hub/AFM-SPM/topofileformats/")
   ("/home/neil/work/git/hub/Reproducibilitea-Sheffield/Reproducibilitea-Sheffield.github.io/")
