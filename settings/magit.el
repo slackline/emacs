@@ -43,6 +43,14 @@
 ;; https://magit.vc/manual/ghub.html#Getting-Started
 ;; https://magit.vc/manual/forge.html#Getting-Started
 ;; https://github.com/mobid/gitea-forge
+(use-package forge
+  :after magit
+  :config
+  (push '("forgejo.nshephard.dev"
+          "forgejo.nshephard.dev/api/v1"
+          "forgejo.nshephard.dev"
+          forge-forgejo-repository)
+	forge-alist))
 
 ;; Git-commit TreeSitter mode
 ;; https://github.com/danilshvalov/git-commit-ts-mode
