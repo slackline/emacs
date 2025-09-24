@@ -247,6 +247,12 @@
 ;; Add global keymaps (see https://emacs.stackexchange.com/a/54792/10100)
 (define-key global-map (kbd "C-c p l") (make-sparse-keymap))
 
+;; https://github.com/magit/ssh-agency
+(use-package ssh-agency
+  :ensure t
+  :after magit
+  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+
 ;; PACKAGE SPECIFIC CONFIGURATION
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
