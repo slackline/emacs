@@ -301,6 +301,7 @@
 (load "~/.config/emacs/settings/osm.el")
 (load "~/.config/emacs/settings/pdf-tools.el")
 (load "~/.config/emacs/settings/scratch.el")
+(load "~/.config/emacs/settings/tmr.el")
 (load "~/.config/emacs/settings/tramp.el")
 ;; (load "~/.config/emacs/settings/weblorg.el")
 ;; (load "~/.config/emacs/settings/ytdl.el")
