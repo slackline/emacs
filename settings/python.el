@@ -111,6 +111,15 @@
      ("--tee" "Print results" "--regtest-tee")
      ("--nodiff" "Suppress output" "--regtest-nodiff")
      ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
+  (transient-append-suffix
+    'python-pytest-dispatch
+    '(0)
+    ["Profiling"
+     ("-P" "Generate profiling information" "--profile")
+     ("--profile-svg" "Generate profiling graph" "--profile-svg")
+     ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
+     ("--element-number" "Defines how many elements will display in a result" "--element-number")
+     ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")])
   )
 
 ;; TODO - Add these additional transient options
