@@ -96,6 +96,7 @@
 ;; https://github.com/emacs-lsp/lsp-treemacs
 (use-package lsp-treemacs
   :ensure t
+  :after lsp
   :config
   (setq lsp-treemacs-sync-mode 1))
 
