@@ -47,4 +47,4 @@ Version 2015-07-27"
 
 ;; https://github.com/lmq-10/iso-date
 (use-package iso-date
-  :ensure true)
+  :ensure t)
