@@ -17,6 +17,8 @@
 ;; Choose to render some code constructs in slanted text (italics).  The
 ;; default, shown below, is to not use italics, unless it is absolutely
 ;; necessary.
+;;
+;; 2025-10-01 see https://protesilaos.com/codelog/2025-10-01-emacs-modus-framework-ef-built-on-top/
 (use-package modus-themes
   :ensure t ;; omit this to use the built-in themes
   :defer 0.5
@@ -24,7 +26,8 @@
   ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t
 	modus-themes-bold-constructs t
-	modus-themes-org-blocks '(tinted-background))
+	modus-themes-org-blocks '(tinted-background)
+	modus-themes-include-derivatives-mode 1)
   :config
   :bind
   ("C-c C-t m" . modus-themes-toggle))
@@ -35,11 +38,13 @@
   :defer 0.5
   :init
   (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
+  (setq ef-themes-take-over-modus-themes-mode 0)
   :config
   :bind
   ("C-c C-t d" . ef-themes-select-dark)
   ("C-c C-t e" . ef-themes-toggle))
-(ef-themes-select 'ef-dark)
+(load-theme 'ef-dark :no-confirm)
+;; (ef-themes-select 'ef-dark)
 ;; (ef-themes-select 'ef-duo-dark)
 ;; (ef-themes-select 'ef-bio)
 ;; (ef-themes-select 'ef-symbiosis)
