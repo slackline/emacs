@@ -225,7 +225,6 @@
   (save-restriction
     (narrow-to-region (point) (mark))
     (yank-rectangle)))
-
 (global-set-key (kbd "C-x r C-y") #'my-insert-rectangle-push-lines)
 
 ;; Reload a buffer from disk
@@ -301,7 +300,7 @@
 (load "~/.config/emacs/settings/vterm.el")
 
 ;;; Misc
-(load "~/.config/emacs/settings/exercism.el")
+;; (load "~/.config/emacs/settings/exercism.el")
 (load "~/.config/emacs/settings/literate-calc.el")
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
