@@ -294,7 +294,7 @@
 (load "~/.config/emacs/settings/org-capture.el")
 
 ;;; Chat
-(load "~/.config/emacs/settings/messaging.el")
+;; (load "~/.config/emacs/settings/messaging.el")
 
 ;;; Terminals
 (load "~/.config/emacs/settings/eat.el")
