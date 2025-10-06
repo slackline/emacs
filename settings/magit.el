@@ -38,6 +38,7 @@
   (global-set-key (kbd "C-c m l f") 'magit-log-buffer-file)
   (global-set-key (kbd "C-c m l o") 'magit-log-other))
 
+;; Emacs solo magit https://www.rahuljuliato.com/posts/vc-git-functions
 ;; FORGE CONFIGURATION
 ;; --------------------------------------
 ;; https://magit.vc/manual/ghub.html#Getting-Started

@@ -268,6 +268,7 @@
 
 ;;; General editor settings
 ;;(load "~/.config/emacs/settings/activities.el")
+(load "~/.config/emacs/settings/regex.el")
 (load "~/.config/emacs/settings/auto-package-update.el")
 (load "~/.config/emacs/settings/centaur-tabs.el")
 (load "~/.config/emacs/settings/dired.el")
@@ -280,7 +281,6 @@
 (load "~/.config/emacs/settings/shackle.el")
 (load "~/.config/emacs/settings/casual-suite.el")
 ;; (load "~/.config/emacs/settings/ready-player.el")
-(load "~/.config/emacs/settings/regex.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
