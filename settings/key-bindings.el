@@ -190,17 +190,17 @@
 
 
 ;; https://github.com/jamescherti/inhibit-mouse.el
-(use-package inhibit-mouse
-  :ensure t
-  :custom
-  ;; Disable highlighting of clickable text such as URLs and hyperlinks when
-  ;; hovered by the mouse pointer.
-  ;; (inhibit-mouse-adjust-mouse-highlight t)
+;; (use-package inhibit-mouse
+;;   :ensure t
+;;   :custom
+;;   ;; Disable highlighting of clickable text such as URLs and hyperlinks when
+;;   ;; hovered by the mouse pointer.
+;;   ;; (inhibit-mouse-adjust-mouse-highlight t)
 
-  ;; Disables the use of tooltips (show-help-function) during mouse events.
-  ;; (inhibit-mouse-adjust-show-help-function t)
+;;   ;; Disables the use of tooltips (show-help-function) during mouse events.
+;;   ;; (inhibit-mouse-adjust-show-help-function t)
 
-  :config
-  (if (daemonp)
-      (add-hook 'server-after-make-frame-hook #'inhibit-mouse-mode)
-    (inhibit-mouse-mode 0)))
+;;   :config
+;;   (if (daemonp)
+;;       (add-hook 'server-after-make-frame-hook #'inhibit-mouse-mode)
+;;     (inhibit-mouse-mode 0)))
