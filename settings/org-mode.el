@@ -92,6 +92,12 @@
 	   org-agenda-current-time-string
 	   "◀── now ─────────────────────────────────────────────────" ))
 
+;; https://codeberg.org/Anoncheg/emacs-org-links
+(use-package org-links
+  :ensure t
+  :defer 0.5
+  :after org-mode)
+
 ;; https://github.com/isamert/corg.el
 ;; (use-package corg
 ;;   :ensure t
