@@ -180,13 +180,13 @@
 
 ;; Custom Transient
 ;; https://mike.hostetlerhome.com/emacs-obscure-package-transient
-(transient-define-prefix ns/python-transient ()
-			 "Python"
-			 [["Common Commands"
-			   ("v" "Select virtual environment" pyvenv-workon)
-			   ("n" "Create Numpy docstring" numpydoc-generate)
-			   ]])
-(global-set-key (kbd "C-h C-k") 'ns/python-transient)
+;; (transient-define-prefix ns/python-transient ()
+;; 			 "Python"
+;; 			 [["Common Commands"
+;; 			   ("v" "Select virtual environment" pyvenv-workon)
+;; 			   ("n" "Create Numpy docstring" numpydoc-generate)
+;; 			   ]])
+;; (global-set-key (kbd "C-h C-k") 'ns/python-transient)
 
 
 ;; https://github.com/jamescherti/inhibit-mouse.el
