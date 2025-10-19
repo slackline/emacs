@@ -40,23 +40,31 @@
   :after dirvish)
 
 (use-package all-the-icons-dired
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 
 (use-package all-the-icons-ibuffer
-  :ensure t)
+  :ensure t
+  :defer 0.5)
 
 (use-package dired-quick-sort
   :ensure t
+  :defer 0.5
+  :after dirvish
   :config
   (dired-quick-sort-setup))
 
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync
-  :ensure t)
+  :ensure t
+  :defer 0.5
+  :after dirvish)
 
 ;; https://github.com/stsquad/dired-rsync
 (use-package dired-rsync-transient
-  :ensure t)
+  :ensure t
+  :defer 0.5
+  :after dirvish)
 
 ;; https://codeberg.org/danrobi/dired-multi-copy (not on MELPA yet)
 ;; (use-package dired-multi-copy
