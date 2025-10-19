@@ -274,7 +274,7 @@
 (load "~/.config/emacs/settings/projectile.el")
 (load "~/.config/emacs/settings/tree-sitter.el")
 (load "~/.config/emacs/settings/shackle.el")
-(load "~/.config/emacs/settings/casual-suite.el")
+;; (load "~/.config/emacs/settings/casual-suite.el")
 ;; (load "~/.config/emacs/settings/ready-player.el")
 
 ;;; Org / Bib
