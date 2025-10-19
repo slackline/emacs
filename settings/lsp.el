@@ -186,18 +186,21 @@
 ;;   (setq lsp-ltex-version "16.0.0"))
 ;;     Fork   : https://ltex-plus.github.io/ltex-plus/
 ;;              https://fosstodon.org/@jfdm@discuss.systems/113883740363573734
-(use-package lsp-ltex-plus
-  :ensure t
-  :hook (text-mode . (lambda ()
-		       (require 'lsp-ltex-plus)
-		       (lsp)))  ; or lsp-deferred
-  :init
-  (setq lsp-ltex-plus-version "18.4.0"))
-(use-package lsp-latex
-  :ensure t
-  :hook (text-mode . (lambda ()
-		       (require 'lsp-latex)
-		       (lsp))))
+;; LTex
+;; LSP Module : https://github.com/ltex-plus/ltex-ls-plus/
+;; Server     : https://ltex-plus.github.io/ltex-plus/
+;; (use-package lsp-ltex-plus
+;;   :ensure t
+;;   ;; :hook (text-mode . (lambda ()
+;;   ;;   	       (require 'lsp-ltex-plus)
+;;   ;;   	       (lsp)))  ; or lsp-deferred
+;;   :init
+;;   (setq lsp-ltex-plus-version "18.4.0"))
+;; (use-package lsp-latex
+;;   :ensure t
+;;   :hook (text-mode . (lambda ()
+;; 		       (require 'lsp-latex)
+;; 		       (lsp))))
 ;; Julia
 ;; LSP Module : https://github.com/non-Jedi/lsp-julia
 ;; Server     :
