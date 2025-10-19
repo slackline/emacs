@@ -116,11 +116,11 @@
 
 ;; Language servers
 ;; https://github.com/deirn/mason.el
-(use-package mason
-  :ensure t
-  :defer 0.5
-  :config
-  (mason-ensure))
+;; (use-package mason
+;;   :ensure t
+;;   :defer 0.5
+;;   :config
+;;   (mason-ensure))
 
 ;; Read the docs for the different variables set in the config.
 ;; Python - pyright
