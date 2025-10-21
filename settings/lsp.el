@@ -4,12 +4,12 @@
 ;;; https://ianyepan.github.io/posts/emacs-ide/
 ;; Provides workspaces with file browsing (tree file viewer)
 ;; and project management when coupled with `projectile`.
-(use-package treemacs
-  :ensure t
-  :config
-  (setq treemacs-no-png-images t
-	treemacs-width 24)
-  :bind ("C-c t" . treemacs))
+;; (use-package treemacs
+;;   :ensure t
+;;   :config
+;;   (setq treemacs-no-png-images t
+;; 	treemacs-width 24)
+;;   :bind ("C-c t" . treemacs))
 
 
 ;; Provide LSP-mode and other languages
@@ -22,32 +22,32 @@
   :init
   (setq lsp-keymap-prefix "s-l")
   :config
-  (setq lsp-idle-delay 0.5)
-  (setq lsp-copilot-enabled nil)
-  (setq lsp-copilot-applicable-fn (lambda (&rest _) lsp-copilot-enabled))
-  (setq lsp-enable-symbol-highlighting t)
-  (setq lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
-  (setq lsp-warn-no-matched-clients nil)
+  ;; (setq lsp-idle-delay 0.5)
+  ;; (setq lsp-copilot-enabled nil)
+  ;; (setq lsp-copilot-applicable-fn (lambda (&rest _) lsp-copilot-enabled))
+  ;; (setq lsp-enable-symbol-highlighting t)
+  ;; (setq lsp-pylsp-plugins-pylint-args ["--rcfile=/home/neil/dotfiles/python/.pylintrc"])
+  ;; (setq lsp-warn-no-matched-clients nil)
   (add-to-list 'lsp-language-id-configuration '(forge-post-mode . "markdown"))
   :hook (
 	 (R-mode . lsp)
 	 (bash-mode . lsp)
-	 (dockerfile-mode . lsp)
+	 ;; (dockerfile-mode . lsp)
 	 (ess-r-mode . lsp)
 	 (gfm-mode . lsp)
 	 (forge-post-mode . lsp)
-	 (groovy-mode . lsp)
+	 ;; (groovy-mode . lsp)
 	 (html-mode . lsp)
-	 (julia-mode . lsp)
+	 ;; (julia-mode . lsp)
 	 (js-ts-mode . lsp)
 	 (latex-mode . lsp)
 	 (markdown-mode . lsp)
 	 (org-mode . lsp)
 	 (python-mode . lsp)
 	 (rust-mode . lsp)
-	 (sh-mode . lsp)
-	 (terraform-mode . lsp)
-	 (typescript-mode . lsp))
+	 (sh-mode . lsp))
+  ;; (terraform-mode . lsp)
+  ;; (typescript-mode . lsp))
   :commands lsp)
 
 ;; https://emacs-lsp.github.io/lsp-mode/page/keybindings/
@@ -186,7 +186,7 @@
 ;;   (setq lsp-ltex-version "16.0.0"))
 ;;     Fork   : https://ltex-plus.github.io/ltex-plus/
 ;;              https://fosstodon.org/@jfdm@discuss.systems/113883740363573734
-;; LTex
+;; LTex-Plus
 ;; LSP Module : https://github.com/ltex-plus/ltex-ls-plus/
 ;; Server     : https://ltex-plus.github.io/ltex-plus/
 ;; (use-package lsp-ltex-plus
@@ -222,10 +222,10 @@
 ;;   :ensure t)
 
 ;; Cleanup LSP sessions https://arjenwiersma.nl/posts/2022-11-07-cleaning-up-after-lsp/index.html
-(defun nds/cleanup-lsp ()
-  "Remove all the workspace folders from LSP"
-  (interactive)
-  (let ((folders (lsp-session-folders (lsp-session))))
-    (while folders
-      (lsp-workspace-folders-remove (car folders))
-      (setq folders (cdr folders)))))
+;; (defun nds/cleanup-lsp ()
+;;   "Remove all the workspace folders from LSP"
+;;   (interactive)
+;;   (let ((folders (lsp-session-folders (lsp-session))))
+;;     (while folders
+;;       (lsp-workspace-folders-remove (car folders))
+;;       (setq folders (cdr folders)))))
