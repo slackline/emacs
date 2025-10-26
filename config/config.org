@@ -1,0 +1,414 @@
+#+TITLE: Literate Emacs Configuration
+#+PROPERTY: header-args : tangle init.el
+#+OPTIONS: toc:2 num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+This is my Emacs config, there are many like it but this one is mine.
+
+I've used Emacs for getting on 25 years and am slightly ashamed to say that I still haven't sat down and properly learnt
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][Emacs Lisp]] (one day I'll make time!). I have however learnt enough to cobble together my own custom configuration based
+in no small part on countless others gracefully shared examples and answers to questions.
+
+I found my configuration was growing as I threw all sorts into it then one day (<2025-10-17 Fri>) after updating
+packages I found that [[sec:lsp-mode][LSP-mode]] was no longer working as it had been. At the same time I had some issues using [[sec:magit][Magit]] and
+[[sec:transient][Transient]]. Whilst I fixed these it prompted me to pull my thumb out and re-write my configuration literately.
+
+* ToDo
+
+Tasks I'm yet to complete in re-writing...
+
+- [ ] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
+- [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
+
+* Initial Setup
+
+Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
+and [[sec:footer][footer]].
+
+#+NAME: header
+#+BEGIN_SRC emacs-lisp :tangle yes
+  ;;; init.el --- slackline's Emacs configuration -*- lexical-binding: t -*-
+  ;; Author: N Shephard <nshephard@protonmail.com>
+  ;; Keywords: configuration
+  ;; URL: https://www.codeberg.org/slackline/emacs
+  ;;; Commentary:
+  ;; A literate and reproducible Emacs configuration
+
+  ;;; Code:
+#+END_SRC
+
+
+** Package Manager Setup
+
+Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
+use-package the right way]].
+
+The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-init.el~ because "/If non-nil, packages are
+made available before reading the init file (but after reading the early init file)./" and we don't want to load
+packages until we need them.
+
+#+NAME: early-init
+#+BEGIN_SRC emacs-lisp :tangle early-init.el
+;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
+;;; early-init.el -- Emacs early init file -*- lexical-binding: t; -*-
+;; Runs before init.el is loaded.
+;;; Commentary:
+;;; Code:
+
+;; Disable package.el to prevent all packages being loaded on startup
+(setq package-enable-at-startup nil)
+
+(provide 'early-init)
+;;; early-init.el ends here
+
+#+END_SRC
+
+
+The ~exec-path~ is important as it defines where programs are searched for when executing them, it is used by
+~gnu-elpa-keyring-update~ to update certain things (what those are I'm not currently sure but without this first
+~use-package gnu-elpa-keyring-update~ fails with ~Cannot open find file: No such file or directory,
+exec-path-from-shell~).
+
+#+NAME: exec-path
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package exec-path-from-shell
+  :ensure t
+  :custom
+  (when (daemonp) (exec-path-from-shell-initialize))
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AGENT_SOCK")
+  (exec-path (append '("~/bin"
+                          "~/.local/bin"
+                          "~/.cargo/bin/"
+                          "~/.node/bin/"
+                          )
+			exec-path)))
+#+END_SRC
+
+** use-package
+
+We now configure [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]].
+
+Initially I used to use the example [[https://ianyepan.github.io/posts/setting-up-use-package/][here]] which made sure ~use-package~ was always installed, but since the ~use-package~
+is now part of core this is no longer required. The configuration options remain though on the off-chance I have to use
+a system with outdated versions of Emacs (*NB* it is /not/ tangled when compiling the configuration).
+
+#+NAME: use-package-install
+#+BEGIN_SRC emacs-lisp :tangle no
+  (require 'package)
+  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (package-initialize)
+
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+#+END_SRC
+
+We configure ~use-package~ below, not all of the values that are set (via ~setq~) are ~use-package~ variables but since
+they pertain to downloading and installing packages I keep them here. Because there can be issues with GPG keys when
+they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
+
+
+#+NAME: use-package-config
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package gnu-elpa-keyring-update
+  :ensure t)
+
+(use-package use-package
+  :config
+  (setq use-package-always-ensure t)
+  (setq use-package-expand-minimally t)
+  ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+  ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
+  (setq package-archives
+      '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
+        ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"	. "https://melpa.org/packages/")
+        ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
+      package-archive-priorities
+      '(("MELPA" . 10)
+        ("GNU ELPA"	. 5)
+        ("NonGNU ELPA"	. 5)
+        ("MELPA Stable"	. 3)
+        ("jcs elpa" . 0)
+        )))
+
+#+END_SRC
+
+** Byte Compiling
+
+Byte-compilation takes your ASCII plain-text configuration files saved in ~.el~ and turns them into computer code
+(~.elc~) which can be loaded quicker. There are a couple of options available ~auto-compile~ and ~compile-angel~ being
+two that I have explored before. I have a hook to [[https://emacs.stackexchange.com/a/110][hide the compilation buffer]] on completion of compiling as I got fed up
+of these being thrust into the foreground (*NB* ).
+
+*** ~auto-compile~
+
+#+NAME: auto-compile
+#+BEGIN_SRC emacs-lisp :tangle no
+  (use-package auto-compile
+    :custom
+    (auto-compile-on-load-mode t)
+    (auto-compile-on-save-mode t)
+    (load-prefer-newer t)
+    (native-comp-jit-compilation t)
+    :hook
+    (compilation-finish-functions (lambda (buf strg) (kill-buffer buf))))
+#+END_SRC
+
+*** ~compile-angle~
+
+The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package seeks to improve on ~auto-compile~.
+
+#+NAME: compile-angel
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package compile-angel
+  :ensure t
+  :demand t
+  :custom
+  (compile-angel-verbose nil)
+  :config
+  (compile-angel-on-load-mode)
+  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+#+END_SRC
+
+
+* Emacs Global Configuration
+
+Before loading any packages we configure Emacs itself. This uses ~:config~ as we /always/ want to load and use this
+configuration and we don't need to ~:defer~
+
+#+NAME: emacs-config
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (use-package emacs
+    :init
+    (epa-file-enable)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)
+    (menu-bar-mode 1)
+    (global-display-line-numbers-mode 1)
+    (global-hl-line-mode 1)
+    (savehist-mode 1)
+    (recentf-mode 1)
+    (global-auto-revert-mode 1)
+    :config
+    ;; Add local lisp for miscellaneous things
+    (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
+    (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
+    (setq custom-file "~/.config/emacs/custom.el")
+    (setq package-install-upgrade-built-in t) ; Upgrade built-in packages
+    (setq enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
+    (setq inhibit-startup-message t) ; Hide the startup message
+    (setq global-visual-line-mode t) ; Visual line wrap
+    (setq inhibit-startup-screen t) ; Disable startup screen
+    (setq initial-scratch-message "") ; Make *scratch* buffer blank
+    (setq confirm-kill-processes nil) ; Stop confirming the killing of processes
+    (setq ring-bell-function 'ignore)  ; Disable bell sound
+    (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+    (setq use-dialog-box nil) ; No dialog pop-ups
+    (setq history-length 1000) ; Mini-buffer history
+    (setq-default fill-column 120) ; Reset line-length
+    (setq undo-limit 320000) ; Increase the undo history limits
+    (setq vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+    (setq winner-mode t) ; toggling window configuration
+    (setq initial-scratch-message nil)
+    (setq pixel-scroll-precision-mode t)
+  (setq lisp-indent-offset 2)
+    (setq undo-strong-limit 640000)
+    (setq mode-line-compact t)
+    (setq dired-dwim-target t) ; move file to other pane as default destination
+    (setq global-goto-address-mode t)
+    ;; (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 4)
+    (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
+    (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+    ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+    (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
+    (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+    (setopt dictionary-server "dict.org")
+    ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
+    ;; (when (and (fboundp 'native-comp-available-p)
+    ;;         (native-comp-available-p))
+    ;;   (setq native-comp-async-report-warnings-errors nil
+    ;;     native-comp-deferred-compilation t))
+    (set-frame-parameter nil 'alpha-background 85) ; Transparency
+    (add-to-list 'default-frame-alist '(alpha-background . 85))
+    ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
+    (add-to-list 'display-buffer-alist
+      '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+	 (display-buffer-no-window)
+	 (allow-no-window . t)))
+    :bind (("C-c U" . revert-buffer)
+	    ("C-c D" . toggle-debug-on-error)
+	    ;; Org
+	    ("\C-c l" . org-store-link)
+	    ("\C-c c" . org-capture)
+	    ("\C-c a" . org-agenda)
+	    ("\C-c b" . org-iswitchb)
+	    ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
+	    ;; Magit /code review
+	    ("C-x g" . magit-status)
+	    ("C-c R" . code-review-forge-pr-at-point)
+	    ("s-SPC" . cycle-spacing))
+    :hook
+    ((latex-mode
+       markdown-mode
+       org-mode
+       prog-mode
+       text-mode) . auto-fill-mode)
+    ((latex-mode
+       prog-mode) . hs-minor-mode)
+    (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf))) ;; https://emacs.stackexchange.com/a/110
+    (auto-fill-function . do-auto-fill)
+    (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
+    (before-save . do-auto-fill)
+    (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
+    ;; imenu http://yummymelon.com/devnull/til-imenu.html
+    ((markdown-mode
+       makefile-mode
+       prog-mode) . imenu-add-menubar-index)
+    ((markdown-mode
+       makefile-mode
+       prog-mode) . (lambda () (setq imenu-auto-rescan t))))
+#+END_SRC
+
+* Magit
+<<sec:magit>>
+
+** Forge
+<<sec:forge>>
+
+* Transient
+<<sec:transient>>
+
+* Org mode
+<<sec:org-mode>>
+
+
+* IDE and LSP
+
+Emacs is my Integrated Development Environment when programming and writing documents. I use a number of language
+specific modes but also leverage the power of Language Server Protocol (LSP) to help with navigation, function
+arguments, refactoring and so forth.
+
+** Programming Modes
+
+*** Python Mode
+
+** LSP
+<<sec:lsp>>
+
+Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
+
+
+** YASnippet
+<<sec:yasnippet>>
+
+[[https://joaotavora.github.io/yasnippet/][YASnippet]] (Yet another snippet extension) is a brilliant templating system that allows you to define code-chunks that
+are inserted with a few keystrokes, and then prompting you for specific fields, saving you considerable time in writing
+boiler-plate code. We enable the templates via hooks for ~prog-mode~, ~org-mode~ and ~r-mode~ and load a bunch of
+pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] package.
+
+#+NAME: yasnippet-config
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (add-hook 'org-mode-hook #'yas-minor-mode)
+  (add-hook 'ess-r-mode-hook #'yas-minor-mode))
+
+(use-package yasnippet-snippets
+  :ensure t)
+
+#+END_SRC
+
+The snippets I have written/customised are not included here. They are loaded from the ~snippet~ directory. If you are
+interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
+
+* Themes and Keybindings
+
+I purposefully leave loading keyboard shortcuts until the very end so that all functions that are mapped to key-bindings
+are already defined. Theme loading is deferred until the end too that way I have a visual cue as to whether all of my
+configuration has successfully loaded or not.
+
+** Themes
+<<sec:themes>>
+
+** Keybindings
+<<sec:keybindings>>
+
+* Footer
+<<sec:foot>>
+
+Library [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] require a footer.
+
+#+begin_src emacs-lisp :tangle yes
+  (provide 'init.el)
+  ;;; init.el ends here
+#+end_src
+
+* On Literate Configuration
+
+** Development
+
+During development I created the Org file at ~~/.config/emacs/config.org~ and set the header to tangle to ~init.el~
+within that directory so that I didn't clobber my existing ~init.el~.
+
+#+BEGIN_SRC org-mode :tangle no
+,#+TITLE: Literate Emacs Configuration
+,#+PROPERTY: header-args : tangle init.el
+,#+OPTIONS: toc:2 num:nil
+,#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+END_SRC
+
+** Different target files
+
+When writing code blocks in Org-mode they have the structure shown below which allows the global ~:tangle~ target to be
+over-ridden. Useful for writing the ~early-init.el~
+
+#+BEGIN_SRC org-mode :tangle no
+,#+NAME
+,#+BEGIN_SRC emacs-lisp :tangle <target_file>
+(setq some-custom-setting 1)
+,#+END_SRC
+#+END_SRC
+
+** Exclude block
+
+If there is a particular code block I _don't_ want to tangle and include it is possible to disable it.
+
+#+BEGIN_SRC org-mode :tangle no
+,#+BEGIN_SRC emacs-lisp :tangle no
+(setq some-other-custom-setting nil)
+,#+END_SRC
+#+END_SRC
+
+** Testing configuration
+
+As I worked through developing this configuration I tangled the code using ~org-babel-tangle~ (bound to ~C-c C-v t~) and
+then started Emacs with the ~--init-directory ~/.config/emacs/config~ so that it picked up the tangled configuration
+files within this directory (i.e. ~early-init.el~ and ~init.el~).
+
+* Links
+
++ [[https://orgmode.org/worg/org-contrib/babel/][Babel: Active Code in Org]]
++ [[https://leanpub.com/lit-config/read][Literate Configuration | Diego Zamboni]]
++ [[https://org-babel.readthedocs.io/en/latest/][Org Babel reference card]]
+
+** use-package
+
++ [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs Manual : use-package]]
++ [[https://ianyepan.github.io/posts/setting-up-use-package/][Setting up use-package]]
++ [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using use-package the right way - (think)]]
+
+** Examples
+
++ [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
++ [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
