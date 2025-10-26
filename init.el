@@ -32,8 +32,8 @@
         ("jcs elpa" . 0)
         ))
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
 
 ;; Add local lisp for miscellaneous things
 ;; (add-to-list 'load-path "~/.config/emacs/lisp/")
@@ -41,9 +41,9 @@
 ;; Load auto-compile early and ensure auto-compile-on-load-mode/auto-compile-on-save-mode are enabled
 ;; This will byte-compile any existing lisp that is _already_ byte-copmiled (i.e. there is .elc version)
 ;; of the file.
-(setq load-prefer-newer t)
-(setq native-comp-jit-compilation t)
-(use-package auto-compile)
+;; (setq load-prefer-newer t)
+;; (setq native-comp-jit-compilation t)
+;; (use-package auto-compile)
 ;; https://github.com/jamescherti/compile-angel.el
 ;; NB - This will fail on fresh installs as you have to first install use-package!
 ;; (use-package compile-angel
@@ -54,8 +54,8 @@
 ;;   :config
 ;;   (compile-angel-on-load-mode)
 ;;   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
-(auto-compile-on-load-mode)
-(auto-compile-on-save-mode)
+;; (auto-compile-on-load-mode)
+;; (auto-compile-on-save-mode)
 
 ;; no-littering (for when switched to 29.1) https://github.com/emacscollective/no-littering
 
@@ -89,6 +89,12 @@
 ;; Hide compilation buffer https://emacs.stackexchange.com/a/110
 (add-hook 'compilation-finish-functions (lambda (buf strg) (kill-buffer buf)))
 
+;; Reinstall a package https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/
+(defun ns/reinstall-package (pkg)
+  (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
+  (unload-feature pkg)
+  (package-reinstall pkg)
+  (require pkg))
 
 ;; https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html
 (use-package gnu-elpa-keyring-update
@@ -299,7 +305,7 @@
 
 ;;; Misc
 ;; (load "~/.config/emacs/settings/exercism.el")
-(load "~/.config/emacs/settings/literate-calc.el")
+;; (load "~/.config/emacs/settings/literate-calc.el")
 (load "~/.config/emacs/settings/mpd.el")
 (load "~/.config/emacs/settings/osm.el")
 (load "~/.config/emacs/settings/pdf-tools.el")
@@ -322,8 +328,9 @@
 (load "~/.config/emacs/settings/jedi.el")
 (load "~/.config/emacs/settings/js.el")
 (load "~/.config/emacs/settings/latex.el")
-(load "~/.config/emacs/settings/lsp.el")
-;; (load "~/.config/emacs/settings/lsp-sample.el")
+;; (load "~/.config/emacs/settings/lsp.el")
+;; (load "~/.config/emacs/settings/lsp-start-plain.el")
+(load "~/.config/emacs/settings/lsp-sample.el")
 (load "~/.config/emacs/settings/magit.el")
 (load "~/.config/emacs/settings/mermaid.el")
 ;; (load "~/.config/emacs/settings/nix.el")
@@ -343,7 +350,7 @@
 
 ;;; Keybindings (last so that all functions are defined)
 (load "~/.config/emacs/settings/key-bindings.el")
-(load "~/.config/emacs/settings/pulsar.el")
+;; (load "~/.config/emacs/settings/pulsar.el")
 
 ;;; Split the window and start an R session
 ;; (split-window-horizontally)
@@ -355,7 +362,7 @@
 
 
 
-(load custom-file)
+;; (load custom-file)
 
 ;; Start elfeed last
 ;; (load "~/.config/emacs/settings/elfeed.el")
@@ -363,3 +370,4 @@
 
 ;; Set default major mode for *scratch*
 ;; (setq initial-major-mode 'python-mode)
+(put 'scroll-left 'disabled nil)
