@@ -246,6 +246,9 @@
 ;; Add global keymaps (see https://emacs.stackexchange.com/a/54792/10100)
 (define-key global-map (kbd "C-c p l") (make-sparse-keymap))
 
+;; SSH agency
+(load "~/.config/emacs/settings/ssh-agency.el")
+
 ;; PACKAGE SPECIFIC CONFIGURATION
 ;; --------------------------------------
 ;; Splitting settings into individual files as this has become monolithic and unnavigable
@@ -331,6 +334,7 @@
 ;; (load "~/.config/emacs/settings/typst.el")
 (load "~/.config/emacs/settings/yaml.el")
 (load "~/.config/emacs/settings/yasnippet.el")
+;; (load "~/.config/emacs/settings/devdocs.el")
 
 ;;; Themes, modeline and buffers
 ;; (load "~/.config/emacs/settings/modeline.el")
