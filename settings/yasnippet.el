@@ -19,6 +19,7 @@
   :config
   (yas-reload-all)
   (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (add-hook 'org-mode-hook #'yas-minor-mode)
   (add-hook 'ess-r-mode-hook #'yas-minor-mode))
 
 (use-package yasnippet-snippets
