@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: src-bloc
+# key: src
+# expand-env: ((yas-indent-line 'fixed))
+# group: org-mode
+# --
+
+#+NAME: ${1:block_name}
+#+BEGIN_SRC ${2:language} :tangle ${3:tangle_options}
+${4:body}
+#+END_SRC
