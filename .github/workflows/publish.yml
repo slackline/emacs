@@ -1,0 +1,29 @@
+# Copied from : https://github.com/Panadestein/emacsd/blob/master/.github/workflows/publish.yml
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out
+        uses: actions/checkout@v5
+
+      - name: Install Emacs
+        run: |
+          sudo apt-add-repository ppa:ubuntu-elisp/ppa
+          sudo apt update
+          sudo apt-get install emacs-snapshot
+
+      - name: Build the site
+        run: ./publi.sh
+
+      - name: Publish generated content to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public

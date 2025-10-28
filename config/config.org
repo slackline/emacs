@@ -1,5 +1,5 @@
 #+TITLE: Literate Emacs Configuration
-#+PROPERTY: header-args : tangle init.el
+#+PROPERTY: header-args :tangle ./init.el
 #+OPTIONS: toc:2 num:nil
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
@@ -20,6 +20,33 @@ Tasks I'm yet to complete in re-writing...
 - [ ] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
 - [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
 
+
+
+* On Configuration with use-package
+
+Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
+use-package the right way]]. The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package ~README.md~]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
+docs : use-package]] page since it is now a core component of Emacs. use-package provides the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Basic-Concepts][~use-package~ macro]] which
+simplifies configuration.
+
+Packages are either loaded immediately, when the package is first used (via autoloading) or can be deferred using the
+~:defer~ keyword. Some autoloading can be done in response to /triggers/ in response to certain events (i.e. ~:hook~)
+
+| Option         | Description                                                                                                                                        | Example                                                                                                                                                                                |
+|----------------+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [[https://github.com/jwiegley/use-package#getting-started][~:init~]]        | Execute code /before/ a package is loaded                                                                                                          | ~:init (setq foo-variable t)~                                                                                                                                                          |
+| ~:defer~       | Delay loading of package. Can be ~t~ but is rarely used, typically an integer /n/ is specified to load the package after that period of idle time. | ~:defer t~ / ~:defer 30~                                                                                                                                                               |
+| ~:after~       | Load after another package has been loaded.                                                                                                        | ~:after org~                                                                                                                                                                           |
+| [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | Key-bindings, plain or with a cons (~(desc . command)~)                                                                                            | ~:bind (("C-c k" . keychain-refresh-environment) ("C-c o h" . osm-home))~                                                                                                              |
+|                | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home". osm-home))~                                                                         |
+| [[https://github.com/jwiegley/use-package#binding-to-keymaps][~:bind-keymap~]] | Binds a keymap to the given key chord.                                                                                                             | ~:bind ("s-p" . projectile-command-map))~ / ~:bind ("s-p" ("Projectile" . projectile-command-map))~ (untested)                                                                         |
+| ~:map~         | Within a ~:bind~ you can provide the mapping and modify key maps.                                                                                  | ~:bind (:map projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch project" . projectile-switch-project))~ (untested) |
+| [[https://github.com/jwiegley/use-package#getting-started][~:config~]]      | Executes code /after/ a package is loaded. Note that using this forces loading of the package.                                                     |                                                                                                                                                                                        |
+| ~:commands~    | Creates autoloads for commands, deferring loading modules until they are used.                                                                     |                                                                                                                                                                                        |
+| [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Conditional-loading][~:if~]]          | Conditionally load packages.                                                                                                                       |                                                                                                                                                                                        |
+
+
+
 * Initial Setup
 
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
@@ -39,9 +66,6 @@ and [[sec:footer][footer]].
 
 
 ** Package Manager Setup
-
-Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
-use-package the right way]].
 
 The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-init.el~ because "/If non-nil, packages are
 made available before reading the init file (but after reading the early init file)./" and we don't want to load
@@ -277,6 +301,17 @@ configuration and we don't need to ~:defer~
        prog-mode) . (lambda () (setq imenu-auto-rescan t))))
 #+END_SRC
 
+** SSH Agency
+
+[[https://github.com/magit/ssh-agency][ssh-agency]] takes care of handling SSH keys for us so its useful to ensure it is loaded early.
+
+#+NAME: ssh-agency
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package ssh-agency
+  :ensure t
+  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+#+END_SRC
+
 * Magit
 <<sec:magit>>
 
@@ -288,6 +323,32 @@ configuration and we don't need to ~:defer~
 
 * Org mode
 <<sec:org-mode>>
+
+[[https://orgmode.org/][Orgmode is "/A GNU Emacs major mode for keeping notes, authoring documents, computational notebooks, literate
+programming, maintaining to-do lists, planning projects, and more - in a fast and effective plain-tests system./"
+
+** Org Babel
+<<sec:org-babel>>
+
+#+NAME: org-babel
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+** Org Roam
+<<sec:org-roam>>
+
+[[https://www.orgroam.com/][Org-roam]] helps you build a "second brain" of notes using the Zettelkasten method.
+
+#+NAME: org-roam
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+** Org Capture
+<<sec:org-capture>>
+
+#+NAME: org-capture
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
 
 
 * IDE and LSP
@@ -332,6 +393,19 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 The snippets I have written/customised are not included here. They are loaded from the ~snippet~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
 
+** direnv
+<<sec:direnv>>
+
+[[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
+entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs.
+#+NAME: direnv
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
+#+END_SRC
+
 * Themes and Keybindings
 
 I purposefully leave loading keyboard shortcuts until the very end so that all functions that are mapped to key-bindings
@@ -343,6 +417,23 @@ configuration has successfully loaded or not.
 
 ** Keybindings
 <<sec:keybindings>>
+
+* Custom Functions
+<<sec:custom_functions>>
+
+** Reinstall Package
+
+A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
+
+#+NAME: reinstall-package
+#+BEGIN_SRC emacs-lisp :tangle yes
+(defun ns/reinstall-package (pkg)
+  (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
+  (unload-feature pkg)
+  (package-reinstall pkg)
+  (require pkg))
+#+END_SRC
+
 
 * Footer
 <<sec:foot>>
@@ -395,6 +486,17 @@ If there is a particular code block I _don't_ want to tangle and include it is p
 As I worked through developing this configuration I tangled the code using ~org-babel-tangle~ (bound to ~C-c C-v t~) and
 then started Emacs with the ~--init-directory ~/.config/emacs/config~ so that it picked up the tangled configuration
 files within this directory (i.e. ~early-init.el~ and ~init.el~).
+
+** Rendering to HTML
+
+As with much of my config its not original, I found someone else who had done what I want to do and have learnt/borrowed
+(heavily) from them. In the case of this literate configuration and its conversion to HTML I have taken inspiration from
+[[https://github.com/Panadestein/emacsd][Panadestein's emacsd]] repository.
+
+Of particular use is the GitHub workflow which runs a Bash script ([[https://github.com/Panadestein/emacsd/blob/master/publi.sh][publi.sh]]) to use Emacs to [[https://github.com/Panadestein/emacsd/blob/master/build-site.el][build-site.el]]
+ which I have copied in their entirety to build and deploy the site on GitHub pages (for now, I intend to migrate it to
+ Codeberg Pages once I've sussed those out).
+
 
 * Links
 
