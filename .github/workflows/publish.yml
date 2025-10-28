@@ -15,9 +15,11 @@ jobs:
 
       - name: Install Emacs
         run: |
-          sudo apt-add-repository ppa:ubuntu-elisp/ppa
-          sudo apt update
-          sudo apt-get install emacs-snapshot
+          sudo snap refresh emacs
+          sudo snap install emacs --classic
+        # sudo apt-add-repository ppa:ubuntu-elisp/ppa
+        # sudo apt update
+        # sudo apt-get install emacs-snapshot
 
       - name: Build the site
         run: ./publi.sh
