@@ -15,7 +15,6 @@ jobs:
 
       - name: Install Emacs
         run: |
-          sudo snap refresh emacs
           sudo snap install emacs --classic
         # sudo apt-add-repository ppa:ubuntu-elisp/ppa
         # sudo apt update
