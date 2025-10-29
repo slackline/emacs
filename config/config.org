@@ -52,7 +52,7 @@ Packages are either loaded immediately, when the package is first used (via auto
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
 and [[sec:footer][footer]].
 
-#+NAME: header
+#+NAME: code-block-header
 #+BEGIN_SRC emacs-lisp :tangle yes
   ;;; init.el --- slackline's Emacs configuration -*- lexical-binding: t -*-
   ;; Author: N Shephard <nshephard@protonmail.com>
@@ -71,7 +71,7 @@ The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-ini
 made available before reading the init file (but after reading the early init file)./" and we don't want to load
 packages until we need them.
 
-#+NAME: early-init
+#+NAME: code-block-early-init
 #+BEGIN_SRC emacs-lisp :tangle early-init.el
 ;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
 ;;; early-init.el -- Emacs early init file -*- lexical-binding: t; -*-
@@ -93,7 +93,7 @@ The ~exec-path~ is important as it defines where programs are searched for when 
 ~use-package gnu-elpa-keyring-update~ fails with ~Cannot open find file: No such file or directory,
 exec-path-from-shell~).
 
-#+NAME: exec-path
+#+NAME: code-block-exec-path
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package exec-path-from-shell
   :ensure t
@@ -117,7 +117,7 @@ Initially I used to use the example [[https://ianyepan.github.io/posts/setting-u
 is now part of core this is no longer required. The configuration options remain though on the off-chance I have to use
 a system with outdated versions of Emacs (*NB* it is /not/ tangled when compiling the configuration).
 
-#+NAME: use-package-install
+#+NAME: code-block-use-package-install
 #+BEGIN_SRC emacs-lisp :tangle no
   (require 'package)
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
@@ -134,7 +134,7 @@ they pertain to downloading and installing packages I keep them here. Because th
 they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
 
 
-#+NAME: use-package-config
+#+NAME: code-block-use-package-config
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package gnu-elpa-keyring-update
   :ensure t)
@@ -163,15 +163,19 @@ they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu
 #+END_SRC
 
 ** Byte Compiling
+<<sec:byte-compiling>>
 
 Byte-compilation takes your ASCII plain-text configuration files saved in ~.el~ and turns them into computer code
 (~.elc~) which can be loaded quicker. There are a couple of options available ~auto-compile~ and ~compile-angel~ being
 two that I have explored before. I have a hook to [[https://emacs.stackexchange.com/a/110][hide the compilation buffer]] on completion of compiling as I got fed up
-of these being thrust into the foreground (*NB* ).
+of these being thrust into the foreground (*NB* currently).
 
 *** ~auto-compile~
+<<sec:auto-compile>>
 
-#+NAME: auto-compile
+**DISABLED <2025-10-29 Wed>**
+
+#+NAME: code-block-auto-compile
 #+BEGIN_SRC emacs-lisp :tangle no
   (use-package auto-compile
     :custom
@@ -187,7 +191,9 @@ of these being thrust into the foreground (*NB* ).
 
 The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package seeks to improve on ~auto-compile~.
 
-#+NAME: compile-angel
+**DISABLED <2025-10-29 Wed>**
+
+#+NAME: code-block-compile-angel
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package compile-angel
   :ensure t
@@ -205,7 +211,7 @@ The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package
 Before loading any packages we configure Emacs itself. This uses ~:config~ as we /always/ want to load and use this
 configuration and we don't need to ~:defer~
 
-#+NAME: emacs-config
+#+NAME: code-block-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package emacs
     :init
@@ -305,7 +311,7 @@ configuration and we don't need to ~:defer~
 
 [[https://github.com/magit/ssh-agency][ssh-agency]] takes care of handling SSH keys for us so its useful to ensure it is loaded early.
 
-#+NAME: ssh-agency
+#+NAME: code-block-ssh-agency
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package ssh-agency
   :ensure t
@@ -330,7 +336,7 @@ programming, maintaining to-do lists, planning projects, and more - in a fast an
 ** Org Babel
 <<sec:org-babel>>
 
-#+NAME: org-babel
+#+NAME: code-block-org-babel
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -339,14 +345,14 @@ programming, maintaining to-do lists, planning projects, and more - in a fast an
 
 [[https://www.orgroam.com/][Org-roam]] helps you build a "second brain" of notes using the Zettelkasten method.
 
-#+NAME: org-roam
+#+NAME: code-block-org-roam
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 ** Org Capture
 <<sec:org-capture>>
 
-#+NAME: org-capture
+#+NAME: code-block-org-capture
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -360,12 +366,106 @@ arguments, refactoring and so forth.
 ** Programming Modes
 
 *** Python Mode
+<<sec:python>>
+
+#+NAME: code-block-python
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+*** ESS Mode
+<<sec:ess>>
+
+#+NAME: code-block-ess
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** JS Mode
+<<sec:js>>
+
+#+NAME: code-block-js
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+*** Just Mode
+<<sec:just>>
+
+#+NAME: code-block-just
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** Latex Mode
+<<sec:latex>>
+
+#+NAME: code-block-latex
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+*** Markdown Mode
+<<sec:markdown>>
+
+#+NAME: code-block-markdown
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+*** Mermaid Mode
+<<sec:mermaid>>
+
+#+NAME: code-block-mermaid
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** Nix Mode
+<<sec:nix>>
+
+#+NAME: code-block-nix
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** Rust Mode
+<<sec:rust>>
+
+#+NAME: code-block-rust
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** Sqlite Mode
+<<sec:sqlite>>
+
+#+NAME: code-block-sqlite
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+
+*** Yaml Mode
+<<sec:yaml>>
+
+#+NAME: code-block-yaml
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
+*** Polymode Mode
+<<sec:polymode>>
+
+#+NAME: code-block-polymode
+#+BEGIN_SRC emacs-lisp :tangle yes
+#+END_SRC
+
 
 ** LSP
 <<sec:lsp>>
 
 Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
 
+** Projectile
+<<sec:projectile>>
+
+** Treesitter
+<<sec:treesitter>>
 
 ** YASnippet
 <<sec:yasnippet>>
@@ -375,7 +475,7 @@ are inserted with a few keystrokes, and then prompting you for specific fields, 
 boiler-plate code. We enable the templates via hooks for ~prog-mode~, ~org-mode~ and ~r-mode~ and load a bunch of
 pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] package.
 
-#+NAME: yasnippet-config
+#+NAME: code-block-yasnippet-config
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package yasnippet
   :ensure t
@@ -398,13 +498,42 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 
 [[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
 entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs.
-#+NAME: direnv
+#+NAME: code-block-direnv
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package direnv
   :ensure t
   :config
   (direnv-mode))
 #+END_SRC
+
+* Dired
+<<sec:dired>>
+
+* TRAMP
+<<sec:tramp>>
+
+* Terminals
+<<sec:terminals>>
+
+** vterm
+<<sec:vterm>>
+
+* Miscellaneous
+<<sec:misc>>
+
+** OSM
+<<sec:osc>>
+
+** Pass
+<<sec:pass>>
+
+** Scratch
+<<sec:scratch>>
+
+** tmr
+<<sec:tmr>>
+
+
 
 * Themes and Keybindings
 
@@ -414,6 +543,9 @@ configuration has successfully loaded or not.
 
 ** Themes
 <<sec:themes>>
+
+** Centaur Tabs
+<<sec:centaur_tabs>>
 
 ** Keybindings
 <<sec:keybindings>>
@@ -425,7 +557,7 @@ configuration has successfully loaded or not.
 
 A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
 
-#+NAME: reinstall-package
+#+NAME: code-block-reinstall-package
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defun ns/reinstall-package (pkg)
   (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
@@ -452,6 +584,7 @@ Library [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Head
 During development I created the Org file at ~~/.config/emacs/config.org~ and set the header to tangle to ~init.el~
 within that directory so that I didn't clobber my existing ~init.el~.
 
+#+NAME: example-tangle-header
 #+BEGIN_SRC org-mode :tangle no
 ,#+TITLE: Literate Emacs Configuration
 ,#+PROPERTY: header-args : tangle init.el
@@ -464,6 +597,7 @@ within that directory so that I didn't clobber my existing ~init.el~.
 When writing code blocks in Org-mode they have the structure shown below which allows the global ~:tangle~ target to be
 over-ridden. Useful for writing the ~early-init.el~
 
+#+NAME: example-tangle-alt-target-file
 #+BEGIN_SRC org-mode :tangle no
 ,#+NAME
 ,#+BEGIN_SRC emacs-lisp :tangle <target_file>
@@ -475,6 +609,7 @@ over-ridden. Useful for writing the ~early-init.el~
 
 If there is a particular code block I _don't_ want to tangle and include it is possible to disable it.
 
+#+NAME: example-tangle-exclude-code-block
 #+BEGIN_SRC org-mode :tangle no
 ,#+BEGIN_SRC emacs-lisp :tangle no
 (setq some-other-custom-setting nil)
