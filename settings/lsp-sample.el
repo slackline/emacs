@@ -18,8 +18,35 @@
   :ensure t
   :defer t
   :commands (lsp lsp-deferred)
-  :init (setq lsp-keymap-prefix "C-c L")
-  :hook (python-mode . lsp-deferred))
+  :custom (lsp-keymap-prefix "s-l")
+  ;; :init (setq lsp-keymap-prefix "s-l")
+  :hook ((R-mode . lsp-deferred)
+	 (bash-mode . lsp-deferred)
+	 ;; (dockerfile-mode . lsp-deferred)
+	 (ess-r-mode . lsp-deferred)
+	 (gfm-mode . lsp-deferred)
+	 (forge-post-mode . lsp-deferred)
+	 ;; (groovy-mode . lsp-deferred)
+	 (html-mode . lsp-deferred)
+	 ;; (julia-mode . lsp-deferred)
+	 (js-ts-mode . lsp-deferred)
+	 (latex-mode . lsp-deferred)
+	 (markdown-mode . lsp-deferred)
+	 (org-mode . lsp-deferred)
+         (python-mode . lsp-deferred)
+	 (rust-mode . lsp-deferred)
+	 (sh-mode . lsp-deferred)))
+;; (terraform-mode . lsp-deferred)
+;; (typescript-mode . lsp-deferred)))
+
+(use-package lsp-jedi
+  :ensure t
+  :after lsp-mode
+  :defer 0.5
+  :config
+  (with-eval-after-load "python-mode"
+    ;; (add-to-list 'lsp-disabled-clients '(pyls pylsp))
+    (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; Provides completion, with the proper backend
 ;; it will provide Python completion.
