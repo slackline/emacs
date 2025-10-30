@@ -46,7 +46,6 @@
   :defer 0.5
   :config
   (with-eval-after-load "python-mode"
-    ;; (add-to-list 'lsp-disabled-clients '(pyls pylsp))
     (add-to-list 'lsp-enabled-clients 'jedi)))
 
 ;; Provides completion, with the proper backend
@@ -150,7 +149,7 @@
 
 ;; Format the python buffer following YAPF rules
 ;; There's also blacken if you like it better.
-(use-package yapfify
-  :ensure t
-  :defer t
-  :hook (python-mode . yapf-mode))
+;; (use-package yapfify
+;;   :ensure t
+;;   :defer t
+;;   :hook (python-mode . yapf-mode))
