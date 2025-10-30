@@ -22,6 +22,7 @@ Tasks I'm yet to complete in re-writing...
 
 
 
+
 * On Configuration with use-package
 
 Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
@@ -52,7 +53,7 @@ Packages are either loaded immediately, when the package is first used (via auto
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
 and [[sec:footer][footer]].
 
-#+NAME: code-block-header
+#+NAME: code-header
 #+BEGIN_SRC emacs-lisp :tangle yes
   ;;; init.el --- slackline's Emacs configuration -*- lexical-binding: t -*-
   ;; Author: N Shephard <nshephard@protonmail.com>
@@ -71,7 +72,7 @@ The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-ini
 made available before reading the init file (but after reading the early init file)./" and we don't want to load
 packages until we need them.
 
-#+NAME: code-block-early-init
+#+NAME: code-early-init
 #+BEGIN_SRC emacs-lisp :tangle early-init.el
 ;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
 ;;; early-init.el -- Emacs early init file -*- lexical-binding: t; -*-
@@ -93,7 +94,7 @@ The ~exec-path~ is important as it defines where programs are searched for when 
 ~use-package gnu-elpa-keyring-update~ fails with ~Cannot open find file: No such file or directory,
 exec-path-from-shell~).
 
-#+NAME: code-block-exec-path
+#+NAME: code-exec-path
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package exec-path-from-shell
   :ensure t
@@ -115,9 +116,11 @@ We now configure [[https://www.gnu.org/software/emacs/manual/html_mono/use-packa
 
 Initially I used to use the example [[https://ianyepan.github.io/posts/setting-up-use-package/][here]] which made sure ~use-package~ was always installed, but since the ~use-package~
 is now part of core this is no longer required. The configuration options remain though on the off-chance I have to use
-a system with outdated versions of Emacs (*NB* it is /not/ tangled when compiling the configuration).
+a system with outdated versions of Emacs
 
-#+NAME: code-block-use-package-install
+*NB* the following code block is /not/ tangled to configuration.
+
+#+NAME: code-use-package-install
 #+BEGIN_SRC emacs-lisp :tangle no
   (require 'package)
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
@@ -134,7 +137,7 @@ they pertain to downloading and installing packages I keep them here. Because th
 they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
 
 
-#+NAME: code-block-use-package-config
+#+NAME: code-use-package-config
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package gnu-elpa-keyring-update
   :ensure t)
@@ -162,6 +165,18 @@ they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu
 
 #+END_SRC
 
+*** Emacs Package Archives
+
+There are multiple sources of Emacs packages, including those who self-host serves such as ~jcs elpa~ listed below.
+
++ [[https://melpa.org/][MELPA]] for the latest versions of packages and [[https://stable.melpa.org/packages/][MELPA Stable]] when you don't want bleeding edge.
++ [[https://elpa.gnu.org/packages/][GNU ELPA]] for pure Free Open Source Software
++ [[https://elpa.nongnu.org/nongnu/][NonGNU ELPA Packages]] for not quite Free Open Source Software
++ [[https://jcs-emacs.github.io/jcs-elpa/packages/][jcs elpa]]
+
+Because the same package can be hosted across these repositories, sometimes the same version, sometimes newer, it is
+useful to be able to set the ~package-archive-priorities~ where each is assigned a priority value.
+
 ** Byte Compiling
 <<sec:byte-compiling>>
 
@@ -175,7 +190,7 @@ of these being thrust into the foreground (*NB* currently).
 
 **DISABLED <2025-10-29 Wed>**
 
-#+NAME: code-block-auto-compile
+#+NAME: code-auto-compile
 #+BEGIN_SRC emacs-lisp :tangle no
   (use-package auto-compile
     :custom
@@ -193,7 +208,7 @@ The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package
 
 **DISABLED <2025-10-29 Wed>**
 
-#+NAME: code-block-compile-angel
+#+NAME: code-compile-angel
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package compile-angel
   :ensure t
@@ -211,7 +226,7 @@ The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package
 Before loading any packages we configure Emacs itself. This uses ~:config~ as we /always/ want to load and use this
 configuration and we don't need to ~:defer~
 
-#+NAME: code-block-emacs-config
+#+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle yes
   (use-package emacs
     :init
@@ -246,7 +261,7 @@ configuration and we don't need to ~:defer~
     (setq winner-mode t) ; toggling window configuration
     (setq initial-scratch-message nil)
     (setq pixel-scroll-precision-mode t)
-  (setq lisp-indent-offset 2)
+    (setq lisp-indent-offset 2)
     (setq undo-strong-limit 640000)
     (setq mode-line-compact t)
     (setq dired-dwim-target t) ; move file to other pane as default destination
@@ -255,7 +270,7 @@ configuration and we don't need to ~:defer~
     (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
     (setq-default sh-basic-offset 2)
-  (setq-default sh-indentation 2)
+    (setq-default sh-indentation 2)
     (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
     ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
     (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
@@ -311,7 +326,7 @@ configuration and we don't need to ~:defer~
 
 [[https://github.com/magit/ssh-agency][ssh-agency]] takes care of handling SSH keys for us so its useful to ensure it is loaded early.
 
-#+NAME: code-block-ssh-agency
+#+NAME: code-ssh-agency
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package ssh-agency
   :ensure t
@@ -330,13 +345,17 @@ configuration and we don't need to ~:defer~
 * Org mode
 <<sec:org-mode>>
 
-[[https://orgmode.org/][Orgmode is "/A GNU Emacs major mode for keeping notes, authoring documents, computational notebooks, literate
+[[https://orgmode.org/][Orgmode]] is "/A GNU Emacs major mode for keeping notes, authoring documents, computational notebooks, literate
 programming, maintaining to-do lists, planning projects, and more - in a fast and effective plain-tests system./"
 
 ** Org Babel
 <<sec:org-babel>>
 
-#+NAME: code-block-org-babel
+[[https://orgmode.org/worg/org-contrib/babel/][Org-babel]] started life as Babel but has been integrated into Org core since version 7.0. It provides a literate
+programming environment where text and code (from many languages) can be inter-weaved to give reproducible and literate
+documents that can be rendered to a range of formats via [[https://orgmode.org/manual/Exporting.html][org-export]].
+
+#+NAME: code-org-babel
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -345,17 +364,28 @@ programming, maintaining to-do lists, planning projects, and more - in a fast an
 
 [[https://www.orgroam.com/][Org-roam]] helps you build a "second brain" of notes using the Zettelkasten method.
 
-#+NAME: code-block-org-roam
+#+NAME: code-org-roam
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 ** Org Capture
 <<sec:org-capture>>
 
-#+NAME: code-block-org-capture
+[[https://orgmode.org/manual/Capture.html#Capture][Org-capture]] is a useful method of opening transient like nested menus to capture notes in predefined files. It allows
+you to specify sections and tables to which entries should be added with pre-defined templates.
+
+#+NAME: code-org-capture
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
+
+** Org GTD
+<<sec::org-gtd>>
+
+#+NAME: code-org-gtd
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+#+END_SRC
 
 * IDE and LSP
 
@@ -368,14 +398,14 @@ arguments, refactoring and so forth.
 *** Python Mode
 <<sec:python>>
 
-#+NAME: code-block-python
+#+NAME: code-python
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 *** ESS Mode
 <<sec:ess>>
 
-#+NAME: code-block-ess
+#+NAME: code-ess
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -383,14 +413,14 @@ arguments, refactoring and so forth.
 *** JS Mode
 <<sec:js>>
 
-#+NAME: code-block-js
+#+NAME: code-js
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 *** Just Mode
 <<sec:just>>
 
-#+NAME: code-block-just
+#+NAME: code-just
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -398,21 +428,21 @@ arguments, refactoring and so forth.
 *** Latex Mode
 <<sec:latex>>
 
-#+NAME: code-block-latex
+#+NAME: code-latex
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 *** Markdown Mode
 <<sec:markdown>>
 
-#+NAME: code-block-markdown
+#+NAME: code-markdown
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 *** Mermaid Mode
 <<sec:mermaid>>
 
-#+NAME: code-block-mermaid
+#+NAME: code-mermaid
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -420,7 +450,7 @@ arguments, refactoring and so forth.
 *** Nix Mode
 <<sec:nix>>
 
-#+NAME: code-block-nix
+#+NAME: code-nix
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -428,7 +458,7 @@ arguments, refactoring and so forth.
 *** Rust Mode
 <<sec:rust>>
 
-#+NAME: code-block-rust
+#+NAME: code-rust
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -436,7 +466,7 @@ arguments, refactoring and so forth.
 *** Sqlite Mode
 <<sec:sqlite>>
 
-#+NAME: code-block-sqlite
+#+NAME: code-sqlite
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
@@ -444,20 +474,20 @@ arguments, refactoring and so forth.
 *** Yaml Mode
 <<sec:yaml>>
 
-#+NAME: code-block-yaml
+#+NAME: code-yaml
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 *** Polymode Mode
 <<sec:polymode>>
 
-#+NAME: code-block-polymode
+#+NAME: code-polymode
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
 
-** LSP
-<<sec:lsp>>
+** LSP Mode
+<<sec:lsp-mode>>
 
 Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
 
@@ -475,7 +505,7 @@ are inserted with a few keystrokes, and then prompting you for specific fields, 
 boiler-plate code. We enable the templates via hooks for ~prog-mode~, ~org-mode~ and ~r-mode~ and load a bunch of
 pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] package.
 
-#+NAME: code-block-yasnippet-config
+#+NAME: code-yasnippet-config
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package yasnippet
   :ensure t
@@ -498,7 +528,7 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 
 [[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
 entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs.
-#+NAME: code-block-direnv
+#+NAME: code-direnv
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package direnv
   :ensure t
@@ -508,6 +538,120 @@ entering a directory. Naturally there is [[https://github.com/wbolster/emacs-dir
 
 * Dired
 <<sec:dired>>
+
+I like the [[https://github.com/alexluigit/dirvish][dirvish]] package for extending the basic [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html][built-in Dired]].
+
+Some useful resources on ~dired~ can also be found in
+
++ [[https://pragmaticemacs.wordpress.com/category/dired/][dired | Pragmatic Emacs]]
++ [[https://www.masteringemacs.org/article/working-multiple-files-dired][Working with multiple files in dired - Mastering Emacs]]
++ [[https://github.com/Fuco1/dired-hacks][Fuco1/dired-hacks: Collection of useful dired additions]]
+
+#+NAME: code-dirvish
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package dirvish
+  :ensure t
+  :init
+  (dirvish-override-dired-mode)
+  :config
+  (setq dirvish-attributes
+	'(vc-state subtree-state all-the-icons collapse git-msg file-time file-size))
+  ;; Placement
+  ;; (setq dirvish-use-header-line nil)     ; hide header line (show the classic dired header)
+  ;; (setq dirvish-use-mode-line nil)       ; hide mode line
+  (setq dirvish-use-header-line 'global)    ; make header line span all panes
+
+  ;; Hide the parent directory
+  (setq dirvish-default-layout '(0 0.4 0.6))
+  ;; Height
+  ;;; '(25 . 35) means
+  ;;;   - height in single window sessions is 25
+  ;;;   - height in full-frame sessions is 35
+  (setq dirvish-header-line-height '(25 . 35))
+  (setq dirvish-mode-line-height 25) ; shorthand for '(25 . 25)
+
+  ;; Segments
+  ;;; 1. the order of segments *matters* here
+  ;;; 2. it's ok to place raw string inside
+  (setq dirvish-header-line-format
+	'(:left (path) :right (free-space))
+	dirvish-mode-line-format
+	'(:left (sort file-time " " file-size symlink) :right (omit yank index))))
+#+END_SRC
+
+** All the Icons
+<<sec:all-the-icons>>
+
+To make Dired/Dirvish look nice we also need icons.
+
+#+NAME: code-all-the-icons
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package all-the-icons
+  :ensure t
+  :after dirvish)
+
+(use-package all-the-icons-dired
+  :ensure t
+  :after all-the-icons)
+
+(use-package all-the-icons-ibuffer
+  :ensure t
+  :after all-the-icons)
+#+END_SRC
+
+** Dired Extensions
+<<sec::dired-extensions>>
+
+There are a bunch of useful extensions to ~dired~ and [[https://github.com/Fuco1/dired-hacks][Fuco1/dired-hacks: Collection of useful dired additions]] has most
+of them listed. I currently use the following
+
++ dired-quick-sort
++ [[https://github.com/stsquad/dired-rsync][dired-rsync]] (also the source for ~dired-rsync-transient~)
++ [[https://codeberg.org/danrobi/dired-multi-copy][dired-multi-copy]] (installed via ~:vc~ option to ~use-package~ as not yet on [[https://melpa.org/][MELPA]])
++ [[https://github.com/punassuming/ranger.el][dired-ranger]]
++ dired-subtree
+
+#+NAME: code-dired-extensions
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package dired-quick-sort
+  :ensure t
+  :defer 0.5
+  :after dirvish
+  :config
+  (dired-quick-sort-setup))
+
+;;
+(use-package dired-rsync
+  :ensure t
+  :defer 0.5
+  :after dirvish)
+
+(use-package dired-rsync-transient
+  :ensure t
+  :defer 0.5
+  :after dirvish)
+
+;; https://codeberg.org/danrobi/dired-multi-copy (not on MELPA yet)
+;; (use-package dired-multi-copy
+;;   :ensure t)
+
+;; https://github.com/punassuming/ranger.el
+(use-package dired-ranger
+  :ensure t
+  :defer 0.5
+  :bind (:map dired-mode-map
+              ("W" . dired-ranger-copy)
+              ("X" . dired-ranger-move)
+              ("Y" . dired-ranger-paste)))
+
+
+(use-package dired-subtree
+  :ensure t
+  :config
+  (bind-keys :map dired-mode-map
+             ("i" . dired-subtree-insert)
+             (";" . dired-subtree-remove)))
+#+END_SRC
 
 * TRAMP
 <<sec:tramp>>
@@ -557,7 +701,7 @@ configuration has successfully loaded or not.
 
 A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
 
-#+NAME: code-block-reinstall-package
+#+NAME: code-reinstall-package
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defun ns/reinstall-package (pkg)
   (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
@@ -568,10 +712,11 @@ A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packa
 
 
 * Footer
-<<sec:foot>>
+<<sec:footer>>
 
 Library [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] require a footer.
 
+#+NAME: code-footer
 #+begin_src emacs-lisp :tangle yes
   (provide 'init.el)
   ;;; init.el ends here
