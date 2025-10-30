@@ -5,13 +5,22 @@
 
 This is my Emacs config, there are many like it but this one is mine.
 
-I've used Emacs for getting on 25 years and am slightly ashamed to say that I still haven't sat down and properly learnt
-[[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][Emacs Lisp]] (one day I'll make time!). I have however learnt enough to cobble together my own custom configuration based
-in no small part on countless others gracefully shared examples and answers to questions.
+I've used Emacs for getting on 25 years and am slightly ashamed to say that I still haven't sat down and properly "learnt"
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][Emacs Lisp]] (one day I'll make time!). I have however learnt enough to cobble together my own custom configuration which
+is based, in no small part, on countless others who have gracefully shared examples of their configuration and patiently
+answered questions.
 
-I found my configuration was growing as I threw all sorts into it then one day (<2025-10-17 Fri>) after updating
-packages I found that [[sec:lsp-mode][LSP-mode]] was no longer working as it had been. At the same time I had some issues using [[sec:magit][Magit]] and
-[[sec:transient][Transient]]. Whilst I fixed these it prompted me to pull my thumb out and re-write my configuration literately.
+I found my configuration was growing as I have a habit of throwing all sorts into it then one day (<2025-10-17 Fri>)
+after updating packages I found that [[sec:lsp-mode][LSP-mode]] was no longer working as it had been. At the same time I had some issues
+using [[sec:magit][Magit]] and [[sec:transient][Transient]]. Whilst I fixed these it prompted me to pull my thumb out and re-write my configuration
+[[https://leanpub.com/lit-config/read][literately]] and have used it as an opportunity to actually start learning Emacs Lisp a little (I find tutorials and
+walk-throughs quite abstract and like to have a use-case of my own to help me learn aspects of computing).
+
+I keep extensive [[https://org-roam.nshephard.dev][Org-roam]] notes and have separate sections on [[https://org-roam.nshephard.dev/#754f25a5-3429-4504-8a17-4efea1568eba][Emacs]], [[https://org-roam.nshephard.dev/#220d7ba9-d30e-4149-a25b-03796e098b0d][Magit]] and [[https://org-roam.nshephard.dev/#169b9c5f-df34-46ab-b64f-8ee98946ee69][Org-mode]], but have taken the opportunity
+to augment this configuration not just with explanations of the configuration options themselves but a little more on
+each package and how it works.
+
+Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/issues][issue]] on the Codeberg repository and I'll pick it up.
 
 * ToDo
 
