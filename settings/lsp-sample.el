@@ -19,6 +19,7 @@
   :defer t
   :commands (lsp lsp-deferred)
   :custom (lsp-keymap-prefix "s-l")
+  (lsp-disabled-clients '(pylsp pyls))
   ;; :init (setq lsp-keymap-prefix "s-l")
   :hook ((R-mode . lsp-deferred)
 	 (bash-mode . lsp-deferred)
@@ -33,7 +34,7 @@
 	 (latex-mode . lsp-deferred)
 	 (markdown-mode . lsp-deferred)
 	 (org-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
+	 (python-mode . lsp-deferred)
 	 (rust-mode . lsp-deferred)
 	 (sh-mode . lsp-deferred)))
 ;; (terraform-mode . lsp-deferred)
