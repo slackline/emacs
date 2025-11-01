@@ -53,16 +53,25 @@ Packages are either loaded immediately, when the package is first used (via auto
 | ~:map~         | Within a ~:bind~ you can provide the mapping and modify key maps.                                                                                  | ~:bind (:map projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch project" . projectile-switch-project))~ (untested) |
 | [[https://github.com/jwiegley/use-package#getting-started][~:config~]]      | Executes code /after/ a package is loaded. Note that using this forces loading of the package.                                                     |                                                                                                                                                                                        |
 | ~:commands~    | Creates autoloads for commands, deferring loading modules until they are used.                                                                     |                                                                                                                                                                                        |
+| ~:custom~      | Alternative option for customising package, preferable over ~:config~.                                                                             |                                                                                                                                                                                        |
 | [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Conditional-loading][~:if~]]          | Conditionally load packages.                                                                                                                       |                                                                                                                                                                                        |
+| ~:hook~        | Define hooks associated with the package.                                                                                                          |                                                                                                                                                                                        |
+| ~:ensure~      | Makes sure a package is loaded (eventually). Should be avoided with built-in packages as it may force downloading of newer version.                |                                                                                                                                                                                        |
 
 
+Using either ~:config~ or ~:init~ will force a package to be loaded, regardless of whether you use ~:defer~ to delay
+loading. Instead the alternative ~:custom~ and ~:hook~ commands should be used.
+
+** ~:custom~
+
+Avoids the need to ~setq~ within ~:config~ / ~:init~ sections
 
 * Initial Setup
 
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
 and [[sec:footer][footer]].
 
-#+NAME: code-header
+#+NAME: code-init-header
 #+BEGIN_SRC emacs-lisp :tangle yes
   ;;; init.el --- slackline's Emacs configuration -*- lexical-binding: t -*-
   ;; Author: N Shephard <nshephard@protonmail.com>
@@ -79,14 +88,15 @@ and [[sec:footer][footer]].
 
 The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-init.el~ because "/If non-nil, packages are
 made available before reading the init file (but after reading the early init file)./" and we don't want to load
-packages until we need them.
+packages until we need them as it will dramatically slow down startup time.
 
 #+NAME: code-early-init
 #+BEGIN_SRC emacs-lisp :tangle early-init.el
 ;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
 ;;; early-init.el -- Emacs early init file -*- lexical-binding: t; -*-
-;; Runs before init.el is loaded.
 ;;; Commentary:
+;; Runs before init.el is loaded.
+
 ;;; Code:
 
 ;; Disable package.el to prevent all packages being loaded on startup
@@ -233,7 +243,11 @@ The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package
 * Emacs Global Configuration
 
 Before loading any packages we configure Emacs itself. This uses ~:config~ as we /always/ want to load and use this
-configuration and we don't need to ~:defer~
+configuration and we don't need to ~:defer~.
+
+I typically use Emacs in its own GUI window but disable a lot of the graphical components such as scroll and tool
+bars.
+
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -332,6 +346,7 @@ configuration and we don't need to ~:defer~
 #+END_SRC
 
 ** SSH Agency
+<<sec:ssh-agency>>
 
 [[https://github.com/magit/ssh-agency][ssh-agency]] takes care of handling SSH keys for us so its useful to ensure it is loaded early.
 
@@ -342,6 +357,206 @@ configuration and we don't need to ~:defer~
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 #+END_SRC
 
+* Completion and Navigation
+<<sec:completion-navigation>>
+
+There are various frameworks and packages available to aid with (auto-)completion such [[https://company-mode.github.io/manual/][Company]], [[https://emacs-helm.github.io/helm/][Helm]] or [[https://github.com/abo-abo/swiper][Ivy]]. I've
+explicitly gone with Company but in revising my configuration to write this literate version it looks like I may have
+pulled the others in as dependencies of other packages but have opted to purge those from now on.
+
+** Company Mode
+
+[[https://company-mode.github.io/manual/][Company mode]] is a modular text completion framework.
+
+#+NAME: code-company
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package company
+  :ensure t
+  :defer 0.5
+  :hook
+  (text-mode . company-mode)
+  (prog-mode . company-mode)
+  (org-src-mode . company-mode)
+  ;; https://themagitian.github.io/posts/emacsconfig/
+  :custom
+  (company-minimum-prefix-length 3)
+  (company-idle-delay 0.3)
+  (company-selection-wrap-around t)
+  (company-dabbrev-other-buffers t)
+  (company-dabbrev-code-other-buffers t)
+  (custom-set-faces
+   '(company-tooltip ((t (:background "#3e4452"))))
+   '(company-tooltip-selection ((t (:background "#454c59"))))
+   '(company-tooltip-common ((t (:background "#3e4452"))))
+   '(company-scrollbar-bg ((t (:background "#282c34"))))))
+
+#+END_SRC
+
+
+** Embark
+<<sec:embark>>
+
+[[https://github.com/oantolin/embark/][Embark]] "/makes it easy to choose a command to run based on what is near point, both during a minibuffer completion
+session (in a way familiar to Helm or Counsel users) and in normal buffers/". I've not yet setup [[https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt][which-key like menu
+prompt]] but may do one day.
+
+#+NAME: code-embark
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package embark
+  :ensure t
+  :defer 0.5
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  :custom
+  ;; Optionally replace the key help with a completing-read interface
+  (prefix-help-command #'embark-prefix-help-command)
+  ;; (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
+  (embark-indicators
+	'(embark-minimal-indicator  ; default is embark-mixed-indicator
+	  embark-highlight-indicator
+	  embark-isearch-highlight-indicator))
+  ;; Show the Embark target at point via Eldoc. You may adjust the
+  ;; Eldoc strategy, if you want to see the documentation from
+  ;; multiple providers. Beware that using this can be a little
+  ;; jarring since the message shown in the minibuffer can be more
+  ;; than one line, causing the modeline to move up and down:
+  ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+;; Consider
+
+#+END_SRC
+
+** Marginalia
+<<sec:marginalia>>
+
+[[https://github.com/minad/marginalia/][Marginalia]] enables rich annotations. The ~marginalia-cycle~ command is mapped to ~M-A~ in both the
+~minibuffer-local-map~ and the ~completion-list-mode-map~. As we always want to have Marginalia available we ~:init~ it
+with the ~marginalia-mode~ rather than deferring.
+
+#+NAME: code-marginalia
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package marginalia
+  :ensure t
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind
+  (:map minibuffer-local-map
+	("M-A" . marginalia-cycle))
+  (:map completion-list-mode-map
+	("M-A" . marginalia-cycle))
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
+
+#+END_SRC
+
+** Movetext
+<<sec:movetext>>
+
+[[https://github.com/emacsfodder/move-text][move-text]] is a simple package makes it easy to move the current line or region up (~M-up~) or down (~M-down~).
+
+#+NAME: code-movetext
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package move-text
+  :ensure t
+  :defer 0.5
+  :config
+  (move-text-default-bindings))
+
+#+END_SRC
+
+** Orderless
+<<sec:orderless>>
+
+[[https://github.com/oantolin/orderless][Orderless]]
+
+#+NAME: code-orderless
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic)
+	completion-category-defaults nil
+	completion-category-overrides '((file (styles basic partial-completion)))))
+
+#+END_SRC
+
+** Savehist
+
+Savehist (can't find package homepage) persists history over Emacs restarts and helps with [[sec:vertico][Vertico]].
+
+#+NAME: code-savehist
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package savehist
+  :ensure t
+  :init
+  (savehist-mode))
+
+#+END_SRC
+
+** Vertico
+<<sec:vertico>>
+
+[[https://github.com/minad/vertico][Vertico]]
+
+#+NAME: code-vertico
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode)
+  :config
+  ;; Different scroll margin
+  ;; (setq vertico-scroll-margin 0)
+
+  ;; Show more candidates
+  ;; (setq vertico-count 20)
+
+  ;; Grow and shrink the Vertico minibuffer
+  ;; (setq vertico-resize t)
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  ;; (setq vertico-cycle t)
+
+  ;; TAB completion - completes path selection rather than selecting current point
+  ;; (keymap-set vertico-map "TAB" #'minibuffer-complete)
+  )
+
+#+END_SRC
+
+** Vundo
+<<sec:vundo>>
+
+[[https://github.com/casouri/vundo][Vundo]] provides a Visual insight into the Undo history of a buffer, I find it really useful and the [[https://archive.casouri.cc/note/2021/visual-undo-tree/index.html][authors overview of
+undo buffer history]] was insightful too.
+
+#+NAME: code-vundo
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package vundo
+  :ensure t
+  :defer 2
+  :hook
+  (prog-mode . vundo-popup-mode)
+  (text-mode . vundo-popup-mode))
+
+#+END_SRC
+
+
+** Which-key
 * Magit
 <<sec:magit>>
 
