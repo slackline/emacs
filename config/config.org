@@ -1489,10 +1489,41 @@ The following /isn't/ tangled and needs checking
 *** Mermaid Mode
 <<sec:mermaid>>
 
+[[https://github.com/abrochard/mermaid-mode/][mermaid-mode]] provides support for [[https://mermaid.js.org/][Mermaid.js]] a code-based, declarative diagramming system.
+
 #+NAME: code-mermaid
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package mermaid-mode
+  :ensure t
+  :defer 10)
+
 #+END_SRC
 
+**** ob-mermaid
+<<sec:ob-mermaid>>
+
+[[https://github.com/arnm/ob-mermaid][ob-mermaid]] provides org-babel exporting of mermaid diagrams using [[https://github.com/mermaid-js/mermaid-cli][mermaid-cli]].
+
+#+NAME: code-ob-mermaid
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package ob-mermaid
+  :ensure t
+  :after (mermaid-mode))
+
+#+END_SRC
+
+**** mermaid-ts-mode
+<<sec:mermaid-ts-mode>>
+
+[[https://github.com/JonathanHope/mermaid-ts-mode][mermaid-ts-mode]] provides [[sec:treesitter][Tree Sitter]] support for Mermaid.
+
+#+NAME: code-mermaid-ts-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package mermaid-ts-mode
+  :ensure t
+  :after (mermaid-mode))
+
+#+END_SRC
 
 *** Nix Mode
 <<sec:nix>>
