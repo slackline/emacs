@@ -207,7 +207,7 @@ of these being thrust into the foreground (*NB* currently).
 *** ~auto-compile~
 <<sec:auto-compile>>
 
-**DISABLED <2025-10-29 Wed>**
+Not currently tangled.
 
 #+NAME: code-auto-compile
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -225,7 +225,7 @@ of these being thrust into the foreground (*NB* currently).
 
 The [[https://github.com/jamescherti/compile-angel.el][~compile-angel~]] package seeks to improve on ~auto-compile~.
 
-**DISABLED <2025-10-29 Wed>**
+Not currently tangled.
 
 #+NAME: code-compile-angel
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -248,6 +248,8 @@ configuration and we don't need to ~:defer~.
 I typically use Emacs in its own GUI window but disable a lot of the graphical components such as scroll and tool
 bars.
 
+** Emacs
+<<sec:emacs>>
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle yes
