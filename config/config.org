@@ -1656,6 +1656,85 @@ Custom Modeline
 
 #+END_SRC
 
+* Buffers
+
+Some customisations to make buffers nicer to work with/read.
+
+** highlight-indent-guides
+<<sec:highlight-indent-guides>>
+
+[[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] a minor mode that does what it says on the tin, vertical indent guides (lines between starting a
+code block that is indented and ending it) are highlighted as you scroll.
+
+#+NAME: code-highlight-indent-guides
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package highlight-indent-guides
+  :ensure t
+  :defer 1
+  :custom
+  (highlight-indent-guides-method 'bitmap)
+  :hook
+  (prog-mode . highlight-indent-guides-mode))
+
+#+END_SRC
+
+** smartparens
+<<sec:smartparens>>
+
+[[https://github.com/Fuco1/smartparens][smartparens]] ensures parentheses (and quotes) are always paired. Handy as there are a lot of parentheses in Elisp! I
+pretty much always want this enabled across multiple modes. There may be some redundancy here that can be removed!
+
+#+NAME: code-smartparens
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package smartparens
+  :ensure t
+  :defer 1
+  :custom
+  (smartparens-global-mode t)
+  :hook
+  (prog-mode . smartparens-mode)
+  (text-mode . smartparens-mode)
+  (markdown-mode . smartparens-mode)
+  (latex-mode . smartparents-mode)
+  :config
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode 1)
+    (show-paren-mode t)))
+
+#+END_SRC
+
+** rainbow-delimiters
+<<sec:rainbow-delimiters>>
+
+[[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] in conjunction with [[sec:smartparens][smartparens]] makes it easy to see which parentheses/brackets/braces pair up.
+
+#+NAME: code-rainbow-delimiters
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package rainbow-delimiters
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
+
+#+END_SRC
+
+** rainbow-mode
+<<sec:rainbow-mode>>
+
+[[https://github.com/emacsmirror/rainbow-mode][rainbow-mode]] is a minor mode that colourises colour names, whether they are hexadecimal or otherwise.
+
+#+NAME: code-rainbow-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package rainbow-mode
+  :ensure t
+  :defer 1
+  :hook
+  (prog-mode . rainbow-mode))
+
+#+END_SRC
+
 
 ** Centaur Tabs
 <<sec:centaur_tabs>>
