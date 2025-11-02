@@ -1485,6 +1485,42 @@ take. I prefer this over [[sec:pass][pass]].
 ** Scratch
 <<sec:scratch>>
 
+Scratch buffers are useful for testing code in playgrounds.
+
+*** scratch.el
+<<sec:scratch-el>>
+
+[[https://codeberg.org/emacs-weirdware/scratch][scratch]] extends the basic ~*scratch*~ buffer and provides per-mode scratch buffers. These are opened using the bound
+key. If you want a prompt for which buffer mode to invoke then use ~C-u M-x scratch~ and you'll be prompted.
+
+#+NAME: code-scratch-el
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package scratch
+  :ensure t
+  :bind ("C-c s" . scratch))
+
+#+END_SRC
+
+*** scratch-plus
+<<sec:scratch-plus>>
+
+[[https://git.sr.ht/~swflint/scratch-plus][scratch-plus]] "/provides four major features: unkillable scratch buffers, persistent scratch buffers, per-major-mode
+scratch buffers, and per-project scratch buffers./". Yet to work out if this is working as expected and how to enable
+the per-major-mode scratch buffers.
+
+#+NAME: code-scratch-plus
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package scratch-plus
+  :ensure t
+  :defer 0.5
+  :hook
+  (add-hook 'after-init-hook #'scratch-plus-mode)
+  :custom
+  (scratch-plus-save-directory "~/.config/emacs/scratch")
+  (scratch-plus-project-subdir ".scratch")
+  (scratch-plus-idle-save 3))
+#+END_SRC
+
 ** tmr
 <<sec:tmr>>
 
