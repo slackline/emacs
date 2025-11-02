@@ -639,8 +639,18 @@ undo buffer history]] was insightful too.
 * Magit
 <<sec:magit>>
 
+#+NAME: magit
+#+BEGIN_SRC emacs-lisp :tangle yes
+body
+#+END_SRC
+
 ** Forge
 <<sec:forge>>
+
+#+NAME: forge
+#+BEGIN_SRC emacs-lisp :tangle yes
+body
+#+END_SRC
 
 * Transient
 <<sec:transient>>
@@ -680,7 +690,6 @@ you to specify sections and tables to which entries should be added with pre-def
 #+NAME: code-org-capture
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
-
 
 ** Org GTD
 <<sec::org-gtd>>
@@ -921,7 +930,6 @@ although I'm tending towards the later these days).
   :hook (lsp-managed-mode . flymake-ruff-load))
 
 #+END_SRC
-
 
 ***** Yapf
 <<sec:yapf>>
@@ -1183,7 +1191,6 @@ although I'm tending towards the later these days).
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
-
 ** LSP Mode
 <<sec:lsp-mode>>
 
@@ -1203,7 +1210,7 @@ are inserted with a few keystrokes, and then prompting you for specific fields, 
 boiler-plate code. We enable the templates via hooks for ~prog-mode~, ~org-mode~ and ~r-mode~ and load a bunch of
 pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] package.
 
-#+NAME: code-yasnippet-config
+#+NAME: code-yasnippet
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package yasnippet
   :ensure t
@@ -1212,20 +1219,25 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   (add-hook 'org-mode-hook #'yas-minor-mode)
   (add-hook 'ess-r-mode-hook #'yas-minor-mode))
+#+END_SRC
 
+#+NAME: code-yasnippet
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package yasnippet-snippets
   :ensure t)
 
 #+END_SRC
 
-The snippets I have written/customised are not included here. They are loaded from the ~snippet~ directory. If you are
+The snippets I have written/customised are not included here. They are loaded from the ~snippet/~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
 
 ** direnv
 <<sec:direnv>>
 
 [[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
-entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs.
+entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs. Pretty much always want
+this available so sticking with `:config` to ensure the package is always loaded.
+
 #+NAME: code-direnv
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package direnv
