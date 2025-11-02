@@ -1439,6 +1439,49 @@ of configur f
 ** Pass
 <<sec:pass>>
 
+[[https://github.com/NicolasPetton/pass][pass]] provides access to [[https://www.passwordstore.org/][pass the standard unix password manager]]. I always want this available so I just ~:ensure
+t~. Invoking ~pass~ brings up a transient-like menu and list of passwords that are stored on the system providing easy
+and intuitive access to accessing and managing stored passwords.
+
+Currently not included in config in favour of [[sec:password-store-menu][password-store-menu]]
+#+NAME: code-pass
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package pass
+  :ensure t)
+
+#+END_SRC
+
+*** password-store-menu
+<<sec:password-store-menu>>
+
+[[https://github.com/rjekker/password-store-menu][password-store-menu]] adds a transient menu to ~password-store.el~ which is part of  [[https://www.passwordstore.org/][pass the standard unix password
+manager]]. Invoking ~password-store-menu~ brings up the transient menu from where you can navigate the actions you wish to
+take. I prefer this over [[sec:pass][pass]].
+
+#+NAME: code-password-store-menu
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package password-store-menu
+  :ensure t
+  :config (password-store-menu-enable)
+  :custom (password-store-menu-key "C-c C-p"))
+
+#+END_SRC
+
+*** password-store-otp
+<<sec:password-store-otp>>
+
+[[https://github.com/volrath/password-store-otp.el][password-store-otp]] provides access to the [[https://github.com/tadfisher/pass-otp][pass-otp]] plugin from Emacs.
+
+#+NAME: code-password-store-otp
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package password-store-otp
+  :ensure t
+  :after (password-store-menu))
+
+#+END_SRC
+
 ** Scratch
 <<sec:scratch>>
 
