@@ -1644,10 +1644,49 @@ body
 *** Sqlite Mode
 <<sec:sqlite>>
 
+Emacs can be compiled with [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Database.html][built-in support for SQLite databases]]. I have picked up one [[https://christiantietze.de/posts/2024/01/emacs-sqlite-mode-open-sqlite-files-automatically/][custom function]] along the way.
+
 #+NAME: code-sqlite
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package sqlite-mode
+  :custom
+  (defun ns/sqlite-view-file-magically ()
+    "Runs `sqlite-mode-open-file' on the file name visited by the
+current buffer, killing it."
+    (require 'sqlite-mode)
+    (let ((file-name buffer-file-name))
+      (kill-current-buffer)
+      (sqlite-mode-open-file file-name)))
+    (add-to-list 'magic-mode-alist '("SQLite format 3\x00" . ns/sqlite-view-file-magically)))
+
 #+END_SRC
 
+**** sqlite-mode-extras
+<<sec:sqlite-mode-extras>>
+
+[[https://github.com/xenodium/sqlite-mode-extras][sqlite-mode-extras]] provides a suite of extra functions which extend the built-in.
+
+#+NAME: code-sqlite-mode-extras
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package sqlite-mode-extras
+  :bind (:map
+          sqlite-mode-map
+          ("n" . next-line)
+          ("p" . previous-line)
+          ("b" . sqlite-mode-extras-backtab-dwim)
+          ("f" . sqlite-mode-extras-tab-dwim)
+          ("+" . sqlite-mode-extras-add-row)
+          ("D" . sqlite-mode-extras-delete-row-dwim)
+          ("C" . sqlite-mode-extras-compose-and-execute)
+          ("E" . sqlite-mode-extras-execute)
+          ("S" . sqlite-mode-extras-execute-and-display-select-query)
+          ("DEL" . sqlite-mode-extras-delete-row-dwim)
+          ("g" . sqlite-mode-extras-refresh)
+          ("<backtab>" . sqlite-mode-extras-backtab-dwim)
+          ("<tab>" . sqlite-mode-extras-tab-dwim)
+          ("RET" . sqlite-mode-extras-ret-dwim)))
+
+#+END_SRC
 
 *** Yaml Mode
 <<sec:yaml>>
