@@ -1363,6 +1363,60 @@ of them listed. I currently use the following
 * Miscellaneous
 <<sec:misc>>
 
+** mpd
+
+I use [[https://musicpd.org/][Music Player Daemon]] to run my music, these packages allow me to control ~mpd~ from Emacs.
+
+*** mpdel
+<<sec:mpdel>>
+
+[[https://gitea.petton.fr/mpdel/mpdel][mpdel]] provides an interface to ~mpd~ its not working perfectly yet, for example I use a password and I can't see anyway
+of configur f
+
+#+NAME: code-mpdel
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package mpdel
+  :ensure t
+  :custom
+  (libmpdel-hostname "192.168.1.28")
+  (libmpdel-port 6600))
+;; (mpdel-mode)
+
+#+END_SRC
+
+*** ivy-mpdel
+<<sec:ivy-mpdel>>
+
+[[https://github.com/mpdel/ivy-mpdel][ivy-mpdel]] provides an Emacs' ivy interface to communicate with ~mpd~.
+
+#+NAME: code-ivy-mpdel
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package ivy-mpdel
+  :ensure t
+  :defer 2)
+
+#+END_SRC
+
+*** mpdmacs
+<<sec:mpdmacs>>
+
+[[https://github.com/sp1ff/mpdmacs][mpdmacs]] is another client that I'm yet to investigate/get working.
+
+#+NAME: code-mpdmacs
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package mpdmacs
+  :ensure t
+  :defer 2
+  :custom
+  (mpdmacs-host "192.168.1.28")
+  (mpdmacs-port 6600)
+  :bind
+  ("C-c m" . 'mpdmacs-mode-keymap)
+  :hook (mpdmacs-mode-hook . mpdmacs-mode-keymap))
+
+
+#+END_SRC
+
 ** OSM
 <<sec:osc>>
 
