@@ -1338,6 +1338,18 @@ although I'm tending towards the later these days).
 #+BEGIN_SRC emacs-lisp :tangle yes
 #+END_SRC
 
+<<sec:just>>
+
+[[https://github.com/leon-barrett/just-mode.el][just-mode]] is for editing [[https://just.systems/man/en/][just]] files.
+
+#+NAME: code-just
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package just-mode
+  :ensure t
+  :defer 0.5)
+
+#+END_SRC
 
 *** Latex Mode
 <<sec:latex>>
