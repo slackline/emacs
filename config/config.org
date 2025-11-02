@@ -1623,6 +1623,39 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 #+END_SRC
 
 * Modeline
+<<sec:modeline>>
+
+*** Custom Modeline
+<<sec:custom-modeline>>
+
+Once tried implementing a [[https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/][custom modeline]] based on a tutorial by Prot.
+
+Not currently tangled.
+
+#+NAME: code-custom-modeline
+#+BEGIN_SRC emacs-lisp :tangle no
+Custom Modeline
+(setq-default mode-line-format
+  '("%e"
+     prot-modeline-kbd-macro
+     prot-modeline-narrow
+     prot-modeline-input-method
+     prot-modeline-buffer-status
+     " "
+     prot-modeline-buffer-identification
+     "  "
+     prot-modeline-major-mode
+     prot-modeline-process
+     "  "
+     prot-modeline-vc-branch
+     "  "
+     prot-modeline-flymake
+     "  "
+     prot-modeline-align-right
+     prot-modeline-misc-info))
+
+#+END_SRC
+
 
 ** Centaur Tabs
 <<sec:centaur_tabs>>
