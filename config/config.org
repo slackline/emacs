@@ -1528,10 +1528,48 @@ The following /isn't/ tangled and needs checking
 *** Nix Mode
 <<sec:nix>>
 
-#+NAME: code-nix
-#+BEGIN_SRC emacs-lisp :tangle yes
+I dabbled with [[https://nixos.org/][NixOS]] in the past and used these packages to help with writing nix packages and code.
+
+**** nixfmt
+<<sec:nixfmt>>
+
+[[https://github.com/purcell/emacs-nixfmt][nixfmt]]
+
+#+NAME: code-nixfmt
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package nixfmt
+  :ensure t
+  :defer 3
+)
+
 #+END_SRC
 
+**** nix-ts-mode
+<<sec:nix-ts-mode>>
+
+[[https://github.com/nix-community/nix-ts-mode][nix-ts-mode]] provides [[sec:treesitter][Tree Sitter]] support for ~.nix~ files.
+
+#+NAME: code-nix-ts-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+
+(use-package nix-ts-mode
+  :ensure t
+  :mode "\\.nix\\'")
+
+#+END_SRC
+
+**** agenix
+<<sec:agenix>>
+
+[[https://github.com/t4ccer/agenix.el][agenix]] is for working with secrets.
+
+#+NAME: code-agenix
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package agenix
+  :ensure t
+  :mode "\\.age\\'")
+
+#+END_SRC
 
 *** Rust Mode
 <<sec:rust>>
