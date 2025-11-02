@@ -1574,10 +1574,72 @@ I dabbled with [[https://nixos.org/][NixOS]] in the past and used these packages
 *** Rust Mode
 <<sec:rust>>
 
+Rust is something I intend to learn at some point (right after I've learnt Elisp!). The various packages here integrate
+with [[sec:lsp-mode][lsp-mode]].
+
+**** rust-mode
+<<sec:rust-mode>>
+
+[[https://github.com/rust-lang/rust-mode][rust-mode]] for editing [[https://rust-lang.org/][Rust]] source files (~.rs~).
+
 #+NAME: code-rust
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
+;; https://github.com/rust-lang/rust-mode
+(use-package rust-mode
+  :ensure t
+  :defer 0.5
+  :custom
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+  (rust-mode-treesitter-derive t)
+  ;; :hook
+  ;; (rust-mode . (lambda () (prettify-symbols-mode)))
+  )
+
 #+END_SRC
 
+**** rustic
+<<sec:rustic>>
+
+[[https://github.com/emacs-rustic/rustic][rustic]] is based on [[sec:rust-mode][rust-mode]] and provides additional features such as automatic LSP configuration, [[sec:cargo][Cargo]] popups, async
+with [[sec:org-babel][Org Babel]] and more.
+
+#+NAME: code-rustic
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package rustic
+  :ensure t
+  :defer 3
+  :custom
+  (rustic-format-on-save t)
+  (rustic-cargo-use-last-stored-arguments t))
+#+END_SRC
+
+
+**** cargo.el
+<<sec:cargo-el>>
+
+[[https://github.com/kwrooijen/cargo.el][cargo.el]] is in maintenance mode but provides a set of key combinations to perform [[https://doc.rust-lang.org/cargo/][Cargo]] tasks.
+#+NAME: code-cargo-el
+#+BEGIN_SRC emacs-lisp :tangle no
+body
+#+END_SRC
+
+**** cargo-mode
+<<sec:cargo-mode>>
+
+[[https://github.com/ayrat555/cargo-mode][cargo-mode]] is a minor mode for dynamically selecting commands from the Rust package manager [[https://doc.rust-lang.org/cargo/][Cargo]].
+
+#+NAME: code-cargo-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+;; https://github.com/ayrat555/cargo-mode
+(use-package cargo-mode
+  :ensure t
+  :defer 0.5
+  :hook
+  (rust-mode . cargo-minor-mode)
+  :config
+  (setq compulation-scroll-output t))
+
+#+END_SRC
 
 *** Sqlite Mode
 <<sec:sqlite>>
