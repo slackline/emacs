@@ -1526,14 +1526,103 @@ the per-major-mode scratch buffers.
 
 
 
-* Themes and Keybindings
-
-I purposefully leave loading keyboard shortcuts until the very end so that all functions that are mapped to key-bindings
-are already defined. Theme loading is deferred until the end too that way I have a visual cue as to whether all of my
-configuration has successfully loaded or not.
-
-** Themes
+* Themes
 <<sec:themes>>
+
+** modus-themes
+
+[[https://protesilaos.com/modus-themes/][modus-themes]] from Prot are really nice.
+
+#+NAME: code-modus-themes
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package modus-themes
+  :ensure t
+  :defer 0.5
+  :custom
+  ;; Add all your customisation's prior to loading the themes
+  (modus-themes-italic-constructs t
+	(message "message" format-args)odus-themes-bold-constructs t
+    modus-themes-org-blocks '(tinted-background)
+    modus-themes-include-derivatives-mode 1)
+  :bind
+  ("C-c C-t m" . modus-themes-toggle))
+#+END_SRC
+
+** ef-themes
+<<sec:ef-themes>>
+
+[[https://protesilaos.com/emacs/ef-themes][ef-themes]] also from [[https://protesilaos.com/][Prot]] are also very nice and my current favourite.
+
+#+NAME: code-ef-themes
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package ef-themes
+  :ensure t
+  :defer 0.5
+  :custom
+  (ef-themes-disable-other-themes 'ef-themes-light-themes)
+  (ef-themes-take-over-modus-themes-mode 0)
+  :bind
+  ("C-c C-t d" . ef-themes-select-dark)
+  ("C-c C-t e" . ef-themes-toggle))
+
+#+END_SRC
+
+** mood-line
+<<sec:moodline>>
+
+[[https://git.tty.dog/hpet_dog/mood-line][mood-line]] is a minimalist configuration for the default [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode-line]], the bar at the bottom of a buffer showing information
+about the buffer.
+
+#+NAME: code-moodline
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package mood-line
+  :ensure t
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-unicode)
+  :config
+  (mood-line-mode))
+
+#+END_SRC
+
+** minions
+<<sec:minions>>
+
+[[https://github.com/tarsius/minions][minions]] is another neat little package from the author of [[sec:magit][Magit]] which adds a pop-up menu to the mode-line that shows the
+minor modes that are enabled for the given buffer. Haven't quite got this working yet as I only see the major mode
+listed and can't yet find where to click to get the menu but ~minions-minor-mode-menu~ can be called interactively to
+access the same list.
+
+#+NAME: code-minions
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package minions
+  :ensure t)
+#+END_SRC
+
+** golden ratio
+<<sec:golden-ratio>>
+
+[[https://github.com/roman/golden-ratio.el][golden-ratio]]
+
+#+NAME: code-golden-ratio
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package golden-ratio
+  :ensure t
+  :defer 0.5
+  :custom
+  (setq golden-ratio-auto-scale t))
+
+#+END_SRC
+
+** Font
+
+I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it needs installing at the system level so it's available for Emacs.
+
+#+NAME: code-font
+#+BEGIN_SRC emacs-lisp :tangle yes
+(set-face-attribute 'default t :font "Hack")
+#+END_SRC
+
+* Modeline
 
 ** Centaur Tabs
 <<sec:centaur_tabs>>
