@@ -661,6 +661,214 @@ body
 [[https://orgmode.org/][Orgmode]] is "/A GNU Emacs major mode for keeping notes, authoring documents, computational notebooks, literate
 programming, maintaining to-do lists, planning projects, and more - in a fast and effective plain-tests system./"
 
+Sources of some of the options are linked below.
+
++ [[https://mahmoodsh.com/efficiently_parsing_org_files.html][efficiently parsing org files]] shows how to speed up loading big Org files.
++ [[https://anonimno.codeberg.page/tracking%20worktime.html][org-clock-persist 'history]]
++ [[https://stackoverflow.com/a/38477233/1444043][org-image-actual-width]]
++ [[https://emacs.stackexchange.com/a/21267/10100][org-startup-with-inline-images]]
++ [[https://emacs.stackexchange.com/a/3570/10100][org-confirm-babel-evaluate]]
++ [[https://github.com/erikriverson/org-mode-R-tutorial/blob/master/org-mode-R-tutorial.org#inserting-r-graphical-output][org-format-latex-options]]
++ [[https://hachyderm.io/@al3x/112186172832809202][after-focus-change-function]]
++ [[https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=][org-todo-keywords]] set additional keywords (and colours).
+
+#+NAME: code-org-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org
+  :ensure t
+  :defer 0.5
+  :bind
+  (("C-x p i" . 'org-cliplink))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+  (global-font-lock-mode 1)
+  (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+							   (python . t)
+							   (shell . t)
+							   (R . t)
+							   (latex .t)))
+  (org-directory        "~/org/")
+  (org-agenda-files '("~/org/agenda.org"
+ 			   "~/org/gtd/admin.org"
+ 			   "~/org/gtd/carpentries.org"
+ 			   "~/org/gtd/clarity.org"
+ 			   "~/org/gtd/computing.org"
+ 			   "~/org/gtd/cured.org"
+ 			   "~/org/gtd/emacs.org"
+ 			   "~/org/gtd/isoslam.org"
+ 			   "~/org/gtd/joss.org"
+ 			   "~/org/gtd/openfest2024.org"
+ 			   "~/org/gtd/osc.org"
+ 			   "~/org/gtd/pgfinder.org"
+			   "~/org/gtd/reproducibilitea.org"
+			   "~/org/gtd/rse.org"
+			   "~/org/gtd/rse-competencies.org"
+			   "~/org/grd/sheffieldr.org"
+ 			   "~/org/gtd/tcx2gpx.org"
+			   "~/org/gtd/thyroid.org"
+			   "~/org/gtd/topostats.org"))
+	;; org-tags-alist '()
+	(org-startup-indented 0)
+	(org-agenda-include-diary t)
+	(org-agenda-skip-deadline-if-done t)
+	(org-agenda-skip-scheduled-if-done t)
+	(org-clock-persist 'history)
+	(org-log-done 'time)
+	(org-image-actual-width nil)
+	(org-export-backends '(beamer html latex md odt))
+	(org-startup-with-inline-images t)
+	(org-confirm-babel-evaluate nil)
+	(org-babel-python-command "~/.virtualenvs/default/bin/python")
+	(org-format-latex-options '(:foreground default
+		                    :background "rgb 1 1 1"
+		                    :scale 1.5
+		                    :html-foreground "Black"
+		                    :html-background "Transparent"
+		                    :html-scale 1.0
+		                     :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+      (org-todo-keywords
+        '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
+      (org-todo-keyword-faces
+        '(("TODO" . (:foreground "GoldenRod" :weight bold))
+           ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
+           ("BLOCKED" . (:foreground "Red" :weight bold))
+           ("DONE" . (:foreground "LimeGreen" :weight bold))
+           ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
+
+  ;; Disable electric-indent-mode in org buffers
+  :hook
+  (org-mode . (lambda () (electric-indent-local-mode 0)))
+  (org-mode . (lambda () (org-rainbow-tags-mode 1)))
+  (after-focus-change-function . (org-save-all-org-buffers)))
+  ;; (with-eval-after-load 'org (global-org-modern-mode))
+
+#+END_SRC
+
+There are a lot of org-based packages and extensions, those that are minor tweaks are in sub-sections below, major
+things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have their own sections which follow.
+
+*** Org Analyzer
+<<sec:org-analyzer>>
+
+[[https://github.com/rksm/clj-org-analyzer/][org-analyzer]] provides a set of functions that parse and summarise your [[<sec:org-agenda>][org-agenda]] and fires up a web-page to visualise
+the results. Very neat and powerful...if you stick to the habit of logging your time on tasks!
+
+#+NAME: code-org-analyzer
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package org-analyzer
+  :ensure t
+  :defer 2)
+
+#+END_SRC
+
+*** Org Links
+<<sec:org-links>>
+
+[[https://codeberg.org/Anoncheg/emacs-org-links][org-links]]
+
+#+NAME: code-org-links
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org-links
+  :ensure t
+  :defer 0.5
+  :after org-mode)
+
+#+END_SRC
+
+*** Org Modern
+<<sec:org-modern>>
+
+[[https://github.com/minad/org-modern][org-modern]] is "/a modern style for Org buffers using font locking and text properties/".
+
+#+NAME: code-org-modern
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org-modern
+  :ensure t
+  :defer 0.5
+  :after org-mode
+  :config (setq
+	   ;; Edit settings
+	   org-auto-align-tags nil
+	   org-tags-column 0
+	   org-catch-invisible-edits 'show-and-error
+	   org-special-ctrl-a/e t
+	   org-insert-heading-respect-content t
+	   ;; Org styling, hide markup etc.
+	   org-hide-emphasis-markers t
+	   org-pretty-entities t
+	   org-ellipsis "…"
+	   ;; Agenda styling
+	   org-agenda-tags-column 0
+	   org-agenda-block-separator ?─
+	   org-agenda-time-grid
+	   '((daily today require-timed)
+	     (800 1000 1200 1400 1600 1800 2000)
+	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+	   org-agenda-current-time-string
+	   "◀── now ─────────────────────────────────────────────────" ))
+
+#+END_SRC
+
+*** Org Note
+<<sec:org-note>>
+
+[[https://github.com/Artawower/orgnote.el][orgnote]] synchronises [[sec:org-roam][org-roam]] notes with the Android application [[https://org-note.com/][orgnote]]. I'm yet to fully adopt using Org on my mobile
+device, mainly as I hate typing on mobile, but also I'm yet to settle on an application for working with org files on
+mobile.
+
+Not tangled for now.
+
+#+NAME: code-org-note
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package orgnote
+  :ensure t)
+
+#+END_SRC
+
+*** Org Raindow Tags
+<<sec:org-rainbow-tags>>
+
+[[https://github.com/KaratasFurkan/org-rainbow-tags][org-rainbow-tags]] adds random colours to Org tags based on the hash of the tag name, which keeps things consistent.
+
+#+NAME: code-org-rainbow-tags
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org-rainbow-tags
+  :ensure t
+  :defer 0.5)
+
+#+END_SRC
+
+*** Org Ref
+<<sec:org-ref>>
+
+[[https://github.com/jkitchin/org-ref][org-ref]]
+
+#+NAME: code-org-ref
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package org-ref
+  :ensure t
+  :after (org-roam))
+
+#+END_SRC
+
+*** Org Tidy
+<<sec:org-tidy>>
+
+[[https://github.com/jxq0/org-tidy][org-tidy]] automatically tidies (hides) [[sec:org-mode][org-mode]] property draws.
+
+Not currently tangled.
+
+#+NAME: code-org-tidy
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package org-tidy
+  :ensure t
+  :after (org-mode)
+  :hook
+  (org-mode . org-tidy-mode))
+
+#+END_SRC
+
 ** Org Babel
 <<sec:org-babel>>
 
