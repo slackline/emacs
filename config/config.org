@@ -1418,7 +1418,23 @@ of configur f
 #+END_SRC
 
 ** OSM
-<<sec:osc>>
+<<sec:osm>>
+
+[[https://github.com/minad/osm][osm]] provides in Emacs [[https://openstreetmap.org][OpenStreetMap]] viewer. It includes the ability to add bookmarks and define
+~geo:<lat>,<lon>;z=<zoom-int>~ org-links.
+
+#+NAME: code-osm
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package osm
+  :ensure t
+  :defer 3
+  :custom
+  (osm-server 'default)
+  (osm-home '(53.356116 -1.463397 15))
+  :bind
+  (("C-c o" . osm-prefix-map)))
+
+#+END_SRC
 
 ** Pass
 <<sec:pass>>
@@ -1448,6 +1464,9 @@ configuration has successfully loaded or not.
 
 * Custom Functions
 <<sec:custom_functions>>
+
+
+I've come across a bunch of functions that others generously share and include them here.
 
 ** Reinstall Package
 
