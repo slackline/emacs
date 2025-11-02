@@ -1315,14 +1315,106 @@ although I'm tending towards the later these days).
 
 #+END_SRC
 
-
 *** ESS Mode
 <<sec:ess>>
 
 #+NAME: code-ess
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package ess
+  :ensure t
+  ;;     :requires ess-r-mode
+  ;;     ess-r-package
+  :init
+  :mode (("/R/.*\\.q\\'"       . R-mode)
+	 ("\\.[rR]\\'"         . R-mode)
+	 ("\\.[rR]profile\\'"  . R-mode)
+	 ("NAMESPACE\\'"       . R-mode)
+	 ("CITATION\\'"        . R-mode)
+	 ("\\.[Rr]out"         . R-transcript-mode)
+	 ("\\.Rmd\\'"          . Rd-mode)
+	 ("\\.Rd\\'"           . Rd-mode))
+  :interpreter (("R" . R-mode)
+		("R" . R-transcript-mode)
+		("R" . Rd-mode))
+  :config
+  (require 'ess-r-mode)
+  (require 'ess-r-package)
+  (setq ess-r-backend 'lsp)
+  (setq comint-input-ring-size 1000)
+  (setq ess-indent-offset 2)
+  (setq ess-eval-visibly-p nil)
+  (setq ess-startup-directory nil)
+  (setq ess-ask-for-ess-directory nil)
+  (setq ess-togggle-underscore nil)
+  (setq ess-eval-visibly 'nowait)
+  (setq ess-use-tracebug nil)
+  :hook
+  (ess-mode . company-mode)
+  (inferior-ess-mode . company-mode)
+  :bind
+  (:map ess-r-mode-map
+	("_" . 'ess-insert-assign)  ;;
+	("C-q" . 'ess-eval-region-or-line-and-step)
+	("C-|" . " |>\n"))
+  (:map inferior-ess-r-mode-map
+	("_" . 'ess-insert-assign)
+	("C-|" . " |>\n")))
+
 #+END_SRC
 
+**** ess-smart-underscore
+<<sec:ess-smart-underscore>>
+
+#+NAME: code-ess-smart-underscore
+#+BEGIN_SRC emacs-lisp :tangle yes
+;;; http://github.com/mlf176f2/ess-smart-underscore.el
+(use-package ess-smart-underscore
+  :ensure t
+  :after (ess))
+
+#+END_SRC
+
+**** ess-gd
+<<sec:ess-gd>>
+
+#+NAME: code-ess-gd
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; https://github.com/sje30/essgd
+(use-package essgd
+  :ensure t)
+
+#+END_SRC
+
+**** quarto-mode
+<<sec:quarto-mode>>
+
+#+NAME: code-quarto-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; Quarto mode https://github.com/quarto-dev/quarto-emacs
+;; By default associated with .qmd files
+;; (use-package quarto-mode
+;;   :ensure t
+;;   :mode (("\\.Rmd" . poly-quarto-mode))
+;;   :bind (("C-c q" . quarto-preview)))
+;; Following requires that polymode, markdown and python are all loaded/configured first
+(load "~/.config/emacs/site-lisp/quarto-mode.el")
+
+#+END_SRC
+
+**** r-autoyas
+<<sec:r-autoyas>>
+
+[[https://github.com/mattfidler/r-autoyas.el][r-autoyas]] is something I appear to have used at some point in the past but I've noted I disabled it in 2023-01-28 along
+with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276597][this issue]]. For now it is /not/ included when tangling my configuration.
+
+#+NAME: code-r-autoyas
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package r-autoyas
+  :ensure t
+  :hook
+  (ess-mode . r-autoyas-ess-activate))
+
+#+END_SRC
 
 *** JS Mode
 <<sec:js>>
