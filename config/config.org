@@ -1691,8 +1691,15 @@ current buffer, killing it."
 *** Yaml Mode
 <<sec:yaml>>
 
+[[https://github.com/yoshiki/yaml-mode][yaml-mode]] is a bit dated but works ok. I think a lot of the functionality I get when working with YAML files comes from
+the LSP protocol but I retain this in my configuration for now.
+
 #+NAME: code-yaml
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package yaml-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("\\.cff\\'" . yaml-mode)))
 #+END_SRC
 
 *** Polymode Mode
