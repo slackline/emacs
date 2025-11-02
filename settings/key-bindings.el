@@ -162,7 +162,7 @@
 (global-set-key (kbd "C-c p p") 'run-python)
 
 ;; Miscellaneous
-(global-set-key (kbd "C-c k") 'keychain-refresh-environment)
+(global-set-key (kbd "C-c C-k") 'keychain-refresh-environment)
 (global-set-key (kbd "C-c u") 'rsync-html)
 (global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
 ;;; Some generally useful key-bindings (mostly ESS specific) from
