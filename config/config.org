@@ -1453,8 +1453,37 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 *** Markdown Mode
 <<sec:markdown>>
 
+[[https://github.com/jrblevin/markdown-mode][markdown-mode]] is for editing Markdown files.
+
 #+NAME: code-markdown
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package markdown-mode
+  :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
+  :hook (markdown-mode . auto-fill-mode)
+  :init (setq markdown-command "pandoc")
+  :config
+  :bind (:map markdown-mode-map
+              ("C-c C-m" . markdown-do)))
+
+#+END_SRC
+
+**** markdown-ts-mode
+<<sec:markdown-ts-mode>>
+
+[[https://github.com/LionyxML/markdown-ts-mode][markdown-ts-mode]] provides [[sec:treesitter][Tree Sitter]] support for ~.md~ files.
+
+The following /isn't/ tangled and needs checking
+#+NAME: code-markdown-ts-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package markdown-ts-mode
+  :ensure t
+  :after (markdown-mode)
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :custom
+  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/ikatyang/tree-sitter-markdown" "master"
+"src")))
+
 #+END_SRC
 
 *** Mermaid Mode
