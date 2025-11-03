@@ -28,11 +28,13 @@ Tasks I'm yet to complete in re-writing...
 
 - [ ] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
 - [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
+- [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
 
 
 
 
 * On Configuration with use-package
+<<sec:conf-use-package>>
 
 Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
 use-package the right way]]. The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package ~README.md~]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
