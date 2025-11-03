@@ -741,11 +741,154 @@ up with a lot of ~prefix~ and its value disappears.
 
 #+END_SRC
 
+* Version Control
+<<sec:version-control>>
+
+** Magit
 <<sec:magit>>
+
+[[https://magit.vc/][Magit]] is amazing! Hands down the package I use the most in Emacs for my daily work, note taking and more as I have
+literally everything under Git version control.
+
++ [[https://www.reddit.com/r/emacs/comments/17af1q5/opening_magit_fullframe_then_restoring_windows_on/][Opening Magit full-frame then restoring windows]]
++ [[https://mbork.pl/2025-05-12_Coloring_Git_output_in_Magit][Coloring Git output in Magit]]
 
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp :tangle yes
-body
+;;
+(use-package magit
+  :ensure t
+  :custom
+  (magit-repository-directories
+	`(("~/dotfiles" . 1)
+	  ("~/.config/emacs/" . 1)
+	  ("~/org/" . 1)
+	  ("~/work/git/" . 2)
+	  ("~/work/python/tcx2gpx/" . 1)
+	  ("~/work/python/wpweather/" . 1)
+	  ))
+  (auth-sources '("~/.authinfo.gpg"))
+  ;;
+  (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+  (magit-bury-buffer-function 'magit-restore-window-configuration)
+  (magit-pull-or-fetch t)
+  (magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
+  (magit-process-finish-apply-ansi-colors t)
+  ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
+  ;; perhaps?
+  (remove-hook 'git-commit-mode #'turn-on-auto-fill)
+  (remove-hook 'forge-post-mode #'turn-on-auto-fill)
+  :hook
+  (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+  :bind
+  (global-set-key (kbd "C-c m C") 'magit-clone)
+  (global-set-key (kbd "C-c m F") 'magit-pull-from-upstream)
+  (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
+  (global-set-key (kbd "C-c m R") 'magit-file-rename)
+  (global-set-key (kbd "C-c m f") 'forge-pull)
+  (global-set-key (kbd "C-c m d d") 'nds:magit-show-with-difftastic)
+  (global-set-key (kbd "C-c m d r") 'magit-diff-range)
+  (global-set-key (kbd "C-c m d s") 'magit-diff-staged)
+  (global-set-key (kbd "C-c m l l") 'magit-log)
+  (global-set-key (kbd "C-c m l f") 'magit-log-buffer-file)
+  (global-set-key (kbd "C-c m l o") 'magit-log-other))
+
+#+END_SRC
+
+** code-review
+<<sec:code-review>>
+
+[[https://github.com/wandersoncferreira/code-review/][code-review]]
+
+#+NAME: code-code-review
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package code-review
+  :ensure t
+  :custom
+  (code-review-fill-column 120)
+  (code-review-new-buffer-window-strategy #'switch-to-buffer)
+  :hook
+  (code-review-mode . emojify-mode))
+
+#+END_SRC
+
+** consult-gh
+<<sec:consult-gh>>
+
+
+[[https://github.com/armindarvish/consult-gh][consult-gh]] is a [[https://cli.github.com/][GitHub CLI]] client inside Emacs that uses [[sec:consult][Consult]].
+
+Not currently tangled.
+
+#+NAME: code-consult-gh
+#+BEGIN_SRC emacs-lisp :tangle no
+
+(use-package consult-gh
+  :ensure t
+  :after consult
+  :custom
+  (consult-gh-default-clone-directory "~/projects")
+  (consult-gh-show-preview t)
+  (consult-gh-preview-key "C-o")
+  (consult-gh-repo-action #'consult-gh--repo-browse-files-action)
+  (consult-gh-issue-action #'consult-gh--issue-view-action)
+  (consult-gh-pr-action #'consult-gh--pr-view-action)
+  (consult-gh-code-action #'consult-gh--code-view-action)
+  (consult-gh-file-action #'consult-gh--files-view-action)
+  (consult-gh-notifications-action #'consult-gh--notifications-action)
+  (consult-gh-dashboard-action #'consult-gh--dashboard-action)
+  (consult-gh-large-file-warning-threshold 2500000)
+  (consult-gh-prioritize-local-folder 'suggest)
+  (consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
+  :hook
+  ;; Add a hook to change default organizations when the account is switched
+  (add-hook 'consult-gh-auth-post-switch-hook (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))))
+
+  ;; Remember visited orgs and repos across sessions
+  (add-to-list 'savehist-additional-variables 'consult-gh--known-orgs-list)
+  (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list))
+
+#+END_SRC
+
+** consult-gh-forge
+<<sec:consult-gh-forge>>
+
+Works in conjunction with [[sec:consult-gh][consult-gh]].
+
+Not currently tangled.
+
+#+NAME: code-consult-gh-forge
+#+BEGIN_SRC emacs-lisp :tangle no
+;; ;; Install `consult-gh-forge' for forge actions
+(use-package consult-gh-forge
+  :ensure t
+  :defer 3
+  :after (consult-gh)
+  :custom
+  (consult-gh-forge-mode +1)
+  (consult-gh-forge-timeout-seconds 20))
+#+END_SRC
+
+** difftastic
+<<sec:difftastic>>
+
+[[https://github.com/pkryger/difftastic.el][difftastic.el]] brings the brilliant code aware [[https://difftastic.wilfred.me.uk/][difftastic]] ([[https://github.com/Wilfred/difftastic][GitHub]]) to Emacs. This package replaces an earlier [[https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html][custom configuration]]
+that I found and had happily used for a while.
+#+NAME: code-difftastic
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package difftastic
+  :ensure t
+  :demand t
+  :bind (:map magit-blame-read-only-mode-map
+              ("D" . difftastic-magit-show)
+              ("S" . difftastic-magit-show))
+  :custom
+  (eval-after-load 'magit-diff
+    '(transient-append-suffix 'magit-diff '(-1 -1)
+       [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
+        ("S" "Difftastic show" difftastic-magit-show)])))
+
 #+END_SRC
 
 ** Forge
@@ -753,7 +896,264 @@ body
 
 #+NAME: forge
 #+BEGIN_SRC emacs-lisp :tangle yes
-body
+(use-package forge
+  :ensure t
+  :defer 0.5
+  :after magit
+  :config
+  (push '("forgejo.nshephard.dev"
+          "forgejo.nshephard.dev/api/v1"
+          "forgejo.nshephard.dev"
+          forge-forgejo-repository)
+	forge-alist))
+
+#+END_SRC
+
+** ghub
+<<sec:ghub>>
+
+#+NAME: code-ghub
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package ghub
+  :ensure t
+  :defer 0.5
+  :after (magit))
+#+END_SRC
+
+** glab
+<<sec:glab>>
+
+#+NAME: code-glab
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package glab
+  :ensure t
+  :defer 0.5
+  :after (magit))
+#+END_SRC
+
+** git-cliff
+<<sec:git-cliff>>
+
+[[https://github.com/liuyinz/git-cliff.el][git-cliff]]
+
+#+NAME: code-git-cliff
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package git-cliff
+  :ensure t)
+
+#+END_SRC
+
+** git-modes
+<<sec:git-modes>>
+
+[[https://github.com/magit/git-modes][git-modes]] provides major modes for Git configuration files.
+
+#+NAME: code-git-modes
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package git-modes
+  :ensure t
+  :defer 3
+  :after (magit))
+
+#+END_SRC
+
+** gh-notify
+<<sec:gh-notify>>
+
+[[https://github.com/anticomputer/gh-notify][gh-notify]] a "/thin UI veneer on top of Magit/Forge porcelain for juggling large amounts of GitHub notifications at
+speed.".
+
+#+NAME: code-gh-notify
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package gh-notify
+  :ensure t
+  :after (magit))
+
+#+END_SRC
+
+** gitlab-ci-mode
+<<sec:gitlab-ci-mode>>
+
+[[https://gitlab.com/joewreschnig/gitlab-ci-mode/][gitlab-ci-mode]]
+
+Currently not tangled.
+
+#+NAME: code-gitlab-ci-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package gitlab-ci-mode
+  :ensure t)
+
+#+END_SRC
+
+** gitlab-ci-mode-flycheck
+<<sec:gitlab-ci-mode-flycheck>>
+
+[[https://gitlab.com/joewreschnig/gitlab-ci-mode-flycheck/][gitlab-ci-mode-flycheck]]
+
+Currently not tangled.
+
+#+NAME: code-gitlab-ci-mode-flycheck
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package gitlab-ci-mode-flycheck
+  :ensure t)
+
+#+END_SRC
+
+** git-link
+<<sec:git-link>>
+
+[[https://github.com/sshaw/git-link][git-link]]
+
+#+NAME: code-git-link
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package git-link
+  :ensure t
+  :after (magit)
+  :bind
+  (global-set-key (kbd "C-c m g g") 'git-link-dispatch)
+  (global-set-key (kbd "C-c m g l") 'git-link)
+  (global-set-key (kbd "C-c m g c") 'git-link-commit)
+  (global-set-key (kbd "C-c m g h") 'git-link-homepage)
+  :config
+  (require 'git-link-transient))
+
+#+END_SRC
+
+** git-timemachine
+<<sec:git-timemachine>>
+
+[[https://codeberg.org/pidu/git-timemachine][git-timemachine]]
+
+#+NAME: code-git-timemachine
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package git-timemachine
+  :ensure t
+  :defer 3
+  :after (magit)
+)
+
+#+END_SRC
+
+** gtea
+<<sec:gtea>>
+
+#+NAME: code-gtea
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package gtea
+  :ensure t
+  :defer 0.5
+  :after (magit))
+#+END_SRC
+
+
+** magit-delta
+<<sec:magit-delta>>
+
+[[https://github.com/dandavison/magit-delta][magit-delta]]
+
+#+NAME: code-magit-delta
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package magit-delta
+  :ensure t
+  :after magit
+  :hook (magit-mode . magit-delta-mode))
+
+#+END_SRC
+
+** magit-gitlab
+<<sec:magit-gitlab>>
+
+[[https://gitlab.com/arvidnl/magit-gitlab][magit-gitlab]]
+
+#+NAME: code-magit-gitlab
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package magit-gitlab
+  :ensure t
+  :defer 3
+  :after (magit))
+
+#+END_SRC
+
+
+** magit-imerge
+<<sec:magit-imerge>>
+
+[[https://github.com/magit/magit-imerge][magit-imerge]] is a Magit interface to [[https://github.com/mhagger/git-imerge][git-imerge]]
+
+#+NAME: code-magit-imerge
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package magit-imerge
+  :ensure t
+  :after (magit))
+
+#+END_SRC
+
+** magit-stats
+<<sec:magit-stats>>
+
+#+NAME: code-magit-stats
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; https://github.com/LionyxML/magit-stats
+(use-package magit-stats
+  :ensure t
+  :after (magit))
+
+#+END_SRC
+
+** orgit
+<<sec:orgit>>
+
+[[https://github.com/magit/orgit][orgit]]
+
+#+NAME: code-orgit
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package orgit
+  :after (magit))
+
+#+END_SRC
+
+** orgit-forge
+<<sec:orgit-forge>>
+
+[[https://github.com/magit/orgit-forge][orgit-forge]]
+
+#+NAME: code-orgit-forge
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package orgit-forge
+  :after magit
+  :bind (:map magit-mode-map
+	      ("C-c m c" . orgit-store-link))
+  (:map org-mode-map
+	("C-c m v" . org-insert-last-stored-link)))
+
+#+END_SRC
+
+** pr-review
+<<sec:pr-review>>
+
+[[https://github.com/blahgeek/emacs-pr-review][pr-review]]
+#+NAME: code-pr-review
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package pr-review
+  :ensure t
+  :after ghub)
+
+#+END_SRC
+
+** treemacs-magit
+<<sec:treemacs-magit>>
+
+#+NAME: code-treemacs-magit
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package treemacs-magit
+  :ensure t)
+
 #+END_SRC
 
 * Transient
