@@ -1978,8 +1978,38 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 * Terminals
 <<sec:terminals>>
 
+I don't use the shell/terminal in Emacs much as I quite like having clear separate usage and so use [[https://sw.kovidgoyal.net/kitty/][kitty]].
 ** vterm
 <<sec:vterm>>
+
+[[https://github.com/akermu/emacs-libvterm][vterm]] is a compiled terminal emulator, as such you need to have something like ~gcc~ installed (common on most GNU/Linux
+systems, less so on M$-Win/OSX).
+
+#+NAME: code-vterm
+#+BEGIN_SRC emacs-lisp :tangle yes
+;;
+(use-package vterm
+  :ensure t
+  :defer 3
+  :custom
+  (vterm-always-compile-module t)
+  (vterm-copy-exclude-prompt t)
+  (vterm-kill-buffer-on-exit t))
+
+#+END_SRC
+
+
+** eat
+<<sec:eat>>
+
+[[https://codeberg.org/akib/emacs-eat/][eat]] is another terminal emulator that I may investigate in the future if I ever tire of using [[https://sw.kovidgoyal.net/kitty/][kitty]].
+
+#+NAME: code-eat
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package eat
+  :ensure t)
+
+#+END_SRC
 
 * Miscellaneous
 <<sec:misc>>
