@@ -757,6 +757,19 @@ body
 * Transient
 <<sec:transient>>
 
+** Transient Custom Prefixes
+<<sec:transient-custom-prefixes>>
+
+#+NAME: code-magit-aux-commands
+#+BEGIN_SRC emacs-lisp :tangle yes
+(transient-define-prefix nds:magit-aux-commands ()
+			 "My personal auxiliary magit commands."
+			 ["Auxiliary commands"
+			  ("o" "Orgit Link" orgit-store-link)
+			  ])
+
+#+END_SRC
+
 * Org mode
 <<sec:org-mode>>
 
