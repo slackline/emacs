@@ -1937,6 +1937,45 @@ of them listed. I currently use the following
 * TRAMP
 <<sec:tramp>>
 
+[[https://www.gnu.org/software/tramp/][TRAMP]] (Transparent Remote (file) Access, Multiple Protocol) "/ provides an easy, convenient, and consistent interface to
+editing remote files transparently, just as if they are local files. This extends to editing, version control, dired,
+and more./". The "more" part includes files under ~su~ both locally and remotely. It is one of the amazing packages in
+Emacs that makes people's lives considerably easier. I don't use it nearly enough, the first time I tried it out I had
+major issues which were down to the prompts on the remote machine. Took a while to find a [[https://emacs.stackexchange.com/questions/47969/trouble-connecting-gnu-emacs-to-work-machine-through-ssh-tramp][thread]] with a simple way to
+disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM == "dumb"~]].
+
++ [[https://coredumped.dev/2025/06/18/making-tramp-go-brrrr./][Making TRAMP go Brrrr...]] is a useful article on speeding things up which is where most of my customisations came from
+  (not implemented them all yet though!)
+
+#+NAME: code-tramp
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package tramp
+  :ensure t
+  :config
+  (tramp-default-method "ssh")
+  (add-to-list 'tramp-default-method-alist '("" "neil" "ssh"))
+  ;; Set prompt so it doesn't hang
+  (shell-prompt-pattern '"^[^#$%>\n]*~?[#$%>] *")
+  (tramp-auto-save-directory "~/.config/emacs/tmp/")
+  (remote-file-name-inhibit-locks t)
+  (tramp-use-scp-direct-remote-copying t)
+  (remote-file-name-inhibit-auto-save-visited t)
+  (tramp-copy-size-limit (* 1024 1024)) ;; 1Mb
+  ;; Set default usernames for different hosts and a global default.
+  (add-to-list 'tramp-default-user-alist
+	       '("ssh" ".*ovh'" "arch") t)
+  (add-to-list 'tramp-default-user-alist
+	       '("ssh" ".*openwrt" "admin") t)
+  (add-to-list 'tramp-default-user-alist
+	       '(nil nil "neil") t)
+  (add-to-list 'tramp-default-user-alist
+	       '("ssh" ".*alarmpi-4b" "neil") t)
+  (add-to-list 'tramp-default-user-alist
+	       '("ssh" ".*crow'" "neil") t))
+
+#+END_SRC
+
+
 * Terminals
 <<sec:terminals>>
 
