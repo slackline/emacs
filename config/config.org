@@ -1,7 +1,7 @@
 #+TITLE: Literate Emacs Configuration
 #+PROPERTY: header-args :tangle ./init.el
 #+OPTIONS: toc:2 num:nil
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+SETUPFILE: ./theme-readtheorg.setup
 
 This is my Emacs config, there are many like it but this one is mine.
 
@@ -752,7 +752,7 @@ things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have thei
 *** Org Analyzer
 <<sec:org-analyzer>>
 
-[[https://github.com/rksm/clj-org-analyzer/][org-analyzer]] provides a set of functions that parse and summarise your [[<sec:org-agenda>][org-agenda]] and fires up a web-page to visualise
+[[https://github.com/rksm/clj-org-analyzer/][org-analyzer]] provides a set of functions that parse and summarise your [[sec:org-agenda][org-agenda]] and fires up a web-page to visualise
 the results. Very neat and powerful...if you stick to the habit of logging your time on tasks!
 
 #+NAME: code-org-analyzer
@@ -871,6 +871,9 @@ Not currently tangled.
 
 #+END_SRC
 
+** Org Agenda
+<<sec:org-agenda>>
+
 ** Org Babel
 <<sec:org-babel>>
 
@@ -902,7 +905,7 @@ you to specify sections and tables to which entries should be added with pre-def
 #+END_SRC
 
 ** Org GTD
-<<sec::org-gtd>>
+<<sec:org-gtd>>
 
 #+NAME: code-org-gtd
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -990,9 +993,11 @@ globally, typically I use ~~/.virtualenvs~ which I will activate via a project/r
 packages and projects and so have also added [[https://github.com/z80dev/uv-mode][uv-mode]] to my configuration to take care of activating project specific
 virtual environments which reside in the ~.venv~ directory created by ~uv~ within the project directory itself.
 
-#+NAME: code-python-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle yes
+***** pyvenv
+<<sec:pyvenv>>
 
+#+NAME: code-pyvenv
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package pyvenv
   :ensure t
   :defer 1
@@ -1027,14 +1032,25 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
   :hook (python-mode . pyvenv-mode)
   (after-init-hook . (pyvenv-workon default-env))
   )
+#+END_SRC
 
+***** pyvenv-auto
+<<sec:pyvenv-auto>>
+
+#+NAME: code-pyvenv
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package pyvenv-auto
   :ensure t
   :hook ((python-mode . pyvenv-auto-run)))
 
 #+END_SRC
 
-#+NAME: code-python-uv-mode
+***** uv-mode
+<<sec:uv-mode>>
+
+[[https://github.com/z80dev/uv-mode][uv-mode]] "/provides seamless integration between [[https://docs.astral.sh/uv][uv]] and Emacs ~python-mode~/".
+
+#+NAME: code-uv-mode
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package uv-mode
   :ensure t
@@ -1068,7 +1084,6 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
 
 #+NAME: code-pylint
 #+BEGIN_SRC emacs-lisp :tangle no
-
   (use-package pylint
   :hook (python-mode . pylint-add-menu)
   (python-mode . add-key-bindings))
@@ -1080,8 +1095,8 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
 
 [[https://pytest.org][Pytest]] is well supported via [[https://github.com/wbolster/emacs-python-pytest][emacs-python-pytest]]. I've bound ~python-pytest-dispatch~ to ~C-c p t~ which brings up a
 transient buffer with options for running ~pytest~ on a given file or function at the cursor location. This transient
-buffer is highly configurable and I add some options for running regression tests (both [[https://pytest-regtest.readthedocs.io/en/latest/][pytest-regtest]] and [[https://syrupy-project.github.io/syrupy/][syrupy]]
-although I'm tending towards the later these days).
+buffer is highly configurable and I add some options for running regression tests (both [[https://pytest-regtest.readthedocs.io/en/latest/][pytest-regtest]] and [[https://syrupy-project.github.io/syrupy/][syrupy]] as
+well as profiling).
 
 #+NAME: code-pytest
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -1615,20 +1630,24 @@ with [[sec:org-babel][Org Babel]] and more.
   (rustic-cargo-use-last-stored-arguments t))
 #+END_SRC
 
+**** Cargo
+<<sec:cargo>>
 
-**** cargo.el
+ [[https://doc.rust-lang.org/cargo/][Cargo]] is the Rust package manager.
+
+***** cargo.el
 <<sec:cargo-el>>
 
-[[https://github.com/kwrooijen/cargo.el][cargo.el]] is in maintenance mode but provides a set of key combinations to perform [[https://doc.rust-lang.org/cargo/][Cargo]] tasks.
+[[https://github.com/kwrooijen/cargo.el][cargo.el]] is in maintenance mode but provides a set of key combinations to perform various tasks.
 #+NAME: code-cargo-el
 #+BEGIN_SRC emacs-lisp :tangle no
 body
 #+END_SRC
 
-**** cargo-mode
+***** cargo-mode
 <<sec:cargo-mode>>
 
-[[https://github.com/ayrat555/cargo-mode][cargo-mode]] is a minor mode for dynamically selecting commands from the Rust package manager [[https://doc.rust-lang.org/cargo/][Cargo]].
+[[https://github.com/ayrat555/cargo-mode][cargo-mode]] is a minor mode for dynamically selecting commands from the Rust package manager.
 
 #+NAME: code-cargo-mode
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -2089,11 +2108,14 @@ the per-major-mode scratch buffers.
 <<sec:tmr>>
 
 
+* User Interface
 
-* Themes
+Elements concerned with the User Interface which typically means how buffers, mini-buffers, modeline look.
+
+** Themes
 <<sec:themes>>
 
-** modus-themes
+*** modus-themes
 
 [[https://protesilaos.com/modus-themes/][modus-themes]] from Prot are really nice.
 
@@ -2112,7 +2134,7 @@ the per-major-mode scratch buffers.
   ("C-c C-t m" . modus-themes-toggle))
 #+END_SRC
 
-** ef-themes
+*** ef-themes
 <<sec:ef-themes>>
 
 [[https://protesilaos.com/emacs/ef-themes][ef-themes]] also from [[https://protesilaos.com/][Prot]] are also very nice and my current favourite.
@@ -2128,10 +2150,38 @@ the per-major-mode scratch buffers.
   :bind
   ("C-c C-t d" . ef-themes-select-dark)
   ("C-c C-t e" . ef-themes-toggle))
+(load-theme 'ef-dark :no-confirm)
 
 #+END_SRC
 
-** mood-line
+*** golden ratio
+<<sec:golden-ratio>>
+
+[[https://github.com/roman/golden-ratio.el][golden-ratio]]
+
+#+NAME: code-golden-ratio
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package golden-ratio
+  :ensure t
+  :defer 0.5
+  :custom
+  (setq golden-ratio-auto-scale t))
+
+#+END_SRC
+
+*** Font
+
+I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it needs installing at the system level so it's available for Emacs.
+
+#+NAME: code-font
+#+BEGIN_SRC emacs-lisp :tangle yes
+(set-face-attribute 'default t :font "Hack")
+#+END_SRC
+
+** Modeline
+<<sec:modeline>>
+
+*** mood-line
 <<sec:moodline>>
 
 [[https://git.tty.dog/hpet_dog/mood-line][mood-line]] is a minimalist configuration for the default [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode-line]], the bar at the bottom of a buffer showing information
@@ -2148,7 +2198,7 @@ about the buffer.
 
 #+END_SRC
 
-** minions
+*** minions
 <<sec:minions>>
 
 [[https://github.com/tarsius/minions][minions]] is another neat little package from the author of [[sec:magit][Magit]] which adds a pop-up menu to the mode-line that shows the
@@ -2161,33 +2211,6 @@ access the same list.
 (use-package minions
   :ensure t)
 #+END_SRC
-
-** golden ratio
-<<sec:golden-ratio>>
-
-[[https://github.com/roman/golden-ratio.el][golden-ratio]]
-
-#+NAME: code-golden-ratio
-#+BEGIN_SRC emacs-lisp :tangle yes
-(use-package golden-ratio
-  :ensure t
-  :defer 0.5
-  :custom
-  (setq golden-ratio-auto-scale t))
-
-#+END_SRC
-
-** Font
-
-I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it needs installing at the system level so it's available for Emacs.
-
-#+NAME: code-font
-#+BEGIN_SRC emacs-lisp :tangle yes
-(set-face-attribute 'default t :font "Hack")
-#+END_SRC
-
-* Modeline
-<<sec:modeline>>
 
 *** Custom Modeline
 <<sec:custom-modeline>>
@@ -2220,11 +2243,11 @@ Custom Modeline
 
 #+END_SRC
 
-* Buffers
+** Buffers
 
 Some customisations to make buffers nicer to work with/read.
 
-** highlight-indent-guides
+*** highlight-indent-guides
 <<sec:highlight-indent-guides>>
 
 [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] a minor mode that does what it says on the tin, vertical indent guides (lines between starting a
@@ -2243,7 +2266,7 @@ code block that is indented and ending it) are highlighted as you scroll.
 
 #+END_SRC
 
-** smartparens
+*** smartparens
 <<sec:smartparens>>
 
 [[https://github.com/Fuco1/smartparens][smartparens]] ensures parentheses (and quotes) are always paired. Handy as there are a lot of parentheses in Elisp! I
@@ -2269,7 +2292,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 
 #+END_SRC
 
-** rainbow-delimiters
+*** rainbow-delimiters
 <<sec:rainbow-delimiters>>
 
 [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] in conjunction with [[sec:smartparens][smartparens]] makes it easy to see which parentheses/brackets/braces pair up.
@@ -2284,7 +2307,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 
 #+END_SRC
 
-** rainbow-mode
+*** rainbow-mode
 <<sec:rainbow-mode>>
 
 [[https://github.com/emacsmirror/rainbow-mode][rainbow-mode]] is a minor mode that colourises colour names, whether they are hexadecimal or otherwise.
@@ -2299,16 +2322,16 @@ pretty much always want this enabled across multiple modes. There may be some re
 
 #+END_SRC
 
-* Tabs
+** Tabs
 <<sec:tabs>>
 
-** Centaur Tabs
+*** Centaur Tabs
 <<sec:centaur-tabs>>
 
 [[https://github.com/ema2159/centaur-tabs][centaur tabs]] is a nice package for grouping buffers into tabs. I've a couple of custom functions that group them and
 also hide certain buffers I don't need to see often.
 
-+ [[ https://themkat.net/2024/01/04/emacs_centaur_tabs.html][centaur-tabs-buffer-groups]]
++ [[https://themkat.net/2024/01/04/emacs_centaur_tabs.html][centaur-tabs-buffer-groups]]
 
 #+NAME: code-centaur-tabs
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -2386,7 +2409,7 @@ also hide certain buffers I don't need to see often.
 #+END_SRC
 
 
-** Keybindings
+*** Keybindings
 <<sec:keybindings>>
 
 * Custom Functions
