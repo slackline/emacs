@@ -1937,7 +1937,7 @@ of them listed. I currently use the following
 * TRAMP
 <<sec:tramp>>
 
-[[https://www.gnu.org/software/tramp/][TRAMP]] (Transparent Remote (file) Access, Multiple Protocol) "/ provides an easy, convenient, and consistent interface to
+[[TRAMP]] (Transparent Remote (file) Access, Multiple Protocol) "/ provides an easy, convenient, and consistent interface to
 editing remote files transparently, just as if they are local files. This extends to editing, version control, dired,
 and more./". The "more" part includes files under ~su~ both locally and remotely. It is one of the amazing packages in
 Emacs that makes people's lives considerably easier. I don't use it nearly enough, the first time I tried it out I had
@@ -1951,7 +1951,7 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package tramp
   :ensure t
-  :config
+  :custom
   (tramp-default-method "ssh")
   (add-to-list 'tramp-default-method-alist '("" "neil" "ssh"))
   ;; Set prompt so it doesn't hang
@@ -1974,7 +1974,6 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 	       '("ssh" ".*crow'" "neil") t))
 
 #+END_SRC
-
 
 * Terminals
 <<sec:terminals>>
