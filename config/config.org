@@ -1445,12 +1445,21 @@ Emacs is my Integrated Development Environment when programming and writing docu
 specific modes but also leverage the power of Language Server Protocol (LSP) to help with navigation, function
 arguments, refactoring and so forth.
 
-** envdir
-<<sec:envdir>>
+** direnv
+<<sec:direnv>>
 
-#+NAME: code-envdir
+[[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
+entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs. Pretty much always want
+this available so sticking with `:config` to ensure the package is always loaded.
+
+#+NAME: code-direnv
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
 #+END_SRC
+
 
 ** Programming Modes
 
@@ -2610,20 +2619,6 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 The snippets I have written/customised are not included here. They are loaded from the ~snippet/~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
 
-** direnv
-<<sec:direnv>>
-
-[[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
-entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs. Pretty much always want
-this available so sticking with `:config` to ensure the package is always loaded.
-
-#+NAME: code-direnv
-#+BEGIN_SRC emacs-lisp :tangle yes
-(use-package direnv
-  :ensure t
-  :config
-  (direnv-mode))
-#+END_SRC
 
 * Dired
 <<sec:dired>>
