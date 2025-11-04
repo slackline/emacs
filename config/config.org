@@ -1989,8 +1989,35 @@ I (thankfully) don't write much JavaScript but add the file extensions below to 
 *** Latex Mode
 <<sec:latex>>
 
+Don't use LaTeX much these days but like to keep things available.
+
++ [[https://blog.karssen.org/2011/08/21/reftex-how-could-i-have-missed-this/][Enable RefTex on startup]] - also has a function and hook enabled under ~org-settings.el~.
++ [[https://github.com/jsinglet/latex-preview-pane][LaTeX Preview Pane]]
++ [[https://superuser.com/a/142468][Run pdflatex]]
+
 #+NAME: code-latex
 #+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'latex-mode-hook 'turn-on-reftex)
+;;(latex-preview-pane-enable)
+(setq latex-run-command "pdflatex")
+
+#+END_SRC
+
+**** latex-extra
+<<sec:latex-extra>>
+
+[[https://github.com/Malabarba/latex-extra][latex-extra]] "/defines extra commands and keys for LaTeX-mode/".
+
+#+NAME: code-latex-extra
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package latex-extra
+  :ensure t
+  :defer 3
+  :after (latex-mode)
+  :hook
+  (LaTeX-mode-hook . 'latex-extra-mode)
+)
 #+END_SRC
 
 *** Markdown Mode
