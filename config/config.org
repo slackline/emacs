@@ -2865,6 +2865,23 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 ** Modeline
 <<sec:modeline>>
 
+
+*** hide-mode-line
+<<sec:hide-mode-line>>
+
+[[https://github.com/hlissner/emacs-hide-mode-line][hide-mode-line]] is useful for hiding the mode-line in buffers where you don't want to see it such as completion-list or
+org popup agendas.
+
+#+NAME: code-hide-mode-line
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package hide-mode-line
+  :ensure t
+  :defer 3
+  :hook
+  (completion-list-mode-hook . hide-mode-line-mode))
+
+#+END_SRC
+
 *** mood-line
 <<sec:moodline>>
 
