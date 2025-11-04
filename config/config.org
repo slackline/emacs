@@ -2277,17 +2277,209 @@ the LSP protocol but I retain this in my configuration for now.
 #+END_SRC
 
 *** Polymode Mode
+<<sec:PolyMode>>
+
+**** polymode
 <<sec:polymode>>
 
 #+NAME: code-polymode
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package polymode
+  :ensure t
+  :custom
+  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+  (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode)))
+
 #+END_SRC
 
+***** Miscellaneous
+
+I had the following code lingering in my init on migrating to literate configuration and didn't want to lose it on the
+off-chance it might be needed.
+
+Not tangled
+#+NAME: code-polymode-misc
+#+BEGIN_SRC emacs-lisp :tangle no
+;;; Hopefully work around the freezes from https://goo.gl/l6mtG5
+(defun markdown-match-propertized-text (property last)
+  "Match text with PROPERTY from point to LAST.
+Restore match data previously stored in PROPERTY."
+  (let ((saved (get-text-property (point) property))
+        pos)
+    (unless saved
+      (setq pos (next-single-char-property-change (point) property nil last))
+      (setq saved (get-text-property pos property)))
+    (when saved
+      (set-match-data saved)
+      ;; Step at least one character beyond point. Otherwise
+      ;; `font-lock-fontify-keywords-region' infloops.
+      (goto-char (min (1+ (max (match-end 0) (point)))
+                      (point-max)))
+      saved)))
+;;; This hasn't worked, I still get lock-ups, but perhaps a little less frequently.
+;;; Found another thread at https://stat.ethz.ch/pipermail/ess-help/2016-January/010886.html
+;;;
+;;; Other pages on installing Polymode are...
+;;;
+;;; http://johnstantongeddes.org/open%20science/2014/03/26/Rmd-polymode.html
+;;; http://simon.bonners.ca/bonner-lab/wpblog/?p=142
+;;;
+;;; Python Polymode (Markdown + Python)
+;;;
+;;; https://stackoverflow.com/questions/52489905/emacs-polymode-for-markdown-and-python
+;;; https://emacs.stackexchange.com/questions/20437/polymode-with-python-and-latex-mode/
+;;;
+;;; Further discussion and working solution at...
+;;;
+;;; https://github.com/polymode/polymode/issues/180
+
+
+
+;; Python/Markdown
+(defcustom pm-inner/noweb-python
+  (clone pm-inner/noweb
+         :name "noweb-python"
+         :mode 'python-mode)
+  "Noweb for Python"
+  :group 'poly-innermodes
+  :type 'object)
+
+(define-polymode poly-pweave-mode poly-markdown-mode
+		 :innermodes '(pm-inner/noweb-python :inherit))
+
+(add-to-list 'auto-mode-alist '("\\.pymd" . poly-pweave-mode))
+
+
+;; Python/LaTeX (see https://emacs.stackexchange.com/a/20446)
+(defcustom pm-inner/python
+  (clone pm-inner/noweb
+	 :name "python"
+	 :mode 'python-mode
+	 :head-matcher  "\\\\begin{pycode}"
+	 :tail-matcher  "\\\\end{pycode}")
+  "Python inline code."
+  :group 'innermodes
+  :type 'object)
+
+(defcustom pm-poly/latex-python
+  (pm-polymode-one :name "latex-python"
+		   :hostmode 'pm-host/latex
+		   :innermode 'pm-inner/python)
+  "latex-python typical polymode."
+  :group 'polymodes
+  :type 'object)
+
+(define-polymode poly-latex+python-mode
+		 :hostmode 'pm-host/latex
+		 :innermodes '(pm-inner/python))
+(add-to-list 'auto-mode-alist '("\\.texw$" . poly-latex+python-mode))
+
+#+END_SRC
+
+**** poly-markdown
+<<sec:poly-markdown>>
+
+#+NAME: code-poly-markdown
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package poly-markdown
+  :ensure t
+    :defer 0.5
+    :after (polymode))
+
+#+END_SRC
+
+**** poly-noweb
+<<sec:poly-noweb>>
+
+#+NAME: code-poly-noweb
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package poly-noweb
+  :ensure t
+    :defer 0.5
+    :after (polymode))
+
+#+END_SRC
+
+**** poly-org
+<<sec:poly-org>>
+
+#+NAME: code-poly-org
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package poly-org
+  :ensure t
+    :defer 0.5
+    :after (polymode))
+
+#+END_SRC
+
+**** poly-R
+<<sec:poly-R>>
+
+#+NAME: code-poly-R
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package poly-R
+  :ensure t
+    :defer 0.5
+    :after (polymode))
+
+#+END_SRC
+
+**** poly-rst
+<<sec:poly-rst>>
+
+#+NAME: code-poly-rst
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package poly-rst
+  :ensure t
+    :defer 0.5
+    :after (polymode))
+
+#+END_SRC
 ** LSP Mode
-<<sec:lsp-mode>>
+<<sec:LSP-Mode>>
 
 Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
 
+*** lsp-mode
+<<sec:lsp-mode>>
+
+#+NAME: code-lsp-mode
+#+BEGIN_SRC emacs-lsp :tangle yes
+ (use-package lsp-mode
+  :ensure t
+  :defer t
+  :commands (lsp lsp-deferred)
+  :custom (lsp-keymap-prefix "s-l")
+  (lsp-disabled-clients '(pylsp pyls))
+  ;; :init (setq lsp-keymap-prefix "s-l")
+  :hook ((R-mode . lsp-deferred)
+	 (bash-mode . lsp-deferred)
+	 ;; (dockerfile-mode . lsp-deferred)
+	 (ess-r-mode . lsp-deferred)
+	 (gfm-mode . lsp-deferred)
+	 (forge-post-mode . lsp-deferred)
+	 ;; (groovy-mode . lsp-deferred)
+	 (html-mode . lsp-deferred)
+	 ;; (julia-mode . lsp-deferred)
+	 (js-ts-mode . lsp-deferred)
+	 (latex-mode . lsp-deferred)
+	 (markdown-mode . lsp-deferred)
+	 (org-mode . lsp-deferred)
+	 (python-mode . lsp-deferred)
+	 (rust-mode . lsp-deferred)
+	 (sh-mode . lsp-deferred)))
+;; (terraform-mode . lsp-deferred)
+;; (typescript-mode . lsp-deferred)))
+
+#+END_SRC
+
+*** lsp-jedi
+
+*** lsp-ui
+
+*** dap-mode
 ** Projectile
 <<sec:projectile>>
 
