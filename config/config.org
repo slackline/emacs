@@ -3099,6 +3099,7 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 + [[https://orgmode.org/worg/org-contrib/babel/][Babel: Active Code in Org]]
 + [[https://leanpub.com/lit-config/read][Literate Configuration | Diego Zamboni]]
 + [[https://org-babel.readthedocs.io/en/latest/][Org Babel reference card]]
++ [[https://www.masteringemacs.org/][Mastering Emacs]]
 
 ** use-package
 
