@@ -1963,17 +1963,16 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 *** JS Mode
 <<sec:js>>
 
+I (thankfully) don't write much JavaScript but add the file extensions below to the appropriate modes.
+
 #+NAME: code-js
 #+BEGIN_SRC emacs-lisp :tangle yes
+(add-to-list 'auto-mode-alist '("\\.js" . js-mode))
+(add-to-list 'auto-mode-alist '("\\.json" . json-mode))
+(add-to-list 'auto-mode-alist '("\\.svelte" . js-ts-mode))
 #+END_SRC
 
 *** Just Mode
-<<sec:just>>
-
-#+NAME: code-just
-#+BEGIN_SRC emacs-lisp :tangle yes
-#+END_SRC
-
 <<sec:just>>
 
 [[https://github.com/leon-barrett/just-mode.el][just-mode]] is for editing [[https://just.systems/man/en/][just]] files.
