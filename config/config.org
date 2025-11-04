@@ -20,6 +20,18 @@ I keep extensive [[https://org-roam.nshephard.dev][Org-roam]] notes and have sep
 to augment this configuration not just with explanations of the configuration options themselves but a little more on
 each package and how it works.
 
+There are a lot of excellent resources to help guide Emacs users through configuring their browser to their own needs.
+
+| Resource                                     | Access in Emacs with...                     |
+|----------------------------------------------+---------------------------------------------|
+| [[https://www.gnu.org/software/emacs/tour/][Emacs Tutorial]]                               | ~C-h t~                                     |
+| [[https://www.gnu.org/software/emacs/manual/][Emacs Manual]]                                 | ~C-h r~                                     |
+| Info pages for installed packages            | ~C-h i~                                     |
+| Manuals for packages                         | ~C-h R~ and search for package              |
+| [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html][An Introduction to Programming in Emacs Lisp]] |                                             |
+| [[https://www.gnu.org/software/emacs/documentation.html][Emacs Lisp Reference]]
+| [[https://www.masteringemacs.org/][Mastering Emacs]]                              | N/A -website and book from Mickey Peterson. |
+
 Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/issues][issue]] on the Codeberg repository and I'll pick it up.
 
 * ToDo
