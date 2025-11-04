@@ -2297,8 +2297,71 @@ Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-
 
 #+END_SRC
 
-** Treesitter
-<<sec:treesitter>>
+** Tree Sitter
+<<sec:TreeSitter>>
+
+[[https://tree-sitter.github.io/tree-sitter/][Tree-sitter]] is a "magic" tool that performs incremental parsing to build concrete syntax trees as files are edited.
+
++ [[https://emacs-tree-sitter.github.io/][emacs-tree-sitter]] - mostly obsolete since it [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in now.
++ [[https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html][Tree-sitter in Emacs 29]]
++ [[https://takeonrules.com/2023/03/08/coloring-regular-expression-via-modus-themes-for-treesit-faces/][Coloring regular expression via modus themes for treesit faces]]
++ [[https://www.masteringemacs.org/article/how-to-get-started-tree-sitter][Mastering Emacs - How to get Started with Tree-sitter]]
+
+*** treesit
+<<sec:treesit>>
+
+[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in to Emacs since 29.1, older versions required [[https://github.com/emacs-tree-sitter/elisp-tree-sitter][tree-sitter.el]].
+
+#+NAME: code-tree-sitter
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package tree-sitter
+  :ensure t
+  :init
+  (global-tree-sitter-mode))
+
+#+END_SRC
+
+*** treesit-fold
+<<sec:tree-sitter-fold>>
+
+[[https://github.com/emacs-tree-sitter/treesit-fold][treesit-fold]] provides tree-folding for the built-in
+
+#+NAME: code-tree-sitter-fold
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package treesit-fold
+  :ensure t
+  :init
+  (global-treesit-fold-mode))
+
+#+END_SRC
+
+*** tree-sitter-ispell
+<<sec:tree-sitter-ispell>>
+
+[[https://github.com/erickgnavar/tree-sitter-ispell.el][tree-sitter-ispell]]
+
+#+NAME: code-tree-sitter-ispell
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package tree0sitter-spell
+  :ensure t
+  :defer 0.5
+  :after (tree-sitter))
+#+END_SRC
+
+*** treesit-auto
+<<sec:treesit-auto>>
+
+[[https://github.com/renzmann/treesit-auto][treesit-auto]]
+
+*LEGACY* - Not tangled
+#+NAME: code-treesit-auto
+#+BEGIN_SRC emacs-lisp :tangle no
+
+(use-package treesit-auto
+  :ensure t
+  :config
+  (treesit-auto-apply-remap))
+#+END_SRC
 
 ** YASnippet
 <<sec:yasnippet>>
