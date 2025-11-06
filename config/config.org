@@ -1630,6 +1630,31 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
   :hook (python-mode . blacken-mode))
 #+END_SRC
 
+***** Numpydoc
+<<sec:numpydoc>>
+
+[[https://github.com/douglasdavis/numpydoc.el][numpydoc.el]] is a great package that simplifies writing docstrings for functions.
+
+I've made a minor [[https://github.com/douglasdavis/numpydoc.el/pull/20][contribution]] to it in so much as it didn't write docstrings that were compliant with [[https://numpydoc.readthedocs.io/en/latest/validation.html][Numpydoc
+validation]] rules.
+
+#+NAME: code-numpydoc
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package numpydoc
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	      ("C-c p n" . numpydoc-generate))
+  :custom
+  (numpydoc-prompt-for-input t)
+  (numpydoc-insert-examples-block 0)
+  ;; Awaiting merge
+  ;; (numpydoc-newline-after-opening-quotes t)
+  (numpydoc-insert-raises-block 0))
+#+END_SRC
+
 ***** Pylint
 <<sec:pylint>>
 
