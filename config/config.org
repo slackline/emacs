@@ -1595,6 +1595,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package pyvenv-auto
   :ensure t
+  :after (python-mode)
   :hook ((python-mode . pyvenv-auto-run)))
 
 #+END_SRC
@@ -1608,6 +1609,8 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package uv-mode
   :ensure t
+  :defer 0.5
+  :after (python-mode)
   :hook (python-mode . uv-mode-auto-activate-hook))
 
 #+END_SRC
@@ -1624,7 +1627,10 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package blacken
   :ensure t
+  :defer 0.5
   :after (python-mode)
+  :bind (:map python-mode-map
+          ("C-c p b" . blacken-buffer))
   :custom
   (blacken-line-length 120)
   :hook (python-mode . blacken-mode))
@@ -1663,7 +1669,12 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
 
 #+NAME: code-pylint
 #+BEGIN_SRC emacs-lisp :tangle no
-  (use-package pylint
+(use-package pylint
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	  ("C-c p l" . pylint))
   :hook (python-mode . pylint-add-menu)
   (python-mode . add-key-bindings))
 
@@ -1680,9 +1691,12 @@ well as profiling).
 #+NAME: code-pytest
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package python-pytest
-  :after (pyvenv)
   :ensure t
-  :config
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	      ("C-c p t" . python-pytest-dispatch))
+  :custom
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
@@ -1717,11 +1731,16 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package ruff-format
   :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	  ("C-c p r" . ruff-format-buffer))
   :after (python-mode)
   :hook (python-mode . ruff-format-on-save-mode))
 
 (use-package lazy-ruff
   :ensure t
+  :defer 0.5
   :after (python-mode)
   :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
   :config
@@ -1729,6 +1748,7 @@ well as profiling).
 
 (use-package flymake-ruff
   :ensure t
+  :defer 0.5
   :after (python-mode)
   ;; :hook (python-mode . flymake-ruff-load))
   :hook (lsp-managed-mode . flymake-ruff-load))
