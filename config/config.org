@@ -3,6 +3,8 @@
 #+OPTIONS: toc:2 num:nil
 #+SETUPFILE: ./theme-readtheorg.setup
 
+* What
+
 This is my Emacs config, there are many like it but this one is mine.
 
 I've used Emacs for getting on 25 years and am slightly ashamed to say that I still haven't sat down and properly "learnt"
@@ -10,15 +12,17 @@ I've used Emacs for getting on 25 years and am slightly ashamed to say that I st
 is based, in no small part, on countless others who have gracefully shared examples of their configuration and patiently
 answered questions.
 
-I found my configuration was growing as I have a habit of throwing all sorts into it then one day (<2025-10-17 Fri>)
-after updating packages I found that [[sec:lsp-mode][LSP-mode]] was no longer working as it had been. At the same time I had some issues
-using [[sec:magit][Magit]] and [[sec:transient][Transient]]. Whilst I fixed these it prompted me to pull my thumb out and re-write my configuration
-[[https://leanpub.com/lit-config/read][literately]] and have used it as an opportunity to actually start learning Emacs Lisp a little (I find tutorials and
-walk-throughs quite abstract and like to have a use-case of my own to help me learn aspects of computing).
+* Why?
+
+I found my configuration was growing as I have a habit of throwing all sorts into it then one day, after updating
+packages, I found that [[sec:lsp-mode][LSP-mode]] was no longer working as it had been. At the same time I had some issues using [[sec:magit][Magit]] and
+[[sec:transient][Transient]]. Whilst I fixed these it prompted me to pull my thumb out and re-write my configuration [[https://leanpub.com/lit-config/read][literately]] and have
+used it as an opportunity to actually start learning Emacs Lisp a little (I find tutorials and walk-throughs quite
+abstract and like to have a use-case of my own to help me learn aspects of computing).
 
 I keep extensive [[https://org-roam.nshephard.dev][Org-roam]] notes and have separate sections on [[https://org-roam.nshephard.dev/#754f25a5-3429-4504-8a17-4efea1568eba][Emacs]], [[https://org-roam.nshephard.dev/#220d7ba9-d30e-4149-a25b-03796e098b0d][Magit]] and [[https://org-roam.nshephard.dev/#169b9c5f-df34-46ab-b64f-8ee98946ee69][Org-mode]], but have taken the opportunity
 to augment this configuration not just with explanations of the configuration options themselves but a little more on
-each package and how it works.
+each package and how it works (this will grow over time as I return to each package and configure it properly.).
 
 There are a lot of excellent resources to help guide Emacs users through configuring their browser to their own needs.
 
@@ -54,7 +58,7 @@ docs : use-package]] page since it is now a core component of Emacs. use-package
 simplifies configuration.
 
 Packages are either loaded immediately, when the package is first used (via autoloading) or can be deferred using the
-~:defer~ keyword. Some autoloading can be done in response to /triggers/ in response to certain events (i.e. ~:hook~)
+~:defer~ keyword. Some autoloading can be done in response to /triggers/ of certain events (i.e. ~:hook~).
 
 | Option         | Description                                                                                                                                        | Example                                                                                                                                                                                |
 |----------------+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -62,7 +66,7 @@ Packages are either loaded immediately, when the package is first used (via auto
 | ~:defer~       | Delay loading of package. Can be ~t~ but is rarely used, typically an integer /n/ is specified to load the package after that period of idle time. | ~:defer t~ / ~:defer 30~                                                                                                                                                               |
 | ~:after~       | Load after another package has been loaded.                                                                                                        | ~:after org~                                                                                                                                                                           |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | Key-bindings, plain or with a cons (~(desc . command)~)                                                                                            | ~:bind (("C-c k" . keychain-refresh-environment) ("C-c o h" . osm-home))~                                                                                                              |
-|                | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home". osm-home))~                                                                         |
+| [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home". osm-home))~                                                                         |
 | [[https://github.com/jwiegley/use-package#binding-to-keymaps][~:bind-keymap~]] | Binds a keymap to the given key chord.                                                                                                             | ~:bind ("s-p" . projectile-command-map))~ / ~:bind ("s-p" ("Projectile" . projectile-command-map))~ (untested)                                                                         |
 | ~:map~         | Within a ~:bind~ you can provide the mapping and modify key maps.                                                                                  | ~:bind (:map projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch project" . projectile-switch-project))~ (untested) |
 | [[https://github.com/jwiegley/use-package#getting-started][~:config~]]      | Executes code /after/ a package is loaded. Note that using this forces loading of the package.                                                     |                                                                                                                                                                                        |
@@ -1771,7 +1775,6 @@ config but is included on the off-chance I change my mind or someone else finds 
 
 #+END_SRC
 
-
 *** ESS Mode
 <<sec:ess>>
 
@@ -2963,6 +2966,18 @@ the per-major-mode scratch buffers.
 
 ** tmr
 <<sec:tmr>>
+
+[[https://github.com/protesilaos/tmr][tmr]] is another useful package from [[https://protesilaos.com/emacs/tmr][Prot]] which makes setting timers/reminders really simple.
+
+#+NAME: code-tmr
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package tmr
+  :ensure t
+  :defer 0.5
+  :bind-keymap (("C-c T" . tmr-prefix-map)))
+#+END_SRC
+
 
 
 * User Interface
