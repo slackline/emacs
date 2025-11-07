@@ -2429,8 +2429,6 @@ configure/use it properly as it contains the modules that add [[src:flycheck][Fl
 
 #+END_SRC
 
-
-
 ** Debugging
 <<sec::debugging>>
 
@@ -2528,8 +2526,23 @@ Not currently tangled
 
 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in to Emacs since 29.1, older versions required [[https://github.com/emacs-tree-sitter/elisp-tree-sitter][tree-sitter.el]].
 
-#+NAME: code-tree-sitter
+*TODO* - Bind some keys for code folding.
+
+#+NAME: code-treesit
 #+BEGIN_SRC emacs-lisp :tangle yes
+(use-package treesit
+  :ensure t
+  :config
+  (global-treesit-fold-mode t)
+  (treesit-fold-line-comment-mode t))
+#+END_SRC
+
+Older config.
+
+Not currently tangled.
+
+#+NAME: code-tree-sitter
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package tree-sitter
   :ensure t
   :init
@@ -2548,6 +2561,24 @@ Not currently tangled
   :ensure t
   :init
   (global-treesit-fold-mode))
+
+#+END_SRC
+
+*** treesit-langs
+<<sec:treesit-langs>>
+
+[[https://github.com/kiennq/treesit-langs][treesit-langs]] "/is a convenient language bundle for the Emacs package [[src:tree-sitter][tree-sitter]]/" its a fork of [[https://github.com/emacs-tree-sitter/tree-sitter-langs][tree-sitter-langs]].
+
+As I use the newer [[src:treesit][treesit]] I'm not sure this is required.
+
+Not currently tangled.
+
+#+NAME: code-treesit-langs
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package tree-sitter-langs
+  :ensure t
+  :hook
+  (tree-sitter-after-on . tree-sitter-hl-mode))
 
 #+END_SRC
 
