@@ -2389,10 +2389,92 @@ Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-
 #+END_SRC
 
 *** lsp-jedi
+<<sec:lsp-jedi>>
+
+[[https://github.com/fredcamps/lsp-jedi][lsp-jedi]] is an Emacs client for the Python [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] which I opted for over other offerings as I'd used the
+plain [[https://jedi.readthedocs.io/en/latest/][Jedi]] before I started using [[src:lsp-mode][lsp-mode]] and its not written my Micro$oft like some of the others.
+
+#+NAME: code-lsp-jedi
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package lsp-jedi
+  :ensure t
+  :after lsp-mode
+  :defer 0.5
+  :config
+  (with-eval-after-load "python-mode"
+    (add-to-list 'lsp-enabled-clients 'jedi)))
+
+#+END_SRC
 
 *** lsp-ui
+<<sec:lsp-ui>>
+
+[[https://github.com/emacs-lsp/lsp-ui][lsp-ui]] is something I've had installed for a while but don't really use. I should read the [[https://emacs-lsp.github.io/lsp-ui/][documentation]] and
+configure/use it properly as it contains the modules that add [[src:flycheck][Flycheck]] support and a few other things.
+
+#+NAME: code-lsp-ui
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package lsp-ui
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-ui-sideline-enable nil
+	lsp-ui-doc-delay 2)
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+	      ("C-c i" . lsp-ui-imenu)))
+
+#+END_SRC
+
+
+
+** Debugging
+<<sec::debugging>>
 
 *** dap-mode
+<<sec:dap-mode>>
+
+[[https://github.com/emacs-lsp/dap-mode][dap-mode]] interfaces with the [[https://microsoft.github.io/debug-adapter-protocol/][Debug Adapter Protocol]]. I don't really use this and since its another Micro$oft product
+should really get into using something like [[src:realgud][RealGUD]] instead.
+
+Not currently tangled
+
+#+NAME: code-dap-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package dap-mode
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode))
+#+END_SRC
+
+*** RealGUD
+<<sec:realgud>>
+
+[[https://github.com/realgud/realgud][realgud]] is a debugger mode, it relies on external debuggers such as Python's ~pdb~.
+
+#+NAME: code-realgud
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package realgud
+  :ensure t
+  :defer 1
+  :after (lsp-mode))
+#+END_SRC
+
+*** RealGUD-ipdb
+<<sec:realgud-ipdb>>
+
+[[https://github.com/realgud/realgud-ipdb/][realgud-ipdb]] adds support [[https://pypi.org/project/ipdb/][iPython debugger]].
+
+#+NAME: code-realgud-ipdb
+#+BEGIN_SRC emacs-lisp :tangle yes
+
+(use-package realgud-ipdb
+  :ensure t
+
+#+END_SRC
+
 ** Projectile
 <<sec:projectile>>
 
