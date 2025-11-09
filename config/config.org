@@ -650,6 +650,7 @@ undo buffer history]] was insightful too.
 (use-package vundo
   :ensure t
   :defer 2
+  :bind ("C-c v" . ("Visual Undo" . vundo))
   :hook
   (prog-mode . vundo-popup-mode)
   (text-mode . vundo-popup-mode))
@@ -1195,16 +1196,61 @@ Currently not tangled.
 * Transient
 <<sec:transient>>
 
-** Transient Custom Prefixes
-<<sec:transient-custom-prefixes>>
+[[https://github.com/magit/transient][Transient]] is what makes [[sec:magit][Magit]] so powerful a helping hand of key-board driven menus to navigate all the commands as you
+build muscle memory.
+
+** Casual Suite
+<<sec:casual-suite>>
+
+[[https://github.com/kickingvegas/casual-suite][casual-suite]] is an opinionated set of transients for common buffers such as [[sec:dired][Dired]] or iBuffer. Its from [[http://yummymelon.com/devnull/announcing-casual-suite.html][Charles Choi]].
+
+#+NAME: code-casual-suite
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package casual-suite
+  :ensure t
+  :bind (:map
+         reb-mode-map ("s-c" . casual-re-builder-tmenu)
+         :map
+         reb-lisp-mode-map ("s-c" . casual-re-builder-tmenu)
+         :map
+          ibuffer-mode-map))
+
+#+END_SRC
+
+
+
+** Magit Auxiliary Commands
+<<sec:magit-aux-commands>>
+
+Found a useful article on [[https://mike.hostetlerhome.com/emacs-obscure-package-transient][making your own transient]]
+
+Not currently tangled.
 
 #+NAME: code-magit-aux-commands
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (transient-define-prefix nds:magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
 			  ("o" "Orgit Link" orgit-store-link)
 			  ])
+
+#+END_SRC
+
+
+** Python Transient
+<<sec:transient-python>>
+
+Not currently tangled.
+
+#+NAME: code-transient-python
+#+BEGIN_SRC emacs-lisp :tangle no
+  (transient-define-prefix ns/python-transient ()
+  			 "Python"
+  			 [["Common Commands"
+  			   ("v" "Select virtual environment" pyvenv-workon)
+  			   ("n" "Create Numpy docstring" numpydoc-generate)
+  			   ]])
+  (global-set-key (kbd "C-h C-k") 'ns/python-transient)
 
 #+END_SRC
 
@@ -3288,13 +3334,15 @@ Elements concerned with the User Interface which typically means how buffers, mi
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ef-themes
   :ensure t
-  :defer 0.5
   :custom
   (ef-themes-disable-other-themes 'ef-themes-light-themes)
-  (ef-themes-take-over-modus-themes-mode 0)
+  (ef-themes-take-over-modus-themes-mode t)
   :bind
-  ("C-c C-t d" . ef-themes-select-dark)
-  ("C-c C-t e" . ef-themes-toggle))
+  (("<f5>" . modus-themes-rotate)
+   ("C-<f5>" . modus-themes-select)
+   ("M-<f5>" . modus-themes-load-random)
+   ("C-c C-t d" . ef-themes-select-dark)
+   ("C-c C-t e" . ef-themes-toggle)))
 (load-theme 'ef-dark :no-confirm)
 
 #+END_SRC
@@ -3561,10 +3609,10 @@ also hide certain buffers I don't need to see often.
   (centaur-tabs-set-modified-marker t)
   (centaur-tabs-modified-marker "⏺")
   :bind
-  ;; ("C-c t C-<right>" . centaur-tabs-move-current-tab-to-right)
-  ;; ("C-c t C-<left>" . centaur-tabs-move-current-tab-to-left)
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>" . centaur-tabs-forward))
+  ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+  ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+  ("C-<prior>" ("Tab backwards" . centaur-tabs-backward))
+  ("C-<next>" ("Tab forwards" .centaur-tabs-forward)))
 
 
 #+END_SRC
@@ -3572,6 +3620,35 @@ also hide certain buffers I don't need to see often.
 
 *** Keybindings
 <<sec:keybindings>>
+
+#+NAME: code-keybindings
+#+BEGIN_SRC emacs-lisp :tangle init.el
+;; Function Keys
+(global-set-key (kbd "<f1>") 'password-store-copy)
+(global-set-key (kbd "<f2>") 'eval-buffer)
+(global-set-key (kbd "<f3>") 'eval-region)
+(global-set-key (kbd "<f4>") 'package-list-packages)
+(global-set-key (kbd "<f5>") 'keychain-refresh-environment)
+(global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
+(global-set-key (kbd "<f7>") 'flyspell-toggle)
+(global-set-key (kbd "<f8>") 'which-key-show-major-mode)
+(global-set-key (kbd "<f9>") 'emacs-index-search)
+(global-set-key (kbd "C-M-%") 'query-replace-regexp)
+(if (system-name) "kimura" (global-set-key (kbd "<XF86HomePage>") 'osm-home))
+
+;; Python
+(global-set-key (kbd "C-c p v") 'pyvenv-workon)
+(global-set-key (kbd "C-c p p") 'run-python)
+
+;; Miscellaneous
+(global-set-key (kbd "C-c C-k") 'keychain-refresh-environment)
+(global-set-key (kbd "C-c u") 'rsync-html)
+(global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
+
+;; vundo
+(global-set-key (kbd "C-c v") 'vundo)
+#+END_SRC
+
 
 * Custom Functions
 <<sec:custom_functions>>
@@ -3589,11 +3666,13 @@ A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packa
 
 #+NAME: code-reinstall-package
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(defun ns/reinstall-package (pkg)
-  (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
-  (unload-feature pkg)
-  (package-reinstall pkg)
-  (require pkg))
+  (defun ns/reinstall-package (pkg)
+    "Reinstall a package taken from prompt."
+    (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
+    (unload-feature pkg)
+    (package-reinstall pkg)
+    (require pkg))
+
 #+END_SRC
 
 
