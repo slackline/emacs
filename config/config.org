@@ -2448,7 +2448,7 @@ Not tangled
 #+NAME: code-polymode-misc
 #+BEGIN_SRC emacs-lisp :tangle no
 ;;; Hopefully work around the freezes from https://goo.gl/l6mtG5
-(defun markdown-match-propertized-text (property last)
+(defun ns/markdown-match-propertized-text (property last)
   "Match text with PROPERTY from point to LAST.
 Restore match data previously stored in PROPERTY."
   (let ((saved (get-text-property (point) property))
@@ -3568,8 +3568,12 @@ also hide certain buffers I don't need to see often.
 * Custom Functions
 <<sec:custom_functions>>
 
+I've come across a bunch of functions that others generously share and include them here. There are a few others
+littered about the configuration rather than being aggregated here.
 
-I've come across a bunch of functions that others generously share and include them here.
++ [[nameref:code-org-agenda][Org Agenda]]
++ [[nameref:code-quarto-mode-custom][Quarto Mode]]
++ [[nameref:code-sqlite][SQLite]]
 
 ** Reinstall Package
 
