@@ -1232,15 +1232,13 @@ Sources of some of the options are linked below.
   :defer 0.5
   :bind
   (("C-x p i" . 'org-cliplink))
-  :config
+  :custom
   (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
   (global-font-lock-mode 1)
-  (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-							   (python . t)
-							   (shell . t)
-							   (R . t)
-							   (latex .t)))
-  (org-directory        "~/org/")
+  (org-directory "~/org/")
+  (org-agenda-include-diary t)
+  (org-agenda-skip-deadline-if-done t)
+  (org-agenda-skip-scheduled-if-done t)
   (org-agenda-files '("~/org/agenda.org"
  			   "~/org/gtd/admin.org"
  			   "~/org/gtd/carpentries.org"
@@ -1260,40 +1258,39 @@ Sources of some of the options are linked below.
  			   "~/org/gtd/tcx2gpx.org"
 			   "~/org/gtd/thyroid.org"
 			   "~/org/gtd/topostats.org"))
-	;; org-tags-alist '()
-	(org-startup-indented 0)
-	(org-agenda-include-diary t)
-	(org-agenda-skip-deadline-if-done t)
-	(org-agenda-skip-scheduled-if-done t)
-	(org-clock-persist 'history)
-	(org-log-done 'time)
-	(org-image-actual-width nil)
-	(org-export-backends '(beamer html latex md odt))
-	(org-startup-with-inline-images t)
-	(org-confirm-babel-evaluate nil)
-	(org-babel-python-command "~/.virtualenvs/default/bin/python")
-	(org-format-latex-options '(:foreground default
-		                    :background "rgb 1 1 1"
-		                    :scale 1.5
-		                    :html-foreground "Black"
-		                    :html-background "Transparent"
-		                    :html-scale 1.0
-		                     :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
-      (org-todo-keywords
-        '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
-      (org-todo-keyword-faces
-        '(("TODO" . (:foreground "GoldenRod" :weight bold))
-           ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
-           ("BLOCKED" . (:foreground "Red" :weight bold))
-           ("DONE" . (:foreground "LimeGreen" :weight bold))
-           ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
-
+  (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
+							   (python . t)
+							   (shell . t)
+							   (R . t)
+							   (latex .t)))
+  (org-babel-python-command "~/.virtualenvs/default/bin/python")
+  (org-format-latex-options '(:foreground default
+		                :background "rgb 1 1 1"
+		                :scale 1.5
+		                :html-foreground "Black"
+		                :html-background "Transparent"
+		                :html-scale 1.0
+		                :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+  (org-startup-indented 0)
+  (org-startup-with-inline-images t)
+  (org-clock-persist 'history)
+  (org-log-done 'time)
+  (org-image-actual-width nil)
+  (org-export-backends '(beamer html latex md odt))
+  (org-confirm-babel-evaluate nil)
+  (org-todo-keywords
+    '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
+  (org-todo-keyword-faces
+    '(("TODO" . (:foreground "GoldenRod" :weight bold))
+       ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
+       ("BLOCKED" . (:foreground "Red" :weight bold))
+       ("DONE" . (:foreground "LimeGreen" :weight bold))
+       ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
   ;; Disable electric-indent-mode in org buffers
   :hook
   (org-mode . (lambda () (electric-indent-local-mode 0)))
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
   (after-focus-change-function . (org-save-all-org-buffers)))
-  ;; (with-eval-after-load 'org (global-org-modern-mode))
 
 #+END_SRC
 
