@@ -2988,7 +2988,37 @@ of them listed. I currently use the following
 + [[https://github.com/punassuming/ranger.el][dired-ranger]]
 + dired-subtree
 
-#+NAME: code-dired-extensions
+*** dired-multi-copy
+<<sec:dired-multi-copy>>
+
+[[https://codeberg.org/danrobi/dired-multi-copy][dired-multi-copy]]
+
+Not tangled as not on MELPA yet.
+#+NAME: code-dired-multi-copy
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package dired-multi-copy
+  :ensure t
+  :defer 0.5
+  :after (dirvish))
+
+#+END_SRC
+
+*** dired-duplicates
+<<sec:dired-duplicates>>
+
+#+NAME: code-dired-duplicates
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package dired-duplicates
+  :ensure t
+  :defer 0.5
+  :after (dirvish))
+
+#+END_SRC
+
+*** dired-quick-sort
+<<sec:dired-quick-sort>>
+
+#+NAME: code-quick-sort
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-quick-sort
   :ensure t
@@ -2997,37 +3027,65 @@ of them listed. I currently use the following
   :config
   (dired-quick-sort-setup))
 
-;;
+#+END_SRC
+
+*** dired-rsync
+<<sec:dired-rsync>>
+
+Not tangled as its installed/loaded by the transient
+
+#+NAME: code-dired-rsync
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package dired-rsync
   :ensure t
   :defer 0.5
-  :after dirvish)
+  :after (dirvish))
 
-(use-package dired-rsync-transient
-  :ensure t
-  :defer 0.5
-  :after dirvish)
+#+END_SRC
 
-;; https://codeberg.org/danrobi/dired-multi-copy (not on MELPA yet)
-;; (use-package dired-multi-copy
-;;   :ensure t)
+*** dired-rsync-ranger
+<<sec:dired-rsync-ranger>>
 
-;; https://github.com/punassuming/ranger.el
+[[https://github.com/punassuming/ranger.el][ranger]]
+
+#+NAME: code-dired-rsync-ranger
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-ranger
   :ensure t
   :defer 0.5
+  :after (dirvish)
   :bind (:map dired-mode-map
               ("W" . dired-ranger-copy)
               ("X" . dired-ranger-move)
               ("Y" . dired-ranger-paste)))
 
+#+END_SRC
 
+*** dired-rsync-subtree
+<<sec:dired-subtree>>
+
+#+NAME: code-dired-subtree
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-subtree
   :ensure t
-  :config
+  :defer 0.5
+  :after (dirvish)
+  :custom
   (bind-keys :map dired-mode-map
              ("i" . dired-subtree-insert)
              (";" . dired-subtree-remove)))
+#+END_SRC
+
+*** dired-rsync-transient
+<<sec:dired-rsync-transient>>
+
+#+NAME: code-dired-rsync-transient
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package dired-rsync-transient
+  :ensure t
+  :defer 0.5
+  :after (dirvish))
+
 #+END_SRC
 
 * TRAMP
