@@ -1423,6 +1423,44 @@ Not currently tangled.
 ** Org Agenda
 <<sec:org-agenda>>
 
+[[https://orgmode.org/manual/Agenda-Views.html][Org Agenda]] is a powerful tool for managing ~TODO~ tasks and calendar events. Its a core part of [[sec:org-mode][Orgmode]] and some
+settings are configured there. I have picked up a couple of custom commands ([[https://github.com/jethrokuan/.emacs.d/blob/master/init.el][source]]). Which I define here.
+
+#+NAME: code-org-agenda
+#+BEGIN_SRC emacs-lisp :tangle yes
+(defun ns/org-agenda-process-inbox-item ()
+  "Process a single item in the org-agenda."
+  (org-with-wide-buffer
+   (org-agenda-set-tags)
+   (org-agenda-priority)
+   (call-interactively 'ns/my-org-agenda-set-effort)
+   (org-agenda-refile nil nil t)))
+
+(defvar ns/org-current-effort "1.00"
+  "Current effort for agenda item.")
+
+(defun ns/org-agenda-set-effort (effort)
+  "Set the effort property for the current headline."
+  (setq ns/org-current-effort effort)
+  (org-agenda-check-no-diary)
+  (let* ((hdmarker (or (org-get-at-bol 'org-hd-marker)
+                       (org-agenda-error)))
+         (buffer (marker-buffer hdmarker))
+         (pos (marker-position hdmarker))
+         (inhibit-read-only t)
+         newhead)
+    (org-with-remote-undo buffer
+			  (with-current-buffer buffer
+			    (widen)
+			    (goto-char pos)
+			    (org-show-context 'agenda)
+			    (funcall-interactively 'org-set-effort nil jethro/org-current-effort)
+			    (end-of-line 1)
+			    (setq newhead (org-get-heading)))
+			  (org-agenda-change-all-lines newhead hdmarker))))
+
+#+END_SRC
+
 ** Org Babel
 <<sec:org-babel>>
 
