@@ -173,6 +173,8 @@ We configure ~use-package~ below, not all of the values that are set (via ~setq~
 they pertain to downloading and installing packages I keep them here. Because there can be issues with GPG keys when
 they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
 
+Whilst I tend to explicitly state ~:ensure t~ for almost all packages here I also set ~use-package-always-ensure t~ so
+that if I forget it should still be installed.
 
 #+NAME: code-use-package-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -1566,6 +1568,9 @@ this available so sticking with `:config` to ensure the package is always loaded
 + Maps some keybindings to make it easy to run some short-cuts such as ~python-test-dispatch~, ~pylint~,
   ~blacken-buffer~ and insert some of the common ~python-skeleton~'s.
 
+I used to define a couple of [[https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons][skeletons]] here but only use the ~print~ one these days as I use [[sec:yasnippet][YASnippet]] for inserting
+most templates these days (I should probably shift over but have the muscle memory that binds ~print~ to ~C-c P~).
+
 #+NAME: code-python
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package python
@@ -1579,16 +1584,11 @@ this available so sticking with `:config` to ensure the package is always loaded
 	python-shell-interpreter-args "-i --simple-prompt"
 	python-environment-directory venv-location)
   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
-  ;; Define a skeleton for printing https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons
+  ;; Define a skeleton for printing
   (python-skeleton-define print
 			  "Insert a print statement that will show the value of the argument."
 			  "Enter the variable/object name: "
 			  "print(f'\\n{" str "=}\\n')")
-  (python-skeleton-define parameterized-test
-			  "Insert a test with @pytest.mark.parametrize() fixture."
-			  "Enter the parameters: "
-			  "@pytest.mark.parametrize(\n    (" str "),\n    [\n        pytest.param(,id=\"\"),\n    ]\n)\ndef test_()
--> None:")
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch)
 	      ("C-c p l" . pylint)
