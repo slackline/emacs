@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: src-bloc-config
+# key: srcc
+# expand-env: ((yas-indent-line 'fixed))
+# group: org-mode
+# --
+<<sec:${1:block_name}>>
+
+#+NAME: code-${1}
+#+BEGIN_SRC emacs-lisp :tangle init.el
+${2:body}
+#+END_SRC
