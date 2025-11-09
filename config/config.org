@@ -1611,12 +1611,14 @@ most templates these days (I should probably shift over but have the muscle memo
 
 **** Virtual Environments
 
-I use two packages to manage virtual environments in conjunction with [[sec:envdir][~envdir~]]. For general Python virtual environments
+I use two packages to manage virtual environments in conjunction with [[sec:direnv][~direnv~]]. For general Python virtual environments
 I use [[https://github.com/jorgenschaefer/pyvenv][pyvenv]] which allows me to define on a per-host basis the location of virtual environments which are defined
 globally, typically I use ~~/.virtualenvs~ which I will activate via a project/repository specific ~.envrc~ file which
-[[sec:envdir][envdir]] takes care of activating when I switch to the project directory. Recently I've started using [[https://docs.astral.sh/uv/][uv]] to manage
+[[sec:direnv][direnv]] takes care of activating when I switch to the project directory. Recently I've started using [[https://docs.astral.sh/uv/][uv]] to manage
 packages and projects and so have also added [[https://github.com/z80dev/uv-mode][uv-mode]] to my configuration to take care of activating project specific
 virtual environments which reside in the ~.venv~ directory created by ~uv~ within the project directory itself.
+
+***** envdir
 
 ***** pyvenv
 <<sec:pyvenv>>
