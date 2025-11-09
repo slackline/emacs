@@ -2629,6 +2629,26 @@ Restore match data previously stored in PROPERTY."
 
 Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
 
+*** mason
+<<sec:mason>>
+
+[[https://github.com/deirn/mason.el][mason]] solves a major headache with using either [[sec:lsp-mode][lsp-mode]] or the built-in ~eglot~ which is that external language servers
+are required which do the leg work/magic in the background. Many operating systems have these in their package manager
+or they can be manually installed (e.g. [[https://github.com/ltex-plus/ltex-ls-plus][ltex-ls-plus]]). ~mason~ solves this by being an installed to the [[https://github.com/mason-org/mason-registry][mason-registry]]
+which packages and [[https://mason-registry.dev/registry/list][lists]] pretty much all the language servers going.
+
+#+NAME: code-mason
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package mason
+    :ensure t
+    :defer 0.5
+    :hook
+    (after-init-hook . mason-ensure))
+
+#+END_SRC
+
+<<sec:mason>>
+
 *** lsp-mode
 <<sec:lsp-mode>>
 
