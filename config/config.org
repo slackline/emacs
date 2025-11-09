@@ -90,7 +90,7 @@ Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_n
 and [[sec:footer][footer]].
 
 #+NAME: code-init-header
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
   ;;; init.el --- slackline's Emacs configuration -*- lexical-binding: t -*-
   ;; Author: N Shephard <nshephard@protonmail.com>
   ;; Keywords: configuration
@@ -132,7 +132,7 @@ The ~exec-path~ is important as it defines where programs are searched for when 
 exec-path-from-shell~).
 
 #+NAME: code-exec-path
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package exec-path-from-shell
   :ensure t
   :custom
@@ -175,7 +175,7 @@ they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu
 
 
 #+NAME: code-use-package-config
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gnu-elpa-keyring-update
   :ensure t)
 
@@ -270,7 +270,7 @@ bars.
 <<sec:emacs>>
 
 #+NAME: code-emacs-config
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package emacs
     :init
     (epa-file-enable)
@@ -371,7 +371,7 @@ bars.
 [[https://github.com/magit/ssh-agency][ssh-agency]] takes care of handling SSH keys for us so its useful to ensure it is loaded early.
 
 #+NAME: code-ssh-agency
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ssh-agency
   :ensure t
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
@@ -389,7 +389,7 @@ pulled the others in as dependencies of other packages but have opted to purge t
 [[https://company-mode.github.io/manual/][Company mode]] is a modular text completion framework.
 
 #+NAME: code-company
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package company
   :ensure t
   :defer 0.5
@@ -419,7 +419,7 @@ pulled the others in as dependencies of other packages but have opted to purge t
 [[sec:embark][embark]] and [[sec:orderless][orderless]].
 
 #+NAME: code-consult
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package consult
   ;; Replace bindings. Lazily loaded by `use-package'.
   :bind (;; C-c bindings in `mode-specific-map'
@@ -500,7 +500,7 @@ session (in a way familiar to Helm or Counsel users) and in normal buffers/". I'
 prompt]] but may do one day.
 
 #+NAME: code-embark
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package embark
   :ensure t
@@ -541,7 +541,7 @@ prompt]] but may do one day.
 with the ~marginalia-mode~ rather than deferring.
 
 #+NAME: code-marginalia
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package marginalia
   :ensure t
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
@@ -568,7 +568,7 @@ with the ~marginalia-mode~ rather than deferring.
 [[https://github.com/emacsfodder/move-text][move-text]] is a simple package makes it easy to move the current line or region up (~M-up~) or down (~M-down~).
 
 #+NAME: code-movetext
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package move-text
   :ensure t
   :defer 0.5
@@ -583,7 +583,7 @@ with the ~marginalia-mode~ rather than deferring.
 [[https://github.com/oantolin/orderless][Orderless]]
 
 #+NAME: code-orderless
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package orderless
   :ensure t
   :custom
@@ -598,7 +598,7 @@ with the ~marginalia-mode~ rather than deferring.
 Savehist (can't find package homepage) persists history over Emacs restarts and helps with [[sec:vertico][Vertico]].
 
 #+NAME: code-savehist
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package savehist
   :ensure t
   :init
@@ -612,7 +612,7 @@ Savehist (can't find package homepage) persists history over Emacs restarts and 
 [[https://github.com/minad/vertico][Vertico]]
 
 #+NAME: code-vertico
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package vertico
   :ensure t
@@ -644,7 +644,7 @@ Savehist (can't find package homepage) persists history over Emacs restarts and 
 undo buffer history]] was insightful too.
 
 #+NAME: code-vundo
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package vundo
   :ensure t
   :defer 2
@@ -665,7 +665,7 @@ use-package]] keys should be bound with ~(desc . command)~ to include a descript
 up with a lot of ~prefix~ and its value disappears.
 
 #+NAME: code-which-key
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package which-key
   :ensure t
   :defer 0.5
@@ -726,7 +726,7 @@ up with a lot of ~prefix~ and its value disappears.
 *TODO* Improve key-bindings here.
 
 #+NAME: code-helpful
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package helpful
   :ensure t
   :defer 0.5
@@ -762,7 +762,7 @@ up with a lot of ~prefix~ and its value disappears.
 [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Goto-Address-mode.html][goto-address-mode]] makes URLs and email-addresses clickable across all buffers. Found at a [[https://xenodium.com/actionable-urls-in-emacs-buffers][blog-post by Xenodium]].
 
 #+NAME: code-goto-addr
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package goto-addr
   :hook ((compilation-mode . goto-address-mode)
          (prog-mode . goto-address-prog-mode)
@@ -788,7 +788,7 @@ literally everything under Git version control.
 + [[https://mbork.pl/2025-05-12_Coloring_Git_output_in_Magit][Coloring Git output in Magit]]
 
 #+NAME: magit
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 ;;
 (use-package magit
   :ensure t
@@ -835,7 +835,7 @@ literally everything under Git version control.
 [[https://github.com/wandersoncferreira/code-review/][code-review]]
 
 #+NAME: code-code-review
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package code-review
   :ensure t
@@ -910,7 +910,7 @@ Not currently tangled.
 [[https://github.com/pkryger/difftastic.el][difftastic.el]] brings the brilliant code aware [[https://difftastic.wilfred.me.uk/][difftastic]] ([[https://github.com/Wilfred/difftastic][GitHub]]) to Emacs. This package replaces an earlier [[https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html][custom configuration]]
 that I found and had happily used for a while.
 #+NAME: code-difftastic
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package difftastic
   :ensure t
   :demand t
@@ -929,7 +929,7 @@ that I found and had happily used for a while.
 <<sec:forge>>
 
 #+NAME: forge
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package forge
   :ensure t
   :defer 0.5
@@ -947,7 +947,7 @@ that I found and had happily used for a while.
 <<sec:ghub>>
 
 #+NAME: code-ghub
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ghub
   :ensure t
   :defer 0.5
@@ -958,7 +958,7 @@ that I found and had happily used for a while.
 <<sec:glab>>
 
 #+NAME: code-glab
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package glab
   :ensure t
   :defer 0.5
@@ -971,7 +971,7 @@ that I found and had happily used for a while.
 [[https://github.com/liuyinz/git-cliff.el][git-cliff]]
 
 #+NAME: code-git-cliff
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package git-cliff
   :ensure t)
@@ -984,7 +984,7 @@ that I found and had happily used for a while.
 [[https://github.com/magit/git-modes][git-modes]] provides major modes for Git configuration files.
 
 #+NAME: code-git-modes
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package git-modes
   :ensure t
   :defer 3
@@ -999,7 +999,7 @@ that I found and had happily used for a while.
 speed.".
 
 #+NAME: code-gh-notify
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gh-notify
   :ensure t
   :after (magit))
@@ -1014,7 +1014,7 @@ speed.".
 Currently not tangled.
 
 #+NAME: code-gitlab-ci-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gitlab-ci-mode
   :ensure t)
 
@@ -1040,7 +1040,7 @@ Currently not tangled.
 [[https://github.com/sshaw/git-link][git-link]]
 
 #+NAME: code-git-link
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package git-link
   :ensure t
   :after (magit)
@@ -1060,7 +1060,7 @@ Currently not tangled.
 [[https://codeberg.org/pidu/git-timemachine][git-timemachine]]
 
 #+NAME: code-git-timemachine
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package git-timemachine
   :ensure t
@@ -1074,7 +1074,7 @@ Currently not tangled.
 <<sec:gtea>>
 
 #+NAME: code-gtea
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gtea
   :ensure t
   :defer 0.5
@@ -1088,7 +1088,7 @@ Currently not tangled.
 [[https://github.com/dandavison/magit-delta][magit-delta]]
 
 #+NAME: code-magit-delta
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package magit-delta
   :ensure t
@@ -1103,7 +1103,7 @@ Currently not tangled.
 [[https://gitlab.com/arvidnl/magit-gitlab][magit-gitlab]]
 
 #+NAME: code-magit-gitlab
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package magit-gitlab
   :ensure t
@@ -1119,7 +1119,7 @@ Currently not tangled.
 [[https://github.com/magit/magit-imerge][magit-imerge]] is a Magit interface to [[https://github.com/mhagger/git-imerge][git-imerge]]
 
 #+NAME: code-magit-imerge
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-imerge
   :ensure t
   :after (magit))
@@ -1130,7 +1130,7 @@ Currently not tangled.
 <<sec:magit-stats>>
 
 #+NAME: code-magit-stats
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 ;; https://github.com/LionyxML/magit-stats
 (use-package magit-stats
   :ensure t
@@ -1144,7 +1144,7 @@ Currently not tangled.
 [[https://github.com/magit/orgit][orgit]]
 
 #+NAME: code-orgit
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package orgit
   :after (magit))
@@ -1157,7 +1157,7 @@ Currently not tangled.
 [[https://github.com/magit/orgit-forge][orgit-forge]]
 
 #+NAME: code-orgit-forge
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package orgit-forge
   :after magit
@@ -1173,7 +1173,7 @@ Currently not tangled.
 
 [[https://github.com/blahgeek/emacs-pr-review][pr-review]]
 #+NAME: code-pr-review
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package pr-review
   :ensure t
   :after ghub)
@@ -1184,7 +1184,7 @@ Currently not tangled.
 <<sec:treemacs-magit>>
 
 #+NAME: code-treemacs-magit
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treemacs-magit
   :ensure t)
 
@@ -1197,7 +1197,7 @@ Currently not tangled.
 <<sec:transient-custom-prefixes>>
 
 #+NAME: code-magit-aux-commands
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (transient-define-prefix nds:magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
@@ -1224,7 +1224,7 @@ Sources of some of the options are linked below.
 + [[https://github.com/james-stoup/emacs-org-mode-tutorial#orga87f491=][org-todo-keywords]] set additional keywords (and colours).
 
 #+NAME: code-org-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org
   :ensure t
   :defer 0.5
@@ -1305,7 +1305,7 @@ things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have thei
 the results. Very neat and powerful...if you stick to the habit of logging your time on tasks!
 
 #+NAME: code-org-analyzer
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package org-analyzer
   :ensure t
@@ -1319,7 +1319,7 @@ the results. Very neat and powerful...if you stick to the habit of logging your 
 [[https://codeberg.org/Anoncheg/emacs-org-links][org-links]]
 
 #+NAME: code-org-links
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-links
   :ensure t
   :defer 0.5
@@ -1333,7 +1333,7 @@ the results. Very neat and powerful...if you stick to the habit of logging your 
 [[https://github.com/minad/org-modern][org-modern]] is "/a modern style for Org buffers using font locking and text properties/".
 
 #+NAME: code-org-modern
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-modern
   :ensure t
   :defer 0.5
@@ -1383,7 +1383,7 @@ Not tangled for now.
 [[https://github.com/KaratasFurkan/org-rainbow-tags][org-rainbow-tags]] adds random colours to Org tags based on the hash of the tag name, which keeps things consistent.
 
 #+NAME: code-org-rainbow-tags
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-rainbow-tags
   :ensure t
   :defer 0.5)
@@ -1396,7 +1396,7 @@ Not tangled for now.
 [[https://github.com/jkitchin/org-ref][org-ref]]
 
 #+NAME: code-org-ref
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-ref
   :ensure t
   :after (org-roam))
@@ -1431,7 +1431,7 @@ programming environment where text and code (from many languages) can be inter-w
 documents that can be rendered to a range of formats via [[https://orgmode.org/manual/Exporting.html][org-export]].
 
 #+NAME: code-org-babel
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 #+END_SRC
 
 ** Org Roam
@@ -1440,7 +1440,7 @@ documents that can be rendered to a range of formats via [[https://orgmode.org/m
 [[https://www.orgroam.com/][Org-roam]] helps you build a "second brain" of notes using the Zettelkasten method.
 
 #+NAME: code-org-roam
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 #+END_SRC
 
 ** Org Capture
@@ -1450,16 +1450,46 @@ documents that can be rendered to a range of formats via [[https://orgmode.org/m
 you to specify sections and tables to which entries should be added with pre-defined templates.
 
 #+NAME: code-org-capture
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 #+END_SRC
 
 ** Org GTD
 <<sec:org-gtd>>
 
+[[https://github.com/Trevoke/org-gtd.el][org-gtd.el]] is a system for capturing, processing and organising tasks that follows the [[https://en.wikipedia.org/wiki/Getting_Things_Done][Getting Things Done]] methodology.
+
++ [[https://blog.jethro.dev/posts/capturing_inbox/][Org-GTD - Capturing Inbox]]
++ [[https://blog.jethro.dev/posts/processing_inbox/][Org-GTD - Processing Inbox]]
++ [[https://lucidmanager.org/productivity/getting-things-done-with-emacs/][Getting Things Done with Emacs: Manage your life with Org Mode]] (uses [[https://protesilaos.com/emacs/denote][Denote]] as a backend and standard [[sec:org-agenda][org-agenda]]
+  methods)
+
 #+NAME: code-org-gtd
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(setq org-gtd-update-ack "3.0.0")
+(use-package org-gtd
+  :ensure t
+  :after org
+  ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
+  ;;                  :branch "2.0.0" :upgrade t)
+  :demand t
+  :custom
+  ;; (org-gtd-directory stag-org-gtd-directory)
+  (org-gtd-directory '"~/org/gtd")
+  (org-edna-use-inheritance t)
+  :config
+  (org-edna-mode)
+  :bind
+  (("C-c d c" . org-gtd-capture)
+   ("C-c d e" . org-gtd-engage)
+   ("C-c d p" . org-gtd-process-inbox)
+   ("C-c d n" . org-gtd-show-all-next)
+   ("C-c d s" . org-gtd-show-stuck-projects)
+   :map org-gtd-clarify-map
+   ("C-c c" . org-gtd-organize)
+   ))
 
 #+END_SRC
+
 
 * IDE and LSP
 
@@ -1475,13 +1505,12 @@ entering a directory. Naturally there is [[https://github.com/wbolster/emacs-dir
 this available so sticking with `:config` to ensure the package is always loaded.
 
 #+NAME: code-direnv
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package direnv
   :ensure t
   :config
   (direnv-mode))
 #+END_SRC
-
 
 ** Programming Modes
 
@@ -1500,7 +1529,7 @@ this available so sticking with `:config` to ensure the package is always loaded
   ~blacken-buffer~ and insert some of the common ~python-skeleton~'s.
 
 #+NAME: code-python
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package python
   :after (pyvenv)
   :ensure t
@@ -1555,7 +1584,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 <<sec:pyvenv>>
 
 #+NAME: code-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package pyvenv
   :ensure t
   :defer 1
@@ -1596,7 +1625,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 <<sec:pyvenv-auto>>
 
 #+NAME: code-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package pyvenv-auto
   :ensure t
   :after (python-mode)
@@ -1610,7 +1639,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 [[https://github.com/z80dev/uv-mode][uv-mode]] "/provides seamless integration between [[https://docs.astral.sh/uv][uv]] and Emacs ~python-mode~/".
 
 #+NAME: code-uv-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package uv-mode
   :ensure t
   :defer 0.5
@@ -1628,7 +1657,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 to a buffer via keybinding (see above configuration option under [[sec:python][Python]]) or automatically on saving.
 
 #+NAME: code-blacken
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package blacken
   :ensure t
   :defer 0.5
@@ -1649,7 +1678,7 @@ I've made a minor [[https://github.com/douglasdavis/numpydoc.el/pull/20][contrib
 validation]] rules.
 
 #+NAME: code-numpydoc
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package numpydoc
   :ensure t
@@ -1693,7 +1722,7 @@ buffer is highly configurable and I add some options for running regression test
 well as profiling).
 
 #+NAME: code-pytest
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package python-pytest
   :ensure t
   :defer 0.5
@@ -1732,7 +1761,7 @@ well as profiling).
 + [[https://github.com/erickgnavar/flymake-ruff][flymake-ruff]]
 
 #+NAME: code-ruff
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ruff-format
   :ensure t
   :defer 0.5
@@ -1779,7 +1808,7 @@ config but is included on the off-chance I change my mind or someone else finds 
 <<sec:ess>>
 
 #+NAME: code-ess
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ess
   :ensure t
   ;;     :requires ess-r-mode
@@ -1826,8 +1855,7 @@ config but is included on the off-chance I change my mind or someone else finds 
 <<sec:ess-smart-underscore>>
 
 #+NAME: code-ess-smart-underscore
-#+BEGIN_SRC emacs-lisp :tangle yes
-;;; http://github.com/mlf176f2/ess-smart-underscore.el
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ess-smart-underscore
   :ensure t
   :after (ess))
@@ -1838,8 +1866,7 @@ config but is included on the off-chance I change my mind or someone else finds 
 <<sec:ess-gd>>
 
 #+NAME: code-ess-gd
-#+BEGIN_SRC emacs-lisp :tangle yes
-;; https://github.com/sje30/essgd
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package essgd
   :ensure t)
 
@@ -1849,8 +1876,7 @@ config but is included on the off-chance I change my mind or someone else finds 
 <<sec:quarto-mode>>
 
 #+NAME: code-quarto-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
-;; Quarto mode https://github.com/quarto-dev/quarto-emacs
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; By default associated with .qmd files
 ;; (use-package quarto-mode
 ;;   :ensure t
@@ -1882,7 +1908,7 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 I (thankfully) don't write much JavaScript but add the file extensions below to the appropriate modes.
 
 #+NAME: code-js
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (add-to-list 'auto-mode-alist '("\\.js" . js-mode))
 (add-to-list 'auto-mode-alist '("\\.json" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.svelte" . js-ts-mode))
@@ -1894,7 +1920,7 @@ I (thankfully) don't write much JavaScript but add the file extensions below to 
 [[https://github.com/leon-barrett/just-mode.el][just-mode]] is for editing [[https://just.systems/man/en/][just]] files.
 
 #+NAME: code-just
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package just-mode
   :ensure t
@@ -1912,7 +1938,7 @@ Don't use LaTeX much these days but like to keep things available.
 + [[https://superuser.com/a/142468][Run pdflatex]]
 
 #+NAME: code-latex
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (add-hook 'latex-mode-hook 'turn-on-reftex)
 ;;(latex-preview-pane-enable)
@@ -1942,7 +1968,7 @@ Don't use LaTeX much these days but like to keep things available.
 [[https://github.com/jrblevin/markdown-mode][markdown-mode]] is for editing Markdown files.
 
 #+NAME: code-markdown
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package markdown-mode
   :ensure t
   :mode ("\\.md\\'" . gfm-mode)
@@ -1978,7 +2004,7 @@ The following /isn't/ tangled and needs checking
 [[https://github.com/abrochard/mermaid-mode/][mermaid-mode]] provides support for [[https://mermaid.js.org/][Mermaid.js]] a code-based, declarative diagramming system.
 
 #+NAME: code-mermaid
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mermaid-mode
   :ensure t
   :defer 10)
@@ -1991,7 +2017,7 @@ The following /isn't/ tangled and needs checking
 [[https://github.com/arnm/ob-mermaid][ob-mermaid]] provides org-babel exporting of mermaid diagrams using [[https://github.com/mermaid-js/mermaid-cli][mermaid-cli]].
 
 #+NAME: code-ob-mermaid
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ob-mermaid
   :ensure t
   :after (mermaid-mode))
@@ -2004,7 +2030,7 @@ The following /isn't/ tangled and needs checking
 [[https://github.com/JonathanHope/mermaid-ts-mode][mermaid-ts-mode]] provides [[sec:treesitter][Tree Sitter]] support for Mermaid.
 
 #+NAME: code-mermaid-ts-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mermaid-ts-mode
   :ensure t
   :after (mermaid-mode))
@@ -2137,7 +2163,7 @@ body
 Emacs can be compiled with [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Database.html][built-in support for SQLite databases]]. I have picked up one [[https://christiantietze.de/posts/2024/01/emacs-sqlite-mode-open-sqlite-files-automatically/][custom function]] along the way.
 
 #+NAME: code-sqlite
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package sqlite-mode
   :custom
   (defun ns/sqlite-view-file-magically ()
@@ -2157,7 +2183,7 @@ current buffer, killing it."
 [[https://github.com/xenodium/sqlite-mode-extras][sqlite-mode-extras]] provides a suite of extra functions which extend the built-in.
 
 #+NAME: code-sqlite-mode-extras
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package sqlite-mode-extras
   :bind (:map
           sqlite-mode-map
@@ -2185,7 +2211,7 @@ current buffer, killing it."
 the LSP protocol but I retain this in my configuration for now.
 
 #+NAME: code-yaml
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package yaml-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
@@ -2199,7 +2225,7 @@ the LSP protocol but I retain this in my configuration for now.
 <<sec:polymode>>
 
 #+NAME: code-polymode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package polymode
   :ensure t
   :custom
@@ -2298,7 +2324,7 @@ Restore match data previously stored in PROPERTY."
 <<sec:poly-markdown>>
 
 #+NAME: code-poly-markdown
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-markdown
   :ensure t
     :defer 0.5
@@ -2310,7 +2336,7 @@ Restore match data previously stored in PROPERTY."
 <<sec:poly-noweb>>
 
 #+NAME: code-poly-noweb
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-noweb
   :ensure t
     :defer 0.5
@@ -2322,7 +2348,7 @@ Restore match data previously stored in PROPERTY."
 <<sec:poly-org>>
 
 #+NAME: code-poly-org
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-org
   :ensure t
     :defer 0.5
@@ -2334,7 +2360,7 @@ Restore match data previously stored in PROPERTY."
 <<sec:poly-R>>
 
 #+NAME: code-poly-R
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-R
   :ensure t
     :defer 0.5
@@ -2346,7 +2372,7 @@ Restore match data previously stored in PROPERTY."
 <<sec:poly-rst>>
 
 #+NAME: code-poly-rst
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-rst
   :ensure t
     :defer 0.5
@@ -2354,7 +2380,7 @@ Restore match data previously stored in PROPERTY."
 
 #+END_SRC
 ** LSP Mode
-<<sec:LSP-Mode>>
+<<sec:lsp>>
 
 Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
 
@@ -2362,7 +2388,7 @@ Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-
 <<sec:lsp-mode>>
 
 #+NAME: code-lsp-mode
-#+BEGIN_SRC emacs-lsp :tangle yes
+#+BEGIN_SRC emacs-lsp :tangle init.el
  (use-package lsp-mode
   :ensure t
   :defer t
@@ -2395,10 +2421,10 @@ Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-
 <<sec:lsp-jedi>>
 
 [[https://github.com/fredcamps/lsp-jedi][lsp-jedi]] is an Emacs client for the Python [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] which I opted for over other offerings as I'd used the
-plain [[https://jedi.readthedocs.io/en/latest/][Jedi]] before I started using [[src:lsp-mode][lsp-mode]] and its not written my Micro$oft like some of the others.
+plain [[https://jedi.readthedocs.io/en/latest/][Jedi]] before I started using [[sec:lsp-mode][lsp-mode]] and its not written my Micro$oft like some of the others.
 
 #+NAME: code-lsp-jedi
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package lsp-jedi
   :ensure t
   :after lsp-mode
@@ -2413,10 +2439,10 @@ plain [[https://jedi.readthedocs.io/en/latest/][Jedi]] before I started using [[
 <<sec:lsp-ui>>
 
 [[https://github.com/emacs-lsp/lsp-ui][lsp-ui]] is something I've had installed for a while but don't really use. I should read the [[https://emacs-lsp.github.io/lsp-ui/][documentation]] and
-configure/use it properly as it contains the modules that add [[src:flycheck][Flycheck]] support and a few other things.
+configure/use it properly as it contains the modules that add [[sec:flycheck][Flycheck]] support and a few other things.
 
 #+NAME: code-lsp-ui
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package lsp-ui
   :ensure t
   :defer t
@@ -2436,7 +2462,7 @@ configure/use it properly as it contains the modules that add [[src:flycheck][Fl
 <<sec:dap-mode>>
 
 [[https://github.com/emacs-lsp/dap-mode][dap-mode]] interfaces with the [[https://microsoft.github.io/debug-adapter-protocol/][Debug Adapter Protocol]]. I don't really use this and since its another Micro$oft product
-should really get into using something like [[src:realgud][RealGUD]] instead.
+should really get into using something like [[sec:realgud][RealGUD]] instead.
 
 Not currently tangled
 
@@ -2456,7 +2482,7 @@ Not currently tangled
 [[https://github.com/realgud/realgud][realgud]] is a debugger mode, it relies on external debuggers such as Python's ~pdb~.
 
 #+NAME: code-realgud
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package realgud
   :ensure t
   :defer 1
@@ -2469,7 +2495,7 @@ Not currently tangled
 [[https://github.com/realgud/realgud-ipdb/][realgud-ipdb]] adds support [[https://pypi.org/project/ipdb/][iPython debugger]].
 
 #+NAME: code-realgud-ipdb
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package realgud-ipdb
   :ensure t
@@ -2482,7 +2508,7 @@ Not currently tangled
 [[https://github.com/bbatsov/projectile/][projectile]] ([[https://docs.projectile.mx/][docs]]) is a neat package for managing and navigating projects.
 
 #+NAME: code-projectile
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package projectile
   :ensure t
   :bind
@@ -2503,7 +2529,7 @@ Not currently tangled
 [[https://gitlab.com/OlMon/consult-projectile][consult-projectile]] incorporates [[sec:projectile][projectile]] into [[sec:consult][consult]].
 
 #+NAME: code-consult-projectile
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package consult-projectile
   :ensure t
@@ -2529,13 +2555,16 @@ Not currently tangled
 *TODO* - Bind some keys for code folding.
 
 #+NAME: code-treesit
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit
   :ensure t
   :config
   (global-treesit-fold-mode t)
   (treesit-fold-line-comment-mode t))
 #+END_SRC
+
+*** tree-sitter
+<<sec:tree-sitter>>
 
 Older config.
 
@@ -2556,7 +2585,7 @@ Not currently tangled.
 [[https://github.com/emacs-tree-sitter/treesit-fold][treesit-fold]] provides tree-folding for the built-in
 
 #+NAME: code-tree-sitter-fold
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit-fold
   :ensure t
   :init
@@ -2567,14 +2596,14 @@ Not currently tangled.
 *** treesit-langs
 <<sec:treesit-langs>>
 
-[[https://github.com/kiennq/treesit-langs][treesit-langs]] "/is a convenient language bundle for the Emacs package [[src:tree-sitter][tree-sitter]]/" its a fork of [[https://github.com/emacs-tree-sitter/tree-sitter-langs][tree-sitter-langs]].
+[[https://github.com/kiennq/treesit-langs][treesit-langs]] "/is a convenient language bundle for the Emacs package [[sec:tree-sitter][tree-sitter]]/" its a fork of [[https://github.com/emacs-tree-sitter/tree-sitter-langs][tree-sitter-langs]].
 
-As I use the newer [[src:treesit][treesit]] I'm not sure this is required.
+As I use the newer [[sec:treesit][treesit]] I'm not sure this is required.
 
 Not currently tangled.
 
 #+NAME: code-treesit-langs
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package tree-sitter-langs
   :ensure t
   :hook
@@ -2588,7 +2617,7 @@ Not currently tangled.
 [[https://github.com/erickgnavar/tree-sitter-ispell.el][tree-sitter-ispell]]
 
 #+NAME: code-tree-sitter-ispell
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package tree0sitter-spell
   :ensure t
   :defer 0.5
@@ -2619,7 +2648,7 @@ boiler-plate code. We enable the templates via hooks for ~prog-mode~, ~org-mode~
 pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippets][yasnippet-snippets]] package.
 
 #+NAME: code-yasnippet
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package yasnippet
   :ensure t
   :config
@@ -2630,7 +2659,7 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 #+END_SRC
 
 #+NAME: code-yasnippet
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package yasnippet-snippets
   :ensure t)
 
@@ -2638,7 +2667,6 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 
 The snippets I have written/customised are not included here. They are loaded from the ~snippet/~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
-
 
 * Dired
 <<sec:dired>>
@@ -2652,7 +2680,7 @@ Some useful resources on ~dired~ can also be found in
 + [[https://github.com/Fuco1/dired-hacks][Fuco1/dired-hacks: Collection of useful dired additions]]
 
 #+NAME: code-dirvish
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dirvish
   :ensure t
   :init
@@ -2689,7 +2717,7 @@ Some useful resources on ~dired~ can also be found in
 To make Dired/Dirvish look nice we also need icons.
 
 #+NAME: code-all-the-icons
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package all-the-icons
   :ensure t
   :after dirvish)
@@ -2716,7 +2744,7 @@ of them listed. I currently use the following
 + dired-subtree
 
 #+NAME: code-dired-extensions
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-quick-sort
   :ensure t
   :defer 0.5
@@ -2771,7 +2799,7 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
   (not implemented them all yet though!)
 
 #+NAME: code-tramp
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package tramp
   :ensure t
   :custom
@@ -2809,7 +2837,7 @@ I don't use the shell/terminal in Emacs much as I quite like having clear separa
 systems, less so on M$-Win/OSX).
 
 #+NAME: code-vterm
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 ;;
 (use-package vterm
   :ensure t
@@ -2848,7 +2876,7 @@ I use [[https://musicpd.org/][Music Player Daemon]] to run my music, these packa
 of configur f
 
 #+NAME: code-mpdel
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mpdel
   :ensure t
   :custom
@@ -2898,7 +2926,7 @@ of configur f
 ~geo:<lat>,<lon>;z=<zoom-int>~ org-links.
 
 #+NAME: code-osm
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package osm
   :ensure t
   :defer 3
@@ -2933,7 +2961,7 @@ manager]]. Invoking ~password-store-menu~ brings up the transient menu from wher
 take. I prefer this over [[sec:pass][pass]].
 
 #+NAME: code-password-store-menu
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package password-store-menu
   :ensure t
@@ -2948,7 +2976,7 @@ take. I prefer this over [[sec:pass][pass]].
 [[https://github.com/volrath/password-store-otp.el][password-store-otp]] provides access to the [[https://github.com/tadfisher/pass-otp][pass-otp]] plugin from Emacs.
 
 #+NAME: code-password-store-otp
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package password-store-otp
   :ensure t
@@ -2968,7 +2996,7 @@ Scratch buffers are useful for testing code in playgrounds.
 key. If you want a prompt for which buffer mode to invoke then use ~C-u M-x scratch~ and you'll be prompted.
 
 #+NAME: code-scratch-el
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package scratch
   :ensure t
   :bind ("C-c s" . scratch))
@@ -2983,7 +3011,7 @@ scratch buffers, and per-project scratch buffers./". Yet to work out if this is 
 the per-major-mode scratch buffers.
 
 #+NAME: code-scratch-plus
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package scratch-plus
   :ensure t
   :defer 0.5
@@ -3001,7 +3029,7 @@ the per-major-mode scratch buffers.
 [[https://github.com/protesilaos/tmr][tmr]] is another useful package from [[https://protesilaos.com/emacs/tmr][Prot]] which makes setting timers/reminders really simple.
 
 #+NAME: code-tmr
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package tmr
   :ensure t
@@ -3010,6 +3038,8 @@ the per-major-mode scratch buffers.
 #+END_SRC
 
 
+** Flycheck
+<<sec:flycheck>>
 
 * User Interface
 
@@ -3023,7 +3053,7 @@ Elements concerned with the User Interface which typically means how buffers, mi
 [[https://protesilaos.com/modus-themes/][modus-themes]] from Prot are really nice.
 
 #+NAME: code-modus-themes
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package modus-themes
   :ensure t
   :defer 0.5
@@ -3043,7 +3073,7 @@ Elements concerned with the User Interface which typically means how buffers, mi
 [[https://protesilaos.com/emacs/ef-themes][ef-themes]] also from [[https://protesilaos.com/][Prot]] are also very nice and my current favourite.
 
 #+NAME: code-ef-themes
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ef-themes
   :ensure t
   :defer 0.5
@@ -3063,7 +3093,7 @@ Elements concerned with the User Interface which typically means how buffers, mi
 [[https://github.com/roman/golden-ratio.el][golden-ratio]]
 
 #+NAME: code-golden-ratio
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package golden-ratio
   :ensure t
   :defer 0.5
@@ -3077,7 +3107,7 @@ Elements concerned with the User Interface which typically means how buffers, mi
 I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it needs installing at the system level so it's available for Emacs.
 
 #+NAME: code-font
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (set-face-attribute 'default t :font "Hack")
 #+END_SRC
 
@@ -3092,7 +3122,7 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 org popup agendas.
 
 #+NAME: code-hide-mode-line
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package hide-mode-line
   :ensure t
   :defer 3
@@ -3108,7 +3138,7 @@ org popup agendas.
 about the buffer.
 
 #+NAME: code-moodline
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mood-line
   :ensure t
   :custom
@@ -3127,7 +3157,7 @@ listed and can't yet find where to click to get the menu but ~minions-minor-mode
 access the same list.
 
 #+NAME: code-minions
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package minions
   :ensure t)
 #+END_SRC
@@ -3174,7 +3204,7 @@ Some customisations to make buffers nicer to work with/read.
 code block that is indented and ending it) are highlighted as you scroll.
 
 #+NAME: code-highlight-indent-guides
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package highlight-indent-guides
   :ensure t
@@ -3193,7 +3223,7 @@ code block that is indented and ending it) are highlighted as you scroll.
 pretty much always want this enabled across multiple modes. There may be some redundancy here that can be removed!
 
 #+NAME: code-smartparens
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package smartparens
   :ensure t
   :defer 1
@@ -3218,7 +3248,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 [[https://github.com/Fanael/rainbow-delimiters][rainbow-delimiters]] in conjunction with [[sec:smartparens][smartparens]] makes it easy to see which parentheses/brackets/braces pair up.
 
 #+NAME: code-rainbow-delimiters
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package rainbow-delimiters
   :ensure t
@@ -3233,7 +3263,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 [[https://github.com/emacsmirror/rainbow-mode][rainbow-mode]] is a minor mode that colourises colour names, whether they are hexadecimal or otherwise.
 
 #+NAME: code-rainbow-mode
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package rainbow-mode
   :ensure t
   :defer 1
@@ -3254,7 +3284,7 @@ also hide certain buffers I don't need to see often.
 + [[https://themkat.net/2024/01/04/emacs_centaur_tabs.html][centaur-tabs-buffer-groups]]
 
 #+NAME: code-centaur-tabs
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package centaur-tabs
   :ensure t
   :demand
@@ -3343,7 +3373,7 @@ I've come across a bunch of functions that others generously share and include t
 A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
 
 #+NAME: code-reinstall-package
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (defun ns/reinstall-package (pkg)
   (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
   (unload-feature pkg)
@@ -3358,7 +3388,7 @@ A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packa
 Library [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] require a footer.
 
 #+NAME: code-footer
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle init.el
   (provide 'init.el)
   ;;; init.el ends here
 #+end_src
