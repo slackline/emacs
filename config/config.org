@@ -2761,9 +2761,9 @@ Not currently tangled
 
 #+NAME: code-realgud-ipdb
 #+BEGIN_SRC emacs-lisp :tangle init.el
-
 (use-package realgud-ipdb
   :ensure t
+  :defer 0.5)
 
 #+END_SRC
 
@@ -2822,25 +2822,7 @@ Not currently tangled
 #+NAME: code-treesit
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit
-  :ensure t
-  :config
-  (global-treesit-fold-mode t)
-  (treesit-fold-line-comment-mode t))
-#+END_SRC
-
-*** tree-sitter
-<<sec:tree-sitter>>
-
-Older config.
-
-Not currently tangled.
-
-#+NAME: code-tree-sitter
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package tree-sitter
-  :ensure t
-  :init
-  (global-tree-sitter-mode))
+  :ensure t)
 
 #+END_SRC
 
@@ -2853,6 +2835,10 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit-fold
   :ensure t
+  :defer 1
+  :after (treesit)
+  :custom
+  (treesit-fold-line-comment-mode t)
   :init
   (global-treesit-fold-mode))
 
@@ -2883,10 +2869,11 @@ Not currently tangled.
 
 #+NAME: code-tree-sitter-ispell
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package tree0sitter-spell
+(use-package tree-sitter-spell
   :ensure t
   :defer 0.5
   :after (tree-sitter))
+
 #+END_SRC
 
 *** treesit-auto
@@ -2902,6 +2889,7 @@ Not currently tangled.
   :ensure t
   :config
   (treesit-auto-apply-remap))
+
 #+END_SRC
 
 ** YASnippet
