@@ -66,7 +66,7 @@ Packages are either loaded immediately, when the package is first used (via auto
 | ~:defer~       | Delay loading of package. Can be ~t~ but is rarely used, typically an integer /n/ is specified to load the package after that period of idle time. | ~:defer t~ / ~:defer 30~                                                                                                                                                               |
 | ~:after~       | Load after another package has been loaded.                                                                                                        | ~:after org~                                                                                                                                                                           |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | Key-bindings, plain or with a cons (~(desc . command)~)                                                                                            | ~:bind (("C-c k" . keychain-refresh-environment) ("C-c o h" . osm-home))~                                                                                                              |
-| [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home". osm-home))~                                                                         |
+| [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home" . osm-home))~                                                                        |
 | [[https://github.com/jwiegley/use-package#binding-to-keymaps][~:bind-keymap~]] | Binds a keymap to the given key chord.                                                                                                             | ~:bind ("s-p" . projectile-command-map))~ / ~:bind ("s-p" ("Projectile" . projectile-command-map))~ (untested)                                                                         |
 | ~:map~         | Within a ~:bind~ you can provide the mapping and modify key maps.                                                                                  | ~:bind (:map projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch project" . projectile-switch-project))~ (untested) |
 | [[https://github.com/jwiegley/use-package#getting-started][~:config~]]      | Executes code /after/ a package is loaded. Note that using this forces loading of the package.                                                     |                                                                                                                                                                                        |
@@ -333,8 +333,8 @@ bars.
       '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
 	 (display-buffer-no-window)
 	 (allow-no-window . t)))
-    :bind (("C-c U" . revert-buffer)
-	    ("C-c D" . toggle-debug-on-error)
+    :bind (("C-c U" ("Revert buffer (aka Undo)" . revert-buffer))
+	    ("C-c D" ("Toggle debug on error" . toggle-debug-on-error))
 	    ;; Org
 	    ("\C-c l" . org-store-link)
 	    ("\C-c c" . org-capture)
@@ -1529,7 +1529,6 @@ you to specify sections and tables to which entries should be added with pre-def
    ))
 
 #+END_SRC
-
 
 * IDE and LSP
 
@@ -3076,15 +3075,26 @@ I use [[https://musicpd.org/][Music Player Daemon]] to run my music, these packa
 <<sec:mpdel>>
 
 [[https://gitea.petton.fr/mpdel/mpdel][mpdel]] provides an interface to ~mpd~ its not working perfectly yet, for example I use a password and I can't see anyway
-of configur f
+of configure a password.
+
+Unfortunately the keybindings for multimedia keys aren't currently recognised.
 
 #+NAME: code-mpdel
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mpdel
   :ensure t
+  :defer 1
   :custom
   (libmpdel-hostname "192.168.1.28")
-  (libmpdel-port 6600))
+  (libmpdel-port 6600)
+  :bind
+  ("<XF86AudioPlay>" . libmpdel-playback-play-pause)
+  ("<XF86AudioNext>" . libmpdel-playback-next)
+  ("<XF86AudioPrev>" . libmpdel-playback-previous)
+  ;; ("<XF86AudioPlay>" ("MPDel Play" . libmpdel-playback-play-pause))
+  ;; ("<XF86AudioNext>" ("MPDel Next" . libmpdel-playback-next))
+  ;; ("<XF86AudioPrev>" ("MPDel Prev" . libmpdel-playback-previous))
+  :bind-keymap ("C-x Z" . ("MPDel" . mpdel-core-map)))
 ;; (mpdel-mode)
 
 #+END_SRC
@@ -3093,6 +3103,8 @@ of configur f
 <<sec:ivy-mpdel>>
 
 [[https://github.com/mpdel/ivy-mpdel][ivy-mpdel]] provides an Emacs' ivy interface to communicate with ~mpd~.
+
+Not currently tangled
 
 #+NAME: code-ivy-mpdel
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -3542,7 +3554,6 @@ also hide certain buffers I don't need to see often.
         (and (string-prefix-p "magit" name)
 	  (not (file-name-extension name)))
         )))
-
   :custom
   (centaur-tabs-enable-key-bindings t)
   (centaur-tabs-style "wave")
