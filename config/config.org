@@ -3,6 +3,12 @@
 #+OPTIONS: toc:2 num:nil
 #+SETUPFILE: ./theme-readtheorg.setup
 
+#+NAME: code-search-options
+#+BEGIN_SRC org
+{{{enable-search}}}
+{{{set-search-limit(30)}}}
+#+END_SRC
+
 * What
 
 This is my Emacs config, there are many like it but this one is mine.
