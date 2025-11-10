@@ -1091,6 +1091,8 @@ Currently not tangled.
 ** gtea
 <<sec:gtea>>
 
+[[https://github.com/emacsattic/gtea][gtea]] extends [[sec:ghub][ghub]] for [[https://about.gitea.com/][Gitea]] (which has forked to [[https://forgejo.org/][ForgeJo]]) and is used to power [[https://codeberg.org][Codeberg]])
+
 #+NAME: code-gtea
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gtea
@@ -1153,6 +1155,7 @@ Currently not tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-stats
   :ensure t
+  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1164,8 +1167,9 @@ Currently not tangled.
 
 #+NAME: code-orgit
 #+BEGIN_SRC emacs-lisp :tangle init.el
-
 (use-package orgit
+  :ensure t
+  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1177,8 +1181,9 @@ Currently not tangled.
 
 #+NAME: code-orgit-forge
 #+BEGIN_SRC emacs-lisp :tangle init.el
-
 (use-package orgit-forge
+  :ensure t
+  :defer 0.5
   :after magit
   :bind (:map magit-mode-map
 	      ("C-c m c" . orgit-store-link))
@@ -1191,21 +1196,27 @@ Currently not tangled.
 <<sec:pr-review>>
 
 [[https://github.com/blahgeek/emacs-pr-review][pr-review]]
+
 #+NAME: code-pr-review
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package pr-review
   :ensure t
-  :after ghub)
+  :defer 0.5
+  :after (ghub))
 
 #+END_SRC
 
 ** treemacs-magit
 <<sec:treemacs-magit>>
 
+[[https://github.com/Alexander-Miller/treemacs][treemacs-magit]] treemacs integratio for [[sec:magit][Magit]].
+
 #+NAME: code-treemacs-magit
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treemacs-magit
-  :ensure t)
+  :ensure t
+  :defer 0.5
+  :after (magit))
 
 #+END_SRC
 
