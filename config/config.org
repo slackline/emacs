@@ -669,7 +669,7 @@ undo buffer history]] was insightful too.
 (use-package vundo
   :ensure t
   :defer 2
-  :bind ("C-c v" . ("Visual Undo" . vundo))
+  :bind (("C-c v" . vundo))
   :hook
   (prog-mode . vundo-popup-mode)
   (text-mode . vundo-popup-mode))
@@ -747,34 +747,24 @@ up with a lot of ~prefix~ and its value disappears.
 
 *TODO* Improve key-bindings here.
 
++ ~C-h F~ - is bound to ~info-goto-emacs-command-node~. Helpful already links to the manual, if a function is referenced
+  there.
++ ~C-h C~ - is bound to describe ~describe-coding-system~. I don't find this very useful, but it's frequently useful to
+  only look at interactive functions.
++ Note that the built-in ~describe-function~ includes both functions and macros. ~helpful-function~ is functions only,
+  so we provide ~helpful-callable~ as a drop-in replacement.
+
 #+NAME: code-helpful
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package helpful
   :ensure t
   :defer 0.5
-  :bind
-  ;; Note that the built-in `describe-function' includes both functions
-  ;; and macros. `helpful-function' is functions only, so we provide
-  ;; `helpful-callable' as a drop-in replacement.
-  (global-set-key (kbd "C-h f") #'helpful-callable)
-  (global-set-key (kbd "C-h v") #'helpful-variable)
-  (global-set-key (kbd "C-h k") #'helpful-key)
-  ;; Lookup the current symbol at point. C-c C-d is a common keybinding
-  ;; for this in lisp modes.
-  (global-set-key (kbd "C-c C-d") #'helpful-at-point)
-
-  ;; Look up *F*unctions (excludes macros).
-  ;;
-  ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
-  ;; already links to the manual, if a function is referenced there.
-  (global-set-key (kbd "C-h F") #'helpful-function)
-
-  ;; Look up *C*ommands.
-  ;;
-  ;; By default, C-h C is bound to describe `describe-coding-system'. I
-  ;; don't find this very useful, but it's frequently useful to only
-  ;; look at interactive functions.
-  (global-set-key (kbd "C-h C") #'helpful-command))
+  :bind (("C-h C" . helpful-command)
+          ("C-h f" . helpful-callable)
+          ("C-h F" . helpful-function)
+          ("C-h v" . helpful-variable)
+          ("C-h k" . helpful-key)
+          ("C-c C-d" . helpful-at-point)))
 
 #+END_SRC
 
@@ -811,43 +801,40 @@ literally everything under Git version control.
 
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp :tangle init.el
-;;
-(use-package magit
-  :ensure t
-  :custom
-  (magit-repository-directories
-	`(("~/dotfiles" . 1)
-	  ("~/.config/emacs/" . 1)
-	  ("~/org/" . 1)
-	  ("~/work/git/" . 2)
-	  ("~/work/python/tcx2gpx/" . 1)
-	  ("~/work/python/wpweather/" . 1)
-	  ))
-  (auth-sources '("~/.authinfo.gpg"))
-  ;;
-  (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (magit-bury-buffer-function 'magit-restore-window-configuration)
-  (magit-pull-or-fetch t)
-  (magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
-  (magit-process-finish-apply-ansi-colors t)
-  ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
-  ;; perhaps?
-  (remove-hook 'git-commit-mode #'turn-on-auto-fill)
-  (remove-hook 'forge-post-mode #'turn-on-auto-fill)
-  :hook
-  (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
-  :bind
-  (global-set-key (kbd "C-c m C") 'magit-clone)
-  (global-set-key (kbd "C-c m F") 'magit-pull-from-upstream)
-  (global-set-key (kbd "C-c m P") 'magit-push-current-to-upstream)
-  (global-set-key (kbd "C-c m R") 'magit-file-rename)
-  (global-set-key (kbd "C-c m f") 'forge-pull)
-  (global-set-key (kbd "C-c m d d") 'nds:magit-show-with-difftastic)
-  (global-set-key (kbd "C-c m d r") 'magit-diff-range)
-  (global-set-key (kbd "C-c m d s") 'magit-diff-staged)
-  (global-set-key (kbd "C-c m l l") 'magit-log)
-  (global-set-key (kbd "C-c m l f") 'magit-log-buffer-file)
-  (global-set-key (kbd "C-c m l o") 'magit-log-other))
+  (use-package magit
+    :ensure t
+    :custom
+    (magit-repository-directories
+  	`(("~/dotfiles" . 1)
+  	  ("~/.config/emacs/" . 1)
+  	  ("~/org/" . 1)
+  	  ("~/work/git/" . 2)
+  	  ("~/work/python/tcx2gpx/" . 1)
+  	  ("~/work/python/wpweather/" . 1)
+  	  ))
+    (auth-sources '("~/.authinfo.gpg"))
+    (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+    (magit-bury-buffer-function 'magit-restore-window-configuration)
+    (magit-pull-or-fetch t)
+    (magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
+    (magit-process-finish-apply-ansi-colors t)
+    ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
+    ;; perhaps?
+    (remove-hook 'git-commit-mode #'turn-on-auto-fill)
+    (remove-hook 'forge-post-mode #'turn-on-auto-fill)
+    :hook
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status))
+    ;; :bind(("C-c m C" . magit-clone)
+    ;;        ("C-c m F" . magit-pull-from-upstream)
+        ;;        ("C-c m P" . magit-push-current-to-upstream)
+    ;;        ("C-c m R" . magit-file-rename)
+    ;;        ("C-c m f" . forge-pull)
+    ;;        ("C-c m d d" . nds:magit-show-with-difftastic)
+    ;;        ("C-c m d r" . magit-diff-range)
+    ;;        ("C-c m d s" . magit-diff-staged)
+    ;;        ("C-c m l l" . magit-log)
+    ;;        ("C-c m l f" . magit-log-buffer-file)
+    ;;        ("C-c m l o" . magit-log-other)))
 
 #+END_SRC
 
@@ -1063,16 +1050,16 @@ Currently not tangled.
 
 #+NAME: code-git-link
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package git-link
-  :ensure t
-  :after (magit)
-  :bind
-  (global-set-key (kbd "C-c m g g") 'git-link-dispatch)
-  (global-set-key (kbd "C-c m g l") 'git-link)
-  (global-set-key (kbd "C-c m g c") 'git-link-commit)
-  (global-set-key (kbd "C-c m g h") 'git-link-homepage)
-  :config
-  (require 'git-link-transient))
+  (use-package git-link
+    :ensure t
+    :after (magit)
+    ;; :bind (("C-c m g g" . git-link-dispatch)
+    ;;         ("C-c m g g" . git-link-dispatch)
+    ;;         ("C-c m g l" . git-link)
+    ;;         ("C-c m g c" . git-link-commit)
+    ;;         ("C-c m g h" . git-link-homepage))
+    :config
+    (require 'git-link-transient))
 
 #+END_SRC
 
@@ -3182,21 +3169,20 @@ Unfortunately the keybindings for multimedia keys aren't currently recognised.
 
 #+NAME: code-mpdel
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package mpdel
-  :ensure t
-  :defer 1
-  :custom
-  (libmpdel-hostname "192.168.1.28")
-  (libmpdel-port 6600)
-  :bind
-  ("<XF86AudioPlay>" . libmpdel-playback-play-pause)
-  ("<XF86AudioNext>" . libmpdel-playback-next)
-  ("<XF86AudioPrev>" . libmpdel-playback-previous)
-  ;; ("<XF86AudioPlay>" ("MPDel Play" . libmpdel-playback-play-pause))
-  ;; ("<XF86AudioNext>" ("MPDel Next" . libmpdel-playback-next))
-  ;; ("<XF86AudioPrev>" ("MPDel Prev" . libmpdel-playback-previous))
-  :bind-keymap ("C-x Z" . ("MPDel" . mpdel-core-map)))
-;; (mpdel-mode)
+  (use-package mpdel
+    :ensure t
+    :defer 1
+    :custom
+    (libmpdel-hostname "192.168.1.28")
+    (libmpdel-port 6600)
+    ;; :bind (("<XF86AudioPlay>" . libmpdel-playback-play-pause)
+;;         ("<XF86AudioNext>" . libmpdel-playback-next)
+    ;;               ("<XF86AudioPrev>" . libmpdel-pl;; ayback-previous))
+    ;;         ;; ("<XF86AudioPlay>" ("MPDel Play" . libmpdel-playback-play-pause))
+    ;;         ;; ("<XF86AudioNext>" ("MPDel Next" . libmpdel-playback-next))
+    ;;               ;; ("<XF86AudioPrev>" ("MPDel Prev" . libmpdel-playback-previous))
+    :bind-keymap (("C-x Z" . mpdel-core-map)))
+  ;; (mpdel-mode)
 
 #+END_SRC
 
@@ -3666,11 +3652,11 @@ also hide certain buffers I don't need to see often.
   (centaur-tabs-cycle-scope 'default)
   (centaur-tabs-set-modified-marker t)
   (centaur-tabs-modified-marker "⏺")
-  :bind
-  ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-  ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-  ("C-<prior>" ("Tab backwards" . centaur-tabs-backward))
-  ("C-<next>" ("Tab forwards" .centaur-tabs-forward)))
+  :bind(
+         ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+         ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+         ("C-<prior>" . centaur-tabs-backward)
+         ("C-<next>"  . centaur-tabs-forward)))
 
 
 #+END_SRC
