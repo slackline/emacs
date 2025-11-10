@@ -553,6 +553,7 @@ prompt]] but may do one day.
 
 #+END_SRC
 
+
 ** Marginalia
 <<sec:marginalia>>
 
@@ -2823,7 +2824,9 @@ Not currently tangled
 ** Tree Sitter
 <<sec:TreeSitter>>
 
-[[https://tree-sitter.github.io/tree-sitter/][Tree-sitter]] is a "magic" tool that performs incremental parsing to build concrete syntax trees as files are edited.
+[[https://tree-sitter.github.io/tree-sitter/][Tree-sitter]] is a "magic" tool that performs incremental parsing to build concrete syntax trees as files are
+edited. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in to Emacs since 29.1, older versions required [[https://github.com/emacs-tree-sitter/elisp-tree-sitter][tree-sitter.el]].
+
 
 + [[https://emacs-tree-sitter.github.io/][emacs-tree-sitter]] - mostly obsolete since it [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in now.
 + [[https://archive.casouri.cc/note/2023/tree-sitter-in-emacs-29/index.html][Tree-sitter in Emacs 29]]
@@ -2833,16 +2836,6 @@ Not currently tangled
 *** treesit
 <<sec:treesit>>
 
-[[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Grammar.html][treesit.el]] is built-in to Emacs since 29.1, older versions required [[https://github.com/emacs-tree-sitter/elisp-tree-sitter][tree-sitter.el]].
-
-*TODO* - Bind some keys for code folding.
-
-#+NAME: code-treesit
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package treesit
-  :ensure t)
-
-#+END_SRC
 
 *** treesit-fold
 <<sec:tree-sitter-fold>>
@@ -2862,35 +2855,17 @@ Not currently tangled
 
 #+END_SRC
 
-*** treesit-langs
-<<sec:treesit-langs>>
-
-[[https://github.com/kiennq/treesit-langs][treesit-langs]] "/is a convenient language bundle for the Emacs package [[sec:tree-sitter][tree-sitter]]/" its a fork of [[https://github.com/emacs-tree-sitter/tree-sitter-langs][tree-sitter-langs]].
-
-As I use the newer [[sec:treesit][treesit]] I'm not sure this is required.
-
-Not currently tangled.
-
-#+NAME: code-treesit-langs
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package tree-sitter-langs
-  :ensure t
-  :hook
-  (tree-sitter-after-on . tree-sitter-hl-mode))
-
-#+END_SRC
-
 *** tree-sitter-ispell
-<<sec:tree-sitter-ispell>>
+<<sec:treesit-ispell>>
 
 [[https://github.com/erickgnavar/tree-sitter-ispell.el][tree-sitter-ispell]]
 
-#+NAME: code-tree-sitter-ispell
+#+NAME: code-treesit-ispell
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package tree-sitter-spell
+(use-package treesit-ispell
   :ensure t
   :defer 0.5
-  :after (tree-sitter))
+  :after (treesit))
 
 #+END_SRC
 
@@ -3167,7 +3142,6 @@ systems, less so on M$-Win/OSX).
 
 #+NAME: code-vterm
 #+BEGIN_SRC emacs-lisp :tangle init.el
-;;
 (use-package vterm
   :ensure t
   :defer 3
