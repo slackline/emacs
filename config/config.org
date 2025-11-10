@@ -99,6 +99,7 @@ and [[sec:footer][footer]].
   ;; A literate and reproducible Emacs configuration
 
   ;;; Code:
+
 #+END_SRC
 
 
@@ -271,56 +272,46 @@ bars.
 ** Emacs
 <<sec:emacs>>
 
++ [[http://yummymelon.com/devnull/til-imenu.html][imenu]]
++ [[https://github.com/rexim/org-cliplink][org-cliplink]]
+
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package emacs
-    :init
-    (epa-file-enable)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)
-    (menu-bar-mode 1)
-    (global-display-line-numbers-mode 1)
-    (global-hl-line-mode 1)
-    (savehist-mode 1)
-    (recentf-mode 1)
-    (global-auto-revert-mode 1)
-    :config
+    :custom
     ;; Add local lisp for miscellaneous things
     (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
     (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
-    (setq custom-file "~/.config/emacs/custom.el")
-    (setq package-install-upgrade-built-in t) ; Upgrade built-in packages
-    (setq enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
-    (setq inhibit-startup-message t) ; Hide the startup message
-    (setq global-visual-line-mode t) ; Visual line wrap
-    (setq inhibit-startup-screen t) ; Disable startup screen
-    (setq initial-scratch-message "") ; Make *scratch* buffer blank
-    (setq confirm-kill-processes nil) ; Stop confirming the killing of processes
-    (setq ring-bell-function 'ignore)  ; Disable bell sound
-    (setq global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-    (setq use-dialog-box nil) ; No dialog pop-ups
-    (setq history-length 1000) ; Mini-buffer history
-    (setq-default fill-column 120) ; Reset line-length
-    (setq undo-limit 320000) ; Increase the undo history limits
-    (setq vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-    (setq winner-mode t) ; toggling window configuration
-    (setq initial-scratch-message nil)
-    (setq pixel-scroll-precision-mode t)
-    (setq lisp-indent-offset 2)
-    (setq undo-strong-limit 640000)
-    (setq mode-line-compact t)
-    (setq dired-dwim-target t) ; move file to other pane as default destination
-    (setq global-goto-address-mode t)
-    ;; (setq browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
-    (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 4)
-    (setq-default sh-basic-offset 2)
-    (setq-default sh-indentation 2)
-    (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
-    ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+    (custom-file "~/.config/emacs/custom.el")
+    (package-install-upgrade-built-in t) ; Upgrade built-in packages
+    (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
+    (inhibit-startup-message t) ; Hide the startup message
+    (global-visual-line-mode t) ; Visual line wrap
+    (inhibit-startup-screen t) ; Disable startup screen
+    (initial-scratch-message "") ; Make *scratch* buffer blank
+    (confirm-kill-processes nil) ; Stop confirming the killing of processes
+    (ring-bell-function 'ignore)  ; Disable bell sound
+    (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+    (use-dialog-box nil) ; No dialog pop-ups
+    (history-length 1000) ; Mini-buffer history
+    (undo-limit 320000) ; Increase the undo history limits
+    (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+    (winner-mode t) ; toggling window configuration
+    (initial-scratch-message nil)
+    (pixel-scroll-precision-mode t)
+    (lisp-indent-offset 2)
+    (undo-strong-limit 640000)
+    (mode-line-compact t)
+    (dired-dwim-target t) ; move file to other pane as default destination
+    (global-goto-address-mode t)
     (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
-    (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-    (setopt dictionary-server "dict.org")
+    ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+    ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
+    ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
+    (add-to-list 'display-buffer-alist
+      '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+	 (display-buffer-no-window)
+	 (allow-no-window . t)))
     ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
     ;; (when (and (fboundp 'native-comp-available-p)
     ;;         (native-comp-available-p))
@@ -328,19 +319,23 @@ bars.
     ;;     native-comp-deferred-compilation t))
     (set-frame-parameter nil 'alpha-background 85) ; Transparency
     (add-to-list 'default-frame-alist '(alpha-background . 85))
-    ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
-    (add-to-list 'display-buffer-alist
-      '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-	 (display-buffer-no-window)
-	 (allow-no-window . t)))
-    :bind (("C-c U" ("Revert buffer (aka Undo)" . revert-buffer))
-	    ("C-c D" ("Toggle debug on error" . toggle-debug-on-error))
+    :config
+    (setq-default fill-column 120) ; Reset line-length
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 4)
+    (setq-default sh-basic-offset 2)
+    (setq-default sh-indentation 2)
+    (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+    (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+    (setopt dictionary-server "dict.org")
+    :bind (("C-c U" . revert-buffer)
+	    ("C-c D" . toggle-debug-on-error)
 	    ;; Org
 	    ("\C-c l" . org-store-link)
 	    ("\C-c c" . org-capture)
 	    ("\C-c a" . org-agenda)
 	    ("\C-c b" . org-iswitchb)
-	    ("C-x p i" . org-org-cliplink) ;; From : https://github.com/rexim/org-cliplink
+	    ("C-x p i" . org-org-cliplink)
 	    ;; Magit /code review
 	    ("C-x g" . magit-status)
 	    ("C-c R" . code-review-forge-pr-at-point)
@@ -358,13 +353,24 @@ bars.
     (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
     (before-save . do-auto-fill)
     (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
-    ;; imenu http://yummymelon.com/devnull/til-imenu.html
+    ;; imenu
     ((markdown-mode
        makefile-mode
        prog-mode) . imenu-add-menubar-index)
     ((markdown-mode
        makefile-mode
-       prog-mode) . (lambda () (setq imenu-auto-rescan t))))
+       prog-mode) . (lambda () (setq imenu-auto-rescan t)))
+    :init
+    (epa-file-enable)
+    (tool-bar-mode 0)
+    (scroll-bar-mode "right")
+    (menu-bar-mode t)
+    (global-display-line-numbers-mode t)
+    (global-hl-line-mode t)
+    (savehist-mode t)
+    (recentf-mode t)
+    (global-auto-revert-mode t))
+
 #+END_SRC
 
 ** SSH Agency
@@ -412,6 +418,18 @@ pulled the others in as dependencies of other packages but have opted to purge t
    '(company-tooltip-common ((t (:background "#3e4452"))))
    '(company-scrollbar-bg ((t (:background "#282c34"))))))
 
+#+END_SRC
+
+** embark-consult
+<<sec:embark-consult>>
+
+[[https://github.com/oantolin/embark][embark-consult]] is recommended if using both [[sec:consult][consult]] and [[sec:embark][embark]].
+
+#+NAME: code-embark-consult
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package embark-consult
+  :ensure t
+  :defer 0.5)
 #+END_SRC
 
 ** Consult
