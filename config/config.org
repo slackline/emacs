@@ -1608,7 +1608,7 @@ you to specify sections and tables to which entries should be added with pre-def
 
 * IDE and LSP
 
-Emacs is my Integrated Development Environment when programming and writing documents. I use a number of language
+Emacs is my Integrated Development Environment (IDE) when programming and writing documents. I use a number of language
 specific modes but also leverage the power of Language Server Protocol (LSP) to help with navigation, function
 arguments, refactoring and so forth.
 
@@ -3817,7 +3817,6 @@ also hide certain buffers I don't need to see often.
 (global-set-key (kbd "C-c v") 'vundo)
 #+END_SRC
 
-
 * Custom Functions
 <<sec:custom_functions>>
 
@@ -3842,7 +3841,6 @@ A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packa
     (require pkg))
 
 #+END_SRC
-
 
 * Footer
 <<sec:footer>>
@@ -3917,6 +3915,7 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 + [[https://leanpub.com/lit-config/read][Literate Configuration | Diego Zamboni]]
 + [[https://org-babel.readthedocs.io/en/latest/][Org Babel reference card]]
 + [[https://www.masteringemacs.org/][Mastering Emacs]]
++ [[https://sachachua.com/blog/category/emacs-news/][Emacs News | Sacha Chua]]
 
 ** use-package
 
