@@ -1386,10 +1386,11 @@ Sources of some of the options are linked below.
 			   "~/org/gtd/thyroid.org"
 			   "~/org/gtd/topostats.org"))
   (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-							   (python . t)
-							   (shell . t)
-							   (R . t)
-							   (latex .t)))
+                                                            (latex .t)
+                                                              (org . t)
+                                                            (python . t)
+							      (shell . t)
+							      (R . t)))
   (org-babel-python-command "~/.virtualenvs/default/bin/python")
   (org-format-latex-options '(:foreground default
 		                :background "rgb 1 1 1"
@@ -1405,6 +1406,7 @@ Sources of some of the options are linked below.
   (org-image-actual-width nil)
   (org-export-backends '(beamer html latex md odt))
   (org-confirm-babel-evaluate nil)
+  (org-startup-within-inline-images t)
   (org-todo-keywords
     '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
   (org-todo-keyword-faces
@@ -1417,6 +1419,8 @@ Sources of some of the options are linked below.
   :hook
   (org-mode . (lambda () (electric-indent-local-mode 0)))
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
+  (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
+  ;; (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
   (after-focus-change-function . (org-save-all-org-buffers)))
 
 #+END_SRC
