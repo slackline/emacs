@@ -3865,31 +3865,6 @@ also hide certain buffers I don't need to see often.
 (global-set-key (kbd "C-c v") 'vundo)
 #+END_SRC
 
-* Custom Functions
-<<sec:custom_functions>>
-
-I've come across a bunch of functions that others generously share and include them here. There are a few others
-littered about the configuration rather than being aggregated here.
-
-+ [[nameref:code-org-agenda][Org Agenda]]
-+ [[nameref:code-quarto-mode-custom][Quarto Mode]]
-+ [[nameref:code-sqlite][SQLite]]
-
-** Reinstall Package
-
-A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
-
-#+NAME: code-reinstall-package
-#+BEGIN_SRC emacs-lisp :tangle init.el
-  (defun ns/reinstall-package (pkg)
-    "Reinstall a package taken from prompt."
-    (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
-    (unload-feature pkg)
-    (package-reinstall pkg)
-    (require pkg))
-
-#+END_SRC
-
 * Footer
 <<sec:footer>>
 
