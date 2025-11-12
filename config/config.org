@@ -782,6 +782,18 @@ up with a lot of ~prefix~ and its value disappears.
    "M-g"           "goto-map"
    "M-s h"         "search-highlight"
    "M-s"           "search-map")
+  (with-eval-after-load 'lsp
+    (which-key-add-key-based-replacements
+      "s-l"           "LSP"
+      "s-l ="         "LSP"
+      "s-l F"         "LSP Workspace"
+      ;; "s-l G"         "LSP ?"
+      "s-l T"         "LSP Treemacs/UI"
+      ;; "s-l a"         "LSP ?"
+      ;; "s-l g"         "LSP ?"
+      ;; "s-l h"         "LSP ?"
+      "s-l r"         "LSP Refactor"
+      "s-l w"         "LSP Session"))
   (with-eval-after-load 'page-ext
     (which-key-add-key-based-replacements
      "C-x C-p" "page-extras"))
