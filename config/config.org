@@ -4,7 +4,7 @@
 #+SETUPFILE: ./theme-readtheorg.setup
 
 #+NAME: code-search-options
-#+BEGIN_SRC org
+#+BEGIN_SRC org :tangle no
 {{{enable-search}}}
 {{{set-search-limit(30)}}}
 #+END_SRC
@@ -59,7 +59,7 @@ Tasks I'm yet to complete in re-writing...
 <<sec:conf-use-package>>
 
 Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
-use-package the right way]]. The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package ~README.md~]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
+use-package the right way]]. The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package README.md]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
 docs : use-package]] page since it is now a core component of Emacs. use-package provides the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Basic-Concepts][~use-package~ macro]] which
 simplifies configuration.
 
@@ -390,6 +390,54 @@ bars.
   :ensure t
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 #+END_SRC
+
+** Custom Functions
+<<sec:custom_functions>>
+
+I've come across a bunch of functions that others generously share and include them here. There are a few others
+littered about the configuration rather than being aggregated here.
+
++ [[nameref:code-org-agenda][Org Agenda]]
++ [[nameref:code-quarto-mode-custom][Quarto Mode]]
++ [[nameref:code-sqlite][SQLite]]
+
+*** Reinstall Package
+<<sec:reinstall-package>>
+
+A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packages/][reinstall a package]].
+
+#+NAME: code-reinstall-package
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (defun ns/reinstall-package (pkg)
+    "Reinstall a package taken from prompt."
+    (interactive (list (intern (completing-read "Reinstall package: " (mapcar #'car package-alist)))))
+    (unload-feature pkg)
+    (package-reinstall pkg)
+    (require pkg))
+
+#+END_SRC
+
+*** On Save
+<<sec:on-save>>
+
+[[https://systemcrafters.net/emacs-from-scratch/configure-everything-with-org-babel/][org-babel-tangle-on-save]] define two functions, one to tangle, the other to export this buffer on saving. Hooks are
+configured for [[sec:org-mode][org-mode]] so that this file is both tangled and exported on saving.
+
+*TODO* Make this function take an argument so it can be reused.
+
+
+#+NAME: code-on-save
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/org-babel-tangle-on-save ()
+      (when (string-equal (buffer-file-name) (substitute-in-file-name "$HOME/.config/emacs/config/config.org"))
+        (org-babel-tangle :append :local)))
+
+(defun ns/org-babel-export-on-save ()
+      (when (string-equal (buffer-file-name) (substitute-in-file-name "$HOME/.config/emacs/config/config.org"))
+        (org-html-export-to-html)))
+
+#+END_SRC
+
 
 * Completion and Navigation
 <<sec:completion-navigation>>
