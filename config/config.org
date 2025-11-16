@@ -2736,6 +2736,25 @@ are required which do the leg work/magic in the background. Many operating syste
 or they can be manually installed (e.g. [[https://github.com/ltex-plus/ltex-ls-plus][ltex-ls-plus]]). ~mason~ solves this by being an installed to the [[https://github.com/mason-org/mason-registry][mason-registry]]
 which packages and [[https://mason-registry.dev/registry/list][lists]] pretty much all the language servers going.
 
+Language servers I've installed
+
++ [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] for Python
++ [[https://github.com/wader/jq-lsp][jq-lsp]] for ~jq~
++ [[https://ltex-plus.github.io/ltex-plus/][ltex-ls-plus]]
++ [[https://github.com/DavidAnson/markdownlint-cli2][markdownlint-cli2]]
++ [[https://github.com/python/mypy][mypy]]
++ [[https://github.com/fsouza/prettierd][prettierd]]
++ [[https://www.pydocstyle.org/][pydocstyle]]
++ [[https://pypi.org/project/pylint/][pylint]]
++ [[https://github.com/astral-sh/ruff/][ruff]]
++ [[https://github.com/REditorSupport/languageserver][r-languageserver]]
++ [[https://github.com/rust-lang/rust-analyzer][rust-analyzer]]
++ [[https://www.shellcheck.net/][shellcheck]]
++ [[https://github.com/quarylabs/sqruff][sqruff]]
++ [[https://docs.astral.sh/uv/][uv]]
++ [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
++ [[https://github.com/adrienverge/yamllint][yamllint]]
+
 #+NAME: code-mason
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package mason
@@ -2743,6 +2762,20 @@ which packages and [[https://mason-registry.dev/registry/list][lists]] pretty mu
     :defer 0.5
     :hook
     (after-init-hook . mason-ensure))
+;; (mason-install('jedi-language-server))
+;; (mason-install jq-lsp)
+;; (mason-install ltex-ls-plus)
+;; (mason-install markdownlint-cli2)
+;; (mason-install mypy)
+;; (mason-install prettierd)
+;; (mason-install pydocstyle)
+;; (mason-install pylint)
+;; (mason-install ruff)
+;; (mason-install r-languageserver)
+;; (mason-install rust-analyzer)
+;; (mason-install shellcheck)
+;; (mason-install yaml-language-server)
+;; (mason-install yamllint)
 
 #+END_SRC
 
