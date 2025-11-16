@@ -280,6 +280,8 @@ bars.
 
 + [[http://yummymelon.com/devnull/til-imenu.html][imenu]]
 + [[https://github.com/rexim/org-cliplink][org-cliplink]]
++ [[https://emacs.stackexchange.com/a/110][compilation-finish-functions]]
++ [[https://emacs.stackexchange.com/a/40773/10100][delete-trailing-whitespace]]
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -287,7 +289,6 @@ bars.
     :custom
     ;; Add local lisp for miscellaneous things
     (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
-    (add-to-list 'load-path "~/.config/emacs/lisp/") ; Local LISP
     (custom-file "~/.config/emacs/custom.el")
     (package-install-upgrade-built-in t) ; Upgrade built-in packages
     (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
@@ -325,6 +326,7 @@ bars.
     ;;     native-comp-deferred-compilation t))
     (set-frame-parameter nil 'alpha-background 85) ; Transparency
     (add-to-list 'default-frame-alist '(alpha-background . 85))
+    (add-to-list 'default-frame-alist '(vertical-scoll-bars . right))
     :config
     (setq-default fill-column 120) ; Reset line-length
     (setq-default indent-tabs-mode nil)
@@ -337,10 +339,10 @@ bars.
     :bind (("C-c U" . revert-buffer)
 	    ("C-c D" . toggle-debug-on-error)
 	    ;; Org
-	    ("\C-c l" . org-store-link)
-	    ("\C-c c" . org-capture)
-	    ("\C-c a" . org-agenda)
-	    ("\C-c b" . org-iswitchb)
+	    ("C-c l" . org-store-link)
+	    ("C-c c" . org-capture)
+	    ("C-c a" . org-agenda)
+	    ("C-c b" . org-iswitchb)
 	    ("C-x p i" . org-org-cliplink)
 	    ;; Magit /code review
 	    ("C-x g" . magit-status)
@@ -354,9 +356,9 @@ bars.
        text-mode) . auto-fill-mode)
     ((latex-mode
        prog-mode) . hs-minor-mode)
-    (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf))) ;; https://emacs.stackexchange.com/a/110
+    (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
     (auto-fill-function . do-auto-fill)
-    (before-save . delete-trailing-whitespace) ;; https://emacs.stackexchange.com/a/40773/10100
+    (before-save . delete-trailing-whitespace) ;;
     (before-save . do-auto-fill)
     (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
     ;; imenu
