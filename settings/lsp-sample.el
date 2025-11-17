@@ -153,3 +153,11 @@
 ;;   :ensure t
 ;;   :defer t
 ;;   :hook (python-mode . yapf-mode))
+
+(use-package lsp-ltex-plus
+  :ensure t
+  ;; :hook (text-mode . (lambda ()
+  ;;   	       (require 'lsp-ltex-plus)
+  ;;   	       (lsp)))  ; or lsp-deferred
+  :init
+  (setq lsp-ltex-plus-version "18.4.0"))
