@@ -3415,18 +3415,26 @@ Not currently tangled.
 
 #+NAME: code-element
 #+BEGIN_SRC emacs-lisp :tangle no
-;;;
-;;;
-;;; Doesn't
-;; (use-package ement
-;;   :ensure t)
+(use-package ement
+  :ensure t
+  :defer 6)
 #+END_SRC
 
 
 ** Slack
 
-I use Slack for work (it's slowly replacing email as the main interuptor) but I try not to look at work outside of work
-so haven't adopted using Emacs to look at it. There is the [[https://github.com/isamert/emacs-slack][emacs-slack]] package if required though.
+I use Slack for work (it's replacing email as the main interuptor of my concentration because why not ping someone a
+message that could easily be sent by email?!?!?!) but I try not to look at work outside of work so haven't adopted using
+Emacs to look at it. There is the [[https://github.com/isamert/emacs-slack][emacs-slack]] package if required though.
+
+** Deltachat
+
+[[https://delta.chat/en/][Deltachat]] is in essence Encrypted Instant Messaging over email (it uses [[https://scarbrough.co.uk/post/autocrypt-deltachat/][Autocrypt and OpenPGP]]). There isn't an official
+client for Emacs yet but some have asked for it and there are some related threads/themes.
+
++ [[https://support.delta.chat/t/request-deltachat-emacs/2458][Request: deltachat-emacs - Feature Proposal - Delta.Chat]]
++ [[https://thibaut.dev/blog/deltachat-inbox-bot.html][Deltachat inbox bot]]
+
 * Miscellaneous
 <<sec:misc>>
 
