@@ -3640,6 +3640,31 @@ the per-major-mode scratch buffers.
 
 #+END_SRC
 
+* Documentation
+
+** DevDocs
+<<sec:devdocs>>
+
+[[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]].
+
++ kubernetes
++ markdown
++ matplotlib
++ nginx
++ numpy-2.2
++ pandas-2
++ python-3.14
++ rust
++ sqlite
+
+#+NAME: code-devdocs
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package devdocs
+    :ensure t
+    :defer 4
+    :bind ("C-h D" . devdocs-lookup))
+#+END_SRC
+
 * User Interface
 
 Elements concerned with the User Interface which typically means how buffers, mini-buffers, modeline look.
