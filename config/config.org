@@ -3368,16 +3368,20 @@ Email is another area I'm yet to integrate into Emacs. Mainly as I've used the W
 consider switching. Might be a little tricky as its likely to involve the [[https://protonmail.me][Proton Mail]] Bridge. There seems to be two
 options in Emacs Gnus or mu4e
 
-General articles to refer to.
+*** General articles to refer to.
 
 + [[https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/][A Complete Guide to Email in Emacs using Mu and Mu4e]]
 
-Getting email working with ProtonMail (I've mirrored some of the following to my own [[https://opengist.nshephard.dev/nshephard/c092d263b738444ea893fe2d59d11006][gist]]).
+*** Getting email working with ProtonMail (I've mirrored some of the following to my own [[https://opengist.nshephard.dev/nshephard/c092d263b738444ea893fe2d59d11006][gist]]).
 
 + [[https://gist.github.com/alexispurslane/28be85797872fcc3fda80e2aa973903c][A complete and fully-working (including STARTTLS encryption and HTML emails) setup to use Proton Mail Bridge with
   emacs]] seems useful.
 + [[https://gist.github.com/A6GibKm/238b754a4a90051f60906b9efa3e8000][Connecting Emacs and Protonmail Bridge]].
 + [[https://shom.dev/posts/20220108_setting-up-protonmail-in-emacs/][Setting up Protonmail in Emacs | shom.dev]]
+
+*** Organising Emails
+
++ [[https://cnoceda.com/tecnologia/posts/20251119T083113--searching-by-sender-in-notmuch__blog_emacs_email_notmuch_tecnologia.html][Searching by sender in notmuch]]
 
 ** Mastodon
 <<sec:mastodon>>
