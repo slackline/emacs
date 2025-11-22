@@ -986,6 +986,7 @@ Not currently tangled.
 
 [[https://github.com/pkryger/difftastic.el][difftastic.el]] brings the brilliant code aware [[https://difftastic.wilfred.me.uk/][difftastic]] ([[https://github.com/Wilfred/difftastic][GitHub]]) to Emacs. This package replaces an earlier [[https://tsdh.org/posts/2022-08-01-difftastic-diffing-with-magit.html][custom configuration]]
 that I found and had happily used for a while.
+
 #+NAME: code-difftastic
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package difftastic
@@ -1064,34 +1065,6 @@ worth it as it massively improves workflow.
 
 #+END_SRC
 
-** git-modes
-<<sec:git-modes>>
-
-[[https://github.com/magit/git-modes][git-modes]] provides major modes for Git configuration files.
-
-#+NAME: code-git-modes
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package git-modes
-  :ensure t
-  :defer 3
-  :after (magit))
-
-#+END_SRC
-
-** gh-notify
-<<sec:gh-notify>>
-
-[[https://github.com/anticomputer/gh-notify][gh-notify]] a "/thin UI veneer on top of Magit/Forge porcelain for juggling large amounts of GitHub notifications at
-speed.".
-
-#+NAME: code-gh-notify
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package gh-notify
-  :ensure t
-  :after (magit))
-
-#+END_SRC
-
 ** gitlab-ci-mode
 <<sec:gitlab-ci-mode>>
 
@@ -1130,13 +1103,40 @@ Currently not tangled.
   (use-package git-link
     :ensure t
     :after (magit)
-    ;; :bind (("C-c m g g" . git-link-dispatch)
-    ;;         ("C-c m g g" . git-link-dispatch)
-    ;;         ("C-c m g l" . git-link)
-    ;;         ("C-c m g c" . git-link-commit)
-    ;;         ("C-c m g h" . git-link-homepage))
+    :bind (("C-c m g c" . git-link-commit)
+            ("C-c m g g" . git-link-dispatch)
+            ("C-c m g h" . git-link-homepage)
+            ("C-c m g l" . git-link))
     :config
     (require 'git-link-transient))
+
+#+END_SRC
+
+** git-modes
+<<sec:git-modes>>
+
+[[https://github.com/magit/git-modes][git-modes]] provides major modes for Git configuration files.
+
+#+NAME: code-git-modes
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package git-modes
+  :ensure t
+  :defer 3
+  :after (magit))
+
+#+END_SRC
+
+** gh-notify
+<<sec:gh-notify>>
+
+[[https://github.com/anticomputer/gh-notify][gh-notify]] a "/thin UI veneer on top of Magit/Forge porcelain for juggling large amounts of GitHub notifications at
+speed.".
+
+#+NAME: code-gh-notify
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package gh-notify
+  :ensure t
+  :after (magit))
 
 #+END_SRC
 
@@ -1169,14 +1169,15 @@ Currently not tangled.
   :after (magit))
 #+END_SRC
 
-
 ** magit-delta
 <<sec:magit-delta>>
 
-[[https://github.com/dandavison/magit-delta][magit-delta]]
+[[https://github.com/dandavison/magit-delta][magit-delta]] use [[https://github.com/dandavison/delta][delta]] but I currently prefer [[sec:difftastic][difftastic]].
+
+Not currently tangled.
 
 #+NAME: code-magit-delta
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 
 (use-package magit-delta
   :ensure t
@@ -1184,7 +1185,6 @@ Currently not tangled.
   :hook (magit-mode . magit-delta-mode))
 
 #+END_SRC
-
 ** magit-gitlab
 <<sec:magit-gitlab>>
 
@@ -1199,7 +1199,6 @@ Currently not tangled.
   :after (magit))
 
 #+END_SRC
-
 
 ** magit-imerge
 <<sec:magit-imerge>>
@@ -1263,10 +1262,13 @@ Currently not tangled.
 ** pr-review
 <<sec:pr-review>>
 
-[[https://github.com/blahgeek/emacs-pr-review][pr-review]]
+[[https://github.com/blahgeek/emacs-pr-review][pr-review]] aids with reviewing pull-requests on GitHub. I don't use it much, in fact I can't recall ever using it so its
+currently not included.
+
+Not currently tangled.
 
 #+NAME: code-pr-review
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package pr-review
   :ensure t
   :defer 0.5
@@ -1286,6 +1288,62 @@ Currently not tangled.
   :defer 0.5
   :after (magit))
 
+#+END_SRC
+
+** Git Blame
+
+There are a few packages for showing/viewing Git Blame.
+
+[[https://github.com/LuciusChen/blame-reveal][blame-reveal]] which I've not tried yet as its not yet on [[https://melpa.org][MELPA]] or other repositories.
+
+
+*** blamer
+<<sec:blamer>>
+
+[[https://github.com/artawower/blamer.el][blamer.el]] shows pop-ups for the current line when ~blamer-idle-time~ is exceeded. Not necessarily something I wanted
+popping up all the time but potentially useful.
+
+Not currently tangled.
+
+#+NAME: code-blamer
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package blamer
+  :ensure t
+  :bind (("s-i" . blamer-show-commit-info)
+         ("C-c i" . blamer-show-posframe-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))
+
+#+END_SRC
+
+*** why-this
+<<sec:why-this>>
+
+[[https://codeberg.org/akib/emacs-why-this][why-this]] is a mode for showing Git blame annotations, you can find the blame for a current position with ~why-this~ and
+it will show up in the mini-buffer or you can ~why-this-annotate~ on the current buffer and a new buffer appears showing
+the blame for each line of code.
+
+#+NAME: code-why-this
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package why-this
+  :ensure t
+  :defer 1
+  :after magit
+  :custom
+  (set-face-background 'why-this-annotate-heat-map-cold "#203448")
+  (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
+  :bind
+  (("C-c m w" . 'why-this)
+   ("C-c m W" . 'why-this-annotate)))
 #+END_SRC
 
 * Transient
