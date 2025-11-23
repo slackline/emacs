@@ -393,6 +393,22 @@ bars.
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 #+END_SRC
 
+** Keychain
+<<sec:keychain-environment>>
+
+[[https://github.com/emacsorphanage/keychain-environment][keychain-environment]] is an orphaned package that looks for files created by [[https://github.com/danielrobbins/keychain][keychain]] that are used to manage SSH and GPG
+agents. I used this before [[sec:ssh-agency][ssh-agency]] until it broke but haven't had 100% success with [[sec:ssh-agency][ssh-agency]] so keep it hanging
+around.
+
+#+NAME: code-keychain-environment
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package keychain-environment
+  :ensure t
+  :bind (("C-c k" . 'keychain-refresh-environment))
+  :init (keychain-refresh-environment))
+
+#+END_SRC
+
 ** Custom Functions
 <<sec:custom_functions>>
 
