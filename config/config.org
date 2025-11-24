@@ -2003,7 +2003,15 @@ well as profiling).
      ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
      ("--element-number" "Defines how many elements will display in a result" "--element-number")
      ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")])
-  )
+  (transient-append-suffix
+    'python-pytest-dispatch
+    '(0)
+    ["Matplotlib Plugin"
+      ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
+      ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
+      ("--summary-html" "Generate summary report in HTML" "--mpl-generate-summary html")
+      ("--summary-json" "Generate summary report in JSON" "--mpl-generate-summary json")])
+)
 #+END_SRC
 
 ***** Ruff
