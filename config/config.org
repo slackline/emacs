@@ -1767,303 +1767,42 @@ this available so sticking with `:config` to ensure the package is always loaded
   (direnv-mode))
 #+END_SRC
 
+** Code folding
+*** kirigami
+<<sec:kirigami>>
+
+#+NAME: code-kirigami
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package kirigami
+  :ensure t
+  :after treesit-fold-mode
+  :defer 2
+  :bind-keymap ("C-c C-f"))
+
+#+END_SRC
+
+
 ** Programming Modes
 
-*** Python Mode
-<<sec:python>>
+*** CSV Mode
+<<sec:csv-mode>>
 
-[[https://gitlab.com/python-mode-devs/python-mode][Python mode]] is a major mode for editing Python files. I don't do much to customise this, the following is loaded _after_
-[[sec:pyvenv][pyvenv]]...
+[[https://elpa.gnu.org/packages/csv-mode.html][csv-mode]] is a mode for working with ~.csv~ files. There is a handy ~casual-csv~ transient courtesy of Charles Choi's
+excellent [[sec:casual-suite][casual]] package which provides [[sec:transient][transient]] buffers to hold your hand through the options for [[http://yummymelon.com/devnull/announcing-casual-csv.html][manipulating]] ~.csv~
+files.
 
-+ Disable a guess indent message.
-+ Enables [[https://ipython.org/][IPython]] as the ~python-shell-interpreter~ and sets some arguments.
-+ Defines two custom skeletons, the first to insert a ~print()~ statement with an f-string to show the value of a
-  parameters (useful for debugging code). The second to insert a ~@pytest.mark.parametrize()~ test function (which is
-  ultimately redundant since I have a [[sec:yasnippet][YASnippet]] template to do the same thing).
-+ Maps some keybindings to make it easy to run some short-cuts such as ~python-test-dispatch~, ~pylint~,
-  ~blacken-buffer~ and insert some of the common ~python-skeleton~'s.
+*TODO* This still needs some work, need to make sure the hooks suggested work correctly, don't think they do at the
+moment.
 
-I used to define a couple of [[https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons][skeletons]] here but only use the ~print~ one these days as I use [[sec:yasnippet][YASnippet]] for inserting
-most templates these days (I should probably shift over but have the muscle memory that binds ~print~ to ~C-c P~).
-
-#+NAME: code-python
+#+NAME: code-csv-mode
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package python
-  :after (pyvenv)
+(use-package csv-mode
   :ensure t
-  :defer 1
-  :config
-  ;; Remove guess indent python message
-  (setq python-indent-guess-indent-offset-verbose nil
-	python-shell-interpreter "ipython"
-	python-shell-interpreter-args "-i --simple-prompt"
-	python-environment-directory venv-location)
-  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
-  ;; Define a skeleton for printing
-  (python-skeleton-define print
-			  "Insert a print statement that will show the value of the argument."
-			  "Enter the variable/object name: "
-			  "print(f'\\n{" str "=}\\n')")
-  :bind (:map python-mode-map
-	      ("C-c p t" . python-pytest-dispatch)
-	      ("C-c p l" . pylint)
-	      ("C-c p y" . pylint-insert-ignore-comment)
-	      ("C-c p n" . numpydoc-generate)
-	      ("C-c p b" . blacken-buffer)
-	      ("C-c p r" . ruff-format-buffer)
-	      ("C-c p v" . pyvenv-workon)
-	      ("C-c p T c" . python-skeleton-class)
-	      ("C-c p T d" . python-skeleton-def)
-	      ("C-c p T f" . python-skeleton-for)
-	      ("C-c p T i" . python-skeleton-if)
-	      ("C-c p T m" . python-skeleton-import)
-	      ("C-c P" . python-skeleton-print)
-	      ("C-c p T t" . python-skeleton-try)
-	      ("C-c p T T" . python-skeleton-parameterized-test)
-	      ("C-c p T w" . python-skeleton-while)))
-
-#+END_SRC
-
-**** Virtual Environments
-
-I use two packages to manage virtual environments in conjunction with [[sec:direnv][~direnv~]]. For general Python virtual environments
-I use [[https://github.com/jorgenschaefer/pyvenv][pyvenv]] which allows me to define on a per-host basis the location of virtual environments which are defined
-globally, typically I use ~~/.virtualenvs~ which I will activate via a project/repository specific ~.envrc~ file which
-[[sec:direnv][direnv]] takes care of activating when I switch to the project directory. Recently I've started using [[https://docs.astral.sh/uv/][uv]] to manage
-packages and projects and so have also added [[https://github.com/z80dev/uv-mode][uv-mode]] to my configuration to take care of activating project specific
-virtual environments which reside in the ~.venv~ directory created by ~uv~ within the project directory itself.
-
-***** envdir
-
-***** pyvenv
-<<sec:pyvenv>>
-
-#+NAME: code-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package pyvenv
-  :ensure t
-  :defer 1
-  :config
-  ;; Setting work on to easily switch between environments
-  (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
-  (pyvenv-mode 1)
-  ;; Display virtual envs in the menu bar
-  (setq pyvenv-menu t
-	venv-byhost
-	'(("kimura" . "~/.virtualenvs/")
-	  ("fisher" . "~/.virtualenvs/")
-	  ("haldane" . "~/.virtualenvs/")
-	  ("ovh" . "~/.virtualenvs/")
-	  ("alarmpi" . "~/.virtualenvs/")
-	  ("alarmpi-4b" . "~/.virtualenvs/"))
-	venv-location (cdr
-		       (assoc system-name venv-byhost))
-	default-venv-byhost
-	'(("kimura" . "~/.virtualenvs/default")
-	  ("fisher" . "~/.virtualenvs/python3_9")
-	  ("haldane" . "~/.virtualenvs/default")
-	  ("ovh" . "~/.virtualenvs/default")
-	  ("alarmpi" . "~/.virtualenvs/default")
-	  ("alarmpi-4b" . "~/.virtualenvs/default"))
-	default-venv (cdr
-		      (assoc system-name default-venv-byhost))
-	python-environment-directory venv-location)
-  ;; Restart the python process when switching environments
-  (add-hook 'pyvenv-post-activate-hooks (lambda ()
-					  (pyvenv-restart-python)))
-  :hook (python-mode . pyvenv-mode)
-  (after-init-hook . (pyvenv-workon default-env))
-  )
-#+END_SRC
-
-***** pyvenv-auto
-<<sec:pyvenv-auto>>
-
-#+NAME: code-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package pyvenv-auto
-  :ensure t
-  :after (python-mode)
-  :hook ((python-mode . pyvenv-auto-run)))
-
-#+END_SRC
-
-***** uv-mode
-<<sec:uv-mode>>
-
-[[https://github.com/z80dev/uv-mode][uv-mode]] "/provides seamless integration between [[https://docs.astral.sh/uv][uv]] and Emacs ~python-mode~/".
-
-#+NAME: code-uv-mode
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package uv-mode
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :hook (python-mode . uv-mode-auto-activate-hook))
-
-#+END_SRC
-
-**** Additional packages
-
-***** Blacken
-<<sec:blacken>>
-
-[[https://black.readthedocs.io/en/stable/][Black]] is "/the uncompromising code formatter/" and Emacs has the [[https://github.com/pythonic-emacs/blacken][blacken]] package which allows applying Black formatting
-to a buffer via keybinding (see above configuration option under [[sec:python][Python]]) or automatically on saving.
-
-#+NAME: code-blacken
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package blacken
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (:map python-mode-map
-          ("C-c p b" . blacken-buffer))
-  :custom
-  (blacken-line-length 120)
-  :hook (python-mode . blacken-mode))
-#+END_SRC
-
-***** Numpydoc
-<<sec:numpydoc>>
-
-[[https://github.com/douglasdavis/numpydoc.el][numpydoc.el]] is a great package that simplifies writing docstrings for functions.
-
-I've made a minor [[https://github.com/douglasdavis/numpydoc.el/pull/20][contribution]] to it in so much as it didn't write docstrings that were compliant with [[https://numpydoc.readthedocs.io/en/latest/validation.html][Numpydoc
-validation]] rules.
-
-#+NAME: code-numpydoc
-#+BEGIN_SRC emacs-lisp :tangle init.el
-
-(use-package numpydoc
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (:map python-mode-map
-	      ("C-c p n" . numpydoc-generate))
-  :custom
-  (numpydoc-prompt-for-input t)
-  (numpydoc-insert-examples-block 0)
-  ;; Awaiting merge
-  ;; (numpydoc-newline-after-opening-quotes t)
-  (numpydoc-insert-raises-block 0))
-#+END_SRC
-
-***** Pylint
-<<sec:pylint>>
-
-There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] package which is referenced for completeness. Typically I defer running [[https://pylint.org][Pylint]] to a
-[[https://pre-commit.com][Pre-commit]] hook.
-
-#+NAME: code-pylint
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package pylint
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (:map python-mode-map
-	  ("C-c p l" . pylint))
-  :hook (python-mode . pylint-add-menu)
-  (python-mode . add-key-bindings))
-
-#+END_SRC
-
-***** Pytest
-<<sec:pytest>>
-
-[[https://pytest.org][Pytest]] is well supported via [[https://github.com/wbolster/emacs-python-pytest][emacs-python-pytest]]. I've bound ~python-pytest-dispatch~ to ~C-c p t~ which brings up a
-transient buffer with options for running ~pytest~ on a given file or function at the cursor location. This transient
-buffer is highly configurable and I add some options for running regression tests (both [[https://pytest-regtest.readthedocs.io/en/latest/][pytest-regtest]] and [[https://syrupy-project.github.io/syrupy/][syrupy]] as
-well as profiling).
-
-#+NAME: code-pytest
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package python-pytest
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (:map python-mode-map
-	      ("C-c p t" . python-pytest-dispatch))
-  :custom
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Regression Tests"
-     ("-r" "Reset regression tests" "--regtest-reset")
-     ("--su" "Reset Syrupy snapshot" "--snapshot-update")
-     ("--tee" "Print results" "--regtest-tee")
-     ("--nodiff" "Suppress output" "--regtest-nodiff")
-     ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Profiling"
-     ("-P" "Generate profiling information" "--profile")
-     ("--profile-svg" "Generate profiling graph" "--profile-svg")
-     ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
-     ("--element-number" "Defines how many elements will display in a result" "--element-number")
-     ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")])
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Matplotlib Plugin"
-      ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
-      ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
-      ("--summary-html" "Generate summary report in HTML" "--mpl-generate-summary html")
-      ("--summary-json" "Generate summary report in JSON" "--mpl-generate-summary json")])
-)
-#+END_SRC
-
-***** Ruff
-<<sec:ruff>>
-
-[[https://docs.astral.sh/ruff][Ruff]] is a fast Python linter that is subsuming Black, Flake8, Yapf and Pylint.
-
-+ [[https://github.com/scop/emacs-ruff-format][emacs-ruff-format]]
-+ [[https://github.com/christophermadsen/emacs-lazy-ruff][emacs-lazy-ruff]]
-+ [[https://github.com/erickgnavar/flymake-ruff][flymake-ruff]]
-
-#+NAME: code-ruff
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package ruff-format
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (:map python-mode-map
-	  ("C-c p r" . ruff-format-buffer))
-  :after (python-mode)
-  :hook (python-mode . ruff-format-on-save-mode))
-
-(use-package lazy-ruff
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
-  :config
-  (lazy-ruff-mode-global-toggle t)) ;; Enable the lazy-ruff minor mode globally
-
-(use-package flymake-ruff
-  :ensure t
-  :defer 0.5
-  :after (python-mode)
-  ;; :hook (python-mode . flymake-ruff-load))
-  :hook (lsp-managed-mode . flymake-ruff-load))
-
-#+END_SRC
-
-***** Yapf
-<<sec:yapf>>
-
-[[https://github.com/JorisE/yapfify][Yapfify]] can be used to apply Googles [[https://github.com/google/yapf][yapf]] formatting. I don't use this so the following section is not tangled to my
-config but is included on the off-chance I change my mind or someone else finds it useful.
-
-#+NAME: code-yapf
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package yapfify
-  :ensure t
-  :defer t
-  :after (python-mode)
-  :hook (python-mode . yapf-mode))
+  :defer 6
+  :mode (("\\.csv" . csv-mode))
+  :hook
+    (csv-mode . csv-guess-set-separator)
+    (csv-mode . 'csv-align-mode))
 
 #+END_SRC
 
@@ -2509,6 +2248,296 @@ I dabbled with [[https://nixos.org/][NixOS]] in the past and used these packages
 
 #+END_SRC
 
+*** Python Mode
+<<sec:python>>
+
+[[https://gitlab.com/python-mode-devs/python-mode][Python mode]] is a major mode for editing Python files. I don't do much to customise this, the following is loaded _after_
+[[sec:pyvenv][pyvenv]]...
+
++ Disable a guess indent message.
++ Enables [[https://ipython.org/][IPython]] as the ~python-shell-interpreter~ and sets some arguments.
++ Defines two custom skeletons, the first to insert a ~print()~ statement with an f-string to show the value of a
+  parameters (useful for debugging code). The second to insert a ~@pytest.mark.parametrize()~ test function (which is
+  ultimately redundant since I have a [[sec:yasnippet][YASnippet]] template to do the same thing).
++ Maps some keybindings to make it easy to run some short-cuts such as ~python-test-dispatch~, ~pylint~,
+  ~blacken-buffer~ and insert some of the common ~python-skeleton~'s.
+
+I used to define a couple of [[https://emacs.stackexchange.com/questions/80320/defining-custom-python-skeletons][skeletons]] here but only use the ~print~ one these days as I use [[sec:yasnippet][YASnippet]] for inserting
+most templates these days (I should probably shift over but have the muscle memory that binds ~print~ to ~C-c P~).
+
+#+NAME: code-python
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package python
+  :after (pyvenv)
+  :ensure t
+  :defer 1
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil
+	python-shell-interpreter "ipython"
+	python-shell-interpreter-args "-i --simple-prompt"
+	python-environment-directory venv-location)
+  (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
+  ;; Define a skeleton for printing
+  (python-skeleton-define print
+			  "Insert a print statement that will show the value of the argument."
+			  "Enter the variable/object name: "
+			  "print(f'\\n{" str "=}\\n')")
+  :bind (:map python-mode-map
+	      ("C-c p t" . python-pytest-dispatch)
+	      ("C-c p l" . pylint)
+	      ("C-c p y" . pylint-insert-ignore-comment)
+	      ("C-c p n" . numpydoc-generate)
+	      ("C-c p b" . blacken-buffer)
+	      ("C-c p r" . ruff-format-buffer)
+	      ("C-c p v" . pyvenv-workon)
+	      ("C-c p T c" . python-skeleton-class)
+	      ("C-c p T d" . python-skeleton-def)
+	      ("C-c p T f" . python-skeleton-for)
+	      ("C-c p T i" . python-skeleton-if)
+	      ("C-c p T m" . python-skeleton-import)
+	      ("C-c P" . python-skeleton-print)
+	      ("C-c p T t" . python-skeleton-try)
+	      ("C-c p T T" . python-skeleton-parameterized-test)
+	      ("C-c p T w" . python-skeleton-while)))
+
+#+END_SRC
+
+**** Virtual Environments
+
+I use two packages to manage virtual environments in conjunction with [[sec:direnv][~direnv~]]. For general Python virtual environments
+I use [[https://github.com/jorgenschaefer/pyvenv][pyvenv]] which allows me to define on a per-host basis the location of virtual environments which are defined
+globally, typically I use ~~/.virtualenvs~ which I will activate via a project/repository specific ~.envrc~ file which
+[[sec:direnv][direnv]] takes care of activating when I switch to the project directory. Recently I've started using [[https://docs.astral.sh/uv/][uv]] to manage
+packages and projects and so have also added [[https://github.com/z80dev/uv-mode][uv-mode]] to my configuration to take care of activating project specific
+virtual environments which reside in the ~.venv~ directory created by ~uv~ within the project directory itself.
+
+***** envdir
+
+***** pyvenv
+<<sec:pyvenv>>
+
+#+NAME: code-pyvenv
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package pyvenv
+  :ensure t
+  :defer 1
+  :config
+  ;; Setting work on to easily switch between environments
+  (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
+  (pyvenv-mode 1)
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t
+	venv-byhost
+	'(("kimura" . "~/.virtualenvs/")
+	  ("fisher" . "~/.virtualenvs/")
+	  ("haldane" . "~/.virtualenvs/")
+	  ("ovh" . "~/.virtualenvs/")
+	  ("alarmpi" . "~/.virtualenvs/")
+	  ("alarmpi-4b" . "~/.virtualenvs/"))
+	venv-location (cdr
+		       (assoc system-name venv-byhost))
+	default-venv-byhost
+	'(("kimura" . "~/.virtualenvs/default")
+	  ("fisher" . "~/.virtualenvs/python3_9")
+	  ("haldane" . "~/.virtualenvs/default")
+	  ("ovh" . "~/.virtualenvs/default")
+	  ("alarmpi" . "~/.virtualenvs/default")
+	  ("alarmpi-4b" . "~/.virtualenvs/default"))
+	default-venv (cdr
+		      (assoc system-name default-venv-byhost))
+	python-environment-directory venv-location)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+					  (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode)
+  (after-init-hook . (pyvenv-workon default-env))
+  )
+#+END_SRC
+
+***** pyvenv-auto
+<<sec:pyvenv-auto>>
+
+#+NAME: code-pyvenv
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package pyvenv-auto
+  :ensure t
+  :after (python-mode)
+  :hook ((python-mode . pyvenv-auto-run)))
+
+#+END_SRC
+
+***** uv-mode
+<<sec:uv-mode>>
+
+[[https://github.com/z80dev/uv-mode][uv-mode]] "/provides seamless integration between [[https://docs.astral.sh/uv][uv]] and Emacs ~python-mode~/".
+
+#+NAME: code-uv-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package uv-mode
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :hook (python-mode . uv-mode-auto-activate-hook))
+
+#+END_SRC
+
+**** Additional packages
+
+***** Blacken
+<<sec:blacken>>
+
+[[https://black.readthedocs.io/en/stable/][Black]] is "/the uncompromising code formatter/" and Emacs has the [[https://github.com/pythonic-emacs/blacken][blacken]] package which allows applying Black formatting
+to a buffer via keybinding (see above configuration option under [[sec:python][Python]]) or automatically on saving.
+
+#+NAME: code-blacken
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package blacken
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+          ("C-c p b" . blacken-buffer))
+  :custom
+  (blacken-line-length 120)
+  :hook (python-mode . blacken-mode))
+#+END_SRC
+
+***** Numpydoc
+<<sec:numpydoc>>
+
+[[https://github.com/douglasdavis/numpydoc.el][numpydoc.el]] is a great package that simplifies writing docstrings for functions.
+
+I've made a minor [[https://github.com/douglasdavis/numpydoc.el/pull/20][contribution]] to it in so much as it didn't write docstrings that were compliant with [[https://numpydoc.readthedocs.io/en/latest/validation.html][Numpydoc
+validation]] rules.
+
+#+NAME: code-numpydoc
+#+BEGIN_SRC emacs-lisp :tangle init.el
+
+(use-package numpydoc
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	      ("C-c p n" . numpydoc-generate))
+  :custom
+  (numpydoc-prompt-for-input t)
+  (numpydoc-insert-examples-block 0)
+  ;; Awaiting merge
+  ;; (numpydoc-newline-after-opening-quotes t)
+  (numpydoc-insert-raises-block 0))
+#+END_SRC
+
+***** Pylint
+<<sec:pylint>>
+
+There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] package which is referenced for completeness. Typically I defer running [[https://pylint.org][Pylint]] to a
+[[https://pre-commit.com][Pre-commit]] hook.
+
+#+NAME: code-pylint
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package pylint
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	  ("C-c p l" . pylint))
+  :hook (python-mode . pylint-add-menu)
+  (python-mode . add-key-bindings))
+
+#+END_SRC
+
+***** Pytest
+<<sec:pytest>>
+
+[[https://pytest.org][Pytest]] is well supported via [[https://github.com/wbolster/emacs-python-pytest][emacs-python-pytest]]. I've bound ~python-pytest-dispatch~ to ~C-c p t~ which brings up a
+transient buffer with options for running ~pytest~ on a given file or function at the cursor location. This transient
+buffer is highly configurable and I add some options for running regression tests (both [[https://pytest-regtest.readthedocs.io/en/latest/][pytest-regtest]] and [[https://syrupy-project.github.io/syrupy/][syrupy]] as
+well as profiling).
+
+#+NAME: code-pytest
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package python-pytest
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	      ("C-c p t" . python-pytest-dispatch))
+  :custom
+  (transient-append-suffix
+    'python-pytest-dispatch
+    '(0)
+    ["Regression Tests"
+     ("-r" "Reset regression tests" "--regtest-reset")
+     ("--su" "Reset Syrupy snapshot" "--snapshot-update")
+     ("--tee" "Print results" "--regtest-tee")
+     ("--nodiff" "Suppress output" "--regtest-nodiff")
+     ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
+  (transient-append-suffix
+    'python-pytest-dispatch
+    '(0)
+    ["Profiling"
+     ("-P" "Generate profiling information" "--profile")
+     ("--profile-svg" "Generate profiling graph" "--profile-svg")
+     ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
+     ("--element-number" "Defines how many elements will display in a result" "--element-number")
+     ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")])
+  )
+#+END_SRC
+
+***** Ruff
+<<sec:ruff>>
+
+[[https://docs.astral.sh/ruff][Ruff]] is a fast Python linter that is subsuming Black, Flake8, Yapf and Pylint.
+
++ [[https://github.com/scop/emacs-ruff-format][emacs-ruff-format]]
++ [[https://github.com/christophermadsen/emacs-lazy-ruff][emacs-lazy-ruff]]
++ [[https://github.com/erickgnavar/flymake-ruff][flymake-ruff]]
+
+#+NAME: code-ruff
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package ruff-format
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (:map python-mode-map
+	  ("C-c p r" . ruff-format-buffer))
+  :after (python-mode)
+  :hook (python-mode . ruff-format-on-save-mode))
+
+(use-package lazy-ruff
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
+  :config
+  (lazy-ruff-mode-global-toggle t)) ;; Enable the lazy-ruff minor mode globally
+
+(use-package flymake-ruff
+  :ensure t
+  :defer 0.5
+  :after (python-mode)
+  ;; :hook (python-mode . flymake-ruff-load))
+  :hook (lsp-managed-mode . flymake-ruff-load))
+
+#+END_SRC
+
+***** Yapf
+<<sec:yapf>>
+
+[[https://github.com/JorisE/yapfify][Yapfify]] can be used to apply Googles [[https://github.com/google/yapf][yapf]] formatting. I don't use this so the following section is not tangled to my
+config but is included on the off-chance I change my mind or someone else finds it useful.
+
+#+NAME: code-yapf
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package yapfify
+  :ensure t
+  :defer t
+  :after (python-mode)
+  :hook (python-mode . yapf-mode))
+
+#+END_SRC
+
 *** Rust Mode
 <<sec:rust>>
 
@@ -2808,35 +2837,37 @@ Restore match data previously stored in PROPERTY."
 ** LSP Mode
 <<sec:lsp>>
 
-Whilst Eglot is built-in to Emacs since v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have for now stuck with it.
+Whilst Eglot is built-in to Emacs since ~v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have stuck with it.
 
 *** mason
 <<sec:mason>>
 
 [[https://github.com/deirn/mason.el][mason]] solves a major headache with using either [[sec:lsp-mode][lsp-mode]] or the built-in ~eglot~ which is that external language servers
-are required which do the leg work/magic in the background. Many operating systems have these in their package manager
-or they can be manually installed (e.g. [[https://github.com/ltex-plus/ltex-ls-plus][ltex-ls-plus]]). ~mason~ solves this by being an installed to the [[https://github.com/mason-org/mason-registry][mason-registry]]
-which packages and [[https://mason-registry.dev/registry/list][lists]] pretty much all the language servers going.
+are required to do the leg work (aka "magic") in the background. Many operating systems have these in their package
+manager or they can be manually installed (e.g. [[https://github.com/ltex-plus/ltex-ls-plus][ltex-ls-plus]]). ~mason~ solves this by being an installed to the
+[[https://github.com/mason-org/mason-registry][mason-registry]] which packages and [[https://mason-registry.dev/registry/list][lists]] pretty much all the language servers going.
 
 Language servers I've installed
 
-+ [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] for Python
-+ [[https://github.com/wader/jq-lsp][jq-lsp]] for ~jq~
-+ [[https://ltex-plus.github.io/ltex-plus/][ltex-ls-plus]]
-+ [[https://github.com/DavidAnson/markdownlint-cli2][markdownlint-cli2]]
++ [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] for [[sec:python][Python]]
++ [[https://github.com/wader/jq-lsp][jq-lsp]] for [[sec:jq-mode][~jq~]]
++ [[https://ltex-plus.github.io/ltex-plus/][ltex-ls-plus]] for [[sec:latex][LaTeX]], [[sec:org-mode][org-mode]] and more.
++ [[https://github.com/DavidAnson/markdownlint-cli2][markdownlint-cli2]] for [[sec:markdown][markdown]]
 + [[https://github.com/python/mypy][mypy]]
 + [[https://github.com/fsouza/prettierd][prettierd]]
-+ [[https://www.pydocstyle.org/][pydocstyle]]
-+ [[https://pypi.org/project/pylint/][pylint]]
-+ [[https://github.com/astral-sh/ruff/][ruff]]
++ [[https://www.pydocstyle.org/][pydocstyle]] for [[sec:python][Python]]
++ [[https://pypi.org/project/pylint/][pylint]] for [[sec:python][Python]]
++ [[https://github.com/astral-sh/ruff/][ruff]] for [[sec:python][Python]]
 + [[https://github.com/REditorSupport/languageserver][r-languageserver]]
 + [[https://github.com/rust-lang/rust-analyzer][rust-analyzer]]
 + [[https://www.shellcheck.net/][shellcheck]]
 + [[https://github.com/quarylabs/sqruff][sqruff]]
-+ [[https://docs.astral.sh/uv/][uv]]
++ [[https://docs.astral.sh/uv/][uv]] for [[sec:python][Python]]
 + [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
 + [[https://github.com/adrienverge/yamllint][yamllint]]
 
+*TODO* - How to automate installation of language servers? ~mason-install~ as defined in the commented sections below
+ doesn't work.
 #+NAME: code-mason
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package mason
@@ -2977,6 +3008,7 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package realgud-ipdb
   :ensure t
+  :after realgud
   :defer 0.5)
 
 #+END_SRC
