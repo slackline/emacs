@@ -285,6 +285,7 @@
 (load "~/.config/emacs/settings/shackle.el")
 ;; (load "~/.config/emacs/settings/casual-suite.el")
 ;; (load "~/.config/emacs/settings/ready-player.el")
+(load "~/.config/emacs/settings/kirigami.el")
 
 ;;; Org / Bib
 (load "~/.config/emacs/settings/ebib.el")
