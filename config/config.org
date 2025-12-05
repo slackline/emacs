@@ -456,6 +456,32 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
 
 #+END_SRC
 
+*** Markdown to Org mode
+<<sec:markdown-to-org>>
+
+Charles Choi [[https://sfba.social/@kickingvegas/115663448568105955][shared]] this excellent snippet for converting [[http://yummymelon.com/devnull/import-markdown-to-org-with-the-clipboard-in-emacs.html][Markdown to Org-mode on the fly]]. It requires having ~pandoc~
+installed to do the work but that isn't a problem for me as I have it on most systems.
+
+#+NAME: code-markdown-to-org
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/yank-markdown-as-org ()
+  "Yank Markdown text as Org.
+
+This command will convert Markdown text in the top of the `kill-ring'
+and convert it to Org using the pandoc utility."
+  (interactive)
+  (save-excursion
+    (with-temp-buffer
+      (yank)
+      (shell-command-on-region
+       (point-min) (point-max)
+       "pandoc -f markdown -t org --wrap=preserve" t t)
+      (kill-region (point-min) (point-max)))
+    (yank)))
+
+#+END_SRC
+
+
 
 * Completion and Navigation
 <<sec:completion-navigation>>
