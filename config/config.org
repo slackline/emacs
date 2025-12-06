@@ -266,7 +266,6 @@ Not currently tangled.
   (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
 #+END_SRC
 
-
 * Emacs Global Configuration
 
 Before loading any packages we configure Emacs itself. This uses ~:config~ as we /always/ want to load and use this
@@ -480,7 +479,6 @@ and convert it to Org using the pandoc utility."
     (yank)))
 
 #+END_SRC
-
 
 
 * Completion and Navigation
@@ -1664,6 +1662,21 @@ Not currently tangled.
 
 #+END_SRC
 
+*** Org Reactive
+<<sec:org-reactive>>
+
+[[https://dev.lepisma.xyz/git/ob-rx/][ob-rx]] makes org-babel reactive such that dependent cells are re-run when previous ones on which they depend are
+modified. Still under development but included here for when its more stable.
+
+Not currently tangled.
+
+#+NAME: code-org-reactive
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package ob-rx
+  :after (org all-the-icons)
+  :vc (:url "https://git.sr.ht/~lepisma/ob-rx" :rev :newest))
+#+END_SRC
+
 ** Org Agenda
 <<sec:org-agenda>>
 
@@ -2025,13 +2038,13 @@ For R, uses ESS; for Python, uses the Python shell."
             (message "Python shell not available.")))
          (t (message "Unsupported language: %s" lang)))))))
 
-;; ;; --- Command: Build Quarto Document ---
+;; --- Command: Build Quarto Document ---
 (defcustom quarto-build-flags ""
   "Extra flags to pass to the Quarto build command."
   :group 'quarto
   :type 'string)
 
-;; (defun quarto-build-document ()
+(defun quarto-build-document ()
   "Build the current Quarto document using Quarto.
 Runs: `quarto render <current-file> <quarto-build-flags>` asynchronously."
   (interactive)
@@ -2042,7 +2055,7 @@ Runs: `quarto render <current-file> <quarto-build-flags>` asynchronously."
     (message "Executing: %s" cmd)
     (compilation-start cmd 'compilation-mode)))
 
-;; ;; --- Command: Preview Quarto Document ---
+;; --- Command: Preview Quarto Document ---
 (defcustom quarto-preview-flags ""
   "Extra flags to pass to the Quarto preview command."
   :group 'quarto
