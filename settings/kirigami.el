@@ -2,5 +2,4 @@
 (use-package kirigami
   :ensure t
   :after treesit-fold-mode
-  :defer 2
-  :bind-keymap ("C-c C-f"))
+  :defer 2)

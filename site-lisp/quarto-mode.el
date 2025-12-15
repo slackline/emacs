@@ -138,4 +138,46 @@ Automatically switches to the appropriate mode for code blocks."
 ;; (add-to-list 'auto-mode-alist '("\\.qmd\\'" . poly-quarto-mode))
 
 ;; (provide 'quarto-mode)
+
+;; Quarto Preview
+;;
+(defun quarto-preview-async ()
+  "Render the current Quarto document asynchronously using `quarto preview`.
+   This starts the Quarto web server and opens the preview in the browser,
+   which then auto-refreshes on subsequent saves."
+  (interactive)
+
+  (let* ((input-file (buffer-file-name))
+         (quarto-command (format "quarto preview \"%s\"" input-file)))
+
+    ;; 1. Input Validation
+    (unless (and input-file (string-suffix-p ".qmd" input-file))
+      (error "Current buffer is not a saved Quarto (.qmd) file."))
+
+    ;; 2. Display Status
+    (message "Starting Quarto preview server for %s..." (file-name-nondirectory input-file))
+
+    ;; 3. Execute Command Asynchronously
+    ;; The '&' ensures the command runs in the background.
+    (async-shell-command (concat quarto-command " &"))
+
+    ;; 4. Provide Feedback
+    (message "Quarto preview started. Save the file (C-x C-s) to refresh the browser.")
+    ))
+
+
+(defun quarto-kill-preview ()
+  "Kill any running Quarto preview processes."
+  (interactive)
+  (let ((processes (process-list))
+        (killed 0))
+    (dolist (proc processes)
+      (when (string-match-p "quarto preview"
+                            (mapconcat 'identity (process-command proc) " "))
+        (delete-process proc)
+        (setq killed (1+ killed))))
+    (if (> killed 0)
+        (message "Killed %d Quarto preview process(es)" killed)
+      (message "No Quarto preview processes found"))))
+
 ;; ;;; quarto-mode.el ends here
