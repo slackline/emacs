@@ -389,7 +389,9 @@ bars.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ssh-agency
   :ensure t
-  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))
+  :map ("C-c C-s" . '(ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
+
 #+END_SRC
 
 ** Keychain
@@ -480,6 +482,20 @@ and convert it to Org using the pandoc utility."
 
 #+END_SRC
 
+*** Load SSH keys
+<<sec::ssh-agency-load>>
+
+I found for some reason that the [[sec:ssh-agency][ssh-agency]] loaded SSH keys weren't available and I was prompted for my SSH keys when
+pushing to Git forges. It is bound to ~C-c C-s~ to make it simple to load.
+
+#+NAME: code-ssh-agency-load
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/ssh-agency-load ()
+  "Set SSH keys for ssh-agency.
+
+This command sets the SSH keys for ssh-agency."
+(ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+#+END_SRC
 
 * Completion and Navigation
 <<sec:completion-navigation>>
@@ -648,7 +664,6 @@ prompt]] but may do one day.
 ;; Consider
 
 #+END_SRC
-
 
 ** Marginalia
 <<sec:marginalia>>
@@ -906,6 +921,7 @@ literally everything under Git version control.
 
 + [[https://www.reddit.com/r/emacs/comments/17af1q5/opening_magit_fullframe_then_restoring_windows_on/][Opening Magit full-frame then restoring windows]]
 + [[https://mbork.pl/2025-05-12_Coloring_Git_output_in_Magit][Coloring Git output in Magit]]
++ [[https://huonw.github.io/blog/2025/12/magit-insert-worktrees/][magit-insert-worktrees improves status buffers | Huon on the internet]]
 
 #+NAME: magit
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -932,6 +948,7 @@ literally everything under Git version control.
     (remove-hook 'forge-post-mode #'turn-on-auto-fill)
     :hook
     (add-hook 'after-save-hook 'magit-after-save-refresh-status))
+    (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
     ;; :bind(("C-c m C" . magit-clone)
     ;;        ("C-c m F" . magit-pull-from-upstream)
         ;;        ("C-c m P" . magit-push-current-to-upstream)
@@ -3572,7 +3589,6 @@ Not currently tangled.
   :ensure t
   :defer 6)
 #+END_SRC
-
 
 ** Slack
 

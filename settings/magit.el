@@ -15,6 +15,9 @@
   (setq auth-sources '("~/.authinfo.gpg"))
   :config
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
+  ;; https://huonw.github.io/blog/2025/12/magit-insert-worktrees/
+  ;; Show all worktrees at the end of the status buffer (if more than one)
+  (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
   ;; https://www.reddit.com/r/emacs/comments/17af1q5/opening_magit_fullframe_then_restoring_windows_on/
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (setq magit-bury-buffer-function 'magit-restore-window-configuration)
