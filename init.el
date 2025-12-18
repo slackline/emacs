@@ -137,6 +137,7 @@
   (setq history-length 1000) ; Mini-buffer history
   (setq-default fill-column 120) ; Reset line-length
   (setq undo-limit 320000) ; Increase the undo history limits
+  (setq vc-handled-backends '(Git))
   (setq vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
   (setq winner-mode t) ; toggling window configuration
   (setq initial-scratch-message nil)

@@ -288,28 +288,29 @@ bars.
     :custom
     ;; Add local lisp for miscellaneous things
     (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
+    (confirm-kill-processes nil) ; Stop confirming the killing of processes
     (custom-file "~/.config/emacs/custom.el")
-    (package-install-upgrade-built-in t) ; Upgrade built-in packages
+    (dired-dwim-target t) ; move file to other pane as default destination
     (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
-    (inhibit-startup-message t) ; Hide the startup message
+    (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+    (global-goto-address-mode t)
     (global-visual-line-mode t) ; Visual line wrap
+    (history-length 1000) ; Mini-buffer history
+    (inhibit-startup-message t) ; Hide the startup message
     (inhibit-startup-screen t) ; Disable startup screen
     (initial-scratch-message "") ; Make *scratch* buffer blank
-    (confirm-kill-processes nil) ; Stop confirming the killing of processes
+    (initial-scratch-message nil)
+    (lisp-indent-offset 2)
+    (mode-line-compact t)
+    (package-install-upgrade-built-in t) ; Upgrade built-in packages
+    (pixel-scroll-precision-mode t)
     (ring-bell-function 'ignore)  ; Disable bell sound
-    (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-    (use-dialog-box nil) ; No dialog pop-ups
-    (history-length 1000) ; Mini-buffer history
     (undo-limit 320000) ; Increase the undo history limits
+    (undo-strong-limit 640000)
+    (use-dialog-box nil) ; No dialog pop-ups
+    (vc-handled-backends '(Git))
     (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
     (winner-mode t) ; toggling window configuration
-    (initial-scratch-message nil)
-    (pixel-scroll-precision-mode t)
-    (lisp-indent-offset 2)
-    (undo-strong-limit 640000)
-    (mode-line-compact t)
-    (dired-dwim-target t) ; move file to other pane as default destination
-    (global-goto-address-mode t)
     (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
     ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
     ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
