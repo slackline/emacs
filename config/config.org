@@ -948,19 +948,19 @@ literally everything under Git version control.
     (remove-hook 'git-commit-mode #'turn-on-auto-fill)
     (remove-hook 'forge-post-mode #'turn-on-auto-fill)
     :hook
-    (add-hook 'after-save-hook 'magit-after-save-refresh-status))
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status)
     (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
-    ;; :bind(("C-c m C" . magit-clone)
-    ;;        ("C-c m F" . magit-pull-from-upstream)
-        ;;        ("C-c m P" . magit-push-current-to-upstream)
-    ;;        ("C-c m R" . magit-file-rename)
-    ;;        ("C-c m f" . forge-pull)
-    ;;        ("C-c m d d" . nds:magit-show-with-difftastic)
-    ;;        ("C-c m d r" . magit-diff-range)
-    ;;        ("C-c m d s" . magit-diff-staged)
-    ;;        ("C-c m l l" . magit-log)
-    ;;        ("C-c m l f" . magit-log-buffer-file)
-    ;;        ("C-c m l o" . magit-log-other)))
+    :bind (("C-c m C" . magit-clone)
+           ("C-c m F" . magit-pull-from-upstream)
+           ("C-c m P" . magit-push-current-to-upstream)
+           ("C-c m R" . magit-file-rename)
+           ("C-c m f" . forge-pull)
+           ("C-c m d d" . nds:magit-show-with-difftastic)
+           ("C-c m d r" . magit-diff-range)
+           ("C-c m d s" . magit-diff-staged)
+           ("C-c m l l" . magit-log)
+           ("C-c m l f" . magit-log-buffer-file)
+           ("C-c m l o" . magit-log-other)))
 
 #+END_SRC
 
@@ -1161,10 +1161,10 @@ Currently not tangled.
   (use-package git-link
     :ensure t
     :after (magit)
-    :bind (("C-c m g c" . git-link-commit)
-            ("C-c m g g" . git-link-dispatch)
-            ("C-c m g h" . git-link-homepage)
-            ("C-c m g l" . git-link))
+    :bind (:map magit-mode-map (("C-c m g c" . git-link-commit)
+                                 ("C-c m g g" . git-link-dispatch)
+                                 ("C-c m g h" . git-link-homepage)
+                                 ("C-c m g l" . git-link)))
     :config
     (require 'git-link-transient))
 
@@ -1399,9 +1399,8 @@ the blame for each line of code.
   :custom
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
   (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
-  :bind
-  (("C-c m w" . 'why-this)
-   ("C-c m W" . 'why-this-annotate)))
+  :bind (:map magit-mode-map (("C-c m w" . 'why-this)
+                               ("C-c m W" . 'why-this-annotate))))
 #+END_SRC
 
 * Transient
