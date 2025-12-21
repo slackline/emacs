@@ -2903,7 +2903,7 @@ are required to do the leg work (aka "magic") in the background. Many operating 
 manager or they can be manually installed (e.g. [[https://github.com/ltex-plus/ltex-ls-plus][ltex-ls-plus]]). ~mason~ solves this by being an installed to the
 [[https://github.com/mason-org/mason-registry][mason-registry]] which packages and [[https://mason-registry.dev/registry/list][lists]] pretty much all the language servers going.
 
-Language servers I've installed
+Language servers I've installed with varying success (see [[https://github.com/deirn/mason.el/issues/2][issue #2]]).
 
 + [[https://github.com/pappasam/jedi-language-server][jedi-language-server]] for [[sec:python][Python]]
 + [[https://github.com/wader/jq-lsp][jq-lsp]] for [[sec:jq-mode][~jq~]]
@@ -3011,6 +3011,7 @@ configure/use it properly as it contains the modules that add [[sec:flycheck][Fl
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package lsp-ui
   :ensure t
+  :after lsp-mode
   :defer t
   :config
   (setq lsp-ui-sideline-enable nil
@@ -3018,6 +3019,24 @@ configure/use it properly as it contains the modules that add [[sec:flycheck][Fl
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
 	      ("C-c i" . lsp-ui-imenu)))
+
+#+END_SRC
+
+*** lsp-ltex-plus
+<<sec:lsp-ltex-plus>>
+
+[[https://github.com/emacs-languagetool/lsp-ltex-plus][lsp-ltex-plus]] uses the [[https://ltex-plus.github.io/ltex-plus/][ltex-plus]] language server for checking LaTeX, Markdown, Org, reStructuredTest, R Sweave and XHTML
+files. Needs the language server installing (unless done via [[sec:mason][Mason]])
+
+#+NAME: code-lsp-ltex-plus
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package lsp-ltex-plus
+  :ensure t
+  :hook (text-mode . (lambda ()
+                       (require 'lsp-ltex-plus)
+                       (lsp)))  ; or lsp-deferred
+  :config
+  (setq lsp-ltex-plus-version "18.2.0"))
 
 #+END_SRC
 
