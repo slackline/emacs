@@ -1579,6 +1579,97 @@ Sources of some of the options are linked below.
 There are a lot of org-based packages and extensions, those that are minor tweaks are in sub-sections below, major
 things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have their own sections which follow.
 
+*** Org Roam
+<<sec:org-roam>>
+
+[[https://www.orgroam.com/manual.html][Org-roam]] is a Zettelkasten package for taking notes. It leverages an [[sec:sqlite][sqlite]] database in the background to keep track of
+nodes and how they link to each other.
+
+#+NAME: code-org-roam
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package org-roam
+  :ensure t
+  :defer 10
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory "~/org-roam/main"/)
+  (org-roam-dailies-directory "daily/")
+  (org-roam-db-location "~/org-roam/main/org-roam.db")
+  (org-roam-db-autosync-mode)
+  (org-roam-completion-everywhere t)
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :if-new (file+head "main/${slug}.org" "#+TITLE: ${title}\n#+DATE: %U\n#+FILETAGS: ${tags}\n")
+      :unnarrowed t)))
+  (org-roam-dailies-capture-templates
+   '(("d" "default" entry "* %?"
+      :target (file+head "%<%Y-%m-%d>.org" "#+TITLE: %{title}\n#+DATE: %U\n"))))
+  ;; To add : https://www.reddit.com/r/OrgRoam/comments/tfcwki/org_roam_capture_create_nametitle_of_a_note/
+  :hook
+  (after-init . org-roam-mode)
+  :bind (("C-c n a" . org-roam-alias-add)
+	  ("C-c n c" . org-roam-capture)
+	  ("C-c n d" . org-roam-dailies-capture-today)
+	  ("C-c n f" . org-roam-node-find)
+	  ("C-c n i" . org-roam-node-insert)
+	  ("C-c n g" . org-roam-graph-show)
+	  ("C-c n l" . org-roam-buffer-toggle)
+	  ("C-c n o" . org-id-get-create)
+	  ("C-c n s" . org-roam-db-sync)
+	  ("C-c n t" . org-tag-add)
+	  ("C-c n u s" . org-roam-ui-open)))
+
+#+END_SRC
+
+**** Org Roam Timestamps
+<<sec:org-roam-timestamps>>
+
+[[https://github.com/tefkah/org-roam-timestamps][org-roam-timestamps]] adds timestamps to the header of Org-roam files for creation and modification.
+
+#+NAME: code-org-roam-timestamps
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package org-roam-timestamps
+  :ensure t
+  :after org-roam
+  :config (org-roam-timestamps-mode))
+
+#+END_SRC
+
+**** Org Roam UI
+<<sec:org-roam-ui>>
+
+[[https://github.com/org-roam/org-roam-ui][org-roam-ui]] generates a static website showing the way in which the nodes within the [[sec:org-roam][Org-roam]] database link to each
+other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]] which emulates this and publishes to [[https://org-roam.nshephard.dev][GitHub pages]] when pushes are mirrored to GitHub Pages.
+
+#+NAME: code-org-roam-ui
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package org-roam-ui
+  :ensure t
+  :after org-roam-bibtex-mode
+  :init
+  (setq org-roam-ui-sync-theme t
+	org-roam-ui-follow t
+	org-roam-ui-update-on-save t
+	org-roam-ui-open-on-start t))
+
+#+END_SRC
+
+**** Org Roam Citar
+<<sec:org-roam-citar>>
+
+[[https://github.com/emacs-citar/citar-org-roam][citar-org-roam]] improves integration between [[https://github.com/emacs-citar/citar][citar]] and [[sec:org-roam][Org-roam]].
+
+#+NAME: code-org-roam-citar
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package citar-org-roam
+  :ensure t
+  :after (citar org-roam)
+  :config (citar-org-roam-mode))
+
+#+END_SRC
+
+
 *** Org Analyzer
 <<sec:org-analyzer>>
 
@@ -3647,6 +3738,27 @@ client for Emacs yet but some have asked for it and there are some related threa
 
 * Miscellaneous
 <<sec:misc>>
+
+** citar
+<<sec:citar>>
+
+[[https://github.com/emacs-citar/citar][citar]] "/provides  a highly-configurable completing-read front-end to browse and act on BibTeX, BibLaTeX, and CSL JSON
+bibliographic data, and LaTeX, markdown, and org-cite editing support./" which basically makes it easy to insert
+references from your ~.bib~ file.
+
+#+NAME: code-citar
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package citar
+    :ensure t
+    :defer 1
+    :custom
+    (citar-bibliography '("~/org/references.bib"))
+    :hook
+    (LaTeX-mode . citar-capf-setup)
+    (markdown-mode . citar-capf-setup)
+    (org-mode . citar-capf-setup))
+
+#+END_SRC
 
 ** mpd
 
