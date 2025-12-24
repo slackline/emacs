@@ -483,6 +483,28 @@ and convert it to Org using the pandoc utility."
 
 #+END_SRC
 
+*** Org mode to Markdown
+<<sec:org-to-markdown>>
+
+Subsequently Charles Choi found an old [[https://mbork.pl/2021-05-02_Org-mode_to_Markdown_via_the_clipboard][post from Marcin Borkowski]] which does the opposite and converts an Org-mode
+region to Markdown in the system clipboard.
+
+#+NAME: code-org-to-markdown
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/org-copy-region-as-markdown ()
+  "Copy the region (in Org) to the system clipboard as Markdown."
+  (interactive)
+  (if (use-region-p)
+      (let* ((region
+	      (buffer-substring-no-properties
+		      (region-beginning)
+		      (region-end)))
+	     (markdown
+	      (org-export-string-as region 'md t '(:with-toc nil))))
+	(gui-set-selection 'CLIPBOARD markdown))))
+
+#+END_SRC
+
 *** Load SSH keys
 <<sec::ssh-agency-load>>
 
