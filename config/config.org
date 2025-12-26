@@ -3930,6 +3930,19 @@ the per-major-mode scratch buffers.
   (scratch-plus-idle-save 3))
 #+END_SRC
 
+** sicp
+<<sec:sicp>>
+
+Installs a [[https://github.com/webframp/sicp-info][info]] version of the second edition of [[https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html][Structure and Interpretation of Computer Programs (SICP)]] (see also
+[[https://ocw.mit.edu/courses/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video_galleries/video-lectures/][video series]]).
+
+#+NAME: code-sicp
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package sicp
+  :ensure t)
+
+#+END_SRC
+
 ** tmr
 <<sec:tmr>>
 
