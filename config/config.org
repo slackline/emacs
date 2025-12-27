@@ -2581,8 +2581,13 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 ***** pyvenv-auto
 <<sec:pyvenv-auto>>
 
+[[https://github.com/ryotaro612/pyvenv-auto][pyvenv-auto]] "/automatically activates a Python venv with pyvenv. When you open a file in python-mode, it searches for
+the venv directory near the file, and activates it./". As I use [[sec:direnv][direnv]] and am migrating to [[sec:uv-mode][uv]] I've stopped using this.
+
+Not currently tangled.
+
 #+NAME: code-pyvenv
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package pyvenv-auto
   :ensure t
   :after (python-mode)
