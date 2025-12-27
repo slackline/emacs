@@ -1249,6 +1249,56 @@ speed.".
   :after (magit))
 #+END_SRC
 
+** JuJutsu
+
+[[https://www.jj-vcs.dev/latest/][Jujutsu (~jj~)]] is a version control (VC) system built on top of Git (it typically uses it  as a backend although its possible to use
+other VC software). There are a few packages seeking to provide support for ~jj~ in Emacs.
+
+*** vc-jj
+<<sec:jc-jj>>
+
+[[https://github.com/bolivier/jj-mode.el][jj-mode.el]] aims to "/add ~jj~ support to the Emacs built-in ~vc~ and ~project~ libraries/".
+
+#+NAME: code-jc-jj
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package vc-jj
+  :ensure t
+  :defer 3)
+#+END_SRC
+
+*** jujutsu.el
+<<sec:jujutsu.el>>
+
+[[https://github.com/bennyandresen/jujutsu.el][jujutsu.el]] is "/inspired by [[sec:magit][magit]] and humbly not attempting to match it in scope./". Its not been updated in a while so
+no attempt to install and configure but noted for future reference.
+
+*** jj-mode-el
+<<sec:jj-mode.el>>
+
+[[https://github.com/bolivier/jj-mode.el][jj-mode.el]] "/provides a [[sec:magit][magit]]-inspired interface for Jujutsu/". It seems to see more active development than [[sec:jujutsu.el][jujutsu.el]].
+
+#+NAME: code-jj-mode.el
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package jj-mode
+  :vc (:url "https://github.com/bolivier/jj-mode.el"))
+#+END_SRC
+
+*** jujutsushi
+<<sec:jujutsushi>>
+
+[[https://git.sr.ht/~puercopop/jujutsushi][jujutsushi]] is another package for adding ~jj~ support.
+
+Not currently tangled.
+
+#+NAME: code-jujutsushi
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package jujutsushi
+  :vc (:url "https://git.sr.ht/~puercopop/jujutsushi"
+       :branch "default"
+       :rev :newest
+       :main-file "jujutsushi.el"))
+
+#+END_SRC
 ** magit-delta
 <<sec:magit-delta>>
 
