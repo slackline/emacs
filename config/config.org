@@ -118,14 +118,13 @@ packages until we need them as it will dramatically slow down startup time.
 #+NAME: code-early-init
 #+BEGIN_SRC emacs-lisp :tangle early-init.el
 ;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
-;;; early-init.el -- Emacs early init file -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; Runs before init.el is loaded.
 
 ;;; Code:
 
-;; Disable package.el to prevent all packages being loaded on startup
-(setq package-enable-at-startup nil)
+;; If using straight.el then disable package.el to prevent all packages being loaded on startup
+(setq package-enable-at-startup t)
 
 (provide 'early-init)
 ;;; early-init.el ends here
@@ -2290,6 +2289,21 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 
 #+END_SRC
 
+*** jq Mode
+<<sec:jq-mode>>
+
+#+NAME: code-jq-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package jq-mode
+  :ensure t
+  :defer 5
+  :mode ("\\.json\\'" . jq-mode)
+  :custom
+  (add-to-list 'auto-mode-alist '("\\.json$" . jq-mode))
+  (add-to-list 'auto-mode-alist '("\\.jq$" . jq-mode))
+  )
+#+END_SRC
+
 *** JS Mode
 <<sec:js>>
 
@@ -2362,7 +2376,6 @@ Don't use LaTeX much these days but like to keep things available.
   :mode ("\\.md\\'" . gfm-mode)
   :hook (markdown-mode . auto-fill-mode)
   :init (setq markdown-command "pandoc")
-  :config
   :bind (:map markdown-mode-map
               ("C-c C-m" . markdown-do)))
 
