@@ -410,6 +410,19 @@ around.
 
 #+END_SRC
 
+** Emojify
+<<sec:emojify>>
+
+
+#+NAME: code-emojify
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package emojify
+  :hook (after-init . global-emojify-mode))
+
+#+END_SRC
+
+Read more about [[https://www.rahuljuliato.com/posts/unicode-emojis][Composing Text in Emacs: Unicode, Emojis, and the Power of C-x 8]].
+
 ** Custom Functions
 <<sec:custom_functions>>
 
