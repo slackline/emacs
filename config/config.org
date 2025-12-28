@@ -390,7 +390,7 @@ bars.
 (use-package ssh-agency
   :ensure t
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))
-  :map ("C-c C-s" . '(ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
+  :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
 
 #+END_SRC
 
@@ -398,15 +398,15 @@ bars.
 <<sec:keychain-environment>>
 
 [[https://github.com/emacsorphanage/keychain-environment][keychain-environment]] is an orphaned package that looks for files created by [[https://github.com/danielrobbins/keychain][keychain]] that are used to manage SSH and GPG
-agents. I used this before [[sec:ssh-agency][ssh-agency]] until it broke but haven't had 100% success with [[sec:ssh-agency][ssh-agency]] so keep it hanging
+agents. I used this before [[sec:ssh-agency][ssh-agency]] until it [[https://github.com/emacsorphanage/keychain-environment/issues/9][broke]] but haven't had 100% success with [[sec:ssh-agency][ssh-agency]] so keep it hanging
 around.
 
 #+NAME: code-keychain-environment
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package keychain-environment
   :ensure t
-  :bind (("C-c k" . 'keychain-refresh-environment))
-  :init (keychain-refresh-environment))
+  :init (keychain-refresh-environment)
+  :bind (("C-c C-k" . 'keychain-refresh-environment)))
 
 #+END_SRC
 
@@ -721,7 +721,6 @@ with the ~marginalia-mode~ rather than deferring.
 	("M-A" . marginalia-cycle))
   ;; The :init section is always executed.
   :init
-
   ;; Marginalia must be activated in the :init section of use-package such that
   ;; the mode gets enabled right away. Note that this forces loading the
   ;; package.
