@@ -358,7 +358,7 @@ bars.
        prog-mode) . hs-minor-mode)
     (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
     (auto-fill-function . do-auto-fill)
-    (before-save . delete-trailing-whitespace) ;;
+    (before-save . delete-trailing-whitespace)
     (before-save . do-auto-fill)
     (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
     ;; imenu
@@ -3744,6 +3744,37 @@ options in Emacs Gnus or mu4e
 
 + [[https://cnoceda.com/tecnologia/posts/20251119T083113--searching-by-sender-in-notmuch__blog_emacs_email_notmuch_tecnologia.html][Searching by sender in notmuch]]
 
+
+** Org Social
+<<sec:org-social>>
+
+[[https://github.com/tanrax/org-social][org-social]] "/is a decentralized social network that runs on an Org Mode file over HTTP/". I was looking for a
+micro-blogging service that was federated as I've used [[https://quarto.org/][Quarto]] hosted on GitHub pages to write [[https://blog.nshephard.dev/][blog.nshephard.dev]] but
+wanted something quick and easy to use and as I'm keen on letting Emacs and Org-mode subsume as many aspects of my
+computing activities as possible it seemed the natural choice.
+
+There are a few layers here, not all of which are relevant to Emacs configuration (e.g. configuring Nginx).
+
++ [[https://github.com/tanrax/org-social][org-social: Org Social is a decentralized social network that runs on an Org Mode file over HTTP.]]
++ [[https://github.com/tanrax/org-social.el][org-social.el: Emacs client for Org Social]]
+
+Not currently tangled.
+
+#+NAME: code-org-social
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package org-social
+  :config
+  ;; Option 1: Local file + your own hosting
+  (setq org-social-file "~/work/git/codeberg/slackline/org-social/social.org")
+  (setq org-social-relay "https://relay.org-social.org/")
+  (setq org-social-my-public-url "https://org-social.nshephard.dev/")
+
+  ;; Optional: Add global keybindings
+  (keymap-global-set "C-c s t" #'org-social-timeline)
+  (keymap-global-set "C-c s n" #'org-social-new-post))
+#+END_SRC
+
+
 ** Mastodon
 <<sec:mastodon>>
 
@@ -3758,10 +3789,8 @@ Not currently tangled.
 (use-package mastodon
   :ensure t
   :config
-  ;; (setq mastodon-instance-url "https://fosstodon.org"
-  ;;       mastodon-active-user "redacted")
   (setq mastodon-instance-url "https://mastodon.social"
-	mastodon-active-user "redactedslackline")
+	mastodon-active-user "")
   )
 #+END_SRC
 
@@ -3785,7 +3814,7 @@ Not currently tangled.
 
 I use Slack for work (it's replacing email as the main interuptor of my concentration because why not ping someone a
 message that could easily be sent by email?!?!?!) but I try not to look at work outside of work so haven't adopted using
-Emacs to look at it. There is the [[https://github.com/isamert/emacs-slack][emacs-slack]] package if required though.
+Emacs to look at it. There is the [[https://github.com/isamert/emacs-slack][emacs-slack]] package if required but I doubt I'll use it.
 
 ** Deltachat
 
