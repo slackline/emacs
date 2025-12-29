@@ -111,9 +111,10 @@ and [[sec:footer][footer]].
 
 ** Package Manager Setup
 
-The first thing we do is /disable/ ~package-enable-at-startup~ via an ~early-init.el~ because "/If non-nil, packages are
-made available before reading the init file (but after reading the early init file)./" and we don't want to load
-packages until we need them as it will dramatically slow down startup time.
+Enable packages ~package-enable-at-startup~ via an ~early-init.el~ because "/If non-nil, packages are
+made available before reading the init file (but after reading the early init file)./" and we want to load
+packages. Need to check how this behaves with ~:defer~ and ~:after~ options which are set on a per-package basis. I
+found setting this to ~nil~ caused errors on trying to load and configure packages.
 
 #+NAME: code-early-init
 #+BEGIN_SRC emacs-lisp :tangle early-init.el
@@ -228,7 +229,8 @@ useful to be able to set the ~package-archive-priorities~ where each is assigned
 Byte-compilation takes your ASCII plain-text configuration files saved in ~.el~ and turns them into computer code
 (~.elc~) which can be loaded quicker. There are a couple of options available ~auto-compile~ and ~compile-angel~ being
 two that I have explored before. I have a hook to [[https://emacs.stackexchange.com/a/110][hide the compilation buffer]] on completion of compiling as I got fed up
-of these being thrust into the foreground (*NB* currently).
+of these being thrust into the foreground. I don't currently use either of these but keep them hanging around in case I
+change my mind so I don't have to dig through my Git history to find the configuration.
 
 *** ~auto-compile~
 <<sec:auto-compile>>
@@ -325,7 +327,7 @@ bars.
     ;;     native-comp-deferred-compilation t))
     (set-frame-parameter nil 'alpha-background 85) ; Transparency
     (add-to-list 'default-frame-alist '(alpha-background . 85))
-    (add-to-list 'default-frame-alist '(vertical-scoll-bars . right))
+    (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
     :config
     (setq-default fill-column 120) ; Reset line-length
     (setq-default indent-tabs-mode nil)
@@ -370,7 +372,7 @@ bars.
     :init
     (epa-file-enable)
     (tool-bar-mode 0)
-    (scroll-bar-mode "right")
+    (scroll-bar-mode 0)
     (menu-bar-mode t)
     (global-display-line-numbers-mode t)
     (global-hl-line-mode t)
@@ -389,8 +391,8 @@ bars.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ssh-agency
   :ensure t
-  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))
-  :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
+  :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+  ;; :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
 
 #+END_SRC
 
@@ -567,18 +569,6 @@ pulled the others in as dependencies of other packages but have opted to purge t
 
 #+END_SRC
 
-** embark-consult
-<<sec:embark-consult>>
-
-[[https://github.com/oantolin/embark][embark-consult]] is recommended if using both [[sec:consult][consult]] and [[sec:embark][embark]].
-
-#+NAME: code-embark-consult
-#+BEGIN_SRC emacs-lisp :tangle init.el
-  (use-package embark-consult
-  :ensure t
-  :defer 0.5)
-#+END_SRC
-
 ** Consult
 <<sec:consult>>
 
@@ -700,6 +690,20 @@ prompt]] but may do one day.
 
 #+END_SRC
 
+** embark-consult
+<<sec:embark-consult>>
+
+[[https://github.com/oantolin/embark][embark-consult]] is recommended if using both [[sec:consult][consult]] and [[sec:embark][embark]].
+
+#+NAME: code-embark-consult
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package embark-consult
+    :ensure t
+    :defer 0.5
+    :after (consult embark))
+
+#+END_SRC
+
 ** Marginalia
 <<sec:marginalia>>
 
@@ -813,7 +817,7 @@ undo buffer history]] was insightful too.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package vundo
   :ensure t
-  :defer 2
+  :defer 0.5
   :bind (("C-c v" . vundo))
   :hook
   (prog-mode . vundo-popup-mode)
@@ -987,17 +991,17 @@ literally everything under Git version control.
     (add-hook 'after-save-hook 'magit-after-save-refresh-status)
     (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
     ;; :hook
-    :bind (("C-c m C" . magit-clone)
-           ("C-c m F" . magit-pull-from-upstream)
-           ("C-c m P" . magit-push-current-to-upstream)
-           ("C-c m R" . magit-file-rename)
-           ("C-c m f" . forge-pull)
-           ("C-c m d d" . nds:magit-show-with-difftastic)
-           ("C-c m d r" . magit-diff-range)
-           ("C-c m d s" . magit-diff-staged)
-           ("C-c m l l" . magit-log)
-           ("C-c m l f" . magit-log-buffer-file)
-           ("C-c m l o" . magit-log-other)))
+    :bind (:map magit-mode-map (("C-c m C" . magit-clone)
+                                 ("C-c m F" . magit-pull-from-upstream)
+                                 ("C-c m P" . magit-push-current-to-upstream)
+                                 ("C-c m R" . magit-file-rename)
+                                 ("C-c m f" . forge-pull)
+                                 ("C-c m d d" . nds:magit-show-with-difftastic)
+                                 ("C-c m d r" . magit-diff-range)
+                                 ("C-c m d s" . magit-diff-staged)
+                                 ("C-c m l l" . magit-log)
+                                 ("C-c m l f" . magit-log-buffer-file)
+                                 ("C-c m l o" . magit-log-other))))
 
 #+END_SRC
 
@@ -1137,7 +1141,7 @@ worth it as it massively improves workflow.
 ** glab
 <<sec:glab>>
 
-[[https://github.com/emacsattic/glab][glab]] extends <<sec:ghub>> for [[https://gitlab.com][GitLab]].
+[[https://github.com/emacsattic/glab][glab]] extends [[sec:ghub][ghub]] for [[https://gitlab.com][GitLab]].
 
 #+NAME: code-glab
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -1156,7 +1160,8 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package git-cliff
-  :ensure t)
+  :ensure t  :defer 2
+  :after (magit))
 
 #+END_SRC
 
@@ -1170,7 +1175,9 @@ Currently not tangled.
 #+NAME: code-gitlab-ci-mode
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gitlab-ci-mode
-  :ensure t)
+  :ensure t
+  :defer 2
+  :after (glab))
 
 #+END_SRC
 
@@ -1184,7 +1191,9 @@ Currently not tangled.
 #+NAME: code-gitlab-ci-mode-flycheck
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package gitlab-ci-mode-flycheck
-  :ensure t)
+  :ensure t
+  :defer 3
+  :after (gitlab-ci-mode))
 
 #+END_SRC
 
@@ -1572,7 +1581,6 @@ Sources of some of the options are linked below.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org
   :ensure t
-  :defer 0.5
   :bind
   (("C-x p i" . 'org-cliplink))
   :custom
@@ -1584,6 +1592,7 @@ Sources of some of the options are linked below.
   (org-agenda-skip-scheduled-if-done t)
   (org-agenda-files '("~/org/agenda.org"
  			   "~/org/gtd/admin.org"
+ 			   "~/org/gtd/afmslicer.org"
  			   "~/org/gtd/carpentries.org"
  			   "~/org/gtd/clarity.org"
  			   "~/org/gtd/computing.org"
@@ -1725,7 +1734,7 @@ Not tangled for now.
 
 #+END_SRC
 
-*** Org Raindow Tags
+*** Org Rainbow Tags
 <<sec:org-rainbow-tags>>
 
 [[https://github.com/KaratasFurkan/org-rainbow-tags][org-rainbow-tags]] adds random colours to Org tags based on the hash of the tag name, which keeps things consistent.
@@ -3631,6 +3640,7 @@ Not currently tangled
   :ensure t
   :defer 1
   :after (lsp-mode))
+
 #+END_SRC
 
 *** RealGUD-ipdb
@@ -3642,8 +3652,8 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package realgud-ipdb
   :ensure t
-  :after realgud
-  :defer 0.5)
+  :defer 0.5
+  :after (realgud))
 
 #+END_SRC
 
@@ -4455,7 +4465,8 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 ** DevDocs
 <<sec:devdocs>>
 
-[[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]].
+[[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]]. The docs need manually installing but after that they are available via ~C-h
+D~.
 
 + kubernetes
 + markdown
@@ -4549,7 +4560,6 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 
 ** Modeline
 <<sec:modeline>>
-
 
 *** hide-mode-line
 <<sec:hide-mode-line>>
