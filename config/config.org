@@ -1645,15 +1645,12 @@ Sources of some of the options are linked below.
   :hook
   (org-mode . (lambda () (electric-indent-local-mode 0)))
   (org-mode . (lambda () (org-rainbow-tags-mode 1)))
-  (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
-  ;; (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
-  (after-focus-change-function . (org-save-all-org-buffers)))
+  (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save))))
 
 #+END_SRC
 
 There are a lot of org-based packages and extensions, those that are minor tweaks are in sub-sections below, major
 things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have their own sections which follow.
-
 
 *** Org Analyzer
 <<sec:org-analyzer>>
@@ -4920,3 +4917,9 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 
 + [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
 + [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
+
+** Assistance
+
+I'm still learning and had to ask questions to get to where I am. Here are the helpful people who assisted me.
+
++ [[https://emacs.stackexchange.com/questions/85329/org-mode-blink-cursor-error/85332#85332][org-mode blink-cursor error]]
