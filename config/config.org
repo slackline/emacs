@@ -1606,7 +1606,7 @@ Sources of some of the options are linked below.
 			   "~/org/gtd/reproducibilitea.org"
 			   "~/org/gtd/rse.org"
 			   "~/org/gtd/rse-competencies.org"
-			   "~/org/grd/sheffieldr.org"
+			   "~/org/gtd/sheffieldr.org"
  			   "~/org/gtd/tcx2gpx.org"
 			   "~/org/gtd/thyroid.org"
 			   "~/org/gtd/topostats.org"))
@@ -2072,13 +2072,13 @@ you to specify sections and tables to which entries should be added with pre-def
 	   "+ %?\n" :prepend t)
 	  ;; Exercise
 	  ("e" "Exercise")
-	  ("er" "Logging a run" table-line (file "~/org-roam/main/log/running_2025.org")
+	  ("er" "Logging a run" table-line (file "~/org-roam/main/log/running_2026.org")
 	   "| %U | %? | km | min + s | | |" :prepend t)
 	  ("ec" "Logging a cycle" table-line (file "~/org-roam/main/log/cycling.org")
 	   "| %U | %? | km | min + s | | |" :prepend t)
 	  ("eh" "Logging a hike" table-line (file "~/org-roam/main/log/hiking.org")
 	   "| %U | %? | km | m | min + s| |" :prepend t)
-	  ("ep" "Logging Pilates" table-line (file "~/org-roam/main/log/pilates_2025.org")
+	  ("ep" "Logging Pilates" table-line (file "~/org-roam/main/log/pilates_2026.org")
 	   "| %U | %? | |" :prepend t)
 	  ("em" "Weight & Waist/Hip" table-line (file "~/org-roam/main/log/metrics_weight.org")
 	   "| %U | %? | | | |" :prepend t)
