@@ -4570,6 +4570,20 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 (set-face-attribute 'default t :font "Hack")
 #+END_SRC
 
+*** Indent bars
+<<sec:indent-bars>>
+
+[[https://github.com/jdtsmith/indent-bars][indent-bars]] are a great visual indicator of where you are.
+
+#+NAME: code-indent-bars
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package indent-bars
+    :ensure t
+    :hook ((prog-mode) . indent-bars-mode))
+
+#+END_SRC
+
+
 ** Modeline
 <<sec:modeline>>
 
@@ -4932,6 +4946,7 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 
 + [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
 + [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
++ [[https://www.mauromotion.com/posts/2026-01-01-emacs/][Entering the Church of Emacs - mauromotion.com]] (links to [[https://github.com/mauromotion/dotfiles/blob/main/common/emacs/config.org][configuration]] on GitHub)
 
 ** Assistance
 
