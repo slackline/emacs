@@ -241,3 +241,11 @@
   :ensure t)
 (use-package gtea
   :ensure t)
+
+;; https://github.com/emacsorphanage/git-gutter
+(use-package git-gutter
+  :ensure t
+  :defer 0.5
+  :after magit
+  :custom
+  (global-git-gutter-mode +1))

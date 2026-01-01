@@ -1151,6 +1151,21 @@ worth it as it massively improves workflow.
   :after (magit))
 #+END_SRC
 
+** git-gutter
+<<sec:git-gutter>>
+
+#+NAME: code-git-gutter
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package git-gutter
+    :ensure t
+    :defer 0.5
+    :after magit
+    :custom
+    (global-git-gutter-mode +1))
+
+#+END_SRC
+
+[[https://github.com/emacsorphanage/git-gutter][git-gutter]]
 ** git-cliff
 <<sec:git-cliff>>
 
