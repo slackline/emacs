@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: running_short1
+# key: rs1
+# expand-env: ((yas-indent-line 'fixed))
+# group: org-mode
+# --
+Carrfield Avenue, Meersbrook Road, Heeley Green, Cat Lane Woods, Blackstock Road, Bankwood Road, Cat Lane Woods, Northcote Avenue

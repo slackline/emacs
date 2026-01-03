@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: running_short2
+# key: rs2
+# expand-env: ((yas-indent-line 'fixed))
+# group: org-mode
+# --
+Carrfield Avenue, Meersbrook Road, Albert Road, Saxon Road, Broadfield Road, Little London Road, Climbing Works, Little London Road, Meersbrook Park Road, Rushdale Road
