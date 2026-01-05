@@ -180,8 +180,9 @@ We configure ~use-package~ below, not all of the values that are set (via ~setq~
 they pertain to downloading and installing packages I keep them here. Because there can be issues with GPG keys when
 they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
 
-Whilst I tend to explicitly state ~:ensure t~ for almost all packages here I also set ~use-package-always-ensure t~ so
-that if I forget it should still be installed.
+Whilst I tend to explicitly state ~:ensure t~ for almost all packages here I also set ~use-package-always-ensure t~ and
+~use-package-always-defer t~ so that if I forget it should still be installed and will defer by default (unless the
+package explicitly has ~:demand t~ set).
 
 #+NAME: code-use-package-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -191,6 +192,7 @@ that if I forget it should still be installed.
 (use-package use-package
   :config
   (setq use-package-always-ensure t)
+  (setq use-package-always-defer t)
   (setq use-package-expand-minimally t)
   ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -2398,8 +2400,29 @@ this available so sticking with `:config` to ensure the package is always loaded
 
 #+END_SRC
 
+*** porg
+<<sec:porg>>
+
+[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding.
+
+#+NAME: code-porg
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package porg
+  :ensure t
+  :config
+  (setq porg-blocks-files '("init.el")); File names where you want blocks
+  (setq porg-blocks-padding 2)
+  :hook (emacs-lisp-mode . porg-mode)
+        (clojure-mode . porg-mode)
+        (clojure-ts-mode . porg-mode)
+        (scheme-mode . porg-mode))
+        ;; All-at-once
+        ;; (prog-mode . porg-mode))
+#+END_SRC
 
 ** Programming Modes
+
+There are lots of programming languages, but Emacs has a mode for almost all of them.
 
 *** CSV Mode
 <<sec:csv-mode>>
@@ -3474,6 +3497,9 @@ Restore match data previously stored in PROPERTY."
 <<sec:lsp>>
 
 Whilst Eglot is built-in to Emacs since ~v30-ish I started using [[https://emacs-lsp.github.io/lsp-mode/][LSP Mode]] before this and have stuck with it.
+
+An alternative which looks interesting as it avoids the need to have multiple language servers running is [[https://github.com/jacktasia/dumb-jump][dumb-jump]]
+(encountered via [[https://codelearn.me/2026/01/03/dumb-jump-is-so-good.html][Emacs: Dumb Jump Is So Good]]) which I've not tried but like the sound of.
 
 *** mason
 <<sec:mason>>

@@ -12,6 +12,7 @@
 (use-package use-package
   :config
   (setq use-package-always-ensure t)
+  (setq use-package-always-defer t)
   (setq use-package-expand-minimally t))
 
 ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
