@@ -1384,6 +1384,21 @@ Not currently tangled.
 
 #+END_SRC
 
+** magit-pre-commit
+<<sec:magit-pre-commit>>
+
+
+[[https://github.com/DamianB-BitFlipper/magit-pre-commit.el][magit-pre-commit.el]] provides "/pre-commit integration for Magit/". From a Magit buffer use ~@~ to bring up a transient
+menu and follow your nose from there.
+
+#+NAME: code-magit-pre-commit
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package magit-pre-commit
+  :straight (:host github :repo "DamianB-BitFlipper/magit-pre-commit.el")
+  :after magit)
+
+#+END_SRC
+
 ** magit-stats
 <<sec:magit-stats>>
 
