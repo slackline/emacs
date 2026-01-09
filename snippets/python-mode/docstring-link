@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: docstring-link
+# key: dl
+# group: definitions
+# --
+\`${1:text} <https://${2:url}>__\`
