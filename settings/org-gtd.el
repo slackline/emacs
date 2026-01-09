@@ -6,19 +6,30 @@
 ;;; https://blog.jethro.dev/posts/processing_inbox/
 ;;;
 ;;; Also includes customiastion for org-agenda
-(setq org-gtd-update-ack "3.0.0")
 (use-package org-gtd
   :ensure t
   :after org
-  ;; :quelpa (org-gtd :fetcher github :repo "trevoke/org-gtd.el"
-  ;;                  :branch "2.0.0" :upgrade t)
+  :init
+  (setq org-gtd-update-ack "3.0.0")
+  (setq org-gtd-update-ack "4.0.0")
   :demand t
   :custom
-  ;; (org-gtd-directory stag-org-gtd-directory)
   (org-gtd-directory '"~/org/gtd")
   (org-edna-use-inheritance t)
   :config
   (org-edna-mode)
+  ;; All your GTD keywords must be in the same sequence
+  (setq org-todo-keywords
+	'((sequence "TODO" "NEXT" "WAIT" "|" "DONE" "CNCL")))
+
+  ;; Then map GTD semantic states to your keywords
+  (setopt org-gtd-keyword-mapping
+          '((todo . "TODO")      ;; tasks not ready to be acted upon
+            (next . "NEXT")      ;; tasks ready to act on immediately
+            (wait . "WAIT")      ;; tasks blocked or delegated
+            (done . "DONE")      ;; tasks successfully completed
+            (canceled . "CNCL"))) ;; tasks that won't be completed
+  (setq org-agenda-files (list org-gtd-directory))
   :bind
   (("C-c d c" . org-gtd-capture)
    ("C-c d e" . org-gtd-engage)
