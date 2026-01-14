@@ -86,7 +86,7 @@
 ;;   :mode (("\\.Rmd" . poly-quarto-mode))
 ;;   :bind (("C-c q" . quarto-preview)))
 ;; Following requires that polymode, markdown and python are all loaded/configured first
-(load "~/.config/emacs/site-lisp/quarto-mode.el")
+;; (load "~/.config/emacs/site-lisp/quarto-mode.el")
 
 ;; https://github.com/sje30/essgd
 (use-package essgd
