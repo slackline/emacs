@@ -10,5 +10,5 @@
     ]
 )
 def test_${3:testname}() -> None:
-    """Test for ${3}."""
+    """Test for ${3}()."""
     $0
