@@ -4945,6 +4945,11 @@ also hide certain buffers I don't need to see often.
 
 ;; vundo
 (global-set-key (kbd "C-c v") 'vundo)
+
+;; Unset overwrite-mode
+(global-unset-key (kbd "<insert>"))
+(global-unset-key (kbd "<insertchar>"))
+
 #+END_SRC
 
 * Footer
