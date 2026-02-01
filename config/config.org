@@ -1999,7 +1999,6 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 #+END_SRC
 
 
-
 ** Org Capture
 <<sec:org-capture>>
 
@@ -4222,7 +4221,6 @@ options in Emacs Gnus or mu4e
 
 + [[https://cnoceda.com/tecnologia/posts/20251119T083113--searching-by-sender-in-notmuch__blog_emacs_email_notmuch_tecnologia.html][Searching by sender in notmuch]]
 
-
 ** Org Social
 <<sec:org-social>>
 
@@ -4252,7 +4250,6 @@ Not currently tangled.
   (keymap-global-set "C-c s n" #'org-social-new-post))
 #+END_SRC
 
-
 ** Mastodon
 <<sec:mastodon>>
 
@@ -4270,6 +4267,26 @@ Not currently tangled.
   (setq mastodon-instance-url "https://mastodon.social"
 	mastodon-active-user "")
   )
+#+END_SRC
+
+** Signal
+*** Signel
+<<sec:signel>>
+
+[[https://github.com/keenban/signel][signel]] is an Emacs client for Signal. It depends on [[https://github.com/AsamK/signal-cli][signal-cli]] an unofficial commandline, JSON-RPC and dbus interface
+for the Signal messenger.
+
+#+NAME: code-signel
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package signel
+  :load-path "~/.emacs.d/site-lisp/signel" ;; Adjust path as needed
+  :config
+  ;; REQUIRED: Your registered phone number
+  (setq signel-account "+15550000000")
+
+  ;; Optional: If signal-cli is not in your $PATH
+  ;; (setq signel-cli-program "/usr/local/bin/signal-cli")
+)
 #+END_SRC
 
 ** Element
