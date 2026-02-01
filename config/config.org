@@ -1821,6 +1821,24 @@ Not currently tangled.
   :vc (:url "https://git.sr.ht/~lepisma/ob-rx" :rev :newest))
 #+END_SRC
 
+*** Org Download
+<<sec:org-download>>
+
+[[https://github.com/abo-abo/org-download][org-download]] makes it easy to move images from A to B which includes inserting them into documents.
+
+#+NAME: code-org-download
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package org-download
+    :ensure t
+    :defer 0.5
+    :after org-mode
+    :hook
+    (dired-mode . org-download-enable))
+
+#+END_SRC
+
+
+
 ** Org Agenda
 <<sec:org-agenda>>
 
