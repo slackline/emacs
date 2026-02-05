@@ -4164,6 +4164,18 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 
 #+END_SRC
 
+** crdt
+<<sec:crdt>>
+
+[[https://code.librehq.com/qhong/crdt.el][crdt.el]] allows real time collaborative writing on shared documents directly from Emacs.
+
+#+NAME: code-crdt
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package crdt
+  :ensure t
+  :defer 4)
+#+END_SRC
+
 * Terminals
 <<sec:terminals>>
 
