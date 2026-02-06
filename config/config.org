@@ -213,6 +213,21 @@ package explicitly has ~:demand t~ set).
 
 #+END_SRC
 
+*** Autoupdates
+<<sec:use-package-autoupdate>>
+
+#+NAME: code-use-package-autoupdate
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package auto-package-update
+  :config
+  ;; Delete residual old versions
+  (setq auto-package-update-delete-old-versions t)
+  ;; Do not bother me when updates have taken place.
+  (setq auto-package-update-hide-results t)
+  ;; Update installed packages at startup if there is an update pending.
+  (auto-package-update-maybe))
+#+END_SRC
+
 *** Emacs Package Archives
 
 There are multiple sources of Emacs packages, including those who self-host serves such as ~jcs elpa~ listed below.
@@ -5050,6 +5065,7 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 + [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
 + [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
 + [[https://www.mauromotion.com/posts/2026-01-01-emacs/][Entering the Church of Emacs - mauromotion.com]] (links to [[https://github.com/mauromotion/dotfiles/blob/main/common/emacs/config.org][configuration]] on GitHub)
++ [[https://alhassy.com/emacs.d/][A Life Configuring Emacs]]
 
 ** Assistance
 
