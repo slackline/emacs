@@ -558,6 +558,19 @@ There are various frameworks and packages available to aid with (auto-)completio
 explicitly gone with Company but in revising my configuration to write this literate version it looks like I may have
 pulled the others in as dependencies of other packages but have opted to purge those from now on.
 
+** Beacon
+<<sec:beacon>>
+
+#+NAME: code-beacon
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package beacon
+  :ensure t
+  :defer 2
+  :custom (setq beacon-color "#666600")
+  :hook   ((org-mode text-mode) . beacon-mode))
+
+#+END_SRC
+
 ** Company Mode
 
 [[https://company-mode.github.io/manual/][Company mode]] is a modular text completion framework.
