@@ -1422,7 +1422,7 @@ menu and follow your nose from there.
 #+NAME: code-magit-pre-commit
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-pre-commit
-  :straight (:host github :repo "DamianB-BitFlipper/magit-pre-commit.el")
+  :ensure t
   :after magit)
 
 #+END_SRC
