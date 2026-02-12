@@ -249,3 +249,9 @@
   :after magit
   :custom
   (global-git-gutter-mode +1))
+
+;; https://github.com/DamianB-BitFlipper/magit-pre-commit.el
+(use-package magit-pre-commit
+  :ensure t
+  :defer 0.5
+  :after magit)
