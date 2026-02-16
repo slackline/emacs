@@ -1368,6 +1368,19 @@ Not currently tangled.
        :main-file "jujutsushi.el"))
 
 #+END_SRC
+
+*** majutsu
+<<sec:majutsu>>
+
+[[https://github.com/0WD0/majutsu][majutsu]] is "/Magit for jujutsu/". Not yet on MELPA so not tangled.
+
+#+NAME: code-majutsu
+#+BEGIN_SRC emacs-lisp :tangle no
+  (use-package majutsu
+    :vc (:url "https://github.com/0WD0/majutsu"))
+
+#+END_SRC
+
 ** magit-delta
 <<sec:magit-delta>>
 
