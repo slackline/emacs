@@ -3591,6 +3591,7 @@ Restore match data previously stored in PROPERTY."
     :after (polymode))
 
 #+END_SRC
+
 ** LSP Mode
 <<sec:lsp>>
 
