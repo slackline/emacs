@@ -3202,7 +3202,7 @@ well as profiling).
 (use-package python-pytest
   :ensure t
   :defer 0.5
-  :after (python-mode)
+  :after (pyvenv)
   :bind (:map python-mode-map
 	      ("C-c p t" . python-pytest-dispatch))
   :custom
