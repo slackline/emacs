@@ -2628,7 +2628,7 @@ Instead I found a custom Quarto configuration from
 that. It is included below verbatim as of 2025-02-15.
 
 #+NAME:code-quarto-mode-custom
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 ;; Following requires that polymode, markdown and python are all loaded/configured first
 (load "~/.config/emacs/site-lisp/quarto-mode.el")
 ;;; quarto-mode.el --- Major mode for Quarto (qmd) documents -*- lexical-binding: t; -*-
