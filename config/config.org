@@ -51,7 +51,7 @@ Tasks I'm yet to complete in re-writing...
 - [ ] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
 - [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
 - [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
-
+- [ ] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
 
 
 
@@ -480,12 +480,18 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
 #+NAME: code-on-save
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (defun ns/org-babel-tangle-on-save ()
-      (when (string-equal (buffer-file-name) (substitute-in-file-name "$HOME/.config/emacs/config/config.org"))
-        (org-babel-tangle :append :local)))
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/.config/emacs/config/config.org"))
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
 
 (defun ns/org-babel-export-on-save ()
-      (when (string-equal (buffer-file-name) (substitute-in-file-name "$HOME/.config/emacs/config/config.org"))
-        (org-html-export-to-html)))
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/.config/emacs/config/config.org"))
+    (let ((org-confirm-babel-evaluate nil))
+      (org-html-export-to-html))))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
 
 #+END_SRC
 
