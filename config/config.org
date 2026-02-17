@@ -442,6 +442,15 @@ around.
 
 Read more about [[https://www.rahuljuliato.com/posts/unicode-emojis][Composing Text in Emacs: Unicode, Emojis, and the Power of C-x 8]].
 
+** Backups
+<<sec:backups>>
+
+Emacs saves temporary versions of the last state of your file to ~*~~ files which is pretty handy if you aren't version
+controlling your files already. Temporary buffers are saved to ~.#<filename>~ which is also useful. But there is more to
+it than that and I found a useful [[https://brainbaking.com/post/2026/02/a-note-on-file-history-in-emacs/][Note on File History in Emacs]] enlightening with some handy suggestions on how to
+improve things. I already use [[sec:vundo][vundo]] to give a crude visual history and navigate back through changes but this improved
+my use of backups.
+
 ** Custom Functions
 <<sec:custom_functions>>
 
