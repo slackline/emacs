@@ -4276,6 +4276,7 @@ options in Emacs Gnus or mu4e
 *** General articles to refer to.
 
 + [[https://cachestocaches.com/2017/3/complete-guide-email-emacs-using-mu-and/][A Complete Guide to Email in Emacs using Mu and Mu4e]]
++ [[https://brainbaking.com/post/2026/01/customizing-the-emacs-email-experience-with-mu4e/][Customizing The Emacs Email Experience With Mu4e]]
 
 *** Getting email working with ProtonMail (I've mirrored some of the following to my own [[https://opengist.nshephard.dev/nshephard/c092d263b738444ea893fe2d59d11006][gist]]).
 
