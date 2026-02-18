@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: sql-comment
-# key: c
-# expand-env: ((yas-indent-line 'fixed))
-# --
-  /** Variable : ${1:var}                                                           **/
-  /** ${2:comment}                                                                  **/
