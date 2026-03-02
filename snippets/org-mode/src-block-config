@@ -6,7 +6,13 @@
 # --
 <<sec:${1:block_name}>>
 
+[[${2:repo_url}][${1}]]
+
 #+NAME: code-${1}
 #+BEGIN_SRC emacs-lisp :tangle init.el
-${2:body}
+(use-package ${1}
+  :ensure t
+  :defer ${3:defer_time}
+  :after (${4:after_name}))
+
 #+END_SRC
