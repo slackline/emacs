@@ -48,7 +48,7 @@ Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/iss
 
 Tasks I'm yet to complete in re-writing...
 
-- [ ] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
+- [X] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
 - [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
 - [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
 - [ ] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
@@ -457,9 +457,9 @@ my use of backups.
 I've come across a bunch of functions that others generously share and include them here. There are a few others
 littered about the configuration rather than being aggregated here.
 
-+ [[nameref:code-org-agenda][Org Agenda]]
-+ [[nameref:code-quarto-mode-custom][Quarto Mode]]
-+ [[nameref:code-sqlite][SQLite]]
++ [[sec:code-org-agenda][Org Agenda]]
++ [[sec:code-quarto-mode-custom][Quarto Mode]]
++ [[sec:code-sqlite][SQLite]]
 
 *** Reinstall Package
 <<sec:reinstall-package>>
@@ -485,22 +485,30 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
 
 *TODO* Make this function take an argument so it can be reused.
 
-
 #+NAME: code-on-save
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(defun ns/org-babel-tangle-on-save ()
+  (defun ns/org-babel-tangle-on-save ()
+    "Tangle config.org on saving."
   (when (string-equal (buffer-file-name)
                       (expand-file-name "~/.config/emacs/config/config.org"))
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
-(defun ns/org-babel-export-on-save ()
+  (defun ns/org-babel-export-on-save ()
+    "Export config.org on saving"
   (when (string-equal (buffer-file-name)
                       (expand-file-name "~/.config/emacs/config/config.org"))
     (let ((org-confirm-babel-evaluate nil))
       (org-html-export-to-html))))
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
+
+  ;; Almost works, but org-lint needs to know what buffer to check???
+  (defun ns/org-lint-on-save ()
+    "Run org-lint on saving .org files."
+    (when(string-equal (file-name-extension (buffer-file-name)) "org")
+      (org-lint)))
+  (add-hook 'after-save-hook 'ns/org-lint-on-save)
 
 #+END_SRC
 
@@ -1199,6 +1207,8 @@ worth it as it massively improves workflow.
 ** git-gutter
 <<sec:git-gutter>>
 
+[[https://github.com/emacsorphanage/git-gutter][git-gutter]] highlights rows that have changed in the side-border of a buffer.
+
 #+NAME: code-git-gutter
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package git-gutter
@@ -1210,7 +1220,6 @@ worth it as it massively improves workflow.
 
 #+END_SRC
 
-[[https://github.com/emacsorphanage/git-gutter][git-gutter]]
 ** git-cliff
 <<sec:git-cliff>>
 
@@ -1222,6 +1231,20 @@ worth it as it massively improves workflow.
 (use-package git-cliff
   :ensure t  :defer 2
   :after (magit))
+
+#+END_SRC
+
+** conflict-buttons
+<<sec:conflict-buttons>>
+
+#+NAME: code-conflict-buttons
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package conflict-buttons
+  :ensure t
+  :defer 2
+  :after (magit)
+  :custom
+  (conflict-buttons-global-mode 1))
 
 #+END_SRC
 
@@ -2431,14 +2454,12 @@ Routine")
 (use-package org-gtd
   :ensure t
   :after org
-  :init
-  (setq org-gtd-update-ack "3.0.0")
-  (setq org-gtd-update-ack "4.0.0")
   :demand t
   :custom
+  (setq org-gtd-update-ack "3.0.0")
+  (setq org-gtd-update-ack "4.0.0")
   (org-gtd-directory '"~/org/gtd")
   (org-edna-use-inheritance t)
-  :config
   (org-edna-mode)
   ;; All your GTD keywords must be in the same sequence
   (setq org-todo-keywords
