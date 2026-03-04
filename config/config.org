@@ -2640,6 +2640,20 @@ external X-window.
 
 #+END_SRC
 
+**** ESR
+<<sec:esr>>
+
+[[https://codeberg.org/teoten/esr][esr]] is a new package that is being developed with the goal of simplifying and focusing solely on Emacs' interaction with
+[[https://www.r-project.org][R]].
+
+#+NAME: code-esr
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package esr
+  :ensure t
+  :defer 3)
+
+#+END_SRC
+
 **** quarto-mode
 <<sec:quarto-mode>>
 
