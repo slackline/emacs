@@ -1419,6 +1419,20 @@ Not currently tangled.
 
 #+END_SRC
 
+** magit-browse-commit
+<<sec:magit-browse-commit>>
+
+[[https://github.com/bbw9n/magit-browse-commit][magit-browse-commit]] allows opening of pull/merge request from a ~magit-blame~ buffer.
+
+#+NAME: code-magit-browse-commit
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package magit-browse-commit
+  :ensure t
+  :defer 3
+  :after (magit))
+
+#+END_SRC
+
 ** magit-delta
 <<sec:magit-delta>>
 
@@ -2654,7 +2668,7 @@ external X-window.
 
 #+END_SRC
 
-**** quarto-mode
+**** TODO quarto-mode
 <<sec:quarto-mode>>
 
 [[https://github.com/quarto-dev/quarto-emacs][quarto-emacs]] was a package released by the official
@@ -2673,14 +2687,13 @@ Not currently tangled
 
 #+END_SRC
 
-Instead I found a custom Quarto configuration from
-[[https://github.com/aceross/emacs/commits/master/site-elisp/quarto-mode.el][aceross/emacs]]'s configuration and use
-that. It is included below verbatim as of 2025-02-15.
+Instead I found a custom Quarto configuration from [[https://github.com/aceross/emacs/commits/master/site-elisp/quarto-mode.el][aceross/emacs]]'s configuration and used that. It is included below
+verbatim as of 2025-02-15. Unfortunately as of <2026-03-07 Sat> its not working so not currently tangled.
 
 #+NAME:code-quarto-mode-custom
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; Following requires that polymode, markdown and python are all loaded/configured first
-(load "~/.config/emacs/site-lisp/quarto-mode.el")
+;; (load "~/.config/emacs/site-lisp/quarto-mode.el")
 ;;; quarto-mode.el --- Major mode for Quarto (qmd) documents -*- lexical-binding: t; -*-
 
 ;; Author: Aaron Ceross
@@ -2947,6 +2960,20 @@ The following /isn't/ tangled and needs checking
   :custom
   (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/ikatyang/tree-sitter-markdown" "master"
 "src")))
+
+#+END_SRC
+
+**** md-ts-mode
+<<sec:md-ts-mode>>
+
+[[https://github.com/dnouri/md-ts-mode][md-ts-mode]] an alternative [[sec:treesitter][Tree Sitter]] mode.
+
+#+NAME: code-md-ts-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package md-ts-mode
+  :ensure t
+  :defer 0.5
+  :after (markdown-mode))
 
 #+END_SRC
 
@@ -3877,7 +3904,6 @@ edited. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Gra
 
 *** treesit
 <<sec:treesit>>
-
 
 *** treesit-fold
 <<sec:tree-sitter-fold>>
