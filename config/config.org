@@ -1248,6 +1248,20 @@ worth it as it massively improves workflow.
 
 #+END_SRC
 
+** fj
+<<sec:fj>>
+
+[[https://codeberg.org/martianh/fj.el][fj]] provides an interface to  [[https://forgejo.org/][ForgeJo]] and is used to power [[https://codeberg.org][Codeberg]]
+
+#+NAME: code-fj
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package fj
+  :ensure t
+  :defer 0.6
+  :after (magit))
+
+#+END_SRC
+
 ** gitlab-ci-mode
 <<sec:gitlab-ci-mode>>
 
@@ -1346,7 +1360,7 @@ speed.".
 ** gtea
 <<sec:gtea>>
 
-[[https://github.com/emacsattic/gtea][gtea]] extends [[sec:ghub][ghub]] for [[https://about.gitea.com/][Gitea]] (which has forked to [[https://forgejo.org/][ForgeJo]]) and is used to power [[https://codeberg.org][Codeberg]])
+[[https://github.com/emacsattic/gtea][gtea]] extends [[sec:ghub][ghub]] for [[https://about.gitea.com/][Gitea]] (which has forked to [[https://forgejo.org/][ForgeJo]] and is used to power [[https://codeberg.org][Codeberg]])
 
 #+NAME: code-gtea
 #+BEGIN_SRC emacs-lisp :tangle init.el
