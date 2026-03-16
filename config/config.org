@@ -1730,25 +1730,27 @@ Sources of some of the options are linked below.
   (org-agenda-skip-deadline-if-done t)
   (org-agenda-skip-scheduled-if-done t)
   (org-agenda-files '("~/org/agenda.org"
- 			   "~/org/gtd/admin.org"
- 			   "~/org/gtd/afmslicer.org"
- 			   "~/org/gtd/carpentries.org"
- 			   "~/org/gtd/clarity.org"
- 			   "~/org/gtd/computing.org"
- 			   "~/org/gtd/cured.org"
- 			   "~/org/gtd/emacs.org"
- 			   "~/org/gtd/isoslam.org"
- 			   "~/org/gtd/joss.org"
- 			   "~/org/gtd/openfest2024.org"
- 			   "~/org/gtd/osc.org"
- 			   "~/org/gtd/pgfinder.org"
-			   "~/org/gtd/reproducibilitea.org"
-			   "~/org/gtd/rse.org"
-			   "~/org/gtd/rse-competencies.org"
-			   "~/org/gtd/sheffieldr.org"
- 			   "~/org/gtd/tcx2gpx.org"
-			   "~/org/gtd/thyroid.org"
-			   "~/org/gtd/topostats.org"))
+ 		       "~/org/gtd/admin.org"
+ 		       "~/org/gtd/afmslicer.org"
+ 		       ;; "~/org/gtd/carpentries.org"
+ 		       ;; "~/org/gtd/clarity.org"
+ 		       "~/org/gtd/computing.org"
+ 		       ;; "~/org/gtd/cured.org"
+ 		       "~/org/gtd/exercise.org"
+ 		       "~/org/gtd/emacs.org"
+ 		       ;; "~/org/gtd/isoslam.org"
+ 		       "~/org/gtd/joss.org"
+ 		       "~/org/gtd/layopt.org"
+ 		       ;; "~/org/gtd/openfest2024.org"
+ 		       ;; "~/org/gtd/osc.org"
+ 		       ;; "~/org/gtd/pgfinder.org"
+		       "~/org/gtd/reproducibilitea.org"
+		       "~/org/gtd/rse.org"
+		       ;; "~/org/gtd/rse-competencies.org"
+		       "~/org/grd/sheffieldr.org"
+ 		       "~/org/gtd/tcx2gpx.org"
+		       ;; "~/org/gtd/thyroid.org"
+		       "~/org/gtd/topostats.org"))
   (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
                                                             (jq .t)
                                                             (latex .t)
@@ -5164,8 +5166,11 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
 
 + [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
 + [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
++ [[http://whattheemacsd.com/][What the .emacs.d!?]]
 + [[https://www.mauromotion.com/posts/2026-01-01-emacs/][Entering the Church of Emacs - mauromotion.com]] (links to [[https://github.com/mauromotion/dotfiles/blob/main/common/emacs/config.org][configuration]] on GitHub)
 + [[https://alhassy.com/emacs.d/][A Life Configuring Emacs]]
++ [[https://www.rahuljuliato.com/posts/emacs-solo-two-years][Two Years of Emacs Solo: 35 Modules, Zero External Packages, and a Full Refactor | Rahul's Blog]]
+
 
 ** Assistance
 
