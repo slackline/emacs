@@ -39,7 +39,7 @@ There are a lot of excellent resources to help guide Emacs users through configu
 | Info pages for installed packages            | ~C-h i~                                     |
 | Manuals for packages                         | ~C-h R~ and search for package              |
 | [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html][An Introduction to Programming in Emacs Lisp]] |                                             |
-| [[https://www.gnu.org/software/emacs/documentation.html][Emacs Lisp Reference]]
+| [[https://www.gnu.org/software/emacs/documentation.html][Emacs Lisp Reference]]                         |                                             |
 | [[https://www.masteringemacs.org/][Mastering Emacs]]                              | N/A -website and book from Mickey Peterson. |
 
 Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/issues][issue]] on the Codeberg repository and I'll pick it up.
@@ -2531,7 +2531,6 @@ Routine")
   :after org
   :demand t
   :custom
-  (setq org-gtd-update-ack "3.0.0")
   (setq org-gtd-update-ack "4.0.0")
   (org-gtd-directory '"~/org/gtd")
   (org-edna-use-inheritance t)
@@ -5192,6 +5191,34 @@ Of particular use is the GitHub workflow which runs a Bash script ([[https://git
  which I have copied in their entirety to build and deploy the site on GitHub pages (for now, I intend to migrate it to
  Codeberg Pages once I've sussed those out).
 
+
+* ToDo
+
+Testing the new configuration I've found the following aren't quiet working properly.
+
+** General
+
++ [ ] Transparency isn't automatically set on starting.
++ [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
++ [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
+
+** ~magit~
+
++ [ ] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running.
++ [ ] Pre-commit hook output for Mypy is not formatted correctly.
++ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
+
+** LSP mode
+
+Mostly seems to be working but...
+
++ No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
+  installed]]. Solution : ~M-x all-the-icons-install-fonts~.
+
+** Org-GTD
+
++ Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean install and on
+  subsequent restarts.
 
 * Links
 
