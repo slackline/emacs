@@ -472,9 +472,9 @@ my use of backups.
 I've come across a bunch of functions that others generously share and include them here. There are a few others
 littered about the configuration rather than being aggregated here.
 
-+ [[sec:code-org-agenda][Org Agenda]]
-+ [[sec:code-quarto-mode-custom][Quarto Mode]]
-+ [[sec:code-sqlite][SQLite]]
++ [[sec:org-agenda][Org Agenda]]
++ [[sec:quarto-mode][Quarto Mode]]
++ [[sec:sqlite][SQLite]]
 
 *** Reversible ~winner-mode~
 <<sec:reverisble-windows>>
@@ -3336,32 +3336,44 @@ well as profiling).
 
 #+NAME: code-pytest
 #+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package python-pytest
-  :ensure t
-  :defer 0.5
-  :after (pyvenv)
-  :bind (:map python-mode-map
-	      ("C-c p t" . python-pytest-dispatch))
-  :custom
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Regression Tests"
-     ("-r" "Reset regression tests" "--regtest-reset")
-     ("--su" "Reset Syrupy snapshot" "--snapshot-update")
-     ("--tee" "Print results" "--regtest-tee")
-     ("--nodiff" "Suppress output" "--regtest-nodiff")
-     ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Profiling"
-     ("-P" "Generate profiling information" "--profile")
-     ("--profile-svg" "Generate profiling graph" "--profile-svg")
-     ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
-     ("--element-number" "Defines how many elements will display in a result" "--element-number")
-     ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")])
-  )
+  (use-package python-pytest
+    :ensure t
+    :defer 0.5
+    :after (pyvenv)
+    :bind (:map python-mode-map
+  	      ("C-c p t" . python-pytest-dispatch))
+    :custom
+    (transient-append-suffix
+      'python-pytest-dispatch
+      '(0)
+      ["Regression Tests"
+       ;; ("-r" "Reset regression tests" "--regtest-reset")
+       ("--su" "Reset Syrupy snapshot" "--snapshot-update")
+       ;; ("--tee" "Print results" "--regtest-tee")
+       ;; ("--nodiff" "Suppress output" "--regtest-nodiff")
+       ;; ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")]
+    )
+    (transient-append-suffix
+      'python-pytest-dispatch
+      '(0)
+      ["Profiling"
+       ("-P" "Generate profiling information" "--profile")
+       ("--profile-svg" "Generate profiling graph" "--profile-svg")
+       ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
+       ("--element-number" "Defines how many elements will display in a result" "--element-number")
+       ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")]
+    )
+
+    (transient-append-suffix
+      'python-pytest-dispatch
+      '(0)
+      ["Matplotlib Plugin"
+       ;; ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
+       ;; ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
+       ("--summary-html" "Generate summary report in HTML" "--mpl-generate-summary html")
+       ;; ("--summary-json" "Generate summary report in JSON" "--mpl-generate-summary json")]
+  ))
+
 #+END_SRC
 
 ***** Ruff
@@ -5199,6 +5211,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 ** General
 
 + [ ] Transparency isn't automatically set on starting.
++ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
 + [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
 + [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
 
@@ -5212,14 +5225,18 @@ Testing the new configuration I've found the following aren't quiet working prop
 
 Mostly seems to be working but...
 
-+ No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
++ [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
++ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though.
 
 ** Org-GTD
 
-+ Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean install and on
-  subsequent restarts.
++ [ ] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
+      subsequent restarts.
 
+** pytest
+
++ [ ] Additional entries to the transient are not appearing.
 * Links
 
 + [[https://orgmode.org/worg/org-contrib/babel/][Babel: Active Code in Org]]
