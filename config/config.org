@@ -4879,14 +4879,32 @@ org popup agendas.
 [[https://git.tty.dog/hpet_dog/mood-line][mood-line]] is a minimalist configuration for the default [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode-line]], the bar at the bottom of a buffer showing information
 about the buffer.
 
+Not currently tangled, switched to [[sec:moody][moody]] instead.
+
 #+NAME: code-moodline
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package mood-line
   :ensure t
   :custom
   (mood-line-glyph-alist mood-line-glyphs-unicode)
   :config
   (mood-line-mode))
+
+#+END_SRC
+
+*** moody
+<<sec:moody>>
+
+[[https://github.com/tarsius/moody][moody]]
+
+#+NAME: code-moody
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package moody
+  :ensure t
+  :config
+  (moody-replace-mode-line-front-space)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
 
 #+END_SRC
 
@@ -5209,7 +5227,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 
 ** General
 
-+ [ ] Transparency isn't automatically set on starting.
++ [X] Transparency isn't automatically set on starting. Solution : See commit ~bfdc95f~
 + [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
 + [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
 + [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
