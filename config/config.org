@@ -4956,6 +4956,33 @@ Custom Modeline
 ** Buffers
 
 Some customisations to make buffers nicer to work with/read.
+*** iBuffer
+<<sec:ibuffer>>
+
+[[repo_url][ibuffer]] is built-in. A useful example of configuration is [[https://olddeuteronomy.github.io/post/emacs-ibuffer-config/][here]].
+
+#+NAME: code-ibuffer
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package ibuffer
+  :ensure nil
+  :defer 4)
+
+#+END_SRC
+
+**** ibuffer-vc
+<<sec:ibuffer-vc>>
+
+[[https://github.com/purcell/ibuffer-vc][ibuffer-vc]] is a neat extension which groups buffers in [[sec:ibuffer][ibuffer]] by version control groups.
+
+#+NAME: code-ibuffer-vc
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package ibuffer-vc
+  :ensure t
+  :defer 3.0
+  ;; :hook
+ )
+
+#+END_SRC
 
 *** highlight-indent-guides
 <<sec:highlight-indent-guides>>
