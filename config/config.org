@@ -2577,40 +2577,6 @@ this available so sticking with `:config` to ensure the package is always loaded
   (direnv-mode))
 #+END_SRC
 
-** Code folding
-*** kirigami
-<<sec:kirigami>>
-
-#+NAME: code-kirigami
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package kirigami
-  :ensure t
-  :after treesit-fold-mode
-  :defer 2
-  :bind-keymap ("C-c C-f"))
-
-#+END_SRC
-
-*** porg
-<<sec:porg>>
-
-[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding.
-
-#+NAME: code-porg
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package porg
-  :ensure t
-  :config
-  (setq porg-blocks-files '("init.el")); File names where you want blocks
-  (setq porg-blocks-padding 2)
-  :hook (emacs-lisp-mode . porg-mode)
-        (clojure-mode . porg-mode)
-        (clojure-ts-mode . porg-mode)
-        (scheme-mode . porg-mode))
-        ;; All-at-once
-        ;; (prog-mode . porg-mode))
-#+END_SRC
-
 ** Programming Modes
 
 There are lots of programming languages, but Emacs has a mode for almost all of them.
@@ -4134,6 +4100,41 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 
 The snippets I have written/customised are not included here. They are loaded from the ~snippet/~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
+
+** Code folding
+*** kirigami
+<<sec:kirigami>>
+
+#+NAME: code-kirigami
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package kirigami
+  :ensure t
+  :after treesit-fold-mode
+  :defer 2
+  :bind-keymap ("C-c C-f"))
+
+#+END_SRC
+
+*** porg
+<<sec:porg>>
+
+[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding.
+
+#+NAME: code-porg
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package porg
+  :ensure t
+  :config
+  (setq porg-blocks-files '("init.el")); File names where you want blocks
+  (setq porg-blocks-padding 2)
+  :hook (emacs-lisp-mode . porg-mode)
+        (clojure-mode . porg-mode)
+        (clojure-ts-mode . porg-mode)
+        (scheme-mode . porg-mode))
+        ;; All-at-once
+        ;; (prog-mode . porg-mode))
+#+END_SRC
+
 
 * Dired
 <<sec:dired>>
