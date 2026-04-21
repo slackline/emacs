@@ -4772,10 +4772,30 @@ D~.
 
 Elements concerned with the User Interface which typically means how buffers, mini-buffers, modeline look.
 
+** Cursor
+<<sec:cursor>>
+
+*** comet-trail
+<<sec:comet-trail>>
+
+[[https://git.andros.dev/andros/comet-trail.el][comet-trail]]
+
+#+NAME: code-comet-trail
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package comet-trail
+  :ensure t
+  :defer 2
+  :custom
+  (add-hook 'prog-mode-hook #'comet-trail-mode)
+  (add-hook 'text-mode-hook #'comet-trail-mode))
+
+#+END_SRC
+
 ** Themes
 <<sec:themes>>
 
 *** modus-themes
+<<sec:modus-themes>>
 
 [[https://protesilaos.com/modus-themes/][modus-themes]] from Prot are really nice.
 
