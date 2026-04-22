@@ -59,18 +59,18 @@ Testing the new configuration I've found the following aren't quiet working prop
 
 ** General
 
-+ [X] Transparency isn't automatically set on starting. Solution : See commit ~bfdc95f~
++ [X] Transparency isn't automatically set on starting. *Solution* : See commit ~bfdc95f~
 + [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
-+ [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
++ [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
 + [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
 
 *** Themes
 
-+ [ ] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
++ [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
   ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
   issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
   perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
-  byte-compiled) but make sure it is being used.
+  byte-compiled) but make sure it is being used. *Solution* : See commit ~604e7f5~
 
 ** ~magit~
 
@@ -4947,6 +4947,20 @@ org popup agendas.
 
 #+END_SRC
 
+*** minions
+<<sec:minions>>
+
+[[https://github.com/tarsius/minions][minions]] is another neat little package from the author of [[sec:magit][Magit]] which adds a pop-up menu to the mode-line that shows the
+minor modes that are enabled for the given buffer. Haven't quite got this working yet as I only see the major mode
+listed and can't yet find where to click to get the menu but ~minions-minor-mode-menu~ can be called interactively to
+access the same list. It doesn't currently work with [[sec:mood-line][mood-line]]
+
+#+NAME: code-minions
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package minions
+  :ensure t)
+#+END_SRC
+
 *** mood-line
 <<sec:moodline>>
 
@@ -4960,8 +4974,9 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
 (use-package mood-line
   :ensure t
   :config
-  (mood-line-glyph-alist mood-line-glyphs-unicode)
-  (mood-line-mode))
+  (mood-line-mode)
+  :custom
+  (mood-line-glyph-alist mood-line-glyphs-unicode))
 
 #+END_SRC
 
@@ -4979,20 +4994,6 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
   (moody-replace-mode-line-buffer-identification)
   (moody-replace-vc-mode))
 
-#+END_SRC
-
-*** minions
-<<sec:minions>>
-
-[[https://github.com/tarsius/minions][minions]] is another neat little package from the author of [[sec:magit][Magit]] which adds a pop-up menu to the mode-line that shows the
-minor modes that are enabled for the given buffer. Haven't quite got this working yet as I only see the major mode
-listed and can't yet find where to click to get the menu but ~minions-minor-mode-menu~ can be called interactively to
-access the same list.
-
-#+NAME: code-minions
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package minions
-  :ensure t)
 #+END_SRC
 
 *** Custom Modeline
