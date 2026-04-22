@@ -4399,6 +4399,18 @@ systems, less so on M$-Win/OSX).
 
 #+END_SRC
 
+** ghostel
+<<sec:ghostel>>
+
+[[https://github.com/dakra/ghostel][ghostel]] is "/Emacs terminal emulator powered by [[https://ghostty.org/][libghostty-vt]]/"
+
+#+NAME: code-ghostel
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package ghostel
+  :ensure t)
+
+#+END_SRC
+
 * Communication
 ** Email
 
