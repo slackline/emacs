@@ -53,7 +53,48 @@ Tasks I'm yet to complete in re-writing...
 - [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
 - [ ] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
 
+** Testing
 
+Testing the new configuration I've found the following aren't quiet working properly.
+
+** General
+
++ [X] Transparency isn't automatically set on starting. Solution : See commit ~bfdc95f~
++ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
++ [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
++ [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
+
+*** Themes
+
++ [ ] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
+  ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
+  issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
+  perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
+  byte-compiled) but make sure it is being used.
+
+** ~magit~
+
++ [ ] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running.
++ [ ] Pre-commit hook output for Mypy is not formatted correctly.
++ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
+
+** LSP mode
+
+Mostly seems to be working but...
+
++ [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
+  installed]]. Solution : ~M-x all-the-icons-install-fonts~.
++ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though.
+
+** Org-GTD
+
++ [ ] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
+      subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
+      package is used?
+
+** pytest
+
++ [ ] Additional entries to the transient are not appearing.
 
 * On Configuration with use-package
 <<sec:conf-use-package>>
@@ -2528,10 +2569,10 @@ Routine")
   :ensure t
   :after org
   :demand t
-  :custom
+  :config
   (setq org-gtd-update-ack "4.0.0")
-  (org-gtd-directory '"~/org/gtd")
-  (org-edna-use-inheritance t)
+  (setq org-gtd-directory '"~/org/gtd")
+  (setq org-edna-use-inheritance t)
   (org-edna-mode)
   ;; All your GTD keywords must be in the same sequence
   (setq org-todo-keywords
@@ -4918,9 +4959,8 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mood-line
   :ensure t
-  :custom
-  (mood-line-glyph-alist mood-line-glyphs-unicode)
   :config
+  (mood-line-glyph-alist mood-line-glyphs-unicode)
   (mood-line-mode))
 
 #+END_SRC
@@ -5277,43 +5317,10 @@ As with much of my config its not original, I found someone else who had done wh
 [[https://github.com/Panadestein/emacsd][Panadestein's emacsd]] repository.
 
 Of particular use is the GitHub workflow which runs a Bash script ([[https://github.com/Panadestein/emacsd/blob/master/publi.sh][publi.sh]]) to use Emacs to [[https://github.com/Panadestein/emacsd/blob/master/build-site.el][build-site.el]]
- which I have copied in their entirety to build and deploy the site on GitHub pages (for now, I intend to migrate it to
- Codeberg Pages once I've sussed those out).
+which I have copied in their entirety to build and deploy the site on GitHub pages (for now, I intend to migrate it to
+Codeberg Pages once I've sussed those out).
 
 
-* ToDo
-
-Testing the new configuration I've found the following aren't quiet working properly.
-
-** General
-
-+ [X] Transparency isn't automatically set on starting. Solution : See commit ~bfdc95f~
-+ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
-+ [X] No icons in tabs to indicate what filetype a buffer is. Solution :  ~M-x all-the-icons-install-fonts~.
-+ [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
-
-** ~magit~
-
-+ [ ] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running.
-+ [ ] Pre-commit hook output for Mypy is not formatted correctly.
-+ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
-
-** LSP mode
-
-Mostly seems to be working but...
-
-+ [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
-  installed]]. Solution : ~M-x all-the-icons-install-fonts~.
-+ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though.
-
-** Org-GTD
-
-+ [ ] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
-      subsequent restarts.
-
-** pytest
-
-+ [ ] Additional entries to the transient are not appearing.
 * Links
 
 + [[https://orgmode.org/worg/org-contrib/babel/][Babel: Active Code in Org]]
