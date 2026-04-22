@@ -4413,10 +4413,10 @@ I don't use the shell/terminal in Emacs much as I quite like having clear separa
 <<sec:vterm>>
 
 [[https://github.com/akermu/emacs-libvterm][vterm]] is a compiled terminal emulator, as such you need to have something like ~gcc~ installed (common on most GNU/Linux
-systems, less so on M$-Win/OSX).
+systems, less so on M$-Win/OSX). For now I'm going to give [[sec:ghostel][ghostel]] a whirl so this isn't tangled.
 
 #+NAME: code-vterm
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package vterm
   :ensure t
   :defer 3
