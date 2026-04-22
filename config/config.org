@@ -4860,10 +4860,10 @@ Elements concerned with the User Interface which typically means how buffers, mi
   :defer 0.5
   :config
   ;; Add all your customisation's prior to loading the themes
-  (modus-themes-italic-constructs t
-	(message "message" format-args)odus-themes-bold-constructs t
-    modus-themes-org-blocks '(tinted-background)
-    modus-themes-include-derivatives-mode 1)
+  (setq modus-themes-italic-constructs t)
+	(setq modus-themes-bold-constructs t)
+  (setq modus-themes-org-blocks '(tinted-background))
+  (setq modus-themes-include-derivatives-mode 1)
   :bind
   ("C-c C-t m" . modus-themes-toggle))
 #+END_SRC
@@ -4878,8 +4878,8 @@ Elements concerned with the User Interface which typically means how buffers, mi
 (use-package ef-themes
   :ensure t
   :config
-  (ef-themes-disable-other-themes 'ef-themes-light-themes)
-  (ef-themes-take-over-modus-themes-mode t)
+  (setq ef-themes-take-over-modus-themes-mode t)
+  (setq ef-themes-disable-other-themes 'ef-themes-light-themes)
   :bind
   (("<f5>" . modus-themes-rotate)
    ("C-<f5>" . modus-themes-select)
