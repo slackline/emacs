@@ -4914,19 +4914,6 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 (set-face-attribute 'default t :font "Hack")
 #+END_SRC
 
-*** Indent bars
-<<sec:indent-bars>>
-
-[[https://github.com/jdtsmith/indent-bars][indent-bars]] are a great visual indicator of where you are.
-
-#+NAME: code-indent-bars
-#+BEGIN_SRC emacs-lisp :tangle init.el
-  (use-package indent-bars
-    :ensure t
-    :hook ((prog-mode) . indent-bars-mode))
-
-#+END_SRC
-
 
 ** Modeline
 <<sec:modeline>>
@@ -4956,7 +4943,7 @@ listed and can't yet find where to click to get the menu but ~minions-minor-mode
 access the same list. It doesn't currently work with [[sec:mood-line][mood-line]] so isn't tangled.
 
 #+NAME: code-minions
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package minions
   :ensure t)
 #+END_SRC
@@ -4970,7 +4957,7 @@ about the buffer.
 Not currently tangled, switched to [[sec:moody][moody]] instead.
 
 #+NAME: code-moodline
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mood-line
   :ensure t
   :config
@@ -5058,14 +5045,29 @@ Some customisations to make buffers nicer to work with/read.
 
 #+END_SRC
 
-*** highlight-indent-guides
+*** Indent bars
+<<sec:indent-bars>>
+
+[[https://github.com/jdtsmith/indent-bars][indent-bars]] are a great visual indicator of where you are.
+
+#+NAME: code-indent-bars
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package indent-bars
+    :ensure t
+    :custom
+    (setq indent-bars-color-by-depth t)
+    :hook ((prog-mode) . indent-bars-mode))
+
+#+END_SRC
+
+*** TODO highlight-indent-guides
 <<sec:highlight-indent-guides>>
 
 [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] a minor mode that does what it says on the tin, vertical indent guides (lines between starting a
-code block that is indented and ending it) are highlighted as you scroll.
+code block that is indented and ending it) are highlighted as you scroll. Have gone with [[sec:indent-bars][indent-bars]] instead
 
 #+NAME: code-highlight-indent-guides
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 
 (use-package highlight-indent-guides
   :ensure t
