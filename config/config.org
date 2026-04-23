@@ -4947,13 +4947,13 @@ org popup agendas.
 
 #+END_SRC
 
-*** minions
+*** TODO minions
 <<sec:minions>>
 
 [[https://github.com/tarsius/minions][minions]] is another neat little package from the author of [[sec:magit][Magit]] which adds a pop-up menu to the mode-line that shows the
 minor modes that are enabled for the given buffer. Haven't quite got this working yet as I only see the major mode
 listed and can't yet find where to click to get the menu but ~minions-minor-mode-menu~ can be called interactively to
-access the same list. It doesn't currently work with [[sec:mood-line][mood-line]]
+access the same list. It doesn't currently work with [[sec:mood-line][mood-line]] so isn't tangled.
 
 #+NAME: code-minions
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -4970,7 +4970,7 @@ about the buffer.
 Not currently tangled, switched to [[sec:moody][moody]] instead.
 
 #+NAME: code-moodline
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package mood-line
   :ensure t
   :config
@@ -4980,13 +4980,13 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
 
 #+END_SRC
 
-*** moody
+*** TODO moody
 <<sec:moody>>
 
-[[https://github.com/tarsius/moody][moody]]
+[[https://github.com/tarsius/moody][moody]] adds a tab to the mode-line, not sure if it works with [[sec:mood-line][mood-line]] so not currently tangled.
 
 #+NAME: code-moody
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package moody
   :ensure t
   :config
@@ -4996,7 +4996,7 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
 
 #+END_SRC
 
-*** Custom Modeline
+*** TODO Custom Modeline
 <<sec:custom-modeline>>
 
 Once tried implementing a [[https://protesilaos.com/codelog/2023-07-29-emacs-custom-modeline-tutorial/][custom modeline]] based on a tutorial by Prot.
@@ -5231,7 +5231,7 @@ also hide certain buffers I don't need to see often.
 (global-set-key (kbd "<f4>") 'package-list-packages)
 (global-set-key (kbd "<f5>") 'keychain-refresh-environment)
 (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file user-init-file)))
-(global-set-key (kbd "<f7>") 'flyspell-toggle)
+(global-set-key (kbd "<f7>") 'ibuffer)
 (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
 (global-set-key (kbd "<f9>") 'emacs-index-search)
 (global-set-key (kbd "C-M-%") 'query-replace-regexp)
