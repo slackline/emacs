@@ -62,7 +62,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [X] Transparency isn't automatically set on starting. *Solution* : See commit ~bfdc95f~
 + [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
 + [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
-+ [ ] Mode-line is not as expected, very cluttered so settings aren't being respected.
++ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: See commit ~d85af0d~
 
 *** Themes
 
@@ -75,7 +75,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 ** ~magit~
 
 + [ ] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running.
-+ [ ] Pre-commit hook output for Mypy is not formatted correctly.
++ [X] Pre-commit hook output for Mypy is not formatted correctly.
 + [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
 
 ** LSP mode
@@ -4130,6 +4130,8 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
   (add-hook 'prog-mode-hook #'yas-minor-mode)
   (add-hook 'org-mode-hook #'yas-minor-mode)
   (add-hook 'ess-r-mode-hook #'yas-minor-mode))
+(yas-global-mode)
+
 #+END_SRC
 
 #+NAME: code-yasnippet-snippets
