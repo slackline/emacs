@@ -4960,10 +4960,9 @@ Not currently tangled, switched to [[sec:moody][moody]] instead.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mood-line
   :ensure t
-  :config
-  (mood-line-mode)
   :custom
   (mood-line-glyph-alist mood-line-glyphs-unicode))
+(mood-line-mode)
 
 #+END_SRC
 
@@ -5051,7 +5050,7 @@ Some customisations to make buffers nicer to work with/read.
 [[https://github.com/jdtsmith/indent-bars][indent-bars]] are a great visual indicator of where you are.
 
 #+NAME: code-indent-bars
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
   (use-package indent-bars
     :ensure t
     :custom
@@ -5067,7 +5066,7 @@ Some customisations to make buffers nicer to work with/read.
 code block that is indented and ending it) are highlighted as you scroll. Have gone with [[sec:indent-bars][indent-bars]] instead
 
 #+NAME: code-highlight-indent-guides
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package highlight-indent-guides
   :ensure t
