@@ -10,6 +10,9 @@
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
 	'(
+	  ;; Bib references (https://emacs.stackexchange.com/questions/80734/org-capture-to-bibtex-file)
+	  ("B" "Bibtex template" plain (file "~/org/references.bib")
+           "" :prepend t)
 	  ;; Email
 	  ("E" "Email"
 	   entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
