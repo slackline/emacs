@@ -1435,7 +1435,7 @@ speed.".
 [[https://github.com/emacsattic/gtea][gtea]] extends [[sec:ghub][ghub]] for [[https://about.gitea.com/][Gitea]] (which has forked to [[https://forgejo.org/][ForgeJo]] and is used to power [[https://codeberg.org][Codeberg]])
 
 #+NAME: code-gtea
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package gtea
   :ensure t
   :defer 0.5
@@ -2198,6 +2198,10 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 [[https://orgmode.org/manual/Capture.html#Capture][Org-capture]] is a useful method of opening transient like nested menus to capture notes in predefined files. It allows
 you to specify sections and tables to which entries should be added with pre-defined templates.
 
+[[https://emacs.stackexchange.com/questions/80734/org-capture-to-bibtex-file][org-capture to bibtex file]] - useful StackExchange answer on capturing BibTex references to files, I only use a very
+basic version of this as I use the [[https://github.com/Langenscheiss/bibitnow][BibItNow]] browser plugin to generate citations in the desired format which are ready
+to paste in.
+
 #+NAME: code-org-capture
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-capture
@@ -2207,6 +2211,9 @@ you to specify sections and tables to which entries should be added with pre-def
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
 	'(
+      ;; Bib references (https://emacs.stackexchange.com/questions/80734/org-capture-to-bibtex-file)
+      ("B" "Bibtex template" plain (file "~/org/references.bib")
+                            "" :prepend t)
 	  ;; Email
 	  ("E" "Email"
 	   entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
@@ -4489,6 +4496,7 @@ There are a few layers here, not all of which are relevant to Emacs configuratio
 
 + [[https://github.com/tanrax/org-social][org-social: Org Social is a decentralized social network that runs on an Org Mode file over HTTP.]]
 + [[https://github.com/tanrax/org-social.el][org-social.el: Emacs client for Org Social]]
++ [[https://en.andros.dev/blog/c68f00c3/quick-tutorial-to-get-a-blog-online-from-org-mode-thanks-to-org-social/][Quick tutorial to get a blog online from Org mode thanks to Org Social | Andros Fenollosa]]
 
 Not currently tangled.
 
