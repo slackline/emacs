@@ -37,6 +37,7 @@ There are a lot of excellent resources to help guide Emacs users through configu
 | [[https://www.gnu.org/software/emacs/tour/][Emacs Tutorial]]                               | ~C-h t~                                     |
 | [[https://www.gnu.org/software/emacs/manual/][Emacs Manual]]                                 | ~C-h r~                                     |
 | Info pages for installed packages            | ~C-h i~                                     |
+| Display local help for point (of cursor)     | ~C-h .~                                     |
 | Manuals for packages                         | ~C-h R~ and search for package              |
 | [[https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html][An Introduction to Programming in Emacs Lisp]] |                                             |
 | [[https://www.gnu.org/software/emacs/documentation.html][Emacs Lisp Reference]]                         |                                             |
