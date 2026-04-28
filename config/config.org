@@ -3990,21 +3990,21 @@ edited. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Gra
 *** treesit
 <<sec:treesit>>
 
-*** treesit-fold
+*** TODO  treesit-fold
 <<sec:tree-sitter-fold>>
 
 [[https://github.com/emacs-tree-sitter/treesit-fold][treesit-fold]] provides tree-folding for the built-in
+
+Check that this gets enabled.
 
 #+NAME: code-tree-sitter-fold
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit-fold
   :ensure t
-  :defer 1
   :after (treesit)
   :custom
   (treesit-fold-line-comment-mode t)
-  :init
-  (global-treesit-fold-mode))
+  (global-treesit-fold-mode t))
 
 #+END_SRC
 
@@ -4153,6 +4153,9 @@ The snippets I have written/customised are not included here. They are loaded fr
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
 
 ** Code folding
+
++ [[https://www.jamescherti.com/emacs-the-definitive-guide-to-code-folding/][Emacs: The Definitive Guide to Code Folding | James Cherti]]
+
 *** kirigami
 <<sec:kirigami>>
 
@@ -4160,16 +4163,97 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package kirigami
   :ensure t
-  :after treesit-fold-mode
   :defer 2
-  :bind-keymap ("C-c C-f"))
+  :after treesit-fold
+  :commands (kirigami-open-fold
+             kirigami-open-fold-rec
+             kirigami-close-fold
+             kirigami-toggle-fold
+             kirigami-open-folds
+             kirigami-close-folds-except-current
+             kirigami-close-folds)
+
+  :bind
+  ;; Vanilla Emacs keybindings
+  (("C-c z o" . kirigami-open-fold)          ; Open fold at point
+   ("C-c z O" . kirigami-open-fold-rec)      ; Open fold recursively
+   ("C-c z r" . kirigami-open-folds)         ; Open all folds
+   ("C-c z c" . kirigami-close-fold)         ; Close fold at point
+   ("C-c z m" . kirigami-close-folds)        ; Close all folds
+   ("C-c z a" . kirigami-toggle-fold)))      ; Toggle fold at point
 
 #+END_SRC
+
+**** outline-minor-mode
+<<sec:outline-minor-mode>>
+
+#+NAME: code-outline-minor-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
+(add-hook 'conf-mode-hook #'outline-minor-mode)
+
+#+END_SRC
+
+
+
+**** hs-minor-mode
+<<sec:hs-minor-mode>>
+
+#+NAME: code-hs-minor-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+;; Systems and General Purpose
+(add-hook 'c-mode-hook #'hs-minor-mode)
+(add-hook 'c++-mode-hook #'hs-minor-mode)
+(add-hook 'java-mode-hook #'hs-minor-mode)
+(add-hook 'rust-mode-hook #'hs-minor-mode)
+(add-hook 'go-mode-hook #'hs-minor-mode)
+(add-hook 'ruby-mode-hook #'hs-minor-mode)
+;; Web and Frontend
+(add-hook 'js-mode-hook #'hs-minor-mode)
+(add-hook 'typescript-mode-hook #'hs-minor-mode)
+(add-hook 'css-mode-hook #'hs-minor-mode)
+;; Scripting, Data, and Infrastructure
+(add-hook 'sh-mode-hook #'hs-minor-mode) ; for bash/shell scripts
+(add-hook 'json-mode-hook #'hs-minor-mode)
+(add-hook 'lua-mode-hook #'hs-minor-mode)
+
+#+END_SRC
+
+**** outline-indent
+<<sec:outline-indent>>
+
+[[https://github.com/jamescherti/outline-indent.el][outline-indent]] provides code folding based on indentation.
+
+#+NAME: code-outline-indent
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package outline-indent
+  :commands outline-indent-minor-mode
+  :custom
+(outline-indent-ellipsis " ▼")
+  :hook (haskell-mode . outline-indent-minor-mode)
+        (python-mode . outline-indent-minor-mode)
+        (python-ts-mode . outline-indent-minor-mode)
+        (yaml-mode . outline-indent-minor-mode)
+        (yaml-ts-mode . outline-indent-minor-mode))
+
+;; Python
+;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
+;; (add-hook 'python-ts-mode-hook #'outline-indent-minor-mode)
+
+;; ;; Yaml
+;; (add-hook 'yaml-mode-hook #'outline-indent-minor-mode)
+;; (add-hook 'yaml-ts-mode-hook #'outline-indent-minor-mode)
+
+;; ;; Haskell
+;; (add-hook 'haskell-mode-hook #'outline-indent-minor-mode)
+
+#+END_SRC
+
 
 *** porg
 <<sec:porg>>
 
-[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding.
+[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding. Not currently tangled though.
 
 #+NAME: code-porg
 #+BEGIN_SRC emacs-lisp :tangle no
