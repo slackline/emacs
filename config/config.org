@@ -1335,6 +1335,30 @@ worth it as it massively improves workflow.
 
 #+END_SRC
 
+** forgejo
+<<sec:forgejo>>
+
+[[https://codeberg.org/thanosapollo/emacs-forgejo][forgejo]] allows interaction with ForgeJo instances (including Codeberg). It requires tokens to be saved in
+~~/authinfo.gpg~ and also depends on [[https://codeberg.org/thanosapollo/emacs-keymap-popup][~emacs-keymap-popup~]] which is from the same author (why they didn't reuse
+functionality from the built-in [[sec:which-key][which-key]] or [[sec:transient][transient]] is anyone's guess).
+
+Not currently tangled.
+
+#+NAME: code-forgejo
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package forgejo
+  :ensure t
+  :defer defer_time
+  :after (after_name)
+  :custom
+  (forgejo-hosts '(("https://codeberg.org") ("https://forgejo.nshephard.dev")))
+  (forgejo-watch-rules '(("*" . "author:slackline")
+                          ("*" . "author:neil")))
+  (forgejo-watch-filter-default "read:no"))
+
+#+END_SRC
+
+
 ** gitlab-ci-mode
 <<sec:gitlab-ci-mode>>
 
