@@ -3386,9 +3386,9 @@ well as profiling).
       ["Regression Tests"
        ;; ("-r" "Reset regression tests" "--regtest-reset")
        ("--su" "Reset Syrupy snapshot" "--snapshot-update")
-       ;; ("--tee" "Print results" "--regtest-tee")
-       ;; ("--nodiff" "Suppress output" "--regtest-nodiff")
-       ;; ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")]
+       ("--tee" "Print results" "--regtest-tee")
+       ("--nodiff" "Suppress output" "--regtest-nodiff")
+       ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")
     ])
     (transient-append-suffix
       'python-pytest-dispatch
@@ -3404,10 +3404,10 @@ well as profiling).
       'python-pytest-dispatch
       '(0)
       ["Matplotlib Plugin"
-       ;; ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
-       ;; ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
-       ("--summary-html" "Generate summary report in HTML" "--mpl-generate-summary html")
-        ;; ("--summary-json" "Generate summary report in JSON" "--mpl-generate-summary json")
+       ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
+       ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
+       ("--html" "Generate summary report in HTML" "--mpl-generate-summary html")
+       ("--json" "Generate summary report in JSON" "--mpl-generate-summary json")
       ]
       ))
 
@@ -5467,6 +5467,7 @@ Codeberg Pages once I've sussed those out).
 + [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/][Stealing from the Best Emacs Configs | Emacs Redux]]
 + [[https://tecosaur.github.io/emacs-config/config.pdf][Doom Emacs Configuration]]
 + [[https://sachachua.com/dotemacs/index.html][Sacha Chua's Emacs Configuration]] [[https://sachachua.com/dotemacs/index.pdf][PDF]]
++ [[https://protesilaos.com/codelog/2026-04-30-emacs-decent-default-sacha-chua/][Emacs: decent defaults I shared with Sacha Chua | Protesilaos]]
 
 
 ** Assistance
