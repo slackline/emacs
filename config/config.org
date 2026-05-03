@@ -95,7 +95,12 @@ Mostly seems to be working but...
 
 ** pytest
 
-+ [ ] Additional entries to the transient are not appearing.
++ [X] Additional entries to the transient are not appearing.
+
+** Functions
+
++ [ ] Custom functions for markdown > org and org > markdown don't appear to be available.
+
 
 * On Configuration with use-package
 <<sec:conf-use-package>>
