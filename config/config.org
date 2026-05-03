@@ -163,7 +163,6 @@ found setting this to ~nil~ caused errors on trying to load and configure packag
 ;;; early-init.el --- Emacs early init file -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;; Runs before init.el is loaded.
-
 ;;; Code:
 
 ;; If using straight.el then disable package.el to prevent all packages being loaded on startup
@@ -1122,7 +1121,6 @@ literally everything under Git version control.
                                  ("C-c m P" . magit-push-current-to-upstream)
                                  ("C-c m R" . magit-file-rename)
                                  ("C-c m f" . forge-pull)
-                                 ("C-c m d d" . nds:magit-show-with-difftastic)
                                  ("C-c m d r" . magit-diff-range)
                                  ("C-c m d s" . magit-diff-staged)
                                  ("C-c m l l" . magit-log)
@@ -5068,14 +5066,14 @@ access the same list. It doesn't currently work with [[sec:mood-line][mood-line]
 #+END_SRC
 
 *** mood-line
-<<sec:moodline>>
+<<sec:mood-line>>
 
 [[https://git.tty.dog/hpet_dog/mood-line][mood-line]] is a minimalist configuration for the default [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Mode-Line.html][mode-line]], the bar at the bottom of a buffer showing information
 about the buffer.
 
 Not currently tangled, switched to [[sec:moody][moody]] instead.
 
-#+NAME: code-moodline
+#+NAME: code-mood-line
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mood-line
   :ensure t
@@ -5138,7 +5136,7 @@ Some customisations to make buffers nicer to work with/read.
 *** iBuffer
 <<sec:ibuffer>>
 
-[[repo_url][ibuffer]] is built-in. A useful example of configuration is [[https://olddeuteronomy.github.io/post/emacs-ibuffer-config/][here]].
+ibuffer is built-in. A useful example of configuration is [[https://olddeuteronomy.github.io/post/emacs-ibuffer-config/][here]].
 
 #+NAME: code-ibuffer
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -5151,7 +5149,8 @@ Some customisations to make buffers nicer to work with/read.
 **** ibuffer-vc
 <<sec:ibuffer-vc>>
 
-[[https://github.com/purcell/ibuffer-vc][ibuffer-vc]] is a neat extension which groups buffers in [[sec:ibuffer][ibuffer]] by version control groups.
+[[https://github.com/purcell/ibuffer-vc][ibuffer-vc]] is a neat extension which groups buffers in [[sec:ibuffer][ibuffer]] by version control groups. A related package (from the
+same author!) is [[https://github.com/purcell/ibuffer-projectile][ibuffer-projectile]] which groups files by [[sec:projectile][projectile projects]].
 
 #+NAME: code-ibuffer-vc
 #+BEGIN_SRC emacs-lisp :tangle init.el
