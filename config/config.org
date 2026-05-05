@@ -1100,8 +1100,8 @@ literally everything under Git version control.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package magit
     :ensure t
-    :custom
-    (magit-repository-directories
+    :config
+    (setq magit-repository-directories
   	`(("~/dotfiles" . 1)
   	  ("~/.config/emacs/" . 1)
   	  ("~/org/" . 1)
@@ -1109,18 +1109,18 @@ literally everything under Git version control.
   	  ("~/work/python/tcx2gpx/" . 1)
   	  ("~/work/python/wpweather/" . 1)
   	  ))
-    (auth-sources '("~/.authinfo.gpg"))
-    (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-    (magit-bury-buffer-function 'magit-restore-window-configuration)
-    (magit-pull-or-fetch t)
-    (magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
-    (magit-process-finish-apply-ansi-colors t)
+    (setq auth-sources '("~/.authinfo.gpg"))
+    (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+    (setq magit-bury-buffer-function 'magit-restore-window-configuration)
+    (setq magit-pull-or-fetch t)
+    (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
+    (setq magit-process-finish-apply-ansi-colors t)
     ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
     ;; perhaps?
-    (remove-hook 'git-commit-mode #'turn-on-auto-fill)
-    (remove-hook 'forge-post-mode #'turn-on-auto-fill)
-    (add-hook 'after-save-hook 'magit-after-save-refresh-status)
-    (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
+    (setq remove-hook 'git-commit-mode #'turn-on-auto-fill)
+    (setq remove-hook 'forge-post-mode #'turn-on-auto-fill)
+    (setq add-hook 'after-save-hook 'magit-after-save-refresh-status)
+    (setq add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
     ;; :hook
     :bind (:map magit-mode-map (("C-c m C" . magit-clone)
                                  ("C-c m F" . magit-pull-from-upstream)
