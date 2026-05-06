@@ -60,10 +60,10 @@ Testing the new configuration I've found the following aren't quiet working prop
 
 ** General
 
-+ [X] Transparency isn't automatically set on starting. *Solution* : See commit ~bfdc95f~
++ [X] Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
 + [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
 + [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
-+ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: See commit ~d85af0d~
++ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~
 
 *** Themes
 
@@ -71,11 +71,12 @@ Testing the new configuration I've found the following aren't quiet working prop
   ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
   issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
   perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
-  byte-compiled) but make sure it is being used. *Solution* : See commit ~604e7f5~
+  byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
 
 ** ~magit~
 
-+ [ ] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running.
++ [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution* :
+  ~53363e0~
 + [X] Pre-commit hook output for Mypy is not formatted correctly.
 + [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
 
@@ -1100,27 +1101,27 @@ literally everything under Git version control.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package magit
     :ensure t
-    :config
-    (setq magit-repository-directories
+    :custom
+    (magit-repository-directories
   	`(("~/dotfiles" . 1)
   	  ("~/.config/emacs/" . 1)
   	  ("~/org/" . 1)
+  	  ("~/org.roam/" . 1)
   	  ("~/work/git/" . 2)
-  	  ("~/work/python/tcx2gpx/" . 1)
-  	  ("~/work/python/wpweather/" . 1)
   	  ))
+    (add-hook 'after-save-hook 'magit-after-save-refresh-status)
+    (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
+    ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
+    ;; perhaps?
+    (remove-hook 'git-commit-mode #'turn-on-auto-fill)
+    (remove-hook 'forge-post-mode #'turn-on-auto-fill)
+    :config
     (setq auth-sources '("~/.authinfo.gpg"))
     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
     (setq magit-bury-buffer-function 'magit-restore-window-configuration)
     (setq magit-pull-or-fetch t)
     (setq magit-log-margin '(t "%F %R" magit-log-margin-width t 18))
     (setq magit-process-finish-apply-ansi-colors t)
-    ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
-    ;; perhaps?
-    (setq remove-hook 'git-commit-mode #'turn-on-auto-fill)
-    (setq remove-hook 'forge-post-mode #'turn-on-auto-fill)
-    (setq add-hook 'after-save-hook 'magit-after-save-refresh-status)
-    (setq add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
     ;; :hook
     :bind (:map magit-mode-map (("C-c m C" . magit-clone)
                                  ("C-c m F" . magit-pull-from-upstream)
