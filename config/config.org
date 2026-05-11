@@ -1105,17 +1105,17 @@ literally everything under Git version control.
     (magit-repository-directories
   	`(("~/dotfiles" . 1)
   	  ("~/.config/emacs/" . 1)
+  	  ("~/.password-store/" . 1)
   	  ("~/org/" . 1)
-  	  ("~/org.roam/" . 1)
-  	  ("~/work/git/" . 2)
-  	  ))
-    (add-hook 'after-save-hook 'magit-after-save-refresh-status)
-    (add-hook 'magit-status-sections-hook #'magit-insert-worktrees t)
+  	  ("~/org-roam/" . 1)
+  	  ("~/work/git/" . 3)))
     ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
     ;; perhaps?
     (remove-hook 'git-commit-mode #'turn-on-auto-fill)
     (remove-hook 'forge-post-mode #'turn-on-auto-fill)
     :config
+    (add-to-list 'after-save-hook 'magit-after-save-refresh-status t)
+    (add-to-list 'magit-status-sections-hook 'magit-insert-worktrees t)
     (setq auth-sources '("~/.authinfo.gpg"))
     (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
     (setq magit-bury-buffer-function 'magit-restore-window-configuration)
