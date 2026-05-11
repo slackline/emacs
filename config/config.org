@@ -76,7 +76,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 ** ~magit~
 
 + [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution* :
-  ~53363e0~
+  ~e04e6d9~ (after ~53363e0~)
 + [X] Pre-commit hook output for Mypy is not formatted correctly.
 + [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
 
@@ -1329,7 +1329,7 @@ worth it as it massively improves workflow.
 ** fj
 <<sec:fj>>
 
-[[https://codeberg.org/martianh/fj.el][fj]] provides an interface to  [[https://forgejo.org/][ForgeJo]] and is used to power [[https://codeberg.org][Codeberg]]
+[[https://codeberg.org/martianh/fj.el][fj]] provides an interface to [[https://forgejo.org/][ForgeJo]] which is used to power [[https://codeberg.org][Codeberg]].
 
 #+NAME: code-fj
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -1360,6 +1360,25 @@ Not currently tangled.
   (forgejo-watch-rules '(("*" . "author:slackline")
                           ("*" . "author:neil")))
   (forgejo-watch-filter-default "read:no"))
+
+#+END_SRC
+
+** forgejo-vc
+<<sec:forgejo-vc>>
+
+[[https://codeberg.org/thanosapollo/emacs-forgejo][forgejo-vc]] yet another package for interacting with ForgeJo instances. Not tried this yet but unlike [[sec:forgejo][forgejo]] it uses
+[[sec:transient][transient]]. The author has written a useful [[https://thanosapollo.org/projects/emacs-forgejo/][guide]] to usage.
+
+#+NAME: code-forgejo-vc
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package forgejo-vc
+  :vc (:url "https://codeberg.org/thanosapollo/emacs-forgejo"
+            :branch "master"
+          :rev :newest
+          :lisp-dir "lisp")
+  :custom
+  (forgejo-host "https://codeberg.org"))
+
 
 #+END_SRC
 
