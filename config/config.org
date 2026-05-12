@@ -30,7 +30,7 @@ I keep extensive [[https://org-roam.nshephard.dev][Org-roam]] notes and have sep
 to augment this configuration not just with explanations of the configuration options themselves but a little more on
 each package and how it works (this will grow over time as I return to each package and configure it properly.).
 
-There are a lot of excellent resources to help guide Emacs users through configuring their browser to their own needs.
+There are a lot of excellent resources to help guide Emacs users through configuring their Emacs as their own.
 
 | Resource                                     | Access in Emacs with...                     |
 |----------------------------------------------+---------------------------------------------|
@@ -52,7 +52,7 @@ Tasks I'm yet to complete in re-writing...
 - [X] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
 - [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
 - [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
-- [ ] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
+- [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
 
 ** Testing
 
@@ -65,7 +65,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
 + [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~
 
-*** Themes
+** Themes
 
 + [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
   ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
@@ -86,8 +86,8 @@ Mostly seems to be working but...
 
 + [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
-+ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though.
-+ [ ] ~lsp-ltex-plus~ fails on loading (possibly other language servers too)
++ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
++ [ ] ~lsp-ltex-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
 
 ** Org-GTD
 
@@ -108,12 +108,18 @@ Mostly seems to be working but...
 <<sec:conf-use-package>>
 
 Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
-use-package the right way]]. The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package README.md]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
+use-package the right way]].
+
++ Packages are either loaded immediately, when the package is first used (via autoloading) or can be deferred using the
+~:defer~ keyword. Some autoloading can be done in response to /triggers/ of certain events (i.e. ~:hook~).
++ Using either ~:config~ or ~:init~ will force a package to be loaded, regardless of whether you use ~:defer~ to delay
+  loading. Instead the alternative ~:custom~ and ~:hook~ commands should be used.
++ ~:custom~ Avoids the need to prefix with ~setq~ (I think!).
+
+ The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package README.md]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
 docs : use-package]] page since it is now a core component of Emacs. use-package provides the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Basic-Concepts][~use-package~ macro]] which
 simplifies configuration.
 
-Packages are either loaded immediately, when the package is first used (via autoloading) or can be deferred using the
-~:defer~ keyword. Some autoloading can be done in response to /triggers/ of certain events (i.e. ~:hook~).
 
 | Option         | Description                                                                                                                                        | Example                                                                                                                                                                                |
 |----------------+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -132,12 +138,8 @@ Packages are either loaded immediately, when the package is first used (via auto
 | ~:ensure~      | Makes sure a package is loaded (eventually). Should be avoided with built-in packages as it may force downloading of newer version.                |                                                                                                                                                                                        |
 
 
-Using either ~:config~ or ~:init~ will force a package to be loaded, regardless of whether you use ~:defer~ to delay
-loading. Instead the alternative ~:custom~ and ~:hook~ commands should be used.
 
-** ~:custom~
 
-Avoids the need to ~setq~ within ~:config~ / ~:init~ sections
 
 * Initial Setup
 
@@ -195,10 +197,9 @@ exec-path-from-shell~).
   (exec-path-from-shell-copy-env "SSH_AGENT_PID")
   (exec-path-from-shell-copy-env "SSH_AGENT_SOCK")
   (exec-path (append '("~/bin"
-                          "~/.local/bin"
-                          "~/.cargo/bin/"
-                          "~/.node/bin/"
-                          )
+                       "~/.local/bin"
+                       "~/.cargo/bin/"
+                       "~/.node/bin/")
 			exec-path)))
 #+END_SRC
 
@@ -291,11 +292,11 @@ useful to be able to set the ~package-archive-priorities~ where each is assigned
 ** Byte Compiling
 <<sec:byte-compiling>>
 
-Byte-compilation takes your ASCII plain-text configuration files saved in ~.el~ and turns them into computer code
-(~.elc~) which can be loaded quicker. There are a couple of options available ~auto-compile~ and ~compile-angel~ being
-two that I have explored before. I have a hook to [[https://emacs.stackexchange.com/a/110][hide the compilation buffer]] on completion of compiling as I got fed up
-of these being thrust into the foreground. I don't currently use either of these but keep them hanging around in case I
-change my mind so I don't have to dig through my Git history to find the configuration.
+Byte-compilation takes your ASCII plain-text configuration and packages files saved in ~.el~ and turns them into
+computer code (~.elc~) which can be loaded quicker. There are a couple of options available ~auto-compile~ and
+~compile-angel~ being two that I have explored before. I have a hook to [[https://emacs.stackexchange.com/a/110][hide the compilation buffer]] on completion of
+compiling as I got fed up of these being thrust into the foreground. I don't currently use either of these but keep them
+hanging around in case I change my mind so I don't have to dig through my Git history to find the configuration.
 
 *** ~auto-compile~
 <<sec:auto-compile>>
@@ -2659,21 +2660,6 @@ Emacs is my Integrated Development Environment (IDE) when programming and writin
 specific modes but also leverage the power of Language Server Protocol (LSP) to help with navigation, function
 arguments, refactoring and so forth.
 
-** direnv
-<<sec:direnv>>
-
-[[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
-entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs. Pretty much always want
-this available so sticking with `:config` to ensure the package is always loaded.
-
-#+NAME: code-direnv
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package direnv
-  :ensure t
-  :config
-  (direnv-mode))
-#+END_SRC
-
 ** Programming Modes
 
 There are lots of programming languages, but Emacs has a mode for almost all of them.
@@ -4220,7 +4206,6 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
              kirigami-open-folds
              kirigami-close-folds-except-current
              kirigami-close-folds)
-
   :bind
   ;; Vanilla Emacs keybindings
   (("C-c z o" . kirigami-open-fold)          ; Open fold at point
@@ -4316,6 +4301,41 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
         (scheme-mode . porg-mode))
         ;; All-at-once
         ;; (prog-mode . porg-mode))
+#+END_SRC
+
+
+** direnv
+<<sec:direnv>>
+
+[[https://direnv.net/][direnv]] allows easy activation of virtual environment, setting custom variables or running other actions conditional on
+entering a directory. Naturally there is [[https://github.com/wbolster/emacs-direnv][emacs-direnv]] which provides integration with Emacs. Pretty much always want
+this available so sticking with `:config` to ensure the package is always loaded.
+
+I started using this but found in this new configuration it didn't always work as expected. I then stumbled across [[sec:envrc][envrc]]
+which I'm trialling for now. Ergo this isn't currently tangled.
+
+#+NAME: code-direnv
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package direnv
+  :ensure t
+  :config
+  (direnv-mode))
+#+END_SRC
+
+** envrc
+<<sec:envrc>>
+
+[[https://github.com/purcell/envrc][envrc]] is an alternative to [[sec:direnv][direnv]], as [[https://github.com/purcell/envrc#how-does-this-differ-from-direnvel][noted]] rather than switching the global environment sets the environment on a
+per-buffer basis. The one thing I might have to do is move this section to later in the configuration file as described
+as global minor modes need to be enabled first.
+
+#+NAME: code-envrc
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package envrc
+  :ensure t
+  :defer 0.5
+  :hook (after-init . envrc-global-mode))
+
 #+END_SRC
 
 
@@ -5429,7 +5449,7 @@ within that directory so that I didn't clobber my existing ~init.el~.
 ** Different target files
 
 When writing code blocks in Org-mode they have the structure shown below which allows the global ~:tangle~ target to be
-over-ridden. Useful for writing the ~early-init.el~
+over-ridden. Useful for writing the ~early-init.el~ file.
 
 #+NAME: example-tangle-alt-target-file
 #+BEGIN_SRC org :tangle no
@@ -5441,7 +5461,8 @@ over-ridden. Useful for writing the ~early-init.el~
 
 ** Exclude block
 
-If there is a particular code block I _don't_ want to tangle and include it is possible to disable it.
+If there is a particular code block I _don't_ want to tangle and include it is possible to disable it by setting ~:tangle
+no~.
 
 #+NAME: example-tangle-exclude-code-block
 #+BEGIN_SRC org :tangle no
@@ -5494,6 +5515,9 @@ Codeberg Pages once I've sussed those out).
 + [[https://sachachua.com/dotemacs/index.html][Sacha Chua's Emacs Configuration]] [[https://sachachua.com/dotemacs/index.pdf][PDF]]
 + [[https://protesilaos.com/codelog/2026-04-30-emacs-decent-default-sacha-chua/][Emacs: decent defaults I shared with Sacha Chua | Protesilaos]]
 
+** Packages
+
++ [[https://www.jamescherti.com/essential-emacs-packages/][Must-have Emacs Packages for Efficient Software Development and Text Editing | James Cherti]]
 
 ** Assistance
 
