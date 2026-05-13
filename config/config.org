@@ -3045,8 +3045,19 @@ Don't use LaTeX much these days but like to keep things available.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.md\\'" . gfm-mode)
-  :hook (markdown-mode . auto-fill-mode)
+  :commands (gfm-mode
+             gfm-view-mode
+             markdown-mode
+             markdown-view-mode)
+  :mode
+  (("\\.markdown\\'" . markdown-mode)
+    ("\\.md\\'" . markdown-mode)
+    ("\\.qmd\\'" . markdown-mode)
+    ("\\.Rmd\\'" . markdown-mode)
+    ("README\\.md\\'" . gfm-mode))
+  :hook
+  ((markdown-mode . auto-fill-mode)
+   (markdown-mode . outline-minor-mode))
   :init (setq markdown-command "pandoc")
   :bind (:map markdown-mode-map
               ("C-c C-m" . markdown-do)))
