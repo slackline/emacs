@@ -330,7 +330,8 @@ Not currently tangled.
   (compile-angel-verbose nil)
   :config
   (compile-angel-on-load-mode)
-  (add-hook 'emacs-lisp-mode-hook #'compile-angel-on-save-local-mode))
+  :hook
+  (emacs-lisp-mode . compile-angel-on-save-local-mode))
 #+END_SRC
 
 * Emacs Global Configuration
@@ -439,8 +440,8 @@ bars.
     (auto-fill-function . do-auto-fill)
     (before-save . delete-trailing-whitespace)
     (before-save . do-auto-fill)
-    (dired-mode-hook . auto-revert-mode) ; auto refresh dired when files change
-    (after-save-hook . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
+    (dired-mode . auto-revert-mode) ; auto refresh dired when files change
+    (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
     ;; imenu
     ((markdown-mode
        makefile-mode
@@ -498,7 +499,8 @@ around.
 #+NAME: code-emojify
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package emojify
-  :hook (after-init . global-emojify-mode))
+  :hook
+  (after-init . global-emojify-mode))
 
 #+END_SRC
 
@@ -768,7 +770,8 @@ pulled the others in as dependencies of other packages but have opted to purge t
 
   ;; Enable automatic preview at point in the *Completions* buffer. This is
   ;; relevant when you use the default completion UI.
-  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :hook
+  (completion-list-mode . consult-preview-at-point-mode)
   :custom
   ;; Tweak the register preview for `consult-register-load',
   ;; `consult-register-store' and the built-in commands.  This improves the
@@ -1074,10 +1077,9 @@ up with a lot of ~prefix~ and its value disappears.
 #+NAME: code-goto-addr
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package goto-addr
-  :hook ((compilation-mode . goto-address-mode)
-         (prog-mode . goto-address-prog-mode)
-         (eshell-mode . goto-address-mode)
-         (shell-mode . goto-address-mode))
+  :hook
+  ((compilation-mode eshell-mode shell-mode) . goto-address-mode)
+  (prog-mode . goto-address-prog-mode)
   :bind (:map goto-address-highlight-keymap
               ("<RET>" . goto-address-at-point)
               ("M-<RET>" . newline))
@@ -1183,13 +1185,12 @@ Not currently tangled.
   (consult-gh-large-file-warning-threshold 2500000)
   (consult-gh-prioritize-local-folder 'suggest)
   (consult-gh-default-orgs-list (consult-gh--get-current-orgs t))
-  :hook
-  ;; Add a hook to change default organizations when the account is switched
-  (add-hook 'consult-gh-auth-post-switch-hook (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t))))
-
   ;; Remember visited orgs and repos across sessions
   (add-to-list 'savehist-additional-variables 'consult-gh--known-orgs-list)
-  (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list))
+  (add-to-list 'savehist-additional-variables 'consult-gh--known-repos-list)
+  :hook
+  ;; Add a hook to change default organizations when the account is switched
+  (consult-gh-auth-post-switch . (lambda (&rest args) (setq consult-gh-default-orgs-list (consult-gh--get-current-orgs t)))))
 
 #+END_SRC
 
@@ -2682,7 +2683,7 @@ moment.
   :mode (("\\.csv" . csv-mode))
   :hook
     (csv-mode . csv-guess-set-separator)
-    (csv-mode . 'csv-align-mode))
+    (csv-mode . csv-align-mode))
 
 #+END_SRC
 
@@ -3271,7 +3272,8 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
   ;; Restart the python process when switching environments
   (add-hook 'pyvenv-post-activate-hooks (lambda ()
 					  (pyvenv-restart-python)))
-  :hook (python-mode . pyvenv-mode)
+  :hook
+  (python-mode . pyvenv-mode)
   (after-init-hook . (pyvenv-workon default-env))
   )
 #+END_SRC
@@ -3322,11 +3324,14 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
   :ensure t
   :defer 0.5
   :after (python-mode)
-  :bind (:map python-mode-map
-          ("C-c p b" . blacken-buffer))
+  :bind
+  (:map python-mode-map
+    ("C-c p b" . blacken-buffer))
   :custom
   (blacken-line-length 120)
-  :hook (python-mode . blacken-mode))
+  :hook
+  (python-mode . blacken-mode))
+
 #+END_SRC
 
 ***** Numpydoc
@@ -3344,14 +3349,16 @@ validation]] rules.
   :ensure t
   :defer 0.5
   :after (python-mode)
-  :bind (:map python-mode-map
-	      ("C-c p n" . numpydoc-generate))
+  :bind
+  (:map python-mode-map
+    ("C-c p n" . numpydoc-generate))
   :custom
   (numpydoc-prompt-for-input t)
   (numpydoc-insert-examples-block 0)
   ;; Awaiting merge
   ;; (numpydoc-newline-after-opening-quotes t)
   (numpydoc-insert-raises-block 0))
+
 #+END_SRC
 
 ***** Pylint
@@ -3366,9 +3373,11 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
   :ensure t
   :defer 0.5
   :after (python-mode)
-  :bind (:map python-mode-map
-	  ("C-c p l" . pylint))
-  :hook (python-mode . pylint-add-menu)
+  :bind
+  (:map python-mode-map
+    ("C-c p l" . pylint))
+  :hook
+  (python-mode . pylint-add-menu)
   (python-mode . add-key-bindings))
 
 #+END_SRC
@@ -4038,7 +4047,14 @@ Check that this gets enabled.
   :after (treesit)
   :custom
   (treesit-fold-line-comment-mode t)
-  (global-treesit-fold-mode t))
+  (global-treesit-fold-mode t)
+  :hook
+  ((css-ts-mode
+    json-ts-mode
+    just-ts-mode
+    python-ts-mode
+    rust-ts-mode
+    toml-ts-mode) . treesit-fold-mode))
 
 #+END_SRC
 
@@ -4327,7 +4343,7 @@ which I'm trialling for now. Ergo this isn't currently tangled.
 
 [[https://github.com/purcell/envrc][envrc]] is an alternative to [[sec:direnv][direnv]], as [[https://github.com/purcell/envrc#how-does-this-differ-from-direnvel][noted]] rather than switching the global environment sets the environment on a
 per-buffer basis. The one thing I might have to do is move this section to later in the configuration file as described
-as global minor modes need to be enabled first.
+as global minor modes need to be enabled.
 
 #+NAME: code-envrc
 #+BEGIN_SRC emacs-lisp :tangle init.el
