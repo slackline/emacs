@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: sql-date-time
-# key: dt
-# expand-env: ((yas-indent-line 'fixed))
-# --
-  -- ,CAST( ${1:date} AS DATETIME) AS  ${1}
