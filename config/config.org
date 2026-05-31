@@ -5647,6 +5647,8 @@ Codeberg Pages once I've sussed those out).
 + [[https://tecosaur.github.io/emacs-config/config.pdf][Doom Emacs Configuration]]
 + [[https://sachachua.com/dotemacs/index.html][Sacha Chua's Emacs Configuration]] [[https://sachachua.com/dotemacs/index.pdf][PDF]]
 + [[https://protesilaos.com/codelog/2026-04-30-emacs-decent-default-sacha-chua/][Emacs: decent defaults I shared with Sacha Chua | Protesilaos]]
++ [[https://codeberg.org/jamesendreshowell/emacs-config][jamesendreshowell/emacs-config: My public Emacs configuration files - Codeberg.org]]
++ [[https://github.com/jamescherti/minimal-emacs.d][jamescherti/minimal-emacs.d: A Customizable Emacs init.el and early-init.el | Emacs Starter Kit]]
 
 ** Packages
 
