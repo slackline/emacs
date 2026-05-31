@@ -64,6 +64,31 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
 + [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
 + [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~
++ [ ] Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
+  properly). Have solved similar to this before so should be straight-forward to check/solve.
++ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the solution...somewhere).
++ [ ] Files always result in ~setq-empty-p nil~, debug follows...
+
+#+BEGIN_EXAMPLE
+Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
+  signal(cl-no-applicable-method (seq-empty-p nil))
+  cl-no-applicable-method(#s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
+  apply(cl-no-applicable-method #s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
+  seq-empty-p(nil)
+  seq-reduce(#f(compiled-function (acc elt) #<bytecode 0x57b5fc053859446>) nil nil)
+  seq-difference(nil ("~/.config/emacs/" "~/org/" "~/org-roam/"))
+  projectile-merge-known-projects()
+  projectile-add-known-project("/home/neil/.config/emacs/")
+  projectile-track-known-projects-find-file-hook()
+  projectile-find-file-hook-function()
+  run-hooks(find-file-hook)
+  after-find-file(nil t)
+  find-file-noselect-1(#<buffer init.el> "~/.config/emacs/init.el" nil nil "~/.config/emacs/init.el" (3026722 66307))
+  find-file-noselect("~/.config/emacs/init.el" nil nil t)
+  find-file("~/.config/emacs/init.el" t)
+  funcall-interactively(find-file "~/.config/emacs/init.el" t)
+  command-execute(find-file)
+#+END_EXAMPLE
 
 ** Themes
 
@@ -88,6 +113,66 @@ Mostly seems to be working but...
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
 + [ ] ~lsp-ltex-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
+
+** Org mode version mismatch
+
+#+BEGIN_EXAMPLE
+⛔ Warning (emacs): Org version mismatch.
+This warning usually appears when a built-in Org version is loaded
+prior to the more recent Org version.
+
+Version mismatch is commonly encountered in the following situations:
+
+1. Emacs is loaded using literate Org config and more recent Org
+   version is loaded inside the file loaded by ‘org-babel-load-file’.
+   ‘org-babel-load-file’ triggers the built-in Org version clashing
+   the newer Org version attempt to be loaded later.
+
+   It is recommended to move the Org loading code before the
+   ‘org-babel-load-file’ call.
+
+2. New Org version is loaded manually by setting ‘load-path’, but some
+   other package depending on Org is loaded before the ‘load-path’ is
+   configured.
+   This "other package" is triggering built-in Org version, again
+   causing the version mismatch.
+
+   It is recommended to set ‘load-path’ as early in the config as
+   possible.
+
+3. New Org version is loaded while an old Org version is partially
+   loaded during compilation or M-x package-upgrade.  This usually
+   should not happen (at least, a number of attempts have been made
+   to avoid this problem in package.el), but sometimes it does anyway.
+
+   You can manually delete Org installation from ~/.emacs.d/elpa/ and
+   try installing again, possibly from emacs -Q without any
+   configuration loaded.
+
+4. New Org version is loaded using straight.el package manager and
+   other package depending on Org is loaded before straight triggers
+   loading of the newer Org version.
+
+   It is recommended to put
+
+    (straight-use-package 'org)
+
+   early in the config.  Ideally, right after the straight.el
+   bootstrap.  Moving ‘use-package’ :straight declaration may not be
+   sufficient if the corresponding ‘use-package’ statement is
+   deferring the loading.
+
+5. A new Org version is synchronized with Emacs git repository and
+   stale .elc files are still left from the previous build.
+
+   It is recommended to remove .elc files from lisp/org directory and
+   re-compile.
+
+#+END_EXAMPLE
+
++ [ ] Work out the cause of the above.
++ [ ] Lists indent on new line (I've solved this before so have it in my existing config...somewhere), work out why its
+  not loading correctly.
 
 ** Org-GTD
 
