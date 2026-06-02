@@ -66,7 +66,8 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~
 + [ ] Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
   properly). Have solved similar to this before so should be straight-forward to check/solve.
-+ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the solution...somewhere).
++ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
+  solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
 + [ ] Files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
@@ -190,7 +191,7 @@ Version mismatch is commonly encountered in the following situations:
 
 ** Completion preview
 
-+ [ ] Add key-bindings
++ [X] Add key-bindings.  *Solution* : ~22c042e~
 
 * On Configuration with use-package
 <<sec:conf-use-package>>
