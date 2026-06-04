@@ -114,6 +114,8 @@ Mostly seems to be working but...
 + [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
++ [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
+  which includes ~/home/neil~ and ~~/~ for some annoying reason.
 + [ ] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
 
 #+begin_example
