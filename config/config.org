@@ -68,6 +68,7 @@ Testing the new configuration I've found the following aren't quiet working prop
   properly). Have solved similar to this before so should be straight-forward to check/solve.
 + [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
++ [ ] Don't get the option to ~diff~ when ~recover-this-file~
 + [ ] Files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
@@ -113,7 +114,14 @@ Mostly seems to be working but...
 + [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
-+ [ ] ~lsp-ltex-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
++ [ ] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
+
+#+begin_example
+Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
+	java.lang.UnsupportedClassVersionError: org/bsplines/ltexls/LtexLanguageServerLauncher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+Process ltex-ls-plus stderr finished
+#+end_example
 
 ** Org mode version mismatch
 
@@ -171,7 +179,7 @@ Version mismatch is commonly encountered in the following situations:
 
 #+END_EXAMPLE
 
-+ [ ] Work out the cause of the above.
++ [X] Work out the cause of the above. *Solution* appears to have resolved itself 🤷‍
 + [ ] Lists indent on new line (I've solved this before so have it in my existing config...somewhere), work out why its
   not loading correctly.
 
