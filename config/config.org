@@ -5226,7 +5226,6 @@ I use the [[https://github.com/source-foundry/Hack][Hack]] font in Emacs, it nee
 (set-face-attribute 'default t :font "Hack")
 #+END_SRC
 
-
 ** Modeline
 <<sec:modeline>>
 
@@ -5328,6 +5327,48 @@ Custom Modeline
 ** Buffers
 
 Some customisations to make buffers nicer to work with/read.
+
+*** buffer-guardian
+<<sec:buffer-guardian>>
+
+[[repo_url][buffer-guardian]]
+
+#+NAME: code-buffer-guardian
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package buffer-guardian
+  :ensure t
+  :defer 0.5
+  :custom
+    ;; When non-nil, include remote files in the auto-save process
+  (buffer-guardian-inhibit-saving-remote-files t)
+
+  ;; When non-nil, buffers visiting nonexistent files are not saved
+  (buffer-guardian-inhibit-saving-nonexistent-files nil)
+
+  ;; Save the buffer even if the window change results in the same buffer
+  (buffer-guardian-save-on-same-buffer-window-change t)
+
+  ;; Non-nil to enable verbose mode to log when a buffer is automatically saved
+  (buffer-guardian-verbose nil)
+
+  ;; Pre-save all package-managed buffers before native save commands run
+  ;; Advise `save-some-buffers' to use `buffer-guardian' logic.
+  ;; When non-nil and `buffer-guardian-mode' is active, this intercepts
+  ;; `save-some-buffers' to silently pre-save package-managed buffers before
+  ;; allowing the native command to run normally.
+  (buffer-guardian-override-save-some-buffers nil)
+
+  ;; Save all buffers after N seconds of user idle time. (Disabled by default)
+  (buffer-guardian-save-all-buffers-idle 30)
+
+  ;; Save all buffers every N seconds. (Disabled by default)
+  ;; (setq buffer-guardian-save-all-buffers-interval (* 60 30))
+
+  :hook
+  (after-init . buffer-guardian-mode))
+
+#+END_SRC
+
 *** iBuffer
 <<sec:ibuffer>>
 
@@ -5372,14 +5413,14 @@ same author!) is [[https://github.com/purcell/ibuffer-projectile][ibuffer-projec
 
 #+END_SRC
 
-*** TODO highlight-indent-guides
+*** highlight-indent-guides
 <<sec:highlight-indent-guides>>
 
 [[https://github.com/DarthFennec/highlight-indent-guides][highlight-indent-guides]] a minor mode that does what it says on the tin, vertical indent guides (lines between starting a
 code block that is indented and ending it) are highlighted as you scroll. Have gone with [[sec:indent-bars][indent-bars]] instead
 
 #+NAME: code-highlight-indent-guides
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 
 (use-package highlight-indent-guides
   :ensure t
