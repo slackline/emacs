@@ -17,7 +17,7 @@ I've used Emacs for getting on 25 years and am slightly ashamed to say that I st
 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][Emacs Lisp]] (one day I'll make time!). I have however learnt enough to cobble together my own custom configuration which
 is based, in no small part, on countless others who have gracefully shared examples of their configuration and patiently
 answered questions.
-T
+
 * Why?
 
 I found my configuration was growing as I have a habit of throwing all sorts into it then one day, after updating
@@ -69,6 +69,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
 + [ ] Don't get the option to ~diff~ when ~recover-this-file~
++ [ ] Automatically create directories that do not exist (have this already shouldn't be hard to fix)
 + [ ] Files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
