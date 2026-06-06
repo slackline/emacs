@@ -69,7 +69,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
 + [ ] Don't get the option to ~diff~ when ~recover-this-file~
-+ [ ] Automatically create directories that do not exist (have this already shouldn't be hard to fix)
++ [ ] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
 + [ ] Files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
@@ -772,6 +772,41 @@ Excellent tip from the [[https://emacsredux.com/blog/2022/06/12/auto-create-miss
 
 #+END_SRC
 
+*** Convert word at point to Wikipedia link
+
+A neat trick to convert word at point or text selection into a Wikipedia link. The [[http://ergoemacs.org/emacs/elisp_html_word_to_wikipedia_linkify.html][original]] inserted HTML formatted
+links, I've tweaked it to output [[sec:orgmode][orgmode]] links.
+
+#+NAME: ns/wikipedia-linkify
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/wikipedia-org-linkify ()
+  "Make the current word or text selection into a org-mode Wikipedia link.
+For Example:
+ Emacs
+becomes
+ [[http://en.wikipedia.org/wiki/Emacs\"][Emacs]]
+URL `http://ergoemacs.org/emacs/elisp_html_word_to_wikipedia_linkify.html'
+Version 2015-07-27"
+  (interactive)
+  (let ($p0 $p1 $p2 $linkText)
+    (if (region-active-p)
+        (progn
+          (setq $p1 (region-beginning))
+          (setq $p2 (region-end)))
+      (progn
+        (setq $p0 (point))
+        (skip-chars-backward "^ \t\n")
+        (setq $p1 (point))
+        (goto-char $p0)
+        (skip-chars-forward "^ \t\n")
+        (setq $p2 (point))))
+    (setq $linkText
+          (replace-regexp-in-string "_" " " (buffer-substring-no-properties $p1 $p2)))
+    (delete-region $p1 $p2)
+    (insert (concat "[[http://en.wikipedia.org/wiki/"
+                    (replace-regexp-in-string " " "_" $linkText)
+                    "][" $linkText "]]"))))
+#+END_SRC
 
 * Completion and Navigation
 <<sec:completion-navigation>>
