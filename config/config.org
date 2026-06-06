@@ -45,165 +45,6 @@ There are a lot of excellent resources to help guide Emacs users through configu
 
 Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/issues][issue]] on the Codeberg repository and I'll pick it up.
 
-* ToDo
-
-Tasks I'm yet to complete in re-writing...
-
-- [X] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
-- [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
-- [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
-- [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
-
-** Testing
-
-Testing the new configuration I've found the following aren't quiet working properly.
-
-** General
-
-+ [X] Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
-+ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
-+ [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
-+ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~
-+ [ ] Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
-  properly). Have solved similar to this before so should be straight-forward to check/solve.
-+ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
-  solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
-+ [ ] Don't get the option to ~diff~ when ~recover-this-file~
-+ [X] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
-+ [ ] Files always result in ~setq-empty-p nil~, debug follows...
-
-#+BEGIN_EXAMPLE
-Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
-  signal(cl-no-applicable-method (seq-empty-p nil))
-  cl-no-applicable-method(#s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
-  apply(cl-no-applicable-method #s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
-  seq-empty-p(nil)
-  seq-reduce(#f(compiled-function (acc elt) #<bytecode 0x57b5fc053859446>) nil nil)
-  seq-difference(nil ("~/.config/emacs/" "~/org/" "~/org-roam/"))
-  projectile-merge-known-projects()
-  projectile-add-known-project("/home/neil/.config/emacs/")
-  projectile-track-known-projects-find-file-hook()
-  projectile-find-file-hook-function()
-  run-hooks(find-file-hook)
-  after-find-file(nil t)
-  find-file-noselect-1(#<buffer init.el> "~/.config/emacs/init.el" nil nil "~/.config/emacs/init.el" (3026722 66307))
-  find-file-noselect("~/.config/emacs/init.el" nil nil t)
-  find-file("~/.config/emacs/init.el" t)
-  funcall-interactively(find-file "~/.config/emacs/init.el" t)
-  command-execute(find-file)
-#+END_EXAMPLE
-
-** Themes
-
-+ [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
-  ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
-  issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
-  perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
-  byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
-
-** ~magit~
-
-+ [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution* :
-  ~e04e6d9~ (after ~53363e0~)
-+ [X] Pre-commit hook output for Mypy is not formatted correctly.
-+ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
-
-** LSP mode
-
-Mostly seems to be working but...
-
-+ [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
-  installed]]. Solution : ~M-x all-the-icons-install-fonts~.
-+ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
-+ [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
-  which includes ~/home/neil~ and ~~/~ for some annoying reason.
-+ [ ] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
-
-#+begin_example
-Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
-	java.lang.UnsupportedClassVersionError: org/bsplines/ltexls/LtexLanguageServerLauncher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 55.0
-
-Process ltex-ls-plus stderr finished
-#+end_example
-
-** Org mode version mismatch
-
-#+BEGIN_EXAMPLE
-⛔ Warning (emacs): Org version mismatch.
-This warning usually appears when a built-in Org version is loaded
-prior to the more recent Org version.
-
-Version mismatch is commonly encountered in the following situations:
-
-1. Emacs is loaded using literate Org config and more recent Org
-   version is loaded inside the file loaded by ‘org-babel-load-file’.
-   ‘org-babel-load-file’ triggers the built-in Org version clashing
-   the newer Org version attempt to be loaded later.
-
-   It is recommended to move the Org loading code before the
-   ‘org-babel-load-file’ call.
-
-2. New Org version is loaded manually by setting ‘load-path’, but some
-   other package depending on Org is loaded before the ‘load-path’ is
-   configured.
-   This "other package" is triggering built-in Org version, again
-   causing the version mismatch.
-
-   It is recommended to set ‘load-path’ as early in the config as
-   possible.
-
-3. New Org version is loaded while an old Org version is partially
-   loaded during compilation or M-x package-upgrade.  This usually
-   should not happen (at least, a number of attempts have been made
-   to avoid this problem in package.el), but sometimes it does anyway.
-
-   You can manually delete Org installation from ~/.emacs.d/elpa/ and
-   try installing again, possibly from emacs -Q without any
-   configuration loaded.
-
-4. New Org version is loaded using straight.el package manager and
-   other package depending on Org is loaded before straight triggers
-   loading of the newer Org version.
-
-   It is recommended to put
-
-    (straight-use-package 'org)
-
-   early in the config.  Ideally, right after the straight.el
-   bootstrap.  Moving ‘use-package’ :straight declaration may not be
-   sufficient if the corresponding ‘use-package’ statement is
-   deferring the loading.
-
-5. A new Org version is synchronized with Emacs git repository and
-   stale .elc files are still left from the previous build.
-
-   It is recommended to remove .elc files from lisp/org directory and
-   re-compile.
-
-#+END_EXAMPLE
-
-+ [X] Work out the cause of the above. *Solution* appears to have resolved itself 🤷‍
-+ [ ] Lists indent on new line (I've solved this before so have it in my existing config...somewhere), work out why its
-  not loading correctly.
-
-** Org-GTD
-
-+ [ ] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
-      subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
-      package is used?
-
-** pytest
-
-+ [X] Additional entries to the transient are not appearing.
-
-** Functions
-
-+ [ ] Custom functions for markdown > org and org > markdown don't appear to be available.
-
-** Completion preview
-
-+ [X] Add key-bindings.  *Solution* : ~22c042e~
-
 * On Configuration with use-package
 <<sec:conf-use-package>>
 
@@ -5769,3 +5610,164 @@ Codeberg Pages once I've sussed those out).
 I'm still learning and had to ask questions to get to where I am. Here are the helpful people who assisted me.
 
 + [[https://emacs.stackexchange.com/questions/85329/org-mode-blink-cursor-error/85332#85332][org-mode blink-cursor error]]
+
+* Appendix : ToDo
+Tasks I'm yet to complete in re-writing...
+
+- [X] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
+- [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
+- [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
+- [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
+
+* Appendix : Trouble Shooting
+
+Testing the new configuration I've found the following aren't quiet working properly.
+
+** General
+
++ [X] Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
++ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
++ [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
++ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~.
++ [X] Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
+  properly). *Solution*: appears to now work.
++ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
+  solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
++ [X] Don't get the option to ~diff~ when ~recover-this-file~ *Solution*: appears to now work.
++ [X] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
++ [ ] Files always result in ~setq-empty-p nil~, debug follows...
+
+#+BEGIN_EXAMPLE
+Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
+  signal(cl-no-applicable-method (seq-empty-p nil))
+  cl-no-applicable-method(#s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
+  apply(cl-no-applicable-method #s(cl--generic :name seq-empty-p :dispatches nil :method-table nil :options nil) nil)
+  seq-empty-p(nil)
+  seq-reduce(#f(compiled-function (acc elt) #<bytecode 0x57b5fc053859446>) nil nil)
+  seq-difference(nil ("~/.config/emacs/" "~/org/" "~/org-roam/"))
+  projectile-merge-known-projects()
+  projectile-add-known-project("/home/neil/.config/emacs/")
+  projectile-track-known-projects-find-file-hook()
+  projectile-find-file-hook-function()
+  run-hooks(find-file-hook)
+  after-find-file(nil t)
+  find-file-noselect-1(#<buffer init.el> "~/.config/emacs/init.el" nil nil "~/.config/emacs/init.el" (3026722 66307))
+  find-file-noselect("~/.config/emacs/init.el" nil nil t)
+  find-file("~/.config/emacs/init.el" t)
+  funcall-interactively(find-file "~/.config/emacs/init.el" t)
+  command-execute(find-file)
+#+END_EXAMPLE
+
+** DONE Themes
+
++ [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
+  ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
+  issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
+  perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
+  byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
+
+** ~magit~
+
++ [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
+  ~e04e6d9~ (after ~53363e0~)
++ [X] Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
+  completion of hooks being run.
++ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
+
+** LSP mode
+
+Mostly seems to be working but...
+
++ [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
+  installed]]. Solution : ~M-x all-the-icons-install-fonts~.
++ [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
++ [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
+  which includes ~/home/neil~ and ~~/~ for some annoying reason.
++ [ ] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
+
+#+begin_example
+Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
+	java.lang.UnsupportedClassVersionError: org/bsplines/ltexls/LtexLanguageServerLauncher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+Process ltex-ls-plus stderr finished
+#+end_example
+
+** DONE Org mode version mismatch
+
+*Solution*: Appears to have resolved itself, possibly after updates to ELPA installed org-mode.
+
+#+BEGIN_EXAMPLE
+⛔ Warning (emacs): Org version mismatch.
+This warning usually appears when a built-in Org version is loaded
+prior to the more recent Org version.
+
+Version mismatch is commonly encountered in the following situations:
+
+1. Emacs is loaded using literate Org config and more recent Org
+   version is loaded inside the file loaded by ‘org-babel-load-file’.
+   ‘org-babel-load-file’ triggers the built-in Org version clashing
+   the newer Org version attempt to be loaded later.
+
+   It is recommended to move the Org loading code before the
+   ‘org-babel-load-file’ call.
+
+2. New Org version is loaded manually by setting ‘load-path’, but some
+   other package depending on Org is loaded before the ‘load-path’ is
+   configured.
+   This "other package" is triggering built-in Org version, again
+   causing the version mismatch.
+
+   It is recommended to set ‘load-path’ as early in the config as
+   possible.
+
+3. New Org version is loaded while an old Org version is partially
+   loaded during compilation or M-x package-upgrade.  This usually
+   should not happen (at least, a number of attempts have been made
+   to avoid this problem in package.el), but sometimes it does anyway.
+
+   You can manually delete Org installation from ~/.emacs.d/elpa/ and
+   try installing again, possibly from emacs -Q without any
+   configuration loaded.
+
+4. New Org version is loaded using straight.el package manager and
+   other package depending on Org is loaded before straight triggers
+   loading of the newer Org version.
+
+   It is recommended to put
+
+    (straight-use-package 'org)
+
+   early in the config.  Ideally, right after the straight.el
+   bootstrap.  Moving ‘use-package’ :straight declaration may not be
+   sufficient if the corresponding ‘use-package’ statement is
+   deferring the loading.
+
+5. A new Org version is synchronized with Emacs git repository and
+   stale .elc files are still left from the previous build.
+
+   It is recommended to remove .elc files from lisp/org directory and
+   re-compile.
+
+#+END_EXAMPLE
+
++ [X] Work out the cause of the above. *Solution* appears to have resolved itself 🤷‍
++ [ ] Lists indent on new line (I've solved this before so have it in my existing config...somewhere), work out why its
+  not loading correctly.
+
+** DONE Org-GTD
+
++ [X] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
+      subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
+      package is used? *Solution*: Move the setting to /before/ loading the package!
+
+** DONE pytest
+
++ [X] Additional entries to the transient are not appearing.
+
+** Functions
+
++ [ ] Custom functions for markdown > org and org > markdown don't appear to be available.
+
+** Completion preview
+
++ [X] Add key-bindings.  *Solution* : ~22c042e~
