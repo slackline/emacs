@@ -755,6 +755,23 @@ pushing to Git forges. It is bound to ~C-c C-s~ to make it simple to load.
 This command sets the SSH keys for ssh-agency."
 (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 #+END_SRC
+*** Create non-existent directories
+
+Excellent tip from the [[https://emacsredux.com/blog/2022/06/12/auto-create-missing-directories/][Emacs Redux]] blog
+
+#+NAME: ns/auto-create-missing-dirs
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (defun auto-create-missing-dirs ()
+    "Automatically create missing directory paths when saving a file.
+
+  URL `https://emacsredux.com/blog/2022/06/12/auto-create-missing-directories/'"
+    (let ((target-dir (file-name-directory buffer-file-name)))
+      (unless (file-exists-p target-dir)
+        (make-directory target-dir t))))
+  (add-to-list 'find-file-not-found-functions #'ns/auto-create-missing-dirs)
+
+#+END_SRC
+
 
 * Completion and Navigation
 <<sec:completion-navigation>>
