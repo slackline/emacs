@@ -69,7 +69,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 + [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
 + [ ] Don't get the option to ~diff~ when ~recover-this-file~
-+ [ ] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
++ [X] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
 + [ ] Files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
