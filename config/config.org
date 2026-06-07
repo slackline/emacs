@@ -81,7 +81,6 @@ simplifies configuration.
 
 
 
-
 * Initial Setup
 
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
@@ -2157,8 +2156,8 @@ documents that can be rendered to a range of formats via [[https://orgmode.org/m
 [[https://www.orgroam.com/manual.html][org-roam]] is a Zettelkasten package for taking notes and building a "second brain" (as no one can remember
 everything). It leverages an [[sec:sqlite][sqlite]] database in the background to keep track of nodes and how they link to each other.
 
-#+name: code-org-roam
-#+begin_src emacs-lisp :tangle init.el
+#+NAME: code-org-roam
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-roam
   :ensure t
   :defer 10
@@ -2258,6 +2257,33 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 
 #+END_SRC
 
+** Org Grimoire
+<<sec:org-roam>>
+
+[[https://github.com/spiperac/org-grimoire][org-grimoire]] is "/a static site generator for Emacs and Org mode. Configured and run entirely through your Emacs init
+file./".
+
+I wanted to move my blog from [[https://quarto.org][Quarto]] to a more Emacs centric system which had to be literate (as I write various bits of
+code) but also extend it to have other sections such as a copy of this literate configuration. ~org-grimoire~ looks like
+a relatively new kid on the blog but reading the authors [[https://strah.net/post/org-grimoire-static-site-generator-for-gnu-emacs.html][post about it]] it seems simple but comprehensive.
+
+I will have to work out how to build the site in [[https://codeberg.org][Codeberg]] pages automatically and how to translate my old posts from
+Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me something to focus on!
+
+#+NAME: code-org-roam
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (use-package org-grimoire
+    :defer 4
+    :ensure t)
+
+(org-grimoire-setup "nshephard.dev"
+  :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
+  :base-url    "https://nshephard.dev"
+  :site-title  "nshephard.dev"
+  :description ""
+  :theme "dev-theme")
+
+#+END_SRC
 
 ** Org Capture
 <<sec:org-capture>>
@@ -4381,7 +4407,6 @@ as global minor modes need to be enabled.
 
 #+END_SRC
 
-
 * Dired
 <<sec:dired>>
 
@@ -5000,7 +5025,6 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
   :defer 0.5
   :bind-keymap (("C-c T" . tmr-prefix-map)))
 #+END_SRC
-
 
 * Documentation
 
