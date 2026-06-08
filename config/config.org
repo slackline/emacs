@@ -615,7 +615,7 @@ Excellent tip from the [[https://emacsredux.com/blog/2022/06/12/auto-create-miss
 *** Convert word at point to Wikipedia link
 
 A neat trick to convert word at point or text selection into a Wikipedia link. The [[http://ergoemacs.org/emacs/elisp_html_word_to_wikipedia_linkify.html][original]] inserted HTML formatted
-links, I've tweaked it to output [[sec:orgmode][orgmode]] links.
+links, I've tweaked it to output [[sec:org-mode][org-mode]] links.
 
 #+NAME: ns/wikipedia-linkify
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -3870,8 +3870,6 @@ Language servers I've installed with varying success (see [[https://github.com/d
 + [[https://github.com/redhat-developer/yaml-language-server][yaml-language-server]]
 + [[https://github.com/adrienverge/yamllint][yamllint]]
 
-*TODO* - How to automate installation of language servers? ~mason-install~ as defined in the commented sections below
- doesn't work.
 #+NAME: code-mason
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package mason
@@ -3879,21 +3877,25 @@ Language servers I've installed with varying success (see [[https://github.com/d
     :defer 0.5
     :hook
     (after-init-hook . mason-ensure))
-;; (mason-install('jedi-language-server))
-;; (mason-install jq-lsp)
-;; (mason-install ltex-ls-plus)
-;; (mason-install markdownlint-cli2)
-;; (mason-install mypy)
-;; (mason-install prettierd)
-;; (mason-install pydocstyle)
-;; (mason-install pylint)
-;; (mason-install ruff)
-;; (mason-install r-languageserver)
-;; (mason-install rust-analyzer)
-;; (mason-install shellcheck)
-;; (mason-install yaml-language-server)
-;; (mason-install yamllint)
-(mason-setup)
+  (mason-install "black")
+  (mason-install "jedi-language-server")
+  (mason-install "jq-lsp")
+  (mason-install "ltex-ls-plus")
+  (mason-install "markdownlint-cli2")
+  (mason-install "mypy")
+  (mason-install "prettierd")
+  (mason-install "pydocstyle")
+  (mason-install "pylint")
+  (mason-install "ruff")
+  (mason-install "r-languageserver")
+  (mason-install "rumdl")
+  (mason-install "rust-analyzer")
+  (mason-install "shellcheck")
+  (mason-install "ty")
+  (mason-install "uv")
+  (mason-install "yaml-language-server")
+  (mason-install "yamllint")
+  (mason-setup)
 #+END_SRC
 
 *** lsp-mode
@@ -5707,7 +5709,7 @@ Mostly seems to be working but...
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
 + [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
   which includes ~/home/neil~ and ~~/~ for some annoying reason.
-+ [ ] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
++ [X] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
 
 #+begin_example
 Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
