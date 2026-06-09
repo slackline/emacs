@@ -601,7 +601,7 @@ Excellent tip from the [[https://emacsredux.com/blog/2022/06/12/auto-create-miss
 
 #+NAME: ns/auto-create-missing-dirs
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (defun auto-create-missing-dirs ()
+  (defun ns/auto-create-missing-dirs ()
     "Automatically create missing directory paths when saving a file.
 
   URL `https://emacsredux.com/blog/2022/06/12/auto-create-missing-directories/'"
@@ -3893,6 +3893,7 @@ Language servers I've installed with varying success (see [[https://github.com/d
   (mason-install "prettierd")
   (mason-install "pydocstyle")
   (mason-install "pylint")
+  (mason-install "remark-language-server")
   (mason-install "ruff")
   (mason-install "r-languageserver")
   (mason-install "rumdl")
@@ -5258,7 +5259,7 @@ Some customisations to make buffers nicer to work with/read.
 *** buffer-guardian
 <<sec:buffer-guardian>>
 
-[[repo_url][buffer-guardian]]
+[[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]
 
 #+NAME: code-buffer-guardian
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -5716,7 +5717,8 @@ Mostly seems to be working but...
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
 + [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
   which includes ~/home/neil~ and ~~/~ for some annoying reason.
-+ [X] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem this.
++ [X] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem
+  this. *Solution*: ~dc5b75f~ (installing ~ltex-ls-plus~ via [[sec:mason][mason]] solved this).
 
 #+begin_example
 Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
@@ -5727,7 +5729,6 @@ Process ltex-ls-plus stderr finished
 
 ** DONE Org mode version mismatch
 
-*Solution*: Appears to have resolved itself, possibly after updates to ELPA installed org-mode.
 
 #+BEGIN_EXAMPLE
 ⛔ Warning (emacs): Org version mismatch.
@@ -5783,9 +5784,10 @@ Version mismatch is commonly encountered in the following situations:
 
 #+END_EXAMPLE
 
-+ [X] Work out the cause of the above. *Solution* appears to have resolved itself 🤷‍
-+ [ ] Lists indent on new line (I've solved this before so have it in my existing config...somewhere), work out why its
-  not loading correctly.
++ [X] Work out the cause of the above. *Solution* appears to have resolve itself after reinstalling and byte-compiling
+  org-mode anew 🤷‍
++ [X] Lists indent on new line work out why its not loading correctly. *Solution* - not explicitly solved but it was
+  because ~electric-indent-local-mode~ was not set to ~0~ (i.e. disabled). Hook was in place.
 
 ** DONE Org-GTD
 
