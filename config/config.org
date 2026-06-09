@@ -985,6 +985,8 @@ will do. Its incredibly useful and should be enabled by default on all systems. 
 use-package]] keys should be bound with ~(desc . command)~ to include a description as to what they do, otherwise you end
 up with a lot of ~prefix~ and its value disappears.
 
+A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist on how to avoid ~+prefix~ showing when there are nested key chords has been useful.
+
 #+NAME: code-which-key
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package which-key
@@ -993,14 +995,8 @@ up with a lot of ~prefix~ and its value disappears.
   :config (which-key-mode)
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
   ;; +prefix isn't helpful, lets sort that out via...
-  ;; https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d)
   (which-key-add-key-based-replacements
-    "<f1> 4"        "help-other-win"
-    "<f1>"          "help"
-    "<f2>"          "2-column"
-    "C-c"           "mode-and-user"
     "C-h 4"         "help-other-win"
-    "C-h"           "help"
     "C-x 4"         "other-window"
     "C-x 5"         "other-frame"
     "C-x 6"         "2-column"
@@ -1023,14 +1019,20 @@ up with a lot of ~prefix~ and its value disappears.
     "C-x w ^"       "window-detach"
     "C-x w"         "window-extras"
     "C-x x"         "buffer-extras"
-    "C-x"           "extra-commands"
+    "C-x X"         "edebug"
     "C-c m"         "Magit"
     "C-c m d"       "Diff"
     "C-c m g"       "Link"
-    "C-c m l"       "Log"
-    "M-g"           "goto-map"
+    "C-c m l"       "Log")
     "M-s h"         "search-highlight"
-    "M-s"           "search-map")
+      "s-l F"         "Workspace"
+      "s-l G"         "Peek"
+      "s-l T"         "Treemacs/UI"
+      "s-l a"         "Execute/highlight"
+      "s-l g"         "Find"
+      "s-l h"         "Doc/Describe"
+      "s-l r"         "Refactor"
+      "s-l w"         "Session")
   (with-eval-after-load 'lsp
     (which-key-add-key-based-replacements
       "s-l"           "LSP"
@@ -1043,6 +1045,7 @@ up with a lot of ~prefix~ and its value disappears.
       "s-l h"         "LSP Doc/Describe"
       "s-l r"         "LSP Refactor"
       "s-l w"         "LSP Session"))
+  (with-eval-after-load 'gud (which-key-add-key-based-replacements gud-key-prefix "gud")
   (with-eval-after-load 'page-ext
     (which-key-add-key-based-replacements
      "C-x C-p" "page-extras"))
@@ -1054,6 +1057,10 @@ up with a lot of ~prefix~ and its value disappears.
       "C-c C-x"     "org-extra-commands")))
 
 #+END_SRC
+
++ [[https://karthinks.com/software/persistent-prefix-keymaps-in-emacs/][Persistent prefix keymaps in Emacs]]
++ [[https://protesilaos.com/codelog/2024-01-29-emacs-prefix-map/][Emacs: define prefix/leader key (nested key maps) | Protesilaos]]
++ [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Prefix-Keys.html][Prefix Keys (GNU Emacs Lisp Reference Manual)]]
 
 ** helpful
 <<sec:helpful>>
