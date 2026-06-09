@@ -4395,7 +4395,7 @@ I started using this but found in this new configuration it didn't always work a
 which I'm trialling for now. Ergo this isn't currently tangled.
 
 #+NAME: code-direnv
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package direnv
   :ensure t
   :config
