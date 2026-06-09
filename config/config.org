@@ -3881,29 +3881,28 @@ Language servers I've installed with varying success (see [[https://github.com/d
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package mason
     :ensure t
-    :defer 0.5
     :hook
     (after-init-hook . mason-ensure))
   (mason-setup)
-  (mason-install "black")
-  (mason-install "jedi-language-server")
-  (mason-install "jq-lsp")
-  (mason-install "ltex-ls-plus")
-  (mason-install "markdownlint-cli2")
-  (mason-install "mypy")
-  (mason-install "prettierd")
-  (mason-install "pydocstyle")
-  (mason-install "pylint")
-  (mason-install "remark-language-server")
-  (mason-install "ruff")
-  (mason-install "r-languageserver")
-  (mason-install "rumdl")
-  (mason-install "rust-analyzer")
-  (mason-install "shellcheck")
-  (mason-install "ty")
-  (mason-install "uv")
-  (mason-install "yaml-language-server")
-  (mason-install "yamllint")
+  ;; (mason-install "black")
+  ;; (mason-install "jedi-language-server")
+  ;; (mason-install "jq-lsp")
+  ;; (mason-install "ltex-ls-plus")
+  ;; (mason-install "markdownlint-cli2")
+  ;; (mason-install "mypy")
+  ;; (mason-install "prettierd")
+  ;; (mason-install "pydocstyle")
+  ;; (mason-install "pylint")
+  ;; (mason-install "remark-language-server")
+  ;; (mason-install "ruff")
+  ;; (mason-install "r-languageserver")
+  ;; (mason-install "rumdl")
+  ;; (mason-install "rust-analyzer")
+  ;; (mason-install "shellcheck")
+  ;; (mason-install "ty")
+  ;; (mason-install "uv")
+  ;; (mason-install "yaml-language-server")
+  ;; (mason-install "yamllint")
 
 #+END_SRC
 
@@ -5707,7 +5706,8 @@ Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
   ~e04e6d9~ (after ~53363e0~)
 + [X] Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
   completion of hooks being run.
-+ [ ] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits.
++ [X] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits. *Solution*:
+  ~9aec0d1~
 
 ** LSP mode
 
