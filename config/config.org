@@ -3884,6 +3884,7 @@ Language servers I've installed with varying success (see [[https://github.com/d
     :defer 0.5
     :hook
     (after-init-hook . mason-ensure))
+  (mason-setup)
   (mason-install "black")
   (mason-install "jedi-language-server")
   (mason-install "jq-lsp")
@@ -3903,7 +3904,7 @@ Language servers I've installed with varying success (see [[https://github.com/d
   (mason-install "uv")
   (mason-install "yaml-language-server")
   (mason-install "yamllint")
-  (mason-setup)
+
 #+END_SRC
 
 *** lsp-mode
