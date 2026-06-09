@@ -370,12 +370,14 @@ bars.
 	    ("s-SPC" . cycle-spacing))
     :hook
     ((latex-mode
-       markdown-mode
-       org-mode
-       prog-mode
-       text-mode) . auto-fill-mode)
+      markdown-mode
+      org-mode
+      prog-mode
+      text-mode) . auto-fill-mode)
     ((latex-mode
        prog-mode) . hs-minor-mode)
+    ((git-commit-mode
+      forge-post-mode) . gfm-mode)
     (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
     (auto-fill-function . do-auto-fill)
     (before-save . delete-trailing-whitespace)
@@ -2292,6 +2294,10 @@ Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me someth
 
 #+END_SRC
 
+*** Other blogging options
+
++ [[https://tilde.town/~cryptk/blog/yaob.html#installation][YAOB – Yet Another Org Blog · (interzone)]]
+
 ** Org Capture
 <<sec:org-capture>>
 
@@ -3923,6 +3929,7 @@ Language servers I've installed with varying success (see [[https://github.com/d
 	 ;; (dockerfile-mode . lsp-deferred)
 	 (ess-r-mode . lsp-deferred)
 	 (gfm-mode . lsp-deferred)
+   (git-commit-mode . lsp-deferred)
 	 (forge-post-mode . lsp-deferred)
 	 ;; (groovy-mode . lsp-deferred)
 	 (html-mode . lsp-deferred)
