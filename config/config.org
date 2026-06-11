@@ -3460,7 +3460,6 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package python-pytest
     :ensure t
-    :defer 0.5
     :after (pyvenv)
     :bind (:map python-mode-map
   	      ("C-c p t" . python-pytest-dispatch))
