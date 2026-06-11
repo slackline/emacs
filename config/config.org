@@ -69,8 +69,11 @@ simplifies configuration.
 | ~:after~       | Load after another package has been loaded.                                                                                                        | ~:after org~                                                                                                                                                                           |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | Key-bindings, plain or with a cons (~(desc . command)~)                                                                                            | ~:bind (("C-c k" . keychain-refresh-environment) ("C-c o h" . osm-home))~                                                                                                              |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home" . osm-home))~                                                                        |
-| [[https://github.com/jwiegley/use-package#binding-to-keymaps][~:bind-keymap~]] | Binds a keymap to the given key chord.                                                                                                             | ~:bind ("s-p" . projectile-command-map))~ / ~:bind ("s-p" ("Projectile" . projectile-command-map))~ (untested)                                                                         |
-| ~:map~         | Within a ~:bind~ you can provide the mapping and modify key maps.                                                                                  | ~:bind (:map projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch project" . projectile-switch-project))~ (untested) |
+| [[https://github.com/jwiegley/use-package#binding-to-keymaps][~:bind-keymap~]] | Binds a keymap to the given key chord.                                                                                                             | ~:bind ("s-p" . projectile-command-map)~ / ~:bind ("s-p" ("Projectile" . projectile-command-map))~ (untested)                                                                         |
+| ~:map~         | Within a ~:bind~ you can provide the mapping and modify key
+maps.                                                                                  | ~:bind (:map
+projectile-command-map ("s-p p" . projectile-switch-project))~ / ~:bind (:map projectile-command-map ("s-p p" ("Switch
+project" . projectile-switch-project)))~ (untested) |
 | [[https://github.com/jwiegley/use-package#getting-started][~:config~]]      | Executes code /after/ a package is loaded. Note that using this forces loading of the package.                                                     |                                                                                                                                                                                        |
 | ~:commands~    | Creates autoloads for commands, deferring loading modules until they are used.                                                                     |                                                                                                                                                                                        |
 | ~:custom~      | Alternative option for customising package, preferable over ~:config~.                                                                             |                                                                                                                                                                                        |
@@ -414,7 +417,7 @@ bars.
 (use-package ssh-agency
   :ensure t
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
-  ;; :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519"))))
+  ;; :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 
 #+END_SRC
 
