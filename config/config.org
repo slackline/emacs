@@ -4849,6 +4849,20 @@ references from your ~.bib~ file.
 
 #+END_SRC
 
+**meme
+<<sec:meme>>
+
+[[https://github.com/larsmagne/meme][meme]] is a small library for adding text to images (aka making memes). The package isn't get on MELPA and I don't have
+any need to use it at the moment but I include it here as a reference/bookmark should that change.
+
+#+NAME: code-meme
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package meme
+  :ensure t
+  :defer 5)
+
+#+END_SRC
+
 ** mpd
 
 I use [[https://musicpd.org/][Music Player Daemon]] to run my music, these packages allow me to control ~mpd~ from Emacs.
@@ -5623,6 +5637,7 @@ Codeberg Pages once I've sussed those out).
 + [[https://org-babel.readthedocs.io/en/latest/][Org Babel reference card]]
 + [[https://www.masteringemacs.org/][Mastering Emacs]]
 + [[https://sachachua.com/blog/category/emacs-news/][Emacs News | Sacha Chua]]
++ [[https://www.emacswiki.org/emacs/Carnival][EmacsWiki: Carnival]]
 
 ** use-package
 
@@ -5644,6 +5659,13 @@ Codeberg Pages once I've sussed those out).
 + [[https://protesilaos.com/codelog/2026-04-30-emacs-decent-default-sacha-chua/][Emacs: decent defaults I shared with Sacha Chua | Protesilaos]]
 + [[https://codeberg.org/jamesendreshowell/emacs-config][jamesendreshowell/emacs-config: My public Emacs configuration files - Codeberg.org]]
 + [[https://github.com/jamescherti/minimal-emacs.d][jamescherti/minimal-emacs.d: A Customizable Emacs init.el and early-init.el | Emacs Starter Kit]]
+
+** Useful defaults
+
++ [[https://karthinks.com/software/batteries-included-with-emacs/][Batteries included with Emacs]]
++ [[https://karthinks.com/software/more-batteries-included-with-emacs/][More batteries included with emacs]]
++ [[https://karthinks.com/software/even-more-batteries-included-with-emacs/][Even More Batteries Included with Emacs | Karthinks]]
++ [[https://rossabaker.com/blog/underappreciated-emacs-built-ins/][Ross A. Baker: Underappreciated Emacs built-ins]]
 
 ** Packages
 
