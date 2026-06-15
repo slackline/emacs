@@ -710,7 +710,7 @@ pulled the others in as dependencies of other packages but have opted to purge t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package completion-preview
   :ensure t
-  :defer defer_time
+  :defer 2
   :after (comint)
   :hook
   ((prog-mode text-mode comint-mode) . completion-preview-mode)
