@@ -714,7 +714,8 @@ pulled the others in as dependencies of other packages but have opted to purge t
   :after (comint)
   :hook
   ((prog-mode text-mode comint-mode) . completion-preview-mode)
-  (completion-preview-minimum-symbol-length 2)
+  :config
+  (setq completion-preview-minimum-symbol-length 2)
   :bind
   (:map completion-preview-active-mode-map
     ("M-n" . completion-preview-next-candidate)
