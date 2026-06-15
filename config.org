@@ -510,21 +510,21 @@ A handy way to [[https://emacsredux.com/blog/2020/09/12/reinstalling-emacs-packa
 [[https://systemcrafters.net/emacs-from-scratch/configure-everything-with-org-babel/][org-babel-tangle-on-save]] define two functions, one to tangle, the other to export this buffer on saving. Hooks are
 configured for [[sec:org-mode][org-mode]] so that this file is both tangled and exported on saving.
 
-*TODO* Make this function take an argument so it can be reused.
+**** TODO Make these function take an argument so it can be reused.
 
 #+NAME: code-on-save
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (defun ns/org-babel-tangle-on-save ()
     "Tangle config.org on saving."
   (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.config/emacs/config/config.org"))
+                      (expand-file-name "~/.config/emacs/config.org"))
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
   (defun ns/org-babel-export-on-save ()
     "Export config.org on saving"
   (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.config/emacs/config/config.org"))
+                      (expand-file-name "~/.config/emacs/config.org"))
     (let ((org-confirm-babel-evaluate nil))
       (org-html-export-to-html))))
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
@@ -1825,7 +1825,7 @@ Not currently tangled.
 
 #+NAME: code-magit-aux-commands
 #+BEGIN_SRC emacs-lisp :tangle no
-(transient-define-prefix nds:magit-aux-commands ()
+(transient-define-prefix nds/magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
 			  ("o" "Orgit Link" orgit-store-link)
