@@ -1825,7 +1825,7 @@ Not currently tangled.
 
 #+NAME: code-magit-aux-commands
 #+BEGIN_SRC emacs-lisp :tangle no
-(transient-define-prefix nds/magit-aux-commands ()
+(transient-define-prefix ns/magit-aux-commands ()
 			 "My personal auxiliary magit commands."
 			 ["Auxiliary commands"
 			  ("o" "Orgit Link" orgit-store-link)
@@ -2119,7 +2119,7 @@ Not currently tangled.
 settings are configured there. I have picked up a couple of custom commands ([[https://github.com/jethrokuan/.emacs.d/blob/master/init.el][source]]). Which I define here.
 
 #+NAME: code-org-agenda
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (defun ns/org-agenda-process-inbox-item ()
   "Process a single item in the org-agenda."
   (org-with-wide-buffer
