@@ -57,9 +57,8 @@ use-package the right way]].
   loading. Instead the alternative ~:custom~ and ~:hook~ commands should be used.
 + ~:custom~ Avoids the need to prefix with ~setq~ (I think!).
 
- The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package README.md]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs
-docs : use-package]] page since it is now a core component of Emacs. use-package provides the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Basic-Concepts][~use-package~ macro]] which
-simplifies configuration.
+The following table is constructed from the archived [[https://github.com/jwiegley/use-package][use-package README.md]] and the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][Emacs docs : use-package]] page since
+it is now a core component of Emacs. use-package provides the [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Basic-Concepts][~use-package~ macro]] which simplifies configuration.
 
 
 | Option         | Description                                                                                                                                        | Example                                                                                                                                                                                |
@@ -147,6 +146,7 @@ exec-path-from-shell~).
 #+END_SRC
 
 ** use-package
+<<sec: use-package>>
 
 We now configure [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]].
 
@@ -906,7 +906,8 @@ with the ~marginalia-mode~ rather than deferring.
 ** Orderless
 <<sec:orderless>>
 
-[[https://github.com/oantolin/orderless][Orderless]]
+[[https://github.com/oantolin/orderless][Orderless]] divides completion into space-separated components and matches candidates that match all of the components in
+any order.
 
 #+NAME: code-orderless
 #+BEGIN_SRC emacs-lisp :tangle init.el
