@@ -30,6 +30,9 @@ var/
 tmp/
 eln-cache/
 tree-sitter/
+mason/
+devdocs/
+scratch/
 
 # Private or repo specific files files
 bookmarks
@@ -43,3 +46,13 @@ recentf
 
 # byte-compiled files
 *.elc
+
+# Misc
+.dap-breakpoints
+.lsp-session-v1
+.org-id-locations
+.projectile-cache.eld
+
+# Temporary
+config/
+*-202606*/
