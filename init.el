@@ -136,8 +136,8 @@
     text-mode) . auto-fill-mode)
   ((latex-mode
     prog-mode) . hs-minor-mode)
-  ((git-commit-mode
-    forge-post-mode) . gfm-mode)
+  ;; ((git-commit-mode
+  ;;   forge-post-mode) . gfm-mode)
   (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
   (auto-fill-function . do-auto-fill)
   (before-save . delete-trailing-whitespace)
@@ -1795,11 +1795,12 @@ current buffer, killing it."
 
 (use-package lsp-ltex-plus
   :ensure t
-  ;; :hook (text-mode . (lambda ()
-  ;;                      (require 'lsp-ltex-plus)
-  ;;                      (lsp)))  ; or lsp-deferred
-  :config
-  (setq lsp-ltex-plus-version "18.2.0"))
+  :defer t
+  :init
+  (lsp-ltex-plus-enable-for-modes)
+  :custom
+  (lsp-ltex-plus-check-programming-languages t))
+;; (setq lsp-ltex-plus-version "18.7.0"))
 
 (use-package realgud
   :ensure t

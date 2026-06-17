@@ -992,7 +992,7 @@ will do. Its incredibly useful and should be enabled by default on all systems. 
 use-package]] keys should be bound with ~(desc . command)~ to include a description as to what they do, otherwise you end
 up with a lot of ~prefix~ and its value disappears.
 
-A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist on how to avoid ~+prefix~ showing when there are nested key chords has been useful.
+A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist on how to avoid ~+prefix~]] showing when there are nested key chords has been useful.
 
 #+NAME: code-which-key
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -2272,7 +2272,7 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 #+END_SRC
 
 ** Org Grimoire
-<<sec:org-roam>>
+<<sec:org-grimoire>>
 
 [[https://github.com/spiperac/org-grimoire][org-grimoire]] is "/a static site generator for Emacs and Org mode. Configured and run entirely through your Emacs init
 file./".
@@ -2284,7 +2284,7 @@ a relatively new kid on the blog but reading the authors [[https://strah.net/pos
 I will have to work out how to build the site in [[https://codeberg.org][Codeberg]] pages automatically and how to translate my old posts from
 Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me something to focus on!
 
-#+NAME: code-org-roam
+#+NAME: code-org-grimoire
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package org-grimoire
     :defer 4
