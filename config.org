@@ -379,8 +379,8 @@ bars.
       text-mode) . auto-fill-mode)
     ((latex-mode
        prog-mode) . hs-minor-mode)
-    ((git-commit-mode
-      forge-post-mode) . gfm-mode)
+    ;; ((git-commit-mode
+    ;;   forge-post-mode) . gfm-mode)
     (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
     (auto-fill-function . do-auto-fill)
     (before-save . delete-trailing-whitespace)
