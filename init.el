@@ -713,13 +713,6 @@ Version 2015-07-27"
   :after (magit)
   )
 
-(use-package vc-jj
-  :ensure t
-  :defer 3)
-
-(use-package jj-mode
-  :vc (:url "https://github.com/bolivier/jj-mode.el"))
-
 (use-package magit-browse-commit
   :ensure t
   :defer 3

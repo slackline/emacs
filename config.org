@@ -1528,12 +1528,12 @@ speed.".
 other VC software). There are a few packages seeking to provide support for ~jj~ in Emacs.
 
 *** vc-jj
-<<sec:jc-jj>>
+<<sec:vc-jj>>
 
 [[https://github.com/bolivier/jj-mode.el][jj-mode.el]] aims to "/add ~jj~ support to the Emacs built-in ~vc~ and ~project~ libraries/".
 
-#+NAME: code-jc-jj
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+NAME: code-vc-jj
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package vc-jj
   :ensure t
   :defer 3)
@@ -1551,7 +1551,7 @@ no attempt to install and configure but noted for future reference.
 [[https://github.com/bolivier/jj-mode.el][jj-mode.el]] "/provides a [[sec:magit][magit]]-inspired interface for Jujutsu/". It seems to see more active development than [[sec:jujutsu.el][jujutsu.el]].
 
 #+NAME: code-jj-mode.el
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package jj-mode
   :vc (:url "https://github.com/bolivier/jj-mode.el"))
 #+END_SRC
@@ -5032,6 +5032,7 @@ the per-major-mode scratch buffers.
   (scratch-plus-save-directory "~/.config/emacs/scratch")
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
+
 #+END_SRC
 
 ** sicp
@@ -5735,6 +5736,8 @@ Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
 
 ** ~magit~
 
++ [ ] Having set the mode to be GFM for Forge posts it has clobbered all the key-bindings. Major mode is GFM from
+  Markdown mode, how to get this as a minor mode/hook so major mode remains "Forge"
 + [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
   ~e04e6d9~ (after ~53363e0~)
 + [X] Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
