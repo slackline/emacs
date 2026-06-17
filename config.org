@@ -3999,11 +3999,12 @@ files. Needs the language server installing (unless done via [[sec:mason][Mason]
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package lsp-ltex-plus
   :ensure t
-  ;; :hook (text-mode . (lambda ()
-  ;;                      (require 'lsp-ltex-plus)
-  ;;                      (lsp)))  ; or lsp-deferred
-  :config
-  (setq lsp-ltex-plus-version "18.2.0"))
+  :defer t
+  :init
+  (lsp-ltex-plus-enable-for-modes)
+  :custom
+  (lsp-ltex-plus-check-programming-languages t))
+  ;; (setq lsp-ltex-plus-version "18.7.0"))
 
 #+END_SRC
 
@@ -5755,13 +5756,28 @@ Mostly seems to be working but...
 + [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
   which includes ~/home/neil~ and ~~/~ for some annoying reason.
 + [X] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem
-  this. *Solution*: ~dc5b75f~ (installing ~ltex-ls-plus~ via [[sec:mason][mason]] solved this).
+  this. *Solution*: ~dc5b75f~ (installing ~ltex-ls-plus~ via [[sec:mason][mason]] solved this)
++ [X] On Gentoo I also had to switch the Java VM to a newer version for users.
 
 #+begin_example
 Error: LinkageError occurred while loading main class org.bsplines.ltexls.LtexLanguageServerLauncher
 	java.lang.UnsupportedClassVersionError: org/bsplines/ltexls/LtexLanguageServerLauncher has been compiled by a more recent version of the Java Runtime (class file version 65.0), this version of the Java Runtime only recognizes class file versions up to 55.0
 
 Process ltex-ls-plus stderr finished
+#+end_example
+
+#+begin_example
+❱ eselect java-vm --list
+Available Java Virtual Machines:
+  [1]   openjdk-bin-11  user-vm
+  [2]   openjdk-bin-21  system-vm
+  [3]   openjdk-bin-25
+❱ eselect java-vm set user 2
+❱ eselect java-vm --list
+Available Java Virtual Machines:
+  [1]   openjdk-bin-11
+  [2]   openjdk-bin-21  system-vm user-vm
+  [3]   openjdk-bin-25
 #+end_example
 
 ** DONE Org mode version mismatch
