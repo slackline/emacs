@@ -5026,10 +5026,11 @@ the per-major-mode scratch buffers.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package scratch-plus
   :ensure t
-  :defer 0.5
-  :hook
-  (after-init-hook . scratch-plus-mode)
+  :defer t
+  ;; :hook
+  ;; (after-init-hook . scratch-plus-mode)
   :custom
+  (add-hook 'after-init-hook #'scratch-plus-mode)
   (scratch-plus-save-directory "~/.config/emacs/scratch")
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
@@ -5404,7 +5405,7 @@ pretty much always want this enabled across multiple modes. There may be some re
   (prog-mode . smartparens-mode)
   (text-mode . smartparens-mode)
   (markdown-mode . smartparens-mode)
-  (latex-mode . smartparents-mode)
+  (latex-mode . smartparens-mode)
   :config
   (progn
     (require 'smartparens-config)

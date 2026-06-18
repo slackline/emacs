@@ -2117,10 +2117,11 @@ code-vs-text is handled appropriately."
 
 (use-package scratch-plus
   :ensure t
-  :defer 0.5
-  :hook
-  (after-init-hook . scratch-plus-mode)
+  :defer t
+  ;; :hook
+  ;; (after-init-hook . scratch-plus-mode)
   :custom
+  (add-hook 'after-init-hook #'scratch-plus-mode)
   (scratch-plus-save-directory "~/.config/emacs/scratch")
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
@@ -2241,7 +2242,7 @@ code-vs-text is handled appropriately."
   (prog-mode . smartparens-mode)
   (text-mode . smartparens-mode)
   (markdown-mode . smartparens-mode)
-  (latex-mode . smartparents-mode)
+  (latex-mode . smartparens-mode)
   :config
   (progn
     (require 'smartparens-config)
