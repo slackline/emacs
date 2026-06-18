@@ -5728,6 +5728,14 @@ Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
   command-execute(find-file)
 #+END_EXAMPLE
 
++ [ ] [[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]I think this might be causing some problems with my configuration editing, although I also see...
+
+#+begin_example
+⛔ Warning (flycheck): Syntax checker lsp reported too many errors (3848) and is disabled.
+Use ‘M-x customize-variable RET flycheck-checker-error-threshold’ to
+change the threshold or ‘C-u C-c ! x’ to re-enable the checker.
+#+end_example
+
 ** DONE Themes
 
 + [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
