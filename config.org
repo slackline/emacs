@@ -4108,6 +4108,15 @@ edited. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Gra
 *** treesit
 <<sec:treesit>>
 
+As of [[https://www.rahuljuliato.com/posts/emacs-31-around-the-corner][Emacs 31]] treesitter grammars can be installed automatically and modes enabled. One exception is the experimental
+~markdown-ts-mode~ mentioned in the article. One to keep an eye on.
+
+#+NAME: code-tree-sit
+#+BEGIN_SRC emacs-lisp :tangle no
+  (setq treesit-auto-install-grammar t)
+  (setq treesit-enabled-modes t)
+#+END_SRC
+
 *** TODO  treesit-fold
 <<sec:tree-sitter-fold>>
 
@@ -5663,13 +5672,15 @@ Codeberg Pages once I've sussed those out).
 + [[https://protesilaos.com/codelog/2026-04-30-emacs-decent-default-sacha-chua/][Emacs: decent defaults I shared with Sacha Chua | Protesilaos]]
 + [[https://codeberg.org/jamesendreshowell/emacs-config][jamesendreshowell/emacs-config: My public Emacs configuration files - Codeberg.org]]
 + [[https://github.com/jamescherti/minimal-emacs.d][jamescherti/minimal-emacs.d: A Customizable Emacs init.el and early-init.el | Emacs Starter Kit]]
++ [[https://rossabaker.com/configs/emacs/khlav-kalash/][Ross A. Baker: Khlav Kalash Emacs]]
 
-** Useful defaults
+** Useful built-ins
 
 + [[https://karthinks.com/software/batteries-included-with-emacs/][Batteries included with Emacs]]
 + [[https://karthinks.com/software/more-batteries-included-with-emacs/][More batteries included with emacs]]
 + [[https://karthinks.com/software/even-more-batteries-included-with-emacs/][Even More Batteries Included with Emacs | Karthinks]]
 + [[https://rossabaker.com/blog/underappreciated-emacs-built-ins/][Ross A. Baker: Underappreciated Emacs built-ins]]
++ [[https://www.rahuljuliato.com/posts/emacs-31-around-the-corner][Emacs 31 Is Around the Corner: The Changes I'm Already Daily Driving | Rahul's Blog]]
 
 ** Packages
 
