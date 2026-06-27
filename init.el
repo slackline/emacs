@@ -2139,6 +2139,22 @@ code-vs-text is handled appropriately."
   :defer 4
   :bind ("C-h D" . devdocs-lookup))
 
+(use-package elfeed
+  :ensure t
+  :defer 2
+  :custom
+  (setq elfeed-feeds '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+  )
+
+(global-set-key (kbd "C-x w") 'elfeed)
+
+;; use an org file to organise feeds
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+
 (use-package comet-trail
   :ensure t
   :defer 2
@@ -2190,38 +2206,6 @@ code-vs-text is handled appropriately."
   :custom
   (mood-line-glyph-alist mood-line-glyphs-unicode))
 (mood-line-mode)
-
-(use-package buffer-guardian
-  :ensure t
-  :defer 0.5
-  :custom
-  ;; When non-nil, include remote files in the auto-save process
-  (buffer-guardian-inhibit-saving-remote-files t)
-
-  ;; When non-nil, buffers visiting nonexistent files are not saved
-  (buffer-guardian-inhibit-saving-nonexistent-files nil)
-
-  ;; Save the buffer even if the window change results in the same buffer
-  (buffer-guardian-save-on-same-buffer-window-change t)
-
-  ;; Non-nil to enable verbose mode to log when a buffer is automatically saved
-  (buffer-guardian-verbose nil)
-
-  ;; Pre-save all package-managed buffers before native save commands run
-  ;; Advise `save-some-buffers' to use `buffer-guardian' logic.
-  ;; When non-nil and `buffer-guardian-mode' is active, this intercepts
-  ;; `save-some-buffers' to silently pre-save package-managed buffers before
-  ;; allowing the native command to run normally.
-  (buffer-guardian-override-save-some-buffers nil)
-
-  ;; Save all buffers after N seconds of user idle time. (Disabled by default)
-  (buffer-guardian-save-all-buffers-idle 30)
-
-  ;; Save all buffers every N seconds. (Disabled by default)
-  ;; (setq buffer-guardian-save-all-buffers-interval (* 60 30))
-
-  :hook
-  (after-init . buffer-guardian-mode))
 
 (use-package ibuffer
   :ensure nil
@@ -2282,52 +2266,53 @@ code-vs-text is handled appropriately."
                   (projectile-project-root)
                 (error nil))
               (f-expand (projectile-project-root)))
-             ;; Try to group as part of projectile project if indirectly part of it (started from the same directory, not yet tracked, or maybe temporary buffer)
-             (get-closest-projectile-project default-directory)
-             ((string-equal "*" (substring (buffer-name) 0 1))
-              "proc-buffers")
-             ;; ... other groupings ...
-             (t
-              "Other")))))
-  (defun centaur-tabs-hide-tab (x)
-    "Do no to show buffer X in tabs."
-    (let ((name (format "%s" x)))
-      (or
-       ;; Current window is not dedicated window.
-       (window-dedicated-p (selected-window))
-       ;; Buffer name not match below blacklist.
-       (string-prefix-p "*epc" name)
-       (string-prefix-p "*helm" name)
-       (string-prefix-p "*Helm" name)
-       (string-prefix-p "*Compile-Log*" name)
-       (string-prefix-p "*lsp" name)
-       (string-prefix-p "*company" name)
-       (string-prefix-p "*Flycheck" name)
-       (string-prefix-p "*tramp" name)
-       (string-prefix-p " *Mini" name)
-       (string-prefix-p "*help" name)
-       (string-prefix-p "*straight" name)
-       (string-prefix-p "*temp" name)
-       (string-prefix-p "*Help" name)
-       (string-prefix-p "*mybuf" name)
-       ;; Is not magit buffer.
-       (and (string-prefix-p "magit" name)
-            (not (file-name-extension name)))
-       )))
-  :custom
-  (centaur-tabs-enable-key-bindings t)
-  (centaur-tabs-style "wave")
-  (centaur-tabs-set-icons t)
-  (centaur-tabs-set-bar 'under)
-  (x-underline-at-descent-line t)
-  (centaur-tabs-cycle-scope 'default)
-  (centaur-tabs-set-modified-marker t)
-  (centaur-tabs-modified-marker "⏺")
-  :bind(
-        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-        ("C-<prior>" . centaur-tabs-backward)
-        ("C-<next>"  . centaur-tabs-forward)))
+             ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
+             not yet tracked, or maybe temporary buffer)
+            (get-closest-projectile-project default-directory)
+            ((string-equal "*" (substring (buffer-name) 0 1))
+             "proc-buffers")
+            ;; ... other groupings ...
+            (t
+             "Other")))))
+(defun centaur-tabs-hide-tab (x)
+  "Do no to show buffer X in tabs."
+  (let ((name (format "%s" x)))
+    (or
+     ;; Current window is not dedicated window.
+     (window-dedicated-p (selected-window))
+     ;; Buffer name not match below blacklist.
+     (string-prefix-p "*epc" name)
+     (string-prefix-p "*helm" name)
+     (string-prefix-p "*Helm" name)
+     (string-prefix-p "*Compile-Log*" name)
+     (string-prefix-p "*lsp" name)
+     (string-prefix-p "*company" name)
+     (string-prefix-p "*Flycheck" name)
+     (string-prefix-p "*tramp" name)
+     (string-prefix-p " *Mini" name)
+     (string-prefix-p "*help" name)
+     (string-prefix-p "*straight" name)
+     (string-prefix-p "*temp" name)
+     (string-prefix-p "*Help" name)
+     (string-prefix-p "*mybuf" name)
+     ;; Is not magit buffer.
+     (and (string-prefix-p "magit" name)
+          (not (file-name-extension name)))
+     )))
+:custom
+(centaur-tabs-enable-key-bindings t)
+(centaur-tabs-style "wave")
+(centaur-tabs-set-icons t)
+(centaur-tabs-set-bar 'under)
+(x-underline-at-descent-line t)
+(centaur-tabs-cycle-scope 'default)
+(centaur-tabs-set-modified-marker t)
+(centaur-tabs-modified-marker "⏺")
+:bind(
+      ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+      ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+      ("C-<prior>" . centaur-tabs-backward)
+      ("C-<next>"  . centaur-tabs-forward))
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)

@@ -5099,6 +5099,39 @@ D~.
     :bind ("C-h D" . devdocs-lookup))
 #+END_SRC
 
+* Elfeed
+<<sec:elfeed>>
+
+I like being able to read RSS feeds in Emacs but also want to read them on the-go (using ). I therefore maintain my own
+instance of [[https://freshrss.org/][FreshRSS]] and point the excellent[[https://github.com/emacs-elfeed/elfeed][Elfeed]] to the global RSS feed of
+my FreshRSS instance. All very meta!
+
+#+NAME: code-elfeed
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package elfeed
+  :ensure t
+  :defer 2
+  :custom
+  (setq elfeed-feeds '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+  )
+
+#+END_SRC
+
+** Elfeed-org
+<<sec:elfeed-org>>
+
+#+NAME: code-elfeed-org
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(global-set-key (kbd "C-x w") 'elfeed)
+
+;; use an org file to organise feeds
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+#+END_SRC
+
 * User Interface
 
 Elements concerned with the User Interface which typically means how buffers, mini-buffers, modeline look.
@@ -5296,10 +5329,13 @@ Some customisations to make buffers nicer to work with/read.
 *** buffer-guardian
 <<sec:buffer-guardian>>
 
-[[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]
+[[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]] helps ensure that buffers are always saved. This sounded good, but as I have hooks to     ~(before-save
+. delete-trailing-whitespace)~ and ~(before-save . do-auto-fill)~ I found it mildly annoying as the saves would occur
+mid-typing. This wasn't a consequence of having set ~(buffer-guardian-save-all-buffers-idle 30)~ either.
+
 
 #+NAME: code-buffer-guardian
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package buffer-guardian
   :ensure t
   :defer 0.5
@@ -5488,7 +5524,8 @@ also hide certain buffers I don't need to see often.
 		  (projectile-project-root)
 		(error nil))
 	      (f-expand (projectile-project-root)))
-	     ;; Try to group as part of projectile project if indirectly part of it (started from the same directory, not yet tracked, or maybe temporary buffer)
+	     ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
+not yet tracked, or maybe temporary buffer)
 	     (get-closest-projectile-project default-directory)
 	     ((string-equal "*" (substring (buffer-name) 0 1))
 	      "proc-buffers")
@@ -5533,7 +5570,7 @@ also hide certain buffers I don't need to see often.
          ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
          ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
          ("C-<prior>" . centaur-tabs-backward)
-         ("C-<next>"  . centaur-tabs-forward)))
+         ("C-<next>"  . centaur-tabs-forward))
 
 
 #+END_SRC
