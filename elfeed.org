@@ -1,0 +1,7 @@
+* Blogs                                                              :elfeed:
+** Python                                                           :python:
+*** [[https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=d25fa22f35e84b4fb6310a72e270384e&f=rss][FreshRSS - Python]]
+** Emacs                                                             :emacs:
+*** [[https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=3cc668ea2305c3f1598a9491885a5431&f=rss][FreshRSS - Emacs]]
+** Git                                                                 :git:
+*** [[https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=cf5a02f35c1c4e2ac7978b90025ce438&f=rss][FreshRSS - Git]]
