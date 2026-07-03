@@ -160,7 +160,7 @@ a system with outdated versions of Emacs
 #+BEGIN_SRC emacs-lisp :tangle no
   (require 'package)
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://releases.melpa.org/packages/"))
   (package-initialize)
 
   (unless (package-installed-p 'use-package)
@@ -192,8 +192,8 @@ package explicitly has ~:demand t~ set).
   (setq package-archives
       '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
         ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
-        ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA"	. "https://melpa.org/packages/")
+        ("MELPA Stable" . "https://releases.melpa.org/packages/")
+        ("MELPA"	. "https://snapshots.melpa.org/packages/")
         ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
       package-archive-priorities
       '(("MELPA" . 10)

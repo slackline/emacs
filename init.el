@@ -33,8 +33,8 @@
   (setq package-archives
         '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
           ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
-          ("MELPA Stable" . "https://stable.melpa.org/packages/")
-          ("MELPA"	. "https://melpa.org/packages/")
+          ("MELPA Stable" . "https://releases.melpa.org/packages/")
+          ("MELPA"	. "https://snapshots.melpa.org/packages/")
           ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
         package-archive-priorities
         '(("MELPA" . 10)
