@@ -41,8 +41,7 @@
           ("GNU ELPA"	. 5)
           ("NonGNU ELPA"	. 5)
           ("MELPA Stable"	. 3)
-          ("jcs elpa" . 0)
-          )))
+          ("jcs elpa" . 0))))
 
 (use-package auto-package-update
   :config
@@ -323,8 +322,7 @@ Version 2015-07-27"
   :bind
   (:map completion-preview-active-mode-map
         ("M-n" . completion-preview-next-candidate)
-        ("M-p" . completion-preview-prev-candidate))
-  )
+        ("M-p" . completion-preview-prev-candidate)))
 
 (use-package consult
   ;; Replace bindings. Lazily loaded by `use-package'.
@@ -395,8 +393,7 @@ Version 2015-07-27"
   (register-preview-delay 0.5)
 
   ;; Use Consult to select xref locations with preview
-  (xref-show-xrefs-function #'consult-xref
-                            xref-show-definitions-function #'consult-xref))
+  (xref-show-xrefs-function #'consult-xref xref-show-definitions-function #'consult-xref))
 
 (use-package embark
   :ensure t
@@ -638,6 +635,12 @@ Version 2015-07-27"
     '(transient-append-suffix 'magit-diff '(-1 -1)
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
+
+(use-package magit-difftastic
+  :straight (:host github :repo "rschmukler/magit-difftastic")
+  :after magit
+  :config
+  (magit-difftastic-mode +1))
 
 (use-package forge
   :ensure t

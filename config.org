@@ -142,7 +142,8 @@ exec-path-from-shell~).
                        "~/.local/bin"
                        "~/.cargo/bin/"
                        "~/.node/bin/")
-			exec-path)))
+                     exec-path)))
+
 #+END_SRC
 
 ** use-package
@@ -190,18 +191,17 @@ package explicitly has ~:demand t~ set).
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
   (setq package-archives
-      '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
-        ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
-        ("MELPA Stable" . "https://releases.melpa.org/packages/")
-        ("MELPA"	. "https://snapshots.melpa.org/packages/")
-        ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
-      package-archive-priorities
-      '(("MELPA" . 10)
-        ("GNU ELPA"	. 5)
-        ("NonGNU ELPA"	. 5)
-        ("MELPA Stable"	. 3)
-        ("jcs elpa" . 0)
-        )))
+        '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
+          ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
+          ("MELPA Stable" . "https://releases.melpa.org/packages/")
+          ("MELPA"	. "https://snapshots.melpa.org/packages/")
+          ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
+        package-archive-priorities
+        '(("MELPA" . 10)
+          ("GNU ELPA"	. 5)
+          ("NonGNU ELPA"	. 5)
+          ("MELPA Stable"	. 3)
+          ("jcs elpa" . 0))))
 
 #+END_SRC
 
@@ -333,9 +333,9 @@ bars.
     ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
     ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
     (add-to-list 'display-buffer-alist
-      '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-	 (display-buffer-no-window)
-	 (allow-no-window . t)))
+                 '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+                 (display-buffer-no-window)
+	             (allow-no-window . t)))
     ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
     ;; (when (and (fboundp 'native-comp-available-p)
     ;;         (native-comp-available-p))
@@ -378,7 +378,7 @@ bars.
       prog-mode
       text-mode) . auto-fill-mode)
     ((latex-mode
-       prog-mode) . hs-minor-mode)
+      prog-mode) . hs-minor-mode)
     ;; ((git-commit-mode
     ;;   forge-post-mode) . gfm-mode)
     (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
@@ -389,11 +389,11 @@ bars.
     (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
     ;; imenu
     ((markdown-mode
-       makefile-mode
-       prog-mode) . imenu-add-menubar-index)
+      makefile-mode
+      prog-mode) . imenu-add-menubar-index)
     ((markdown-mode
-       makefile-mode
-       prog-mode) . (lambda () (setq imenu-auto-rescan t)))
+      makefile-mode
+      prog-mode) . (lambda () (setq imenu-auto-rescan t)))
     :init
     (epa-file-enable)
     (tool-bar-mode 0)
@@ -417,7 +417,7 @@ bars.
 (use-package ssh-agency
   :ensure t
   :custom (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
-  ;; :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+;; :bind ("C-c C-g" . (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 
 #+END_SRC
 
@@ -514,8 +514,8 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
 
 #+NAME: code-on-save
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (defun ns/org-babel-tangle-on-save ()
-    "Tangle config.org on saving."
+(defun ns/org-babel-tangle-on-save ()
+  "Tangle config.org on saving."
   (when (string-equal (buffer-file-name)
                       (expand-file-name "~/.config/emacs/config.org"))
     (let ((org-confirm-babel-evaluate nil))
@@ -530,12 +530,12 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
 
-  ;; Almost works, but org-lint needs to know what buffer to check???
-  (defun ns/org-lint-on-save ()
-    "Run org-lint on saving .org files."
-    (when(string-equal (file-name-extension (buffer-file-name)) "org")
-      (org-lint)))
-  (add-hook 'after-save-hook 'ns/org-lint-on-save)
+;; Almost works, but org-lint needs to know what buffer to check???
+(defun ns/org-lint-on-save ()
+  "Run org-lint on saving .org files."
+  (when(string-equal (file-name-extension (buffer-file-name)) "org")
+    (org-lint)))
+(add-hook 'after-save-hook 'ns/org-lint-on-save)
 
 #+END_SRC
 
@@ -598,7 +598,7 @@ pushing to Git forges. It is bound to ~C-c C-s~ to make it simple to load.
   "Set SSH keys for ssh-agency.
 
 This command sets the SSH keys for ssh-agency."
-(ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
+  (ssh-agency-keys '("~/.ssh/id_ed25519" "~/.ssh/haldane_ed25519")))
 #+END_SRC
 *** Create non-existent directories
 
@@ -718,9 +718,8 @@ pulled the others in as dependencies of other packages but have opted to purge t
   (setq completion-preview-minimum-symbol-length 2)
   :bind
   (:map completion-preview-active-mode-map
-    ("M-n" . completion-preview-next-candidate)
-    ("M-p" . completion-preview-prev-candidate))
-)
+        ("M-n" . completion-preview-next-candidate)
+        ("M-p" . completion-preview-prev-candidate)))
 
 #+END_SRC
 
@@ -801,8 +800,8 @@ pulled the others in as dependencies of other packages but have opted to purge t
   (register-preview-delay 0.5)
 
   ;; Use Consult to select xref locations with preview
-  (xref-show-xrefs-function #'consult-xref
-   xref-show-definitions-function #'consult-xref))
+  (xref-show-xrefs-function #'consult-xref xref-show-definitions-function #'consult-xref))
+
 #+END_SRC
 
 ** Embark
@@ -3094,6 +3093,29 @@ Don't use LaTeX much these days but like to keep things available.
   :hook
   (LaTeX-mode-hook . 'latex-extra-mode)
 )
+#+END_SRC
+
+*** Lisp Mode
+<<sec:lisp>>
+
+**** lisp-ts-mode
+<<sec:lisp-ts-mode>>
+
+[[https://codeberg.org/zshaftel/lisp-ts-mode][lisp-ts-mode]]
+
+#+NAME: code-latex-extra
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package latex-extra
+  :ensure t
+  :defer 3
+  :init
+  (setf (alist-get 'lisp-mode major-mode-remap-alist) 'lisp-ts-mode)
+  :custom
+  (setf (alist-get 'lisp-ts-mode font-lock-ignore)
+        lisp-ts-mode-font-lock-ignore-keywords)
+  :hook
+  (lisp-ts-mode-hook . lisp-ts-format-support-mode))
+
 #+END_SRC
 
 *** Markdown Mode
