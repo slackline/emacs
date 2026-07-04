@@ -220,7 +220,8 @@ package explicitly has ~:demand t~ set).
   (auto-package-update-maybe))
 #+END_SRC
 
-*** Emacs Package Archives
+*** Emacs Lisp Package Archives (ELPA)
+<<sec:elpa>>
 
 There are multiple sources of Emacs packages, including those who self-host serves such as ~jcs elpa~ listed below.
 
@@ -231,6 +232,14 @@ There are multiple sources of Emacs packages, including those who self-host serv
 
 Because the same package can be hosted across these repositories, sometimes the same version, sometimes newer, it is
 useful to be able to set the ~package-archive-priorities~ where each is assigned a priority value.
+
+
+*** ~straight.el~
+<<sec:straight>>
+
+[[https://github.com/radian-software/straight.el][straight.el]] "/Next-generation, purely functional package manager for the Emacs hacker./" is potentially useful but I've
+not yet explored it. It simplifies installing packages from Git Forges and keeping them up-to-date which is useful for
+packages that aren't available on an existing [[sec:elpa][ELPA]].
 
 ** Byte Compiling
 <<sec:byte-compiling>>
@@ -353,7 +362,7 @@ bars.
     (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
     ;; Disable birectional text scanning
     (setq-default bidi-display-reordering 'left-to-right
-              bidi-paragraph-direction 'left-to-right)
+                  bidi-paragraph-direction 'left-to-right)
     (setq bidi-inhibit-bpa t)
     ;; Don't render cursors in non-focused windows
     (setq-default cursor-in-non-selected-windows nil)
@@ -1260,6 +1269,24 @@ that I found and had happily used for a while.
     '(transient-append-suffix 'magit-diff '(-1 -1)
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
+
+#+END_SRC
+
+** magit-difftastic
+<<sec:magit-difftastic>>
+
+[[https://github.com/rschmukler/magit-difftastic][magit-difftastic]] builds on and complements [[sec:difftastic][difftastic.el]] by /rendering diffs with [[https://github.com/Wilfred/difftastic][difftastic]] inside Magit's own buffers
+(~magit-status, ~magit-diff-mode@, ~magit-revision-mode~), as collapsible, navigable Magit sections with full staging
+support/. Currently this has been manually cloned as its not yet available on MELPA and I didn't want to go down the
+[[https://github.com/radian-software/straight.el][straight.el]] rabbit hole right now.
+
+#+NAME: code-magit-difftastic
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package magit-difftastic
+  :straight (:host github :repo "rschmukler/magit-difftastic")
+  :after magit
+  :config
+  (magit-difftastic-mode +1))
 
 #+END_SRC
 
