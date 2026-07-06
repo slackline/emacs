@@ -90,8 +90,7 @@
   ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
   (add-to-list 'display-buffer-alist
                '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-                 (display-buffer-no-window)
-                 (allow-no-window . t)))
+                 (display-buffer-no-window) (allow-no-window . t)))
   ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
   ;; (when (and (fboundp 'native-comp-available-p)
   ;;         (native-comp-available-p))

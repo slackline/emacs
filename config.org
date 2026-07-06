@@ -915,8 +915,8 @@ any order.
   :ensure t
   :custom
   (completion-styles '(orderless basic)
-	completion-category-defaults nil
-	completion-category-overrides '((file (styles basic partial-completion)))))
+            completion-category-defaults nil
+            completion-category-overrides '((file (styles basic partial-completion)))))
 
 #+END_SRC
 
@@ -1003,65 +1003,64 @@ A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist 
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
   ;; +prefix isn't helpful, lets sort that out via...
   (which-key-add-key-based-replacements
-    "C-h 4"         "help-other-win"
-    "C-x 4"         "other-window"
-    "C-x 5"         "other-frame"
-    "C-x 6"         "2-column"
-    "C-x 8"         "insert-special"
-    "C-x C-k C-q"   "kmacro-counters"
-    "C-x C-k C-r a" "kmacro-add"
-    "C-x C-k C-r"   "kmacro-register"
-    "C-x C-k"       "keyboard-macros"
-    "C-x RET"       "encoding/input"
-    "C-x a i"       "abbrevs-inverse-add"
-    "C-x a"         "abbrevs"
-    "C-x n"         "narrowing"
-    "C-x p"         "projects"
-    "C-x r"         "reg/rect/bkmks"
-    "C-x t ^"       "tab-bar-detach"
-    "C-x t"         "tab-bar"
-    "C-x v M"       "vc-mergebase"
-    "C-x v b"       "vc-branch"
-    "C-x v"         "version-control"
-    "C-x w ^"       "window-detach"
-    "C-x w"         "window-extras"
-    "C-x x"         "buffer-extras"
-    "C-x X"         "edebug"
-    "C-c m"         "Magit"
-    "C-c m d"       "Diff"
-    "C-c m g"       "Link"
-    "C-c m l"       "Log")
-    "M-s h"         "search-highlight"
-      "s-l F"         "Workspace"
-      "s-l G"         "Peek"
-      "s-l T"         "Treemacs/UI"
-      "s-l a"         "Execute/highlight"
-      "s-l g"         "Find"
-      "s-l h"         "Doc/Describe"
-      "s-l r"         "Refactor"
-      "s-l w"         "Session")
-  (with-eval-after-load 'lsp
-    (which-key-add-key-based-replacements
-      "s-l"           "LSP"
-      "s-l ="         "LSP Format"
-      "s-l F"         "LSP Workspace"
-      "s-l G"         "LSP Peek"
-      "s-l T"         "LSP Treemacs/UI"
-      "s-l a"         "LSP Execute/highlight"
-      "s-l g"         "LSP Find"
-      "s-l h"         "LSP Doc/Describe"
-      "s-l r"         "LSP Refactor"
-      "s-l w"         "LSP Session"))
-  (with-eval-after-load 'gud (which-key-add-key-based-replacements gud-key-prefix "gud")
-  (with-eval-after-load 'page-ext
-    (which-key-add-key-based-replacements
-     "C-x C-p" "page-extras"))
-  ;; Org-mode provides some additional prefix-keys in `org-mode-map'.
-  (with-eval-after-load 'org
-    (which-key-add-keymap-based-replacements org-mode-map
-      "C-c \""      "org-plot"
-      "C-c C-v"     "org-babel"
-      "C-c C-x"     "org-extra-commands")))
+   "C-h 4"         "help-other-win"
+   "C-x 4"         "other-window"
+   "C-x 5"         "other-frame"
+   "C-x 6"         "2-column"
+   "C-x 8"         "insert-special"
+   "C-x C-k C-q"   "kmacro-counters"
+   "C-x C-k C-r a" "kmacro-add"
+   "C-x C-k C-r"   "kmacro-register"
+   "C-x C-k"       "keyboard-macros"
+   "C-x RET"       "encoding/input"
+   "C-x a i"       "abbrevs-inverse-add"
+   "C-x a"         "abbrevs"
+   "C-x n"         "narrowing"
+   "C-x p"         "projects"
+   "C-x r"         "reg/rect/bkmks"
+   "C-x t ^"       "tab-bar-detach"
+   "C-x t"         "tab-bar"
+   "C-x v M"       "vc-mergebase"
+   "C-x v b"       "vc-branch"
+   "C-x v"         "version-control"
+   "C-x w ^"       "window-detach"
+   "C-x w"         "window-extras"
+   "C-x x"         "buffer-extras"
+   "C-x X"         "edebug"
+   "C-c m"         "Magit"
+   "C-c m d"       "Diff"
+   "C-c m g"       "Link"
+   "C-c m l"       "Log")
+  "M-s h"         "search-highlight"
+  "s-l F"         "Workspace"
+  "s-l G"         "Peek"
+  "s-l T"         "Treemacs/UI"
+  "s-l a"         "Execute/highlight"
+  "s-l g"         "Find"
+  "s-l h"         "Doc/Describe"
+  "s-l r"         "Refactor"
+  "s-l w"         "Session")
+(with-eval-after-load 'lsp
+  (which-key-add-key-based-replacements
+   "s-l"           "LSP"
+   "s-l ="         "LSP Format"
+   "s-l F"         "LSP Workspace"
+   "s-l G"         "LSP Peek"
+   "s-l T"         "LSP Treemacs/UI"
+   "s-l a"         "LSP Execute/highlight"
+   "s-l g"         "LSP Find"
+   "s-l h"         "LSP Doc/Describe"
+   "s-l r"         "LSP Refactor"
+   "s-l w"         "LSP Session"))
+(with-eval-after-load 'gud (which-key-add-key-based-replacements gud-key-prefix "gud")
+              (with-eval-after-load 'page-ext
+            (which-key-add-key-based-replacements "C-x C-p" "page-extras"))
+              ;; Org-mode provides some additional prefix-keys in `org-mode-map'.
+              (with-eval-after-load 'org
+            (which-key-add-keymap-based-replacements org-mode-map
+              "C-c \""  "org-plot"
+              "C-c C-v" "org-babel"
+              "C-c C-x" "org-extra-commands")))
 
 #+END_SRC
 
@@ -1134,12 +1133,12 @@ literally everything under Git version control.
     :ensure t
     :custom
     (magit-repository-directories
-  	`(("~/dotfiles" . 1)
-  	  ("~/.config/emacs/" . 1)
-  	  ("~/.password-store/" . 1)
-  	  ("~/org/" . 1)
-  	  ("~/org-roam/" . 1)
-  	  ("~/work/git/" . 3)))
+     `(("~/dotfiles" . 1)
+       ("~/.config/emacs/" . 1)
+       ("~/.password-store/" . 1)
+       ("~/org/" . 1)
+       ("~/org-roam/" . 1)
+       ("~/work/git/" . 3)))
     ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
     ;; perhaps?
     (remove-hook 'git-commit-mode #'turn-on-auto-fill)
@@ -1156,15 +1155,15 @@ literally everything under Git version control.
     ;; :hook
     :bind (:map magit-mode-map (("C-c m C" . magit-clone)
                                 ("C-c m B" . magit-clone-bare)
-                                 ("C-c m F" . magit-pull-from-upstream)
-                                 ("C-c m P" . magit-push-current-to-upstream)
-                                 ("C-c m R" . magit-file-rename)
-                                 ("C-c m f" . forge-pull)
-                                 ("C-c m d r" . magit-diff-range)
-                                 ("C-c m d s" . magit-diff-staged)
-                                 ("C-c m l l" . magit-log)
-                                 ("C-c m l f" . magit-log-buffer-file)
-                                 ("C-c m l o" . magit-log-other))))
+                                ("C-c m F" . magit-pull-from-upstream)
+                                ("C-c m P" . magit-push-current-to-upstream)
+                                ("C-c m R" . magit-file-rename)
+                                ("C-c m f" . forge-pull)
+                                ("C-c m d r" . magit-diff-range)
+                                ("C-c m d s" . magit-diff-staged)
+                                ("C-c m l l" . magit-log)
+                                ("C-c m l f" . magit-log-buffer-file)
+                                ("C-c m l o" . magit-log-other))))
 
 #+END_SRC
 
@@ -1301,7 +1300,7 @@ worth it as it massively improves workflow.
           "forgejo.nshephard.dev/api/v1"
           "forgejo.nshephard.dev"
           forge-forgejo-repository)
-	forge-alist))
+        forge-alist))
 
 #+END_SRC
 
@@ -1475,9 +1474,9 @@ Currently not tangled.
     :ensure t
     :after (magit)
     :bind (:map magit-mode-map (("C-c m g c" . git-link-commit)
-                                 ("C-c m g g" . git-link-dispatch)
-                                 ("C-c m g h" . git-link-homepage)
-                                 ("C-c m g l" . git-link)))
+                                ("C-c m g g" . git-link-dispatch)
+                                ("C-c m g h" . git-link-homepage)
+                                ("C-c m g l" . git-link)))
     :config
     (require 'git-link-transient))
 
@@ -1522,8 +1521,7 @@ speed.".
 (use-package git-timemachine
   :ensure t
   :defer 3
-  :after (magit)
-)
+  :after (magit))
 
 #+END_SRC
 
@@ -1538,6 +1536,7 @@ speed.".
   :ensure t
   :defer 0.5
   :after (magit))
+
 #+END_SRC
 
 ** JuJutsu
@@ -1555,6 +1554,7 @@ other VC software). There are a few packages seeking to provide support for ~jj~
 (use-package vc-jj
   :ensure t
   :defer 3)
+
 #+END_SRC
 
 *** jujutsu.el
@@ -1716,9 +1716,9 @@ menu and follow your nose from there.
   :defer 0.5
   :after magit
   :bind (:map magit-mode-map
-	      ("C-c m c" . orgit-store-link))
+              ("C-c m c" . orgit-store-link))
   (:map org-mode-map
-	("C-c m v" . org-insert-last-stored-link)))
+        ("C-c m v" . org-insert-last-stored-link)))
 
 #+END_SRC
 
@@ -1805,7 +1805,8 @@ the blame for each line of code.
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
   (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
   :bind (:map magit-mode-map (("C-c m w" . 'why-this)
-                               ("C-c m W" . 'why-this-annotate))))
+                              ("C-c m W" . 'why-this-annotate))))
+
 #+END_SRC
 
 * Transient
@@ -1823,12 +1824,9 @@ build muscle memory.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package casual-suite
   :ensure t
-  :bind (:map
-         reb-mode-map ("s-c" . casual-re-builder-tmenu)
-         :map
-         reb-lisp-mode-map ("s-c" . casual-re-builder-tmenu)
-         :map
-          ibuffer-mode-map))
+  :bind (:map reb-mode-map ("s-c" . casual-re-builder-tmenu)
+         :map reb-lisp-mode-map ("s-c" . casual-re-builder-tmenu)
+         :map ibuffer-mode-map))
 
 #+END_SRC
 
@@ -1900,27 +1898,24 @@ Sources of some of the options are linked below.
   (org-agenda-skip-deadline-if-done t)
   (org-agenda-skip-scheduled-if-done t)
   (org-agenda-files '("~/org/agenda.org"
- 		       "~/org/gtd/admin.org"
- 		       "~/org/gtd/afmslicer.org"
- 		       ;; "~/org/gtd/carpentries.org"
- 		       ;; "~/org/gtd/clarity.org"
- 		       "~/org/gtd/computing.org"
- 		       ;; "~/org/gtd/cured.org"
- 		       "~/org/gtd/exercise.org"
- 		       "~/org/gtd/emacs.org"
- 		       ;; "~/org/gtd/isoslam.org"
- 		       "~/org/gtd/joss.org"
- 		       "~/org/gtd/layopt.org"
- 		       ;; "~/org/gtd/openfest2024.org"
- 		       ;; "~/org/gtd/osc.org"
- 		       ;; "~/org/gtd/pgfinder.org"
-		       "~/org/gtd/reproducibilitea.org"
-		       "~/org/gtd/rse.org"
-		       ;; "~/org/gtd/rse-competencies.org"
-		       "~/org/grd/sheffieldr.org"
- 		       "~/org/gtd/tcx2gpx.org"
-		       ;; "~/org/gtd/thyroid.org"
-		       "~/org/gtd/topostats.org"))
+                      "~/org/gtd/admin.org"
+                      "~/org/gtd/afmslicer.org"
+                      ;; "~/org/gtd/carpentries.org"
+                      "~/org/gtd/computing.org"
+                      "~/org/gtd/exercise.org"
+                      "~/org/gtd/emacs.org"
+                      "~/org/gtd/joss.org"
+                      "~/org/gtd/layopt.org"
+                      ;; "~/org/gtd/openfest2024.org"
+                      ;; "~/org/gtd/osc.org"
+                      ;; "~/org/gtd/pgfinder.org"
+                      "~/org/gtd/reproducibilitea.org"
+                      "~/org/gtd/rse.org"
+                      ;; "~/org/gtd/rse-competencies.org"
+                      "~/org/grd/sheffieldr.org"
+                      "~/org/gtd/tcx2gpx.org"
+                      ;; "~/org/gtd/thyroid.org"
+                    o  "~/org/gtd/topostats.org"))
   (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
                                                             (jq .t)
                                                             (latex .t)
@@ -1945,13 +1940,13 @@ Sources of some of the options are linked below.
   (org-confirm-babel-evaluate nil)
   (org-startup-within-inline-images t)
   (org-todo-keywords
-    '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
+   '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)")))
   (org-todo-keyword-faces
-    '(("TODO" . (:foreground "GoldenRod" :weight bold))
-       ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
-       ("BLOCKED" . (:foreground "Red" :weight bold))
-       ("DONE" . (:foreground "LimeGreen" :weight bold))
-       ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
+   '(("TODO" . (:foreground "GoldenRod" :weight bold))
+      ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
+      ("BLOCKED" . (:foreground "Red" :weight bold))
+      ("DONE" . (:foreground "LimeGreen" :weight bold))
+      ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
   ;; Disable electric-indent-mode in org buffers
   :hook
   (org-mode . (lambda () (electric-indent-local-mode 0)))
@@ -2004,25 +1999,25 @@ the results. Very neat and powerful...if you stick to the habit of logging your 
   :defer 0.5
   :after org-mode
   :config (setq
-	   ;; Edit settings
-	   org-auto-align-tags nil
-	   org-tags-column 0
-	   org-catch-invisible-edits 'show-and-error
-	   org-special-ctrl-a/e t
-	   org-insert-heading-respect-content t
-	   ;; Org styling, hide markup etc.
-	   org-hide-emphasis-markers t
-	   org-pretty-entities t
-	   org-ellipsis "…"
-	   ;; Agenda styling
-	   org-agenda-tags-column 0
-	   org-agenda-block-separator ?─
-	   org-agenda-time-grid
-	   '((daily today require-timed)
-	     (800 1000 1200 1400 1600 1800 2000)
-	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-	   org-agenda-current-time-string
-	   "◀── now ─────────────────────────────────────────────────" ))
+	         ;; Edit settings
+	         org-auto-align-tags nil
+      	   org-tags-column 0
+      	   org-catch-invisible-edits 'show-and-error
+      	   org-special-ctrl-a/e t
+      	   org-insert-heading-respect-content t
+      	   ;; Org styling, hide markup etc.
+      	   org-hide-emphasis-markers t
+      	   org-pretty-entities t
+      	   org-ellipsis "…"
+      	   ;; Agenda styling
+      	   org-agenda-tags-column 0
+      	   org-agenda-block-separator ?─
+      	   org-agenda-time-grid
+      	   '((daily today require-timed)
+      	     (800 1000 1200 1400 1600 1800 2000)
+      	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+      	   org-agenda-current-time-string
+      	   "◀── now ─────────────────────────────────────────────────"))
 
 #+END_SRC
 
@@ -2304,16 +2299,16 @@ Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me someth
 
 #+NAME: code-org-grimoire
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (use-package org-grimoire
-    :defer 4
-    :ensure t)
+(use-package org-grimoire
+  :defer 4
+  :ensure t)
 
 (org-grimoire-setup "nshephard.dev"
-  :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
-  :base-url    "https://nshephard.dev"
-  :site-title  "nshephard.dev"
-  :description ""
-  :theme "dev-theme")
+            :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
+            :base-url    "https://nshephard.dev"
+            :site-title  "nshephard.dev"
+            :description ""
+            :theme "dev-theme")
 
 #+END_SRC
 
@@ -2684,8 +2679,7 @@ Routine")
 	  ("wC" "Carpentries Courses" entry (file+olp "~/org/gtd/carpentries.org" "Courses")
 	   "** TODO %U %?\n %a" :prepend t)
 	  ("wp" "PGFinder" entry (file+olp "~/org/gtd/pgfinder.org" "PGFinder")
-	   "** TODO %U %?\n %a" :prepend t)
-	  )))
+	   "** TODO %U %?\n %a" :prepend t))))
 
 #+END_SRC
 
@@ -2728,8 +2722,7 @@ Routine")
    ("C-c d n" . org-gtd-show-all-next)
    ("C-c d s" . org-gtd-show-stuck-projects)
    :map org-gtd-clarify-map
-   ("C-c c" . org-gtd-organize)
-   ))
+   ("C-c c" . org-gtd-organize)))
 
 #+END_SRC
 
