@@ -2242,10 +2242,10 @@ code-vs-text is handled appropriately."
               (f-expand (projectile-project-root)))
              ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
              ;; not yet tracked, or maybe temporary buffer)
-            (get-closest-projectile-project default-directory)
-            ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
-       ;; ... other groupings ...
-       (t "Other")))))
+             (get-closest-projectile-project default-directory)
+             ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
+             ;; ... other groupings ...
+             (t "Other"))))))
 (defun centaur-tabs-hide-tab (x)
   "Do no to show buffer X in tabs."
   (let ((name (format "%s" x)))
