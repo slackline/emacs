@@ -343,8 +343,7 @@ bars.
     ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
     (add-to-list 'display-buffer-alist
                  '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-                 (display-buffer-no-window)
-	             (allow-no-window . t)))
+                   (display-buffer-no-window) (allow-no-window . t)))
     ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
     ;; (when (and (fboundp 'native-comp-available-p)
     ;;         (native-comp-available-p))
@@ -369,17 +368,15 @@ bars.
     (setq highlight-nonselected-windows nil)
     (setopt dictionary-server "dict.org")
     :bind (("C-c U" . revert-buffer)
-	    ("C-c D" . toggle-debug-on-error)
-	    ;; Org
-	    ("C-c l" . org-store-link)
-	    ("C-c c" . org-capture)
-	    ("C-c a" . org-agenda)
-	    ("C-c b" . org-iswitchb)
-	    ("C-x p i" . org-org-cliplink)
-	    ;; Magit /code review
-	    ("C-x g" . magit-status)
-	    ("C-c R" . code-review-forge-pr-at-point)
-	    ("s-SPC" . cycle-spacing))
+           ("C-c D" . toggle-debug-on-error)
+           ("C-c l" . org-store-link)
+           ("C-c c" . org-capture)
+           ("C-c a" . org-agenda)
+           ("C-c b" . org-iswitchb)
+           ("C-x p i" . org-org-cliplink)
+           ("C-x g" . magit-status)
+           ("C-c R" . code-review-forge-pr-at-point)
+           ("s-SPC" . cycle-spacing))
     :hook
     ((latex-mode
       markdown-mode
@@ -530,8 +527,8 @@ configured for [[sec:org-mode][org-mode]] so that this file is both tangled and 
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
-  (defun ns/org-babel-export-on-save ()
-    "Export config.org on saving"
+(defun ns/org-babel-export-on-save ()
+  "Export config.org on saving"
   (when (string-equal (buffer-file-name)
                       (expand-file-name "~/.config/emacs/config.org"))
     (let ((org-confirm-babel-evaluate nil))
@@ -586,12 +583,9 @@ region to Markdown in the system clipboard.
   (interactive)
   (if (use-region-p)
       (let* ((region
-	      (buffer-substring-no-properties
-		      (region-beginning)
-		      (region-end)))
-	     (markdown
-	      (org-export-string-as region 'md t '(:with-toc nil))))
-	(gui-set-selection 'CLIPBOARD markdown))))
+              (buffer-substring-no-properties (region-beginning) (region-end)))
+             (markdown (org-export-string-as region 'md t '(:with-toc nil))))
+        (gui-set-selection 'CLIPBOARD markdown))))
 
 #+END_SRC
 
@@ -835,9 +829,9 @@ prompt]] but may do one day.
   (prefix-help-command #'embark-prefix-help-command)
   ;; (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
   (embark-indicators
-	'(embark-minimal-indicator  ; default is embark-mixed-indicator
-	  embark-highlight-indicator
-	  embark-isearch-highlight-indicator))
+   '(embark-minimal-indicator  ; default is embark-mixed-indicator
+     embark-highlight-indicator
+     embark-isearch-highlight-indicator))
   ;; Show the Embark target at point via Eldoc. You may adjust the
   ;; Eldoc strategy, if you want to see the documentation from
   ;; multiple providers. Beware that using this can be a little
@@ -883,10 +877,8 @@ with the ~marginalia-mode~ rather than deferring.
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
   :bind
-  (:map minibuffer-local-map
-	("M-A" . marginalia-cycle))
-  (:map completion-list-mode-map
-	("M-A" . marginalia-cycle))
+  (:map minibuffer-local-map ("M-A" . marginalia-cycle))
+  (:map completion-list-mode-map ("M-A" . marginalia-cycle))
   ;; The :init section is always executed.
   :init
   ;; Marginalia must be activated in the :init section of use-package such that
