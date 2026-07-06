@@ -448,8 +448,8 @@ Version 2015-07-27"
   :ensure t
   :custom
   (completion-styles '(orderless basic)
-	completion-category-defaults nil
-	completion-category-overrides '((file (styles basic partial-completion)))))
+                     completion-category-defaults nil
+                     completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package savehist
   :ensure t
@@ -492,75 +492,74 @@ Version 2015-07-27"
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
   ;; +prefix isn't helpful, lets sort that out via...
   (which-key-add-key-based-replacements
-    "C-h 4"         "help-other-win"
-    "C-x 4"         "other-window"
-    "C-x 5"         "other-frame"
-    "C-x 6"         "2-column"
-    "C-x 8"         "insert-special"
-    "C-x C-k C-q"   "kmacro-counters"
-    "C-x C-k C-r a" "kmacro-add"
-    "C-x C-k C-r"   "kmacro-register"
-    "C-x C-k"       "keyboard-macros"
-    "C-x RET"       "encoding/input"
-    "C-x a i"       "abbrevs-inverse-add"
-    "C-x a"         "abbrevs"
-    "C-x n"         "narrowing"
-    "C-x p"         "projects"
-    "C-x r"         "reg/rect/bkmks"
-    "C-x t ^"       "tab-bar-detach"
-    "C-x t"         "tab-bar"
-    "C-x v M"       "vc-mergebase"
-    "C-x v b"       "vc-branch"
-    "C-x v"         "version-control"
-    "C-x w ^"       "window-detach"
-    "C-x w"         "window-extras"
-    "C-x x"         "buffer-extras"
-    "C-x X"         "edebug"
-    "C-c m"         "Magit"
-    "C-c m d"       "Diff"
-    "C-c m g"       "Link"
-    "C-c m l"       "Log")
-    "M-s h"         "search-highlight"
-      "s-l F"         "Workspace"
-      "s-l G"         "Peek"
-      "s-l T"         "Treemacs/UI"
-      "s-l a"         "Execute/highlight"
-      "s-l g"         "Find"
-      "s-l h"         "Doc/Describe"
-      "s-l r"         "Refactor"
-      "s-l w"         "Session")
-  (with-eval-after-load 'lsp
-    (which-key-add-key-based-replacements
-      "s-l"           "LSP"
-      "s-l ="         "LSP Format"
-      "s-l F"         "LSP Workspace"
-      "s-l G"         "LSP Peek"
-      "s-l T"         "LSP Treemacs/UI"
-      "s-l a"         "LSP Execute/highlight"
-      "s-l g"         "LSP Find"
-      "s-l h"         "LSP Doc/Describe"
-      "s-l r"         "LSP Refactor"
-      "s-l w"         "LSP Session"))
-  (with-eval-after-load 'gud (which-key-add-key-based-replacements gud-key-prefix "gud")
-  (with-eval-after-load 'page-ext
-    (which-key-add-key-based-replacements
-     "C-x C-p" "page-extras"))
-  ;; Org-mode provides some additional prefix-keys in `org-mode-map'.
-  (with-eval-after-load 'org
-    (which-key-add-keymap-based-replacements org-mode-map
-      "C-c \""      "org-plot"
-      "C-c C-v"     "org-babel"
-      "C-c C-x"     "org-extra-commands")))
+   "C-h 4"         "help-other-win"
+   "C-x 4"         "other-window"
+   "C-x 5"         "other-frame"
+   "C-x 6"         "2-column"
+   "C-x 8"         "insert-special"
+   "C-x C-k C-q"   "kmacro-counters"
+   "C-x C-k C-r a" "kmacro-add"
+   "C-x C-k C-r"   "kmacro-register"
+   "C-x C-k"       "keyboard-macros"
+   "C-x RET"       "encoding/input"
+   "C-x a i"       "abbrevs-inverse-add"
+   "C-x a"         "abbrevs"
+   "C-x n"         "narrowing"
+   "C-x p"         "projects"
+   "C-x r"         "reg/rect/bkmks"
+   "C-x t ^"       "tab-bar-detach"
+   "C-x t"         "tab-bar"
+   "C-x v M"       "vc-mergebase"
+   "C-x v b"       "vc-branch"
+   "C-x v"         "version-control"
+   "C-x w ^"       "window-detach"
+   "C-x w"         "window-extras"
+   "C-x x"         "buffer-extras"
+   "C-x X"         "edebug"
+   "C-c m"         "Magit"
+   "C-c m d"       "Diff"
+   "C-c m g"       "Link"
+   "C-c m l"       "Log")
+  "M-s h"         "search-highlight"
+  "s-l F"         "Workspace"
+  "s-l G"         "Peek"
+  "s-l T"         "Treemacs/UI"
+  "s-l a"         "Execute/highlight"
+  "s-l g"         "Find"
+  "s-l h"         "Doc/Describe"
+  "s-l r"         "Refactor"
+  "s-l w"         "Session")
+(with-eval-after-load 'lsp
+  (which-key-add-key-based-replacements
+   "s-l"           "LSP"
+   "s-l ="         "LSP Format"
+   "s-l F"         "LSP Workspace"
+   "s-l G"         "LSP Peek"
+   "s-l T"         "LSP Treemacs/UI"
+   "s-l a"         "LSP Execute/highlight"
+   "s-l g"         "LSP Find"
+   "s-l h"         "LSP Doc/Describe"
+   "s-l r"         "LSP Refactor"
+   "s-l w"         "LSP Session"))
+(with-eval-after-load 'gud (which-key-add-key-based-replacements gud-key-prefix "gud")
+                      (with-eval-after-load 'page-ext
+                        (which-key-add-key-based-replacements "C-x C-p" "page-extras"))
+                      ;; Org-mode provides some additional prefix-keys in `org-mode-map'.
+                      (with-eval-after-load 'org
+                        (which-key-add-keymap-based-replacements org-mode-map
+                          "C-c \""  "org-plot"
+                          "C-c C-v" "org-babel"
+                          "C-c C-x" "org-extra-commands")))
 
 (use-package helpful
   :ensure t
   :defer 0.5
   :bind (("C-h C" . helpful-command)
-          ("C-h f" . helpful-callable)
-          ("C-h F" . helpful-function)
-          ("C-h v" . helpful-variable)
-          ("C-h k" . helpful-key)
-          ("C-c C-d" . helpful-at-point)))
+         ("C-h f" . helpful-callable)
+         ("C-h F" . helpful-function)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-c C-d" . helpful-at-point)))
 
 (use-package goto-addr
   :hook
@@ -576,12 +575,12 @@ Version 2015-07-27"
   :ensure t
   :custom
   (magit-repository-directories
-	`(("~/dotfiles" . 1)
-	  ("~/.config/emacs/" . 1)
-	  ("~/.password-store/" . 1)
-	  ("~/org/" . 1)
-	  ("~/org-roam/" . 1)
-	  ("~/work/git/" . 3)))
+   `(("~/dotfiles" . 1)
+     ("~/.config/emacs/" . 1)
+     ("~/.password-store/" . 1)
+     ("~/org/" . 1)
+     ("~/org-roam/" . 1)
+     ("~/work/git/" . 3)))
   ;; Don't want auto-fill-mode enabled for the following modes, probably a smarter way of doing this under :hooks
   ;; perhaps?
   (remove-hook 'git-commit-mode #'turn-on-auto-fill)
@@ -598,15 +597,15 @@ Version 2015-07-27"
   ;; :hook
   :bind (:map magit-mode-map (("C-c m C" . magit-clone)
                               ("C-c m B" . magit-clone-bare)
-                               ("C-c m F" . magit-pull-from-upstream)
-                               ("C-c m P" . magit-push-current-to-upstream)
-                               ("C-c m R" . magit-file-rename)
-                               ("C-c m f" . forge-pull)
-                               ("C-c m d r" . magit-diff-range)
-                               ("C-c m d s" . magit-diff-staged)
-                               ("C-c m l l" . magit-log)
-                               ("C-c m l f" . magit-log-buffer-file)
-                               ("C-c m l o" . magit-log-other))))
+                              ("C-c m F" . magit-pull-from-upstream)
+                              ("C-c m P" . magit-push-current-to-upstream)
+                              ("C-c m R" . magit-file-rename)
+                              ("C-c m f" . forge-pull)
+                              ("C-c m d r" . magit-diff-range)
+                              ("C-c m d s" . magit-diff-staged)
+                              ("C-c m l l" . magit-log)
+                              ("C-c m l f" . magit-log-buffer-file)
+                              ("C-c m l o" . magit-log-other))))
 
 (use-package code-review
   :ensure t
@@ -643,7 +642,7 @@ Version 2015-07-27"
           "forgejo.nshephard.dev/api/v1"
           "forgejo.nshephard.dev"
           forge-forgejo-repository)
-	forge-alist))
+        forge-alist))
 
 (use-package ghub
   :ensure t
@@ -687,9 +686,9 @@ Version 2015-07-27"
   :ensure t
   :after (magit)
   :bind (:map magit-mode-map (("C-c m g c" . git-link-commit)
-                               ("C-c m g g" . git-link-dispatch)
-                               ("C-c m g h" . git-link-homepage)
-                               ("C-c m g l" . git-link)))
+                              ("C-c m g g" . git-link-dispatch)
+                              ("C-c m g h" . git-link-homepage)
+                              ("C-c m g l" . git-link)))
   :config
   (require 'git-link-transient))
 
@@ -705,8 +704,7 @@ Version 2015-07-27"
 (use-package git-timemachine
   :ensure t
   :defer 3
-  :after (magit)
-)
+  :after (magit))
 
 (use-package magit-browse-commit
   :ensure t
@@ -741,9 +739,9 @@ Version 2015-07-27"
   :defer 0.5
   :after magit
   :bind (:map magit-mode-map
-	      ("C-c m c" . orgit-store-link))
+              ("C-c m c" . orgit-store-link))
   (:map org-mode-map
-	("C-c m v" . org-insert-last-stored-link)))
+        ("C-c m v" . org-insert-last-stored-link)))
 
 (use-package treemacs-magit
   :ensure t
@@ -758,16 +756,13 @@ Version 2015-07-27"
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
   (set-face-background 'why-this-annotate-heat-map-warm "#382f27")
   :bind (:map magit-mode-map (("C-c m w" . 'why-this)
-                               ("C-c m W" . 'why-this-annotate))))
+                              ("C-c m W" . 'why-this-annotate))))
 
 (use-package casual-suite
   :ensure t
-  :bind (:map
-         reb-mode-map ("s-c" . casual-re-builder-tmenu)
-         :map
-         reb-lisp-mode-map ("s-c" . casual-re-builder-tmenu)
-         :map
-          ibuffer-mode-map))
+  :bind (:map reb-mode-map ("s-c" . casual-re-builder-tmenu)
+              :map reb-lisp-mode-map ("s-c" . casual-re-builder-tmenu)
+              :map ibuffer-mode-map))
 
 (use-package org
   :ensure t
@@ -781,42 +776,39 @@ Version 2015-07-27"
   (org-agenda-skip-deadline-if-done t)
   (org-agenda-skip-scheduled-if-done t)
   (org-agenda-files '("~/org/agenda.org"
- 		       "~/org/gtd/admin.org"
- 		       "~/org/gtd/afmslicer.org"
- 		       ;; "~/org/gtd/carpentries.org"
- 		       ;; "~/org/gtd/clarity.org"
- 		       "~/org/gtd/computing.org"
- 		       ;; "~/org/gtd/cured.org"
- 		       "~/org/gtd/exercise.org"
- 		       "~/org/gtd/emacs.org"
- 		       ;; "~/org/gtd/isoslam.org"
- 		       "~/org/gtd/joss.org"
- 		       "~/org/gtd/layopt.org"
- 		       ;; "~/org/gtd/openfest2024.org"
- 		       ;; "~/org/gtd/osc.org"
- 		       ;; "~/org/gtd/pgfinder.org"
-		       "~/org/gtd/reproducibilitea.org"
-		       "~/org/gtd/rse.org"
-		       ;; "~/org/gtd/rse-competencies.org"
-		       "~/org/grd/sheffieldr.org"
- 		       "~/org/gtd/tcx2gpx.org"
-		       ;; "~/org/gtd/thyroid.org"
-		       "~/org/gtd/topostats.org"))
+                      "~/org/gtd/admin.org"
+                      "~/org/gtd/afmslicer.org"
+                      ;; "~/org/gtd/carpentries.org"
+                      "~/org/gtd/computing.org"
+                      "~/org/gtd/exercise.org"
+                      "~/org/gtd/emacs.org"
+                      "~/org/gtd/joss.org"
+                      "~/org/gtd/layopt.org"
+                      ;; "~/org/gtd/openfest2024.org"
+                      ;; "~/org/gtd/osc.org"
+                      ;; "~/org/gtd/pgfinder.org"
+                      "~/org/gtd/reproducibilitea.org"
+                      "~/org/gtd/rse.org"
+                      ;; "~/org/gtd/rse-competencies.org"
+                      "~/org/grd/sheffieldr.org"
+                      "~/org/gtd/tcx2gpx.org"
+                      ;; "~/org/gtd/thyroid.org"
+                      "~/org/gtd/topostats.org"))
   (org-babel-do-load-languages 'org-babel-load-languages '((emacs-lisp . t)
-                                                            (jq .t)
-                                                            (latex .t)
-                                                            (org . t)
-                                                            (python . t)
-							      (shell . t)
-							      (R . t)))
+                                                           (jq .t)
+                                                           (latex .t)
+                                                           (org . t)
+                                                           (python . t)
+                                                           (shell . t)
+                                                           (R . t)))
   (org-babel-python-command "~/.virtualenvs/default/bin/python")
   (org-format-latex-options '(:foreground default
-		                :background "rgb 1 1 1"
-		                :scale 1.5
-		                :html-foreground "Black"
-		                :html-background "Transparent"
-		                :html-scale 1.0
-		                :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
+                                          :background "rgb 1 1 1"
+                                          :scale 1.5
+                                          :html-foreground "Black"
+                                          :html-background "Transparent"
+                                          :html-scale 1.0
+                                          :matchers ("begin" "$1" "$" "$$" "\\(" "\\[")))
   (org-startup-indented 0)
   (org-startup-with-inline-images t)
   (org-clock-persist 'history)
@@ -826,13 +818,13 @@ Version 2015-07-27"
   (org-confirm-babel-evaluate nil)
   (org-startup-within-inline-images t)
   (org-todo-keywords
-    '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)" )))
+   '((sequence "TODO(t)" "IN-PROGRESS(i@/!)" "BLOCKED(b@)"  "|" "DONE(d!)" "WONT-DO(w@/!)")))
   (org-todo-keyword-faces
-    '(("TODO" . (:foreground "GoldenRod" :weight bold))
-       ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
-       ("BLOCKED" . (:foreground "Red" :weight bold))
-       ("DONE" . (:foreground "LimeGreen" :weight bold))
-       ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
+   '(("TODO" . (:foreground "GoldenRod" :weight bold))
+     ("IN-PROGRESS" . (:foreground "Cyan" :weight bold))
+     ("BLOCKED" . (:foreground "Red" :weight bold))
+     ("DONE" . (:foreground "LimeGreen" :weight bold))
+     ("WONT-DO" . (:foreground "DarkViolet" :weight bold))))
   ;; Disable electric-indent-mode in org buffers
   :hook
   (org-mode . (lambda () (electric-indent-local-mode 0)))
@@ -853,25 +845,25 @@ Version 2015-07-27"
   :defer 0.5
   :after org-mode
   :config (setq
-	   ;; Edit settings
-	   org-auto-align-tags nil
-	   org-tags-column 0
-	   org-catch-invisible-edits 'show-and-error
-	   org-special-ctrl-a/e t
-	   org-insert-heading-respect-content t
-	   ;; Org styling, hide markup etc.
-	   org-hide-emphasis-markers t
-	   org-pretty-entities t
-	   org-ellipsis "…"
-	   ;; Agenda styling
-	   org-agenda-tags-column 0
-	   org-agenda-block-separator ?─
-	   org-agenda-time-grid
-	   '((daily today require-timed)
-	     (800 1000 1200 1400 1600 1800 2000)
-	     " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
-	   org-agenda-current-time-string
-	   "◀── now ─────────────────────────────────────────────────" ))
+           ;; Edit settings
+           org-auto-align-tags nil
+           org-tags-column 0
+           org-catch-invisible-edits 'show-and-error
+           org-special-ctrl-a/e t
+           org-insert-heading-respect-content t
+           ;; Org styling, hide markup etc.
+           org-hide-emphasis-markers t
+           org-pretty-entities t
+           org-ellipsis "…"
+           ;; Agenda styling
+           org-agenda-tags-column 0
+           org-agenda-block-separator ?─
+           org-agenda-time-grid
+           '((daily today require-timed)
+             (800 1000 1200 1400 1600 1800 2000)
+             " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+           org-agenda-current-time-string
+           "◀── now ─────────────────────────────────────────────────"))
 
 
 
@@ -912,14 +904,14 @@ Version 2015-07-27"
          (inhibit-read-only t)
          newhead)
     (org-with-remote-undo buffer
-			  (with-current-buffer buffer
-			    (widen)
-			    (goto-char pos)
-			    (org-show-context 'agenda)
-			    (funcall-interactively 'org-set-effort nil jethro/org-current-effort)
-			    (end-of-line 1)
-			    (setq newhead (org-get-heading)))
-			  (org-agenda-change-all-lines newhead hdmarker))))
+                          (with-current-buffer buffer
+                            (widen)
+                            (goto-char pos)
+                            (org-show-context 'agenda)
+                            (funcall-interactively 'org-set-effort nil jethro/org-current-effort)
+                            (end-of-line 1)
+                            (setq newhead (org-get-heading)))
+                          (org-agenda-change-all-lines newhead hdmarker))))
 
 
 
@@ -945,16 +937,16 @@ Version 2015-07-27"
   :hook
   (after-init . org-roam-mode)
   :bind (("C-c n a" . org-roam-alias-add)
-	  ("C-c n c" . org-roam-capture)
-	  ("C-c n d" . org-roam-dailies-capture-today)
-	  ("C-c n f" . org-roam-node-find)
-	  ("C-c n i" . org-roam-node-insert)
-	  ("C-c n g" . org-roam-graph-show)
-	  ("C-c n l" . org-roam-buffer-toggle)
-	  ("C-c n o" . org-id-get-create)
-	  ("C-c n s" . org-roam-db-sync)
-	  ("C-c n t" . org-tag-add)
-	  ("C-c n u s" . org-roam-ui-open)))
+         ("C-c n c" . org-roam-capture)
+         ("C-c n d" . org-roam-dailies-capture-today)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n g" . org-roam-graph-show)
+         ("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n o" . org-id-get-create)
+         ("C-c n s" . org-roam-db-sync)
+         ("C-c n t" . org-tag-add)
+         ("C-c n u s" . org-roam-ui-open)))
 
 (use-package org-roam-timestamps
   :ensure t
@@ -974,9 +966,9 @@ Version 2015-07-27"
   :after (org-roam-bibtex-mode)
   :init
   (setq org-roam-ui-sync-theme t
-	org-roam-ui-follow t
-	org-roam-ui-update-on-save t
-	org-roam-ui-open-on-start t))
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 (use-package citar-org-roam
   :ensure t
@@ -985,15 +977,15 @@ Version 2015-07-27"
   :config (citar-org-roam-mode))
 
 (use-package org-grimoire
-    :defer 4
-    :ensure t)
+  :defer 4
+  :ensure t)
 
 (org-grimoire-setup "nshephard.dev"
-  :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
-  :base-url    "https://nshephard.dev"
-  :site-title  "nshephard.dev"
-  :description ""
-  :theme "dev-theme")
+                    :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
+                    :base-url    "https://nshephard.dev"
+                    :site-title  "nshephard.dev"
+                    :description ""
+                    :theme "dev-theme")
 
 (use-package org-capture
   :ensure nil
@@ -1001,353 +993,352 @@ Version 2015-07-27"
   :config
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
-	'(
-      ;; Bib references (https://emacs.stackexchange.com/questions/80734/org-capture-to-bibtex-file)
-      ("B" "Bibtex template" plain (file "~/org/references.bib")
-                            "" :prepend t)
-	  ;; Email
-	  ("E" "Email"
-	   entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
-	   "* TODO [#A] Reply: %a" :immediate-finish t)
-	  ;; Agenda
-	  ("a" "Agenda")
-	  ("au" "Things to get Done" entry (file+olp "~/org/agenda.org" "Things to get Done")
-	   "** TODO %U %?\n" :prepend t)
-	  ("an" "Not so Urgent" entry (file+olp "~/org/agenda.org" "Not so Urgent")
-	   "** TODO %U %?\n" :prepend t)
-	  ("ac" "Computing" entry (file+olp "~/org/agenda.org" "Computing")
-	   "** TODO %U %?\n" :prepend t)
-	  ("aw" "Weekly" entry (file+olp "~/org/agenda.org" "Weekly")
-	   "** TODO %U %?\n" :prepend t)
-	  ("af" "Fortnightly" entry (file+olp "~/org/agenda.org" "Fortnightly")
-	   "** TODO %U %?\n" :prepend t)
-	  ("am" "Monthly" entry (file+olp "~/org/agenda.org" "Monthly")
-	   "** TODO %U %?\n" :prepend t)
-	  ("ac" "Annually" entry (file+olp "~/org/agenda.org" "Annually")
-	   "** TODO %U %?\n" :prepend t)
-	  ;; Bibliography
-	  ;; ("b" "Bibliography" item (file+olp "~/org/references.bib")
-	  ;;  "%?\n" :prepend t)
-	  ;; Computing
-	  ("c" "Computing")
-	  ("ce" "Emacs" entry (file+olp "~/org/computing.org" "Emacs")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cl" "Laptop" entry (file+olp "~/org/computing.org" "Laptop")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cd" "Desktop" entry (file+olp "~/org/computing.org" "Desktop")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cn" "Networking/Routers" entry (file+olp "~/org/computing.org" "Networking/Routers")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cq" "Printers" entry (file+olp "~/org/computing.org" "Printers")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cr" "RaspberryPi" entry (file+olp "~/org/computing.org" "Raspberry Pi")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cm" "AirQuality Monitor" entry (file+olp "~/org/computing.org" "AirQuality Monitor")
-	   "* TODO %t %?\n" :prepend t)
-	  ("ca" "Android" entry (file+olp "~/org/computing.org" "Android")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cp" "Programming") ;; Programming
-	  ("cpb" "" entry (file+olp "~/org/computing.org" "Programming" "Bash")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cpe" "MongoDB" entry (file+olp "~/org/computing.org" "Programming" "MongoDB")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cpp" "Python" entry (file+olp "~/org/computing.org" "Programming" "Python")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cpg" "Git" entry (file+olp "~/org/computing.org" "Programming" "Git")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cpl" "LaTeX" entry (file+olp "~/org/computing.org" "Programming" "LaTeX")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cpr" "R" entry (file+olp "~/org/computing.org" "Programming" "R")
-	   "* TODO %t %?\n" :prepend t)
-	  ("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
-	   "* TODO %t %?\n" :prepend t)
-	  ;; Jobs
-	  ("j" "Jobs")
-	  ("jp" "Domestication" entry (file+olp "~/org/jobs.org" "Places to Look")
-	   "+ %t %?\n" :prepend t)
-	  ("jps" "Sheffield" entry (file+olp "~/org/jobs.org" "Places to Look" "Sheffield")
-	   "+ %t %?\n" :prepend t)
-	  ("js" "Specifics" entry (file+olp "~/org/jobs.org" "Specifics")
-	   "* %t %?\n" :prepend t)
-	  ;; Cats
-	  ("z" "Cats")
-	  ("zd" "Domestication" entry (file+olp "~/org/cats.org" "Domestication")
-	   "+ %t %?\n" :prepend t)
-	  ("zg" "Genetics" entry (file+olp "~/org/cats.org" "Genetics")
-	   "+ %t %?\n" :prepend t)
-	  ;; Drugs
-	  ("d" "Drugs")
-	  ("dr" "Research")
-	  ("drc" "Cannabis" item (file+olp "~/org/drugs.org" "Research" "Cannabis")
-	   "+ %?\n" :prepend t)
-	  ("drd" "DMT" item (file+olp "~/org/drugs.org" "Research" "DMT")
-	   "+ %?\n" :prepend t)
-	  ("drl" "LSD" item (file+olp "~/org/drugs.org" "Research" "LSD")
-	   "+ %?\n" :prepend t)
-	  ("drm" "MDMA" item (file+olp "~/org/drugs.org" "Research" "MDMA")
-	   "+ %?\n" :prepend t)
-	  ("drp" "Psilocybin" item (file+olp "~/org/drugs.org" "Research" "Psilocybin")
-	   "+ %?\n" :prepend t)
-	  ("db" "Books" item (file+olp "~/org/drugs.org" "Books")
-	   "+ %?\n" :prepend t)
-	  ("da" "Articles")
-	  ("dam" "Mushrooms" item (file+olp "~/org/drugs.org" "Articles" "Mushrooms")
-	   "+ %?\n" :prepend t)
-	  ("dac" "Culture" item (file+olp "~/org/drugs.org" "Articles" "Culture")
-	   "+ %?\n" :prepend t)
-	  ("dag" "General" item (file+olp "~/org/drugs.org" "Articles" "General")
-	   "+ %?\n" :prepend t)
-	  ("di" "Interviews" item (file+olp "~/org/drugs.org" "Interviews")
-	   "+ %?\n" :prepend t)
-	  ("dg" "Blogs / Podcasts /Videos")
-	  ("dgd" "DMT" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "DMT")
-	   "+ %?\n" :prepend t)
-	  ("dgm" "Mushrooms" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Mushrooms")
-	   "+ %?\n" :prepend t)
-	  ("dgp" "Mushrooms" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Psychedelics")
-	   "+ %?\n" :prepend t)
-	  ("dgz" "Misc" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Misc")
-	   "+ %?\n" :prepend t)
-	  ("dt" "Terrence McKenna" item (file+olp "~/org/drugs.org" "Terrence McKenna")
-	   "+ %?\n" :prepend t)
-	  ;; Exercise
-	  ("e" "Exercise")
-	  ("er" "Logging a run" table-line (file "~/org-roam/main/log/running_2026.org")
-	   "| %U | %? | km | min + s | | |" :prepend t)
-	  ("ec" "Logging a cycle" table-line (file "~/org-roam/main/log/cycling.org")
-	   "| %U | %? | km | min + s | | |" :prepend t)
-	  ("eh" "Logging a hike" table-line (file "~/org-roam/main/log/hiking.org")
-	   "| %U | %? | km | m | min + s| |" :prepend t)
-	  ("ep" "Logging Pilates" table-line (file "~/org-roam/main/log/pilates_2026.org")
-	   "| %U | %? | |" :prepend t)
-	  ("em" "Weight & Waist/Hip" table-line (file "~/org-roam/main/log/metrics_weight.org")
-	   "| %U | %? | | | |" :prepend t)
-	  ("es" "Steps" table-line (file "~/org-roam/main/log/metrics_steps.org")
-	   "| %t | %? |" :prepend t)
-	  ("eb" "Blood" table-line (file "~/org-roam/main/log/metrics_blood.org")
-	   "| %U | %? | | | | | |" :prepend t)
-	  ("et" "Training Resources") ;; Training Resources
-	  ("etc" "Training Resources (Climbing)")
-	  ("etcf" "Fingerboarding" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Fingerboarding")
-	   "+ %?\n" :prepend t)
-	  ("etcl" "Lattice" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Lattice")
-	   "+ %?\n" :prepend t)
-	  ("etcd" "Dave MacLeod" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Dave Macleod")
-	   "+ %?\n" :prepend t)
-	  ("etch" "Hoopers Beta" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Hoopers Beta")
-	   "+ %?\n" :prepend t)
-	  ("etcm" "Miscellaneous" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Miscellaneous")
-	   "+ %?\n" :prepend t)
-	  ("etcs" "Shauna Coxy" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Shauna Coxy")
-	   "+ %?\n" :prepend t)
-	  ("etr" "Running" entry (file+olp "~/org-roam/main/training.org" "Resources" "Running")
-	   "+ %t %?\n" :prepend t)
-	  ("etl" "Calisthenics")
-	  ("etlg" "General" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "General")
-	   "+ %t %?\n" :prepend t)
-	  ("etlr" "Recommended Routine" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "Recommended
+        '(
+          ;; Bib references (https://emacs.stackexchange.com/questions/80734/org-capture-to-bibtex-file)
+          ("B" "Bibtex template" plain (file "~/org/references.bib")
+           "" :prepend t)
+          ;; Email
+          ("E" "Email"
+           entry(file+headline ,(concat org-gtd-directory "emails.org") "Emails")
+           "* TODO [#A] Reply: %a" :immediate-finish t)
+          ;; Agenda
+          ("a" "Agenda")
+          ("au" "Things to get Done" entry (file+olp "~/org/agenda.org" "Things to get Done")
+           "** TODO %U %?\n" :prepend t)
+          ("an" "Not so Urgent" entry (file+olp "~/org/agenda.org" "Not so Urgent")
+           "** TODO %U %?\n" :prepend t)
+          ("ac" "Computing" entry (file+olp "~/org/agenda.org" "Computing")
+           "** TODO %U %?\n" :prepend t)
+          ("aw" "Weekly" entry (file+olp "~/org/agenda.org" "Weekly")
+           "** TODO %U %?\n" :prepend t)
+          ("af" "Fortnightly" entry (file+olp "~/org/agenda.org" "Fortnightly")
+           "** TODO %U %?\n" :prepend t)
+          ("am" "Monthly" entry (file+olp "~/org/agenda.org" "Monthly")
+           "** TODO %U %?\n" :prepend t)
+          ("ac" "Annually" entry (file+olp "~/org/agenda.org" "Annually")
+           "** TODO %U %?\n" :prepend t)
+          ;; Bibliography
+          ;; ("b" "Bibliography" item (file+olp "~/org/references.bib")
+          ;;  "%?\n" :prepend t)
+          ;; Computing
+          ("c" "Computing")
+          ("ce" "Emacs" entry (file+olp "~/org/computing.org" "Emacs")
+           "* TODO %t %?\n" :prepend t)
+          ("cl" "Laptop" entry (file+olp "~/org/computing.org" "Laptop")
+           "* TODO %t %?\n" :prepend t)
+          ("cd" "Desktop" entry (file+olp "~/org/computing.org" "Desktop")
+           "* TODO %t %?\n" :prepend t)
+          ("cn" "Networking/Routers" entry (file+olp "~/org/computing.org" "Networking/Routers")
+           "* TODO %t %?\n" :prepend t)
+          ("cq" "Printers" entry (file+olp "~/org/computing.org" "Printers")
+           "* TODO %t %?\n" :prepend t)
+          ("cr" "RaspberryPi" entry (file+olp "~/org/computing.org" "Raspberry Pi")
+           "* TODO %t %?\n" :prepend t)
+          ("cm" "AirQuality Monitor" entry (file+olp "~/org/computing.org" "AirQuality Monitor")
+           "* TODO %t %?\n" :prepend t)
+          ("ca" "Android" entry (file+olp "~/org/computing.org" "Android")
+           "* TODO %t %?\n" :prepend t)
+          ("cp" "Programming") ;; Programming
+          ("cpb" "" entry (file+olp "~/org/computing.org" "Programming" "Bash")
+           "* TODO %t %?\n" :prepend t)
+          ("cpe" "MongoDB" entry (file+olp "~/org/computing.org" "Programming" "MongoDB")
+           "* TODO %t %?\n" :prepend t)
+          ("cpp" "Python" entry (file+olp "~/org/computing.org" "Programming" "Python")
+           "* TODO %t %?\n" :prepend t)
+          ("cpg" "Git" entry (file+olp "~/org/computing.org" "Programming" "Git")
+           "* TODO %t %?\n" :prepend t)
+          ("cpl" "LaTeX" entry (file+olp "~/org/computing.org" "Programming" "LaTeX")
+           "* TODO %t %?\n" :prepend t)
+          ("cpr" "R" entry (file+olp "~/org/computing.org" "Programming" "R")
+           "* TODO %t %?\n" :prepend t)
+          ("cv" "VPS" entry (file+olp "~/org/computing.org" "VPS")
+           "* TODO %t %?\n" :prepend t)
+          ;; Jobs
+          ("j" "Jobs")
+          ("jp" "Domestication" entry (file+olp "~/org/jobs.org" "Places to Look")
+           "+ %t %?\n" :prepend t)
+          ("jps" "Sheffield" entry (file+olp "~/org/jobs.org" "Places to Look" "Sheffield")
+           "+ %t %?\n" :prepend t)
+          ("js" "Specifics" entry (file+olp "~/org/jobs.org" "Specifics")
+           "* %t %?\n" :prepend t)
+          ;; Cats
+          ("z" "Cats")
+          ("zd" "Domestication" entry (file+olp "~/org/cats.org" "Domestication")
+           "+ %t %?\n" :prepend t)
+          ("zg" "Genetics" entry (file+olp "~/org/cats.org" "Genetics")
+           "+ %t %?\n" :prepend t)
+          ;; Drugs
+          ("d" "Drugs")
+          ("dr" "Research")
+          ("drc" "Cannabis" item (file+olp "~/org/drugs.org" "Research" "Cannabis")
+           "+ %?\n" :prepend t)
+          ("drd" "DMT" item (file+olp "~/org/drugs.org" "Research" "DMT")
+           "+ %?\n" :prepend t)
+          ("drl" "LSD" item (file+olp "~/org/drugs.org" "Research" "LSD")
+           "+ %?\n" :prepend t)
+          ("drm" "MDMA" item (file+olp "~/org/drugs.org" "Research" "MDMA")
+           "+ %?\n" :prepend t)
+          ("drp" "Psilocybin" item (file+olp "~/org/drugs.org" "Research" "Psilocybin")
+           "+ %?\n" :prepend t)
+          ("db" "Books" item (file+olp "~/org/drugs.org" "Books")
+           "+ %?\n" :prepend t)
+          ("da" "Articles")
+          ("dam" "Mushrooms" item (file+olp "~/org/drugs.org" "Articles" "Mushrooms")
+           "+ %?\n" :prepend t)
+          ("dac" "Culture" item (file+olp "~/org/drugs.org" "Articles" "Culture")
+           "+ %?\n" :prepend t)
+          ("dag" "General" item (file+olp "~/org/drugs.org" "Articles" "General")
+           "+ %?\n" :prepend t)
+          ("di" "Interviews" item (file+olp "~/org/drugs.org" "Interviews")
+           "+ %?\n" :prepend t)
+          ("dg" "Blogs / Podcasts /Videos")
+          ("dgd" "DMT" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "DMT")
+           "+ %?\n" :prepend t)
+          ("dgm" "Mushrooms" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Mushrooms")
+           "+ %?\n" :prepend t)
+          ("dgp" "Mushrooms" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Psychedelics")
+           "+ %?\n" :prepend t)
+          ("dgz" "Misc" item (file+olp "~/org/drugs.org" "Blogs / Podcasts / Videos" "Misc")
+           "+ %?\n" :prepend t)
+          ("dt" "Terrence McKenna" item (file+olp "~/org/drugs.org" "Terrence McKenna")
+           "+ %?\n" :prepend t)
+          ;; Exercise
+          ("e" "Exercise")
+          ("er" "Logging a run" table-line (file "~/org-roam/main/log/running_2026.org")
+           "| %U | %? | km | min + s | | |" :prepend t)
+          ("ec" "Logging a cycle" table-line (file "~/org-roam/main/log/cycling.org")
+           "| %U | %? | km | min + s | | |" :prepend t)
+          ("eh" "Logging a hike" table-line (file "~/org-roam/main/log/hiking.org")
+           "| %U | %? | km | m | min + s| |" :prepend t)
+          ("ep" "Logging Pilates" table-line (file "~/org-roam/main/log/pilates_2026.org")
+           "| %U | %? | |" :prepend t)
+          ("em" "Weight & Waist/Hip" table-line (file "~/org-roam/main/log/metrics_weight.org")
+           "| %U | %? | | | |" :prepend t)
+          ("es" "Steps" table-line (file "~/org-roam/main/log/metrics_steps.org")
+           "| %t | %? |" :prepend t)
+          ("eb" "Blood" table-line (file "~/org-roam/main/log/metrics_blood.org")
+           "| %U | %? | | | | | |" :prepend t)
+          ("et" "Training Resources") ;; Training Resources
+          ("etc" "Training Resources (Climbing)")
+          ("etcf" "Fingerboarding" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Fingerboarding")
+           "+ %?\n" :prepend t)
+          ("etcl" "Lattice" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Lattice")
+           "+ %?\n" :prepend t)
+          ("etcd" "Dave MacLeod" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Dave Macleod")
+           "+ %?\n" :prepend t)
+          ("etch" "Hoopers Beta" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Hoopers Beta")
+           "+ %?\n" :prepend t)
+          ("etcm" "Miscellaneous" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Miscellaneous")
+           "+ %?\n" :prepend t)
+          ("etcs" "Shauna Coxy" item (file+olp "~/org-roam/main/training.org" "Resources" "Climbing" "Shauna Coxy")
+           "+ %?\n" :prepend t)
+          ("etr" "Running" entry (file+olp "~/org-roam/main/training.org" "Resources" "Running")
+           "+ %t %?\n" :prepend t)
+          ("etl" "Calisthenics")
+          ("etlg" "General" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "General")
+           "+ %t %?\n" :prepend t)
+          ("etlr" "Recommended Routine" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "Recommended
 Routine")
-	   "+ %t %?\n" :prepend t)
-	  ("etls" "Stretching" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "Stretching")
-	   "+ %t %?\n" :prepend t)
-	  ("ets" "Swimming" entry (file+olp "~/org-roam/main/training.org" "Resources" "Swimming")
-	   "+ %t %?\n" :prepend t)
-	  ("etx" "Research" entry (file+olp "~/org-roam/main/training.org" "Resources" "Research")
-	   "+ %t %?\n" :prepend t)
-	  ("eta" "Apps" entry (file+olp "~/org-roam/main/training.org" "Resources" "Apps")
-	   "+ %t %?\n" :prepend t)
-	  ("etd" "Apps" entry (file+olp "~/org-roam/main/training.org" "Resources" "Summarising Data")
-	   "+ %t %?\n" :prepend t)
-	  ;; Cooking
-	  ("f" "Food & Drink")
-	  ("fc" "Chinese")
-	  ("fcs" "Starters" item (file+olp "~/org-roam/food_chinese.org" "Starters")
-	   "+ %?\n" :prepend t)
-	  ("fcr" "Rice" item (file+olp "~/org-roam/food_chinese.org" "Rice")
-	   "+ %?\n" :prepend t)
-	  ("fcm" "Main" item (file+olp "~/org-roam/food_chinese.org" "Main")
-	   "+ %?\n" :prepend t)
-	  ("fcn" "Noodles" item (file+olp "~/org-roam/food_chinese.org" "Noodles")
-	   "+ %?\n" :prepend t)
-	  ("fu" "Indian")
-	  ("fus" "Starters" item (file+olp "~/org-roam/food_indian.org" "Starters")
-	   "+ %?\n" :prepend t)
-	  ("fuc" "Curries" item (file+olp "~/org-roam/food_indian.org" "Curries")
-	   "+ %?\n" :prepend t)
-	  ("fub" "Breads" item (file+olp "~/org-roam/food_indian.org" "Breads")
-	   "+ %?\n" :prepend t)
-	  ("fi" "Italian")
-	  ("fip" "Pasta" item (file+olp "~/org-roam/food_italian.org" "Pasta Dishes")
-	   "+ %?\n" :prepend t)
-	  ("fiz" "Pizza" item (file+olp "~/org-roam/food_italian.org" "Pizza")
-	   "+ %?\n" :prepend t)
-	  ("fs" "Spanish" item (file+olp "~/org-roam/food_italian.org" "Pasta")
-	   "+ %?\n" :prepend t)
-	  ("fv" "Vegetarian" item (file+olp "~/org-roam/food_vegetarian.org" "Vegetarian")
-	   "+ %?\n" :prepend t)
-	  ("fw" "Web sites" item (file+olp "~/org-roam/food_drink.org" "Links")
-	   "+ %?\n" :prepend t)
-	  ("fb" "Books" item (file+olp "~/org-roam/food_drink.org" "Books")
-	   "+ %?\n" :prepend t)
-	  ;; Isla
-	  ("I" "Activities for Isla")
-	  ("Ie" "Educational" item (file+olp "~/org/isla.org" "Educational")
-	   "+ %t %?\n" :prepend t)
-	  ("Ix" "Exercise" item (file+olp "~/org/isla.org" "Exercise")
-	   "+ %t %?\n" :prepend t)
-	  ("If" "Fun" item (file+olp "~/org/isla.org" "Fun")
-	   "+ %t %?\n" :prepend t)
-	  ("Ig" "Gardening" item (file+olp "~/org/isla.org" "Gardening")
-	   "+ %t %?\n" :prepend t)
-	  ;; Paula
-	  ("p" "Paula")
-	  ("pa" "Anger" item (file+olp "~/org/paula.org" "Anger")
-	   "+ %U %?\n" :prepend t)
-	  ("pf" "Food" item (file+olp "~/org/paula.org" "Food")
-	   "+ %U %?\n" :prepend t)
-	  ("ph" "Help" item (file+olp "~/org/paula.org" "Help")
-	   "+ %U %?\n" :prepend t)
-	  ("pl" "Listening" item (file+olp "~/org/paula.org" "Not Listening")
-	   "+ %U %?\n" :prepend t)
-	  ("pt" "Tidying" item (file+olp "~/org/paula.org" "Tidying")
-	   "+ %U %?\n" :prepend t)
-	  ;; Reading
-	  ("r" "Reading")
-	  ("rb" "Books" entry (file+olp "~/org/reading.org" "Books")
-	   "* TODO %?\n" :prepend t)
-	  ("re" "Economics" entry (file+olp "~/org/reading.org" "Economics")
-	   "* TODO %?\n" :prepend t)
-	  ("rg" "Genetics" entry (file+olp "~/org/reading.org" "Genetics")
-	   "* TODO %?\n" :prepend t)
-	  ("rs" "Statistics")
-	  ("rsd" "Data/Machine Learning/AI" entry (file+olp "~/org/reading.org" "Statistics" "Data/Machine Learning/AI")
-	   "* TODO %?\n" :prepend t)
-	  ("ri" "Internet")
-	  ("rid" "Data/Machine Learning/AI" entry (file+olp "~/org/reading.org" "Internet" "Social Media")
-	   "* TODO %?\n" :prepend t)
-	  ("rm" "Miscellany" entry (file+olp "~/org/reading.org" "Miscellany")
-	   "* TODO %?\n" :prepend t)
-	  ;; ("s" "Org-Roam Notes" entry (file "~/work/org-roam/20220206201656-notes.org")
-	  ;;  "* %U %?\n" :prepend t)
-	  ;; TODO
-	  ("t" "Stuff ToDo in my Life")
-	  ("th" "House Tasks" entry (file+olp "~/org/todo.org" "House")
-	   "* TODO %t %?\n" :prepend t)
-	  ("tg" "Gardening" entry (file+olp "~/org/todo.org" "Garden")
-	   "* TODO %t %?\n" :prepend t)
-	  ("tv" "Campervan" entry (file+olp "~/org/todo.org" "Campervan")
-	   "* TODO %t %?\n" :prepend t)
-	  ("tc" "Car" entry (file+olp "~/org/todo.org" "Car")
-	   "* TODO %t %?\n" :prepend t)
-	  ("tg" "Bike" entry (file+olp "~/org/todo.org" "Bike")
-	   "* TODO %t %?\n" :prepend t)
-	  ("ts" "Stuff to Sell" entry (file+olp "~/org/todo.org" "Stuff To Sell")
-	   "* TODO %t %?\n" :prepend t)
-	  ;; Coronavirus
-	  ("v" "Coronavirus")
-	  ("va" "Air Quality" item (file+olp "~/org/coronavirus.org" "Air Quality")
-	   "+ %t %?\n" :prepend t)
-	  ("vc" "Collections/Streams")
-	  ("vca" "The Atlantic" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Atlantic")
-	   "+ %t %?\n" :prepend t)
-	  ("vcb" "BMJ" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BMJ")
-	   "+ %t %?\n" :prepend t)
-	  ("vcd" "David Spiegelhalter" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "David Spiegelhalter")
-	   "+ %t %?\n" :prepend t)
-	  ("vcg" "The Guardian" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Guardian")
-	   "+ %t %?\n" :prepend t)
-	  ("vcl" "The Lancet" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Lancet")
-	   "+ %t %?\n" :prepend t)
-	  ("vcn" "New Scientist" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "New Scientist")
-	   "+ %t %?\n" :prepend t)
-	  ("vco" "ONS" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "ONS")
-	   "+ %t %?\n" :prepend t)
-	  ("vcs" "Significance" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "Significance magazine")
-	   "+ %t %?\n" :prepend t)
-	  ("vcw" "Wired" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "Wired")
-	   "+ %t %?\n" :prepend t)
-	  ("vcx" "BioRxiv/MedRxiv" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BioRxiv/MedRxiv")
-	   "+ %t %?\n" :prepend t)
-	  ("vd" "Data" item (file+olp "~/org/coronavirus.org" "Data")
-	   "+ %t %?\n")
-	  ("ve" "Evolutionary Genetics" item (file+olp "~/org/coronavirus.org" "Evolutionary Genetics"))
-	  ("vg" "Genetics" item (file+olp "~/org/coronavirus.org" "Genetics"))
-	  ("vh" "Herd Immunity" item (file+olp "~/org/coronavirus.org" "Herd Immunity")
-	   "+ %t %?\n")
-	  ("vi" "Immunity / Testing / Vaccine / Treatment")
-	  ("vie" "ENSEMBLE2" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "ENSEMBLE 2")
-	   "+ %t %?\n" :prepend t)
-	  ("vii" "Immunity" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Immunity")
-	   "+ %t %?\n" :prepend t)
-	  ("vis" "Testing" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Testing")
-	   "+ %t %?\n" :prepend t)
-	  ("viv" "Vaccine" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Vaccine")
-	   "+ %t %?\n" :prepend t)
-	  ("vit" "Treatment" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Treatment" "Treatment")
-	   "+ %t %?\n" :prepend t)
-	  ("ve" "Independent SAGE" item (file+olp "~/org/coronavirus.org" "Independent SAGE")
-	   "+ %t %?\n" :prepend t)
-	  ("vl" "Long Term Outcomes" item (file+olp "~/org/coronavirus.org" "Long Term Outcomes")
-	   "+ %t %?\n" :prepend t)
-	  ("vh" "Mechanism" item (file+olp "~/org/coronavirus.org" "Mechanism")
-	   "+ %t %?\n" :prepend t)
-	  ("vhs" "Susceptibility" item (file+olp "~/org/coronavirus.org" "Mechanism" "Susceptibility")
-	   "+ %t %?\n" :prepend t)
-	  ("vm" "Miscellaneous" item (file+olp "~/org/coronavirus.org" "Miscellaneous")
-	   "+ %t %?\n" :prepend t)
-	  ("vn" "Non-Pharmaceutical Interventions")
-	  ("vo" "Mortality Rates" item (file+olp "~/org/coronavirus.org" "Mortality Rates")
-	   "+ %t %?\n" :prepend t)
-	  ("vp" "Molecular Biology" item (file+olp "~/org/coronavirus.org" "Molecular Biology")
-	   "+ %t %?\n" :prepend t)
-	  ("vr" "Risk" item (file+olp "~/org/coronavirus.org" "Risk Assessment")
-	   "+ %t %?\n" :prepend t)
-	  ("vs" "SAGE" item (file+olp "~/org/coronavirus.org" "SAGE")
-	   "+ %t %?\n" :prepend t)
-	  ("vt" "Track and Trace" item (file+olp "~/org/coronavirus.org" "Track and Trace")
-	   "+ %t %?\n" :prepend t)
-	  ("vu" "Transmission" item (file+olp "~/org/coronavirus.org" "Transmission")
-	   "+ %t %?\n" :prepend t)
-	  ("vnd" "Physical Distancing" item (file+olp "~/org/coronavirus.org" "Transmission" "Physical Distancing")
-	   "+ %t %?\n" :prepend t)
-	  ("vnm" "Face Masks" item (file+olp "~/org/coronavirus.org" "Transmission" "Face Masks")
-	   "+ %t %?\n" :prepend t)
-	  ("vup" "Prevalence" item (file+olp "~/org/coronavirus.org" "Transmission" "Prevalence")
-	   "+ %t %?\n" :prepend t)
-	  ("vx" "Traffic")
-	  ("vxc" "Cycling" item (file+olp "~/org/coronavirus.org" "Traffic" "Cycling")
-	   "+ %t %?\n")
-	  ("vxr" "Roads" item (file+olp "~/org/coronavirus.org" "Traffic" "Roads")
-	   "+ %t %?\n")
-	  ("vw" "Work" item (file+olp "~/org/coronavirus.org" "Work")
-	   "+ %t %?\n")
-	  ("vy" "Humour") ;; Humour
-	  ("vyg" "Graphics" item (file+olp "~/org/coronavirus.org" "Humour" "Graphics")
-	   "+ %t %?\n" :prepend t)
-	  ("vyx" "XKCD" item (file+olp "~/org/coronavirus.org" "Humour" "XKCD")
-	   "+ %t %?\n" :prepend t)
-	  ("vz" "Non-Science")
-	  ("vzs" "Sheffield" item (file+olp "~/org/coronavirus.org" "Non-Science" "Sheffield")
-	   "+ %t %?\n" :prepend t)
-	  ;; Work
-	  ("w" "Work")
-	  ("wj" "Reproducibilitea" entry (file+olp "~/org/gtd/reproducibilitea.org" "Reproducibilitea")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wo" "OSC" entry (file+olp "~/org/gtd/osc.org" "Open Scholarship Sheffield")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wR" "Sheffield R" entry (file+olp "~/org/gtd/sheffieldr.org" "SheffieldR")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wr" "RSE" entry (file+olp "~/org/gtd/rse.org" "RSE")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wt" "TopoStats" entry (file+olp "~/org/gtd/topostats.org" "TopoStats")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wc" "Clarity" entry (file+olp "~/org/gtd/clarity.org" "Clarity")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wC" "Carpentries Courses" entry (file+olp "~/org/gtd/carpentries.org" "Courses")
-	   "** TODO %U %?\n %a" :prepend t)
-	  ("wp" "PGFinder" entry (file+olp "~/org/gtd/pgfinder.org" "PGFinder")
-	   "** TODO %U %?\n %a" :prepend t)
-	  )))
+           "+ %t %?\n" :prepend t)
+          ("etls" "Stretching" entry (file+olp "~/org-roam/main/training.org" "Resources" "Calisthenics" "Stretching")
+           "+ %t %?\n" :prepend t)
+          ("ets" "Swimming" entry (file+olp "~/org-roam/main/training.org" "Resources" "Swimming")
+           "+ %t %?\n" :prepend t)
+          ("etx" "Research" entry (file+olp "~/org-roam/main/training.org" "Resources" "Research")
+           "+ %t %?\n" :prepend t)
+          ("eta" "Apps" entry (file+olp "~/org-roam/main/training.org" "Resources" "Apps")
+           "+ %t %?\n" :prepend t)
+          ("etd" "Apps" entry (file+olp "~/org-roam/main/training.org" "Resources" "Summarising Data")
+           "+ %t %?\n" :prepend t)
+          ;; Cooking
+          ("f" "Food & Drink")
+          ("fc" "Chinese")
+          ("fcs" "Starters" item (file+olp "~/org-roam/food_chinese.org" "Starters")
+           "+ %?\n" :prepend t)
+          ("fcr" "Rice" item (file+olp "~/org-roam/food_chinese.org" "Rice")
+           "+ %?\n" :prepend t)
+          ("fcm" "Main" item (file+olp "~/org-roam/food_chinese.org" "Main")
+           "+ %?\n" :prepend t)
+          ("fcn" "Noodles" item (file+olp "~/org-roam/food_chinese.org" "Noodles")
+           "+ %?\n" :prepend t)
+          ("fu" "Indian")
+          ("fus" "Starters" item (file+olp "~/org-roam/food_indian.org" "Starters")
+           "+ %?\n" :prepend t)
+          ("fuc" "Curries" item (file+olp "~/org-roam/food_indian.org" "Curries")
+           "+ %?\n" :prepend t)
+          ("fub" "Breads" item (file+olp "~/org-roam/food_indian.org" "Breads")
+           "+ %?\n" :prepend t)
+          ("fi" "Italian")
+          ("fip" "Pasta" item (file+olp "~/org-roam/food_italian.org" "Pasta Dishes")
+           "+ %?\n" :prepend t)
+          ("fiz" "Pizza" item (file+olp "~/org-roam/food_italian.org" "Pizza")
+           "+ %?\n" :prepend t)
+          ("fs" "Spanish" item (file+olp "~/org-roam/food_italian.org" "Pasta")
+           "+ %?\n" :prepend t)
+          ("fv" "Vegetarian" item (file+olp "~/org-roam/food_vegetarian.org" "Vegetarian")
+           "+ %?\n" :prepend t)
+          ("fw" "Web sites" item (file+olp "~/org-roam/food_drink.org" "Links")
+           "+ %?\n" :prepend t)
+          ("fb" "Books" item (file+olp "~/org-roam/food_drink.org" "Books")
+           "+ %?\n" :prepend t)
+          ;; Isla
+          ("I" "Activities for Isla")
+          ("Ie" "Educational" item (file+olp "~/org/isla.org" "Educational")
+           "+ %t %?\n" :prepend t)
+          ("Ix" "Exercise" item (file+olp "~/org/isla.org" "Exercise")
+           "+ %t %?\n" :prepend t)
+          ("If" "Fun" item (file+olp "~/org/isla.org" "Fun")
+           "+ %t %?\n" :prepend t)
+          ("Ig" "Gardening" item (file+olp "~/org/isla.org" "Gardening")
+           "+ %t %?\n" :prepend t)
+          ;; Paula
+          ("p" "Paula")
+          ("pa" "Anger" item (file+olp "~/org/paula.org" "Anger")
+           "+ %U %?\n" :prepend t)
+          ("pf" "Food" item (file+olp "~/org/paula.org" "Food")
+           "+ %U %?\n" :prepend t)
+          ("ph" "Help" item (file+olp "~/org/paula.org" "Help")
+           "+ %U %?\n" :prepend t)
+          ("pl" "Listening" item (file+olp "~/org/paula.org" "Not Listening")
+           "+ %U %?\n" :prepend t)
+          ("pt" "Tidying" item (file+olp "~/org/paula.org" "Tidying")
+           "+ %U %?\n" :prepend t)
+          ;; Reading
+          ("r" "Reading")
+          ("rb" "Books" entry (file+olp "~/org/reading.org" "Books")
+           "* TODO %?\n" :prepend t)
+          ("re" "Economics" entry (file+olp "~/org/reading.org" "Economics")
+           "* TODO %?\n" :prepend t)
+          ("rg" "Genetics" entry (file+olp "~/org/reading.org" "Genetics")
+           "* TODO %?\n" :prepend t)
+          ("rs" "Statistics")
+          ("rsd" "Data/Machine Learning/AI" entry (file+olp "~/org/reading.org" "Statistics" "Data/Machine Learning/AI")
+           "* TODO %?\n" :prepend t)
+          ("ri" "Internet")
+          ("rid" "Data/Machine Learning/AI" entry (file+olp "~/org/reading.org" "Internet" "Social Media")
+           "* TODO %?\n" :prepend t)
+          ("rm" "Miscellany" entry (file+olp "~/org/reading.org" "Miscellany")
+           "* TODO %?\n" :prepend t)
+          ;; ("s" "Org-Roam Notes" entry (file "~/work/org-roam/20220206201656-notes.org")
+          ;;  "* %U %?\n" :prepend t)
+          ;; TODO
+          ("t" "Stuff ToDo in my Life")
+          ("th" "House Tasks" entry (file+olp "~/org/todo.org" "House")
+           "* TODO %t %?\n" :prepend t)
+          ("tg" "Gardening" entry (file+olp "~/org/todo.org" "Garden")
+           "* TODO %t %?\n" :prepend t)
+          ("tv" "Campervan" entry (file+olp "~/org/todo.org" "Campervan")
+           "* TODO %t %?\n" :prepend t)
+          ("tc" "Car" entry (file+olp "~/org/todo.org" "Car")
+           "* TODO %t %?\n" :prepend t)
+          ("tg" "Bike" entry (file+olp "~/org/todo.org" "Bike")
+           "* TODO %t %?\n" :prepend t)
+          ("ts" "Stuff to Sell" entry (file+olp "~/org/todo.org" "Stuff To Sell")
+           "* TODO %t %?\n" :prepend t)
+          ;; Coronavirus
+          ("v" "Coronavirus")
+          ("va" "Air Quality" item (file+olp "~/org/coronavirus.org" "Air Quality")
+           "+ %t %?\n" :prepend t)
+          ("vc" "Collections/Streams")
+          ("vca" "The Atlantic" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Atlantic")
+           "+ %t %?\n" :prepend t)
+          ("vcb" "BMJ" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BMJ")
+           "+ %t %?\n" :prepend t)
+          ("vcd" "David Spiegelhalter" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "David Spiegelhalter")
+           "+ %t %?\n" :prepend t)
+          ("vcg" "The Guardian" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Guardian")
+           "+ %t %?\n" :prepend t)
+          ("vcl" "The Lancet" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "The Lancet")
+           "+ %t %?\n" :prepend t)
+          ("vcn" "New Scientist" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "New Scientist")
+           "+ %t %?\n" :prepend t)
+          ("vco" "ONS" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "ONS")
+           "+ %t %?\n" :prepend t)
+          ("vcs" "Significance" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "Significance magazine")
+           "+ %t %?\n" :prepend t)
+          ("vcw" "Wired" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "Wired")
+           "+ %t %?\n" :prepend t)
+          ("vcx" "BioRxiv/MedRxiv" item (file+olp "~/org/coronavirus.org" "Collections/Streams" "BioRxiv/MedRxiv")
+           "+ %t %?\n" :prepend t)
+          ("vd" "Data" item (file+olp "~/org/coronavirus.org" "Data")
+           "+ %t %?\n")
+          ("ve" "Evolutionary Genetics" item (file+olp "~/org/coronavirus.org" "Evolutionary Genetics"))
+          ("vg" "Genetics" item (file+olp "~/org/coronavirus.org" "Genetics"))
+          ("vh" "Herd Immunity" item (file+olp "~/org/coronavirus.org" "Herd Immunity")
+           "+ %t %?\n")
+          ("vi" "Immunity / Testing / Vaccine / Treatment")
+          ("vie" "ENSEMBLE2" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "ENSEMBLE 2")
+           "+ %t %?\n" :prepend t)
+          ("vii" "Immunity" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Immunity")
+           "+ %t %?\n" :prepend t)
+          ("vis" "Testing" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Testing")
+           "+ %t %?\n" :prepend t)
+          ("viv" "Vaccine" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Vaccine" "Vaccine")
+           "+ %t %?\n" :prepend t)
+          ("vit" "Treatment" item (file+olp "~/org/coronavirus.org" "Immunity / Testing / Treatment" "Treatment")
+           "+ %t %?\n" :prepend t)
+          ("ve" "Independent SAGE" item (file+olp "~/org/coronavirus.org" "Independent SAGE")
+           "+ %t %?\n" :prepend t)
+          ("vl" "Long Term Outcomes" item (file+olp "~/org/coronavirus.org" "Long Term Outcomes")
+           "+ %t %?\n" :prepend t)
+          ("vh" "Mechanism" item (file+olp "~/org/coronavirus.org" "Mechanism")
+           "+ %t %?\n" :prepend t)
+          ("vhs" "Susceptibility" item (file+olp "~/org/coronavirus.org" "Mechanism" "Susceptibility")
+           "+ %t %?\n" :prepend t)
+          ("vm" "Miscellaneous" item (file+olp "~/org/coronavirus.org" "Miscellaneous")
+           "+ %t %?\n" :prepend t)
+          ("vn" "Non-Pharmaceutical Interventions")
+          ("vo" "Mortality Rates" item (file+olp "~/org/coronavirus.org" "Mortality Rates")
+           "+ %t %?\n" :prepend t)
+          ("vp" "Molecular Biology" item (file+olp "~/org/coronavirus.org" "Molecular Biology")
+           "+ %t %?\n" :prepend t)
+          ("vr" "Risk" item (file+olp "~/org/coronavirus.org" "Risk Assessment")
+           "+ %t %?\n" :prepend t)
+          ("vs" "SAGE" item (file+olp "~/org/coronavirus.org" "SAGE")
+           "+ %t %?\n" :prepend t)
+          ("vt" "Track and Trace" item (file+olp "~/org/coronavirus.org" "Track and Trace")
+           "+ %t %?\n" :prepend t)
+          ("vu" "Transmission" item (file+olp "~/org/coronavirus.org" "Transmission")
+           "+ %t %?\n" :prepend t)
+          ("vnd" "Physical Distancing" item (file+olp "~/org/coronavirus.org" "Transmission" "Physical Distancing")
+           "+ %t %?\n" :prepend t)
+          ("vnm" "Face Masks" item (file+olp "~/org/coronavirus.org" "Transmission" "Face Masks")
+           "+ %t %?\n" :prepend t)
+          ("vup" "Prevalence" item (file+olp "~/org/coronavirus.org" "Transmission" "Prevalence")
+           "+ %t %?\n" :prepend t)
+          ("vx" "Traffic")
+          ("vxc" "Cycling" item (file+olp "~/org/coronavirus.org" "Traffic" "Cycling")
+           "+ %t %?\n")
+          ("vxr" "Roads" item (file+olp "~/org/coronavirus.org" "Traffic" "Roads")
+           "+ %t %?\n")
+          ("vw" "Work" item (file+olp "~/org/coronavirus.org" "Work")
+           "+ %t %?\n")
+          ("vy" "Humour") ;; Humour
+          ("vyg" "Graphics" item (file+olp "~/org/coronavirus.org" "Humour" "Graphics")
+           "+ %t %?\n" :prepend t)
+          ("vyx" "XKCD" item (file+olp "~/org/coronavirus.org" "Humour" "XKCD")
+           "+ %t %?\n" :prepend t)
+          ("vz" "Non-Science")
+          ("vzs" "Sheffield" item (file+olp "~/org/coronavirus.org" "Non-Science" "Sheffield")
+           "+ %t %?\n" :prepend t)
+          ;; Work
+          ("w" "Work")
+          ("wj" "Reproducibilitea" entry (file+olp "~/org/gtd/reproducibilitea.org" "Reproducibilitea")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wo" "OSC" entry (file+olp "~/org/gtd/osc.org" "Open Scholarship Sheffield")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wR" "Sheffield R" entry (file+olp "~/org/gtd/sheffieldr.org" "SheffieldR")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wr" "RSE" entry (file+olp "~/org/gtd/rse.org" "RSE")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wt" "TopoStats" entry (file+olp "~/org/gtd/topostats.org" "TopoStats")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wc" "Clarity" entry (file+olp "~/org/gtd/clarity.org" "Clarity")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wC" "Carpentries Courses" entry (file+olp "~/org/gtd/carpentries.org" "Courses")
+           "** TODO %U %?\n %a" :prepend t)
+          ("wp" "PGFinder" entry (file+olp "~/org/gtd/pgfinder.org" "PGFinder")
+           "** TODO %U %?\n %a" :prepend t))))
 
 (setq org-gtd-update-ack "4.0.0")
 (use-package org-gtd
@@ -1360,15 +1351,15 @@ Routine")
   (org-edna-mode)
   ;; All your GTD keywords must be in the same sequence
   (setq org-todo-keywords
-      '((sequence "TODO" "NEXT" "WAIT" "|" "DONE" "CNCL")))
+        '((sequence "TODO" "NEXT" "WAIT" "|" "DONE" "CNCL")))
 
   ;; Then map GTD semantic states to your keywords
   (setopt org-gtd-keyword-mapping
-        '((todo . "TODO")      ;; tasks not ready to be acted upon
-          (next . "NEXT")      ;; tasks ready to act on immediately
-          (wait . "WAIT")      ;; tasks blocked or delegated
-          (done . "DONE")      ;; tasks successfully completed
-          (canceled . "CNCL"))) ;; tasks that won't be completed
+          '((todo . "TODO")      ;; tasks not ready to be acted upon
+            (next . "NEXT")      ;; tasks ready to act on immediately
+            (wait . "WAIT")      ;; tasks blocked or delegated
+            (done . "DONE")      ;; tasks successfully completed
+            (canceled . "CNCL"))) ;; tasks that won't be completed
   :bind
   (("C-c d c" . org-gtd-capture)
    ("C-c d e" . org-gtd-engage)
@@ -1376,16 +1367,15 @@ Routine")
    ("C-c d n" . org-gtd-show-all-next)
    ("C-c d s" . org-gtd-show-stuck-projects)
    :map org-gtd-clarify-map
-   ("C-c c" . org-gtd-organize)
-   ))
+   ("C-c c" . org-gtd-organize)))
 
 (use-package csv-mode
   :ensure t
   :defer 6
   :mode (("\\.csv" . csv-mode))
   :hook
-    (csv-mode . csv-guess-set-separator)
-    (csv-mode . csv-align-mode))
+  (csv-mode . csv-guess-set-separator)
+  (csv-mode . csv-align-mode))
 
 (use-package ess
   :ensure t
@@ -1393,16 +1383,16 @@ Routine")
   ;;     ess-r-package
   :init
   :mode (("/R/.*\\.q\\'"       . R-mode)
-	 ("\\.[rR]\\'"         . R-mode)
-	 ("\\.[rR]profile\\'"  . R-mode)
-	 ("NAMESPACE\\'"       . R-mode)
-	 ("CITATION\\'"        . R-mode)
-	 ("\\.[Rr]out"         . R-transcript-mode)
-	 ("\\.Rmd\\'"          . Rd-mode)
-	 ("\\.Rd\\'"           . Rd-mode))
+         ("\\.[rR]\\'"         . R-mode)
+         ("\\.[rR]profile\\'"  . R-mode)
+         ("NAMESPACE\\'"       . R-mode)
+         ("CITATION\\'"        . R-mode)
+         ("\\.[Rr]out"         . R-transcript-mode)
+         ("\\.Rmd\\'"          . Rd-mode)
+         ("\\.Rd\\'"           . Rd-mode))
   :interpreter (("R" . R-mode)
-		("R" . R-transcript-mode)
-		("R" . Rd-mode))
+                ("R" . R-transcript-mode)
+                ("R" . Rd-mode))
   :config
   (require 'ess-r-mode)
   (require 'ess-r-package)
@@ -1420,12 +1410,12 @@ Routine")
   (inferior-ess-mode . company-mode)
   :bind
   (:map ess-r-mode-map
-	("_" . 'ess-insert-assign)  ;;
-	("C-q" . 'ess-eval-region-or-line-and-step)
-	("C-|" . " |>\n"))
+        ("_" . 'ess-insert-assign)  ;;
+        ("C-q" . 'ess-eval-region-or-line-and-step)
+        ("C-|" . " |>\n"))
   (:map inferior-ess-r-mode-map
-	("_" . 'ess-insert-assign)
-	("C-|" . " |>\n")))
+        ("_" . 'ess-insert-assign)
+        ("C-|" . " |>\n")))
 
 (use-package ess-smart-underscore
   :ensure t
@@ -1464,10 +1454,10 @@ Routine")
              markdown-view-mode)
   :mode
   (("\\.markdown\\'" . markdown-mode)
-    ("\\.md\\'" . markdown-mode)
-    ("\\.qmd\\'" . markdown-mode)
-    ("\\.Rmd\\'" . markdown-mode)
-    ("README\\.md\\'" . gfm-mode))
+   ("\\.md\\'" . markdown-mode)
+   ("\\.qmd\\'" . markdown-mode)
+   ("\\.Rmd\\'" . markdown-mode)
+   ("README\\.md\\'" . gfm-mode))
   :hook
   ((markdown-mode . auto-fill-mode)
    (markdown-mode . outline-minor-mode))
@@ -1494,32 +1484,32 @@ Routine")
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil
-	python-shell-interpreter "ipython"
-	python-shell-interpreter-args "-i --simple-prompt"
-	python-environment-directory venv-location)
+        python-shell-interpreter "ipython"
+        python-shell-interpreter-args "-i --simple-prompt"
+        python-environment-directory venv-location)
   (add-to-list 'python-shell-completion-native-disabled-interpreters "ipython")
   ;; Define a skeleton for printing
   (python-skeleton-define print
-			  "Insert a print statement that will show the value of the argument."
-			  "Enter the variable/object name: "
-			  "print(f'\\n{" str "=}\\n')")
+                          "Insert a print statement that will show the value of the argument."
+                          "Enter the variable/object name: "
+                          "print(f'\\n{" str "=}\\n')")
   :bind (:map python-mode-map
-	      ("C-c p t" . python-pytest-dispatch)
-	      ("C-c p l" . pylint)
-	      ("C-c p y" . pylint-insert-ignore-comment)
-	      ("C-c p n" . numpydoc-generate)
-	      ("C-c p b" . blacken-buffer)
-	      ("C-c p r" . ruff-format-buffer)
-	      ("C-c p v" . pyvenv-workon)
-	      ("C-c p T c" . python-skeleton-class)
-	      ("C-c p T d" . python-skeleton-def)
-	      ("C-c p T f" . python-skeleton-for)
-	      ("C-c p T i" . python-skeleton-if)
-	      ("C-c p T m" . python-skeleton-import)
-	      ("C-c P" . python-skeleton-print)
-	      ("C-c p T t" . python-skeleton-try)
-	      ("C-c p T T" . python-skeleton-parameterized-test)
-	      ("C-c p T w" . python-skeleton-while)))
+              ("C-c p t" . python-pytest-dispatch)
+              ("C-c p l" . pylint)
+              ("C-c p y" . pylint-insert-ignore-comment)
+              ("C-c p n" . numpydoc-generate)
+              ("C-c p b" . blacken-buffer)
+              ("C-c p r" . ruff-format-buffer)
+              ("C-c p v" . pyvenv-workon)
+              ("C-c p T c" . python-skeleton-class)
+              ("C-c p T d" . python-skeleton-def)
+              ("C-c p T f" . python-skeleton-for)
+              ("C-c p T i" . python-skeleton-if)
+              ("C-c p T m" . python-skeleton-import)
+              ("C-c P" . python-skeleton-print)
+              ("C-c p T t" . python-skeleton-try)
+              ("C-c p T T" . python-skeleton-parameterized-test)
+              ("C-c p T w" . python-skeleton-while)))
 
 (use-package pyvenv
   :ensure t
@@ -1530,28 +1520,28 @@ Routine")
   (pyvenv-mode 1)
   ;; Display virtual envs in the menu bar
   (setq pyvenv-menu t
-	venv-byhost
-	'(("kimura" . "~/.virtualenvs/")
-	  ("fisher" . "~/.virtualenvs/")
-	  ("haldane" . "~/.virtualenvs/")
-	  ("ovh" . "~/.virtualenvs/")
-	  ("alarmpi" . "~/.virtualenvs/")
-	  ("alarmpi-4b" . "~/.virtualenvs/"))
-	venv-location (cdr
-		       (assoc system-name venv-byhost))
-	default-venv-byhost
-	'(("kimura" . "~/.virtualenvs/default")
-	  ("fisher" . "~/.virtualenvs/python3_9")
-	  ("haldane" . "~/.virtualenvs/default")
-	  ("ovh" . "~/.virtualenvs/default")
-	  ("alarmpi" . "~/.virtualenvs/default")
-	  ("alarmpi-4b" . "~/.virtualenvs/default"))
-	default-venv (cdr
-		      (assoc system-name default-venv-byhost))
-	python-environment-directory venv-location)
+        venv-byhost
+        '(("kimura" . "~/.virtualenvs/")
+          ("fisher" . "~/.virtualenvs/")
+          ("haldane" . "~/.virtualenvs/")
+          ("ovh" . "~/.virtualenvs/")
+          ("alarmpi" . "~/.virtualenvs/")
+          ("alarmpi-4b" . "~/.virtualenvs/"))
+        venv-location (cdr
+                       (assoc system-name venv-byhost))
+        default-venv-byhost
+        '(("kimura" . "~/.virtualenvs/default")
+          ("fisher" . "~/.virtualenvs/python3_9")
+          ("haldane" . "~/.virtualenvs/default")
+          ("ovh" . "~/.virtualenvs/default")
+          ("alarmpi" . "~/.virtualenvs/default")
+          ("alarmpi-4b" . "~/.virtualenvs/default"))
+        default-venv (cdr
+                      (assoc system-name default-venv-byhost))
+        python-environment-directory venv-location)
   ;; Restart the python process when switching environments
   (add-hook 'pyvenv-post-activate-hooks (lambda ()
-					  (pyvenv-restart-python)))
+                                          (pyvenv-restart-python)))
   :hook
   (python-mode . pyvenv-mode)
   (after-init-hook . (pyvenv-workon default-env))
@@ -1569,7 +1559,7 @@ Routine")
   :after (python-mode)
   :bind
   (:map python-mode-map
-    ("C-c p b" . blacken-buffer))
+        ("C-c p b" . blacken-buffer))
   :custom
   (blacken-line-length 120)
   :hook
@@ -1581,7 +1571,7 @@ Routine")
   :after (python-mode)
   :bind
   (:map python-mode-map
-    ("C-c p n" . numpydoc-generate))
+        ("C-c p n" . numpydoc-generate))
   :custom
   (numpydoc-prompt-for-input t)
   (numpydoc-insert-examples-block 0)
@@ -1593,7 +1583,7 @@ Routine")
   :ensure t
   :after (pyvenv)
   :bind (:map python-mode-map
-	      ("C-c p t" . python-pytest-dispatch))
+              ("C-c p t" . python-pytest-dispatch))
   :custom
   (transient-append-suffix
     'python-pytest-dispatch
@@ -1604,7 +1594,7 @@ Routine")
      ("--tee" "Print results" "--regtest-tee")
      ("--nodiff" "Suppress output" "--regtest-nodiff")
      ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")
-  ])
+     ])
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
@@ -1614,7 +1604,7 @@ Routine")
      ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
      ("--element-number" "Defines how many elements will display in a result" "--element-number")
      ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")
-    ])
+     ])
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
@@ -1623,15 +1613,14 @@ Routine")
      ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
      ("--html" "Generate summary report in HTML" "--mpl-generate-summary html")
      ("--json" "Generate summary report in JSON" "--mpl-generate-summary json")
-    ]
-    ))
+     ]))
 
 (use-package ruff-format
   :ensure t
   :defer 0.5
   :after (python-mode)
   :bind (:map python-mode-map
-	  ("C-c p r" . ruff-format-buffer))
+              ("C-c p r" . ruff-format-buffer))
   :after (python-mode)
   :hook (python-mode . ruff-format-on-save-mode))
 
@@ -1659,25 +1648,25 @@ current buffer, killing it."
     (let ((file-name buffer-file-name))
       (kill-current-buffer)
       (sqlite-mode-open-file file-name)))
-    (add-to-list 'magic-mode-alist '("SQLite format 3\x00" . ns/sqlite-view-file-magically)))
+  (add-to-list 'magic-mode-alist '("SQLite format 3\x00" . ns/sqlite-view-file-magically)))
 
 (use-package sqlite-mode-extras
   :bind (:map
-          sqlite-mode-map
-          ("n" . next-line)
-          ("p" . previous-line)
-          ("b" . sqlite-mode-extras-backtab-dwim)
-          ("f" . sqlite-mode-extras-tab-dwim)
-          ("+" . sqlite-mode-extras-add-row)
-          ("D" . sqlite-mode-extras-delete-row-dwim)
-          ("C" . sqlite-mode-extras-compose-and-execute)
-          ("E" . sqlite-mode-extras-execute)
-          ("S" . sqlite-mode-extras-execute-and-display-select-query)
-          ("DEL" . sqlite-mode-extras-delete-row-dwim)
-          ("g" . sqlite-mode-extras-refresh)
-          ("<backtab>" . sqlite-mode-extras-backtab-dwim)
-          ("<tab>" . sqlite-mode-extras-tab-dwim)
-          ("RET" . sqlite-mode-extras-ret-dwim)))
+         sqlite-mode-map
+         ("n" . next-line)
+         ("p" . previous-line)
+         ("b" . sqlite-mode-extras-backtab-dwim)
+         ("f" . sqlite-mode-extras-tab-dwim)
+         ("+" . sqlite-mode-extras-add-row)
+         ("D" . sqlite-mode-extras-delete-row-dwim)
+         ("C" . sqlite-mode-extras-compose-and-execute)
+         ("E" . sqlite-mode-extras-execute)
+         ("S" . sqlite-mode-extras-execute-and-display-select-query)
+         ("DEL" . sqlite-mode-extras-delete-row-dwim)
+         ("g" . sqlite-mode-extras-refresh)
+         ("<backtab>" . sqlite-mode-extras-backtab-dwim)
+         ("<tab>" . sqlite-mode-extras-tab-dwim)
+         ("RET" . sqlite-mode-extras-ret-dwim)))
 
 (use-package yaml-mode
   :init
@@ -1694,28 +1683,28 @@ current buffer, killing it."
 
 (use-package poly-markdown
   :ensure t
-    :defer 0.5
-    :after (polymode))
+  :defer 0.5
+  :after (polymode))
 
 (use-package poly-noweb
   :ensure t
-    :defer 0.5
-    :after (polymode))
+  :defer 0.5
+  :after (polymode))
 
 (use-package poly-org
   :ensure t
-    :defer 0.5
-    :after (polymode))
+  :defer 0.5
+  :after (polymode))
 
 (use-package poly-R
   :ensure t
-    :defer 0.5
-    :after (polymode))
+  :defer 0.5
+  :after (polymode))
 
 (use-package poly-rst
   :ensure t
-    :defer 0.5
-    :after (polymode))
+  :defer 0.5
+  :after (polymode))
 
 (use-package mason
   :ensure t
@@ -1750,22 +1739,22 @@ current buffer, killing it."
   (lsp-disabled-clients '(pylsp pyls))
   ;; :init (setq lsp-keymap-prefix "s-l")
   :hook ((R-mode . lsp-deferred)
-	 (bash-mode . lsp-deferred)
-	 ;; (dockerfile-mode . lsp-deferred)
-	 (ess-r-mode . lsp-deferred)
-	 (gfm-mode . lsp-deferred)
-   (git-commit-mode . lsp-deferred)
-	 (forge-post-mode . lsp-deferred)
-	 ;; (groovy-mode . lsp-deferred)
-	 (html-mode . lsp-deferred)
-	 ;; (julia-mode . lsp-deferred)
-	 (js-ts-mode . lsp-deferred)
-	 (latex-mode . lsp-deferred)
-	 (markdown-mode . lsp-deferred)
-	 (org-mode . lsp-deferred)
-	 (python-mode . lsp-deferred)
-	 (rust-mode . lsp-deferred)
-	 (sh-mode . lsp-deferred)))
+         (bash-mode . lsp-deferred)
+         ;; (dockerfile-mode . lsp-deferred)
+         (ess-r-mode . lsp-deferred)
+         (gfm-mode . lsp-deferred)
+         (git-commit-mode . lsp-deferred)
+         (forge-post-mode . lsp-deferred)
+         ;; (groovy-mode . lsp-deferred)
+         (html-mode . lsp-deferred)
+         ;; (julia-mode . lsp-deferred)
+         (js-ts-mode . lsp-deferred)
+         (latex-mode . lsp-deferred)
+         (markdown-mode . lsp-deferred)
+         (org-mode . lsp-deferred)
+         (python-mode . lsp-deferred)
+         (rust-mode . lsp-deferred)
+         (sh-mode . lsp-deferred)))
 ;; (terraform-mode . lsp-deferred)
 ;; (typescript-mode . lsp-deferred)))
 
@@ -1783,10 +1772,10 @@ current buffer, killing it."
   :defer t
   :config
   (setq lsp-ui-sideline-enable nil
-	lsp-ui-doc-delay 2)
+        lsp-ui-doc-delay 2)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
-	      ("C-c i" . lsp-ui-imenu)))
+              ("C-c i" . lsp-ui-imenu)))
 
 (use-package lsp-ltex-plus
   :ensure t
@@ -1795,7 +1784,7 @@ current buffer, killing it."
   (lsp-ltex-plus-enable-for-modes)
   :custom
   (lsp-ltex-plus-check-programming-languages t))
-  ;; (setq lsp-ltex-plus-version "18.7.0"))
+;; (setq lsp-ltex-plus-version "18.7.0"))
 
 (use-package realgud
   :ensure t
@@ -1854,16 +1843,10 @@ If flyspell is already enabled, does nothing."
   (interactive)
   (if (not (symbol-value flyspell-mode)) ; if not already on
       (progn
-	(if (derived-mode-p 'prog-mode)
-	    (progn
-	      (message "Flyspell on (code)")
-	      (flyspell-prog-mode))
-	  ;; else
-	  (progn
-	    (message "Flyspell on (text)")
-	    (flyspell-mode 1)))
-	;; I tried putting (flyspell-buffer) here but it didn't seem to work
-	)))
+        (if (derived-mode-p 'prog-mode) (progn (message "Flyspell on (code)") (flyspell-prog-mode))
+          ;; else
+          (progn (message "Flyspell on (text)") (flyspell-mode 1))))))
+;; I tried putting (flyspell-buffer) here but it didn't seem to work
 
 (defun flyspell-toggle ()
   "Turn Flyspell on if it is off, or off if it is on.  When turning on, it uses `flyspell-on-for-buffer-type' so
@@ -1871,8 +1854,8 @@ code-vs-text is handled appropriately."
   (interactive)
   (if (symbol-value flyspell-mode)
       (progn ; flyspell is on, turn it off
-	(message "Flyspell off")
-	(flyspell-mode -1))
+        (message "Flyspell off")
+        (flyspell-mode -1))
     ;; else - flyspell is off, turn it on
     (flyspell-on-for-buffer-type)))
 
@@ -1932,12 +1915,12 @@ code-vs-text is handled appropriately."
 (use-package outline-indent
   :commands outline-indent-minor-mode
   :custom
-(outline-indent-ellipsis " ▼")
+  (outline-indent-ellipsis " ▼")
   :hook (haskell-mode . outline-indent-minor-mode)
-        (python-mode . outline-indent-minor-mode)
-        (python-ts-mode . outline-indent-minor-mode)
-        (yaml-mode . outline-indent-minor-mode)
-        (yaml-ts-mode . outline-indent-minor-mode))
+  (python-mode . outline-indent-minor-mode)
+  (python-ts-mode . outline-indent-minor-mode)
+  (yaml-mode . outline-indent-minor-mode)
+  (yaml-ts-mode . outline-indent-minor-mode))
 
 ;; Python
 ;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
@@ -1966,7 +1949,7 @@ code-vs-text is handled appropriately."
   (dirvish-override-dired-mode)
   :config
   (setq dirvish-attributes
-	'(vc-state subtree-state all-the-icons collapse git-msg file-time file-size))
+        '(vc-state subtree-state all-the-icons collapse git-msg file-time file-size))
   ;; Placement
   ;; (setq dirvish-use-header-line nil)     ; hide header line (show the classic dired header)
   ;; (setq dirvish-use-mode-line nil)       ; hide mode line
@@ -1985,9 +1968,9 @@ code-vs-text is handled appropriately."
   ;;; 1. the order of segments *matters* here
   ;;; 2. it's ok to place raw string inside
   (setq dirvish-header-line-format
-	'(:left (path) :right (free-space))
-	dirvish-mode-line-format
-	'(:left (sort file-time " " file-size symlink) :right (omit yank index))))
+        '(:left (path) :right (free-space))
+        dirvish-mode-line-format
+        '(:left (sort file-time " " file-size symlink) :right (omit yank index))))
 
 (use-package all-the-icons
   :ensure t
@@ -2050,15 +2033,15 @@ code-vs-text is handled appropriately."
   (tramp-copy-size-limit (* 1024 1024)) ;; 1Mb
   ;; Set default usernames for different hosts and a global default.
   (add-to-list 'tramp-default-user-alist
-	       '("ssh" ".*ovh'" "arch") t)
+               '("ssh" ".*ovh'" "arch") t)
   (add-to-list 'tramp-default-user-alist
-	       '("ssh" ".*openwrt" "admin") t)
+               '("ssh" ".*openwrt" "admin") t)
   (add-to-list 'tramp-default-user-alist
-	       '(nil nil "neil") t)
+               '(nil nil "neil") t)
   (add-to-list 'tramp-default-user-alist
-	       '("ssh" ".*alarmpi-4b" "neil") t)
+               '("ssh" ".*alarmpi-4b" "neil") t)
   (add-to-list 'tramp-default-user-alist
-	       '("ssh" ".*crow'" "neil") t))
+               '("ssh" ".*crow'" "neil") t))
 
 (use-package ghostel
   :ensure t)
@@ -2074,19 +2057,19 @@ code-vs-text is handled appropriately."
   (org-mode . citar-capf-setup))
 
 (use-package mpdel
-    :ensure t
-    :defer 1
-    :custom
-    (libmpdel-hostname "192.168.1.28")
-    (libmpdel-port 6600)
-    ;; :bind (("<XF86AudioPlay>" . libmpdel-playback-play-pause)
-;;         ("<XF86AudioNext>" . libmpdel-playback-next)
-    ;;               ("<XF86AudioPrev>" . libmpdel-pl;; ayback-previous))
-    ;;         ;; ("<XF86AudioPlay>" ("MPDel Play" . libmpdel-playback-play-pause))
-    ;;         ;; ("<XF86AudioNext>" ("MPDel Next" . libmpdel-playback-next))
-    ;;               ;; ("<XF86AudioPrev>" ("MPDel Prev" . libmpdel-playback-previous))
-    :bind-keymap (("C-x Z" . mpdel-core-map)))
-  ;; (mpdel-mode)
+  :ensure t
+  :defer 1
+  :custom
+  (libmpdel-hostname "192.168.1.28")
+  (libmpdel-port 6600)
+  ;; :bind (("<XF86AudioPlay>" . libmpdel-playback-play-pause)
+  ;;        ("<XF86AudioNext>" . libmpdel-playback-next)
+  ;;        ("<XF86AudioPrev>" . libmpdel-pl;; ayback-previous))
+  ;;        ;; ("<XF86AudioPlay>" ("MPDel Play" . libmpdel-playback-play-pause))
+  ;;        ;; ("<XF86AudioNext>" ("MPDel Next" . libmpdel-playback-next))
+  ;;        ;; ("<XF86AudioPrev>" ("MPDel Prev" . libmpdel-playback-previous))
+  :bind-keymap (("C-x Z" . mpdel-core-map)))
+;; (mpdel-mode)
 
 (use-package osm
   :ensure t
@@ -2163,7 +2146,7 @@ code-vs-text is handled appropriately."
   :config
   ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t)
-	(setq modus-themes-bold-constructs t)
+  (setq modus-themes-bold-constructs t)
   (setq modus-themes-org-blocks '(tinted-background))
   (setq modus-themes-include-derivatives-mode 1)
   :bind
@@ -2208,9 +2191,7 @@ code-vs-text is handled appropriately."
 
 (use-package ibuffer-vc
   :ensure t
-  :defer 3.0
-  ;; :hook
- )
+  :defer 3.0)
 
 (use-package smartparens
   :ensure t
@@ -2247,67 +2228,62 @@ code-vs-text is handled appropriately."
   (defun centaur-tabs-buffer-groups ()
     "Groups tabs based on which project root they are in if possible"
     (let ((get-closest-projectile-project
-	   (lambda (path)
-	     (let ((expanded-path (f-long path)))
-	       (-first (lambda (proj)
-			 (s-starts-with? proj
-					 expanded-path))
-		       (-map (lambda (proj)
-			       (f-long proj))
-			     projectile-known-projects))))))
+           (lambda (path)
+             (let ((expanded-path (f-long path)))
+               (-first (lambda (proj)
+                         (s-starts-with? proj
+                                         expanded-path))
+                       (-map (lambda (proj)
+                               (f-long proj))
+                             projectile-known-projects))))))
       (list (cond
-	     ;; Group as part of projectile project if directly part of it
-	     ((condition-case _err
-		  (projectile-project-root)
-		(error nil))
-	      (f-expand (projectile-project-root)))
-	     ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
-not yet tracked, or maybe temporary buffer)
-	     (get-closest-projectile-project default-directory)
-	     ((string-equal "*" (substring (buffer-name) 0 1))
-	      "proc-buffers")
-	     ;; ... other groupings ...
-	     (t
-	       "Other")))))
-  (defun centaur-tabs-hide-tab (x)
-    "Do no to show buffer X in tabs."
-    (let ((name (format "%s" x)))
-      (or
-        ;; Current window is not dedicated window.
-        (window-dedicated-p (selected-window))
-        ;; Buffer name not match below blacklist.
-        (string-prefix-p "*epc" name)
-        (string-prefix-p "*helm" name)
-        (string-prefix-p "*Helm" name)
-        (string-prefix-p "*Compile-Log*" name)
-        (string-prefix-p "*lsp" name)
-        (string-prefix-p "*company" name)
-        (string-prefix-p "*Flycheck" name)
-        (string-prefix-p "*tramp" name)
-        (string-prefix-p " *Mini" name)
-        (string-prefix-p "*help" name)
-        (string-prefix-p "*straight" name)
-        (string-prefix-p "*temp" name)
-        (string-prefix-p "*Help" name)
-        (string-prefix-p "*mybuf" name)
-        ;; Is not magit buffer.
-        (and (string-prefix-p "magit" name)
-	  (not (file-name-extension name)))
-        )))
-  :custom
-  (setq centaur-tabs-enable-key-bindings t)
-  (setq centaur-tabs-style "wave")
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-set-bar 'under)
-  (setq x-underline-at-descent-line t)
-  (setq centaur-tabs-cycle-scope 'default)
-  (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker "⏺")
-  ;; :bind(
-  ;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-  ;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-  ;;        ("C-<prior>" . centaur-tabs-backward)
-  ;;        ("C-<next>"  . centaur-tabs-forward))
+             ;; Group as part of projectile project if directly part of it
+             ((condition-case _err (projectile-project-root) (error nil))
+              (f-expand (projectile-project-root)))
+             ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
+             ;; not yet tracked, or maybe temporary buffer)
+            (get-closest-projectile-project default-directory)
+            ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
+       ;; ... other groupings ...
+       (t "Other")))))
+(defun centaur-tabs-hide-tab (x)
+  "Do no to show buffer X in tabs."
+  (let ((name (format "%s" x)))
+    (or
+     ;; Current window is not dedicated window.
+     (window-dedicated-p (selected-window))
+     ;; Buffer name not match below blacklist.
+     (string-prefix-p "*epc" name)
+     (string-prefix-p "*helm" name)
+     (string-prefix-p "*Helm" name)
+     (string-prefix-p "*Compile-Log*" name)
+     (string-prefix-p "*lsp" name)
+     (string-prefix-p "*company" name)
+     (string-prefix-p "*Flycheck" name)
+     (string-prefix-p "*tramp" name)
+     (string-prefix-p " *Mini" name)
+     (string-prefix-p "*help" name)
+     (string-prefix-p "*straight" name)
+     (string-prefix-p "*temp" name)
+     (string-prefix-p "*Help" name)
+     (string-prefix-p "*mybuf" name)
+     ;; Is not magit buffer.
+     (and (string-prefix-p "magit" name)
+          (not (file-name-extension name))))))
+:custom
+(setq centaur-tabs-enable-key-bindings t)
+(setq centaur-tabs-style "wave")
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-set-bar 'under)
+(setq x-underline-at-descent-line t)
+(setq centaur-tabs-cycle-scope 'default)
+(setq centaur-tabs-set-modified-marker t)
+(setq centaur-tabs-modified-marker "⏺")
+;; :bind(
+;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+;;        ("C-<prior>" . centaur-tabs-backward)
+;;        ("C-<next>"  . centaur-tabs-forward))
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)
