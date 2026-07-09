@@ -57,6 +57,7 @@
   (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
   (confirm-kill-processes nil) ; Stop confirming the killing of processes
   (custom-file "~/.config/emacs/custom.el")
+  (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
   (dired-dwim-target t) ; move file to other pane as default destination
   (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
   (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
