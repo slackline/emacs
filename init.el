@@ -722,7 +722,8 @@ Version 2015-07-27"
 
 (use-package magit-pre-commit
   :ensure t
-  :after magit)
+  :after magit
+  :bind (:map magit-mode-map ("@" . magit-pre-commit)))
 
 (use-package magit-stats
   :ensure t

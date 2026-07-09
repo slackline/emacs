@@ -1672,7 +1672,8 @@ menu and follow your nose from there.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-pre-commit
   :ensure t
-  :after magit)
+  :after magit
+  :bind (:map magit-mode-map ("@" . magit-pre-commit)))
 
 #+END_SRC
 
@@ -5108,6 +5109,7 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 [[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]]. The docs need manually installing but after that they are available via ~C-h
 D~.
 
++ elisp
 + kubernetes
 + markdown
 + matplotlib
@@ -5124,8 +5126,13 @@ D~.
     :ensure t
     :defer 4
     :bind ("C-h D" . devdocs-lookup))
+
 #+END_SRC
 
+*** Automate installs
+
+(deffun ns/install-dev-docs
+ "Install devdocs.")
 * Elfeed
 <<sec:elfeed>>
 
