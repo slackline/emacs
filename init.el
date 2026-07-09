@@ -1806,7 +1806,7 @@ current buffer, killing it."
   (projectile-project-search-path '("~/dotfiles/" "~/org/" "~/org-roam" "~/.config/emacs" ("~/work/git/" . 3)))
   (projectile-auto-discover t)
   (projectile-enable-caching t)
-  (projectile-switch-project-action #'projectile-commander)
+  (projectile-switch-project-action #'projectile-dispatch)
   :init
   (projectile-mode +1))
 
