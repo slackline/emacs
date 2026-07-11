@@ -5102,6 +5102,39 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
   :bind-keymap (("C-c T" . tmr-prefix-map)))
 #+END_SRC
 
+** wttr
+<<sec:wttr>>
+
+*** display-wttr
+<<sec:display-wttr>>
+
+[[https://github.com/josegpt/display-wttr][display-wttr]] grabs data from [[https://wttr.in][wittr.in]] and will display it on the modeline.
+
+#+NAME: code-display-wttr
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package display-wttr
+  :ensure t
+  :config
+  (display-wttr-mode))
+
+#+END_SRC
+
+*** wttr.in
+<<sec:wttrin>>
+
+[[https://github.com/cjennings/emacs-wttrin][wttrin]] is another interface to grabbing weather data from [[https://wttr.in][wittr.in]] and displaying it but in a dedicated buffer.
+
+#+NAME: code-wttrin
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package wttrin
+  :ensure t
+  :defer 0.5
+  :bind ("C-c w" . wttrin)
+  :custom
+  (wttrin-default-locations '("Sheffield", "Nant Peris")))
+
+#+END_SRC
+
 * Documentation
 
 ** DevDocs

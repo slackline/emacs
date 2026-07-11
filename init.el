@@ -2114,6 +2114,18 @@ code-vs-text is handled appropriately."
   :defer 0.5
   :bind-keymap (("C-c T" . tmr-prefix-map)))
 
+(use-package display-wttr
+  :ensure t
+  :config
+  (display-wttr-mode))
+
+(use-package wttrin
+  :ensure t
+  :defer 0.5
+  :bind ("C-c w" . wttrin)
+  :custom
+  (wttrin-default-locations '("Sheffield", "Nant Peris")))
+
 (use-package devdocs
   :ensure t
   :defer 4
