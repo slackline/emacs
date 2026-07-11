@@ -1431,6 +1431,19 @@ Not currently tangled.
 
 #+END_SRC
 
+** agitjo
+<<sec:agitjo>>
+
+[[https://codeberg.org/halvin/agitjo][agitjo]] "/extends Magit with a new menu for [[https://forgejo.org/docs/latest/user/agit-support/][AGit-Flow]] operations/"
+
+#+NAME: code-agitjo
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package agitjo
+  :ensure t
+  :config
+  (agitjo-setup "#"))
+
+#+END_SRC
 
 ** gitlab-ci-mode
 <<sec:gitlab-ci-mode>>
@@ -5771,6 +5784,7 @@ Codeberg Pages once I've sussed those out).
 + [[https://codeberg.org/jamesendreshowell/emacs-config][jamesendreshowell/emacs-config: My public Emacs configuration files - Codeberg.org]]
 + [[https://github.com/jamescherti/minimal-emacs.d][jamescherti/minimal-emacs.d: A Customizable Emacs init.el and early-init.el | Emacs Starter Kit]]
 + [[https://rossabaker.com/configs/emacs/khlav-kalash/][Ross A. Baker: Khlav Kalash Emacs]]
++ [[https://outputerror.com/emacs-config/][Output Error :: Emacs config]] very minimal
 
 ** Useful built-ins
 
