@@ -237,6 +237,18 @@ and convert it to Org using the pandoc utility."
              (markdown (org-export-string-as region 'md t '(:with-toc nil))))
         (gui-set-selection 'CLIPBOARD markdown))))
 
+(defun ns/retrieve-url-at-point ()
+  (interactive)
+  (let* ((link-info (assoc :link (org-context)))
+         (text (when link-info
+                 (buffer-substring-no-properties (or (cadr link-info) (point-min))
+                                                 (or (caddr link-info) (point-max))))))
+    (if (not text)
+        (error "Not in org link")
+      (string-match org-bracket-link-regexp text)
+      (kill-new (substring text (match-beginning 1) (match-end 1))))))
+(define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
+
 (defun ns/ssh-agency-load ()
   "Set SSH keys for ssh-agency.
 

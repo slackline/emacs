@@ -590,8 +590,52 @@ region to Markdown in the system clipboard.
 
 #+END_SRC
 
+*** Org copy link at point
+<<sec:org-copy-link-at-point>>
+
+From [[https://emacs.stackexchange.com/a/63051][NickD on Emacs StackExchange]], it almost does what I was after but copies the whole [[sec:org-mode][org-mode]] link.
+
+#+NAME: code-org-copy-link-at-point
+#+BEGIN_SRC emacs-lisp :tangle no
+(defun ns/link-fast-copy ()
+   "Copy the link at point."
+   (interactive)
+   (let* ((context (org-element-context))
+          (type (org-element-type context))
+          (beg (org-element-property :begin context))
+          (end (org-element-property :end context)))
+     (when (eq type 'link)
+      (copy-region-as-kill beg end))))
+
+(define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
+
+#+END_SRC
+
+*** Retrieve URL at point
+<<sec:retrieve-url-at-point>>
+
+Typically though I want to get a URL and [[https://emacs.stackexchange.com/questions/3981/how-to-copy-links-out-of-org-mode][this thread]] had a couple of alternatives, and I found [[https://emacs.stackexchange.com/a/50870/10100][this one]] to be closest to
+what I was after.
+
+#+NAME: code-retrieve-url-at-point
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(defun ns/retrieve-url-at-point ()
+  (interactive)
+  (let* ((link-info (assoc :link (org-context)))
+         (text (when link-info
+                 (buffer-substring-no-properties (or (cadr link-info) (point-min))
+                                                 (or (caddr link-info) (point-max))))))
+    (if (not text)
+        (error "Not in org link")
+      (string-match org-bracket-link-regexp text)
+      (kill-new (substring text (match-beginning 1) (match-end 1))))))
+(define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
+
+#+END_SRC
+
+
 *** Load SSH keys
-<<sec::ssh-agency-load>>
+<<sec:ssh-agency-load>>
 
 I found for some reason that the [[sec:ssh-agency][ssh-agency]] loaded SSH keys weren't available and I was prompted for my SSH keys when
 pushing to Git forges. It is bound to ~C-c C-s~ to make it simple to load.
