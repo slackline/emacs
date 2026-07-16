@@ -190,65 +190,6 @@
   (package-reinstall pkg)
   (require pkg))
 
-(defun ns/org-babel-tangle-on-save ()
-  "Tangle config.org on saving."
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.config/emacs/config.org"))
-    (let ((org-confirm-babel-evaluate nil))
-      (org-babel-tangle))))
-
-(defun ns/org-babel-export-on-save ()
-  "Export config.org on saving"
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.config/emacs/config.org"))
-    (let ((org-confirm-babel-evaluate nil))
-      (org-html-export-to-html))))
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
-
-;; Almost works, but org-lint needs to know what buffer to check???
-(defun ns/org-lint-on-save ()
-  "Run org-lint on saving .org files."
-  (when(string-equal (file-name-extension (buffer-file-name)) "org")
-    (org-lint)))
-(add-hook 'after-save-hook 'ns/org-lint-on-save)
-
-(defun ns/yank-markdown-as-org ()
-  "Yank Markdown text as Org.
-
-This command will convert Markdown text in the top of the `kill-ring'
-and convert it to Org using the pandoc utility."
-  (interactive)
-  (save-excursion
-    (with-temp-buffer
-      (yank)
-      (shell-command-on-region
-       (point-min) (point-max)
-       "pandoc -f markdown -t org --wrap=preserve" t t)
-      (kill-region (point-min) (point-max)))
-    (yank)))
-
-(defun ns/org-copy-region-as-markdown ()
-  "Copy the region (in Org) to the system clipboard as Markdown."
-  (interactive)
-  (if (use-region-p)
-      (let* ((region
-              (buffer-substring-no-properties (region-beginning) (region-end)))
-             (markdown (org-export-string-as region 'md t '(:with-toc nil))))
-        (gui-set-selection 'CLIPBOARD markdown))))
-
-(defun ns/retrieve-url-at-point ()
-  (interactive)
-  (let* ((link-info (assoc :link (org-context)))
-         (text (when link-info
-                 (buffer-substring-no-properties (or (cadr link-info) (point-min))
-                                                 (or (caddr link-info) (point-max))))))
-    (if (not text)
-        (error "Not in org link")
-      (string-match org-bracket-link-regexp text)
-      (kill-new (substring text (match-beginning 1) (match-end 1))))))
-(define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
-
 (defun ns/ssh-agency-load ()
   "Set SSH keys for ssh-agency.
 
@@ -989,6 +930,65 @@ Version 2015-07-27"
   :defer 5
   :after (citar org-roam)
   :config (citar-org-roam-mode))
+
+(defun ns/org-babel-tangle-on-save ()
+  "Tangle config.org on saving."
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/.config/emacs/config.org"))
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
+
+(defun ns/org-babel-export-on-save ()
+  "Export config.org on saving"
+  (when (string-equal (buffer-file-name)
+                      (expand-file-name "~/.config/emacs/config.org"))
+    (let ((org-confirm-babel-evaluate nil))
+      (org-html-export-to-html))))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
+
+;; Almost works, but org-lint needs to know what buffer to check???
+(defun ns/org-lint-on-save ()
+  "Run org-lint on saving .org files."
+  (when(string-equal (file-name-extension (buffer-file-name)) "org")
+    (org-lint)))
+(add-hook 'after-save-hook 'ns/org-lint-on-save)
+
+(defun ns/yank-markdown-as-org ()
+  "Yank Markdown text as Org.
+
+This command will convert Markdown text in the top of the `kill-ring'
+and convert it to Org using the pandoc utility."
+  (interactive)
+  (save-excursion
+    (with-temp-buffer
+      (yank)
+      (shell-command-on-region
+       (point-min) (point-max)
+       "pandoc -f markdown -t org --wrap=preserve" t t)
+      (kill-region (point-min) (point-max)))
+    (yank)))
+
+(defun ns/org-copy-region-as-markdown ()
+  "Copy the region (in Org) to the system clipboard as Markdown."
+  (interactive)
+  (if (use-region-p)
+      (let* ((region
+              (buffer-substring-no-properties (region-beginning) (region-end)))
+             (markdown (org-export-string-as region 'md t '(:with-toc nil))))
+        (gui-set-selection 'CLIPBOARD markdown))))
+
+(defun ns/retrieve-url-at-point ()
+  (interactive)
+  (let* ((link-info (assoc :link (org-context)))
+         (text (when link-info
+                 (buffer-substring-no-properties (or (cadr link-info) (point-min))
+                                                 (or (caddr link-info) (point-max))))))
+    (if (not text)
+        (error "Not in org link")
+      (string-match org-bracket-link-regexp text)
+      (kill-new (substring text (match-beginning 1) (match-end 1))))))
+(define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
 
 (use-package org-grimoire
   :defer 4
