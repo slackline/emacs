@@ -4197,10 +4197,10 @@ project, at least until you switch to a different project."
                 (not org-id))
       (setq active-projects-list (cons project active-projects-list))
       (if last-org-id (org-with-point-at (org-id-find last-org-id 'marker)
-                        (if (org-clock-is-active)
-                            (org-clock-out))))
+                                         (if (org-clock-is-active)
+                                             (org-clock-out))))
       (org-with-point-at (org-id-find org-id 'marker)
-        (org-clock-in)))))
+                         (org-clock-in)))))
 
 
 (add-hook 'buffer-list-update-hook 'log-active-project)
@@ -5251,8 +5251,8 @@ D~.
 + python-3.14
 + r
 + rust
-+ scikit-image
-+ scikit-learn
++ scikit_image
++ scikit_learn
 + sqlite
 + svelte
 + typescript
