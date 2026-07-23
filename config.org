@@ -1901,6 +1901,12 @@ things such as [[sec:org-roam][org-roam]] and [[sec:org-gtd][org-gtd]] have thei
 [[https://github.com/rksm/clj-org-analyzer/][org-analyzer]] provides a set of functions that parse and summarise your [[sec:org-agenda][org-agenda]] and fires up a web-page to visualise
 the results. Very neat and powerful...if you stick to the habit of logging your time on tasks!
 
+I've found I'm terrible at logging in and out of tasks, turns out I'm not the only one! This is a useful [[https://ray-on-emacs.blogspot.com/2026/07/modeling-browser-history-in-emacs.html][blogpost]] that
+has some tips on how to keep track of when you worked. Ideally I wougld like a way for keeping track of which project I'm
+working in (perhaps via [[sec:projectile][Projectile]]) and have a single file which logs time against the overall project as I'm not
+bothered at the moment about granular time keeping for specific tasks (as then the task of logging time becomes a job in
+and of itself).
+
 #+NAME: code-org-analyzer
 #+BEGIN_SRC emacs-lisp :tangle init.el
 
@@ -1909,6 +1915,7 @@ the results. Very neat and powerful...if you stick to the habit of logging your 
   :defer 2)
 
 #+END_SRC
+
 
 *** Org Links
 <<sec:org-links>>
@@ -1924,6 +1931,10 @@ the results. Very neat and powerful...if you stick to the habit of logging your 
 
 #+END_SRC
 
+**** Git Links
+
+Related is the work on [[https://github.com/kickingvegas/fj][fj]] from Charles Choi to make it easy to copy GitHub issues to Org format. It's still in early
+development but something I will be keeping an ey on as it's more comprehensive than
 *** Org Modern
 <<sec:org-modern>>
 
