@@ -5235,16 +5235,28 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 [[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]]. The docs need manually installing but after that they are available via ~C-h
 D~.
 
++ bash
 + elisp
++ git
++ go
++ jq
 + kubernetes
++ latex
 + markdown
 + matplotlib
 + nginx
 + numpy-2.2
-+ pandas-2
++ pandas-3
++ polars
 + python-3.14
++ r
 + rust
++ scikit-image
++ scikit-learn
 + sqlite
++ svelte
++ typescript
++ zsh
 
 #+NAME: code-devdocs
 #+BEGIN_SRC emacs-lisp :tangle init.el
