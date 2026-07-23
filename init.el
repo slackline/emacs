@@ -1823,6 +1823,42 @@ current buffer, killing it."
   :init
   (projectile-mode +1))
 
+;; Initially set to 0
+(setq active-projects-list nil)
+
+(setq project-org-id-alist
+      '(("~/org/" . "5be58bbc-beeb-451d-bcc5-b3987257e581")
+        ("~/org-roam/" . "46553056-ef21-48a0-a58d-c2c64ae8b56b")
+        ("~/work/git/hub/ICAIR-Sheffield/LayOpt/" . "4406be03-5c5a-4cbd-b1d8-d7c0874acbcc")
+        ("~/work/git/hub/Morinay-Lab/lotties/" . "844af655-fd54-42a4-a3fa-45064fd79663")
+        ("~/.config/emacs" . "281f2ec1-c60b-4ace-83d6-49bdeced89e1")))
+
+(defun log-active-project ()
+  "Logs the active project.
+
+Add this to the `buffer-list-update-hook'.
+
+The logging assumes that you're always working on some project.
+For instance, for the purposes of this function, switching to an
+``unaffiliated'' buffer (as reported by projectile) has no effect
+— you will be ``clocked'' as still working on the last active
+project, at least until you switch to a different project."
+  (let* ((project (ignore-errors (projectile-project-root)))
+         (last-logged-project (car active-projects-list))
+         (org-id (cdr (assoc project project-org-id-alist)))
+         (last-org-id (cdr (assoc last-logged-project project-org-id-alist))))
+    (unless (or (equal last-logged-project project)
+                (not org-id))
+      (setq active-projects-list (cons project active-projects-list))
+      (if last-org-id (org-with-point-at (org-id-find last-org-id 'marker)
+                                         (if (org-clock-is-active)
+                                             (org-clock-out))))
+      (org-with-point-at (org-id-find org-id 'marker)
+                         (org-clock-in)))))
+
+
+(add-hook 'buffer-list-update-hook 'log-active-project)
+
 (use-package consult-projectile
   :ensure t
   :after projectile)
