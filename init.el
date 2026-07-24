@@ -2154,6 +2154,9 @@ code-vs-text is handled appropriately."
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
 
+(use-package rg
+  :ensure t)
+
 (use-package sicp
   :ensure t)
 

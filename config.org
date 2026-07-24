@@ -5167,6 +5167,18 @@ the per-major-mode scratch buffers.
 
 #+END_SRC
 
+** ripgrep (rg)
+<<sec:rg>>
+
+[[https://github.com/dajva/rg.el][rg]] is a search tool based on [[https://github.com/BurntSushi/ripgrep][ripgrep]] and is required to make full use of [[sec:projectile][Projectile's]] searching of projects.
+
+#+NAME: code-rg
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package rg
+  :ensure t)
+
+#+END_SRC
+
 ** sicp
 <<sec:sicp>>
 
