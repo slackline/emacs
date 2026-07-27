@@ -4790,12 +4790,13 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 * Terminals
 <<sec:terminals>>
 
-I don't use the shell/terminal in Emacs much as I quite like having clear separate usage and so use [[https://sw.kovidgoyal.net/kitty/][kitty]].
+I don't use the shell/terminal in Emacs much as I quite like having clear separate usage and so use [[https://sw.kovidgoyal.net/kitty/][kitty]] and [[https://tmux.app/][tmux]].
+
 ** vterm
 <<sec:vterm>>
 
 [[https://github.com/akermu/emacs-libvterm][vterm]] is a compiled terminal emulator, as such you need to have something like ~gcc~ installed (common on most GNU/Linux
-systems, less so on M$-Win/OSX). For now I'm going to give [[sec:ghostel][ghostel]] a whirl so this isn't tangled.
+systems, less so on M$-Win/OSX).
 
 #+NAME: code-vterm
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -4825,10 +4826,11 @@ systems, less so on M$-Win/OSX). For now I'm going to give [[sec:ghostel][ghoste
 ** ghostel
 <<sec:ghostel>>
 
-[[https://github.com/dakra/ghostel][ghostel]] is "/Emacs terminal emulator powered by [[https://ghostty.org/][libghostty-vt]]/"
+[[https://github.com/dakra/ghostel][ghostel]] is "/Emacs terminal emulator powered by [[https://ghostty.org/][libghostty-vt]]/". I'm in two minds about this, it sounds good from others
+reviews/comments, but the author uses "large language models" heavily in the development.
 
 #+NAME: code-ghostel
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package ghostel
   :ensure t)
 
@@ -5276,13 +5278,42 @@ D~.
     :ensure t
     :defer 4
     :bind ("C-h D" . devdocs-lookup))
+#+END_SRC
+
+#+NAME: code-devdocs-to-install
+#+BEGIN_SRC emacs-lisp :tangle no
+(setq devdocs-install-alist
+      '(("bash")
+        ("elisp")
+        ("git")
+        ("go")
+        ("jq")
+        ("kubernetes")
+        ("latex")
+        ("markdown")
+        ("matplotlib")
+        ("nginx")
+        ("numpy-2.2")
+        ("pandas-3")
+        ("polars")
+        ("python-3.14")
+        ("r")
+        ("rust")
+        ("scikit_image")
+        ("scikit_learn")
+        ("sqlite")
+        ("svelte")
+        ("typescript")
+        ("zsh")))
 
 #+END_SRC
 
-*** Automate installs
-
-(deffun ns/install-dev-docs
+#+NAME: code-devdocs-install
+#+BEGIN_SRC emacs-lisp :tangle no
+(deffun ns/install-dev-docs (list)
  "Install devdocs.")
+#+END_SRC
+
 * Elfeed
 <<sec:elfeed>>
 

@@ -2093,9 +2093,6 @@ code-vs-text is handled appropriately."
   (add-to-list 'tramp-default-user-alist
                '("ssh" ".*crow'" "neil") t))
 
-(use-package ghostel
-  :ensure t)
-
 (use-package citar
   :ensure t
   :defer 1
