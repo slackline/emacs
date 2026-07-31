@@ -5820,6 +5820,12 @@ also hide certain buffers I don't need to see often.
 
 #+END_SRC
 
+** Windows
+<<sec:windows>>
+
++ [[https://www.masteringemacs.org/article/demystifying-emacs-window-manager][Demystifying Emacs's Window Manager - Mastering Emacs]]
++ [[https://karthinks.com/software/emacs-window-management-almanac/][The Emacs Window Management Almanac | Karthinks]]
+
 * Footer
 <<sec:footer>>
 
