@@ -843,6 +843,19 @@ any order.
 
 #+END_SRC
 
+** Outline Occur
+<sec:outline-occur>>
+
+The [[https://github.com/jroimartin/outline-occur][outline-occur]] package was quickly [[https://lists.gnu.org/archive/html/emacs-devel/2026-07/msg00156.html][absorbed]] into Emacs main.
+
+#+NAME: code-outline-occur
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package outline-occur
+  :custom
+  (keymap-global-set "M-s M-o" #'outline-occur)
+
+#+END_SRC
+
 ** Savehist
 
 Savehist (can't find package homepage) persists history over Emacs restarts and helps with [[sec:vertico][Vertico]].
