@@ -991,8 +991,8 @@ and convert it to Org using the pandoc utility."
 (define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
 
 (use-package org-grimoire
-  :defer 4
-  :ensure t)
+  :ensure t
+  :defer 4)
 
 (org-grimoire-setup "nshephard.dev"
                     :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"

@@ -2364,8 +2364,8 @@ Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me someth
 #+NAME: code-org-grimoire
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-grimoire
-  :defer 4
-  :ensure t)
+  :ensure t
+  :defer 4)
 
 (org-grimoire-setup "nshephard.dev"
                     :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
