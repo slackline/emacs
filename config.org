@@ -302,6 +302,7 @@ bars.
 + [[https://emacs.stackexchange.com/a/110][compilation-finish-functions]]
 + [[https://emacs.stackexchange.com/a/40773/10100][delete-trailing-whitespace]]
 + [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/][Stealing from the Best Emacs Configs]] written by the author of [[sec:projectile][projectile]].
++ [[https://www.emacswiki.org/emacs/SetFonts#GloballyChangingFont][Changing the default font]]
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -411,6 +412,10 @@ bars.
     (savehist-mode t)
     (recentf-mode t)
     (global-auto-revert-mode t))
+
+;; Set the font a bit larger if on crow
+;; (if (system-name) "crow" (add-to-list 'default-frame-alist '(font . "FreeMono Regular 12")))
+(if (system-name) "crow" (set-face-attribute 'default t :font "FreeMono Regular 12"))
 
 #+END_SRC
 

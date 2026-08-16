@@ -53,111 +53,115 @@
   (auto-package-update-maybe))
 
 (use-package emacs
-  :custom
-  (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
-  (confirm-kill-processes nil) ; Stop confirming the killing of processes
-  (custom-file "~/.config/emacs/custom.el")
-  (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
-  (dired-dwim-target t) ; move file to other pane as default destination
-  (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
-  (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-  (global-goto-address-mode t)
-  (global-visual-line-mode t) ; Visual line wrap
-  (history-length 1000) ; Mini-buffer history
-  (inhibit-startup-message t) ; Hide the startup message
-  (inhibit-startup-screen t) ; Disable startup screen
-  (initial-scratch-message "") ; Make *scratch* buffer blank
-  (initial-scratch-message nil)
-  (lisp-indent-offset 2)
-  (mode-line-compact t)
-  (package-install-upgrade-built-in t) ; Upgrade built-in packages
-  (pixel-scroll-precision-mode t)
-  (ring-bell-function 'ignore)  ; Disable bell sound
-  (undo-limit 320000) ; Increase the undo history limits
-  (undo-strong-limit 640000)
-  (use-dialog-box nil) ; No dialog pop-ups
-  (vc-handled-backends '(Git))
-  (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-  (winner-mode t) ; toggling window configuration
-  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
-  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
-  (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
-  (reb-re-syntax 'string) ;; Sane syntax in rebuilder
-  (window-combination-resize t) ;; Proportional window resizing
-  (help-window-select t) ;; Auto-select help windows
-  (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
-  ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
-  ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
-  ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
-                 (display-buffer-no-window) (allow-no-window . t)))
-  ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
-  ;; (when (and (fboundp 'native-comp-available-p)
-  ;;         (native-comp-available-p))
-  ;;   (setq native-comp-async-report-warnings-errors nil
-  ;;     native-comp-deferred-compilation t))
-  :config
-  (add-to-list 'default-frame-alist '(alpha-background . 85))
-  (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
-  (setq-default fill-column 120) ; Reset line-length
-  (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 4)
-  (setq-default sh-basic-offset 2)
-  (setq-default sh-indentation 2)
-  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
-  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-  ;; Disable birectional text scanning
-  (setq-default bidi-display-reordering 'left-to-right
-                bidi-paragraph-direction 'left-to-right)
-  (setq bidi-inhibit-bpa t)
-  ;; Don't render cursors in non-focused windows
-  (setq-default cursor-in-non-selected-windows nil)
-  (setq highlight-nonselected-windows nil)
-  (setopt dictionary-server "dict.org")
-  :bind (("C-c U" . revert-buffer)
-         ("C-c D" . toggle-debug-on-error)
-         ("C-c l" . org-store-link)
-         ("C-c c" . org-capture)
-         ("C-c a" . org-agenda)
-         ("C-c b" . org-iswitchb)
-         ("C-x p i" . org-org-cliplink)
-         ("C-x g" . magit-status)
-         ("C-c R" . code-review-forge-pr-at-point)
-         ("s-SPC" . cycle-spacing))
-  :hook
-  ((latex-mode
-    markdown-mode
-    org-mode
-    prog-mode
-    text-mode) . auto-fill-mode)
-  ((latex-mode
-    prog-mode) . hs-minor-mode)
-  ;; ((git-commit-mode
-  ;;   forge-post-mode) . gfm-mode)
-  (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
-  (auto-fill-function . do-auto-fill)
-  (before-save . delete-trailing-whitespace)
-  (before-save . do-auto-fill)
-  (dired-mode . auto-revert-mode) ; auto refresh dired when files change
-  (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
-  ;; imenu
-  ((markdown-mode
-    makefile-mode
-    prog-mode) . imenu-add-menubar-index)
-  ((markdown-mode
-    makefile-mode
-    prog-mode) . (lambda () (setq imenu-auto-rescan t)))
-  :init
-  (epa-file-enable)
-  (tool-bar-mode 0)
-  (scroll-bar-mode 0)
-  (menu-bar-mode t)
-  (global-display-line-numbers-mode t)
-  (global-hl-line-mode t)
-  (savehist-mode t)
-  (recentf-mode t)
-  (global-auto-revert-mode t))
+    :custom
+    (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
+    (confirm-kill-processes nil) ; Stop confirming the killing of processes
+    (custom-file "~/.config/emacs/custom.el")
+    (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
+    (dired-dwim-target t) ; move file to other pane as default destination
+    (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
+    (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+    (global-goto-address-mode t)
+    (global-visual-line-mode t) ; Visual line wrap
+    (history-length 1000) ; Mini-buffer history
+    (inhibit-startup-message t) ; Hide the startup message
+    (inhibit-startup-screen t) ; Disable startup screen
+    (initial-scratch-message "") ; Make *scratch* buffer blank
+    (initial-scratch-message nil)
+    (lisp-indent-offset 2)
+    (mode-line-compact t)
+    (package-install-upgrade-built-in t) ; Upgrade built-in packages
+    (pixel-scroll-precision-mode t)
+    (ring-bell-function 'ignore)  ; Disable bell sound
+    (undo-limit 320000) ; Increase the undo history limits
+    (undo-strong-limit 640000)
+    (use-dialog-box nil) ; No dialog pop-ups
+    (vc-handled-backends '(Git))
+    (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+    (winner-mode t) ; toggling window configuration
+    (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
+    (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
+    (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
+    (reb-re-syntax 'string) ;; Sane syntax in rebuilder
+    (window-combination-resize t) ;; Proportional window resizing
+    (help-window-select t) ;; Auto-select help windows
+    (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
+    ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+    ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
+    ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
+    (add-to-list 'display-buffer-alist
+                 '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+                   (display-buffer-no-window) (allow-no-window . t)))
+    ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
+    ;; (when (and (fboundp 'native-comp-available-p)
+    ;;         (native-comp-available-p))
+    ;;   (setq native-comp-async-report-warnings-errors nil
+    ;;     native-comp-deferred-compilation t))
+    :config
+    (add-to-list 'default-frame-alist '(alpha-background . 85))
+    (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
+    (setq-default fill-column 120) ; Reset line-length
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 4)
+    (setq-default sh-basic-offset 2)
+    (setq-default sh-indentation 2)
+    (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+    (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+    ;; Disable birectional text scanning
+    (setq-default bidi-display-reordering 'left-to-right
+                  bidi-paragraph-direction 'left-to-right)
+    (setq bidi-inhibit-bpa t)
+    ;; Don't render cursors in non-focused windows
+    (setq-default cursor-in-non-selected-windows nil)
+    (setq highlight-nonselected-windows nil)
+    (setopt dictionary-server "dict.org")
+    :bind (("C-c U" . revert-buffer)
+           ("C-c D" . toggle-debug-on-error)
+           ("C-c l" . org-store-link)
+           ("C-c c" . org-capture)
+           ("C-c a" . org-agenda)
+           ("C-c b" . org-iswitchb)
+           ("C-x p i" . org-org-cliplink)
+           ("C-x g" . magit-status)
+           ("C-c R" . code-review-forge-pr-at-point)
+           ("s-SPC" . cycle-spacing))
+    :hook
+    ((latex-mode
+      markdown-mode
+      org-mode
+      prog-mode
+      text-mode) . auto-fill-mode)
+    ((latex-mode
+      prog-mode) . hs-minor-mode)
+    ;; ((git-commit-mode
+    ;;   forge-post-mode) . gfm-mode)
+    (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
+    (auto-fill-function . do-auto-fill)
+    (before-save . delete-trailing-whitespace)
+    (before-save . do-auto-fill)
+    (dired-mode . auto-revert-mode) ; auto refresh dired when files change
+    (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
+    ;; imenu
+    ((markdown-mode
+      makefile-mode
+      prog-mode) . imenu-add-menubar-index)
+    ((markdown-mode
+      makefile-mode
+      prog-mode) . (lambda () (setq imenu-auto-rescan t)))
+    :init
+    (epa-file-enable)
+    (tool-bar-mode 0)
+    (scroll-bar-mode 0)
+    (menu-bar-mode t)
+    (global-display-line-numbers-mode t)
+    (global-hl-line-mode t)
+    (savehist-mode t)
+    (recentf-mode t)
+    (global-auto-revert-mode t))
+
+;; Set the font a bit larger if on crow
+;; (if (system-name) "crow" (add-to-list 'default-frame-alist '(font . "FreeMono Regular 12")))
+(if (system-name) "crow" (set-face-attribute 'default t :font "FreeMono Regular 12"))
 
 (use-package ssh-agency
   :ensure t
