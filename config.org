@@ -3086,6 +3086,22 @@ Runs: `quarto preview <current-file> <quarto-preview-flags>` asynchronously."
 
 #+END_SRC
 
+**** r-ts-mode
+<<sec:r-ts-mode>>
+
+[[https://codeberg.org/R-for-emacs/r-ts-mode][r-ts-mode]] is a "/major mode for editing R code using treesitter/".
+
+Not currently tangled.
+
+#+NAME: code-r-ts-mode
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package r-ts-mode
+  :ensure t
+  :hook
+  (ess-mode . r-ts-mode))
+
+#+END_SRC
+
 **** r-autoyas
 <<sec:r-autoyas>>
 
@@ -4541,7 +4557,6 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
         ;; All-at-once
         ;; (prog-mode . porg-mode))
 #+END_SRC
-
 
 ** direnv
 <<sec:direnv>>
