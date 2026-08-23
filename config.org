@@ -4346,7 +4346,9 @@ Check that this gets enabled.
 
 *** FlySpell
 <<sec:flyspell>>
-[[https://www.emacswiki.org/emacs/FlySpell#h5o-3][FlySpell]] is a method of spell-checking a buffer on the fly.
+[[https://www.emacswiki.org/emacs/FlySpell#h5o-3][
+FlySpell]] is a method of spell-checking a buffer on the fly. A useful article on configuring [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][Flyspell, ispell and aspell]]
+is something I haven't yet worked through and implemented.
 
 #+NAME: code-flyspell
 #+BEGIN_SRC emacs-lisp :tangle init.el
