@@ -2176,15 +2176,17 @@ everything). It leverages an [[sec:sqlite][sqlite]] database in the background t
   (org-roam-directory "~/org-roam/main"/)
   (org-roam-dailies-directory "daily/")
   (org-roam-db-location "~/org-roam/main/org-roam.db")
-  (org-roam-db-autosync-mode)
+  (org-roam-db-autosync-mode t)
   (org-roam-completion-everywhere t)
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
-      :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %u\n#+filetags: ${tags}\n")
+      :if-new (file+head
+               "${slug}.org"
+               "#+TITLE: %^{title}\n#+DATE: %u\n#+FILETAGS: %^{tags}\n")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
-   '(("d" "default" entry "* %?"
-      :target (file+head "%<%y-%m-%d>.org" "#+title: %{title}\n#+date: %u\n"))))
+   '(("D" "dailies" entry "* %?"
+      :target (file+head "%<%y-%m-%d>.org" "#+TITLE: %{title}\n#+DATE: %u\n"))))
   ;; to add : https://www.reddit.com/r/orgroam/comments/tfcwki/org_roam_capture_create_nametitle_of_a_note/
   :hook
   (after-init . org-roam-mode)
@@ -2199,6 +2201,7 @@ everything). It leverages an [[sec:sqlite][sqlite]] database in the background t
          ("C-c n s" . org-roam-db-sync)
          ("C-c n t" . org-tag-add)
          ("C-c n u s" . org-roam-ui-open)))
+
 
 #+END_SRC
 
