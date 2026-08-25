@@ -5976,6 +5976,7 @@ Codeberg Pages once I've sussed those out).
 + [[https://github.com/jamescherti/minimal-emacs.d][jamescherti/minimal-emacs.d: A Customizable Emacs init.el and early-init.el | Emacs Starter Kit]]
 + [[https://rossabaker.com/configs/emacs/khlav-kalash/][Ross A. Baker: Khlav Kalash Emacs]]
 + [[https://outputerror.com/emacs-config/][Output Error :: Emacs config]] very minimal
++ [[https://github.com/KallDrexx/emacs-zero-to-ide-journey][Emacs : Zero to IDE Journey]]
 
 ** Useful built-ins
 
@@ -5985,9 +5986,14 @@ Codeberg Pages once I've sussed those out).
 + [[https://rossabaker.com/blog/underappreciated-emacs-built-ins/][Ross A. Baker: Underappreciated Emacs built-ins]]
 + [[https://www.rahuljuliato.com/posts/emacs-31-around-the-corner][Emacs 31 Is Around the Corner: The Changes I'm Already Daily Driving | Rahul's Blog]]
 
+** Performance
+
++ [[https://www.jamescherti.com/emacs-why-use-setq-instead-setopt/][Emacs startup: Why setq beats setopt, customize-set-variable, and use-package :custom? | James Cherti]]
+
 ** Packages
 
 + [[https://www.jamescherti.com/essential-emacs-packages/][Must-have Emacs Packages for Efficient Software Development and Text Editing | James Cherti]]
++ [[https://github.com/emacs-tw/awesome-emacs][awesome-emacs: A community driven list of useful Emacs packages, libraries and other items.]]
 
 ** Assistance
 
@@ -6068,6 +6074,10 @@ change the threshold or ‘C-u C-c ! x’ to re-enable the checker.
   completion of hooks being run.
 + [X] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits. *Solution*:
   ~9aec0d1~
+
+** TODO Flyspell
+
++ [ ] Update to follow the recommendations to work with [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][ispell and aspell]].
 
 ** LSP mode
 
@@ -6160,14 +6170,14 @@ Version mismatch is commonly encountered in the following situations:
 
 #+END_EXAMPLE
 
-+ [X] Work out the cause of the above. *Solution* appears to have resolve itself after reinstalling and byte-compiling
++ [X] Work out the cause of the above. *Solution* appears to have resolved itself after reinstalling and byte-compiling
   org-mode anew 🤷‍
 + [X] Lists indent on new line work out why its not loading correctly. *Solution* - not explicitly solved but it was
   because ~electric-indent-local-mode~ was not set to ~0~ (i.e. disabled). Hook was in place.
 
 ** DONE Org-GTD
 
-+ [X] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean  install and on
++ [X] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean install and on
       subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
       package is used? *Solution*: Move the setting to /before/ loading the package!
 
