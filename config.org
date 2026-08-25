@@ -344,7 +344,7 @@ bars.
     ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
     ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
     (add-to-list 'display-buffer-alist
-                 '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+                 '("\\`\\*\\(Warnings\\|Compile-Log\\|Messages\\)\\*\\'"
                    (display-buffer-no-window) (allow-no-window . t)))
     ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
     ;; (when (and (fboundp 'native-comp-available-p)
@@ -4292,7 +4292,7 @@ As of [[https://www.rahuljuliato.com/posts/emacs-31-around-the-corner][Emacs 31]
 ~markdown-ts-mode~ mentioned in the article. One to keep an eye on.
 
 #+NAME: code-tree-sit
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
   (setq treesit-auto-install-grammar t)
   (setq treesit-enabled-modes t)
 #+END_SRC
