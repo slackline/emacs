@@ -872,6 +872,13 @@ Version 2015-07-27"
                             (setq newhead (org-get-heading)))
                           (org-agenda-change-all-lines newhead hdmarker))))
 
+(use-package org-wild-notifier
+  :ensure t
+  :defer 10
+  :custom
+  ;; Notifications 10 and 30 minutes before events
+  (setq org-wild-notifier-alert-time '(2 10 30)))
+
 
 
 (use-package org-roam

@@ -2132,6 +2132,22 @@ settings are configured there. I have picked up a couple of custom commands ([[h
 
 #+END_SRC
 
+*** Org Wild Notifier
+<<sec:org-wild-notifier>>
+
+[[https://github.com/emacsorphanage/org-wild-notifier][org-wild-notifier]] fires off desktop notifications for [[sec:org-agenda][org-agenda]] links.
+
+#+NAME: code-org-wild-notifier
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package org-wild-notifier
+  :ensure t
+  :defer 10
+  :custom
+  ;; Notifications 10 and 30 minutes before events
+  (setq org-wild-notifier-alert-time '(2 10 30)))
+
+#+END_SRC
+
 ** Org Babel
 <<sec:org-babel>>
 
