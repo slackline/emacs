@@ -6,7 +6,7 @@
 ;; A literate and reproducible Emacs configuration
 
 ;;; Code:
-(toggle-debug-on-quit)
+
 (use-package exec-path-from-shell
   :ensure t
   :custom
@@ -81,7 +81,7 @@
   ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
   ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
   (add-to-list 'display-buffer-alist
-               '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+               '("\\`\\*\\(Warnings\\|Compile-Log\\|Messages\\)\\*\\'"
                  (display-buffer-no-window) (allow-no-window . t)))
   ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
   ;; (when (and (fboundp 'native-comp-available-p)
@@ -149,10 +149,6 @@
   (savehist-mode t)
   (recentf-mode t)
   (global-auto-revert-mode t))
-
-;; Set the font a bit larger if on crow
-;; (if (system-name) "crow" (add-to-list 'default-frame-alist '(font . "FreeMono Regular 12")))
-(if (system-name) "crow" (set-face-attribute 'default t :font "FreeMono Regular 12"))
 
 (use-package ssh-agency
   :ensure t
@@ -295,8 +291,8 @@ Version 2015-07-27"
          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
-         ;; ("M-g i" . consult-imenu)
-         ;; ("M-g I" . consult-imenu-multi)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
          ;; M-s bindings in `search-map'
          ("M-s d" . consult-find)                  ;; Alternative: consult-fd
          ("M-s c" . consult-locate)
@@ -408,12 +404,16 @@ Version 2015-07-27"
   :config
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
+
   ;; Show more candidates
   ;; (setq vertico-count 20)
+
   ;; Grow and shrink the Vertico minibuffer
   ;; (setq vertico-resize t)
+
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
+
   ;; TAB completion - completes path selection rather than selecting current point
   ;; (keymap-set vertico-map "TAB" #'minibuffer-complete)
   )
@@ -422,9 +422,7 @@ Version 2015-07-27"
   :ensure t
   :defer 0.5
   :bind (("C-c v" . vundo))
-  :hook ;; (prog-mode text-mode))
-  (prog-mode . vundo-popup-mode)
-  (text-mode . vundo-popup-mode))
+  :hook (prog-mode text-mode))
 
 (use-package which-key
   :ensure t
@@ -548,13 +546,6 @@ Version 2015-07-27"
                               ("C-c m l f" . magit-log-buffer-file)
                               ("C-c m l o" . magit-log-other))))
 
-;; (use-package code-review
-;;   :ensure t
-;;   :custom
-;;   (code-review-fill-column 120)
-;;   (code-review-new-buffer-window-strategy #'switch-to-buffer)
-;;   :hook (emojify-mode))
-
 (use-package difftastic
   :ensure t
   :demand t
@@ -567,11 +558,11 @@ Version 2015-07-27"
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
 
-;; ;; (use-package magit-difftastic
-;; ;;   :straight (:host github :repo "rschmukler/magit-difftastic")
-;; ;;   :after magit
-;; ;;   :config
-;; ;;   (magit-difftastic-mode +1))
+(use-package magit-difftastic
+  :straight (:host github :repo "rschmukler/magit-difftastic")
+  :after magit
+  :config
+  (magit-difftastic-mode +1))
 
 (use-package forge
   :ensure t
@@ -1339,13 +1330,7 @@ Routine")
            "** TODO %U %?\n %a" :prepend t)
           ("wr" "RSE" entry (file+olp "~/org/gtd/rse.org" "RSE")
            "** TODO %U %?\n %a" :prepend t)
-          ("wt" "TopoStats" entry (file+olp "~/org/gtd/topostats.org" "TopoStats")
-           "** TODO %U %?\n %a" :prepend t)
-          ("wc" "Clarity" entry (file+olp "~/org/gtd/clarity.org" "Clarity")
-           "** TODO %U %?\n %a" :prepend t)
           ("wC" "Carpentries Courses" entry (file+olp "~/org/gtd/carpentries.org" "Courses")
-           "** TODO %U %?\n %a" :prepend t)
-          ("wp" "PGFinder" entry (file+olp "~/org/gtd/pgfinder.org" "PGFinder")
            "** TODO %U %?\n %a" :prepend t))))
 
 (setq org-gtd-update-ack "4.0.0")
@@ -1943,6 +1928,7 @@ code-vs-text is handled appropriately."
 (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
 (add-hook 'conf-mode-hook #'outline-minor-mode)
 
+;; Hideshow minor mode for blocks of code
 ;; Systems and General Purpose
 (add-hook 'c-mode-hook #'hs-minor-mode)
 (add-hook 'c++-mode-hook #'hs-minor-mode)
@@ -1963,11 +1949,7 @@ code-vs-text is handled appropriately."
   :commands outline-indent-minor-mode
   :custom
   (outline-indent-ellipsis " ▼")
-  :hook (haskell-mode . outline-indent-minor-mode)
-  (python-mode . outline-indent-minor-mode)
-  (python-ts-mode . outline-indent-minor-mode)
-  (yaml-mode . outline-indent-minor-mode)
-  (yaml-ts-mode . outline-indent-minor-mode))
+  :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
 
 ;; Python
 ;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
@@ -2001,7 +1983,6 @@ code-vs-text is handled appropriately."
   ;; (setq dirvish-use-header-line nil)     ; hide header line (show the classic dired header)
   ;; (setq dirvish-use-mode-line nil)       ; hide mode line
   (setq dirvish-use-header-line 'global)    ; make header line span all panes
-
   ;; Hide the parent directory
   (setq dirvish-default-layout '(0 0.4 0.6))
   ;; Height
@@ -2010,7 +1991,6 @@ code-vs-text is handled appropriately."
   ;;;   - height in full-frame sessions is 35
   (setq dirvish-header-line-height '(25 . 35))
   (setq dirvish-mode-line-height 25) ; shorthand for '(25 . 25)
-
   ;; Segments
   ;;; 1. the order of segments *matters* here
   ;;; 2. it's ok to place raw string inside
@@ -2178,19 +2158,10 @@ code-vs-text is handled appropriately."
 
 (use-package elfeed
   :ensure t
-  :defer 2
-  :custom
-  (setq elfeed-feeds '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
-  )
-
+  :defer 2)
+(setq elfeed-feeds
+  '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
 (global-set-key (kbd "C-x w") 'elfeed)
-
-;; use an org file to organise feeds
-(use-package elfeed-org
-  :ensure t
-  :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
 
 (use-package comet-trail
   :ensure t
@@ -2224,19 +2195,22 @@ code-vs-text is handled appropriately."
    ("C-c C-t e" . ef-themes-toggle)))
 (load-theme 'ef-dark :no-confirm)
 
-;; (use-package golden-ratio
-;;   :ensure t
-;;   :defer 0.5
-;;   :custom
-;;   (setq golden-ratio-auto-scale t))
+(use-package golden-ratio
+  :ensure t
+  :defer 0.5
+  :custom
+  (setq golden-ratio-auto-scale t))
 
-;; (set-face-attribute 'default t :font "Hack")
+(set-face-attribute 'default t :font "Hack")
 
-;; (use-package hide-mode-line
-;;   :ensure t
-;;   :defer 3
-;;   :hook
-;;   (completion-list-mode-hook . hide-mode-line-mode))
+;; Set the font a bit larger if on crow
+;; (if (system-name) "crow" (add-to-list 'default-frame-alist '(font . "FreeMono Regular 12")))
+(if (system-name) "crow" (set-face-attribute 'default t :font "FreeMono Regular 12"))
+
+(use-package hide-mode-line
+  :ensure t
+  :defer 3
+  :hook (completion-list-mode))
 
 (use-package mood-line
   :ensure t
@@ -2244,104 +2218,104 @@ code-vs-text is handled appropriately."
   (mood-line-glyph-alist mood-line-glyphs-unicode))
 (mood-line-mode)
 
-;; (use-package ibuffer
-;;   :ensure nil
-;;   :defer 4)
+(use-package ibuffer
+  :ensure nil
+  :defer 4)
 
-;; (use-package ibuffer-vc
-;;   :ensure t
-;;   :defer 3.0)
+(use-package ibuffer-vc
+  :ensure t
+  :defer 3.0)
 
-;; (use-package smartparens
-;;   :ensure t
-;;   :defer 1
-;;   :custom
-;;   (smartparens-global-mode t)
-;;   :hook
-;;   (prog-mode . smartparens-mode)
-;;   (text-mode . smartparens-mode)
-;;   (markdown-mode . smartparens-mode)
-;;   (latex-mode . smartparens-mode)
-;;   :config
-;;   (progn
-;;     (require 'smartparens-config)
-;;     (smartparens-global-mode 1)
-;;     (show-paren-mode t)))
+(use-package smartparens
+  :ensure t
+  :defer 1
+  :custom
+  (smartparens-global-mode t)
+  :hook
+  (prog-mode . smartparens-mode)
+  (text-mode . smartparens-mode)
+  (markdown-mode . smartparens-mode)
+  (latex-mode . smartparens-mode)
+  :config
+  (progn
+    (require 'smartparens-config)
+    (smartparens-global-mode 1)
+    (show-paren-mode t)))
 
-;; (use-package rainbow-delimiters
-;;   :ensure t
-;;   :hook
-;;   (prog-mode . rainbow-delimiters-mode))
+(use-package rainbow-delimiters
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
-;; (use-package rainbow-mode
-;;   :ensure t
-;;   :defer 1
-;;   :hook
-;;   (prog-mode . rainbow-mode))
+(use-package rainbow-mode
+  :ensure t
+  :defer 1
+  :hook
+  (prog-mode . rainbow-mode))
 
-;; (use-package centaur-tabs
-;;   :ensure t
-;;   :demand
-;;   :config
-;;   (centaur-tabs-mode t)
-;;   (defun centaur-tabs-buffer-groups ()
-;;     "Groups tabs based on which project root they are in if possible"
-;;     (let ((get-closest-projectile-project
-;;            (lambda (path)
-;;              (let ((expanded-path (f-long path)))
-;;                (-first (lambda (proj)
-;;                          (s-starts-with? proj
-;;                                          expanded-path))
-;;                        (-map (lambda (proj)
-;;                                (f-long proj))
-;;                              projectile-known-projects))))))
-;;       (list (cond
-;;              ;; Group as part of projectile project if directly part of it
-;;              ((condition-case _err (projectile-project-root) (error nil))
-;;               (f-expand (projectile-project-root)))
-;;              ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
-;;              ;; not yet tracked, or maybe temporary buffer)
-;;              (get-closest-projectile-project default-directory)
-;;              ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
-;;              ;; ... other groupings ...
-;;              (t "Other"))))))
-;; (defun centaur-tabs-hide-tab (x)
-;;   "Do no to show buffer X in tabs."
-;;   (let ((name (format "%s" x)))
-;;     (or
-;;      ;; Current window is not dedicated window.
-;;      (window-dedicated-p (selected-window))
-;;      ;; Buffer name not match below blacklist.
-;;      (string-prefix-p "*epc" name)
-;;      (string-prefix-p "*helm" name)
-;;      (string-prefix-p "*Helm" name)
-;;      (string-prefix-p "*Compile-Log*" name)
-;;      (string-prefix-p "*lsp" name)
-;;      (string-prefix-p "*company" name)
-;;      (string-prefix-p "*Flycheck" name)
-;;      (string-prefix-p "*tramp" name)
-;;      (string-prefix-p " *Mini" name)
-;;      (string-prefix-p "*help" name)
-;;      (string-prefix-p "*straight" name)
-;;      (string-prefix-p "*temp" name)
-;;      (string-prefix-p "*Help" name)
-;;      (string-prefix-p "*mybuf" name)
-;;      ;; Is not magit buffer.
-;;      (and (string-prefix-p "magit" name)
-;;           (not (file-name-extension name))))))
-;; ;; :bind(
-;; ;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-;; ;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-;; ;;        ("C-<prior>" . centaur-tabs-backward)
-;; ;;        ("C-<next>"  . centaur-tabs-forward))
-;; (setq centaur-tabs-enable-key-bindings t)
-;; (setq centaur-tabs-style "wave")
-;; (setq centaur-tabs-set-icons t)
-;; (setq centaur-tabs-set-bar 'under)
-;; (setq x-underline-at-descent-line t)
-;; (setq centaur-tabs-cycle-scope 'default)
-;; (setq centaur-tabs-set-modified-marker t)
-;; (setq centaur-tabs-modified-marker "⏺")
+(use-package centaur-tabs
+  :ensure t
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  (defun centaur-tabs-buffer-groups ()
+    "Groups tabs based on which project root they are in if possible"
+    (let ((get-closest-projectile-project
+           (lambda (path)
+             (let ((expanded-path (f-long path)))
+               (-first (lambda (proj)
+                         (s-starts-with? proj
+                                         expanded-path))
+                       (-map (lambda (proj)
+                               (f-long proj))
+                             projectile-known-projects))))))
+      (list (cond
+             ;; Group as part of projectile project if directly part of it
+             ((condition-case _err (projectile-project-root) (error nil))
+              (f-expand (projectile-project-root)))
+             ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
+             ;; not yet tracked, or maybe temporary buffer)
+             (get-closest-projectile-project default-directory)
+             ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
+             ;; ... other groupings ...
+             (t "Other"))))))
+(defun centaur-tabs-hide-tab (x)
+  "Do no to show buffer X in tabs."
+  (let ((name (format "%s" x)))
+    (or
+     ;; Current window is not dedicated window.
+     (window-dedicated-p (selected-window))
+     ;; Buffer name not match below blacklist.
+     (string-prefix-p "*epc" name)
+     (string-prefix-p "*helm" name)
+     (string-prefix-p "*Helm" name)
+     (string-prefix-p "*Compile-Log*" name)
+     (string-prefix-p "*lsp" name)
+     (string-prefix-p "*company" name)
+     (string-prefix-p "*Flycheck" name)
+     (string-prefix-p "*tramp" name)
+     (string-prefix-p " *Mini" name)
+     (string-prefix-p "*help" name)
+     (string-prefix-p "*straight" name)
+     (string-prefix-p "*temp" name)
+     (string-prefix-p "*Help" name)
+     (string-prefix-p "*mybuf" name)
+     ;; Is not magit buffer.
+     (and (string-prefix-p "magit" name)
+          (not (file-name-extension name))))))
+;; :bind(
+;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+;;        ("C-<prior>" . centaur-tabs-backward)
+;;        ("C-<next>"  . centaur-tabs-forward))
+(setq centaur-tabs-enable-key-bindings t)
+(setq centaur-tabs-style "wave")
+(setq centaur-tabs-set-icons t)
+(setq centaur-tabs-set-bar 'under)
+(setq x-underline-at-descent-line t)
+(setq centaur-tabs-cycle-scope 'default)
+(setq centaur-tabs-set-modified-marker t)
+(setq centaur-tabs-modified-marker "⏺")
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)
@@ -2373,4 +2347,55 @@ code-vs-text is handled appropriately."
 (global-unset-key (kbd "<insertchar>"))
 
 (provide 'init.el)
-;; ;;; init.el ends here
+;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(all-the-icons-dired all-the-icons-ibuffer auto-package-update beacon
+			 blacken casual-suite centaur-tabs
+			 citar-org-roam cl-generic code-review
+			 comet-trail company conflict-buttons
+			 consult-projectile devdocs difftastic
+			 dired-duplicates dired-quick-sort
+			 dired-ranger dired-rsync-transient
+			 dired-subtree direnv dirvish display-wttr
+			 editorconfig ef-themes eglot elfeed-org
+			 embark-consult envrc erc ess-smart-underscore
+			 essgd exec-path-from-shell faceup fj flycheck
+			 flymake-ruff gh-notify git-cliff git-gutter
+			 git-link git-modes git-timemachine
+			 gitlab-ci-mode glab gnu-elpa-keyring-update
+			 golden-ratio helpful hide-mode-line
+			 ibuffer-vc idlwave jq-mode just-mode
+			 keychain-environment lazy-ruff lsp-jedi
+			 lsp-ltex-plus lsp-ui magit-browse-commit
+			 magit-gitlab magit-imerge magit-pre-commit
+			 magit-stats map marginalia mason mermaid-mode
+			 mermaid-ts-mode mood-line move-text mpdel
+			 nadvice ntlm numpydoc ob-mermaid orderless
+			 org-analyzer org-download org-grimoire
+			 org-gtd org-links org-modern org-rainbow-tags
+			 org-ref org-roam-bibtex org-roam-timestamps
+			 org-roam-ui org-wild-notifier orgit-forge osm
+			 outline-indent password-store-menu
+			 password-store-otp peg poly-R poly-org
+			 poly-rst python python-pytest pyvenv
+			 rainbow-delimiters rainbow-mode realgud-ipdb
+			 rg ruff-format scratch scratch-plus sicp
+			 smartparens so-long soap-client
+			 sqlite-mode-extras ssh-agency svg tmr
+			 track-changes tramp treemacs-magit
+			 treesit-fold treesit-ispell use-package
+			 uv-mode verilog-mode vertico vundo which-key
+			 why-this window-tool-bar wttrin
+			 yasnippet-snippets))
+ '(projectile-auto-discover-projects t nil nil "Customized with use-package projectile"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
