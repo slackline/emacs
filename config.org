@@ -208,8 +208,11 @@ package explicitly has ~:demand t~ set).
 *** Autoupdates
 <<sec:use-package-autoupdate>>
 
+I've tried auto-updating packages in the past but have opted not to continue doing so as I often found errors snuck
+in and it became challenging to work out what the problem was. Instead I update manually.
+
 #+NAME: code-use-package-autoupdate
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package auto-package-update
   :config
   ;; Delete residual old versions
@@ -5379,10 +5382,10 @@ my FreshRSS instance. All very meta!
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package elfeed
   :ensure t
-  :defer 2
-  :custom
-  (setq elfeed-feeds '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
-  )
+  :defer 2)
+(setq elfeed-feeds
+  '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+(global-set-key (kbd "C-x w") 'elfeed)
 
 #+END_SRC
 
@@ -5390,8 +5393,7 @@ my FreshRSS instance. All very meta!
 <<sec:elfeed-org>>
 
 #+NAME: code-elfeed-org
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(global-set-key (kbd "C-x w") 'elfeed)
+#+BEGIN_SRC emacs-lisp :tangle no
 
 ;; use an org file to organise feeds
 (use-package elfeed-org
