@@ -6,7 +6,7 @@
 ;; A literate and reproducible Emacs configuration
 
 ;;; Code:
-
+(toggle-debug-on-quit)
 (use-package exec-path-from-shell
   :ensure t
   :custom
@@ -38,19 +38,10 @@
           ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
         package-archive-priorities
         '(("MELPA" . 10)
-          ("GNU ELPA"	. 5)
-          ("NonGNU ELPA"	. 5)
-          ("MELPA Stable"	. 3)
+          ("GNU ELPA" . 5)
+          ("NonGNU ELPA" . 5)
+          ("MELPA Stable" . 3)
           ("jcs elpa" . 0))))
-
-(use-package auto-package-update
-  :config
-  ;; Delete residual old versions
-  (setq auto-package-update-delete-old-versions t)
-  ;; Do not bother me when updates have taken place.
-  (setq auto-package-update-hide-results t)
-  ;; Update installed packages at startup if there is an update pending.
-  (auto-package-update-maybe))
 
 (use-package emacs
   :custom
@@ -246,11 +237,7 @@ Version 2015-07-27"
 (use-package company
   :ensure t
   :defer 0.5
-  :hook
-  (text-mode . company-mode)
-  (prog-mode . company-mode)
-  (org-src-mode . company-mode)
-  ;; https://themagitian.github.io/posts/emacsconfig/
+  :hook (test-mode prog-mode org-src-mode)
   :custom
   (company-minimum-prefix-length 3)
   (company-idle-delay 0.3)
@@ -308,8 +295,8 @@ Version 2015-07-27"
          ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
-         ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi)
+         ;; ("M-g i" . consult-imenu)
+         ;; ("M-g I" . consult-imenu-multi)
          ;; M-s bindings in `search-map'
          ("M-s d" . consult-find)                  ;; Alternative: consult-fd
          ("M-s c" . consult-locate)
@@ -421,16 +408,12 @@ Version 2015-07-27"
   :config
   ;; Different scroll margin
   ;; (setq vertico-scroll-margin 0)
-
   ;; Show more candidates
   ;; (setq vertico-count 20)
-
   ;; Grow and shrink the Vertico minibuffer
   ;; (setq vertico-resize t)
-
   ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
   ;; (setq vertico-cycle t)
-
   ;; TAB completion - completes path selection rather than selecting current point
   ;; (keymap-set vertico-map "TAB" #'minibuffer-complete)
   )
@@ -439,7 +422,7 @@ Version 2015-07-27"
   :ensure t
   :defer 0.5
   :bind (("C-c v" . vundo))
-  :hook
+  :hook ;; (prog-mode text-mode))
   (prog-mode . vundo-popup-mode)
   (text-mode . vundo-popup-mode))
 
@@ -565,13 +548,12 @@ Version 2015-07-27"
                               ("C-c m l f" . magit-log-buffer-file)
                               ("C-c m l o" . magit-log-other))))
 
-(use-package code-review
-  :ensure t
-  :custom
-  (code-review-fill-column 120)
-  (code-review-new-buffer-window-strategy #'switch-to-buffer)
-  :hook
-  (code-review-mode . emojify-mode))
+;; (use-package code-review
+;;   :ensure t
+;;   :custom
+;;   (code-review-fill-column 120)
+;;   (code-review-new-buffer-window-strategy #'switch-to-buffer)
+;;   :hook (emojify-mode))
 
 (use-package difftastic
   :ensure t
@@ -585,11 +567,11 @@ Version 2015-07-27"
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
 
-(use-package magit-difftastic
-  :straight (:host github :repo "rschmukler/magit-difftastic")
-  :after magit
-  :config
-  (magit-difftastic-mode +1))
+;; ;; (use-package magit-difftastic
+;; ;;   :straight (:host github :repo "rschmukler/magit-difftastic")
+;; ;;   :after magit
+;; ;;   :config
+;; ;;   (magit-difftastic-mode +1))
 
 (use-package forge
   :ensure t
@@ -838,8 +820,7 @@ Version 2015-07-27"
   :ensure t
   :defer 0.5
   :after org-mode
-  :hook
-  (dired-mode . org-download-enable))
+  :hook (dired-mode))
 
 (defun ns/org-agenda-process-inbox-item ()
   "Process a single item in the org-agenda."
@@ -2243,19 +2224,19 @@ code-vs-text is handled appropriately."
    ("C-c C-t e" . ef-themes-toggle)))
 (load-theme 'ef-dark :no-confirm)
 
-(use-package golden-ratio
-  :ensure t
-  :defer 0.5
-  :custom
-  (setq golden-ratio-auto-scale t))
+;; (use-package golden-ratio
+;;   :ensure t
+;;   :defer 0.5
+;;   :custom
+;;   (setq golden-ratio-auto-scale t))
 
-(set-face-attribute 'default t :font "Hack")
+;; (set-face-attribute 'default t :font "Hack")
 
-(use-package hide-mode-line
-  :ensure t
-  :defer 3
-  :hook
-  (completion-list-mode-hook . hide-mode-line-mode))
+;; (use-package hide-mode-line
+;;   :ensure t
+;;   :defer 3
+;;   :hook
+;;   (completion-list-mode-hook . hide-mode-line-mode))
 
 (use-package mood-line
   :ensure t
@@ -2263,105 +2244,104 @@ code-vs-text is handled appropriately."
   (mood-line-glyph-alist mood-line-glyphs-unicode))
 (mood-line-mode)
 
-(use-package ibuffer
-  :ensure nil
-  :defer 4)
+;; (use-package ibuffer
+;;   :ensure nil
+;;   :defer 4)
 
-(use-package ibuffer-vc
-  :ensure t
-  :defer 3.0)
+;; (use-package ibuffer-vc
+;;   :ensure t
+;;   :defer 3.0)
 
-(use-package smartparens
-  :ensure t
-  :defer 1
-  :custom
-  (smartparens-global-mode t)
-  :hook
-  (prog-mode . smartparens-mode)
-  (text-mode . smartparens-mode)
-  (markdown-mode . smartparens-mode)
-  (latex-mode . smartparens-mode)
-  :config
-  (progn
-    (require 'smartparens-config)
-    (smartparens-global-mode 1)
-    (show-paren-mode t)))
+;; (use-package smartparens
+;;   :ensure t
+;;   :defer 1
+;;   :custom
+;;   (smartparens-global-mode t)
+;;   :hook
+;;   (prog-mode . smartparens-mode)
+;;   (text-mode . smartparens-mode)
+;;   (markdown-mode . smartparens-mode)
+;;   (latex-mode . smartparens-mode)
+;;   :config
+;;   (progn
+;;     (require 'smartparens-config)
+;;     (smartparens-global-mode 1)
+;;     (show-paren-mode t)))
 
-(use-package rainbow-delimiters
-  :ensure t
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
+;; (use-package rainbow-delimiters
+;;   :ensure t
+;;   :hook
+;;   (prog-mode . rainbow-delimiters-mode))
 
-(use-package rainbow-mode
-  :ensure t
-  :defer 1
-  :hook
-  (prog-mode . rainbow-mode))
+;; (use-package rainbow-mode
+;;   :ensure t
+;;   :defer 1
+;;   :hook
+;;   (prog-mode . rainbow-mode))
 
-(use-package centaur-tabs
-  :ensure t
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  (defun centaur-tabs-buffer-groups ()
-    "Groups tabs based on which project root they are in if possible"
-    (let ((get-closest-projectile-project
-           (lambda (path)
-             (let ((expanded-path (f-long path)))
-               (-first (lambda (proj)
-                         (s-starts-with? proj
-                                         expanded-path))
-                       (-map (lambda (proj)
-                               (f-long proj))
-                             projectile-known-projects))))))
-      (list (cond
-             ;; Group as part of projectile project if directly part of it
-             ((condition-case _err (projectile-project-root) (error nil))
-              (f-expand (projectile-project-root)))
-             ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
-             ;; not yet tracked, or maybe temporary buffer)
-             (get-closest-projectile-project default-directory)
-             ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
-             ;; ... other groupings ...
-             (t "Other"))))))
-(defun centaur-tabs-hide-tab (x)
-  "Do no to show buffer X in tabs."
-  (let ((name (format "%s" x)))
-    (or
-     ;; Current window is not dedicated window.
-     (window-dedicated-p (selected-window))
-     ;; Buffer name not match below blacklist.
-     (string-prefix-p "*epc" name)
-     (string-prefix-p "*helm" name)
-     (string-prefix-p "*Helm" name)
-     (string-prefix-p "*Compile-Log*" name)
-     (string-prefix-p "*lsp" name)
-     (string-prefix-p "*company" name)
-     (string-prefix-p "*Flycheck" name)
-     (string-prefix-p "*tramp" name)
-     (string-prefix-p " *Mini" name)
-     (string-prefix-p "*help" name)
-     (string-prefix-p "*straight" name)
-     (string-prefix-p "*temp" name)
-     (string-prefix-p "*Help" name)
-     (string-prefix-p "*mybuf" name)
-     ;; Is not magit buffer.
-     (and (string-prefix-p "magit" name)
-          (not (file-name-extension name))))))
-:custom
-(setq centaur-tabs-enable-key-bindings t)
-(setq centaur-tabs-style "wave")
-(setq centaur-tabs-set-icons t)
-(setq centaur-tabs-set-bar 'under)
-(setq x-underline-at-descent-line t)
-(setq centaur-tabs-cycle-scope 'default)
-(setq centaur-tabs-set-modified-marker t)
-(setq centaur-tabs-modified-marker "⏺")
-;; :bind(
-;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-;;        ("C-<prior>" . centaur-tabs-backward)
-;;        ("C-<next>"  . centaur-tabs-forward))
+;; (use-package centaur-tabs
+;;   :ensure t
+;;   :demand
+;;   :config
+;;   (centaur-tabs-mode t)
+;;   (defun centaur-tabs-buffer-groups ()
+;;     "Groups tabs based on which project root they are in if possible"
+;;     (let ((get-closest-projectile-project
+;;            (lambda (path)
+;;              (let ((expanded-path (f-long path)))
+;;                (-first (lambda (proj)
+;;                          (s-starts-with? proj
+;;                                          expanded-path))
+;;                        (-map (lambda (proj)
+;;                                (f-long proj))
+;;                              projectile-known-projects))))))
+;;       (list (cond
+;;              ;; Group as part of projectile project if directly part of it
+;;              ((condition-case _err (projectile-project-root) (error nil))
+;;               (f-expand (projectile-project-root)))
+;;              ;; Try to group as part of projectile project if indirectly part of it (started from the same directory,
+;;              ;; not yet tracked, or maybe temporary buffer)
+;;              (get-closest-projectile-project default-directory)
+;;              ((string-equal "*" (substring (buffer-name) 0 1)) "proc-buffers")
+;;              ;; ... other groupings ...
+;;              (t "Other"))))))
+;; (defun centaur-tabs-hide-tab (x)
+;;   "Do no to show buffer X in tabs."
+;;   (let ((name (format "%s" x)))
+;;     (or
+;;      ;; Current window is not dedicated window.
+;;      (window-dedicated-p (selected-window))
+;;      ;; Buffer name not match below blacklist.
+;;      (string-prefix-p "*epc" name)
+;;      (string-prefix-p "*helm" name)
+;;      (string-prefix-p "*Helm" name)
+;;      (string-prefix-p "*Compile-Log*" name)
+;;      (string-prefix-p "*lsp" name)
+;;      (string-prefix-p "*company" name)
+;;      (string-prefix-p "*Flycheck" name)
+;;      (string-prefix-p "*tramp" name)
+;;      (string-prefix-p " *Mini" name)
+;;      (string-prefix-p "*help" name)
+;;      (string-prefix-p "*straight" name)
+;;      (string-prefix-p "*temp" name)
+;;      (string-prefix-p "*Help" name)
+;;      (string-prefix-p "*mybuf" name)
+;;      ;; Is not magit buffer.
+;;      (and (string-prefix-p "magit" name)
+;;           (not (file-name-extension name))))))
+;; ;; :bind(
+;; ;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+;; ;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+;; ;;        ("C-<prior>" . centaur-tabs-backward)
+;; ;;        ("C-<next>"  . centaur-tabs-forward))
+;; (setq centaur-tabs-enable-key-bindings t)
+;; (setq centaur-tabs-style "wave")
+;; (setq centaur-tabs-set-icons t)
+;; (setq centaur-tabs-set-bar 'under)
+;; (setq x-underline-at-descent-line t)
+;; (setq centaur-tabs-cycle-scope 'default)
+;; (setq centaur-tabs-set-modified-marker t)
+;; (setq centaur-tabs-modified-marker "⏺")
 
 ;; Function Keys
 (global-set-key (kbd "<f1>") 'password-store-copy)
@@ -2393,4 +2373,4 @@ code-vs-text is handled appropriately."
 (global-unset-key (kbd "<insertchar>"))
 
 (provide 'init.el)
-;;; init.el ends here
+;; ;;; init.el ends here

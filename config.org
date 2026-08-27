@@ -82,7 +82,6 @@ project" . projectile-switch-project)))~ (untested) |
 
 
 
-
 * Initial Setup
 
 Library headers have specific [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Library-Headers.html][conventions]] which we setup for the ~init.el~ and all child documents. There is a header
@@ -198,9 +197,9 @@ package explicitly has ~:demand t~ set).
           ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
         package-archive-priorities
         '(("MELPA" . 10)
-          ("GNU ELPA"	. 5)
-          ("NonGNU ELPA"	. 5)
-          ("MELPA Stable"	. 3)
+          ("GNU ELPA" . 5)
+          ("NonGNU ELPA" . 5)
+          ("MELPA Stable" . 3)
           ("jcs elpa" . 0))))
 
 #+END_SRC
@@ -285,8 +284,7 @@ Not currently tangled.
   (compile-angel-verbose nil)
   :config
   (compile-angel-on-load-mode)
-  :hook
-  (emacs-lisp-mode . compile-angel-on-save-local-mode))
+  :hook emacs-lisp-mode)
 #+END_SRC
 
 * Emacs Global Configuration
@@ -310,111 +308,111 @@ bars.
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package emacs
-    :custom
-    (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
-    (confirm-kill-processes nil) ; Stop confirming the killing of processes
-    (custom-file "~/.config/emacs/custom.el")
-    (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
-    (dired-dwim-target t) ; move file to other pane as default destination
-    (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
-    (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
-    (global-goto-address-mode t)
-    (global-visual-line-mode t) ; Visual line wrap
-    (history-length 1000) ; Mini-buffer history
-    (inhibit-startup-message t) ; Hide the startup message
-    (inhibit-startup-screen t) ; Disable startup screen
-    (initial-scratch-message "") ; Make *scratch* buffer blank
-    (initial-scratch-message nil)
-    (lisp-indent-offset 2)
-    (mode-line-compact t)
-    (package-install-upgrade-built-in t) ; Upgrade built-in packages
-    (pixel-scroll-precision-mode t)
-    (ring-bell-function 'ignore)  ; Disable bell sound
-    (undo-limit 320000) ; Increase the undo history limits
-    (undo-strong-limit 640000)
-    (use-dialog-box nil) ; No dialog pop-ups
-    (vc-handled-backends '(Git))
-    (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-    (winner-mode t) ; toggling window configuration
-    (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
-    (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
-    (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
-    (reb-re-syntax 'string) ;; Sane syntax in rebuilder
-    (window-combination-resize t) ;; Proportional window resizing
-    (help-window-select t) ;; Auto-select help windows
-    (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
-    ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
-    ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
-    ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
-    (add-to-list 'display-buffer-alist
-                 '("\\`\\*\\(Warnings\\|Compile-Log\\|Messages\\)\\*\\'"
-                   (display-buffer-no-window) (allow-no-window . t)))
-    ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
-    ;; (when (and (fboundp 'native-comp-available-p)
-    ;;         (native-comp-available-p))
-    ;;   (setq native-comp-async-report-warnings-errors nil
-    ;;     native-comp-deferred-compilation t))
-    :config
-    (add-to-list 'default-frame-alist '(alpha-background . 85))
-    (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
-    (setq-default fill-column 120) ; Reset line-length
-    (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 4)
-    (setq-default sh-basic-offset 2)
-    (setq-default sh-indentation 2)
-    (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
-    (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
-    ;; Disable birectional text scanning
-    (setq-default bidi-display-reordering 'left-to-right
-                  bidi-paragraph-direction 'left-to-right)
-    (setq bidi-inhibit-bpa t)
-    ;; Don't render cursors in non-focused windows
-    (setq-default cursor-in-non-selected-windows nil)
-    (setq highlight-nonselected-windows nil)
-    (setopt dictionary-server "dict.org")
-    :bind (("C-c U" . revert-buffer)
-           ("C-c D" . toggle-debug-on-error)
-           ("C-c l" . org-store-link)
-           ("C-c c" . org-capture)
-           ("C-c a" . org-agenda)
-           ("C-c b" . org-iswitchb)
-           ("C-x p i" . org-org-cliplink)
-           ("C-x g" . magit-status)
-           ("C-c R" . code-review-forge-pr-at-point)
-           ("s-SPC" . cycle-spacing))
-    :hook
-    ((latex-mode
-      markdown-mode
-      org-mode
-      prog-mode
-      text-mode) . auto-fill-mode)
-    ((latex-mode
-      prog-mode) . hs-minor-mode)
-    ;; ((git-commit-mode
-    ;;   forge-post-mode) . gfm-mode)
-    (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
-    (auto-fill-function . do-auto-fill)
-    (before-save . delete-trailing-whitespace)
-    (before-save . do-auto-fill)
-    (dired-mode . auto-revert-mode) ; auto refresh dired when files change
-    (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
-    ;; imenu
-    ((markdown-mode
-      makefile-mode
-      prog-mode) . imenu-add-menubar-index)
-    ((markdown-mode
-      makefile-mode
-      prog-mode) . (lambda () (setq imenu-auto-rescan t)))
-    :init
-    (epa-file-enable)
-    (tool-bar-mode 0)
-    (scroll-bar-mode 0)
-    (menu-bar-mode t)
-    (global-display-line-numbers-mode t)
-    (global-hl-line-mode t)
-    (savehist-mode t)
-    (recentf-mode t)
-    (global-auto-revert-mode t))
+  :custom
+  (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
+  (confirm-kill-processes nil) ; Stop confirming the killing of processes
+  (custom-file "~/.config/emacs/custom.el")
+  (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
+  (dired-dwim-target t) ; move file to other pane as default destination
+  (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
+  (global-auto-revert-non-file-buffers t) ; Update non-file buffers (Dired) when disk changes
+  (global-goto-address-mode t)
+  (global-visual-line-mode t) ; Visual line wrap
+  (history-length 1000) ; Mini-buffer history
+  (inhibit-startup-message t) ; Hide the startup message
+  (inhibit-startup-screen t) ; Disable startup screen
+  (initial-scratch-message "") ; Make *scratch* buffer blank
+  (initial-scratch-message nil)
+  (lisp-indent-offset 2)
+  (mode-line-compact t)
+  (package-install-upgrade-built-in t) ; Upgrade built-in packages
+  (pixel-scroll-precision-mode t)
+  (ring-bell-function 'ignore)  ; Disable bell sound
+  (undo-limit 320000) ; Increase the undo history limits
+  (undo-strong-limit 640000)
+  (use-dialog-box nil) ; No dialog pop-ups
+  (vc-handled-backends '(Git))
+  (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
+  (winner-mode t) ; toggling window configuration
+  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
+  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
+  (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
+  (reb-re-syntax 'string) ;; Sane syntax in rebuilder
+  (window-combination-resize t) ;; Proportional window resizing
+  (help-window-select t) ;; Auto-select help windows
+  (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
+  ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
+  ;; (browse-url-browser-function 'eww-browse-url) ; Set eww as the default browser
+  ;; https://protesilaos.com/codelog/2024-11-28-basic-emacs-configuration/
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*\\(Warnings\\|Compile-Log\\|Messages\\)\\*\\'"
+                 (display-buffer-no-window) (allow-no-window . t)))
+  ;; Turn off package install warnings https://codeberg.org/jcastp/emacs.d/src/branch/main/emacs-config.org#headline-16
+  ;; (when (and (fboundp 'native-comp-available-p)
+  ;;         (native-comp-available-p))
+  ;;   (setq native-comp-async-report-warnings-errors nil
+  ;;     native-comp-deferred-compilation t))
+  :config
+  (add-to-list 'default-frame-alist '(alpha-background . 85))
+  (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
+  (setq-default fill-column 120) ; Reset line-length
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 4)
+  (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
+  (setq-default cursor-type 'bar)     ; Line-style cursor similar to other text editors
+  (setq-default frame-title-format '("%f"))     ; Make window title the buffer name
+  ;; Disable birectional text scanning
+  (setq-default bidi-display-reordering 'left-to-right
+                bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t)
+  ;; Don't render cursors in non-focused windows
+  (setq-default cursor-in-non-selected-windows nil)
+  (setq highlight-nonselected-windows nil)
+  (setopt dictionary-server "dict.org")
+  :bind (("C-c U" . revert-buffer)
+         ("C-c D" . toggle-debug-on-error)
+         ("C-c l" . org-store-link)
+         ("C-c c" . org-capture)
+         ("C-c a" . org-agenda)
+         ("C-c b" . org-iswitchb)
+         ("C-x p i" . org-org-cliplink)
+         ("C-x g" . magit-status)
+         ("C-c R" . code-review-forge-pr-at-point)
+         ("s-SPC" . cycle-spacing))
+  :hook
+  ((latex-mode
+    markdown-mode
+    org-mode
+    prog-mode
+    text-mode) . auto-fill-mode)
+  ((latex-mode
+    prog-mode) . hs-minor-mode)
+  ;; ((git-commit-mode
+  ;;   forge-post-mode) . gfm-mode)
+  (compilation-finish-functions . (lambda (buf strg) (kill-buffer buf)))
+  (auto-fill-function . do-auto-fill)
+  (before-save . delete-trailing-whitespace)
+  (before-save . do-auto-fill)
+  (dired-mode . auto-revert-mode) ; auto refresh dired when files change
+  (after-save . executable-make-buffer-file-executable-if-script-p) ;; Make scripts executable on save
+  ;; imenu
+  ((markdown-mode
+    makefile-mode
+    prog-mode) . imenu-add-menubar-index)
+  ((markdown-mode
+    makefile-mode
+    prog-mode) . (lambda () (setq imenu-auto-rescan t)))
+  :init
+  (epa-file-enable)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0)
+  (menu-bar-mode t)
+  (global-display-line-numbers-mode t)
+  (global-hl-line-mode t)
+  (savehist-mode t)
+  (recentf-mode t)
+  (global-auto-revert-mode t))
 
 ;; Set the font a bit larger if on crow
 ;; (if (system-name) "crow" (add-to-list 'default-frame-alist '(font . "FreeMono Regular 12")))
@@ -616,11 +614,7 @@ pulled the others in as dependencies of other packages but have opted to purge t
 (use-package company
   :ensure t
   :defer 0.5
-  :hook
-  (text-mode . company-mode)
-  (prog-mode . company-mode)
-  (org-src-mode . company-mode)
-  ;; https://themagitian.github.io/posts/emacsconfig/
+  :hook (test-mode prog-mode org-src-mode)
   :custom
   (company-minimum-prefix-length 3)
   (company-idle-delay 0.3)
@@ -920,9 +914,9 @@ undo buffer history]] was insightful too.
   :ensure t
   :defer 0.5
   :bind (("C-c v" . vundo))
-  :hook
-  (prog-mode . vundo-popup-mode)
-  (text-mode . vundo-popup-mode))
+  :hook (prog-mode text-mode))
+  ;; (prog-mode . vundo-popup-mode)
+  ;; (text-mode . vundo-popup-mode))
 
 #+END_SRC
 
@@ -1117,15 +1111,14 @@ literally everything under Git version control.
 [[https://github.com/wandersoncferreira/code-review/][code-review]]
 
 #+NAME: code-code-review
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 
 (use-package code-review
   :ensure t
   :custom
   (code-review-fill-column 120)
   (code-review-new-buffer-window-strategy #'switch-to-buffer)
-  :hook
-  (code-review-mode . emojify-mode))
+  :hook (emojify-mode))
 
 #+END_SRC
 
@@ -1587,7 +1580,7 @@ Not currently tangled.
 (use-package magit-delta
   :ensure t
   :after magit
-  :hook (magit-mode . magit-delta-mode))
+  :hook (magit-mode))
 
 #+END_SRC
 ** magit-gitlab
@@ -2056,8 +2049,7 @@ Not currently tangled.
 (use-package org-tidy
   :ensure t
   :after (org-mode)
-  :hook
-  (org-mode . org-tidy-mode))
+  :hook (org-mode))
 
 #+END_SRC
 
@@ -2087,8 +2079,7 @@ Not currently tangled.
     :ensure t
     :defer 0.5
     :after org-mode
-    :hook
-    (dired-mode . org-download-enable))
+    :hook (dired-mode))
 
 #+END_SRC
 
@@ -3119,8 +3110,7 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package r-ts-mode
   :ensure t
-  :hook
-  (ess-mode . r-ts-mode))
+  :hook (ess-mode))
 
 #+END_SRC
 
@@ -3134,8 +3124,7 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package r-autoyas
   :ensure t
-  :hook
-  (ess-mode . r-autoyas-ess-activate))
+  :hook (ess-mode . r-autoyas-ess-activate))
 
 #+END_SRC
 
@@ -4511,8 +4500,12 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 **** hs-minor-mode
 <<sec:hs-minor-mode>>
 
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Hideshow.html][Hideshow]] is "/a buffer-local minor mode that allows you to selectively display portions of a program, which are referred
+to as blocks./".
+
 #+NAME: code-hs-minor-mode
 #+BEGIN_SRC emacs-lisp :tangle init.el
+;; Hideshow minor mode for blocks of code
 ;; Systems and General Purpose
 (add-hook 'c-mode-hook #'hs-minor-mode)
 (add-hook 'c++-mode-hook #'hs-minor-mode)
@@ -4542,11 +4535,7 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
   :commands outline-indent-minor-mode
   :custom
   (outline-indent-ellipsis " ▼")
-  :hook (haskell-mode . outline-indent-minor-mode)
-  (python-mode . outline-indent-minor-mode)
-  (python-ts-mode . outline-indent-minor-mode)
-  (yaml-mode . outline-indent-minor-mode)
-  (yaml-ts-mode . outline-indent-minor-mode))
+  :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
 
 ;; Python
 ;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
@@ -4640,7 +4629,6 @@ Some useful resources on ~dired~ can also be found in
   ;; (setq dirvish-use-header-line nil)     ; hide header line (show the classic dired header)
   ;; (setq dirvish-use-mode-line nil)       ; hide mode line
   (setq dirvish-use-header-line 'global)    ; make header line span all panes
-
   ;; Hide the parent directory
   (setq dirvish-default-layout '(0 0.4 0.6))
   ;; Height
@@ -4649,7 +4637,6 @@ Some useful resources on ~dired~ can also be found in
   ;;;   - height in full-frame sessions is 35
   (setq dirvish-header-line-height '(25 . 35))
   (setq dirvish-mode-line-height 25) ; shorthand for '(25 . 25)
-
   ;; Segments
   ;;; 1. the order of segments *matters* here
   ;;; 2. it's ok to place raw string inside
@@ -5392,6 +5379,10 @@ my FreshRSS instance. All very meta!
 ** Elfeed-org
 <<sec:elfeed-org>>
 
+[[https://github.com/remyhonig/elfeed-org][elfeed-org]] allows you to configure [[sec:elfeed][Elfeed]] using an Org file. It allows hierarchical tags from the org structure to be
+inherited, simplifying tags. I used to use this when I used Elfeed more, but since switching to FreshRSS I only have a
+single RSS feed to read so no longer maintain my ~elfeed.org~ referenced below.
+
 #+NAME: code-elfeed-org
 #+BEGIN_SRC emacs-lisp :tangle no
 
@@ -5821,7 +5812,11 @@ also hide certain buffers I don't need to see often.
      ;; Is not magit buffer.
      (and (string-prefix-p "magit" name)
           (not (file-name-extension name))))))
-:custom
+;; :bind(
+;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
+;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
+;;        ("C-<prior>" . centaur-tabs-backward)
+;;        ("C-<next>"  . centaur-tabs-forward))
 (setq centaur-tabs-enable-key-bindings t)
 (setq centaur-tabs-style "wave")
 (setq centaur-tabs-set-icons t)
@@ -5830,11 +5825,6 @@ also hide certain buffers I don't need to see often.
 (setq centaur-tabs-cycle-scope 'default)
 (setq centaur-tabs-set-modified-marker t)
 (setq centaur-tabs-modified-marker "⏺")
-;; :bind(
-;;        ;; ("C-c t C-<right>" ("Move tab right" . centaur-tabs-move-current-tab-to-right))
-;;        ;; ("C-c t C-<left>" ("Move tab left" . centaur-tabs-move-current-tab-to-left))
-;;        ("C-<prior>" . centaur-tabs-backward)
-;;        ("C-<next>"  . centaur-tabs-forward))
 
 
 #+END_SRC
@@ -5968,6 +5958,7 @@ Codeberg Pages once I've sussed those out).
 ** Examples
 
 + [[https://panadestein.github.io/emacsd/][Emacs literate configuration]] by Panadestein
++ [[https://web.archive.org/web/20240525044519/https://themagitian.github.io/posts/emacsconfig/][Configuring Emacs - Magitian]] covers lots of things I use, very useful
 + [[https://tkreuziger.com/posts/2023-11-24-setting_up_my_literate_config_for_emacs/][Setting up my literate config for Emacs | Tristan Kreuziger]]
 + [[http://whattheemacsd.com/][What the .emacs.d!?]]
 + [[https://www.mauromotion.com/posts/2026-01-01-emacs/][Entering the Church of Emacs - mauromotion.com]] (links to [[https://github.com/mauromotion/dotfiles/blob/main/common/emacs/config.org][configuration]] on GitHub)
@@ -6006,31 +5997,66 @@ I'm still learning and had to ask questions to get to where I am. Here are the h
 
 + [[https://emacs.stackexchange.com/questions/85329/org-mode-blink-cursor-error/85332#85332][org-mode blink-cursor error]]
 
-* Appendix : ToDo
-Tasks I'm yet to complete in re-writing...
-
-- [X] Switch to using ~:custom~ over ~:config~ as described [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][here]].
-- [ ] Test the ~compilation-finish-function~ hook will kill compilation buffers.
-- [ ] Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
-- [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving (change header and )
-
-* Appendix : Trouble Shooting
+* Appendix : ToDo Trouble Shooting
 
 Testing the new configuration I've found the following aren't quiet working properly.
 
+** TODO Improvements
+
+James Cherti seems to know what he's talking about and also shares his knowledge via a blog. The following are things I
+should improve.
+
++ [ ] Update to follow the recommendations to work with [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][ispell and aspell]].
++ [ ] Improve scrolling a lá [[https://www.jamescherti.com/emacs-scrolling-better-performance-usability/][Configuring Emacs Scrolling for Better Performance and Usability | James Cherti]]
++ [ ] [[https://www.jamescherti.com/emacs-fix-org-mode-copy-paste-yank-bleed/][Copy-paste without Emacs org-mode or markdown-mode formatting bleeding into other buffers]]
++ [ ] https://www.jamescherti.com/emacs-why-use-setq-instead-setopt/
+
 ** General
 
-+ [X] Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
-+ [X] Mouse wheel for scrolling isn't working - randomly started working on its own, keep an eye on this.
-+ [X] No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
-+ [X] Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~.
-+ [X] Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
-  properly). *Solution*: appears to now work.
-+ [ ] Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
+*** TODO Improve use-package hooks
+
+The [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Hooks][docs on hooks]] show that ...
+
+#+begin_example elisp
+(use-package: something
+  :hook (prog-mode . something-mode))
+#+end_example
+
+...can be simplified to...
+
+#+begin_example elisp
+(use-package: something
+  :hook prog-mode)
+#+end_example
+
+*** TODO Auto-hide buffers
+Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
-+ [X] Don't get the option to ~diff~ when ~recover-this-file~ *Solution*: appears to now work.
-+ [X] Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
-+ [ ] Files always result in ~setq-empty-p nil~, debug follows...
+
+*** TODO Mouse wheel
+Scrolling with mouse wheel is intermittent - randomly started working on its own on some machines, keep an eye on this.
+*** TODO ~compilation-finish-function~ hook
+Test the ~compilation-finish-function~ hook will kill compilation buffers.
+*** TODO which-key
+Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
+*** DONE Auto-tangle
+- [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving, also outputs to HTML. *Solution*: missed this one!
+*** DONE Transparency
++ Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
+*** DONE Tab icons
+No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
+*** DONE modeline
+Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~.
+*** line wrapping
+Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
+properly). *Solution*: appears to now work.
+*** DONE diff recovering files
+Don't get the option to ~diff~ when ~recover-this-file~ *Solution*: appears to now work.
+*** DONE automatically create dirs
+Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
+*** DONE Errors opening files
+
+Opening files always result in ~setq-empty-p nil~, debug follows...
 
 #+BEGIN_EXAMPLE
 Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
@@ -6052,8 +6078,9 @@ Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
   funcall-interactively(find-file "~/.config/emacs/init.el" t)
   command-execute(find-file)
 #+END_EXAMPLE
+*** WONT-DO Buffer guardian
 
-+ [ ] [[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]I think this might be causing some problems with my configuration editing, although I also see...
+[[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]I think this might be causing some problems with my configuration editing, although I also see...
 
 #+begin_example
 ⛔ Warning (flycheck): Syntax checker lsp reported too many errors (3848) and is disabled.
@@ -6063,28 +6090,33 @@ change the threshold or ‘C-u C-c ! x’ to re-enable the checker.
 
 ** DONE Themes
 
-+ [X] Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
-  ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
-  issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
-  perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
-  byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
+Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
+~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
+issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] suggests that it has to be a new version of modus themes and not the one bundled in Emacs so
+perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
+byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
 
-** ~magit~
+** TODO ~magit~
+
+*** TODO GFM mode for Forge
 
 + [ ] Having set the mode to be GFM for Forge posts it has clobbered all the key-bindings. Major mode is GFM from
   Markdown mode, how to get this as a minor mode/hook so major mode remains "Forge"
-+ [X] Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
-  ~e04e6d9~ (after ~53363e0~)
-+ [X] Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
-  completion of hooks being run.
-+ [X] Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits. *Solution*:
-  ~9aec0d1~
++ [ ] Disable line-wrapping in Forge buffers.
+*** DONE Worktrees
 
-** TODO Flyspell
+Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
+~e04e6d9~ (after ~53363e0~)
+*** DONE Pre-commit
 
-+ [ ] Update to follow the recommendations to work with [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][ispell and aspell]].
+Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
+ completion of hooks being run.
+*** DONE direnv
+Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits. *Solution*:
+~9aec0d1~
 
-** LSP mode
+
+** TODO LSP mode
 
 Mostly seems to be working but...
 
@@ -6190,10 +6222,10 @@ Version mismatch is commonly encountered in the following situations:
 
 + [X] Additional entries to the transient are not appearing.
 
-** Functions
+** TODO Functions
 
 + [ ] Custom functions for markdown > org and org > markdown don't appear to be available.
 
-** Completion preview
+** DONE Completion preview
 
 + [X] Add key-bindings.  *Solution* : ~22c042e~
