@@ -307,7 +307,7 @@ bars.
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (use-package emacs
+(use-package emacs
   :custom
   (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
   (confirm-kill-processes nil) ; Stop confirming the killing of processes
@@ -910,7 +910,7 @@ undo buffer history]] was insightful too.
   :ensure t
   :defer 0.5
   :bind (("C-c v" . vundo))
-  :hook (prog-mode text-mode))
+  :hook ((prog-mode hook-mode) . vundo-popup-mode))
 
 #+END_SRC
 
@@ -5357,7 +5357,7 @@ my FreshRSS instance. All very meta!
   :ensure t
   :defer 2)
 (setq elfeed-feeds
-  '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+      '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 #+END_SRC

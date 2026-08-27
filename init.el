@@ -422,7 +422,7 @@ Version 2015-07-27"
   :ensure t
   :defer 0.5
   :bind (("C-c v" . vundo))
-  :hook (prog-mode text-mode))
+  :hook ((prog-mode hook-mode) . vundo-popup-mode))
 
 (use-package which-key
   :ensure t
@@ -1804,7 +1804,6 @@ current buffer, killing it."
 
 ;; Initially set to 0
 (setq active-projects-list nil)
-
 (setq project-org-id-alist
       '(("~/org/" . "5be58bbc-beeb-451d-bcc5-b3987257e581")
         ("~/org-roam/" . "46553056-ef21-48a0-a58d-c2c64ae8b56b")
@@ -1834,8 +1833,6 @@ project, at least until you switch to a different project."
                                              (org-clock-out))))
       (org-with-point-at (org-id-find org-id 'marker)
                          (org-clock-in)))))
-
-
 (add-hook 'buffer-list-update-hook 'log-active-project)
 
 (use-package consult-projectile
@@ -2160,7 +2157,7 @@ code-vs-text is handled appropriately."
   :ensure t
   :defer 2)
 (setq elfeed-feeds
-  '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+      '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 (use-package comet-trail
@@ -2348,54 +2345,3 @@ code-vs-text is handled appropriately."
 
 (provide 'init.el)
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(all-the-icons-dired all-the-icons-ibuffer auto-package-update beacon
-			 blacken casual-suite centaur-tabs
-			 citar-org-roam cl-generic code-review
-			 comet-trail company conflict-buttons
-			 consult-projectile devdocs difftastic
-			 dired-duplicates dired-quick-sort
-			 dired-ranger dired-rsync-transient
-			 dired-subtree direnv dirvish display-wttr
-			 editorconfig ef-themes eglot elfeed-org
-			 embark-consult envrc erc ess-smart-underscore
-			 essgd exec-path-from-shell faceup fj flycheck
-			 flymake-ruff gh-notify git-cliff git-gutter
-			 git-link git-modes git-timemachine
-			 gitlab-ci-mode glab gnu-elpa-keyring-update
-			 golden-ratio helpful hide-mode-line
-			 ibuffer-vc idlwave jq-mode just-mode
-			 keychain-environment lazy-ruff lsp-jedi
-			 lsp-ltex-plus lsp-ui magit-browse-commit
-			 magit-gitlab magit-imerge magit-pre-commit
-			 magit-stats map marginalia mason mermaid-mode
-			 mermaid-ts-mode mood-line move-text mpdel
-			 nadvice ntlm numpydoc ob-mermaid orderless
-			 org-analyzer org-download org-grimoire
-			 org-gtd org-links org-modern org-rainbow-tags
-			 org-ref org-roam-bibtex org-roam-timestamps
-			 org-roam-ui org-wild-notifier orgit-forge osm
-			 outline-indent password-store-menu
-			 password-store-otp peg poly-R poly-org
-			 poly-rst python python-pytest pyvenv
-			 rainbow-delimiters rainbow-mode realgud-ipdb
-			 rg ruff-format scratch scratch-plus sicp
-			 smartparens so-long soap-client
-			 sqlite-mode-extras ssh-agency svg tmr
-			 track-changes tramp treemacs-magit
-			 treesit-fold treesit-ispell use-package
-			 uv-mode verilog-mode vertico vundo which-key
-			 why-this window-tool-bar wttrin
-			 yasnippet-snippets))
- '(projectile-auto-discover-projects t nil nil "Customized with use-package projectile"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
