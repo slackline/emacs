@@ -549,6 +549,12 @@ Version 2015-07-27"
                               ("C-c m l f" . magit-log-buffer-file)
                               ("C-c m l o" . magit-log-other))))
 
+(use-package consult-magit
+  :ensure t
+  :after (consult magit)
+  :hook (magit-status-mode . consult-magit-record-repo)
+  :bind ("C-c C-g" . consult-magit))
+
 (use-package difftastic
   :ensure t
   :demand t

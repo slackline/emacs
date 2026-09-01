@@ -1159,6 +1159,21 @@ literally everything under Git version control.
 
 #+END_SRC
 
+** consult-magit
+<<sec:consult-magit>>
+
+[[https://github.com/nhojb/consult-magit][consult-magit]]
+
+#+NAME: code-consult-magit
+#+BEGIN_SRC
+(use-package consult-magit
+  :ensure t
+  :after (consult magit)
+  :hook (magit-status-mode . consult-magit-record-repo)
+  :bind ("C-c C-g" . consult-magit))
+
+#+END_SRC
+
 ** consult-gh
 <<sec:consult-gh>>
 
