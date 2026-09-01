@@ -5864,7 +5864,7 @@ also hide certain buffers I don't need to see often.
 #+END_SRC
 
 
-*** Keybindings
+** Keybindings
 <<sec:keybindings>>
 
 #+NAME: code-keybindings
@@ -5897,6 +5897,9 @@ also hide certain buffers I don't need to see often.
 ;; Unset overwrite-mode
 (global-unset-key (kbd "<insert>"))
 (global-unset-key (kbd "<insertchar>"))
+
+;; Toggle visual-line-mode (aka line wrapping)
+(global-set-key (kbd "C-c C-l") 'visual-line-mode)
 
 #+END_SRC
 

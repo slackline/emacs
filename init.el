@@ -2346,5 +2346,8 @@ code-vs-text is handled appropriately."
 (global-unset-key (kbd "<insert>"))
 (global-unset-key (kbd "<insertchar>"))
 
+;; Toggle visual-line-mode (aka line wrapping)
+(global-set-key (kbd "C-c C-l") 'visual-line-mode)
+
 (provide 'init.el)
 ;;; init.el ends here
