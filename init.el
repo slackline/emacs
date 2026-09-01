@@ -48,6 +48,7 @@
   (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
   (confirm-kill-processes nil) ; Stop confirming the killing of processes
   (custom-file "~/.config/emacs/custom.el")
+  (delete-selection-mode t)
   (describe-bindings-outline-rules ((match-regexp . "Key translations\|Minor Mode Bindings"))) ; https://ottawa.place/@plantarum/116891458751803204
   (dired-dwim-target t) ; move file to other pane as default destination
   (enable-recursive-minibuffers t) ; Vertico - open new minibuffers from inside a minibuffer
@@ -64,6 +65,8 @@
   (package-install-upgrade-built-in t) ; Upgrade built-in packages
   (pixel-scroll-precision-mode t)
   (ring-bell-function 'ignore)  ; Disable bell sound
+  (savehist-mode t) ; Save minibuffer history between sessions
+  (save-place-mode t) ; Save place in file between sessions
   (undo-limit 320000) ; Increase the undo history limits
   (undo-strong-limit 640000)
   (use-dialog-box nil) ; No dialog pop-ups
