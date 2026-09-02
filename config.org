@@ -1165,7 +1165,7 @@ literally everything under Git version control.
 [[https://github.com/nhojb/consult-magit][consult-magit]]
 
 #+NAME: code-consult-magit
-#+BEGIN_SRC
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package consult-magit
   :ensure t
   :after (consult magit)
@@ -6104,9 +6104,9 @@ Ensure ~(desc . command)~ is used for all custom key-bindings so that they are a
 No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
 *** DONE modeline
 Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~.
-*** line wrapping
+*** DONE line wrapping
 Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
-properly). *Solution*: appears to now work.
+properly). *Solution*: appears to now work ~visual-line-mode~ 🤦.
 *** DONE diff recovering files
 Don't get the option to ~diff~ when ~recover-this-file~ *Solution*: appears to now work.
 *** DONE automatically create dirs
@@ -6154,11 +6154,14 @@ perhaps need to force downloading and installing both ~modus-themes~ (which appe
 byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
 
 ** TODO ~magit~
-*** TODO GFM mode for Forge
+*** DONE GFM mode for Forge
+CLOSED: [2026-09-02 Wed 11:49]
 
-+ [ ] Having set the mode to be GFM for Forge posts it has clobbered all the key-bindings. Major mode is GFM from
++ [X] Having set the mode to be GFM for Forge posts it has clobbered all the key-bindings. Major mode is GFM from
   Markdown mode, how to get this as a minor mode/hook so major mode remains "Forge"
-+ [ ] Disable line-wrapping in Forge buffers.
++ [X] Enable ~lsp-ltex-plus~ for ~forge-post-mode~. *Solution*: ~e4535ef~
++ [X] Disable line-wrapping in Forge buffers. *Solution*: ~e88e54f~
+
 *** DONE Worktrees
 
 Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
