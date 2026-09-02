@@ -1781,7 +1781,8 @@ current buffer, killing it."
 
 (use-package lsp-ltex-plus
   :ensure t
-  :defer t
+  :after (lsp-mode)
+  :hook (forge-post-mode)
   :init
   (lsp-ltex-plus-enable-for-modes)
   :custom

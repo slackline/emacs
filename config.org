@@ -4173,7 +4173,8 @@ files. Needs the language server installing (unless done via [[sec:mason][Mason]
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package lsp-ltex-plus
   :ensure t
-  :defer t
+  :after (lsp-mode)
+  :hook (forge-post-mode)
   :init
   (lsp-ltex-plus-enable-for-modes)
   :custom
