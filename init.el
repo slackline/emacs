@@ -577,6 +577,8 @@ Version 2015-07-27"
   :ensure t
   :defer 0.5
   :after magit
+  :hook (forge-post-mode . (lambda ()
+                             (visual-line-mode -1)))
   :config
   (push '("forgejo.nshephard.dev"
           "forgejo.nshephard.dev/api/v1"
