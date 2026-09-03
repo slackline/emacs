@@ -25,8 +25,9 @@
 (use-package use-package
   :config
   (setq use-package-always-ensure t)
-  (setq use-package-always-defer t)
   (setq use-package-expand-minimally t)
+  ;; Gather loading statistics, use M-x use-package-report to summarise
+  (setq use-package-compute-statistics t)
   ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
@@ -34,12 +35,14 @@
         '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
           ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
           ("MELPA Stable" . "https://releases.melpa.org/packages/")
-          ("MELPA"	. "https://snapshots.melpa.org/packages/")
+          ("MELPA Snapshots" . "https://snapshots.melpa.org/packages/")
+          ("MELPA"	. "https://melpa.org/packages/")
           ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
         package-archive-priorities
-        '(("MELPA" . 10)
+        '(("MELPA Snapshots" . 10)
           ("GNU ELPA" . 5)
           ("NonGNU ELPA" . 5)
+          ("MELPA" . 4)
           ("MELPA Stable" . 3)
           ("jcs elpa" . 0))))
 
@@ -164,8 +167,7 @@
   :bind (("C-c C-k" . 'keychain-refresh-environment)))
 
 (use-package emojify
-  :hook
-  (after-init . global-emojify-mode))
+  :hook (after-init . global-emojify-mode))
 
 (defun toggle-delete-other-windows ()
   "Delete other windows in frame if any, or restore previous window config."
@@ -229,13 +231,11 @@ Version 2015-07-27"
 
 (use-package beacon
   :ensure t
-  :defer 2
   :custom (setq beacon-color "#666600")
   :hook   ((org-mode text-mode) . beacon-mode))
 
 (use-package company
   :ensure t
-  :defer 0.5
   :hook (test-mode prog-mode org-src-mode)
   :custom
   (company-minimum-prefix-length 3)
@@ -251,10 +251,8 @@ Version 2015-07-27"
 
 (use-package completion-preview
   :ensure t
-  :defer 2
   :after (comint)
-  :hook
-  ((prog-mode text-mode comint-mode) . completion-preview-mode)
+  :hook (prog-mode text-mode comint-mode)
   :config
   (setq completion-preview-minimum-symbol-length 2)
   :bind
@@ -335,7 +333,6 @@ Version 2015-07-27"
 
 (use-package embark
   :ensure t
-  :defer 0.5
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
@@ -364,7 +361,6 @@ Version 2015-07-27"
 
 (use-package embark-consult
   :ensure t
-  :defer 0.5
   :after (consult embark))
 
 (use-package marginalia
@@ -384,7 +380,6 @@ Version 2015-07-27"
 
 (use-package move-text
   :ensure t
-  :defer 0.5
   :config
   (move-text-default-bindings))
 
@@ -423,13 +418,11 @@ Version 2015-07-27"
 
 (use-package vundo
   :ensure t
-  :defer 0.5
   :bind (("C-c v" . vundo))
   :hook ((prog-mode hook-mode) . vundo-popup-mode))
 
 (use-package which-key
   :ensure t
-  :defer 0.5
   :config (which-key-mode)
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
   ;; +prefix isn't helpful, lets sort that out via...
@@ -495,7 +488,6 @@ Version 2015-07-27"
 
 (use-package helpful
   :ensure t
-  :defer 0.5
   :bind (("C-h C" . helpful-command)
          ("C-h f" . helpful-callable)
          ("C-h F" . helpful-function)
@@ -575,7 +567,6 @@ Version 2015-07-27"
 
 (use-package forge
   :ensure t
-  :defer 0.5
   :after magit
   :hook (forge-post-mode . (lambda ()
                              (visual-line-mode -1)))
@@ -588,40 +579,34 @@ Version 2015-07-27"
 
 (use-package ghub
   :ensure t
-  :defer 0.5
   :after (magit))
 
 (use-package glab
   :ensure t
-  :defer 0.5
   :after (magit))
 
 (use-package git-gutter
   :ensure t
-  :defer 0.5
   :after magit
   :custom
   (global-git-gutter-mode +1))
 
 (use-package git-cliff
-  :ensure t  :defer 2
+  :ensure t
   :after (magit))
 
 (use-package conflict-buttons
   :ensure t
-  :defer 2
   :after (magit)
   :custom
   (conflict-buttons-global-mode 1))
 
 (use-package fj
   :ensure t
-  :defer 0.6
   :after (magit))
 
 (use-package gitlab-ci-mode
   :ensure t
-  :defer 2
   :after (glab))
 
 (use-package git-link
@@ -636,26 +621,18 @@ Version 2015-07-27"
 
 (use-package git-modes
   :ensure t
-  :defer 3
-  :after (magit))
-
-(use-package gh-notify
-  :ensure t
   :after (magit))
 
 (use-package git-timemachine
   :ensure t
-  :defer 3
   :after (magit))
 
 (use-package magit-browse-commit
   :ensure t
-  :defer 3
   :after (magit))
 
 (use-package magit-gitlab
   :ensure t
-  :defer 3
   :after (magit))
 
 (use-package magit-imerge
@@ -669,17 +646,14 @@ Version 2015-07-27"
 
 (use-package magit-stats
   :ensure t
-  :defer 0.5
   :after (magit))
 
 (use-package orgit
   :ensure t
-  :defer 0.5
   :after (magit))
 
 (use-package orgit-forge
   :ensure t
-  :defer 0.5
   :after magit
   :bind (:map magit-mode-map
               ("C-c m c" . orgit-store-link))
@@ -688,12 +662,10 @@ Version 2015-07-27"
 
 (use-package treemacs-magit
   :ensure t
-  :defer 0.5
   :after (magit))
 
 (use-package why-this
   :ensure t
-  :defer 1
   :after magit
   :custom
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
@@ -775,17 +747,14 @@ Version 2015-07-27"
   (org-mode . (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save))))
 
 (use-package org-analyzer
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 (use-package org-links
   :ensure t
-  :defer 0.5
   :after org-mode)
 
 (use-package org-modern
   :ensure t
-  :defer 0.5
   :after org-mode
   :config (setq
            ;; Edit settings
@@ -812,7 +781,7 @@ Version 2015-07-27"
 
 (use-package org-rainbow-tags
   :ensure t
-  :defer 0.5)
+  :after (org-roam))
 
 (use-package org-ref
   :ensure t
@@ -820,8 +789,7 @@ Version 2015-07-27"
 
 (use-package org-download
   :ensure t
-  :defer 0.5
-  :after org-mode
+  :after (org-mode)
   :hook (dired-mode))
 
 (defun ns/org-agenda-process-inbox-item ()
@@ -857,7 +825,6 @@ Version 2015-07-27"
 
 (use-package org-wild-notifier
   :ensure t
-  :defer 10
   :custom
   ;; Notifications 10 and 30 minutes before events
   (setq org-wild-notifier-alert-time '(2 10 30)))
@@ -866,7 +833,6 @@ Version 2015-07-27"
 
 (use-package org-roam
   :ensure t
-  :defer 10
   :init
   (setq org-roam-v2-ack t)
   :custom
@@ -879,7 +845,7 @@ Version 2015-07-27"
    '(("d" "default" plain "%?"
       :if-new (file+head
                "${slug}.org"
-               "#+TITLE: %^{title}\n#+DATE: %u\n#+FILETAGS: %^{tags}\n")
+               "#+TITLE: %^{title}\n#+DATE: %u\n#+FILETAGS: :%^{tags}:\n")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
    '(("D" "dailies" entry "* %?"
@@ -906,14 +872,12 @@ Version 2015-07-27"
 
 (use-package org-roam-bibtex
   :ensure t
-  :defer 5
   :after (org-roam)
   :config
   (require 'org-ref)) ; optional: if using Org-ref v2 or v3 citation links
 
 (use-package org-roam-ui
   :ensure t
-  :defer 5
   :after (org-roam-bibtex-mode)
   :init
   (setq org-roam-ui-sync-theme t
@@ -923,7 +887,6 @@ Version 2015-07-27"
 
 (use-package citar-org-roam
   :ensure t
-  :defer 5
   :after (citar org-roam)
   :config (citar-org-roam-mode))
 
@@ -985,17 +948,6 @@ and convert it to Org using the pandoc utility."
       (string-match org-bracket-link-regexp text)
       (kill-new (substring text (match-beginning 1) (match-end 1))))))
 (define-key org-mode-map (kbd "s-c") #'ns/link-fast-copy)
-
-(use-package org-grimoire
-  :ensure t
-  :defer 4)
-
-(org-grimoire-setup "nshephard.dev"
-                    :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
-                    :base-url    "https://nshephard.dev"
-                    :site-title  "nshephard.dev"
-                    :description ""
-                    :theme "dev-theme")
 
 (use-package org-capture
   :ensure nil
@@ -1375,7 +1327,6 @@ Routine")
 
 (use-package csv-mode
   :ensure t
-  :defer 6
   :mode (("\\.csv" . csv-mode))
   :hook
   (csv-mode . csv-guess-set-separator)
@@ -1430,7 +1381,6 @@ Routine")
 
 (use-package jq-mode
   :ensure t
-  :defer 5
   :mode ("\\.json\\'" . jq-mode)
   :custom
   (add-to-list 'auto-mode-alist '("\\.json$" . jq-mode))
@@ -1443,7 +1393,7 @@ Routine")
 
 (use-package just-mode
   :ensure t
-  :defer 0.5)
+  :mode ("\\.justfile\\'" . just-mode))
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (add-hook 'latex-mode-hook 'turn-on-reftex)
@@ -1470,8 +1420,7 @@ Routine")
               ("C-c C-m" . markdown-do)))
 
 (use-package mermaid-mode
-  :ensure t
-  :defer 10)
+  :ensure t)
 
 (use-package ob-mermaid
   :ensure t
@@ -1482,9 +1431,7 @@ Routine")
   :after (mermaid-mode))
 
 (use-package python
-  :after (pyvenv)
   :ensure t
-  :defer 1
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil
@@ -1517,7 +1464,6 @@ Routine")
 
 (use-package pyvenv
   :ensure t
-  :defer 1
   :config
   ;; Setting work on to easily switch between environments
   (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
@@ -1553,13 +1499,11 @@ Routine")
 
 (use-package uv-mode
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :hook (python-mode . uv-mode-auto-activate-hook))
 
 (use-package blacken
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind
   (:map python-mode-map
@@ -1571,7 +1515,6 @@ Routine")
 
 (use-package numpydoc
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind
   (:map python-mode-map
@@ -1621,7 +1564,6 @@ Routine")
 
 (use-package ruff-format
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind (:map python-mode-map
               ("C-c p r" . ruff-format-buffer))
@@ -1630,7 +1572,6 @@ Routine")
 
 (use-package lazy-ruff
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
   :config
@@ -1638,7 +1579,6 @@ Routine")
 
 (use-package flymake-ruff
   :ensure t
-  :defer 0.5
   :after (python-mode)
   ;; :hook (python-mode . flymake-ruff-load))
   :hook (lsp-managed-mode . flymake-ruff-load))
@@ -1687,27 +1627,22 @@ current buffer, killing it."
 
 (use-package poly-markdown
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 (use-package poly-noweb
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 (use-package poly-org
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 (use-package poly-R
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 (use-package poly-rst
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 (use-package mason
@@ -1737,7 +1672,6 @@ current buffer, killing it."
 
 (use-package lsp-mode
   :ensure t
-  :defer t
   :commands (lsp lsp-deferred)
   :custom (lsp-keymap-prefix "s-l")
   (lsp-disabled-clients '(pylsp pyls))
@@ -1765,7 +1699,6 @@ current buffer, killing it."
 (use-package lsp-jedi
   :ensure t
   :after lsp-mode
-  :defer 0.5
   :config
   (with-eval-after-load "python-mode"
     (add-to-list 'lsp-enabled-clients 'jedi)))
@@ -1773,7 +1706,6 @@ current buffer, killing it."
 (use-package lsp-ui
   :ensure t
   :after lsp-mode
-  :defer t
   :config
   (setq lsp-ui-sideline-enable nil
         lsp-ui-doc-delay 2)
@@ -1793,12 +1725,10 @@ current buffer, killing it."
 
 (use-package realgud
   :ensure t
-  :defer 1
   :after (lsp-mode))
 
 (use-package realgud-ipdb
   :ensure t
-  :defer 0.5
   :after (realgud))
 
 (use-package projectile
@@ -1870,7 +1800,6 @@ project, at least until you switch to a different project."
 
 (use-package treesit-ispell
   :ensure t
-  :defer 0.5
   :after (treesit))
 
 (use-package flycheck
@@ -1916,7 +1845,6 @@ code-vs-text is handled appropriately."
 
 (use-package kirigami
   :ensure t
-  :defer 2
   :after treesit-fold
   :commands (kirigami-open-fold
              kirigami-open-fold-rec
@@ -1978,7 +1906,6 @@ code-vs-text is handled appropriately."
 
 (use-package envrc
   :ensure t
-  :defer 0.5
   :hook (after-init . envrc-global-mode))
 
 (use-package dirvish
@@ -2022,19 +1949,16 @@ code-vs-text is handled appropriately."
 
 (use-package dired-duplicates
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 (use-package dired-quick-sort
   :ensure t
-  :defer 0.5
   :after dirvish
   :config
   (dired-quick-sort-setup))
 
 (use-package dired-ranger
   :ensure t
-  :defer 0.5
   :after (dirvish)
   :bind (:map dired-mode-map
               ("W" . dired-ranger-copy)
@@ -2043,7 +1967,6 @@ code-vs-text is handled appropriately."
 
 (use-package dired-subtree
   :ensure t
-  :defer 0.5
   :after (dirvish)
   :custom
   (bind-keys :map dired-mode-map
@@ -2052,7 +1975,6 @@ code-vs-text is handled appropriately."
 
 (use-package dired-rsync-transient
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 (use-package tramp
@@ -2081,7 +2003,6 @@ code-vs-text is handled appropriately."
 
 (use-package citar
   :ensure t
-  :defer 1
   :custom
   (citar-bibliography '("~/org/references.bib"))
   :hook
@@ -2091,7 +2012,6 @@ code-vs-text is handled appropriately."
 
 (use-package mpdel
   :ensure t
-  :defer 1
   :custom
   (libmpdel-hostname "192.168.1.28")
   (libmpdel-port 6600)
@@ -2106,7 +2026,6 @@ code-vs-text is handled appropriately."
 
 (use-package osm
   :ensure t
-  :defer 3
   :custom
   (osm-server 'default)
   (osm-home '(53.356116 -1.463397 15))
@@ -2128,7 +2047,6 @@ code-vs-text is handled appropriately."
 
 (use-package scratch-plus
   :ensure t
-  :defer t
   ;; :hook
   ;; (after-init-hook . scratch-plus-mode)
   :custom
@@ -2145,7 +2063,6 @@ code-vs-text is handled appropriately."
 
 (use-package tmr
   :ensure t
-  :defer 0.5
   :bind-keymap (("C-c T" . tmr-prefix-map)))
 
 (use-package display-wttr
@@ -2155,33 +2072,28 @@ code-vs-text is handled appropriately."
 
 (use-package wttrin
   :ensure t
-  :defer 0.5
   :bind ("C-c w" . wttrin)
   :custom
   (wttrin-default-locations '("Sheffield", "Nant Peris")))
 
 (use-package devdocs
   :ensure t
-  :defer 4
   :bind ("C-h D" . devdocs-lookup))
 
 (use-package elfeed
-  :ensure t
-  :defer 2)
+  :ensure t)
 (setq elfeed-feeds
       '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 (use-package comet-trail
   :ensure t
-  :defer 2
   :custom
   (add-hook 'prog-mode-hook #'comet-trail-mode)
   (add-hook 'text-mode-hook #'comet-trail-mode))
 
 (use-package modus-themes
   :ensure t
-  :defer 0.5
   :config
   ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t)
@@ -2206,7 +2118,6 @@ code-vs-text is handled appropriately."
 
 (use-package golden-ratio
   :ensure t
-  :defer 0.5
   :custom
   (setq golden-ratio-auto-scale t))
 
@@ -2218,7 +2129,6 @@ code-vs-text is handled appropriately."
 
 (use-package hide-mode-line
   :ensure t
-  :defer 3
   :hook (completion-list-mode))
 
 (use-package mood-line
@@ -2228,16 +2138,14 @@ code-vs-text is handled appropriately."
 (mood-line-mode)
 
 (use-package ibuffer
-  :ensure nil
-  :defer 4)
+  :ensure nil)
 
 (use-package ibuffer-vc
   :ensure t
-  :defer 3.0)
+  :after (ibuffer))
 
 (use-package smartparens
   :ensure t
-  :defer 1
   :custom
   (smartparens-global-mode t)
   :hook
@@ -2253,14 +2161,11 @@ code-vs-text is handled appropriately."
 
 (use-package rainbow-delimiters
   :ensure t
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package rainbow-mode
   :ensure t
-  :defer 1
-  :hook
-  (prog-mode . rainbow-mode))
+  :hook (prog-mode . rainbow-mode))
 
 (use-package centaur-tabs
   :ensure t

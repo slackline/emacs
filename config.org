@@ -64,7 +64,7 @@ it is now a core component of Emacs. use-package provides the [[https://www.gnu.
 | Option         | Description                                                                                                                                        | Example                                                                                                                                                                                |
 |----------------+----------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [[https://github.com/jwiegley/use-package#getting-started][~:init~]]        | Execute code /before/ a package is loaded                                                                                                          | ~:init (setq foo-variable t)~                                                                                                                                                          |
-| ~:defer~       | Delay loading of package. Can be ~t~ but is rarely used, typically an integer /n/ is specified to load the package after that period of idle time. | ~:defer t~ / ~:defer 30~                                                                                                                                                               |
+| ~:defer~       | Delay loading of package. Can be ~t~ but is rarely used, typically an integer /n/ is specified to load the package after that period of idle time. See [[https://www.jamescherti.com/emacs-startup-defer-use-package-performance/][this article]] for more info. | ~:defer t~ / ~:defer 30~                                                                                                                                                               |
 | ~:after~       | Load after another package has been loaded.                                                                                                        | ~:after org~                                                                                                                                                                           |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | Key-bindings, plain or with a cons (~(desc . command)~)                                                                                            | ~:bind (("C-c k" . keychain-refresh-environment) ("C-c o h" . osm-home))~                                                                                                              |
 | [[https://github.com/jwiegley/use-package#key-binding][~:bind~]]        | With a cons the description will be shown why ~which-key~                                                                                          | ~:bind ("C-c k" ("Refresh keychain" . keychain-refresh-environment) "C-c o h" ("Open OSM at home" . osm-home))~                                                                        |
@@ -176,6 +176,10 @@ Whilst I tend to explicitly state ~:ensure t~ for almost all packages here I als
 ~use-package-always-defer t~ so that if I forget it should still be installed and will defer by default (unless the
 package explicitly has ~:demand t~ set).
 
+We can profile startup by ~(setq use-package-compute-statistics t)~ and then compiling a report with
+~use-package-report~. For finer grained analysis the [[https://github.com/dholm/benchmark-init-el][benchmark-init-el]]
+package can be used.
+
 #+NAME: code-use-package-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gnu-elpa-keyring-update
@@ -184,8 +188,9 @@ package explicitly has ~:demand t~ set).
 (use-package use-package
   :config
   (setq use-package-always-ensure t)
-  (setq use-package-always-defer t)
   (setq use-package-expand-minimally t)
+  ;; Gather loading statistics, use M-x use-package-report to summarise
+  (setq use-package-compute-statistics t)
   ;; On some systems we have problems communicating with ELPA (https://emacs.stackexchange.com/a/62210)
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   ;; Adding repositories along with priority https://emacs.stackexchange.com/a/2989/10100
@@ -193,12 +198,14 @@ package explicitly has ~:demand t~ set).
         '(("GNU ELPA"	. "https://elpa.gnu.org/packages/")
           ("NonGNU ELPA"  . "https://elpa.nongnu.org/nongnu/")
           ("MELPA Stable" . "https://releases.melpa.org/packages/")
-          ("MELPA"	. "https://snapshots.melpa.org/packages/")
+          ("MELPA Snapshots" . "https://snapshots.melpa.org/packages/")
+          ("MELPA"	. "https://melpa.org/packages/")
           ("jcs elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/"))
         package-archive-priorities
-        '(("MELPA" . 10)
+        '(("MELPA Snapshots" . 10)
           ("GNU ELPA" . 5)
           ("NonGNU ELPA" . 5)
+          ("MELPA" . 4)
           ("MELPA Stable" . 3)
           ("jcs elpa" . 0))))
 
@@ -456,8 +463,7 @@ around.
 #+NAME: code-emojify
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package emojify
-  :hook
-  (after-init . global-emojify-mode))
+  :hook (after-init . global-emojify-mode))
 
 #+END_SRC
 
@@ -638,7 +644,6 @@ pulled the others in as dependencies of other packages but have opted to purge t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package beacon
   :ensure t
-  :defer 2
   :custom (setq beacon-color "#666600")
   :hook   ((org-mode text-mode) . beacon-mode))
 
@@ -652,7 +657,6 @@ pulled the others in as dependencies of other packages but have opted to purge t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package company
   :ensure t
-  :defer 0.5
   :hook (test-mode prog-mode org-src-mode)
   :custom
   (company-minimum-prefix-length 3)
@@ -677,10 +681,8 @@ pulled the others in as dependencies of other packages but have opted to purge t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package completion-preview
   :ensure t
-  :defer 2
   :after (comint)
-  :hook
-  ((prog-mode text-mode comint-mode) . completion-preview-mode)
+  :hook (prog-mode text-mode comint-mode)
   :config
   (setq completion-preview-minimum-symbol-length 2)
   :bind
@@ -783,7 +785,6 @@ prompt]] but may do one day.
 
 (use-package embark
   :ensure t
-  :defer 0.5
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
    ("C-;" . embark-dwim)        ;; good alternative: M-.
@@ -821,7 +822,6 @@ prompt]] but may do one day.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package embark-consult
     :ensure t
-    :defer 0.5
     :after (consult embark))
 
 #+END_SRC
@@ -861,7 +861,6 @@ with the ~marginalia-mode~ rather than deferring.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package move-text
   :ensure t
-  :defer 0.5
   :config
   (move-text-default-bindings))
 
@@ -951,7 +950,6 @@ undo buffer history]] was insightful too.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package vundo
   :ensure t
-  :defer 0.5
   :bind (("C-c v" . vundo))
   :hook ((prog-mode hook-mode) . vundo-popup-mode))
 
@@ -973,7 +971,6 @@ A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist 
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package which-key
   :ensure t
-  :defer 0.5
   :config (which-key-mode)
   (global-set-key (kbd "<f8>") 'which-key-show-major-mode)
   ;; +prefix isn't helpful, lets sort that out via...
@@ -1061,7 +1058,6 @@ A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist 
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package helpful
   :ensure t
-  :defer 0.5
   :bind (("C-h C" . helpful-command)
          ("C-h f" . helpful-callable)
          ("C-h F" . helpful-function)
@@ -1223,7 +1219,6 @@ Not currently tangled.
 ;; ;; Install `consult-gh-forge' for forge actions
 (use-package consult-gh-forge
   :ensure t
-  :defer 3
   :after (consult-gh)
   :custom
   (consult-gh-forge-mode +1)
@@ -1282,7 +1277,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package forge
   :ensure t
-  :defer 0.5
   :after magit
   :hook (forge-post-mode . (lambda ()
                              (visual-line-mode -1)))
@@ -1304,7 +1298,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ghub
   :ensure t
-  :defer 0.5
   :after (magit))
 #+END_SRC
 
@@ -1317,7 +1310,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package glab
   :ensure t
-  :defer 0.5
   :after (magit))
 #+END_SRC
 
@@ -1330,7 +1322,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package git-gutter
     :ensure t
-    :defer 0.5
     :after magit
     :custom
     (global-git-gutter-mode +1))
@@ -1346,7 +1337,7 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package git-cliff
-  :ensure t  :defer 2
+  :ensure t
   :after (magit))
 
 #+END_SRC
@@ -1358,7 +1349,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package conflict-buttons
   :ensure t
-  :defer 2
   :after (magit)
   :custom
   (conflict-buttons-global-mode 1))
@@ -1374,7 +1364,6 @@ worth it as it massively improves workflow.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package fj
   :ensure t
-  :defer 0.6
   :after (magit))
 
 #+END_SRC
@@ -1392,7 +1381,6 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package forgejo
   :ensure t
-  :defer defer_time
   :after (after_name)
   :custom
   (forgejo-hosts '(("https://codeberg.org") ("https://forgejo.nshephard.dev")))
@@ -1446,7 +1434,6 @@ Currently not tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package gitlab-ci-mode
   :ensure t
-  :defer 2
   :after (glab))
 
 #+END_SRC
@@ -1462,7 +1449,6 @@ Currently not tangled.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package gitlab-ci-mode-flycheck
   :ensure t
-  :defer 3
   :after (gitlab-ci-mode))
 
 #+END_SRC
@@ -1495,7 +1481,6 @@ Currently not tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package git-modes
   :ensure t
-  :defer 3
   :after (magit))
 
 #+END_SRC
@@ -1507,7 +1492,7 @@ Currently not tangled.
 speed.".
 
 #+NAME: code-gh-notify
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package gh-notify
   :ensure t
   :after (magit))
@@ -1524,7 +1509,6 @@ speed.".
 
 (use-package git-timemachine
   :ensure t
-  :defer 3
   :after (magit))
 
 #+END_SRC
@@ -1538,7 +1522,6 @@ speed.".
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package gtea
   :ensure t
-  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1556,8 +1539,7 @@ other VC software). There are a few packages seeking to provide support for ~jj~
 #+NAME: code-vc-jj
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package vc-jj
-  :ensure t
-  :defer 3)
+  :ensure t)
 
 #+END_SRC
 
@@ -1616,7 +1598,6 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-browse-commit
   :ensure t
-  :defer 3
   :after (magit))
 
 #+END_SRC
@@ -1633,7 +1614,7 @@ Not currently tangled.
 
 (use-package magit-delta
   :ensure t
-  :after magit
+  :after (magit)
   :hook (magit-mode))
 
 #+END_SRC
@@ -1647,7 +1628,6 @@ Not currently tangled.
 
 (use-package magit-gitlab
   :ensure t
-  :defer 3
   :after (magit))
 
 #+END_SRC
@@ -1690,7 +1670,6 @@ menu and follow your nose from there.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package magit-stats
   :ensure t
-  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1704,7 +1683,6 @@ menu and follow your nose from there.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package orgit
   :ensure t
-  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1718,7 +1696,6 @@ menu and follow your nose from there.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package orgit-forge
   :ensure t
-  :defer 0.5
   :after magit
   :bind (:map magit-mode-map
               ("C-c m c" . orgit-store-link))
@@ -1739,7 +1716,6 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package pr-review
   :ensure t
-  :defer 0.5
   :after (ghub))
 
 #+END_SRC
@@ -1753,7 +1729,6 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treemacs-magit
   :ensure t
-  :defer 0.5
   :after (magit))
 
 #+END_SRC
@@ -1779,7 +1754,6 @@ Not currently tangled.
   :ensure t
   :bind (("s-i" . blamer-show-commit-info)
          ("C-c i" . blamer-show-posframe-commit-info))
-  :defer 20
   :custom
   (blamer-idle-time 0.3)
   (blamer-min-offset 70)
@@ -1804,7 +1778,6 @@ the blame for each line of code.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package why-this
   :ensure t
-  :defer 1
   :after magit
   :custom
   (set-face-background 'why-this-annotate-heat-map-cold "#203448")
@@ -1979,8 +1952,7 @@ and of itself).
 #+BEGIN_SRC emacs-lisp :tangle init.el
 
 (use-package org-analyzer
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 #+END_SRC
 
@@ -1994,7 +1966,6 @@ and of itself).
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-links
   :ensure t
-  :defer 0.5
   :after org-mode)
 
 #+END_SRC
@@ -2012,7 +1983,6 @@ development but something I will be keeping an ey on as it's more comprehensive 
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-modern
   :ensure t
-  :defer 0.5
   :after org-mode
   :config (setq
            ;; Edit settings
@@ -2074,7 +2044,7 @@ per post principle which I much prefer.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-rainbow-tags
   :ensure t
-  :defer 0.5)
+  :after (org-roam))
 
 #+END_SRC
 
@@ -2131,8 +2101,7 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package org-download
     :ensure t
-    :defer 0.5
-    :after org-mode
+    :after (org-mode)
     :hook (dired-mode))
 
 #+END_SRC
@@ -2189,7 +2158,6 @@ settings are configured there. I have picked up a couple of custom commands ([[h
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-wild-notifier
   :ensure t
-  :defer 10
   :custom
   ;; Notifications 10 and 30 minutes before events
   (setq org-wild-notifier-alert-time '(2 10 30)))
@@ -2217,7 +2185,6 @@ everything). It leverages an [[sec:sqlite][sqlite]] database in the background t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-roam
   :ensure t
-  :defer 10
   :init
   (setq org-roam-v2-ack t)
   :custom
@@ -2230,7 +2197,7 @@ everything). It leverages an [[sec:sqlite][sqlite]] database in the background t
    '(("d" "default" plain "%?"
       :if-new (file+head
                "${slug}.org"
-               "#+TITLE: %^{title}\n#+DATE: %u\n#+FILETAGS: %^{tags}\n")
+               "#+TITLE: %^{title}\n#+DATE: %u\n#+FILETAGS: :%^{tags}:\n")
       :unnarrowed t)))
   (org-roam-dailies-capture-templates
    '(("D" "dailies" entry "* %?"
@@ -2276,7 +2243,6 @@ everything). It leverages an [[sec:sqlite][sqlite]] database in the background t
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-roam-bibtex
   :ensure t
-  :defer 5
   :after (org-roam)
   :config
   (require 'org-ref)) ; optional: if using Org-ref v2 or v3 citation links
@@ -2292,7 +2258,6 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package org-roam-ui
   :ensure t
-  :defer 5
   :after (org-roam-bibtex-mode)
   :init
   (setq org-roam-ui-sync-theme t
@@ -2311,7 +2276,6 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package citar-org-roam
   :ensure t
-  :defer 5
   :after (citar org-roam)
   :config (citar-org-roam-mode))
 
@@ -2433,11 +2397,12 @@ a relatively new kid on the blog but reading the authors [[https://strah.net/pos
 I will have to work out how to build the site in [[https://codeberg.org][Codeberg]] pages automatically and how to translate my old posts from
 Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me something to focus on!
 
+In the end I´ve gone with [[https://github.com/idlip/hakimacs][Hakimacs]].
+
 #+NAME: code-org-grimoire
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package org-grimoire
-  :ensure t
-  :defer 4)
+  :ensure t)
 
 (org-grimoire-setup "nshephard.dev"
                     :base-dir    "/home/neil/work/git/codeberg/slackline/nshephard.dev"
@@ -2880,7 +2845,6 @@ moment.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package csv-mode
   :ensure t
-  :defer 6
   :mode (("\\.csv" . csv-mode))
   :hook
   (csv-mode . csv-guess-set-separator)
@@ -2972,8 +2936,7 @@ external X-window.
 #+NAME: code-esr
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package esr
-  :ensure t
-  :defer 3)
+  :ensure t)
 
 #+END_SRC
 
@@ -3183,7 +3146,6 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package jq-mode
   :ensure t
-  :defer 5
   :mode ("\\.json\\'" . jq-mode)
   :custom
   (add-to-list 'auto-mode-alist '("\\.json$" . jq-mode))
@@ -3213,7 +3175,7 @@ I (thankfully) don't write much JavaScript but add the file extensions below to 
 
 (use-package just-mode
   :ensure t
-  :defer 0.5)
+  :mode ("\\.justfile\\'" . just-mode))
 
 #+END_SRC
 
@@ -3244,7 +3206,6 @@ Don't use LaTeX much these days but like to keep things available.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package latex-extra
   :ensure t
-  :defer 3
   :after (latex-mode)
   :hook
   (LaTeX-mode-hook . 'latex-extra-mode)
@@ -3263,7 +3224,6 @@ Don't use LaTeX much these days but like to keep things available.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package lisp-ts-mode
   :ensure t
-  :defer 3
   :init
   (setf (alist-get 'lisp-mode major-mode-remap-alist) 'lisp-ts-mode)
   :custom
@@ -3328,7 +3288,6 @@ The following /isn't/ tangled and needs checking
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package md-ts-mode
   :ensure t
-  :defer 0.5
   :after (markdown-mode))
 
 #+END_SRC
@@ -3341,8 +3300,7 @@ The following /isn't/ tangled and needs checking
 #+NAME: code-mermaid
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mermaid-mode
-  :ensure t
-  :defer 10)
+  :ensure t)
 
 #+END_SRC
 
@@ -3385,9 +3343,7 @@ I dabbled with [[https://nixos.org/][NixOS]] in the past and used these packages
 #+NAME: code-nixfmt
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package nixfmt
-  :ensure t
-  :defer 3
-)
+  :ensure t)
 
 #+END_SRC
 
@@ -3438,9 +3394,7 @@ most templates these days (I should probably shift over but have the muscle memo
 #+NAME: code-python
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package python
-  :after (pyvenv)
   :ensure t
-  :defer 1
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil
@@ -3491,7 +3445,6 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package pyvenv
   :ensure t
-  :defer 1
   :config
   ;; Setting work on to easily switch between environments
   (setenv "WORKON_HOME" (expand-file-name "~/.virtualenvs/"))
@@ -3552,7 +3505,6 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package uv-mode
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :hook (python-mode . uv-mode-auto-activate-hook))
 
@@ -3570,7 +3522,6 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package blacken
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind
   (:map python-mode-map
@@ -3595,7 +3546,6 @@ validation]] rules.
 
 (use-package numpydoc
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind
   (:map python-mode-map
@@ -3619,7 +3569,6 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package pylint
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind
   (:map python-mode-map
@@ -3691,7 +3640,6 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ruff-format
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind (:map python-mode-map
               ("C-c p r" . ruff-format-buffer))
@@ -3700,7 +3648,6 @@ well as profiling).
 
 (use-package lazy-ruff
   :ensure t
-  :defer 0.5
   :after (python-mode)
   :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
   :config
@@ -3708,7 +3655,6 @@ well as profiling).
 
 (use-package flymake-ruff
   :ensure t
-  :defer 0.5
   :after (python-mode)
   ;; :hook (python-mode . flymake-ruff-load))
   :hook (lsp-managed-mode . flymake-ruff-load))
@@ -3725,7 +3671,6 @@ config but is included on the off-chance I change my mind or someone else finds 
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package yapfify
   :ensure t
-  :defer t
   :after (python-mode)
   :hook (python-mode . yapf-mode))
 
@@ -3747,7 +3692,6 @@ with [[sec:lsp-mode][lsp-mode]].
 ;; https://github.com/rust-lang/rust-mode
 (use-package rust-mode
   :ensure t
-  :defer 0.5
   :custom
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
   (rust-mode-treesitter-derive t)
@@ -3767,7 +3711,6 @@ with [[sec:org-babel][Org Babel]] and more.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package rustic
   :ensure t
-  :defer 3
   :custom
   (rustic-format-on-save t)
   (rustic-cargo-use-last-stored-arguments t))
@@ -3797,7 +3740,6 @@ body
 ;; https://github.com/ayrat555/cargo-mode
 (use-package cargo-mode
   :ensure t
-  :defer 0.5
   :hook
   (rust-mode . cargo-minor-mode)
   :config
@@ -3975,7 +3917,6 @@ Restore match data previously stored in PROPERTY."
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-markdown
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 #+END_SRC
@@ -3987,7 +3928,6 @@ Restore match data previously stored in PROPERTY."
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-noweb
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 #+END_SRC
@@ -3999,7 +3939,6 @@ Restore match data previously stored in PROPERTY."
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-org
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 #+END_SRC
@@ -4011,7 +3950,6 @@ Restore match data previously stored in PROPERTY."
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-R
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 #+END_SRC
@@ -4023,7 +3961,6 @@ Restore match data previously stored in PROPERTY."
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package poly-rst
   :ensure t
-  :defer 0.5
   :after (polymode))
 
 #+END_SRC
@@ -4099,7 +4036,6 @@ Language servers I've installed with varying success (see [[https://github.com/d
 #+BEGIN_SRC emacs-lisp :tangle init.el
  (use-package lsp-mode
   :ensure t
-  :defer t
   :commands (lsp lsp-deferred)
   :custom (lsp-keymap-prefix "s-l")
   (lsp-disabled-clients '(pylsp pyls))
@@ -4137,7 +4073,6 @@ plain [[https://jedi.readthedocs.io/en/latest/][Jedi]] before I started using [[
 (use-package lsp-jedi
   :ensure t
   :after lsp-mode
-  :defer 0.5
   :config
   (with-eval-after-load "python-mode"
     (add-to-list 'lsp-enabled-clients 'jedi)))
@@ -4155,7 +4090,6 @@ configure/use it properly as it contains the modules that add [[sec:flycheck][Fl
 (use-package lsp-ui
   :ensure t
   :after lsp-mode
-  :defer t
   :config
   (setq lsp-ui-sideline-enable nil
         lsp-ui-doc-delay 2)
@@ -4200,7 +4134,6 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package dap-mode
   :ensure t
-  :defer t
   :after lsp-mode
   :config
   (dap-auto-configure-mode))
@@ -4216,7 +4149,6 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package realgud
   :ensure t
-  :defer 1
   :after (lsp-mode))
 
 #+END_SRC
@@ -4230,7 +4162,6 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package realgud-ipdb
   :ensure t
-  :defer 0.5
   :after (realgud))
 
 #+END_SRC
@@ -4371,7 +4302,6 @@ Check that this gets enabled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package treesit-ispell
   :ensure t
-  :defer 0.5
   :after (treesit))
 
 #+END_SRC
@@ -4513,7 +4443,6 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package kirigami
   :ensure t
-  :defer 2
   :after treesit-fold
   :commands (kirigami-open-fold
              kirigami-open-fold-rec
@@ -4648,7 +4577,6 @@ as global minor modes need to be enabled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package envrc
   :ensure t
-  :defer 0.5
   :hook (after-init . envrc-global-mode))
 
 #+END_SRC
@@ -4736,7 +4664,6 @@ Not tangled as not on MELPA yet.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package dired-multi-copy
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 #+END_SRC
@@ -4748,7 +4675,6 @@ Not tangled as not on MELPA yet.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-duplicates
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 #+END_SRC
@@ -4760,7 +4686,6 @@ Not tangled as not on MELPA yet.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-quick-sort
   :ensure t
-  :defer 0.5
   :after dirvish
   :config
   (dired-quick-sort-setup))
@@ -4776,7 +4701,6 @@ Not tangled as its installed/loaded by the transient
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package dired-rsync
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 #+END_SRC
@@ -4790,7 +4714,6 @@ Not tangled as its installed/loaded by the transient
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-ranger
   :ensure t
-  :defer 0.5
   :after (dirvish)
   :bind (:map dired-mode-map
               ("W" . dired-ranger-copy)
@@ -4806,7 +4729,6 @@ Not tangled as its installed/loaded by the transient
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-subtree
   :ensure t
-  :defer 0.5
   :after (dirvish)
   :custom
   (bind-keys :map dired-mode-map
@@ -4821,7 +4743,6 @@ Not tangled as its installed/loaded by the transient
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package dired-rsync-transient
   :ensure t
-  :defer 0.5
   :after (dirvish))
 
 #+END_SRC
@@ -4875,8 +4796,7 @@ disable the ~PS1~ prompt [[https://emacs.stackexchange.com/a/48089][if ~$TERM ==
 #+NAME: code-crdt
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package crdt
-  :ensure t
-  :defer 4)
+  :ensure t)
 #+END_SRC
 
 * Terminals
@@ -4894,7 +4814,6 @@ systems, less so on M$-Win/OSX).
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package vterm
   :ensure t
-  :defer 3
   :custom
   (vterm-always-compile-module t)
   (vterm-copy-exclude-prompt t)
@@ -5032,8 +4951,7 @@ Not currently tangled.
 #+NAME: code-element
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package ement
-  :ensure t
-  :defer 6)
+  :ensure t)
 #+END_SRC
 
 ** Slack
@@ -5064,7 +4982,6 @@ references from your ~.bib~ file.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package citar
     :ensure t
-    :defer 1
     :custom
     (citar-bibliography '("~/org/references.bib"))
     :hook
@@ -5083,8 +5000,7 @@ any need to use it at the moment but I include it here as a reference/bookmark s
 #+NAME: code-meme
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package meme
-  :ensure t
-  :defer 5)
+  :ensure t)
 
 #+END_SRC
 
@@ -5104,7 +5020,6 @@ Unfortunately the keybindings for multimedia keys aren't currently recognised.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package mpdel
   :ensure t
-  :defer 1
   :custom
   (libmpdel-hostname "192.168.1.28")
   (libmpdel-port 6600)
@@ -5129,8 +5044,7 @@ Not currently tangled
 #+NAME: code-ivy-mpdel
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package ivy-mpdel
-  :ensure t
-  :defer 2)
+  :ensure t)
 
 #+END_SRC
 
@@ -5143,7 +5057,6 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package mpdmacs
   :ensure t
-  :defer 2
   :custom
   (mpdmacs-host "192.168.1.28")
   (mpdmacs-port 6600)
@@ -5164,7 +5077,6 @@ Not currently tangled
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package osm
   :ensure t
-  :defer 3
   :custom
   (osm-server 'default)
   (osm-home '(53.356116 -1.463397 15))
@@ -5249,7 +5161,6 @@ the per-major-mode scratch buffers.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package scratch-plus
   :ensure t
-  :defer t
   ;; :hook
   ;; (after-init-hook . scratch-plus-mode)
   :custom
@@ -5295,7 +5206,6 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 
 (use-package tmr
   :ensure t
-  :defer 0.5
   :bind-keymap (("C-c T" . tmr-prefix-map)))
 #+END_SRC
 
@@ -5325,7 +5235,6 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package wttrin
   :ensure t
-  :defer 0.5
   :bind ("C-c w" . wttrin)
   :custom
   (wttrin-default-locations '("Sheffield", "Nant Peris")))
@@ -5367,7 +5276,6 @@ D~.
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package devdocs
     :ensure t
-    :defer 4
     :bind ("C-h D" . devdocs-lookup))
 #+END_SRC
 
@@ -5415,8 +5323,7 @@ my FreshRSS instance. All very meta!
 #+NAME: code-elfeed
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package elfeed
-  :ensure t
-  :defer 2)
+  :ensure t)
 (setq elfeed-feeds
       '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
 (global-set-key (kbd "C-x w") 'elfeed)
@@ -5457,7 +5364,6 @@ Elements concerned with the User Interface which typically means how buffers, mi
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package comet-trail
   :ensure t
-  :defer 2
   :custom
   (add-hook 'prog-mode-hook #'comet-trail-mode)
   (add-hook 'text-mode-hook #'comet-trail-mode))
@@ -5476,7 +5382,6 @@ Elements concerned with the User Interface which typically means how buffers, mi
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package modus-themes
   :ensure t
-  :defer 0.5
   :config
   ;; Add all your customisation's prior to loading the themes
   (setq modus-themes-italic-constructs t)
@@ -5518,7 +5423,6 @@ Elements concerned with the User Interface which typically means how buffers, mi
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package golden-ratio
   :ensure t
-  :defer 0.5
   :custom
   (setq golden-ratio-auto-scale t))
 
@@ -5552,7 +5456,6 @@ org popup agendas.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package hide-mode-line
   :ensure t
-  :defer 3
   :hook (completion-list-mode))
 
 #+END_SRC
@@ -5652,7 +5555,6 @@ mid-typing. This wasn't a consequence of having set ~(buffer-guardian-save-all-b
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package buffer-guardian
   :ensure t
-  :defer 0.5
   :custom
     ;; When non-nil, include remote files in the auto-save process
   (buffer-guardian-inhibit-saving-remote-files t)
@@ -5692,8 +5594,7 @@ ibuffer is built-in. A useful example of configuration is [[https://olddeuterono
 #+NAME: code-ibuffer
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ibuffer
-  :ensure nil
-  :defer 4)
+  :ensure nil)
 
 #+END_SRC
 
@@ -5707,7 +5608,7 @@ same author!) is [[https://github.com/purcell/ibuffer-projectile][ibuffer-projec
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ibuffer-vc
   :ensure t
-  :defer 3.0)
+  :after (ibuffer))
 
 #+END_SRC
 
@@ -5737,7 +5638,6 @@ code block that is indented and ending it) are highlighted as you scroll. Have g
 
 (use-package highlight-indent-guides
   :ensure t
-  :defer 1
   :custom
   (highlight-indent-guides-method 'bitmap)
   :hook
@@ -5755,7 +5655,6 @@ pretty much always want this enabled across multiple modes. There may be some re
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package smartparens
   :ensure t
-  :defer 1
   :custom
   (smartparens-global-mode t)
   :hook
@@ -5781,8 +5680,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 
 (use-package rainbow-delimiters
   :ensure t
-  :hook
-  (prog-mode . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 #+END_SRC
 
@@ -5795,9 +5693,7 @@ pretty much always want this enabled across multiple modes. There may be some re
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package rainbow-mode
   :ensure t
-  :defer 1
-  :hook
-  (prog-mode . rainbow-mode))
+  :hook (prog-mode . rainbow-mode))
 
 #+END_SRC
 
@@ -6062,7 +5958,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 James Cherti seems to know what he's talking about and also shares his knowledge via a blog. The following are things I
 should improve.
 
-+ [ ] [[https://www.jamescherti.com/emacs-startup-defer-use-package-performance/][Optimizing Emacs startup - Guide to deferred package loading with use-package | James Cherti]]
++ [X] [[https://www.jamescherti.com/emacs-startup-defer-use-package-performance/][Optimizing Emacs startup - Guide to deferred package loading with use-package | James Cherti]]
 + [ ] Update to follow the recommendations to work with [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][ispell and aspell]].
 + [ ] Improve scrolling a lá [[https://www.jamescherti.com/emacs-scrolling-better-performance-usability/][Configuring Emacs Scrolling for Better Performance and Usability | James Cherti]]
 + [ ] [[https://www.jamescherti.com/emacs-fix-org-mode-copy-paste-yank-bleed/][Copy-paste without Emacs org-mode or markdown-mode formatting bleeding into other buffers]]
