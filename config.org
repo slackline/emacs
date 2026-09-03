@@ -6062,6 +6062,7 @@ Testing the new configuration I've found the following aren't quiet working prop
 James Cherti seems to know what he's talking about and also shares his knowledge via a blog. The following are things I
 should improve.
 
++ [ ] [[https://www.jamescherti.com/emacs-startup-defer-use-package-performance/][Optimizing Emacs startup - Guide to deferred package loading with use-package | James Cherti]]
 + [ ] Update to follow the recommendations to work with [[https://www.jamescherti.com/emacs-spell-checker-flyspell-ispell-aspell/][ispell and aspell]].
 + [ ] Improve scrolling a lá [[https://www.jamescherti.com/emacs-scrolling-better-performance-usability/][Configuring Emacs Scrolling for Better Performance and Usability | James Cherti]]
 + [ ] [[https://www.jamescherti.com/emacs-fix-org-mode-copy-paste-yank-bleed/][Copy-paste without Emacs org-mode or markdown-mode formatting bleeding into other buffers]]
