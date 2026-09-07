@@ -5777,6 +5777,20 @@ also hide certain buffers I don't need to see often.
 
 #+END_SRC
 
+*** Project Tab Groups
+<sec:project-tab-groups>>
+
+[[https://github.com/fritzgrabo/project-tab-groups][project-tab-groups]] provides functions for grouping and switching between groups of tags that complements the built-in
+~project.el~. Since I use [[sec:projectile][projectile]] I've not given this a whirl but am noting it for possible future use.
+
+#+NAME: code-centaur-tabs
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package auto-tab-groups
+  :ensure t
+  :config
+  (project-tab-groups-mode 1))
+
+#+END_SRC
 
 ** Keybindings
 <<sec:keybindings>>
