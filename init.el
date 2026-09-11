@@ -95,7 +95,7 @@
   ;;   (setq native-comp-async-report-warnings-errors nil
   ;;     native-comp-deferred-compilation t))
   :config
-  (add-to-list 'default-frame-alist '(alpha-background . 85))
+  (add-to-list 'default-frame-alist '(alpha-background . 75))
   (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
   (setq-default fill-column 120) ; Reset line-length
   (setq-default indent-tabs-mode nil)
