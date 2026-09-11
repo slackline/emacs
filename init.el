@@ -1886,7 +1886,8 @@ code-vs-text is handled appropriately."
   :commands outline-indent-minor-mode
   :custom
   (outline-indent-ellipsis " ▼")
-  :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
+  ;; :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
+  :hook (haskell-mode python-mode python-ts-mode yaml-ts-mode))
 
 ;; Python
 ;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
