@@ -63,24 +63,26 @@
   (inhibit-startup-screen t) ; Disable startup screen
   (initial-scratch-message "") ; Make *scratch* buffer blank
   (initial-scratch-message nil)
+  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
   (lisp-indent-offset 2)
   (mode-line-compact t)
   (package-install-upgrade-built-in t) ; Upgrade built-in packages
   (pixel-scroll-precision-mode t)
+  (quit-window-kill-buffer t) ;; Kill windows when quitting them
   (ring-bell-function 'ignore)  ; Disable bell sound
   (savehist-mode t) ; Save minibuffer history between sessions
+  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
   (save-place-mode t) ; Save place in file between sessions
   (undo-limit 320000) ; Increase the undo history limits
   (undo-strong-limit 640000)
   (use-dialog-box nil) ; No dialog pop-ups
   (vc-handled-backends '(Git))
   (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-  (winner-mode t) ; toggling window configuration
-  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
-  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
   (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
   (reb-re-syntax 'string) ;; Sane syntax in rebuilder
+  (warning-minimum-level :error)  ;; Suppress *Warnings* buffer
   (window-combination-resize t) ;; Proportional window resizing
+  (winner-mode t) ; toggling window configuration
   (help-window-select t) ;; Auto-select help windows
   (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
   ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
@@ -2081,10 +2083,22 @@ code-vs-text is handled appropriately."
   :ensure t
   :bind ("C-h D" . devdocs-lookup))
 
+(use-package elfeed-protocol
+  :defer t
+  :after elfeed
+  :custom
+  (elfeed-protocol-enabled-protocols '(freshrss))
+  :config
+  (elfeed-protocol-enable))
 (use-package elfeed
-  :ensure t)
-(setq elfeed-feeds
-      '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+  :ensure t
+  :defer t
+  :load elfeed-protocol
+  :custom
+  (elfeed-use-curl t))
+(setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
+                      :api-url "https://freshrss.nshephard.dev/api/greader.php"
+                      :password "super secret passphrase or lisp form to get it")))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 (use-package comet-trail
@@ -2251,7 +2265,6 @@ code-vs-text is handled appropriately."
 
 ;; Miscellaneous
 (global-set-key (kbd "C-c C-k") 'keychain-refresh-environment)
-(global-set-key (kbd "C-c u") 'rsync-html)
 (global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
 
 ;; vundo

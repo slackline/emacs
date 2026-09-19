@@ -311,6 +311,7 @@ bars.
 + [[https://emacs.stackexchange.com/a/40773/10100][delete-trailing-whitespace]]
 + [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/][Stealing from the Best Emacs Configs]] written by the author of [[sec:projectile][projectile]].
 + [[https://www.emacswiki.org/emacs/SetFonts#GloballyChangingFont][Changing the default font]]
++ [[https://emacs.stackexchange.com/a/78802/10100][How to disable automatic appearance of warnings buffer in emacs]] - set ~warning-minimum-level~ to ~:error~
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -331,24 +332,26 @@ bars.
   (inhibit-startup-screen t) ; Disable startup screen
   (initial-scratch-message "") ; Make *scratch* buffer blank
   (initial-scratch-message nil)
+  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
   (lisp-indent-offset 2)
   (mode-line-compact t)
   (package-install-upgrade-built-in t) ; Upgrade built-in packages
   (pixel-scroll-precision-mode t)
+  (quit-window-kill-buffer t) ;; Kill windows when quitting them
   (ring-bell-function 'ignore)  ; Disable bell sound
   (savehist-mode t) ; Save minibuffer history between sessions
+  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
   (save-place-mode t) ; Save place in file between sessions
   (undo-limit 320000) ; Increase the undo history limits
   (undo-strong-limit 640000)
   (use-dialog-box nil) ; No dialog pop-ups
   (vc-handled-backends '(Git))
   (vc-follow-symlinks t) ; open source of symlink maintain vc (https://stackoverflow.com/a/30900018/1444043)
-  (winner-mode t) ; toggling window configuration
-  (save-interprogram-paste-before-kill t) ;; Save the clipboard before killing
-  (kill-do-not-save-duplicates t) ;; No duplicates in the kill ring
   (redisplay-skip-fontification-on-input t) ;; Disable fontification during input
   (reb-re-syntax 'string) ;; Sane syntax in rebuilder
+  (warning-minimum-level :error)  ;; Suppress *Warnings* buffer
   (window-combination-resize t) ;; Proportional window resizing
+  (winner-mode t) ; toggling window configuration
   (help-window-select t) ;; Auto-select help windows
   (set-cursor-color "#0AFF00") ; Bright Green (stands out better)
   ;; (set-cursor-color "#62088A") ; Dark purple (not very visible)
@@ -5318,15 +5321,26 @@ D~.
 <<sec:elfeed>>
 
 I like being able to read RSS feeds in Emacs but also want to read them on the-go (using ). I therefore maintain my own
-instance of [[https://freshrss.org/][FreshRSS]] and point the excellent[[https://github.com/emacs-elfeed/elfeed][Elfeed]] to the global RSS feed of
-my FreshRSS instance. All very meta!
+instance of [[https://freshrss.org/][FreshRSS]] and point the excellent [[https://github.com/emacs-elfeed/elfeed][Elfeed]] to the global RSS feed of my FreshRSS instance. All very meta!
 
 #+NAME: code-elfeed
 #+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package elfeed-protocol
+  :defer t
+  :after elfeed
+  :custom
+  (elfeed-protocol-enabled-protocols '(freshrss))
+  :config
+  (elfeed-protocol-enable))
 (use-package elfeed
-  :ensure t)
-(setq elfeed-feeds
-      '("https://freshrss.nshephard.dev/api/query.php?user=nshephard&t=84c876bf38ba62861111455deaad9adf&f=rss"))
+  :ensure t
+  :defer t
+  :load elfeed-protocol
+  :custom
+  (elfeed-use-curl t))
+(setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
+                      :api-url "https://freshrss.nshephard.dev/api/greader.php"
+                      :password "super secret passphrase or lisp form to get it")))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 #+END_SRC
@@ -5347,6 +5361,19 @@ single RSS feed to read so no longer maintain my ~elfeed.org~ referenced below.
   :config
   (elfeed-org)
   (setq rmh-elfeed-org-files (list "~/org/elfeed.org")))
+#+END_SRC
+
+** Elfeed-protocol-freshrss
+<<sec:elfeed-protocol-freshrss>>
+
+#+NAME: code-elfeed-protocol-freshrss
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package elfeed-protocol-freshrss
+  :defer t
+  :after elfeed
+  :config
+  (elfeed-protocol-freshrss-register-protocol))
+
 #+END_SRC
 
 * User Interface
@@ -5817,7 +5844,6 @@ also hide certain buffers I don't need to see often.
 
 ;; Miscellaneous
 (global-set-key (kbd "C-c C-k") 'keychain-refresh-environment)
-(global-set-key (kbd "C-c u") 'rsync-html)
 (global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
 
 ;; vundo
@@ -6004,8 +6030,9 @@ Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before
 
 *** TODO Mouse wheel
 Scrolling with mouse wheel is intermittent - randomly started working on its own on some machines, keep an eye on this.
-*** TODO ~compilation-finish-function~ hook
-Test the ~compilation-finish-function~ hook will kill compilation buffers.
+*** DONE ~compilation-finish-function~ hook
+CLOSED: [2026-09-18 Fri 20:31]
+Test the ~compilation-finish-function~ hook will kill compilation buffers. I think this works.
 *** TODO which-key
 Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
 *** DONE Auto-tangle
