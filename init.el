@@ -495,7 +495,7 @@ Version 2015-07-27"
          ("C-h F" . helpful-function)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
-         ("C-c C-d" . helpful-at-point)))
+         ("C-h h" . helpful-at-point)))
 
 (use-package goto-addr
   :hook

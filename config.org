@@ -1066,7 +1066,7 @@ A [[https://gist.github.com/mmarshall540/a12f95ab25b1941244c759b1da24296d][Gist 
          ("C-h F" . helpful-function)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
-         ("C-c C-d" . helpful-at-point)))
+         ("C-h h" . helpful-at-point)))
 
 #+END_SRC
 
