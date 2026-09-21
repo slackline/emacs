@@ -2097,9 +2097,7 @@ code-vs-text is handled appropriately."
   (elfeed-use-curl t)
   (setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
                         :api-url "https://freshrss.nshephard.dev/api/greader.php"
-                        :use-authoinfo t))))
-;; (auth-source-search :host "freshrss.nshephard.dev" :port "443" :user "nshephard")
-
+                        :use-authinfo t))))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 (use-package elfeed-protocol-freshrss

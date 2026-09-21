@@ -5335,9 +5335,7 @@ instance of [[https://freshrss.org/][FreshRSS]] and point the excellent [[https:
   (elfeed-use-curl t)
   (setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
                         :api-url "https://freshrss.nshephard.dev/api/greader.php"
-                        :use-authoinfo t))))
-;; (auth-source-search :host "freshrss.nshephard.dev" :port "443" :user "nshephard")
-
+                        :use-authinfo t))))
 (global-set-key (kbd "C-x w") 'elfeed)
 
 #+END_SRC
