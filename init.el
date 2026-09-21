@@ -2084,22 +2084,28 @@ code-vs-text is handled appropriately."
   :bind ("C-h D" . devdocs-lookup))
 
 (use-package elfeed-protocol
-  :defer t
   :after elfeed
   :custom
   (elfeed-protocol-enabled-protocols '(freshrss))
+
   :config
   (elfeed-protocol-enable))
 (use-package elfeed
   :ensure t
-  :defer t
   :load elfeed-protocol
   :custom
-  (elfeed-use-curl t))
-(setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
-                      :api-url "https://freshrss.nshephard.dev/api/greader.php"
-                      :password "super secret passphrase or lisp form to get it")))
+  (elfeed-use-curl t)
+  (setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
+                        :api-url "https://freshrss.nshephard.dev/api/greader.php"
+                        :use-authoinfo t))))
+;; (auth-source-search :host "freshrss.nshephard.dev" :port "443" :user "nshephard")
+
 (global-set-key (kbd "C-x w") 'elfeed)
+
+(use-package elfeed-protocol-freshrss
+  :after elfeed
+  :config
+  (elfeed-protocol-freshrss-register-protocol))
 
 (use-package comet-trail
   :ensure t

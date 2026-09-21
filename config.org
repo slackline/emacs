@@ -172,10 +172,6 @@ We configure ~use-package~ below, not all of the values that are set (via ~setq~
 they pertain to downloading and installing packages I keep them here. Because there can be issues with GPG keys when
 they are updated we first update the ~gnu-elpa-keyring~ using [[https://elpa.gnu.org/packages/gnu-elpa-keyring-update.html][gnu-elpa-keyring-update]], although this itself requires
 
-Whilst I tend to explicitly state ~:ensure t~ for almost all packages here I also set ~use-package-always-ensure t~ and
-~use-package-always-defer t~ so that if I forget it should still be installed and will defer by default (unless the
-package explicitly has ~:demand t~ set).
-
 We can profile startup by ~(setq use-package-compute-statistics t)~ and then compiling a report with
 ~use-package-report~. For finer grained analysis the [[https://github.com/dholm/benchmark-init-el][benchmark-init-el]]
 package can be used.
@@ -5326,21 +5322,22 @@ instance of [[https://freshrss.org/][FreshRSS]] and point the excellent [[https:
 #+NAME: code-elfeed
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package elfeed-protocol
-  :defer t
   :after elfeed
   :custom
   (elfeed-protocol-enabled-protocols '(freshrss))
+
   :config
   (elfeed-protocol-enable))
 (use-package elfeed
   :ensure t
-  :defer t
   :load elfeed-protocol
   :custom
-  (elfeed-use-curl t))
-(setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
-                      :api-url "https://freshrss.nshephard.dev/api/greader.php"
-                      :password "super secret passphrase or lisp form to get it")))
+  (elfeed-use-curl t)
+  (setq elfeed-feeds `(("freshrss+https://nshephard@freshrss.nshephard.dev"
+                        :api-url "https://freshrss.nshephard.dev/api/greader.php"
+                        :use-authoinfo t))))
+;; (auth-source-search :host "freshrss.nshephard.dev" :port "443" :user "nshephard")
+
 (global-set-key (kbd "C-x w") 'elfeed)
 
 #+END_SRC
@@ -5367,9 +5364,8 @@ single RSS feed to read so no longer maintain my ~elfeed.org~ referenced below.
 <<sec:elfeed-protocol-freshrss>>
 
 #+NAME: code-elfeed-protocol-freshrss
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package elfeed-protocol-freshrss
-  :defer t
   :after elfeed
   :config
   (elfeed-protocol-freshrss-register-protocol))
