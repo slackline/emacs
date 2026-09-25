@@ -1496,17 +1496,14 @@ Routine")
                                           (pyvenv-restart-python)))
   :hook
   (python-mode . pyvenv-mode)
-  (after-init-hook . (pyvenv-workon default-env))
-  )
+  (after-init-hook . (pyvenv-workon default-env)))
 
 (use-package uv-mode
   :ensure t
-  :after (python-mode)
-  :hook (python-mode . uv-mode-auto-activate-hook))
+  :hook (python-mode . uv-mode-auto-activate))
 
 (use-package blacken
   :ensure t
-  :after (python-mode)
   :bind
   (:map python-mode-map
         ("C-c p b" . blacken-buffer))
@@ -1583,7 +1580,11 @@ Routine")
   :ensure t
   :after (python-mode)
   ;; :hook (python-mode . flymake-ruff-load))
-  :hook (lsp-managed-mode . flymake-ruff-load))
+  :hook (python-mode . flymake-ruff-load))
+
+(add-hook 'python-mode-hook #'ruff-format-on-save-mode)
+(add-hook 'python-mode-hook #'blacken-mode)
+(add-hook 'python-mode-hook #'uv-mode)
 
 (use-package sqlite-mode
   :custom

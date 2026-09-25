@@ -425,6 +425,12 @@ bars.
 
 #+END_SRC
 
+*** Startup
+<<sec:emacs-startup>>
+
+I came across a neat way of showing a random item from Emacs news in a post by [[https://www.alcarney.me/blog/2026/emacs-tip-of-the-day/][Alex Carney]]. Haven't yet tried this and
+not sure how useful it will be as I typically start Emacs in daemon mode and jump straight into doing something.
+
 ** SSH Agency
 <<sec:ssh-agency>>
 
@@ -2280,6 +2286,19 @@ other. I use a [[https://github.com/ikoamu/org-roam-ui-hosting][GitHub Workflow]
 
 #+END_SRC
 
+*** Org Roam Stats
+<<sec:org-roam-stats>>
+
+[[https://github.com/GerardoCendejas/org-roam-stats][Org-roam-stats]] analyses your Org-roam files and presents a dashboard summary.
+
+#+NAME: code-org-roam-stats
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package org-roam-stats
+  :ensure t
+  :bind (("C-c n S" . org-roam-stats-start))
+  :after org-roam)
+#+END_SRC
+
 *** Custom org commands
 
 **** On Save
@@ -3474,8 +3493,8 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
                                           (pyvenv-restart-python)))
   :hook
   (python-mode . pyvenv-mode)
-  (after-init-hook . (pyvenv-workon default-env))
-  )
+  (after-init-hook . (pyvenv-workon default-env)))
+
 #+END_SRC
 
 ***** pyvenv-auto
@@ -3504,8 +3523,7 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package uv-mode
   :ensure t
-  :after (python-mode)
-  :hook (python-mode . uv-mode-auto-activate-hook))
+  :hook (python-mode . uv-mode-auto-activate))
 
 #+END_SRC
 
@@ -3521,7 +3539,6 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package blacken
   :ensure t
-  :after (python-mode)
   :bind
   (:map python-mode-map
         ("C-c p b" . blacken-buffer))
@@ -3656,7 +3673,7 @@ well as profiling).
   :ensure t
   :after (python-mode)
   ;; :hook (python-mode . flymake-ruff-load))
-  :hook (lsp-managed-mode . flymake-ruff-load))
+  :hook (python-mode . flymake-ruff-load))
 
 #+END_SRC
 
@@ -3672,6 +3689,20 @@ config but is included on the off-chance I change my mind or someone else finds 
   :ensure t
   :after (python-mode)
   :hook (python-mode . yapf-mode))
+
+#+END_SRC
+
+**** Python hooks
+<<sec:python-hooks>>
+
+I found that many of the above hooks were not actually being activated on opening Python files (which triggers
+~python-mode~ as the major mode and things like ~blacken-mode~, ~ruff-format-on-save-mode~ etc. should be minor modes).
+
+#+NAME: code-python-hooks
+#+BEGIN_SRC emacs-lisp :tangle init.el
+  (add-hook 'python-mode-hook #'ruff-format-on-save-mode)
+  (add-hook 'python-mode-hook #'blacken-mode)
+  (add-hook 'python-mode-hook #'uv-mode)
 
 #+END_SRC
 
@@ -6021,6 +6052,12 @@ The [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Hooks
 *** TODO Auto-hide buffers
 Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
+
+*** TODO ~delete-trailing-whitespace-mode~ / ~whitespace-mode~
+
+This mode can be used to do what it says, but perhaps more cumbersome to enable against ~prog-mode~ / ~text-mode~
+etc. than the current setup? What about ~whitespace-mode~ which shows whitespace in different manners and includes it as
+a ~whitespace-action~ (see [[https://chaos.social/@citizen428/117314740975603221][thread]]).
 
 *** TODO Mouse wheel
 Scrolling with mouse wheel is intermittent - randomly started working on its own on some machines, keep an eye on this.
