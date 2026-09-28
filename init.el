@@ -1381,6 +1381,11 @@ Routine")
 (use-package essgd
   :ensure t)
 
+(use-package r-ts-mode
+  :ensure t
+  :mode ("\\.R\\'" . r-ts-mode)
+  :hook (ess-mode))
+
 (use-package jq-mode
   :ensure t
   :mode ("\\.json\\'" . jq-mode)

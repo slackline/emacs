@@ -3136,9 +3136,10 @@ Runs: `quarto preview <current-file> <quarto-preview-flags>` asynchronously."
 Not currently tangled.
 
 #+NAME: code-r-ts-mode
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package r-ts-mode
   :ensure t
+  :mode ("\\.R\\'" . r-ts-mode)
   :hook (ess-mode))
 
 #+END_SRC
@@ -3174,7 +3175,7 @@ with a link to [[https://github.com/emacs-ess/ESS/issues/967#issuecomment-541276
 *** JS Mode
 <<sec:js>>
 
-I (thankfully) don't write much JavaScript but add the file extensions below to the appropriate modes.
+I (thankfully) don't write much JavaScript but add the file extensions below to the appropriate modes just in case.
 
 #+NAME: code-js
 #+BEGIN_SRC emacs-lisp :tangle init.el
