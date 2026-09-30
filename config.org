@@ -1261,9 +1261,9 @@ support/. Currently this has been manually cloned as its not yet available on ME
 [[https://github.com/radian-software/straight.el][straight.el]] rabbit hole right now.
 
 #+NAME: code-magit-difftastic
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package magit-difftastic
-  :straight (:host github :repo "rschmukler/magit-difftastic")
+  ;; :straight (:host github :repo "rschmukler/magit-difftastic")
   :after magit
   :config
   (magit-difftastic-mode +1))
@@ -3701,9 +3701,9 @@ I found that many of the above hooks were not actually being activated on openin
 
 #+NAME: code-python-hooks
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (add-hook 'python-mode-hook #'ruff-format-on-save-mode)
-  (add-hook 'python-mode-hook #'blacken-mode)
-  (add-hook 'python-mode-hook #'uv-mode)
+  (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
+  (add-hook 'python-mode-hook 'blacken-mode)
+  (add-hook 'python-mode-hook 'uv-mode)
 
 #+END_SRC
 
@@ -4532,33 +4532,35 @@ to as blocks./".
 
 #+END_SRC
 
-**** outline-indent
+**** TODO outline-indent
 <<sec:outline-indent>>
 
-[[https://github.com/jamescherti/outline-indent.el][outline-indent]] provides code folding based on indentation.
+[[https://github.com/jamescherti/outline-indent.el][outline-indent]] provides code folding based on indentation and the ability to move code blocks around easily.
+
 
 #+NAME: code-outline-indent
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package outline-indent
   :commands outline-indent-minor-mode
   :custom
-  (outline-indent-ellipsis " ▼")
-  ;; :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
-  :hook (haskell-mode python-mode python-ts-mode yaml-ts-mode))
-
-;; Python
-;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
-;; (add-hook 'python-ts-mode-hook #'outline-indent-minor-mode)
-
-;; ;; Yaml
-;; (add-hook 'yaml-mode-hook #'outline-indent-minor-mode)
-;; (add-hook 'yaml-ts-mode-hook #'outline-indent-minor-mode)
-
-;; ;; Haskell
-;; (add-hook 'haskell-mode-hook #'outline-indent-minor-mode)
+  (outline-indent-ellipsis " ▼"))
+;;  :hook (haskell-mode python-mode python-ts-mode yaml-ts-mode) . outline-indent-minor-mode)
+(outline-indent-minor-mode t)
 
 #+END_SRC
 
+I've encountered some problems loading this and as I don't use it much currently.
+
+#+begin_example emacs-lisp
+Debugger entered--Lisp error: (error "Autoloading file /home/neil/.config/emacs/elpa/outline-indent-1.2.0.0.20260826.10/outline-indent.elc failed to define function outline-indent-mode")
+  outline-indent-mode()
+  run-hooks(change-major-mode-after-body-hook prog-mode-hook python-base-mode-hook python-mode-hook)
+  apply(run-hooks change-major-mode-after-body-hook (prog-mode-hook python-base-mode-hook python-mode-hook))
+  run-mode-hooks(python-mode-hook)
+  python-mode()
+  set-auto-mode-0(python-mode nil)
+
+#+end_example
 
 *** porg
 <<sec:porg>>

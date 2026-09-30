@@ -561,12 +561,6 @@ Version 2015-07-27"
        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
         ("S" "Difftastic show" difftastic-magit-show)])))
 
-(use-package magit-difftastic
-  :straight (:host github :repo "rschmukler/magit-difftastic")
-  :after magit
-  :config
-  (magit-difftastic-mode +1))
-
 (use-package forge
   :ensure t
   :after magit
@@ -1587,9 +1581,9 @@ Routine")
   ;; :hook (python-mode . flymake-ruff-load))
   :hook (python-mode . flymake-ruff-load))
 
-(add-hook 'python-mode-hook #'ruff-format-on-save-mode)
-(add-hook 'python-mode-hook #'blacken-mode)
-(add-hook 'python-mode-hook #'uv-mode)
+(add-hook 'python-mode-hook 'ruff-format-on-save-mode)
+(add-hook 'python-mode-hook 'blacken-mode)
+(add-hook 'python-mode-hook 'uv-mode)
 
 (use-package sqlite-mode
   :custom
@@ -1889,24 +1883,6 @@ code-vs-text is handled appropriately."
 (add-hook 'sh-mode-hook #'hs-minor-mode) ; for bash/shell scripts
 (add-hook 'json-mode-hook #'hs-minor-mode)
 (add-hook 'lua-mode-hook #'hs-minor-mode)
-
-(use-package outline-indent
-  :commands outline-indent-minor-mode
-  :custom
-  (outline-indent-ellipsis " ▼")
-  ;; :hook (haskell-mode python-mode python-ts-mode yaml-mode yaml-ts-mode))
-  :hook (haskell-mode python-mode python-ts-mode yaml-ts-mode))
-
-;; Python
-;; (add-hook 'python-mode-hook #'outline-indent-minor-mode)
-;; (add-hook 'python-ts-mode-hook #'outline-indent-minor-mode)
-
-;; ;; Yaml
-;; (add-hook 'yaml-mode-hook #'outline-indent-minor-mode)
-;; (add-hook 'yaml-ts-mode-hook #'outline-indent-minor-mode)
-
-;; ;; Haskell
-;; (add-hook 'haskell-mode-hook #'outline-indent-minor-mode)
 
 (use-package direnv
   :ensure t
