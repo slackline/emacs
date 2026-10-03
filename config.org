@@ -6018,11 +6018,15 @@ I'm still learning and had to ask questions to get to where I am. Here are the h
 
 + [[https://emacs.stackexchange.com/questions/85329/org-mode-blink-cursor-error/85332#85332][org-mode blink-cursor error]]
 
-* Appendix : ToDo Trouble Shooting
+* Appendix
+<<sec:appendix>>
+
+** Trouble Shooting
+<<sec:trouble-shooting>>
 
 Testing the new configuration I've found the following aren't quiet working properly.
 
-** TODO Improvements
+*** TODO Improvements
 
 James Cherti seems to know what he's talking about and also shares his knowledge via a blog. The following are things I
 should improve.
@@ -6034,9 +6038,9 @@ should improve.
 + [ ] [[https://www.jamescherti.com/emacs-why-use-setq-instead-setopt/][Why use setq instead  of setopt]]
 + [ ] [[https://www.jamescherti.com/measuring-emacs-startup-time/][Measuring Emacs Startup Time More Accurately than the Built-in emacs-init-time | James Cherti]]
 
-** General
+*** General
 
-*** TODO Improve use-package hooks
+**** TODO Improve use-package hooks
 
 The [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Hooks][docs on hooks]] show that ...
 
@@ -6052,39 +6056,39 @@ The [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Hooks
   :hook prog-mode)
 #+end_example
 
-*** TODO Auto-hide buffers
+**** TODO Auto-hide buffers
 Hide ~*Messages*~ / ~*Compile Log*~ / ~*Error*~ buffers (have solved this before so have the
   solution...[[https://emacs.stackexchange.com/questions/62/hide-compilation-window][somewhere]]).
 
-*** TODO ~delete-trailing-whitespace-mode~ / ~whitespace-mode~
+**** TODO ~delete-trailing-whitespace-mode~ / ~whitespace-mode~
 
 This mode can be used to do what it says, but perhaps more cumbersome to enable against ~prog-mode~ / ~text-mode~
 etc. than the current setup? What about ~whitespace-mode~ which shows whitespace in different manners and includes it as
 a ~whitespace-action~ (see [[https://chaos.social/@citizen428/117314740975603221][thread]]).
 
-*** TODO Mouse wheel
+**** TODO Mouse wheel
 Scrolling with mouse wheel is intermittent - randomly started working on its own on some machines, keep an eye on this.
-*** DONE ~compilation-finish-function~ hook
+**** DONE ~compilation-finish-function~ hook
 CLOSED: [2026-09-18 Fri 20:31]
 Test the ~compilation-finish-function~ hook will kill compilation buffers. I think this works.
-*** TODO which-key
+**** TODO which-key
 Ensure ~(desc . command)~ is used for all custom key-bindings so that they are all shown by ~which-key~
-*** DONE Auto-tangle
+**** DONE Auto-tangle
 - [X] Auto-tangle to ~~/.config/emacs/init.el~ on saving, also outputs to HTML. *Solution*: missed this one!
-*** DONE Transparency
+**** DONE Transparency
 + Transparency isn't automatically set on starting. *Solution* : ~bfdc95f~
-*** DONE Tab icons
+**** DONE Tab icons
 No icons in tabs to indicate what filetype a buffer is. *Solution* :  ~M-x all-the-icons-install-fonts~.
-*** DONE modeline
+**** DONE modeline
 Mode-line is not as expected, very cluttered ~mood-line~ not loaded. *Solution*: ~d85af0d~.
-*** DONE line wrapping
+**** DONE line wrapping
 Automatic line wrapping doesn't appear to work (at least in org-mode but may be related to org-mode not kicking in
 properly). *Solution*: appears to now work ~visual-line-mode~ 🤦.
-*** DONE diff recovering files
+**** DONE diff recovering files
 Don't get the option to ~diff~ when ~recover-this-file~ *Solution*: appears to now work.
-*** DONE automatically create dirs
+**** DONE automatically create dirs
 Automatically create directories that do not exist (have this already shouldn't be hard to fix) *Solution*: ~234e8b1~
-*** DONE Errors opening files
+**** DONE Errors opening files
 
 Opening files always result in ~setq-empty-p nil~, debug follows...
 
@@ -6108,7 +6112,7 @@ Debugger entered--Lisp error: (cl-no-applicable-method seq-empty-p nil)
   funcall-interactively(find-file "~/.config/emacs/init.el" t)
   command-execute(find-file)
 #+END_EXAMPLE
-*** WONT-DO Buffer guardian
+**** WONT-DO Buffer guardian
 
 [[https://github.com/emacsmirror/buffer-guardian][buffer-guardian]]I think this might be causing some problems with my configuration editing, although I also see...
 
@@ -6118,7 +6122,7 @@ Use ‘M-x customize-variable RET flycheck-checker-error-threshold’ to
 change the threshold or ‘C-u C-c ! x’ to re-enable the checker.
 #+end_example
 
-** DONE Themes
+*** DONE Themes
 
 Modus/EF themes fail with ~No applicable method: modus-themes-get-themes~ on ~kimura~. Removing byte-compiled
 ~modus-themes*/*.elc~ and disabling loading of ~ef-themes~ solves this, but not an ideal solution. Consider submitting
@@ -6126,8 +6130,8 @@ issue but [[https://github.com/protesilaos/ef-themes/issues/63][this thread]] su
 perhaps need to force downloading and installing both ~modus-themes~ (which appears to have been downloaded and
 byte-compiled) but make sure it is being used. *Solution* : ~604e7f5~
 
-** TODO ~magit~
-*** DONE GFM mode for Forge
+*** TODO ~magit~
+**** DONE GFM mode for Forge
 CLOSED: [2026-09-02 Wed 11:49]
 
 + [X] Having set the mode to be GFM for Forge posts it has clobbered all the key-bindings. Major mode is GFM from
@@ -6135,41 +6139,41 @@ CLOSED: [2026-09-02 Wed 11:49]
 + [X] Enable ~lsp-ltex-plus~ for ~forge-post-mode~. *Solution*: ~e4535ef~
 + [X] Disable line-wrapping in Forge buffers. *Solution*: ~e88e54f~
 
-*** DONE Worktrees
+**** DONE Worktrees
 
 Hook to add worktrees to the default view doesn't appear to be set and needed manually re-running. *Solution*:
 ~e04e6d9~ (after ~53363e0~)
-*** DONE Pre-commit
+**** DONE Pre-commit
 
 Pre-commit hook output for Mypy is not formatted correctly. *Solution*: It is now formatted (in colour) on
  completion of hooks being run.
-*** DONE direnv
+**** DONE direnv
 Virtual environment via ~direnv~ does not appear to be correctly loaded and being used in commits. *Solution*:
 ~9aec0d1~
 
-** TODO LSP mode
+*** TODO LSP mode
 
 Mostly seems to be working but...
 
-*** TODO R Air
+**** TODO R Air
 
 A new linter and language server to be [[https://posit-dev.github.io/air/editor-emacs.html#lsp-mode][integrated]].
 
-*** TODO Icons
+**** TODO Icons
 
 + [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
 
-*** TODO Python/Black
+**** TODO Python/Black
 
 + [ ] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?).
 
-*** TODO Blacklist root directory
+**** TODO Blacklist root directory
 
 + [ ] LSP black-listed ~/home/neil/~ and so no nested directories initiated LSP sessions. May be related to ~projectile~
   which includes ~/home/neil~ and ~~/~ for some annoying reason.
 
-*** DONE Java VM (under Gentoo)
+**** DONE Java VM (under Gentoo)
 + [X] ~ltex-ls-plus~ fails on loading (possibly other language servers too) for many files, big problem
   this. *Solution*: ~dc5b75f~ (installing ~ltex-ls-plus~ via [[sec:mason][mason]] solved this)
 
@@ -6196,7 +6200,7 @@ Available Java Virtual Machines:
   [3]   openjdk-bin-25
 #+end_example
 
-** DONE Org mode version mismatch
+*** DONE Org mode version mismatch
 
 
 #+BEGIN_EXAMPLE
@@ -6258,20 +6262,31 @@ Version mismatch is commonly encountered in the following situations:
 + [X] Lists indent on new line work out why its not loading correctly. *Solution* - not explicitly solved but it was
   because ~electric-indent-local-mode~ was not set to ~0~ (i.e. disabled). Hook was in place.
 
-** DONE Org-GTD
+*** DONE Org-GTD
 
 + [X] Despite setting ~(setq org-gtd-update-ack "4.0.0")~ this seems to fail being set both on a clean install and on
       subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
       package is used? *Solution*: Move the setting to /before/ loading the package!
 
-** DONE pytest
+*** DONE pytest
 
 + [X] Additional entries to the transient are not appearing.
 
-** TODO Functions
+*** TODO Functions
 
 + [ ] Custom functions for markdown > org and org > markdown don't appear to be available.
 
-** DONE Completion preview
+*** DONE Completion preview
 
 + [X] Add key-bindings.  *Solution* : ~22c042e~
+
+** Other Packages
+<<sec:other-packages>>
+
+Things I've come across but not implemented yet that might be useful one day.
+
+*** exacli-mode
+<<sec:exacli-mode>>
+
+[[https://github.com/yibie/excali-mode][excali-mode]] leverages the newer ~canvas~ functionality of Emacs >=32 to allow you to easily open, edit and save
+[[https://excalidraw.com][Excalidraw]] drawings in Emacs.
