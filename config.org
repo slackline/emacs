@@ -5503,6 +5503,27 @@ slightly larger font on my laptop (my eyes are getting old 👴)
 
 #+END_SRC
 
+**** TODO persist-text-scale
+<<sec:persist-text-scale>>
+
+[[https://github.com/jamescherti/persist-text-scale.el][persist-text-scale]]
+
+#+NAME: code-persist-text-scale
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package persist-text-scale
+  :ensure t
+  :custom
+  ;; Time interval, in seconds, between automatic saves of text scale data.
+  ;; If set to an integer value, enables periodic autosaving of persisted text
+  ;; scale information at the specified interval.
+  ;; If set to nil, disables timer-based autosaving entirely.
+  (persist-text-scale-autosave-interval (* 7 60))
+  :init
+  (persist-text-scale-mode 1))
+
+#+END_SRC
+
+
 ** Modeline
 <<sec:modeline>>
 
