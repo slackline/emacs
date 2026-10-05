@@ -1783,8 +1783,9 @@ project, at least until you switch to a different project."
   :ensure t
   :after projectile)
 
-(setq treesit-auto-install-grammar t)
-(setq treesit-enabled-modes t)
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
 
 (use-package treesit-fold
   :ensure t

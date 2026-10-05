@@ -4287,18 +4287,22 @@ edited. [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Language-Gra
 + [[https://takeonrules.com/2023/03/08/coloring-regular-expression-via-modus-themes-for-treesit-faces/][Coloring regular expression via modus themes for treesit faces]]
 + [[https://www.masteringemacs.org/article/how-to-get-started-tree-sitter][Mastering Emacs - How to get Started with Tree-sitter]]
 
-*** treesit
-<<sec:treesit>>
+*** treesit-auto
+<<sec:treesit-auto>>
 
 As of [[https://www.rahuljuliato.com/posts/emacs-31-around-the-corner][Emacs 31]] treesitter grammars can be installed automatically and modes enabled. One exception is the experimental
 ~markdown-ts-mode~ mentioned in the article. One to keep an eye on.
 
-#+NAME: code-tree-sit
+#+NAME: code-treesit-auto
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (setq treesit-auto-install-grammar t)
-  (setq treesit-enabled-modes t)
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
 #+END_SRC
 
+But you need to install the grammars so run ~treesit-install-language-grammar~ and select the languages for whiich you
+want to install the grammars for. You will ber prompted for a directory to install to, the default is fine and works for
+me..
 *** TODO  treesit-fold
 <<sec:tree-sitter-fold>>
 
