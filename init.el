@@ -1328,6 +1328,9 @@ Routine")
   (csv-mode . csv-guess-set-separator)
   (csv-mode . csv-align-mode))
 
+(use-package ebuild-mode
+  :ensure t)
+
 (use-package ess
   :ensure t
   ;;     :requires ess-r-mode

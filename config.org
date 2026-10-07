@@ -2870,6 +2870,19 @@ moment.
 
 #+END_SRC
 
+*** Ebuild Mode
+<<sec:ebuild-mode>>
+
+[[https://elpa.nongnu.org/nongnu/ebuild-mode.html][ebuild-mode]] "/will help the user to efficiently write and edit ebuilds, eclasses and other files that are specific to
+Gentoo/".
+
+#+NAME: code-ebuild-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package ebuild-mode
+  :ensure t)
+
+#+END_SRC
+
 *** ESS Mode
 <<sec:ess>>
 
