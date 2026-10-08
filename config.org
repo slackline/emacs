@@ -1262,10 +1262,14 @@ support/. Currently this has been manually cloned as its not yet available on ME
 
 #+NAME: code-magit-difftastic
 #+BEGIN_SRC emacs-lisp :tangle no
-(use-package magit-difftastic
-  ;; :straight (:host github :repo "rschmukler/magit-difftastic")
-  :after magit
-  :config
+;; (use-package magit-difftastic
+;;   ;; :straight (:host github :repo "rschmukler/magit-difftastic")
+;;   :after magit
+;;   :config
+;;   (magit-difftastic-mode +1))
+(add-to-list 'load-path "~/.config/emacs/elpa/magit-difftastic/")
+(require 'magit-difftastic)
+(with-eval-after-load 'magit
   (magit-difftastic-mode +1))
 
 #+END_SRC
