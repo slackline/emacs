@@ -48,8 +48,7 @@ Feedback is welcome, please create an [[https://codeberg.org/slackline/emacs/iss
 * On Configuration with use-package
 <<sec:conf-use-package>>
 
-Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using
-use-package the right way]].
+Currently I use the built-in [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html][use-package]] and in re-writing this document have sought to adhere to the advice on [[https://batsov.com/articles/2025/04/17/using-use-package-the-right-way/][Using use-package the right way]].
 
 + Packages are either loaded immediately, when the package is first used (via autoloading) or can be deferred using the
 ~:defer~ keyword. Some autoloading can be done in response to /triggers/ of certain events (i.e. ~:hook~).
@@ -80,6 +79,49 @@ project" . projectile-switch-project)))~ (untested) |
 | ~:hook~        | Define hooks associated with the package.                                                                                                          |                                                                                                                                                                                        |
 | ~:ensure~      | Makes sure a package is loaded (eventually). Should be avoided with built-in packages as it may force downloading of newer version.                |                                                                                                                                                                                        |
 
+** Hooks
+
+I found the official documentation on [[https://www.gnu.org/software/emacs/manual/html_mono/use-package.html#Hooks][use-package hooks]] to be slightly lacking compared to the archived [[https://github.com/jwiegley/use-package#hooks][package README]]
+which has a great set of examples which I've copied below for my own convenience.
+
+
+#+begin_quote
+
+And likewise, when multiple hooks should be applied, all of the following are also equivalent:
+
+#+begin_example
+(use-package company
+  :hook ((prog-mode text-mode) . company-mode))
+
+(use-package company
+  :hook ((prog-mode . company-mode)
+         (text-mode . company-mode)))
+
+(use-package company
+  :hook (prog-mode . company-mode)
+  :hook (text-mode . company-mode))
+
+(use-package company
+  :hook
+  (prog-mode . company-mode)
+  (text-mode . company-mode))
+
+(use-package company
+  :commands company-mode
+  :init
+  (add-hook 'prog-mode-hook #'company-mode)
+  (add-hook 'text-mode-hook #'company-mode))
+#+end_example
+
+When using :hook, omit the "-hook" suffix if you specify the hook explicitly, as this is appended by default. For example, the following code will not work as it attempts to add to the prog-mode-hook-hook which does not exist:
+
+#+begin_quote
+;; DOES NOT WORK
+(use-package ace-jump-mode
+  :hook (prog-mode-hook . ace-jump-mode))
+#+end_quote
+
+#+end_quote
 
 
 * Initial Setup
@@ -3410,7 +3452,7 @@ I dabbled with [[https://nixos.org/][NixOS]] in the past and used these packages
 
 #+END_SRC
 
-*** Python Mode
+*** TODO Python Mode
 <<sec:python>>
 
 [[https://gitlab.com/python-mode-devs/python-mode][Python mode]] is a major mode for editing Python files. I don't do much to customise this, the following is loaded _after_
@@ -3443,23 +3485,41 @@ most templates these days (I should probably shift over but have the muscle memo
                           "Insert a print statement that will show the value of the argument."
                           "Enter the variable/object name: "
                           "print(f'\\n{" str "=}\\n')")
-  :bind (:map python-mode-map
-              ("C-c p t" . python-pytest-dispatch)
-              ("C-c p l" . pylint)
-              ("C-c p y" . pylint-insert-ignore-comment)
-              ("C-c p n" . numpydoc-generate)
-              ("C-c p b" . blacken-buffer)
-              ("C-c p r" . ruff-format-buffer)
-              ("C-c p v" . pyvenv-workon)
-              ("C-c p T c" . python-skeleton-class)
-              ("C-c p T d" . python-skeleton-def)
-              ("C-c p T f" . python-skeleton-for)
-              ("C-c p T i" . python-skeleton-if)
-              ("C-c p T m" . python-skeleton-import)
-              ("C-c P" . python-skeleton-print)
-              ("C-c p T t" . python-skeleton-try)
-              ("C-c p T T" . python-skeleton-parameterized-test)
-              ("C-c p T w" . python-skeleton-while)))
+  :bind
+  (:map python-mode-map
+    ("C-c p t" . python-pytest-dispatch)
+    ("C-c p l" . pylint)
+    ("C-c p y" . pylint-insert-ignore-comment)
+    ("C-c p n" . numpydoc-generate)
+    ("C-c p b" . blacken-buffer)
+    ("C-c p r" . ruff-format-buffer)
+    ("C-c p v" . pyvenv-workon)
+    ("C-c p T c" . python-skeleton-class)
+    ("C-c p T d" . python-skeleton-def)
+    ("C-c p T f" . python-skeleton-for)
+    ("C-c p T i" . python-skeleton-if)
+    ("C-c p T m" . python-skeleton-import)
+    ("C-c P" . python-skeleton-print)
+    ("C-c p T t" . python-skeleton-try)
+    ("C-c p T T" . python-skeleton-parameterized-test)
+    ("C-c p T w" . python-skeleton-while))
+  (:map python-ts-mode-map
+    ("C-c p t" . python-pytest-dispatch)
+    ("C-c p l" . pylint)
+    ("C-c p y" . pylint-insert-ignore-comment)
+    ("C-c p n" . numpydoc-generate)
+    ("C-c p b" . blacken-buffer)
+    ("C-c p r" . ruff-format-buffer)
+    ("C-c p v" . pyvenv-workon)
+    ("C-c p T c" . python-skeleton-class)
+    ("C-c p T d" . python-skeleton-def)
+    ("C-c p T f" . python-skeleton-for)
+    ("C-c p T i" . python-skeleton-if)
+    ("C-c p T m" . python-skeleton-import)
+    ("C-c P" . python-skeleton-print)
+    ("C-c p T t" . python-skeleton-try)
+    ("C-c p T T" . python-skeleton-parameterized-test)
+    ("C-c p T w" . python-skeleton-while)))
 
 #+END_SRC
 
@@ -3511,6 +3571,7 @@ virtual environments which reside in the ~.venv~ directory created by ~uv~ withi
                                           (pyvenv-restart-python)))
   :hook
   (python-mode . pyvenv-mode)
+  (python-ts-mode . pyvenv-mode)
   (after-init-hook . (pyvenv-workon default-env)))
 
 #+END_SRC
@@ -3527,8 +3588,10 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package pyvenv-auto
   :ensure t
-  :after (python-mode)
-  :hook ((python-mode . pyvenv-auto-run)))
+  :after (python-mode python-ts-mode)
+  :hook
+  (python-mode . pyvenv-auto-run)
+  (python-ts-mode . pyvenv-auto-run))
 
 #+END_SRC
 
@@ -3541,7 +3604,9 @@ Not currently tangled.
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package uv-mode
   :ensure t
-  :hook (python-mode . uv-mode-auto-activate))
+  :hook
+  (python-mode . uv-mode-auto-activate)
+  (pthon-ts-mode . uv-mode-auto-activate))
 
 #+END_SRC
 
@@ -3558,12 +3623,15 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
 (use-package blacken
   :ensure t
   :bind
-  (:map python-mode-map
-        ("C-c p b" . blacken-buffer))
+  ((:map python-mode-map
+     ("C-c p b" . blacken-buffer))
+   (:map python-mode-map
+     ("C-c p b" . blacken-buffer)))
   :custom
   (blacken-line-length 120)
   :hook
-  (python-mode . blacken-mode))
+  (python-mode . blacken-mode)
+  (pthon-ts-mode . uv-mode-auto-activate))
 
 #+END_SRC
 
@@ -3577,13 +3645,14 @@ validation]] rules.
 
 #+NAME: code-numpydoc
 #+BEGIN_SRC emacs-lisp :tangle init.el
-
 (use-package numpydoc
   :ensure t
-  :after (python-mode)
+  :after (python-mode python-ts-mode)
   :bind
   (:map python-mode-map
-        ("C-c p n" . numpydoc-generate))
+    ("C-c p n" . numpydoc-generate))
+  (:map python-ts-mode-map
+    ("C-c p n" . numpydoc-generate))
   :custom
   (numpydoc-prompt-for-input t)
   (numpydoc-insert-examples-block 0)
@@ -3601,15 +3670,17 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
 
 #+NAME: code-pylint
 #+BEGIN_SRC emacs-lisp :tangle no
-(use-package pylint
-  :ensure t
-  :after (python-mode)
-  :bind
-  (:map python-mode-map
-        ("C-c p l" . pylint))
-  :hook
-  (python-mode . pylint-add-menu)
-  (python-mode . add-key-bindings))
+  (use-package pylint
+    :ensure t
+    :after (python-mode python-ts-mode)
+    :bind
+    (:map python-mode-map
+      ("C-c p l" . pylint))
+    (:map python-ts-mode-map
+      ("C-c p l" . pylint))
+    :hook
+    (python-mode . (pylint-add-menu add-key-bindings))
+    (python-ts-mode . (pylint-add-menu add-key-bindings)))
 
 #+END_SRC
 
@@ -3625,9 +3696,12 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package python-pytest
     :ensure t
-    :after (pyvenv)
-    :bind (:map python-mode-map
-                ("C-c p t" . python-pytest-dispatch))
+    :after (python-mode python-ts-mode)
+    :bind
+    (:map python-mode-map
+      ("C-c p t" . python-pytest-dispatch))
+    (:map python-ts-mode-map
+      ("C-c p t" . python-pytest-dispatch))
     :custom
     (transient-append-suffix
       'python-pytest-dispatch
@@ -3674,24 +3748,29 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package ruff-format
   :ensure t
-  :after (python-mode)
-  :bind (:map python-mode-map
-              ("C-c p r" . ruff-format-buffer))
-  :after (python-mode)
-  :hook (python-mode . ruff-format-on-save-mode))
+  :after (python-mode python-ts-mode)
+  :bind
+  (:map python-mode-map
+    ("C-c p r" . ruff-format-buffer))
+  (:map python-ts-mode-map
+    ("C-c p r" . ruff-format-buffer))
+  :hook
+  (python-mode . ruff-format-on-save-mode)
+  (python-ts-mode . ruff-format-on-save-mode))
 
 (use-package lazy-ruff
   :ensure t
-  :after (python-mode)
+  :after (python-mode python-ts-mode)
   :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
   :config
   (lazy-ruff-mode-global-toggle t)) ;; Enable the lazy-ruff minor mode globally
 
 (use-package flymake-ruff
   :ensure t
-  :after (python-mode)
-  ;; :hook (python-mode . flymake-ruff-load))
-  :hook (python-mode . flymake-ruff-load))
+  :after (python-mode python-ts-mode)
+  :hook
+  (python-mode . flymake-ruff-load)
+  (python-ts-mode . flymake-ruff-load))
 
 #+END_SRC
 
@@ -3705,8 +3784,10 @@ config but is included on the off-chance I change my mind or someone else finds 
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package yapfify
   :ensure t
-  :after (python-mode)
-  :hook (python-mode . yapf-mode))
+  :after (python-mode python-ts-mode)
+  :hook
+  (python-mode . yapf-mode)
+  (python-ts-mode . yapf-mode))
 
 #+END_SRC
 
@@ -3714,13 +3795,18 @@ config but is included on the off-chance I change my mind or someone else finds 
 <<sec:python-hooks>>
 
 I found that many of the above hooks were not actually being activated on opening Python files (which triggers
-~python-mode~ as the major mode and things like ~blacken-mode~, ~ruff-format-on-save-mode~ etc. should be minor modes).
+~python-mode~ as the major mode and things like ~blacken-mode~, ~ruff-format-on-save-mode~ etc. should be minor
+modes). Part of the problem was that rather than loading ~python-mode~ it was ~python-ts-mode~ that was actually being
+activated so I've gone through and added hooks for that too, but also add them here.
 
 #+NAME: code-python-hooks
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
   (add-hook 'python-mode-hook 'blacken-mode)
   (add-hook 'python-mode-hook 'uv-mode)
+  (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
+  (add-hook 'python-ts-mode-hook 'blacken-mode)
+  (add-hook 'python-ts-mode-hook 'uv-mode)
 
 #+END_SRC
 
@@ -4088,23 +4174,29 @@ Language servers I've installed with varying success (see [[https://github.com/d
   :custom (lsp-keymap-prefix "s-l")
   (lsp-disabled-clients '(pylsp pyls))
   ;; :init (setq lsp-keymap-prefix "s-l")
-  :hook ((R-mode . lsp-deferred)
-         (bash-mode . lsp-deferred)
-         ;; (dockerfile-mode . lsp-deferred)
-         (ess-r-mode . lsp-deferred)
-         (gfm-mode . lsp-deferred)
-         (git-commit-mode . lsp-deferred)
-         (forge-post-mode . lsp-deferred)
-         ;; (groovy-mode . lsp-deferred)
-         (html-mode . lsp-deferred)
-         ;; (julia-mode . lsp-deferred)
-         (js-ts-mode . lsp-deferred)
-         (latex-mode . lsp-deferred)
-         (markdown-mode . lsp-deferred)
-         (org-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (sh-mode . lsp-deferred)))
+  :hook
+   (R-mode . lsp-deferred)
+   (bash-mode . lsp-deferred)
+   (bash-ts-mode . lsp-deferred)
+   ;; (dockerfile-mode . lsp-deferred)
+   (ess-r-mode . lsp-deferred)
+   (gfm-mode . lsp-deferred)
+   (git-commit-mode . lsp-deferred)
+   (forge-post-mode . lsp-deferred)
+   ;; (groovy-mode . lsp-deferred)
+   (html-mode . lsp-deferred)
+   ;; (julia-mode . lsp-deferred)
+   (js-ts-mode . lsp-deferred)
+   (latex-mode . lsp-deferred)
+   (markdown-mode . lsp-deferred)
+   (markdown-ts-mode . lsp-deferred)
+   (org-mode . lsp-deferred)
+   (python-mode . lsp-deferred)
+   (python-ts-mode . lsp-deferred)
+   (r-ts-mode . lsp-deferred)
+   (rust-mode . lsp-deferred)
+   (rust-ts-mode . lsp-deferred)
+   (sh-mode . lsp-deferred))
 ;; (terraform-mode . lsp-deferred)
 ;; (typescript-mode . lsp-deferred)))
 
@@ -6310,9 +6402,26 @@ Version mismatch is commonly encountered in the following situations:
       subsequent restarts. Perhaps this is because it is only set via ~:custom~ so the option isn't set until the
       package is used? *Solution*: Move the setting to /before/ loading the package!
 
-*** DONE pytest
+*** TODO pytest
 
-+ [X] Additional entries to the transient are not appearing.
++ [ ] Additional entries to the transient are not appearing.
+
+#+begin_example
+Debugger entered--Lisp error: (error "Not a transient prefix command or group definition: python-pytest-dispatch")
+  error("Not a transient prefix command or group definition: %s" python-pytest-dispatch)
+  transient--get-layout(python-pytest-dispatch)
+  transient--locate-child(python-pytest-dispatch (0))
+  transient--insert-suffix(python-pytest-dispatch (0) ["Regression Tests" ("--su" "Reset Syrupy snapshot" "--snapshot-update") ("--tee" "Print results" "--regtest-tee") ("--nodiff" "Suppress output" "--regtest-nodiff") ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")] append nil)
+  transient-append-suffix(python-pytest-dispatch (0) ["Regression Tests" ("--su" "Reset Syrupy snapshot" "--snapshot-update") ("--tee" "Print results" "--regtest-tee") ("--nodiff" "Suppress output" "--regtest-nodiff") ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")])
+  load-with-code-conversion("/home/neil/.config/emacs/init.el" "/home/neil/.config/emacs/init.el" t t)
+  load("/home/neil/.config/emacs/init" noerror nomessage)
+  #f(compiled-function () #<bytecode 0xf55c9bec5e13991>)()
+  #f(compiled-function () #<bytecode -0x4307d7bb01d2857>)()
+  handler-bind-1(#f(compiled-function () #<bytecode -0x4307d7bb01d2857>) (error) startup--debug)
+  startup--load-user-init-file(#f(compiled-function () #<bytecode -0xdf06fa2e1b4d4b0>) #f(compiled-function () #<bytecode 0x5e6144c7e4bedff>) t)
+  command-line()
+  normal-top-level()
+#+end_example
 
 *** TODO Functions
 

@@ -1448,23 +1448,41 @@ Routine")
                           "Insert a print statement that will show the value of the argument."
                           "Enter the variable/object name: "
                           "print(f'\\n{" str "=}\\n')")
-  :bind (:map python-mode-map
-              ("C-c p t" . python-pytest-dispatch)
-              ("C-c p l" . pylint)
-              ("C-c p y" . pylint-insert-ignore-comment)
-              ("C-c p n" . numpydoc-generate)
-              ("C-c p b" . blacken-buffer)
-              ("C-c p r" . ruff-format-buffer)
-              ("C-c p v" . pyvenv-workon)
-              ("C-c p T c" . python-skeleton-class)
-              ("C-c p T d" . python-skeleton-def)
-              ("C-c p T f" . python-skeleton-for)
-              ("C-c p T i" . python-skeleton-if)
-              ("C-c p T m" . python-skeleton-import)
-              ("C-c P" . python-skeleton-print)
-              ("C-c p T t" . python-skeleton-try)
-              ("C-c p T T" . python-skeleton-parameterized-test)
-              ("C-c p T w" . python-skeleton-while)))
+  :bind
+  (:map python-mode-map
+        ("C-c p t" . python-pytest-dispatch)
+        ("C-c p l" . pylint)
+        ("C-c p y" . pylint-insert-ignore-comment)
+        ("C-c p n" . numpydoc-generate)
+        ("C-c p b" . blacken-buffer)
+        ("C-c p r" . ruff-format-buffer)
+        ("C-c p v" . pyvenv-workon)
+        ("C-c p T c" . python-skeleton-class)
+        ("C-c p T d" . python-skeleton-def)
+        ("C-c p T f" . python-skeleton-for)
+        ("C-c p T i" . python-skeleton-if)
+        ("C-c p T m" . python-skeleton-import)
+        ("C-c P" . python-skeleton-print)
+        ("C-c p T t" . python-skeleton-try)
+        ("C-c p T T" . python-skeleton-parameterized-test)
+        ("C-c p T w" . python-skeleton-while))
+  (:map python-ts-mode-map
+        ("C-c p t" . python-pytest-dispatch)
+        ("C-c p l" . pylint)
+        ("C-c p y" . pylint-insert-ignore-comment)
+        ("C-c p n" . numpydoc-generate)
+        ("C-c p b" . blacken-buffer)
+        ("C-c p r" . ruff-format-buffer)
+        ("C-c p v" . pyvenv-workon)
+        ("C-c p T c" . python-skeleton-class)
+        ("C-c p T d" . python-skeleton-def)
+        ("C-c p T f" . python-skeleton-for)
+        ("C-c p T i" . python-skeleton-if)
+        ("C-c p T m" . python-skeleton-import)
+        ("C-c P" . python-skeleton-print)
+        ("C-c p T t" . python-skeleton-try)
+        ("C-c p T T" . python-skeleton-parameterized-test)
+        ("C-c p T w" . python-skeleton-while)))
 
 (use-package pyvenv
   :ensure t
@@ -1498,27 +1516,35 @@ Routine")
                                           (pyvenv-restart-python)))
   :hook
   (python-mode . pyvenv-mode)
+  (python-ts-mode . pyvenv-mode)
   (after-init-hook . (pyvenv-workon default-env)))
 
 (use-package uv-mode
   :ensure t
-  :hook (python-mode . uv-mode-auto-activate))
+  :hook
+  (python-mode . uv-mode-auto-activate)
+  (pthon-ts-mode . uv-mode-auto-activate))
 
 (use-package blacken
   :ensure t
   :bind
-  (:map python-mode-map
-        ("C-c p b" . blacken-buffer))
+  ((:map python-mode-map
+         ("C-c p b" . blacken-buffer))
+   (:map python-mode-map
+         ("C-c p b" . blacken-buffer)))
   :custom
   (blacken-line-length 120)
   :hook
-  (python-mode . blacken-mode))
+  (python-mode . blacken-mode)
+  (pthon-ts-mode . uv-mode-auto-activate))
 
 (use-package numpydoc
   :ensure t
-  :after (python-mode)
+  :after (python-mode python-ts-mode)
   :bind
   (:map python-mode-map
+        ("C-c p n" . numpydoc-generate))
+  (:map python-ts-mode-map
         ("C-c p n" . numpydoc-generate))
   :custom
   (numpydoc-prompt-for-input t)
@@ -1529,9 +1555,12 @@ Routine")
 
 (use-package python-pytest
   :ensure t
-  :after (pyvenv)
-  :bind (:map python-mode-map
-              ("C-c p t" . python-pytest-dispatch))
+  :after (python-mode python-ts-mode)
+  :bind
+  (:map python-mode-map
+        ("C-c p t" . python-pytest-dispatch))
+  (:map python-ts-mode-map
+        ("C-c p t" . python-pytest-dispatch))
   :custom
   (transient-append-suffix
     'python-pytest-dispatch
@@ -1565,28 +1594,36 @@ Routine")
 
 (use-package ruff-format
   :ensure t
-  :after (python-mode)
-  :bind (:map python-mode-map
-              ("C-c p r" . ruff-format-buffer))
-  :after (python-mode)
-  :hook (python-mode . ruff-format-on-save-mode))
+  :after (python-mode python-ts-mode)
+  :bind
+  (:map python-mode-map
+        ("C-c p r" . ruff-format-buffer))
+  (:map python-ts-mode-map
+        ("C-c p r" . ruff-format-buffer))
+  :hook
+  (python-mode . ruff-format-on-save-mode)
+  (python-ts-mode . ruff-format-on-save-mode))
 
 (use-package lazy-ruff
   :ensure t
-  :after (python-mode)
+  :after (python-mode python-ts-mode)
   :bind (("C-c p l" . lazy-ruff-lint-format-dwim)) ;; keybinding
   :config
   (lazy-ruff-mode-global-toggle t)) ;; Enable the lazy-ruff minor mode globally
 
 (use-package flymake-ruff
   :ensure t
-  :after (python-mode)
-  ;; :hook (python-mode . flymake-ruff-load))
-  :hook (python-mode . flymake-ruff-load))
+  :after (python-mode python-ts-mode)
+  :hook
+  (python-mode . flymake-ruff-load)
+  (python-ts-mode . flymake-ruff-load))
 
 (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
 (add-hook 'python-mode-hook 'blacken-mode)
 (add-hook 'python-mode-hook 'uv-mode)
+(add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
+(add-hook 'python-ts-mode-hook 'blacken-mode)
+(add-hook 'python-ts-mode-hook 'uv-mode)
 
 (use-package sqlite-mode
   :custom
@@ -1681,23 +1718,29 @@ current buffer, killing it."
   :custom (lsp-keymap-prefix "s-l")
   (lsp-disabled-clients '(pylsp pyls))
   ;; :init (setq lsp-keymap-prefix "s-l")
-  :hook ((R-mode . lsp-deferred)
-         (bash-mode . lsp-deferred)
-         ;; (dockerfile-mode . lsp-deferred)
-         (ess-r-mode . lsp-deferred)
-         (gfm-mode . lsp-deferred)
-         (git-commit-mode . lsp-deferred)
-         (forge-post-mode . lsp-deferred)
-         ;; (groovy-mode . lsp-deferred)
-         (html-mode . lsp-deferred)
-         ;; (julia-mode . lsp-deferred)
-         (js-ts-mode . lsp-deferred)
-         (latex-mode . lsp-deferred)
-         (markdown-mode . lsp-deferred)
-         (org-mode . lsp-deferred)
-         (python-mode . lsp-deferred)
-         (rust-mode . lsp-deferred)
-         (sh-mode . lsp-deferred)))
+  :hook
+  (R-mode . lsp-deferred)
+  (bash-mode . lsp-deferred)
+  (bash-ts-mode . lsp-deferred)
+  ;; (dockerfile-mode . lsp-deferred)
+  (ess-r-mode . lsp-deferred)
+  (gfm-mode . lsp-deferred)
+  (git-commit-mode . lsp-deferred)
+  (forge-post-mode . lsp-deferred)
+  ;; (groovy-mode . lsp-deferred)
+  (html-mode . lsp-deferred)
+  ;; (julia-mode . lsp-deferred)
+  (js-ts-mode . lsp-deferred)
+  (latex-mode . lsp-deferred)
+  (markdown-mode . lsp-deferred)
+  (markdown-ts-mode . lsp-deferred)
+  (org-mode . lsp-deferred)
+  (python-mode . lsp-deferred)
+  (python-ts-mode . lsp-deferred)
+  (r-ts-mode . lsp-deferred)
+  (rust-mode . lsp-deferred)
+  (rust-ts-mode . lsp-deferred)
+  (sh-mode . lsp-deferred))
 ;; (terraform-mode . lsp-deferred)
 ;; (typescript-mode . lsp-deferred)))
 
