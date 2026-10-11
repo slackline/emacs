@@ -3487,39 +3487,39 @@ most templates these days (I should probably shift over but have the muscle memo
                           "print(f'\\n{" str "=}\\n')")
   :bind
   (:map python-mode-map
-    ("C-c p t" . python-pytest-dispatch)
-    ("C-c p l" . pylint)
-    ("C-c p y" . pylint-insert-ignore-comment)
-    ("C-c p n" . numpydoc-generate)
-    ("C-c p b" . blacken-buffer)
-    ("C-c p r" . ruff-format-buffer)
-    ("C-c p v" . pyvenv-workon)
-    ("C-c p T c" . python-skeleton-class)
-    ("C-c p T d" . python-skeleton-def)
-    ("C-c p T f" . python-skeleton-for)
-    ("C-c p T i" . python-skeleton-if)
-    ("C-c p T m" . python-skeleton-import)
-    ("C-c P" . python-skeleton-print)
-    ("C-c p T t" . python-skeleton-try)
-    ("C-c p T T" . python-skeleton-parameterized-test)
-    ("C-c p T w" . python-skeleton-while))
+        ("C-c p t" . python-pytest-dispatch)
+        ("C-c p l" . pylint)
+        ("C-c p y" . pylint-insert-ignore-comment)
+        ("C-c p n" . numpydoc-generate)
+        ("C-c p b" . blacken-buffer)
+        ("C-c p r" . ruff-format-buffer)
+        ("C-c p v" . pyvenv-workon)
+        ("C-c p T c" . python-skeleton-class)
+        ("C-c p T d" . python-skeleton-def)
+        ("C-c p T f" . python-skeleton-for)
+        ("C-c p T i" . python-skeleton-if)
+        ("C-c p T m" . python-skeleton-import)
+        ("C-c P" . python-skeleton-print)
+        ("C-c p T t" . python-skeleton-try)
+        ("C-c p T T" . python-skeleton-parameterized-test)
+        ("C-c p T w" . python-skeleton-while))
   (:map python-ts-mode-map
-    ("C-c p t" . python-pytest-dispatch)
-    ("C-c p l" . pylint)
-    ("C-c p y" . pylint-insert-ignore-comment)
-    ("C-c p n" . numpydoc-generate)
-    ("C-c p b" . blacken-buffer)
-    ("C-c p r" . ruff-format-buffer)
-    ("C-c p v" . pyvenv-workon)
-    ("C-c p T c" . python-skeleton-class)
-    ("C-c p T d" . python-skeleton-def)
-    ("C-c p T f" . python-skeleton-for)
-    ("C-c p T i" . python-skeleton-if)
-    ("C-c p T m" . python-skeleton-import)
-    ("C-c P" . python-skeleton-print)
-    ("C-c p T t" . python-skeleton-try)
-    ("C-c p T T" . python-skeleton-parameterized-test)
-    ("C-c p T w" . python-skeleton-while)))
+        ("C-c p t" . python-pytest-dispatch)
+        ("C-c p l" . pylint)
+        ("C-c p y" . pylint-insert-ignore-comment)
+        ("C-c p n" . numpydoc-generate)
+        ("C-c p b" . blacken-buffer)
+        ("C-c p r" . ruff-format-buffer)
+        ("C-c p v" . pyvenv-workon)
+        ("C-c p T c" . python-skeleton-class)
+        ("C-c p T d" . python-skeleton-def)
+        ("C-c p T f" . python-skeleton-for)
+        ("C-c p T i" . python-skeleton-if)
+        ("C-c p T m" . python-skeleton-import)
+        ("C-c P" . python-skeleton-print)
+        ("C-c p T t" . python-skeleton-try)
+        ("C-c p T T" . python-skeleton-parameterized-test)
+        ("C-c p T w" . python-skeleton-while)))
 
 #+END_SRC
 
@@ -3624,9 +3624,9 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
   :ensure t
   :bind
   ((:map python-mode-map
-     ("C-c p b" . blacken-buffer))
+         ("C-c p b" . blacken-buffer))
    (:map python-mode-map
-     ("C-c p b" . blacken-buffer)))
+         ("C-c p b" . blacken-buffer)))
   :custom
   (blacken-line-length 120)
   :hook
@@ -3650,9 +3650,9 @@ validation]] rules.
   :after (python-mode python-ts-mode)
   :bind
   (:map python-mode-map
-    ("C-c p n" . numpydoc-generate))
+        ("C-c p n" . numpydoc-generate))
   (:map python-ts-mode-map
-    ("C-c p n" . numpydoc-generate))
+        ("C-c p n" . numpydoc-generate))
   :custom
   (numpydoc-prompt-for-input t)
   (numpydoc-insert-examples-block 0)
@@ -3675,9 +3675,9 @@ There is an orphaned [[https://github.com/emacsorphanage/pylint][pylint]] packag
     :after (python-mode python-ts-mode)
     :bind
     (:map python-mode-map
-      ("C-c p l" . pylint))
+          ("C-c p l" . pylint))
     (:map python-ts-mode-map
-      ("C-c p l" . pylint))
+          ("C-c p l" . pylint))
     :hook
     (python-mode . (pylint-add-menu add-key-bindings))
     (python-ts-mode . (pylint-add-menu add-key-bindings)))
@@ -3699,9 +3699,9 @@ well as profiling).
     :after (python-mode python-ts-mode)
     :bind
     (:map python-mode-map
-      ("C-c p t" . python-pytest-dispatch))
+          ("C-c p t" . python-pytest-dispatch))
     (:map python-ts-mode-map
-      ("C-c p t" . python-pytest-dispatch))
+          ("C-c p t" . python-pytest-dispatch))
     :custom
     (transient-append-suffix
       'python-pytest-dispatch
@@ -3751,9 +3751,9 @@ well as profiling).
   :after (python-mode python-ts-mode)
   :bind
   (:map python-mode-map
-    ("C-c p r" . ruff-format-buffer))
+        ("C-c p r" . ruff-format-buffer))
   (:map python-ts-mode-map
-    ("C-c p r" . ruff-format-buffer))
+        ("C-c p r" . ruff-format-buffer))
   :hook
   (python-mode . ruff-format-on-save-mode)
   (python-ts-mode . ruff-format-on-save-mode))
@@ -4175,28 +4175,28 @@ Language servers I've installed with varying success (see [[https://github.com/d
   (lsp-disabled-clients '(pylsp pyls))
   ;; :init (setq lsp-keymap-prefix "s-l")
   :hook
-   (R-mode . lsp-deferred)
-   (bash-mode . lsp-deferred)
-   (bash-ts-mode . lsp-deferred)
-   ;; (dockerfile-mode . lsp-deferred)
-   (ess-r-mode . lsp-deferred)
-   (gfm-mode . lsp-deferred)
-   (git-commit-mode . lsp-deferred)
-   (forge-post-mode . lsp-deferred)
-   ;; (groovy-mode . lsp-deferred)
-   (html-mode . lsp-deferred)
-   ;; (julia-mode . lsp-deferred)
-   (js-ts-mode . lsp-deferred)
-   (latex-mode . lsp-deferred)
-   (markdown-mode . lsp-deferred)
-   (markdown-ts-mode . lsp-deferred)
-   (org-mode . lsp-deferred)
-   (python-mode . lsp-deferred)
-   (python-ts-mode . lsp-deferred)
-   (r-ts-mode . lsp-deferred)
-   (rust-mode . lsp-deferred)
-   (rust-ts-mode . lsp-deferred)
-   (sh-mode . lsp-deferred))
+  (R-mode . lsp-deferred)
+  (bash-mode . lsp-deferred)
+  (bash-ts-mode . lsp-deferred)
+  ;; (dockerfile-mode . lsp-deferred)
+  (ess-r-mode . lsp-deferred)
+  (gfm-mode . lsp-deferred)
+  (git-commit-mode . lsp-deferred)
+  (forge-post-mode . lsp-deferred)
+  ;; (groovy-mode . lsp-deferred)
+  (html-mode . lsp-deferred)
+  ;; (julia-mode . lsp-deferred)
+  (js-ts-mode . lsp-deferred)
+  (latex-mode . lsp-deferred)
+  (markdown-mode . lsp-deferred)
+  (markdown-ts-mode . lsp-deferred)
+  (org-mode . lsp-deferred)
+  (python-mode . lsp-deferred)
+  (python-ts-mode . lsp-deferred)
+  (r-ts-mode . lsp-deferred)
+  (rust-mode . lsp-deferred)
+  (rust-ts-mode . lsp-deferred)
+  (sh-mode . lsp-deferred))
 ;; (terraform-mode . lsp-deferred)
 ;; (typescript-mode . lsp-deferred)))
 
@@ -6441,3 +6441,19 @@ Things I've come across but not implemented yet that might be useful one day.
 
 [[https://github.com/yibie/excali-mode][excali-mode]] leverages the newer ~canvas~ functionality of Emacs >=32 to allow you to easily open, edit and save
 [[https://excalidraw.com][Excalidraw]] drawings in Emacs.
+*** markdown-ts-appear
+<<sec:markdown-ts-appear>>
+
+[[https://github.com/Thysrael/markdown-ts-appear][markdown-ts-appear]] renders markdown as you type.
+
+The [[https://github.com/Thysrael/markdown-ts-appear#installation][installation]] instructions note that MathJax (for rendering equations) needs installing separately and also requires
+Node.js.
+
+#+NAME: code-markdown-ts-appear
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package markdown-ts-appear
+  :ensure t
+  :hook
+  (markdown-ts-mode . markdown-ts-appear-mode))
+
+#+END_SRC
