@@ -1530,13 +1530,10 @@ Routine")
   :bind
   ((:map python-mode-map
          ("C-c p b" . blacken-buffer))
-   (:map python-mode-map
+   (:map python-ts-mode-map
          ("C-c p b" . blacken-buffer)))
   :custom
-  (blacken-line-length 120)
-  :hook
-  (python-mode . blacken-mode)
-  (pthon-ts-mode . uv-mode-auto-activate))
+  (blacken-line-length 120))
 
 (use-package numpydoc
   :ensure t
@@ -1619,10 +1616,8 @@ Routine")
   (python-ts-mode . flymake-ruff-load))
 
 (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
-(add-hook 'python-mode-hook 'blacken-mode)
 (add-hook 'python-mode-hook 'uv-mode)
 (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
-(add-hook 'python-ts-mode-hook 'blacken-mode)
 (add-hook 'python-ts-mode-hook 'uv-mode)
 
 (use-package sqlite-mode
@@ -1832,20 +1827,6 @@ project, at least until you switch to a different project."
 (use-package treesit-auto
   :config
   (global-treesit-auto-mode))
-
-(use-package treesit-fold
-  :ensure t
-  :after (treesit)
-  :custom
-  (treesit-fold-line-comment-mode t)
-  (global-treesit-fold-mode t)
-  :hook
-  ((css-ts-mode
-    json-ts-mode
-    just-ts-mode
-    python-ts-mode
-    rust-ts-mode
-    toml-ts-mode) . treesit-fold-mode))
 
 (use-package treesit-ispell
   :ensure t

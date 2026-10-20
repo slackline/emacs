@@ -3625,13 +3625,10 @@ to a buffer via keybinding (see above configuration option under [[sec:python][P
   :bind
   ((:map python-mode-map
          ("C-c p b" . blacken-buffer))
-   (:map python-mode-map
+   (:map python-ts-mode-map
          ("C-c p b" . blacken-buffer)))
   :custom
-  (blacken-line-length 120)
-  :hook
-  (python-mode . blacken-mode)
-  (pthon-ts-mode . uv-mode-auto-activate))
+  (blacken-line-length 120))
 
 #+END_SRC
 
@@ -3802,10 +3799,8 @@ activated so I've gone through and added hooks for that too, but also add them h
 #+NAME: code-python-hooks
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (add-hook 'python-mode-hook 'ruff-format-on-save-mode)
-  (add-hook 'python-mode-hook 'blacken-mode)
   (add-hook 'python-mode-hook 'uv-mode)
   (add-hook 'python-ts-mode-hook 'ruff-format-on-save-mode)
-  (add-hook 'python-ts-mode-hook 'blacken-mode)
   (add-hook 'python-ts-mode-hook 'uv-mode)
 
 #+END_SRC
@@ -4415,12 +4410,12 @@ me..
 *** TODO  treesit-fold
 <<sec:tree-sitter-fold>>
 
-[[https://github.com/emacs-tree-sitter/treesit-fold][treesit-fold]] provides tree-folding for the built-in
+[[https://github.com/emacs-tree-sitter/treesit-fold][treesit-fold]] provides tree-folding for the built-in languages.
 
-Check that this gets enabled.
+For now I've disabled this in favour of [[sec:kirigami][kirigarmi]]
 
 #+NAME: code-tree-sitter-fold
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package treesit-fold
   :ensure t
   :after (treesit)
