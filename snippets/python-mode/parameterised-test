@@ -4,11 +4,11 @@
 # group: definitions
 # --
 @pytest.mark.parametrize(
-    ("${1:parameters}"),
+    ("${3:parameters}"),
     [
         pytest.param(,id="${2:id}"),
     ]
 )
-def test_${3:testname}() -> None:
-    """Test for `${3}()`."""
+def test_${1:testname}() -> None:
+    """Test for \`${1}()\`."""
     $0
