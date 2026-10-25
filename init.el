@@ -1875,7 +1875,6 @@ code-vs-text is handled appropriately."
 
 (use-package kirigami
   :ensure t
-  :after treesit-fold
   :commands (kirigami-open-fold
              kirigami-open-fold-rec
              kirigami-close-fold
@@ -1885,15 +1884,19 @@ code-vs-text is handled appropriately."
              kirigami-close-folds)
   :bind
   ;; Vanilla Emacs keybindings
-  (("C-c z o" . kirigami-open-fold)          ; Open fold at point
-   ("C-c z O" . kirigami-open-fold-rec)      ; Open fold recursively
-   ("C-c z r" . kirigami-open-folds)         ; Open all folds
-   ("C-c z c" . kirigami-close-fold)         ; Close fold at point
-   ("C-c z m" . kirigami-close-folds)        ; Close all folds
-   ("C-c z a" . kirigami-toggle-fold)))      ; Toggle fold at point
+  (("C-c f c" . kirigami-close-fold)         ; Close fold at point
+   ("C-c f C" . kirigami-close-folds)        ; Close all folds
+   ("C-c f o" . kirigami-open-fold)          ; Open fold at point
+   ("C-c f O" . kirigami-open-fold-rec)      ; Open fold recursively
+   ("C-c f r" . kirigami-open-folds)         ; Open all folds
+   ("C-c f t" . kirigami-toggle-fold)))      ; Toggle fold at point
 
 (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
+(add-hook 'lisp-interaction-mode-hook #'hs-minor-mode) ; scratch
+(add-hook 'lisp-mode-hook #'outline-minor-mode)
 (add-hook 'conf-mode-hook #'outline-minor-mode)
+(add-hook 'markdown-mode-hook #'outline-minor-mode)
+(add-hook 'diff-mode-hook #'outline-minor-mode)
 
 ;; Hideshow minor mode for blocks of code
 ;; Systems and General Purpose

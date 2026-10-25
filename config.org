@@ -4574,6 +4574,9 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 ** Code folding
 
 + [[https://www.jamescherti.com/emacs-the-definitive-guide-to-code-folding/][Emacs: The Definitive Guide to Code Folding | James Cherti]]
++ [[https://jointhefreeworld.org/blog/articles/emacs/emacs-folding-kirigami/][Emacs finally folds to my liking - jointhefreeworld]] - builds on [[sec:kirigami][kirigami]] and shows how it can work nicely with the
+  built-in [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Hideshow.html][hideshow]].
+
 
 *** kirigami
 <<sec:kirigami>>
@@ -4582,7 +4585,6 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package kirigami
   :ensure t
-  :after treesit-fold
   :commands (kirigami-open-fold
              kirigami-open-fold-rec
              kirigami-close-fold
@@ -4592,12 +4594,12 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
              kirigami-close-folds)
   :bind
   ;; Vanilla Emacs keybindings
-  (("C-c z o" . kirigami-open-fold)          ; Open fold at point
-   ("C-c z O" . kirigami-open-fold-rec)      ; Open fold recursively
-   ("C-c z r" . kirigami-open-folds)         ; Open all folds
-   ("C-c z c" . kirigami-close-fold)         ; Close fold at point
-   ("C-c z m" . kirigami-close-folds)        ; Close all folds
-   ("C-c z a" . kirigami-toggle-fold)))      ; Toggle fold at point
+  (("C-c f c" . kirigami-close-fold)         ; Close fold at point
+   ("C-c f C" . kirigami-close-folds)        ; Close all folds
+   ("C-c f o" . kirigami-open-fold)          ; Open fold at point
+   ("C-c f O" . kirigami-open-fold-rec)      ; Open fold recursively
+   ("C-c f r" . kirigami-open-folds)         ; Open all folds
+   ("C-c f t" . kirigami-toggle-fold)))      ; Toggle fold at point
 
 #+END_SRC
 
