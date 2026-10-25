@@ -3328,8 +3328,10 @@ Don't use LaTeX much these days but like to keep things available.
 
 [[https://github.com/jrblevin/markdown-mode][markdown-mode]] is for editing Markdown files.
 
+Currently disabled in favour of [[sec:markdown-ts-mode][markdown-ts-mode]].
+
 #+NAME: code-markdown
-#+BEGIN_SRC emacs-lisp :tangle init.el
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package markdown-mode
   :ensure t
   :commands (gfm-mode
@@ -3356,16 +3358,20 @@ Don't use LaTeX much these days but like to keep things available.
 
 [[https://github.com/LionyxML/markdown-ts-mode][markdown-ts-mode]] provides [[sec:treesitter][Tree Sitter]] support for ~.md~ files.
 
-The following /isn't/ tangled and needs checking
+A useful article from one of the authors is [[https://rahuljuliato.com/posts/markdown-ts-mode-emacs-31][An unofficial guide to Markdown-ts-mode]].
+
 #+NAME: code-markdown-ts-mode
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle init.el
 (use-package markdown-ts-mode
   :ensure t
   :after (markdown-mode)
-  :mode ("\\.md\\'" . markdown-ts-mode)
+  :mode ("\\.md\\'" "\\.mdx\\'" "\\.markdown\\'" "\\.qmd\\'" "\\.Rmd\\'")
+  :hook
+  ((markdown-mode . auto-fill-mode)
+   (markdown-mode . outline-minor-mode))
   :custom
-  (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/ikatyang/tree-sitter-markdown" "master"
-"src")))
+  (require 'markdown-ts-mode-x))
+;; (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/ikatyang/tree-sitter-markdown" "master" "src")))
 
 #+END_SRC
 
@@ -4621,7 +4627,11 @@ interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/bra
 #+NAME: code-outline-minor-mode
 #+BEGIN_SRC emacs-lisp :tangle init.el
 (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
+(add-hook 'lisp-interaction-mode-hook #'hs-minor-mode) ; scratch
+(add-hook 'lisp-mode-hook #'outline-minor-mode)
 (add-hook 'conf-mode-hook #'outline-minor-mode)
+(add-hook 'markdown-mode-hook #'outline-minor-mode)
+(add-hook 'diff-mode-hook #'outline-minor-mode)
 
 #+END_SRC
 
@@ -4666,8 +4676,13 @@ to as blocks./".
   :commands outline-indent-minor-mode
   :custom
   (outline-indent-ellipsis " ▼"))
-;;  :hook (haskell-mode python-mode python-ts-mode yaml-ts-mode) . outline-indent-minor-mode)
-(outline-indent-minor-mode t)
+;; Python
+(add-hook 'python-mode-hook #'outline-indent-minor-mode)
+(add-hook 'python-ts-mode-hook #'outline-indent-minor-mode)
+
+;; Yaml
+(add-hook 'yaml-mode-hook #'outline-indent-minor-mode)
+(add-hook 'yaml-ts-mode-hook #'outline-indent-minor-mode)
 
 #+END_SRC
 

@@ -1408,24 +1408,16 @@ Routine")
 ;;(latex-preview-pane-enable)
 (setq latex-run-command "pdflatex")
 
-(use-package markdown-mode
+(use-package markdown-ts-mode
   :ensure t
-  :commands (gfm-mode
-             gfm-view-mode
-             markdown-mode
-             markdown-view-mode)
-  :mode
-  (("\\.markdown\\'" . markdown-mode)
-   ("\\.md\\'" . markdown-mode)
-   ("\\.qmd\\'" . markdown-mode)
-   ("\\.Rmd\\'" . markdown-mode)
-   ("README\\.md\\'" . gfm-mode))
+  :after (markdown-mode)
+  :mode ("\\.md\\'" "\\.mdx\\'" "\\.markdown\\'" "\\.qmd\\'" "\\.Rmd\\'")
   :hook
   ((markdown-mode . auto-fill-mode)
    (markdown-mode . outline-minor-mode))
-  :init (setq markdown-command "pandoc")
-  :bind (:map markdown-mode-map
-              ("C-c C-m" . markdown-do)))
+  :custom
+  (require 'markdown-ts-mode-x))
+;; (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/ikatyang/tree-sitter-markdown" "master" "src")))
 
 (use-package mermaid-mode
   :ensure t)
