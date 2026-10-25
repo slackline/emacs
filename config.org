@@ -4687,7 +4687,8 @@ Debugger entered--Lisp error: (error "Autoloading file /home/neil/.config/emacs/
 *** porg
 <<sec:porg>>
 
-[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding. Not currently tangled though.
+[[https://github.com/laluxx/porg/][porg]] bring org-mode functionality to ~prog-mode~. This includes nice code-folding. Not currently tangled though as using
+[[sec:kirigami][kirigami]].
 
 #+NAME: code-porg
 #+BEGIN_SRC emacs-lisp :tangle no
