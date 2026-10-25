@@ -745,6 +745,10 @@ Version 2015-07-27"
 (use-package org-analyzer
   :ensure t)
 
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode))
+
 (use-package org-links
   :ensure t
   :after org-mode)

@@ -2007,6 +2007,18 @@ and of itself).
 
 #+END_SRC
 
+*** Org Appear
+<<sec:org-appear>>
+
+[[https://github.com/awth13/org-appear][org-appear]]
+
+#+NAME: code-org-appear
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package org-appear
+  :ensure t
+  :hook (org-mode . org-appear-mode))
+
+#+END_SRC
 
 *** Org Links
 <<sec:org-links>>
