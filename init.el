@@ -99,6 +99,7 @@
   :config
   (add-to-list 'default-frame-alist '(alpha-background . 75))
   (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
+  (setq isearch-allow-motion t) ; Smarter search options
   (setq-default fill-column 120) ; Reset line-length
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
@@ -1755,7 +1756,9 @@ current buffer, killing it."
 (use-package lsp-ltex-plus
   :ensure t
   :after (lsp-mode)
-  :hook (forge-post-mode)
+  :hook
+  (forge-post-mode . (lambda () (require 'lsp-ltex-plus) (lsp)))
+  (org-mode . (lambda () (require 'lsp-ltex-plus) (lsp)))
   :init
   (lsp-ltex-plus-enable-for-modes)
   :custom

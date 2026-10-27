@@ -350,6 +350,7 @@ bars.
 + [[https://emacsredux.com/blog/2026/04/07/stealing-from-the-best-emacs-configs/][Stealing from the Best Emacs Configs]] written by the author of [[sec:projectile][projectile]].
 + [[https://www.emacswiki.org/emacs/SetFonts#GloballyChangingFont][Changing the default font]]
 + [[https://emacs.stackexchange.com/a/78802/10100][How to disable automatic appearance of warnings buffer in emacs]] - set ~warning-minimum-level~ to ~:error~
++ [[https://emacs.dyerdwelling.family/emacs/20261025153614-emacs--stop-going-to-the-top-isearch-allow-motion/][Stop Going to the Top: isearch-allow-motion in Emacs | Emacs Dwelling]]
 
 #+NAME: code-emacs-config
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -406,6 +407,7 @@ bars.
   :config
   (add-to-list 'default-frame-alist '(alpha-background . 75))
   (add-to-list 'default-frame-alist '(vertical-scroll-bars . right))
+  (setq isearch-allow-motion t) ; Smarter search options
   (setq-default fill-column 120) ; Reset line-length
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 4)
@@ -4263,7 +4265,9 @@ files. Needs the language server installing (unless done via [[sec:mason][Mason]
 (use-package lsp-ltex-plus
   :ensure t
   :after (lsp-mode)
-  :hook (forge-post-mode)
+  :hook
+  (forge-post-mode . (lambda () (require 'lsp-ltex-plus) (lsp)))
+  (org-mode . (lambda () (require 'lsp-ltex-plus) (lsp)))
   :init
   (lsp-ltex-plus-enable-for-modes)
   :custom
