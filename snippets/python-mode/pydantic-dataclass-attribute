@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: pydantic-dataclass-attribute
+# key: pda
+# group: definitions
+# --
+${1:attribute}: ${2:type} = Field(
+    default=${3:default},
+    title="${4:title}"
+)
