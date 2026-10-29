@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: pydantic-class
+# key: pdc
+# group: definitions
+# --
+class ${1:class_name}(BaseModel):
+    """Class for type-checking the \`${1}\` options."""
+    model_config = ConfigDict(extra="forbid")
+    ${2:field1}: ${3:field1_type} = Field(
+        default=${4:filed1_default},
+        title="${5:filed1_title}"
+    )
