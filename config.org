@@ -2494,6 +2494,9 @@ In the end I´ve gone with [[https://github.com/idlip/hakimacs][Hakimacs]].
 *** Other blogging options
 
 + [[https://tilde.town/~cryptk/blog/yaob.html#installation][YAOB – Yet Another Org Blog · (interzone)]]
++ [[https://peterprevos.com/praxis/publishing-websites-with-org-mode-01-principles/][Publishing Websites with Emacs and Org Mode: Principles]]
++ [[https://peterprevos.com/praxis/publishing-websites-with-org-mode-02-export-options/][Publishing websites with Emacs and Org Mode: Export Options]]
++ [[https://peterprevos.com/praxis/publishing-websites-with-org-mode-03-publishing-functions/][Publishing Websites with Emacs and Org Mode: Publishing Functions]]
 
 ** Org Capture
 <<sec:org-capture>>
