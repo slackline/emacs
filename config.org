@@ -2472,11 +2472,10 @@ what I was after which I found from a post by [[https://emacs.stackexchange.com/
 
 #+END_SRC
 
-** Org Grimoire
-<<sec:org-grimoire>>
+** Org Export
+<<sec:org-export>>
 
-[[https://github.com/spiperac/org-grimoire][org-grimoire]] is "/a static site generator for Emacs and Org mode. Configured and run entirely through your Emacs init
-file./".
+Org can export to many formats, including HTML, making it an excellent choice for static site generation.
 
 I wanted to move my blog from [[https://quarto.org][Quarto]] to a more Emacs centric system which had to be literate (as I write various bits of
 code) but also extend it to have other sections such as a copy of this literate configuration. ~org-grimoire~ looks like
@@ -2485,7 +2484,16 @@ a relatively new kid on the blog but reading the authors [[https://strah.net/pos
 I will have to work out how to build the site in [[https://codeberg.org][Codeberg]] pages automatically and how to translate my old posts from
 Quarto to Org-mode ([[https://pandoc.org][Pandoc]]) but that will give me something to focus on!
 
-In the end I´ve gone with [[https://github.com/idlip/hakimacs][Hakimacs]].
+I'd like to get [[https://github.com/idlip/hakimacs][Hakimacs]] working.
+
++ [[http://yummymelon.com/devnull/beautifying-org-html-export.html][nfdn: Beautifying Org HTML Export]]
+
+*** Org Grimoire
+<<sec:org-grimoire>>
+
+[[https://github.com/spiperac/org-grimoire][org-grimoire]] is "/a static site generator for Emacs and Org mode. Configured and run entirely through your Emacs init
+file./".
+
 
 #+NAME: code-org-grimoire
 #+BEGIN_SRC emacs-lisp :tangle no
