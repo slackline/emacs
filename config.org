@@ -6161,6 +6161,10 @@ Codeberg Pages once I've sussed those out).
 + [[https://github.com/KallDrexx/emacs-zero-to-ide-journey][Emacs : Zero to IDE Journey]]
 + [[https://sachachua.com/blog/2026/04/what-s-in-the-emacs-newcomers-presets-theme/][What's in the Emacs newcomers-presets theme? :: Sacha Chua]]
 
+** Org-mode
+
++ [[https://pablomurad.com/org-mode-from-zero/][Org mode from zero: a complete, friendly guide · Pablo Murad]]
+
 ** Useful built-ins
 
 + [[https://karthinks.com/software/batteries-included-with-emacs/][Batteries included with Emacs]]

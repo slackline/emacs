@@ -2295,4 +2295,3 @@ code-vs-text is handled appropriately."
 
 (provide 'init.el)
 ;;; init.el ends here
-(put 'downcase-region 'disabled nil)
