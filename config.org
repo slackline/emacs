@@ -5066,6 +5066,20 @@ options in Emacs Gnus or mu4e
 
 + [[https://cnoceda.com/tecnologia/posts/20251119T083113--searching-by-sender-in-notmuch__blog_emacs_email_notmuch_tecnologia.html][Searching by sender in notmuch]]
 
+** Eww
+<<sec:eww>>
+
+The [[https://www.gnu.org/software/emacs/manual/html_mono/eww.html][Emacs Web Wowser (eww)]] is /a web browser for GNU Emacs that provides a simple, no-frills experience that focuses on
+readability. It loads, parses, and displays web pages using shr.el. It can display images inline, if Emacs was built
+with image support, but there is no support for CSS or JavaScript./.
+
+As with many Emacs features I'm yet to try it out but I find the reasoning put forward in [[https://joshblais.com/blog/emacs-as-my-browser/][Emacs is my browser - The
+Universe of Joshua Blais]] appealing, reducing clutter, getting rid of distractions and focusing on text.
+
+Maybe one day once I've got everything else working I'll give it a whirl , although I keep on meaning to dedicate time
+to learn and use [[https://nyxt-browser.com/][Nyxt: the hacker's browser]] which is written in Common Lisp and uses vaguely familiar Emacs
+key-bindings.
+
 ** Org Social
 <<sec:org-social>>
 
@@ -5201,6 +5215,29 @@ any need to use it at the moment but I include it here as a reference/bookmark s
 
 #+END_SRC
 
+** emureader
+<<sec:emureader>>
+
+[[https://codeberg.org/MonadicSheep/emureader][emureader]] a document reader for /all/ documents.
+
+#+NAME: code-emureader
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package emureader
+  :ensure t)
+
+#+END_SRC
+** literate-calc-mode
+<<sec:literate-calc-mode>>
+
+[[https://github.com/sulami/literate-calc-mode.el][literate-calc-mode]]
+
+#+NAME: code-literate-calc-mode
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package literate-calc-mode
+  :ensure t)
+
+#+END_SRC
+
 ** mpd
 
 I use [[https://musicpd.org/][Music Player Daemon]] to run my music, these packages allow me to control ~mpd~ from Emacs.
@@ -5328,6 +5365,18 @@ take. I prefer this over [[sec:pass][pass]].
 
 #+END_SRC
 
+** ripgrep (rg)
+<<sec:rg>>
+
+[[https://github.com/dajva/rg.el][rg]] is a search tool based on [[https://github.com/BurntSushi/ripgrep][ripgrep]] and is required to make full use of [[sec:projectile][Projectile's]] searching of projects.
+
+#+NAME: code-rg
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package rg
+  :ensure t)
+
+#+END_SRC
+
 ** Scratch
 <<sec:scratch>>
 
@@ -5365,18 +5414,6 @@ the per-major-mode scratch buffers.
   (scratch-plus-save-directory "~/.config/emacs/scratch")
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
-
-#+END_SRC
-
-** ripgrep (rg)
-<<sec:rg>>
-
-[[https://github.com/dajva/rg.el][rg]] is a search tool based on [[https://github.com/BurntSushi/ripgrep][ripgrep]] and is required to make full use of [[sec:projectile][Projectile's]] searching of projects.
-
-#+NAME: code-rg
-#+BEGIN_SRC emacs-lisp :tangle init.el
-(use-package rg
-  :ensure t)
 
 #+END_SRC
 
@@ -5443,31 +5480,9 @@ Installs a [[https://github.com/webframp/sicp-info][info]] version of the second
 ** DevDocs
 <<sec:devdocs>>
 
-[[https://github.com/astoff/devdocs.el][devdocs.el]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]]. The docs need manually installing but after that they are available via ~C-h
+[[https://github.com/astoff/devdocs.el][devdoc.sel]] is an Emacs viewer for [[https://devdocs.io/][DevDocs]]. The docs need manually installing but after that they are available via ~C-h
 D~.
 
-+ bash
-+ elisp
-+ git
-+ go
-+ jq
-+ kubernetes
-+ latex
-+ markdown
-+ matplotlib
-+ nginx
-+ numpy-2.2
-+ pandas-3
-+ polars
-+ python-3.14
-+ r
-+ rust
-+ scikit_image
-+ scikit_learn
-+ sqlite
-+ svelte
-+ typescript
-+ zsh
 
 #+NAME: code-devdocs
 #+BEGIN_SRC emacs-lisp :tangle init.el
@@ -5489,7 +5504,7 @@ D~.
         ("markdown")
         ("matplotlib")
         ("nginx")
-        ("numpy-2.2")
+        ("numpy-2.5")
         ("pandas-3")
         ("polars")
         ("python-3.14")

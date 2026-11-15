@@ -2022,6 +2022,12 @@ code-vs-text is handled appropriately."
   (markdown-mode . citar-capf-setup)
   (org-mode . citar-capf-setup))
 
+(use-package emureader
+  :ensure t)
+
+(use-package literate-calc-mode
+  :ensure t)
+
 (use-package mpdel
   :ensure t
   :custom
@@ -2053,6 +2059,9 @@ code-vs-text is handled appropriately."
   :ensure t
   :after (password-store-menu))
 
+(use-package rg
+  :ensure t)
+
 (use-package scratch
   :ensure t
   :bind ("C-c s" . scratch))
@@ -2066,9 +2075,6 @@ code-vs-text is handled appropriately."
   (scratch-plus-save-directory "~/.config/emacs/scratch")
   (scratch-plus-project-subdir ".scratch")
   (scratch-plus-idle-save 3))
-
-(use-package rg
-  :ensure t)
 
 (use-package sicp
   :ensure t)
