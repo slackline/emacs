@@ -902,14 +902,7 @@ Version 2015-07-27"
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
 
-(defun ns/org-babel-export-on-save ()
-  "Export config.org on saving"
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/.config/emacs/config.org"))
-    (let ((org-confirm-babel-evaluate nil))
-      (org-html-export-to-html))))
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-tangle-on-save)))
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'ns/org-babel-export-on-save)))
 
 ;; Almost works, but org-lint needs to know what buffer to check???
 (defun ns/org-lint-on-save ()
