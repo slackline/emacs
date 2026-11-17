@@ -2022,6 +2022,23 @@ and of itself).
 
 #+END_SRC
 
+*** Org Export
+<<sec:org-export>>
+
+**** Burnish
+<<sec:burnish>>
+
+[[https://github.com/kickingvegas/burnish][burnish]] makes it easy to export and view [[sec:org-mode][Org]] documents on saving.
+
+#+NAME: code-burnish
+#+BEGIN_SRC emacs-lisp :tangle init.el
+(use-package burnish
+  :ensure t
+  :hook (org-mode . burnish-mode))
+
+#+END_SRC
+
+
 *** Org Links
 <<sec:org-links>>
 
@@ -6493,3 +6510,7 @@ Node.js.
   (markdown-ts-mode . markdown-ts-appear-mode))
 
 #+END_SRC
+
+# Local Variables:
+# burnish-backend: html
+# End:

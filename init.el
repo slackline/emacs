@@ -750,6 +750,10 @@ Version 2015-07-27"
   :ensure t
   :hook (org-mode . org-appear-mode))
 
+(use-package burnish
+  :ensure t
+  :hook (org-mode . burnish-mode))
+
 (use-package org-links
   :ensure t
   :after org-mode)
