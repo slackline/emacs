@@ -1552,6 +1552,7 @@ Routine")
         ("C-c p t" . python-pytest-dispatch))
   (:map python-ts-mode-map
         ("C-c p t" . python-pytest-dispatch))
+  :custom
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
