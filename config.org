@@ -3736,7 +3736,6 @@ well as profiling).
 #+BEGIN_SRC emacs-lisp :tangle init.el
   (use-package python-pytest
     :ensure t
-    :after (python-mode python-ts-mode)
     :bind
     (:map python-mode-map
           ("C-c p t" . python-pytest-dispatch))
@@ -5135,7 +5134,7 @@ Not currently tangled.
 <<sec:signel>>
 
 [[https://github.com/keenban/signel][signel]] is an Emacs client for Signal. It depends on [[https://github.com/AsamK/signal-cli][signal-cli]] an unofficial commandline, JSON-RPC and dbus interface
-for the Signal messenger.
+for the Signal messenger. A fork exists [[https://github.com/benthamite/sgn][sgn]].
 
 #+NAME: code-signel
 #+BEGIN_SRC emacs-lisp :tangle no
