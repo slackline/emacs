@@ -49,6 +49,7 @@
 (use-package emacs
   :custom
   (add-to-list 'load-path "~/.config/emacs/elpa/") ; Local LISP
+  (browse-url-generic-program "librewolf")
   (confirm-kill-processes nil) ; Stop confirming the killing of processes
   (custom-file "~/.config/emacs/custom.el")
   (delete-selection-mode t)
@@ -1551,37 +1552,36 @@ Routine")
   (:map python-mode-map
         ("C-c p t" . python-pytest-dispatch))
   (:map python-ts-mode-map
-        ("C-c p t" . python-pytest-dispatch))
-  :custom
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Regression Tests"
-     ;; ("-r" "Reset regression tests" "--regtest-reset")
-     ("--su" "Reset Syrupy snapshot" "--snapshot-update")
-     ("--tee" "Print results" "--regtest-tee")
-     ("--nodiff" "Suppress output" "--regtest-nodiff")
-     ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")
-     ])
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Profiling"
-     ("-P" "Generate profiling information" "--profile")
-     ("--profile-svg" "Generate profiling graph" "--profile-svg")
-     ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
-     ("--element-number" "Defines how many elements will display in a result" "--element-number")
-     ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")
-     ])
-  (transient-append-suffix
-    'python-pytest-dispatch
-    '(0)
-    ["Matplotlib Plugin"
-     ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
-     ("--generate-path" "Path to generate baseline images" "--mpl-generate-path")
-     ("--html" "Generate summary report in HTML" "--mpl-generate-summary html")
-     ("--json" "Generate summary report in JSON" "--mpl-generate-summary json")
-     ]))
+        ("C-c p t" . python-pytest-dispatch)))
+(transient-append-suffix
+  'python-pytest-dispatch
+  '(0)
+  ["Regression Tests"
+   ;; ("-r" "Reset regression tests" "--regtest-reset")
+   ("--su" "Reset Syrupy snapshot" "--snapshot-update")
+   ("--tee" "Print results" "--regtest-tee")
+   ("--nodiff" "Suppress output" "--regtest-nodiff")
+   ("--endings" "Do not strip whitespaces at end of recorded lines" "--regtest-consider-line-endings")
+   ])
+(transient-append-suffix
+  'python-pytest-dispatch
+  '(0)
+  ["Profiling"
+   ("-P" "Generate profiling information" "--profile")
+   ("--profile-svg" "Generate profiling graph" "--profile-svg")
+   ("--pstats-dir" "Configure the dump directory of profile data files" "--pstats-dir")
+   ("--element-number" "Defines how many elements will display in a result" "--element-number")
+   ("--strip-dirs" "Configure to show/hide the leading path information from file names" "--strip-dirs")
+   ])
+(transient-append-suffix
+  'python-pytest-dispatch
+  '(0)
+  ["Matplotlib Plugin"
+   ("--mpl" "Enable comparison of matplotlib figures to reference files" "--mpl")
+   ("--generate-path" "Path to generate baseline images" "--mpl-generate-path tests/__mpl_snapshots__")
+   ("--html" "Generate summary report in HTML" "--mpl-generate-summary html")
+   ("--json" "Generate summary report in JSON" "--mpl-generate-summary json")
+   ])
 
 (use-package ruff-format
   :ensure t
