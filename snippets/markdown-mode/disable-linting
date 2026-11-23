@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: disable-linting
+# key: dl
+# expand-env: ((yas-indent-line 'fixed))
+# --
+<!-- markdownlint-disable MD${1:lint} -->
+    ${2:text}
+<!-- markdownlint-disable MD${1} -->
