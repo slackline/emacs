@@ -2517,6 +2517,7 @@ file./".
 + [[https://peterprevos.com/praxis/publishing-websites-with-org-mode-02-export-options/][Publishing websites with Emacs and Org Mode: Export Options]]
 + [[https://peterprevos.com/praxis/publishing-websites-with-org-mode-03-publishing-functions/][Publishing Websites with Emacs and Org Mode: Publishing Functions]]
 + [[https://pablomurad.com/build-a-website-with-org-mode/][Build a website with Org mode and Emacs · Pablo Murad]]
++ [[https://pablomurad.com/org-mode-digital-garden/][Org mode as a digital garden · Pablo Murad]] (references [[https://marcoxbresciani.codeberg.page/digital-garden.html][Digital Garden]] which has a useful ~robots.txt~)
 
 ** Org Capture
 <<sec:org-capture>>
