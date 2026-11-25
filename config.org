@@ -3735,13 +3735,15 @@ well as profiling).
 
 #+NAME: code-pytest
 #+BEGIN_SRC emacs-lisp :tangle init.el
-  (use-package python-pytest
-    :ensure t
-    :bind
-    (:map python-mode-map
-          ("C-c p t" . python-pytest-dispatch))
-    (:map python-ts-mode-map
-          ("C-c p t" . python-pytest-dispatch)))
+(use-package python-pytest
+  :ensure t
+  :after python-mode
+  :bind
+  (:map python-mode-map
+        ("C-c p t" . python-pytest-dispatch))
+  (:map python-ts-mode-map
+        ("C-c p t" . python-pytest-dispatch)))
+(with-eval-after-load 'python-pytest
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
@@ -3770,8 +3772,11 @@ well as profiling).
      ("--generate-path" "Path to generate baseline images" "--mpl-generate-path tests/__mpl_snapshots__")
      ("--html" "Generate summary report in HTML" "--mpl-generate-summary html")
      ("--json" "Generate summary report in JSON" "--mpl-generate-summary json")
-     ])
+     ]))
+
 #+END_SRC
+
++ [[https://emacs.stackexchange.com/questions/74199/modify-existing-transient-set-some-argument-active-by-default][python - modify existing transient - set some argument "active" by default - Emacs Stack Exchange]]
 
 ***** Ruff
 <<sec:ruff>>
@@ -4613,6 +4618,23 @@ pre-defined snippets from the [[https://github.com/AndreaCrotti/yasnippet-snippe
 
 The snippets I have written/customised are not included here. They are loaded from the ~snippet/~ directory. If you are
 interested in my snippets see the [[https://codeberg.org/slackline/emacs/src/branch/master/snippets][snippets]] in my configuration repository.
+
+*** YAS Autoinsert
+<<sec:yas-autoinsert>>
+
+[[https://gitlab.com/rchastel1/emacs/yas-autoinsert][yas-autoinsert]]
+
+#+NAME: code-yas-autoinsert
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package yas-autoinsert
+  :ensure t
+  :after (yasnippet)
+  :custom
+  (auto-insert-mode t)
+  (yas-autoinsert t)
+  (yas-autoinsert-reload-all))
+
+#+END_SRC
 
 ** Code folding
 

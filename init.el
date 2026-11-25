@@ -1547,12 +1547,13 @@ Routine")
 
 (use-package python-pytest
   :ensure t
+  :after python-mode
   :bind
   (:map python-mode-map
         ("C-c p t" . python-pytest-dispatch))
   (:map python-ts-mode-map
-        ("C-c p t" . python-pytest-dispatch))
-  :custom
+        ("C-c p t" . python-pytest-dispatch)))
+(with-eval-after-load 'python-pytest
   (transient-append-suffix
     'python-pytest-dispatch
     '(0)
