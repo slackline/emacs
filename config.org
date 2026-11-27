@@ -6382,7 +6382,7 @@ Mostly seems to be working but...
 
 **** TODO Org-mode
 
-+ [ ] ~ltex-lsp-plus~ isn't loaded for ~.org~ files.
++ [ ] ~ltex-lsp-plus~ isn't loaded for ~.org~ files (or ~.md~).
 
 **** TODO R Air
 
@@ -6393,11 +6393,13 @@ A new linter and language server to be [[https://posit-dev.github.io/air/editor-
 + [ ]  No icons in the bar across the top to show what the language is. Possibly down to [[https://github.com/emacs-lsp/lsp-mode/issues/2504][all-the-icons not being
   installed]]. Solution : ~M-x all-the-icons-install-fonts~.
 
-**** TODO Python/Black
+**** DONE Python/Black
+CLOSED: [2026-11-25 Wed 15:03]
 
 + [X] Black formatting isn't applied on saving ~.py~ files, will run manually though (down to a hook perhaps?). Solved
   by switching to using ~ruff~!
-+ [ ] Additional transient entries for ~pytest~ do not appear to load correctly, can call interactively and they then appear.
++ [X] Additional transient entries for ~pytest~ do not appear to load correctly, can call interactively and they then
+  appear. *Solution*: ~9105c0e~ use ~with-eval-after-load~
 
 **** TODO Blacklist root directory
 
